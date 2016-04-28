@@ -39,7 +39,7 @@ DEFINES	 += __SUBARCH__=$(SUBARCH)
 
 CFLAGS_x86_x32	+= -O2 -m32 -mpreferred-stack-boundary=2 
 CFLAGS_x86_x64  += -O2 -m64 -mcmodel=kernel -mno-red-zone 
-CFLAGS_x86	+= $(CFLAGS_x86_$(SUBARCH)) -mno-mmx -mno-sse -mno-sse2 -mno-sse3
+CFLAGS_x86	+= $(CFLAGS_x86_$(SUBARCH)) -mno-mmx -mno-sse -mno-sse2 -mno-sse3 -fno-stack-protector
 LDFLAGS_x86_x32	+= -melf_i386 
 LDFLAGS_x86_x64	+= -melf_x86_64 -n -z max-page-size=4096
 LDFLAGS_x86	+= $(LDFLAGS_x86_$(SUBARCH))
@@ -76,5 +76,5 @@ else
  endif
 endif
 
-LIBS_x86_x32  +=   -lgcc
+LIBS_x86_x32  +=   $(shell $(CC) -m32 --print-libgcc-file-name)
 LIBS_x86      +=   $(LIBS_x86_$(SUBARCH))
