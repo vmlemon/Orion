@@ -33,6 +33,7 @@
  * SUCH DAMAGE.
  */
 
+#ifdef __netbsd__
 #include <sys/cdefs.h>
 #if defined(LIBC_SCCS) && !defined(lint)
 #if 0
@@ -41,6 +42,7 @@ static char sccsid[] = "@(#)umoddi3.c	8.1 (Berkeley) 6/4/93";
 __RCSID("$NetBSD: umoddi3.c,v 1.2 2009/03/15 22:31:12 cegger Exp $");
 #endif
 #endif /* LIBC_SCCS and not lint */
+#endif
 
 #include "quad.h"
 

@@ -50,13 +50,67 @@
  * quads and 64-bit ints, for instance, or 96-bit arithmetic on machines
  * with 48-bit ints.
  */
-
+#ifdef __netbsd__
 #include <sys/types.h>
 #if !defined(_KERNEL) && !defined(_STANDALONE)
 #include <limits.h>
 #else
 #include <machine/limits.h>
 #endif
+#else
+# include <types.h>
+# define u_quad_t u64_t
+# define quad_t s64_t
+# define u_int u32_t
+
+/* sys/endian.h */
+#define _LITTLE_ENDIAN 0
+#define _BIG_ENDIAN 1
+#define _BYTE_ORDER _LITTLE_ENDIAN
+#if _BYTE_ORDER == _LITTLE_ENDIAN
+#define _QUAD_HIGHWORD 1
+#define _QUAD_LOWWORD 0
+#endif
+
+#if _BYTE_ORDER == _BIG_ENDIAN
+#define _QUAD_HIGHWORD 0
+#define _QUAD_LOWWORD 1
+#endif
+
+/* from NetBSD: sys/cdefs.h */
+#define CHAR_BIT	8
+# ifdef __GNUC__
+# define __GNUC_PREREQ__(x, y)				 			\
+          ((__GNUC__ == (x) && __GNUC_MINOR__ >= (y)) ||			\
+	  (__GNUC__ > (x)))
+# else
+# define	__GNUC_PREREQ__(x, y)	0
+# endif
+
+# if defined(__cplusplus)
+#  define	__BEGIN_EXTERN_C	extern "C" {
+#  define	__END_EXTERN_C		}
+#  define	__static_cast(x,y)	static_cast<x>(y)
+# else
+#  define	__BEGIN_EXTERN_C
+#  define	__END_EXTERN_C
+#  define	__static_cast(x,y)	(x)y
+# endif
+
+
+# if __GNUC_PREREQ__(4, 0)
+#  define __BEGIN_PUBLIC_DECLS	\
+	_Pragma("GCC visibility push(default)") __BEGIN_EXTERN_C
+#  define __END_PUBLIC_DECLS	__END_EXTERN_C _Pragma("GCC visibility pop")
+# else
+#  define __BEGIN_PUBLIC_DECLS	__BEGIN_EXTERN_C
+#  define __END_PUBLIC_DECLS	__END_EXTERN_C
+# endif
+
+
+#  define	__BEGIN_DECLS		__BEGIN_PUBLIC_DECLS
+#  define	__END_DECLS		__END_PUBLIC_DECLS
+#endif /* ! __netbsd__ */
 
 #if defined(__ARM_EABI__) && !defined(lint)
 #define	ARM_EABI_ALIAS(alias,sym)	__strong_alias(alias,sym);

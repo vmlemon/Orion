@@ -33,6 +33,7 @@
  * SUCH DAMAGE.
  */
 
+#ifdef __netbsd__
 #include <sys/cdefs.h>
 #if defined(LIBC_SCCS) && !defined(lint)
 #if 0
@@ -41,7 +42,7 @@ static char sccsid[] = "@(#)qdivrem.c	8.1 (Berkeley) 6/4/93";
 __RCSID("$NetBSD: qdivrem.c,v 1.4 2012/03/20 16:21:41 matt Exp $");
 #endif
 #endif /* LIBC_SCCS and not lint */
-
+#endif
 /*
  * Multiprecision divide.  This algorithm is from Knuth vol. 2 (2nd ed),
  * section 4.3.1, pp. 257--259.
