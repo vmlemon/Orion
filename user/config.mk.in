@@ -52,7 +52,7 @@ CFLAGS=		@CFLAGS@
 CXXFLAGS=	$(CFLAGS) -fno-exceptions
 LDFLAGS=	@LDFLAGS@
 CPPFLAGS=	@CPPFLAGS@
-LGCC=		-lgcc
+LGCC=		$(shell $(CC) --print-libgcc-file-name)
 
 TOOLPREFIX=	@TOOLPREFIX@
 AR=		$(TOOLPREFIX)ar
