@@ -33,7 +33,7 @@
 
 
 -include Makeconf.local
-
+#EXTRA_CFLAGS += $(CFLAGS_EXTRA) -fno-pie
 all $(filter-out all, $(MAKECMDGOALS)):
-	@$(MAKE) -f $(SRCDIR)/Makefile $@
+	@$(MAKE) -f $(SRCDIR)/Makefile $@ 
 
