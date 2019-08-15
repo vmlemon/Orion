@@ -77,7 +77,7 @@ extern word_t KIP_MEMDESCS_RAW[];
   
 kernel_interface_page_t KIP UNIT(KIP_SECTION) =
 {
-    {{string:{'L','4',230,'K'}}}, // Magic word
+    {{string:{'L','4',(char)230,'K'}}}, // Magic word
     KIP_API_VERSION,
     KIP_API_FLAGS,		// API flags
     KIP_DESCRIPTION_PTR,	// kernel description pointer
