@@ -41,7 +41,7 @@ MKDIRHIER=	$(top_srcdir)/../tools/mkdirhier
 
 CPPFLAGS+=	$(CPPFLAGS_$(ARCH))
 CFLAGS+=	-O2 -g -Wall -Wshadow \
-		$(CFLAGS_$(ARCH))
+		$(CFLAGS_$(ARCH))  -fno-stack-protector -lssp
 LDFLAGS+=	$(LDFLAGS_$(ARCH))
 
 ifeq ("$(CC_VERSION)", "4")

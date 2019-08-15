@@ -44,7 +44,7 @@ amd64_SRCS=	pingpong-amd64-32.cc
 SRCS=		crt0-$(ARCH).S pingpong.cc $($(ARCH)_SRCS)
 
 LIBS+=		-ll4 -lio
-LDFLAGS+=	-Ttext=$(ROOTTASK_LINKBASE)
+LDFLAGS+=	-Ttext=$(ROOTTASK_LINKBASE)  -fno-stack-protector -lssp
 
 CFLAGS_powerpc+=	-fno-builtin -msoft-float
 CXXFLAGS_powerpc+=	-fno-rtti
