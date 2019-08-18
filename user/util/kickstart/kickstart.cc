@@ -48,7 +48,9 @@ extern "C" void loader (void)
 {
     loader_format_t * fmt = NULL;
 
-    printf("KickStart 0."_MKSTR(REVISION)"\n");
+    printf("Orion KickStart\n");
+    //printf("KickStart 0."_MKSTR(REVISION)"\n");
+
 
     // Try to find a valid loader format.
     for (L4_Word_t n = 0; loader_formats[n].probe; n++)
