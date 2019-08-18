@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: tyson-Lenovo-ideapad-120S-14IAP */
-/* At: Thu, 15 Aug 2019 11:14:00 +0000 */
+/* At: Thu, 15 Aug 2019 11:54:09 +0000 */
 /* Linux version 5.0.0-25-generic (buildd@lgw01-amd64-008) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #26-Ubuntu SMP Thu Aug 1 12:04:58 UTC 2019 */
 
 /* Pistachio Kernel Configuration System */
@@ -65,7 +65,7 @@
 #undef  CONFIG_NEW_MDB
 #undef  CONFIG_STATIC_TCBS
 #undef  CONFIG_PPC64_TRASH_OF
-#undef  CONFIG_X86_COMPATIBILITY_MODE
+#define CONFIG_X86_COMPATIBILITY_MODE 1
 
 
 /* Debugger */
@@ -109,7 +109,7 @@
 #define CONFIG_X86_PAT 1
 #undef  CONFIG_PPC_BOOKE
 #define CONFIG_IS_64BIT 1
-#undef  CONFIG_MULTI_ARCHITECTURE
+#define CONFIG_MULTI_ARCHITECTURE 1
 #define CONFIG_X86_EM64T 1
 #undef  CONFIG_PPC_CACHE_L1_WRITETHROUGH
 #undef  CONFIG_PPC_TLB_INV_LOCAL

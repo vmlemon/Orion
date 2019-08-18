@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: tyson-Lenovo-ideapad-120S-14IAP */
-/* At: Thu, 15 Aug 2019 11:54:09 +0000 */
+/* At: Sun, 18 Aug 2019 22:59:03 +0000 */
 /* Linux version 5.0.0-25-generic (buildd@lgw01-amd64-008) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #26-Ubuntu SMP Thu Aug 1 12:04:58 UTC 2019 */
 
 /* Pistachio Kernel Configuration System */
@@ -14,8 +14,8 @@
 
 
 /* X86 Processor Architecture */
-#undef  CONFIG_SUBARCH_X32
-#define CONFIG_SUBARCH_X64 1
+#define CONFIG_SUBARCH_X32 1
+#undef  CONFIG_SUBARCH_X64
 
 
 /* Processor Type */
@@ -52,11 +52,24 @@
 #define CONFIG_APIC_TIMER_TICK 1000
 #define CONFIG_BOOTMEM_PAGES 1024
 
-#undef  CONFIG_SMP
+#define CONFIG_SMP 1
+#define CONFIG_SMP_MAX_PROCS 4
+#undef  CONFIG_SMP_IDLE_POLL
 
 
 /* Kernel */
-#undef  CONFIG_EXPERIMENTAL
+#define CONFIG_EXPERIMENTAL 1
+
+/* Experimental Features */
+#undef  CONFIG_X_PAGER_EXREGS
+#undef  CONFIG_X_CTRLXFER_MSG
+#undef  CONFIG_X_EVT_LOGGING
+
+/* Kernel scheduling policy */
+#define CONFIG_SCHED_RR 1
+#undef  CONFIG_X_SCHED_HS
+
+
 #undef  CONFIG_IPC_FASTPATH
 #define CONFIG_DEBUG 1
 #define CONFIG_DEBUG_SYMBOLS 1
@@ -65,7 +78,8 @@
 #undef  CONFIG_NEW_MDB
 #undef  CONFIG_STATIC_TCBS
 #undef  CONFIG_PPC64_TRASH_OF
-#define CONFIG_X86_COMPATIBILITY_MODE 1
+#undef  CONFIG_X86_SMALL_SPACES
+#undef  CONFIG_X86_COMPATIBILITY_MODE
 
 
 /* Debugger */
@@ -104,13 +118,13 @@
 #define CONFIG_X86_SYSENTER 1
 #define CONFIG_X86_PGE 1
 #define CONFIG_X86_FXSR 1
-#undef  CONFIG_IS_32BIT
+#define CONFIG_IS_32BIT 1
 #define CONFIG_X86_HTT 1
 #define CONFIG_X86_PAT 1
 #undef  CONFIG_PPC_BOOKE
-#define CONFIG_IS_64BIT 1
-#define CONFIG_MULTI_ARCHITECTURE 1
-#define CONFIG_X86_EM64T 1
+#undef  CONFIG_IS_64BIT
+#undef  CONFIG_MULTI_ARCHITECTURE
+#undef  CONFIG_X86_EM64T
 #undef  CONFIG_PPC_CACHE_L1_WRITETHROUGH
 #undef  CONFIG_PPC_TLB_INV_LOCAL
 #undef  CONFIG_PPC_CACHE_ICBI_LOCAL

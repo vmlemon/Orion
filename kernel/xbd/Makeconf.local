@@ -30,10 +30,10 @@
 ##                
 ######################################################################
 ARCH=x86
-SUBARCH=x64
+SUBARCH=x32
 CPU=p4
 PLATFORM=pc99
-SCHED=
+SCHED=rr
 
 BUILDDIR = $(CURDIR)
 SRCDIR=/home/tyson/Desktop/Orion/pistachio/kernel
