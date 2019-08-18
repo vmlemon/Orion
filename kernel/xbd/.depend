@@ -21,7 +21,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/tracebuffer.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mapping.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/pgent.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/hwspace.h \
@@ -49,6 +48,12 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/memdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/procdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/intctrl.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/intctrl.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/platform/generic/intctrl-apic.h \
@@ -72,10 +77,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -85,9 +86,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/syscalls.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule.h \
@@ -119,7 +118,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/pgent.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/hwspace.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/mmu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/cpu.h \
@@ -138,6 +136,12 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/memdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/procdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/traps.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/cpu.h \
@@ -149,10 +153,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -165,7 +165,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/traphandler.h
 .depend src/glue/v4-x86/x32/space.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
@@ -190,7 +189,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/tracebuffer.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/lib.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/pgent.h \
@@ -212,6 +210,12 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/memdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/procdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/queuestate.h \
@@ -222,10 +226,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -238,10 +238,8 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/memory.h
 .depend src/glue/v4-x86/x32/user.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/user.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
@@ -280,7 +278,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -295,14 +292,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/utcb.h \
@@ -315,7 +314,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/timer.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/timer.h
 .depend src/glue/v4-x86/x32/thread.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/thread.cc \
@@ -353,7 +351,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -367,14 +364,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -388,13 +387,9 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/smp.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule_functions.h
 .depend src/glue/v4-x86/x32/trap.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/trap.S \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
@@ -450,7 +445,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -469,14 +463,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -489,8 +485,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h
 .depend src/generic/linear_ptab_walker.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab_walker.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -507,14 +502,13 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/pgent.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/linker_set.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/debug.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/debug.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/trapgate.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/trapgate.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/atomic.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/tracepoints.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/linker_set.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/tracebuffer.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/hwspace.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/mmu.h \
@@ -540,14 +534,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/memdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/procdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -561,7 +557,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mapping.h
 .depend src/generic/mapping_alloc.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mapping_alloc.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
@@ -588,7 +583,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/pgent.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/hwspace.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/mmu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/cpu.h \
@@ -623,7 +617,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/pgent.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/hwspace.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/mmu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/cpu.h \
@@ -643,6 +636,12 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/memdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/procdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/queuestate.h \
@@ -653,10 +652,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -668,8 +663,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/syscalls.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h
 .depend src/generic/acpi.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/acpi.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -693,6 +687,82 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/tracepoints.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/linker_set.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/tracebuffer.h
+.depend src/glue/v4-x86/x32/logging.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.cc \
+ /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/config.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/config.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/config.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/config.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x86.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/x86.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/offsets.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/types.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/types.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/types.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/schedule.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/tcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/debug.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/debug.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/trapgate.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/atomic.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/tracepoints.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/linker_set.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/tracebuffer.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/cpu.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/types.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/queuestate.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/queueing.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/threadstate.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/fpage.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/io_fpage.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/generic-archfpage.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/thread.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/kernelinterface.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/memregion.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/memdesc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/procdesc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/pgent.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/hwspace.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/mmu.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/cpu.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/utcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/generic-utcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/tcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/syscalls.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/syscalls.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/syscalls.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/schedule.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule_functions.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/platform/pc99/perfmon.h
 .depend kdb/arch/x86/x32/x86.o: /home/tyson/Desktop/Orion/pistachio/kernel/kdb/arch/x86/x32/x86.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -759,7 +829,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/pgent.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/hwspace.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/mmu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/cpu.h \
@@ -778,6 +847,12 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/memdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/procdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/queuestate.h \
@@ -788,10 +863,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -803,8 +874,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/syscalls.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h
 .depend kdb/generic/mapping.o: /home/tyson/Desktop/Orion/pistachio/kernel/kdb/generic/mapping.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -835,7 +905,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/pgent.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/hwspace.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/mmu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/cpu.h \
@@ -854,7 +923,13 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/memregion.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/memdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/procdesc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h
 .depend kdb/glue/v4-x86/x32/space.o: /home/tyson/Desktop/Orion/pistachio/kernel/kdb/glue/v4-x86/x32/space.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -885,7 +960,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/pgent.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/hwspace.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/mmu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/cpu.h \
@@ -903,7 +977,13 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/memregion.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/memdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/procdesc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h
 .depend src/generic/lib.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/lib.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -940,14 +1020,13 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/types.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/linker_set.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/debug.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/debug.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/trapgate.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/trapgate.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/atomic.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/tracepoints.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/linker_set.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/tracebuffer.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/init.h
 .depend src/platform/pc99/startup.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/platform/pc99/startup.S \
@@ -977,14 +1056,13 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/pgent.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/linker_set.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/debug.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/debug.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/trapgate.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/trapgate.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/atomic.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/tracepoints.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/linker_set.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/tracebuffer.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/hwspace.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/mmu.h \
@@ -1004,6 +1082,12 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/memdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/procdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/queuestate.h \
@@ -1014,10 +1098,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -1030,7 +1110,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/platform/pc99/acpi.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/acpi.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/ioport.h \
@@ -1044,17 +1123,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/apic.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/hwirq.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/hwirq.h
-.depend src/platform/pc99/smp.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/platform/pc99/smp.S \
- /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/config.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/config.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/config.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/config.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x86.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/x86.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/offsets.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/asm.h
 .depend src/api/v4/exregs.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/exregs.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -1088,7 +1156,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -1107,14 +1174,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -1126,9 +1195,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule.h \
@@ -1163,7 +1230,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -1182,14 +1248,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -1203,13 +1271,9 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/smp.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/interrupt.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/intctrl.h \
@@ -1217,7 +1281,9 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/platform/generic/intctrl-apic.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/platform/pc99/82093.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/apic.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/ioport.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/ioport.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/smp.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h
 .depend src/api/v4/ipcx.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipcx.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -1248,7 +1314,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -1267,14 +1332,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -1288,13 +1355,9 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/smp.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/map.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/io_space.h \
@@ -1356,7 +1419,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -1375,14 +1437,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -1396,7 +1460,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/interrupt.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/intctrl.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/intctrl.h \
@@ -1407,10 +1470,9 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/lib.h
 .depend src/api/v4/schedule.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/schedule.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
@@ -1442,7 +1504,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -1461,14 +1522,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -1482,13 +1545,9 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/smp.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/interrupt.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/intctrl.h \
@@ -1496,7 +1555,9 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/platform/generic/intctrl-apic.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/platform/pc99/82093.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/apic.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/ioport.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/ioport.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/smp.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h
 .depend src/api/v4/space.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -1520,7 +1581,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/tracebuffer.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
@@ -1541,6 +1601,12 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/cpu.h \
@@ -1551,10 +1617,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -1568,9 +1630,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule.h \
@@ -1608,7 +1668,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -1627,14 +1686,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -1648,7 +1709,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/interrupt.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/intctrl.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/intctrl.h \
@@ -1659,10 +1719,9 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/smp.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule_functions.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h
 .depend src/api/v4/smp.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/smp.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -1677,7 +1736,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/types.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/types.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/tracepoints.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/debug.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/debug.h \
@@ -1713,14 +1771,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -1734,9 +1794,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule.h \
@@ -1763,7 +1821,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/linker_set.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/tracebuffer.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/kernelinterface.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/memregion.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/memdesc.h \
@@ -1807,7 +1864,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -1826,14 +1882,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -1847,13 +1905,9 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/smp.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/interrupt.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/intctrl.h \
@@ -1861,7 +1915,9 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/platform/generic/intctrl-apic.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/platform/pc99/82093.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/apic.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/ioport.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/ioport.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/smp.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h
 .depend src/glue/v4-x86/ctors.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ctors.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -1908,7 +1964,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/pgent.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/hwspace.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/mmu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/cpu.h \
@@ -1927,6 +1982,12 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/memdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/procdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/traps.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/cpu.h \
@@ -1938,10 +1999,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -1954,13 +2011,9 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/smp.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/traphandler.h
 .depend src/glue/v4-x86/space.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.cc \
@@ -1986,7 +2039,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/tracebuffer.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/lib.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/pgent.h \
@@ -2008,6 +2060,12 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/memdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/procdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/queuestate.h \
@@ -2018,10 +2076,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -2034,10 +2088,8 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/memory.h
 .depend src/glue/v4-x86/init.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/init.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
@@ -2062,7 +2114,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/tracebuffer.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mapping.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/pgent.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/hwspace.h \
@@ -2086,6 +2137,12 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/memdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/procdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/idt.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/segdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/segdesc.h \
@@ -2099,7 +2156,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/timer.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/memory.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/amdhwcr.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/tcb.h \
@@ -2111,10 +2167,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -2128,7 +2180,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule.h \
@@ -2164,7 +2215,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -2183,14 +2233,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -2204,7 +2256,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/fpu.h
 .depend src/glue/v4-x86/idt.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/idt.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
@@ -2270,7 +2321,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -2285,14 +2335,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -2306,10 +2358,8 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/traps.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/apic.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/platform/pc99/nmi.h \
@@ -2349,7 +2399,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -2368,14 +2417,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -2389,9 +2440,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/apic.h
 .depend src/glue/v4-x86/thread.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/thread.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
@@ -2428,7 +2477,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -2442,14 +2490,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -2462,8 +2512,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h
 .depend src/glue/v4-x86/timer-apic.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/timer-apic.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -2495,7 +2544,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/apic.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/ioport.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/pgent.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
@@ -2517,6 +2565,12 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/memdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/procdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/timer.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/timer.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/cpu.h \
@@ -2531,10 +2585,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -2547,12 +2597,8 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/smp.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule_functions.h
 .depend kdb/generic/bootinfo.o: /home/tyson/Desktop/Orion/pistachio/kernel/kdb/generic/bootinfo.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
@@ -2592,7 +2638,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -2607,14 +2652,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -2627,8 +2674,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h
 .depend kdb/generic/cmd.o: /home/tyson/Desktop/Orion/pistachio/kernel/kdb/generic/cmd.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -2677,7 +2723,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/linker_set.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/tracebuffer.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/kdb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/cmd.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/kdb_class_helper.h \
@@ -2717,7 +2762,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -2736,14 +2780,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -2756,8 +2802,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h
 .depend kdb/generic/init.o: /home/tyson/Desktop/Orion/pistachio/kernel/kdb/generic/init.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -2838,8 +2883,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/kdb_class_helper.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/kdb_autogenerated_protos.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h
 .depend kdb/generic/linker_set.o: /home/tyson/Desktop/Orion/pistachio/kernel/kdb/generic/linker_set.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -2892,7 +2936,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/pgent.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/hwspace.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/mmu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/cpu.h \
@@ -2911,6 +2954,12 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/memdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/procdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/queuestate.h \
@@ -2921,10 +2970,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -2936,8 +2981,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/syscalls.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h
 .depend kdb/generic/print.o: /home/tyson/Desktop/Orion/pistachio/kernel/kdb/generic/print.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -2953,7 +2997,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/types.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/thread.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/kernelinterface.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/memregion.h \
@@ -2988,14 +3031,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -3008,8 +3053,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h
 .depend kdb/generic/tid_format.o: /home/tyson/Desktop/Orion/pistachio/kernel/kdb/generic/tid_format.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -3074,7 +3118,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -3093,14 +3136,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -3114,9 +3159,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h
 .depend kdb/platform/pc99/io.o: /home/tyson/Desktop/Orion/pistachio/kernel/kdb/platform/pc99/io.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -3155,7 +3198,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -3168,14 +3210,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/mmu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -3189,7 +3233,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/kdb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/kdb/cmd.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/kdb_class_helper.h \
@@ -3231,7 +3274,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/apic.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/ioport.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/pgent.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
@@ -3252,7 +3294,13 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/memregion.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/memdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/procdesc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h
 .depend kdb/api/v4/input.o: /home/tyson/Desktop/Orion/pistachio/kernel/kdb/api/v4/input.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -3283,7 +3331,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/types.h \
@@ -3303,6 +3350,12 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/queuestate.h \
@@ -3312,10 +3365,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -3328,8 +3377,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h
 .depend kdb/api/v4/kernelinterface.o: /home/tyson/Desktop/Orion/pistachio/kernel/kdb/api/v4/kernelinterface.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -3394,7 +3442,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -3413,14 +3460,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -3434,13 +3483,9 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/smp.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule_functions.h
 .depend kdb/api/v4/thread.o: /home/tyson/Desktop/Orion/pistachio/kernel/kdb/api/v4/thread.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
@@ -3479,7 +3524,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -3493,14 +3537,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -3513,8 +3559,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h
 .depend kdb/api/v4/schedule-rr.o: /home/tyson/Desktop/Orion/pistachio/kernel/kdb/api/v4/schedule-rr.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -3541,7 +3586,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/kdb_class_helper.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/kdb_autogenerated_protos.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/types.h \
@@ -3568,14 +3612,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -3589,10 +3635,8 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule.h \
@@ -3638,7 +3682,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -3652,14 +3695,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -3673,12 +3718,8 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/schedule.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/smp.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/schedule_functions.h
 .depend kdb/arch/x86/breakpoints.o: /home/tyson/Desktop/Orion/pistachio/kernel/kdb/arch/x86/breakpoints.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
@@ -3715,7 +3756,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -3734,14 +3774,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -3754,8 +3796,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h
 .depend kdb/arch/x86/stepping.o: /home/tyson/Desktop/Orion/pistachio/kernel/kdb/arch/x86/stepping.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -3818,7 +3859,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -3837,14 +3877,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -3858,7 +3900,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/ioport.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/segdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/segdesc.h \
@@ -3902,7 +3943,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -3921,14 +3961,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -3941,8 +3983,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h
 .depend kdb/glue/v4-x86/prepost.o: /home/tyson/Desktop/Orion/pistachio/kernel/kdb/glue/v4-x86/prepost.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -3975,7 +4016,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/pgent.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/hwspace.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/mmu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/cpu.h \
@@ -3994,6 +4034,12 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/memdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/procdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/queuestate.h \
@@ -4004,10 +4050,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -4020,7 +4062,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/apic.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/traps.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/schedule.h \
@@ -4056,7 +4097,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/pgent.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/hwspace.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/mmu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/cpu.h \
@@ -4075,6 +4115,12 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/memdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/procdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/queuestate.h \
@@ -4085,10 +4131,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -4100,8 +4142,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/syscalls.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h
 .depend kdb/glue/v4-x86/resources.o: /home/tyson/Desktop/Orion/pistachio/kernel/kdb/glue/v4-x86/resources.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -4132,7 +4173,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -4151,14 +4191,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -4171,8 +4213,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h
 .depend kdb/glue/v4-x86/addrtranslation.o: /home/tyson/Desktop/Orion/pistachio/kernel/kdb/glue/v4-x86/addrtranslation.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -4203,7 +4244,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/pgent.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/hwspace.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/mmu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/cpu.h \
@@ -4222,6 +4262,12 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/memdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/procdesc.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/tcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/queuestate.h \
@@ -4232,10 +4278,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -4247,8 +4289,7 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/syscalls.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h
 .depend src/glue/v4-x86/asmsyms.o: /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/asmsyms.cc \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/config/config.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/macros.h \
@@ -4280,7 +4321,6 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/kmemory.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/sync.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/sync.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/space.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/fpage.h \
@@ -4299,14 +4339,16 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/cpu.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/mdb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/logging.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/bitmask.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/preempt.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sktcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/ktcb.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/xbd/include/tcb_layout.h \
@@ -4319,5 +4361,4 @@
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/generic/linear_ptab.h \
  /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/x32/tcb.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h \
- /home/tyson/Desktop/Orion/pistachio/kernel/src/glue/v4-x86/logging.h
+ /home/tyson/Desktop/Orion/pistachio/kernel/src/arch/x86/x32/tss.h

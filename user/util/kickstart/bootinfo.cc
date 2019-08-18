@@ -69,6 +69,10 @@ L4_BootRec_t * init_bootinfo (L4_BootInfo_t * bi)
     bi->first_entry	= sizeof (*bi);
     bi->num_entries	= 0;
 
+
+    printf("bi->magic : %x, bi->version : %x, bi->size : %x, bi->first_entry : %x, bi->num_entries : %x\n",
+		    bi->magic, bi->version, bi->size, bi->first_entry, bi->num_entries);
+
     return L4_BootInfo_FirstEntry (bi);
 }
 
@@ -168,6 +172,9 @@ L4_BootRec_t * record_bootinfo_mbi (L4_BootInfo_t * bi,
     bimbi->version	= 1;
     bimbi->offset_next	= sizeof (*bimbi);
     bimbi->address	= (L4_Word_t) mbi;
+
+    printf("bimbi->type : %x, bimbi->version : %x, bimbi->offset_next : %x, bimbi->address : %x \n", 
+		    bimbi->type, bimbi->version, bimbi->offset_next, bimbi->address);
 
     bi->num_entries++;
     bi->size += sizeof (*bimbi);

@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: tyson-Lenovo-ideapad-120S-14IAP */
-/* At: Sun, 18 Aug 2019 22:59:03 +0000 */
+/* At: Sun, 18 Aug 2019 23:18:58 +0000 */
 /* Linux version 5.0.0-25-generic (buildd@lgw01-amd64-008) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #26-Ubuntu SMP Thu Aug 1 12:04:58 UTC 2019 */
 
 /* Pistachio Kernel Configuration System */
@@ -52,7 +52,7 @@
 #define CONFIG_APIC_TIMER_TICK 1000
 #define CONFIG_BOOTMEM_PAGES 1024
 
-#define CONFIG_SMP 1
+#undef  CONFIG_SMP
 #define CONFIG_SMP_MAX_PROCS 4
 #undef  CONFIG_SMP_IDLE_POLL
 
@@ -63,7 +63,7 @@
 /* Experimental Features */
 #undef  CONFIG_X_PAGER_EXREGS
 #undef  CONFIG_X_CTRLXFER_MSG
-#undef  CONFIG_X_EVT_LOGGING
+#define CONFIG_X_EVT_LOGGING 1
 
 /* Kernel scheduling policy */
 #define CONFIG_SCHED_RR 1
@@ -74,7 +74,7 @@
 #define CONFIG_DEBUG 1
 #define CONFIG_DEBUG_SYMBOLS 1
 #undef  CONFIG_PERFMON
-#undef  CONFIG_SPIN_WHEELS
+#define CONFIG_SPIN_WHEELS 1
 #undef  CONFIG_NEW_MDB
 #undef  CONFIG_STATIC_TCBS
 #undef  CONFIG_PPC64_TRASH_OF
@@ -100,9 +100,9 @@
 #undef  CONFIG_KDB_NO_ASSERTS
 
 /* Trace Settings */
-#undef  CONFIG_VERBOSE_INIT
-#undef  CONFIG_TRACEPOINTS
-#undef  CONFIG_KMEM_TRACE
+#define CONFIG_VERBOSE_INIT 1
+#define CONFIG_TRACEPOINTS 1
+#define CONFIG_KMEM_TRACE 1
 #undef  CONFIG_TRACEBUFFER
 
 
