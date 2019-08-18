@@ -1,0 +1,47 @@
+crt0-amd64.o: crt0-amd64.S ../../config.h
+kickstart.o: kickstart.cc ../../config.h ../../include/l4io.h \
+ ../../include/l4/types.h ../../include/l4/ia32/types.h \
+ ../../include/l4/ia32/specials.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h kickstart.h
+kipmgr.o: kipmgr.cc kipmgr.h ../../include/l4/types.h \
+ ../../include/l4/ia32/types.h ../../include/l4/ia32/specials.h \
+ ../../include/l4/kcp.h ../../include/l4/kip.h \
+ ../../include/l4/ia32/syscalls.h ../../include/l4/ia32/vregs.h \
+ ../../include/l4/message.h lib.h elf.h bootinfo.h ../../config.h mbi.h \
+ ../../include/l4/bootinfo.h
+elf.o: elf.cc ../../config.h ../../include/l4io.h \
+ ../../include/l4/types.h ../../include/l4/ia32/types.h \
+ ../../include/l4/ia32/specials.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h kickstart.h elf.h \
+ bootinfo.h mbi.h ../../include/l4/bootinfo.h lib.h
+lib.o: lib.cc lib.h ../../include/l4/types.h \
+ ../../include/l4/ia32/types.h ../../include/l4/ia32/specials.h
+bootinfo.o: bootinfo.cc ../../config.h ../../include/l4io.h \
+ ../../include/l4/types.h ../../include/l4/ia32/types.h \
+ ../../include/l4/ia32/specials.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h bootinfo.h mbi.h \
+ ../../include/l4/bootinfo.h kickstart.h lib.h elf.h
+amd64.o: amd64.cc ../../config.h ../../include/l4io.h \
+ ../../include/l4/types.h ../../include/l4/ia32/types.h \
+ ../../include/l4/ia32/specials.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h kickstart.h mbi.h \
+ kipmgr.h ../../include/l4/kcp.h ../../include/l4/kip.h \
+ ../../include/l4/ia32/syscalls.h ../../include/l4/ia32/vregs.h \
+ ../../include/l4/message.h lib.h
+mbi.o: mbi.cc mbi.h ../../include/l4/types.h \
+ ../../include/l4/ia32/types.h ../../include/l4/ia32/specials.h lib.h
+mbi-amd64.o: mbi-amd64.cc ../../config.h ../../include/l4io.h \
+ ../../include/l4/types.h ../../include/l4/ia32/types.h \
+ ../../include/l4/ia32/specials.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h lib.h kickstart.h mbi.h \
+ kipmgr.h ../../include/l4/kcp.h ../../include/l4/kip.h \
+ ../../include/l4/ia32/syscalls.h ../../include/l4/ia32/vregs.h \
+ ../../include/l4/message.h
+mbi-loader.o: mbi-loader.cc ../../config.h ../../include/l4io.h \
+ ../../include/l4/types.h ../../include/l4/ia32/types.h \
+ ../../include/l4/ia32/specials.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h kickstart.h mbi.h \
+ kipmgr.h ../../include/l4/kcp.h ../../include/l4/kip.h \
+ ../../include/l4/ia32/syscalls.h ../../include/l4/ia32/vregs.h \
+ ../../include/l4/message.h lib.h elf.h bootinfo.h \
+ ../../include/l4/bootinfo.h
