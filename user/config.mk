@@ -41,7 +41,7 @@ exec_prefix=	${prefix}
 includedir=	${prefix}/include
 libdir=		${exec_prefix}/lib/l4
 libexecdir=	${exec_prefix}/libexec/l4
-kerneldir=	../kernel/xbd/
+kerneldir=	../kernel
 
 
 SHELL=		/bin/bash
