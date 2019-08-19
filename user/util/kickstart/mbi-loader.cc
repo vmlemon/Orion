@@ -86,7 +86,9 @@ L4_Word_t root_task_type = 0;
  */
 bool check_memory (L4_Word_t start, L4_Word_t end)
 {
-    for (L4_Word_t i = 0; i < mbi->modcount; i++)
+    
+	printf("Someone called check_memory(start : %x, end : %x)!\n", start, end);
+	for (L4_Word_t i = 0; i < mbi->modcount; i++)
     {
 	L4_Word_t mod_start = orig_mbi_modules[i].start;
 	L4_Word_t mod_end = orig_mbi_modules[i].end;
@@ -138,11 +140,16 @@ bool check_memory (L4_Word_t start, L4_Word_t end)
  */
 bool load_modules (void)
 {
+	printf("Someone called load_modules()!\n");
     // Is the modules info in the MBI valid?
     if (mbi->flags.mods)
     {
-        for (L4_Word_t i = 0; i < mbi->modcount; i++)
+	
+        printf("The MBI gave us ambient modules...\n");
+        for (L4_Word_t i = 0; i < mbi->modcount; i++) //{
             mbi->mods[i].entry = 0;
+	  //  printf("\t - %d \n", i);
+	//}
 
         /* We need at least three modules: kernel, sigma0, roottask */
         if (mbi->modcount >= 3)
@@ -164,16 +171,20 @@ bool load_modules (void)
         }
         else
         {
+	    printf("A critical Orion component is missing, the operating system cannot boot.\n");
             FAIL();
         }
 
 	if (decode_all_executables)
 	{
+	    printf("Decoding all ELF binaries, presented to MBI Loader... \n");
 	    // Also decode other ELF files in module list.
-	    for (L4_Word_t i = 3; i < mbi->modcount; i++)
+	    for (L4_Word_t i = 3; i < mbi->modcount; i++) {
 		elf_load (mbi->mods[i].start, mbi->mods[i].end,
 			  &mbi->mods[i].start, &mbi->mods[i].end,
 			  &mbi->mods[i].entry, NULL, check_memory);
+	    printf("\t - %x, %x, %x", mbi->mods[i].start, mbi->mods[i].end, mbi->mods[i].entry);
+	    }
 	}
 
 	return true;
@@ -199,6 +210,7 @@ bool load_modules (void)
  */
 L4_Word_t find_free_mem_region (L4_Word_t size, kip_manager_t *kip)
 {
+	printf("Someone asked us to find %x bytes of free RAM...", size);
     L4_Word64_t phys_start, phys_end;
 
     phys_end = kip->get_phys_mem_max();
@@ -316,6 +328,8 @@ bool mbi_probe (void)
  */
 L4_Word_t mbi_init (void)
 {
+	printf("Someone called mbi_init()\n");
+
     kip_manager_t kip;
 
     void * bi = NULL;
@@ -325,6 +339,8 @@ L4_Word_t mbi_init (void)
     // The KIP is somewhere in the kernel (module 0)
     if (!kip.find_kip(mbi->mods[0].start, mbi->mods[0].end))
     {
+	printf("We couldn't find the Kernel Information Page. Not even hunting between %x - %x... \n", mbi->mods[0].start, mbi->mods[0].end);
+
         // Bail out if we couldn't find a KIP
         FAIL();
     }
