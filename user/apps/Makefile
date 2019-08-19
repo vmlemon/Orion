@@ -36,7 +36,7 @@ top_builddir=	..
 include $(top_srcdir)/Mk/l4.base.mk
 
 
-SUBDIRS=	grabmem l4test
+SUBDIRS=	grabmem l4test system
 
 
 include $(top_srcdir)/Mk/l4.subdir.mk

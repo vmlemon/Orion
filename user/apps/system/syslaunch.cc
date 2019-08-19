@@ -1,49 +1,49 @@
 #include "syslaunch.h"
 
-#include <drivermgr.h>
-#include <ramfs.h>
+//#include <drivermgr.h>
+//#include <ramfs.h>
 
-#include <sys/sysinfo.h>
+//#include <sys/sysinfo.h>
 
 SysLaunch::SysLaunch():
     iScreenNbr(0)
 {
     this->VerBanner();
 
-    EDebugPrintf("SysLaunch", "Created new instance of SysLaunch...");
-    printf("This system uses %d-sized pages\n", (int)l4e_min_pagesize());
+  //  EDebugPrintf("SysLaunch", "Created new instance of SysLaunch...");
+  //  printf("This system uses %d-sized pages\n", (int)l4e_min_pagesize());
     printf("Switching to screen %d\n", iScreenNbr);
 
     /* Set the POSIX UID to root (0) */
-    setenv("UID", "0", 1);
-    setenv("USER", "syslaunch",1);
+//    setenv("UID", "0", 1);
+  //  setenv("USER", "syslaunch",1);
 
-    printf("Defaulting to user \"%s\" (%s)\n", 
-	getenv("USER"), 
-	getenv("UID"));
+ //   /printf("Defaulting to user \"%s\" (%s)\n", 
+//	getenv("USER"), 
+//	getenv("UID"));
 
-    DriverMgr();
+    //DriverMgr();
 
-    RamFs rfs;
-    rfs.Start(1);
+    //RamFs rfs;
+    //rfs.Start(1);
 
-	rfs.ReadFile("/sys/kip/raw");
+//	rfs.ReadFile("/sys/kip/raw");
 
 
 }
 
 void SysLaunch::VerBanner() {
 
-    struct utsname utsName;
-    uname(&utsName);
+    //struct utsname utsName;
+    //uname(&utsName);
 
-    printf("\n Welcome to %s %s.%s! Running on %s.\n", utsName.sysname,
-           utsName.release, utsName.version, utsName.nodename);
+    ///printf("\n Welcome to %s %s.%s! Running on %s.\n", utsName.sysname,
+      //     utsName.release, utsName.version, utsName.nodename);
 }
 
 /* This function will eventually call system(), or an equivalent */ 
 void SysLaunch::EscalateCmd(char *aCmd) {
-
+/*
 	if (strcmp(getenv("ACTIVE_CMD"), "uname") == 0) {
 		struct utsname utsName;
     		uname(&utsName);
@@ -72,32 +72,32 @@ void SysLaunch::EscalateCmd(char *aCmd) {
 	else {
 		EDebugPrintf("SysLaunch", "No processor is available for this command. Sorry.");
 	}
-
+*/
 }				
 
 void SysLaunch::WaitForCmd() {
 
-    struct utsname utsName;
-    uname(&utsName);
+  //  struct utsname utsName;
+    //uname(&utsName);
 
-    while(1) {
+  //  while(1) {
 
-	char *cmd;
-	strcpy(cmd, GetPolledKbdLine());
+//	char *cmd;
+//	strcpy(cmd, GetPolledKbdLine());
 
-	setenv("ACTIVE_CMD", cmd, 1);
-	printf("%s@%s:/$ %s\n", getenv("USER"), utsName.nodename, getenv("ACTIVE_CMD"));
-	this->EscalateCmd(cmd);
+//	setenv("ACTIVE_CMD", cmd, 1);
+//	printf("%s@%s:/$ %s\n", getenv("USER"), utsName.nodename, getenv("ACTIVE_CMD"));
+//	this->EscalateCmd(cmd);
 
-    }
+    //}
 }
 
 int main(void) {
     SysLaunch launch;
 
     printf("The clock says: %d\n", L4_SystemClock().raw);
-    malloc(2);
-    int *test = new int(1);
+    //malloc(2);
+//    int *test = new int(1);
 
     launch.WaitForCmd();
     return 0;
