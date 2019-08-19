@@ -33,6 +33,7 @@
 #include "mbi.h"
 #include "lib.h"
 
+//#include <cstdio>
 /**
  * Returns the total size of the mbi.  Includes the size of module
  * definitions, strings, and any space necessary to maintain
@@ -52,6 +53,8 @@ L4_Word_t mbi_t::get_size()
 	tot += sizeof(mbi_module_t);
 	tot += 1 + strlen(this->mods[i].cmdline) + alignment_space;
     }
+
+    //printf("mbi_t::get_size() returns : %x", tot);
 
     return tot;
 }
@@ -77,6 +80,7 @@ void mbi_t::copy( mbi_t *target )
 	target->cmdline = strings;
 	strcpy( target->cmdline, this->cmdline );
 	strings = strings + 1 + strlen(this->cmdline);
+//	printf("Module invoked with : %s \n", this->cmdline);
 	// TODO: align the strings pointer.
     }
 

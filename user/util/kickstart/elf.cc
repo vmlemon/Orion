@@ -151,12 +151,15 @@ bool __elf_func(elf_find_sections) (L4_Word_t addr,
 {
     // Pointer to ELF file header
     ehdr_t * eh = (ehdr_t *) addr;
+    printf("Trying ELF header @ %x \n", addr);
 
     if (eh->type != 2)
+	    printf("ELF was not an executable\n");
 	// Not an executable file.
 	return false;
 
     if (eh->phoff == 0)
+	    printf("ELF lacks Program Headers\n");
 	// No program headers.
         return false;
 
@@ -380,11 +383,13 @@ bool elf_find_sections (L4_Word_t addr,
 
 #if defined(L4_32BIT) || defined(ALSO_ELF32)
     if (eh->is_32bit ())
+	    printf("ELF32 executable found! Handing off to elf_find_sections32 (%x, %x)\n", addr,exec);
 	return elf_find_sections32 (addr, exec);
 #endif
 
 #if defined(L4_64BIT) || defined(ALSO_ELF64)
     if (eh->is_64bit ())
+	    printf("ELF64 executable found! Handing off to elf_find_sections64 (%x, %x)\n", addr,exec);
 	return elf_find_sections64 (addr, exec);
 #endif
 
@@ -424,6 +429,39 @@ bool elf_find_sections (L4_Word_t addr,
 	exec->label		= e.label;
 	exec->cmdline_offset	= e.cmdline_offset;
 
+        printf("Reflected sections : %x, \
+		       %x, \
+	               %x, \
+	               %x, \
+                       %x,\	
+                       %x,\
+                       %x,\
+                       %x,\
+                       %x, \  
+                       %x,\
+                       %x,\
+                       %x,\
+                       %x, \  
+                       %x,\
+                       %x,\
+                       %x\n",
+		       exec->type,
+                       exec->version,
+                       exec->text_pstart,
+                       exec->text_vstart,
+                       exec->text_size,
+                       exec->data_pstart,
+                       exec->data_vstart,
+                       exec->data_size,
+                       exec->bss_pstart,
+                       exec->bss_vstart,
+                       exec->bss_size,
+                       exec->initial_ip,
+                       exec->flags,
+                       exec->label,
+                       exec->cmdline_offset
+       		       
+	      );
 	return true;
     }
 

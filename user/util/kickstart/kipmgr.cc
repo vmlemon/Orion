@@ -80,6 +80,7 @@ kip_manager_t::kip_manager_t (void)
  */
 bool kip_manager_t::find_kip (L4_Word_t start, L4_Word_t end)
 {
+//	printf("Looking for KIP, between %x-%x\n", start, end);
     /*
      * Search for location of KIP.
      */
