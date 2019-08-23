@@ -1,0 +1,4 @@
+
+SIGMA0=		$(top_builddir)/serv/sigma0/sigma0
+ROOT_TASK=	$(top_builddir)/apps/l4test/l4test
+KERNEL=		$(kerneldir)/$(ARCH)-kernel
