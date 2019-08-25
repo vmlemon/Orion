@@ -71,7 +71,7 @@ _start:
 1:	cmpd	0,	r11, r10;
 //#else
 //1:	cmp	0,	r10,	r11 /* The syntax changed, back in 2016 */
-#endif
+//#endif
 	beq	2f
 	stwu	r12,	4(r10)
 	b	1b

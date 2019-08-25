@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: PPC64U */
-/* At: Sun, 25 Aug 2019 20:35:26 +0000 */
+/* At: Sun, 25 Aug 2019 20:46:49 +0000 */
 /* Linux version 5.2.0-8-generic (buildd@bos02-ppc64el-015) (gcc version 9.1.0 (Ubuntu 9.1.0-6ubuntu2)) #9-Ubuntu SMP Mon Jul 8 13:05:34 UTC 2019 */
 
 /* Pistachio Kernel Configuration System */
@@ -54,7 +54,7 @@
 /* Kernel */
 #undef  CONFIG_EXPERIMENTAL
 #undef  CONFIG_IPC_FASTPATH
-#undef  CONFIG_DEBUG
+#define CONFIG_DEBUG 1
 #undef  CONFIG_DEBUG_SYMBOLS
 #undef  CONFIG_STATIC_TCBS
 #undef  CONFIG_PPC64_TRASH_OF
@@ -63,7 +63,6 @@
 /* Debugger */
 
 /* Kernel Debugger Console */
-#undef  CONFIG_KDB_CONS_COM
 #undef  CONFIG_KDB_CONS_RTAS
 #define CONFIG_KDB_BOOT_CONS 0
 
@@ -71,7 +70,6 @@
 #undef  CONFIG_KDB_ON_STARTUP
 #undef  CONFIG_KDB_BREAKIN
 #undef  CONFIG_KDB_BREAKIN_BREAK
-#undef  CONFIG_KDB_BREAKIN_ESCAPE
 #undef  CONFIG_KDB_NO_ASSERTS
 
 /* Trace Settings */
