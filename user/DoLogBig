@@ -1,0 +1,8 @@
+make[1]: Entering directory '/WhirlPool/pSeries41/Orion/user/lib'
+make[2]: Entering directory '/WhirlPool/pSeries41/Orion/user/lib/l4'
+===> Making dependencies in .
+make[2]: *** No rule to make target 'l4/powerpc64/tracebuffer.h', needed by 'debug.o'. Stop.
+make[2]: Leaving directory '/WhirlPool/pSeries41/Orion/user/lib/l4'
+make[1]: *** [../Mk/l4.subdir.mk:41: subdirs-all] Error 2
+make[1]: Leaving directory '/WhirlPool/pSeries41/Orion/user/lib'
+make: *** [Mk/l4.subdir.mk:41: subdirs-all] Error 2
