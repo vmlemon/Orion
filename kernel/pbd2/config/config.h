@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: PPC64U */
-/* At: Sun, 25 Aug 2019 10:59:54 +0000 */
+/* At: Sun, 25 Aug 2019 11:14:09 +0000 */
 /* Linux version 5.2.0-8-generic (buildd@bos02-ppc64el-015) (gcc version 9.1.0 (Ubuntu 9.1.0-6ubuntu2)) #9-Ubuntu SMP Mon Jul 8 13:05:34 UTC 2019 */
 
 /* Pistachio Kernel Configuration System */
@@ -33,17 +33,17 @@
 
 
 /* Platform */
-#undef  CONFIG_PLAT_OFG5
+#define CONFIG_PLAT_OFG5 1
 #undef  CONFIG_PLAT_OFPOWER3
-#define CONFIG_PLAT_OFPOWER4 1
+#undef  CONFIG_PLAT_OFPOWER4
 
 
 /* Processor Type */
 #undef  CONFIG_CPU_POWERPC64_POWER3
 #undef  CONFIG_CPU_POWERPC64_POWER3p
-#define CONFIG_CPU_POWERPC64_POWER4 1
+#undef  CONFIG_CPU_POWERPC64_POWER4
 #undef  CONFIG_CPU_POWERPC64_POWER4p
-#undef  CONFIG_CPU_POWERPC64_PPC970
+#define CONFIG_CPU_POWERPC64_PPC970 1
 
 
 /* Miscellaneous */
@@ -54,7 +54,7 @@
 /* Kernel */
 #undef  CONFIG_EXPERIMENTAL
 #undef  CONFIG_IPC_FASTPATH
-#define CONFIG_DEBUG 1
+#undef  CONFIG_DEBUG
 #undef  CONFIG_DEBUG_SYMBOLS
 #undef  CONFIG_STATIC_TCBS
 #undef  CONFIG_PPC64_TRASH_OF
@@ -63,6 +63,7 @@
 /* Debugger */
 
 /* Kernel Debugger Console */
+#undef  CONFIG_KDB_CONS_COM
 #undef  CONFIG_KDB_CONS_RTAS
 #define CONFIG_KDB_BOOT_CONS 0
 
@@ -70,10 +71,11 @@
 #undef  CONFIG_KDB_ON_STARTUP
 #undef  CONFIG_KDB_BREAKIN
 #undef  CONFIG_KDB_BREAKIN_BREAK
+#undef  CONFIG_KDB_BREAKIN_ESCAPE
 #undef  CONFIG_KDB_NO_ASSERTS
 
 /* Trace Settings */
-#define CONFIG_VERBOSE_INIT 1
+#undef  CONFIG_VERBOSE_INIT
 #undef  CONFIG_TRACEPOINTS
 #undef  CONFIG_KMEM_TRACE
 #undef  CONFIG_TRACEBUFFER

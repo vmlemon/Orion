@@ -2,7 +2,7 @@
 # Automatically generated, don't edit
 #
 # Generated on: PPC64U
-# At: Sun, 25 Aug 2019 10:42:28 +0000
+# At: Sun, 25 Aug 2019 11:11:30 +0000
 # Linux version 5.2.0-8-generic (buildd@bos02-ppc64el-015) (gcc version 9.1.0 (Ubuntu 9.1.0-6ubuntu2)) #9-Ubuntu SMP Mon Jul 8 13:05:34 UTC 2019
 
 #
@@ -49,9 +49,9 @@ CONFIG_ARCH_POWERPC64=y
 #
 # Platform
 #
-# CONFIG_PLAT_OFG5 is not set
+CONFIG_PLAT_OFG5=y
 # CONFIG_PLAT_OFPOWER3 is not set
-CONFIG_PLAT_OFPOWER4=y
+# CONFIG_PLAT_OFPOWER4 is not set
 
 
 #
@@ -59,9 +59,9 @@ CONFIG_PLAT_OFPOWER4=y
 #
 # CONFIG_CPU_POWERPC64_POWER3 is not set
 # CONFIG_CPU_POWERPC64_POWER3p is not set
-CONFIG_CPU_POWERPC64_POWER4=y
+# CONFIG_CPU_POWERPC64_POWER4 is not set
 # CONFIG_CPU_POWERPC64_POWER4p is not set
-# CONFIG_CPU_POWERPC64_PPC970 is not set
+CONFIG_CPU_POWERPC64_PPC970=y
 
 
 #
@@ -89,7 +89,7 @@ CONFIG_DEBUG=y
 #
 # Kernel Debugger Console
 #
-CONFIG_KDB_CONS_RTAS=y
+# CONFIG_KDB_CONS_RTAS is not set
 CONFIG_KDB_BOOT_CONS=0
 
 # CONFIG_KDB_DISAS is not set
