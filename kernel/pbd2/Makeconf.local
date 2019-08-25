@@ -31,8 +31,8 @@
 ######################################################################
 ARCH=powerpc64
 SUBARCH=
-CPU=ppc970
-PLATFORM=ofpower4
+CPU=power3
+PLATFORM=ofpower3
 SCHED=
 
 BUILDDIR = $(CURDIR)
