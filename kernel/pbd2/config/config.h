@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: PPC64U */
-/* At: Sun, 25 Aug 2019 11:14:09 +0000 */
+/* At: Sun, 25 Aug 2019 11:16:35 +0000 */
 /* Linux version 5.2.0-8-generic (buildd@bos02-ppc64el-015) (gcc version 9.1.0 (Ubuntu 9.1.0-6ubuntu2)) #9-Ubuntu SMP Mon Jul 8 13:05:34 UTC 2019 */
 
 /* Pistachio Kernel Configuration System */
@@ -33,9 +33,9 @@
 
 
 /* Platform */
-#define CONFIG_PLAT_OFG5 1
+#undef  CONFIG_PLAT_OFG5
 #undef  CONFIG_PLAT_OFPOWER3
-#undef  CONFIG_PLAT_OFPOWER4
+#define CONFIG_PLAT_OFPOWER4 1
 
 
 /* Processor Type */
