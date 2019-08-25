@@ -30,6 +30,13 @@
  *
  ***************************************************************************/
 
+//cat kernel/src/platform/ofppc/1275tree.h | grep OF1275_KIP_TYPE, too
+#define OF1275_KIP_TYPE		0xe
+//The above is a massive hack!
+
+//cat kernel/src/platform/ofppc/1275tree.h | grep OF1275_KIP_SUBTYPE
+#define OF1275_KIP_SUBTYPE	0xf
+
 #include INC_ARCH(of1275.h)
 #include INC_ARCH(rtas.h)
 #include INC_ARCH(1275tree.h)
@@ -68,6 +75,8 @@ SECTION(".init") void of1275_tree_init( kernel_interface_page_t *kip )
     for( word_t i = 0; i < kip->memory_info.get_num_descriptors(); i++ ) 
     {
 	memdesc_t *mdesc = kip->memory_info.get_memdesc( i );
+
+	//Where do these come from?
 	if( (mdesc->type() == OF1275_KIP_TYPE) && 
 		(mdesc->subtype() == OF1275_KIP_SUBTYPE) )
 	{
@@ -106,6 +115,7 @@ void SECTION(".init") init_plat( word_t ofentry )
     word_t pvr = ppc64_get_pvr();
     word_t cpu = (pvr>>16) & 0xffff;
 
+    //What about Cell, and POWER9?
     if (cpu == 0x35) prom_puts( "Detected Power4 (Spinnaker) " );
     else if (cpu == 0x38) prom_puts( "Detected Power4+	" );
     else if (cpu == 0x39) prom_puts( "Detected PPC970	" );
