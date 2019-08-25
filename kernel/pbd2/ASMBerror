@@ -1,0 +1,9 @@
+make[1]: Entering directory '/WhirlPool/pSeries41/Orion/kernel/pbd2'
+===> src/platform/ofpower4/head.S
+cd src/platform/ofpower4/ &&  gcc  -DASSEMBLY -nostdinc -I/WhirlPool/pSeries41/Orion/kernel/pbd2/include -I/WhirlPool/pSeries41/Orion/kernel/src -I/WhirlPool/pSeries41/Orion/kernel/src/generic -I/usr/lib/gcc/powerpc64le-linux-gnu/9/include/ -Upowerpc64 -Uppc970 -Uofpower4 -Uv4 -Urr -D__ARCH__=powerpc64 -D__CPU__=ppc970 -D__PLATFORM__=ofpower4 -D__API__=v4 -D__SCHED__=rr -imacros /WhirlPool/pSeries41/Orion/kernel/pbd2/config/config.h -imacros /WhirlPool/pSeries41/Orion/kernel/src/generic/macros.h -include /WhirlPool/pSeries41/Orion/kernel/src/generic/config.h     -c /WhirlPool/pSeries41/Orion/kernel/src/platform/ofpower4/head.S
+/WhirlPool/pSeries41/Orion/kernel/src/platform/ofpower4/head.S: Assembler messages:
+/WhirlPool/pSeries41/Orion/kernel/src/platform/ofpower4/head.S:68: Error: operand out of range (10 is not between 0 and 1)
+/WhirlPool/pSeries41/Orion/kernel/src/platform/ofpower4/head.S:68: Error: missing operand
+make[1]: *** [/WhirlPool/pSeries41/Orion/kernel/Mk/Makeconf:221: src/platform/ofpower4/head.o] Error 1
+make[1]: Leaving directory '/WhirlPool/pSeries41/Orion/kernel/pbd2'
+make: *** [Makefile:38: all] Error 2
