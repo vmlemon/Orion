@@ -1,8 +1,9 @@
 ######################################################################
 ##                
-## Copyright (C) 2003,  Karlsruhe University
+## Copyright (C) 2010,  Karlsruhe University
 ##                
-## File path:     Makefile.in
+## File path:     template/Makefile
+## Description:   Generic linkser script for x86.
 ##                
 ## Redistribution and use in source and binary forms, with or without
 ## modification, are permitted provided that the following conditions
@@ -25,18 +26,14 @@
 ## OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 ## SUCH DAMAGE.
 ##                
-## $Id: Makefile.in,v 1.5 2003/11/24 16:39:30 skoglund Exp $
+## $Id$
 ##                
 ######################################################################
-
-srcdir=		.
-top_srcdir=	..
-top_builddir=	..
-
-include $(top_srcdir)/Mk/l4.base.mk
+.EXPORT_ALL_VARIABLES:
 
 
-SUBDIRS=	bench grabmem l4test
+-include Makeconf.local
 
+all $(filter-out all, $(MAKECMDGOALS)):
+	@$(MAKE) -f $(SRCDIR)/Makefile $@
 
-include $(top_srcdir)/Mk/l4.subdir.mk

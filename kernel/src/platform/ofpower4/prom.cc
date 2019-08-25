@@ -50,6 +50,10 @@ word_t boot_cpuid SECTION(".init.data");
 word_t boot_cpukhz SECTION(".init.data");
 word_t boot_buskhz SECTION(".init.data");
 
+//These were pulled from ofppc/1275tree.h
+#define OF1275_KIP_TYPE 0xE
+#define OF1275_KIP_SUBTYPE 0xF
+
 /*
  * Map the position-independent device tree, and install.
  */

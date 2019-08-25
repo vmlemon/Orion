@@ -1,9 +1,9 @@
 /*********************************************************************
  *                
- * Copyright (C) 2002,  Karlsruhe University
+ * Copyright (C) 1999-2010,  Karlsruhe University
  *                
- * File path:     generic/lib.cc
- * Description:   Generic helper functions
+ * File path:     template/config/config.h
+ * Description:   
  *                
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -26,34 +26,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id: lib.cc,v 1.6 2003/09/24 19:05:32 skoglund Exp $
+ * $Id$
  *                
  ********************************************************************/
-#include <debug.h> // Something pulls in tcb_t, here, do we use it?
-
-/*
- * Declare as weak to allow overloading by optimized processor
- * specific versions.
- */
-
-extern "C" WEAK void * memcpy (void * dst, const void * src, unsigned int len)
-{
-    u8_t *d = (u8_t *) dst;
-    u8_t *s = (u8_t *) src;
-
-    while (len-- > 0)
-	*d++ = *s++;
-
-    return dst;
-}
-
-extern "C" WEAK void * memset (void * dst, unsigned int c, unsigned int len)
-{
-    u8_t *s = (u8_t *) dst;
-
-    while (len-- > 0)
-	*s++ = c;
-
-    return dst;
-}
-
+/* machine-generated file - do not edit */

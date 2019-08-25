@@ -1,8 +1,9 @@
 ######################################################################
 ##                
-## Copyright (C) 2003,  Karlsruhe University
+## Copyright (C) 2010,  Karlsruhe University
 ##                
-## File path:     Makefile.in
+## File path:     template/Makeconf.local.template
+## Description:   Generic linkser script for x86.
 ##                
 ## Redistribution and use in source and binary forms, with or without
 ## modification, are permitted provided that the following conditions
@@ -25,18 +26,14 @@
 ## OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 ## SUCH DAMAGE.
 ##                
-## $Id: Makefile.in,v 1.5 2003/11/24 16:39:30 skoglund Exp $
+## $Id$
 ##                
 ######################################################################
+ARCH=powerpc64
+SUBARCH=
+CPU=power4
+PLATFORM=ofpower4
+SCHED=
 
-srcdir=		.
-top_srcdir=	..
-top_builddir=	..
-
-include $(top_srcdir)/Mk/l4.base.mk
-
-
-SUBDIRS=	bench grabmem l4test
-
-
-include $(top_srcdir)/Mk/l4.subdir.mk
+BUILDDIR = $(CURDIR)
+SRCDIR=/WhirlPool/pSeries41/Orion/kernel
