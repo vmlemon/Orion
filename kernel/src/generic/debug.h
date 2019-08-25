@@ -66,7 +66,7 @@
 
 void init_console (void);
 extern "C" int printf (const char * format, ...);
-tcb_t *get_kdebug_tcb();
+//tcb_t *get_kdebug_tcb(); //Need to fix this, for PPC64
 
 # define UNIMPLEMENTED()                                        \
 do {                                                            \
