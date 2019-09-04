@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: fedora28.novalocal */
-/* At: Wed, 04 Sep 2019 01:27:47 +0000 */
+/* At: Wed, 04 Sep 2019 01:51:22 +0000 */
 /* Linux version 4.16.3-301.fc28.ppc64 (mockbuild@buildvm-ppc64-06.ppc.fedoraproject.org) (gcc version 8.0.1 20180324 (Red Hat 8.0.1-0.20) (GCC)) #1 SMP Mon Apr 23 21:44:46 UTC 2018 */
 
 /* Pistachio Kernel Configuration System */
@@ -71,7 +71,7 @@
 /* Kernel */
 #undef  CONFIG_EXPERIMENTAL
 #undef  CONFIG_IPC_FASTPATH
-#define CONFIG_DEBUG 1
+#undef  CONFIG_DEBUG
 #undef  CONFIG_DEBUG_SYMBOLS
 #define CONFIG_STATIC_TCBS 1
 #undef  CONFIG_PPC64_TRASH_OF
@@ -82,7 +82,7 @@
 /* Kernel Debugger Console */
 #undef  CONFIG_KDB_CONS_BGP_JTAG
 #undef  CONFIG_KDB_CONS_BGP_TREE
-#define CONFIG_KDB_CONS_COM 1
+#undef  CONFIG_KDB_CONS_COM
 #define CONFIG_KDB_COMPORT 0x0
 #define CONFIG_KDB_COMSPEED 115200
 #undef  CONFIG_KDB_CONS_RTAS
@@ -92,6 +92,7 @@
 #undef  CONFIG_KDB_ON_STARTUP
 #undef  CONFIG_KDB_BREAKIN
 #undef  CONFIG_KDB_BREAKIN_BREAK
+#undef  CONFIG_KDB_BREAKIN_ESCAPE
 #undef  CONFIG_KDB_NO_ASSERTS
 
 /* Trace Settings */

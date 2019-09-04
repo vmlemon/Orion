@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: fedora28.novalocal */
-/* At: Wed, 04 Sep 2019 01:27:26 +0000 */
+/* At: Wed, 04 Sep 2019 01:27:47 +0000 */
 /* Linux version 4.16.3-301.fc28.ppc64 (mockbuild@buildvm-ppc64-06.ppc.fedoraproject.org) (gcc version 8.0.1 20180324 (Red Hat 8.0.1-0.20) (GCC)) #1 SMP Mon Apr 23 21:44:46 UTC 2018 */
 
 /* Pistachio Kernel Configuration System */
@@ -9,8 +9,8 @@
 
 /* Basic Architecture */
 #undef  CONFIG_ARCH_X86
-#define CONFIG_ARCH_POWERPC 1
-#undef  CONFIG_ARCH_POWERPC64
+#undef  CONFIG_ARCH_POWERPC
+#define CONFIG_ARCH_POWERPC64 1
 
 
 /* X86 Processor Architecture */
@@ -33,23 +33,23 @@
 
 
 /* Processor Type */
-#define CONFIG_CPU_POWERPC_PPC440 1
+#undef  CONFIG_CPU_POWERPC_PPC440
 #undef  CONFIG_CPU_POWERPC_IBM750
 #undef  CONFIG_CPU_POWERPC_PPC604
 
 
 /* Platform */
 #undef  CONFIG_PLAT_OFPPC
-#define CONFIG_PLAT_PPC44X 1
+#undef  CONFIG_PLAT_PPC44X
 
 
 /* Sub-Platform */
-#define CONFIG_SUBPLAT_440_BGP 1
+#undef  CONFIG_SUBPLAT_440_BGP
 #undef  CONFIG_SUBPLAT_440_EBONY
 
 
 /* Platform */
-#undef  CONFIG_PLAT_OFG5
+#define CONFIG_PLAT_OFG5 1
 #undef  CONFIG_PLAT_OFPOWER3
 #undef  CONFIG_PLAT_OFPOWER4
 
@@ -59,7 +59,7 @@
 #undef  CONFIG_CPU_POWERPC64_POWER3p
 #undef  CONFIG_CPU_POWERPC64_POWER4
 #undef  CONFIG_CPU_POWERPC64_POWER4p
-#undef  CONFIG_CPU_POWERPC64_PPC970
+#define CONFIG_CPU_POWERPC64_PPC970 1
 
 
 /* Miscellaneous */
@@ -108,23 +108,23 @@
 
 
 /* Derived symbols */
-#undef  CONFIG_HAVE_MEMORY_CONTROL
+#define CONFIG_HAVE_MEMORY_CONTROL 1
 #undef  CONFIG_X86_PSE
 #define CONFIG_BIGENDIAN 1
-#define CONFIG_PPC_MMU_TLB 1
+#undef  CONFIG_PPC_MMU_TLB
 #undef  CONFIG_X86_SYSENTER
 #undef  CONFIG_X86_PGE
 #undef  CONFIG_X86_FXSR
-#define CONFIG_IS_32BIT 1
+#undef  CONFIG_IS_32BIT
 #undef  CONFIG_X86_HTT
 #undef  CONFIG_X86_PAT
-#define CONFIG_PPC_BOOKE 1
-#undef  CONFIG_IS_64BIT
+#undef  CONFIG_PPC_BOOKE
+#define CONFIG_IS_64BIT 1
 #undef  CONFIG_MULTI_ARCHITECTURE
 #undef  CONFIG_X86_EM64T
-#define CONFIG_PPC_CACHE_L1_WRITETHROUGH 1
-#define CONFIG_PPC_TLB_INV_LOCAL 1
-#define CONFIG_PPC_CACHE_ICBI_LOCAL 1
+#undef  CONFIG_PPC_CACHE_L1_WRITETHROUGH
+#undef  CONFIG_PPC_TLB_INV_LOCAL
+#undef  CONFIG_PPC_CACHE_ICBI_LOCAL
 #undef  CONFIG_X86_SMALL_SPACES_GLOBAL
 #undef  CONFIG_X86_HVM
 #undef  CONFIG_PPC_MMU_SEGMENTS
