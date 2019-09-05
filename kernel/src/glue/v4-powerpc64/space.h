@@ -306,7 +306,8 @@ INLINE word_t space_t::get_vsid( addr_t addr )
 
 
 //This is a hack
-INLINE void space_t::add_tcb(tcb_t * tcb)
+//INLINE void space_t::add_tcb(tcb_t * tcb)
+inline void space_t::add_tcb(tcb_t * tcb)
 {
     x.thread_count ++;
 }
@@ -316,7 +317,8 @@ INLINE void space_t::add_tcb(tcb_t * tcb)
  * @param tcb_t thread control block
  * @return true if it was the last thread
  */
-INLINE bool space_t::remove_tcb(tcb_t * tcb)
+inline bool space_t::remove_tcb(tcb_t * tcb)
+//INLINE bool space_t::remove_tcb(tcb_t * tcb)
 {
     ASSERT(x.thread_count != 0);
     x.thread_count --;
