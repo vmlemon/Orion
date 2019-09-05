@@ -1,0 +1,91 @@
+[root@fedora28 RND]# strace gcc
+execve("/usr/bin/gcc", ["gcc"], 0x7fffc0e3d6a0 /* 21 vars */) = 0
+brk(NULL)                               = 0x10023a60000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=20533, ...}) = 0
+mmap(NULL, 20533, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fff7fee0000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib64/power8/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\2\1\3\0\0\0\0\0\0\0\0\0\3\0\25\0\0\0\1\0\0\0\0\0\16\317\270"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=1015680, ...}) = 0
+mmap(NULL, 983512, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fff7fde0000
+mmap(0x7fff7fec0000, 131072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xd0000) = 0x7fff7fec0000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib64/power8/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\2\1\3\0\0\0\0\0\0\0\0\0\3\0\25\0\0\0\1\0\0\0\0\0!5\270"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=2482760, ...}) = 0
+mmap(NULL, 2250632, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fff7fbb0000
+mprotect(0x7fff7fdb0000, 65536, PROT_NONE) = 0
+mmap(0x7fff7fdc0000, 131072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x200000) = 0x7fff7fdc0000
+close(3)                                = 0
+mprotect(0x7fff7fdc0000, 65536, PROT_READ) = 0
+mprotect(0x7fff7fec0000, 65536, PROT_READ) = 0
+mprotect(0x10140000, 65536, PROT_READ)  = 0
+mprotect(0x7fff7ff40000, 65536, PROT_READ) = 0
+munmap(0x7fff7fee0000, 20533)           = 0
+brk(NULL)                               = 0x10023a60000
+brk(0x10023a90000)                      = 0x10023a90000
+brk(NULL)                               = 0x10023a90000
+brk(NULL)                               = 0x10023a90000
+openat(AT_FDCWD, "/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=6398800, ...}) = 0
+mmap(NULL, 6398800, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fff7f590000
+close(3)                                = 0
+openat(AT_FDCWD, "/usr/share/locale/locale.alias", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=2997, ...}) = 0
+read(3, "# Locale name alias data base.\n#"..., 4096) = 2997
+read(3, "", 4096)                       = 0
+close(3)                                = 0
+openat(AT_FDCWD, "/usr/share/locale/en_GB.UTF-8/LC_MESSAGES/gcc.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en_GB.utf8/LC_MESSAGES/gcc.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en_GB/LC_MESSAGES/gcc.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en.UTF-8/LC_MESSAGES/gcc.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en.utf8/LC_MESSAGES/gcc.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en/LC_MESSAGES/gcc.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+ioctl(2, TCGETS, {B38400 opost isig icanon echo ...}) = 0
+ioctl(0, TIOCGWINSZ, {ws_row=31, ws_col=127, ws_xpixel=0, ws_ypixel=0}) = 0
+ioctl(2, TCGETS, {B38400 opost isig icanon echo ...}) = 0
+rt_sigaction(SIGINT, {sa_handler=SIG_IGN, sa_mask=[INT], sa_flags=SA_RESTART}, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGINT, {sa_handler=0x1014af38, sa_mask=[INT], sa_flags=SA_RESTART}, {sa_handler=SIG_IGN, sa_mask=[INT], sa_flags=SA_RESTART}, 8) = 0
+rt_sigaction(SIGHUP, {sa_handler=SIG_IGN, sa_mask=[HUP], sa_flags=SA_RESTART}, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGHUP, {sa_handler=0x1014af38, sa_mask=[HUP], sa_flags=SA_RESTART}, {sa_handler=SIG_IGN, sa_mask=[HUP], sa_flags=SA_RESTART}, 8) = 0
+rt_sigaction(SIGTERM, {sa_handler=SIG_IGN, sa_mask=[TERM], sa_flags=SA_RESTART}, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGTERM, {sa_handler=0x1014af38, sa_mask=[TERM], sa_flags=SA_RESTART}, {sa_handler=SIG_IGN, sa_mask=[TERM], sa_flags=SA_RESTART}, 8) = 0
+rt_sigaction(SIGPIPE, {sa_handler=SIG_IGN, sa_mask=[PIPE], sa_flags=SA_RESTART}, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+rt_sigaction(SIGPIPE, {sa_handler=0x1014af38, sa_mask=[PIPE], sa_flags=SA_RESTART}, {sa_handler=SIG_IGN, sa_mask=[PIPE], sa_flags=SA_RESTART}, 8) = 0
+rt_sigaction(SIGCHLD, {sa_handler=SIG_DFL, sa_mask=[CHLD], sa_flags=SA_RESTART}, {sa_handler=SIG_DFL, sa_mask=[], sa_flags=0}, 8) = 0
+prlimit64(0, RLIMIT_STACK, NULL, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+prlimit64(0, RLIMIT_STACK, {rlim_cur=65536*1024, rlim_max=RLIM64_INFINITY}, NULL) = 0
+access("/usr/local/sbin/gcc", X_OK)     = -1 ENOENT (No such file or directory)
+access("/usr/local/bin/gcc", X_OK)      = -1 ENOENT (No such file or directory)
+access("/usr/sbin/gcc", X_OK)           = -1 ENOENT (No such file or directory)
+access("/usr/bin/gcc", X_OK)            = 0
+stat("/usr/bin/gcc", {st_mode=S_IFREG|0755, st_size=1339864, ...}) = 0
+lstat("/usr", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+lstat("/usr/bin", {st_mode=S_IFDIR|0555, st_size=20480, ...}) = 0
+lstat("/usr/bin/gcc", {st_mode=S_IFREG|0755, st_size=1339864, ...}) = 0
+access("/usr/local/sbin/gcc", X_OK)     = -1 ENOENT (No such file or directory)
+access("/usr/local/bin/gcc", X_OK)      = -1 ENOENT (No such file or directory)
+access("/usr/sbin/gcc", X_OK)           = -1 ENOENT (No such file or directory)
+access("/usr/bin/gcc", X_OK)            = 0
+stat("/usr/bin/gcc", {st_mode=S_IFREG|0755, st_size=1339864, ...}) = 0
+lstat("/usr", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+lstat("/usr/bin", {st_mode=S_IFDIR|0555, st_size=20480, ...}) = 0
+lstat("/usr/bin/gcc", {st_mode=S_IFREG|0755, st_size=1339864, ...}) = 0
+access("/usr/lib/gcc/ppc64-redhat-linux/8/", X_OK) = 0
+access("/usr/lib/gcc/ppc64-redhat-linux/8/", X_OK) = 0
+access("/usr/lib/gcc/ppc64-redhat-linux/8/specs", R_OK) = -1 ENOENT (No such file or directory)
+access("/usr/lib/gcc/ppc64-redhat-linux/8/../../../../ppc64-redhat-linux/lib/ppc64-redhat-linux/8/specs", R_OK) = -1 ENOENT (No such file or directory)
+access("/usr/lib/gcc/ppc64-redhat-linux/8/../../../../ppc64-redhat-linux/lib/specs", R_OK) = -1 ENOENT (No such file or directory)
+access("/usr/lib/gcc/ppc64-redhat-linux/specs", R_OK) = -1 ENOENT (No such file or directory)
+access("/usr/lib/gcc/ppc64-redhat-linux/8/", X_OK) = 0
+stat("/usr/libexec/gcc/ppc64-redhat-linux/8/lto-wrapper", {st_mode=S_IFREG|0755, st_size=1205352, ...}) = 0
+access("/usr/libexec/gcc/ppc64-redhat-linux/8/lto-wrapper", X_OK) = 0
+write(2, "\33[01m\33[Kgcc:\33[m\33[K \33[01;31m\33[Kfa"..., 64gcc: fatal error: no input files
+) = 64
+write(2, "compilation terminated.\n", 24compilation terminated.
+) = 24
+exit_group(1)                           = ?
++++ exited with 1 +++
+
