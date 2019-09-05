@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: fedora28.novalocal */
-/* At: Wed, 04 Sep 2019 01:51:22 +0000 */
+/* At: Thu, 05 Sep 2019 11:19:10 +0000 */
 /* Linux version 4.16.3-301.fc28.ppc64 (mockbuild@buildvm-ppc64-06.ppc.fedoraproject.org) (gcc version 8.0.1 20180324 (Red Hat 8.0.1-0.20) (GCC)) #1 SMP Mon Apr 23 21:44:46 UTC 2018 */
 
 /* Pistachio Kernel Configuration System */
@@ -70,10 +70,18 @@
 
 /* Kernel */
 #undef  CONFIG_EXPERIMENTAL
+
+/* Experimental Features */
+
+/* Kernel scheduling policy */
+#undef  CONFIG_SCHED_RR
+#undef  CONFIG_X_SCHED_HS
+
+
 #undef  CONFIG_IPC_FASTPATH
 #undef  CONFIG_DEBUG
 #undef  CONFIG_DEBUG_SYMBOLS
-#define CONFIG_STATIC_TCBS 1
+#undef  CONFIG_STATIC_TCBS
 #undef  CONFIG_PPC64_TRASH_OF
 
 

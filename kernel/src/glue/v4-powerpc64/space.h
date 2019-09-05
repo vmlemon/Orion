@@ -304,6 +304,27 @@ INLINE word_t space_t::get_vsid( addr_t addr )
     return vsid | (((word_t)addr >> POWERPC64_SEGMENT_BITS) & ((1ul << CONFIG_POWERPC64_ESID_BITS)-1));
 }
 
+
+//This is a hack
+INLINE void space_t::add_tcb(tcb_t * tcb)
+{
+    x.thread_count ++;
+}
+
+/**
+ * removes a thread from a space
+ * @param tcb_t thread control block
+ * @return true if it was the last thread
+ */
+INLINE bool space_t::remove_tcb(tcb_t * tcb)
+{
+    ASSERT(x.thread_count != 0);
+    x.thread_count --;
+    return (x.thread_count == 0);
+}
+
+//HACK!
+
 /**
  * adds a thread to the space
  * @param tcb pointer to thread control block
