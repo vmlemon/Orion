@@ -13,3 +13,6 @@
 //brk(0x10032c00000)                      = 0x10032c00000
 
 //brk(NULL)
+//http://man7.org/linux/man-pages/man2/access.2.html
+//access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+
