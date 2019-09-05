@@ -8,7 +8,12 @@
 
 /* ls uses:
  * statfs("/sys/fs/selinux", {f_type=SELINUX_MAGIC, f_bsize=65536, f_blocks=0, f_bfree=0, f_bavail=0, f_files=0, f_ffree=0, f_fsid={val=[0, 0]}, f_namelen=255, f_frsize=65536, f_flags=ST_VALID|ST_RELATIME}) = 0
- */
+
+ On x86, Ubuntu can give:
+ statfs("/sys/fs/selinux", 0x7ffe6d56b900) = -1 ENOENT (No such file or directory)
+statfs("/selinux", 0x7ffe6d56b900)      = -1 ENOENT (No such file or directory)
+
+*/
 
 //fsid_t
 
