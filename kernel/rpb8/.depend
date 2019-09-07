@@ -64,7 +64,8 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/arch/powerpc64/asm.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
- /root/Orion/kernel/src/arch/powerpc64/frame.h asmsyms.h
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/rpb8/include/asmsyms.h
 .depend src/platform/ofpower4/prom.o: /root/Orion/kernel/src/platform/ofpower4/prom.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -176,7 +177,7 @@
  /root/Orion/kernel/src/generic/sync.h \
  /root/Orion/kernel/src/arch/powerpc64/string.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/generic/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
@@ -210,7 +211,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
 .depend src/glue/v4-powerpc64/rtas.o: /root/Orion/kernel/src/glue/v4-powerpc64/rtas.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -339,7 +340,8 @@
  /root/Orion/kernel/src/api/v4/schedule.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/api/v4/sched-rr/schedule.h \
- /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h tcb_layout.h
+ /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h \
+ /root/Orion/kernel/rpb8/include/tcb_layout.h
 .depend src/api/v4/ipc.o: /root/Orion/kernel/src/api/v4/ipc.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -401,7 +403,8 @@
  /root/Orion/kernel/src/api/v4/schedule.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/api/v4/sched-rr/schedule.h \
- /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h tcb_layout.h \
+ /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h \
+ /root/Orion/kernel/rpb8/include/tcb_layout.h \
  /root/Orion/kernel/src/api/v4/interrupt.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/intctrl.h \
  /root/Orion/kernel/src/generic/intctrl.h \
@@ -472,7 +475,8 @@
  /root/Orion/kernel/src/api/v4/schedule.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/api/v4/sched-rr/schedule.h \
- /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h tcb_layout.h \
+ /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h \
+ /root/Orion/kernel/rpb8/include/tcb_layout.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/map.h \
  /root/Orion/kernel/src/api/v4/generic-archmap.h
 .depend src/api/v4/kernelinterface.o: /root/Orion/kernel/src/api/v4/kernelinterface.cc \
@@ -565,7 +569,8 @@
  /root/Orion/kernel/src/api/v4/schedule.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/api/v4/sched-rr/schedule.h \
- /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h tcb_layout.h \
+ /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h \
+ /root/Orion/kernel/rpb8/include/tcb_layout.h \
  /root/Orion/kernel/src/api/v4/smp.h \
  /root/Orion/kernel/src/generic/linear_ptab.h \
  /root/Orion/kernel/src/arch/powerpc64/pgent.h \
@@ -633,7 +638,8 @@
  /root/Orion/kernel/src/api/v4/schedule.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/api/v4/sched-rr/schedule.h \
- /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h tcb_layout.h \
+ /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h \
+ /root/Orion/kernel/rpb8/include/tcb_layout.h \
  /root/Orion/kernel/src/api/v4/interrupt.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/intctrl.h \
  /root/Orion/kernel/src/generic/intctrl.h \
@@ -708,7 +714,8 @@
  /root/Orion/kernel/src/api/v4/schedule.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/api/v4/sched-rr/schedule.h \
- /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h tcb_layout.h \
+ /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h \
+ /root/Orion/kernel/rpb8/include/tcb_layout.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/map.h \
  /root/Orion/kernel/src/api/v4/generic-archmap.h
 .depend src/api/v4/interrupt.o: /root/Orion/kernel/src/api/v4/interrupt.cc \
@@ -776,7 +783,8 @@
  /root/Orion/kernel/src/api/v4/schedule.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/api/v4/sched-rr/schedule.h \
- /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h tcb_layout.h \
+ /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h \
+ /root/Orion/kernel/rpb8/include/tcb_layout.h \
  /root/Orion/kernel/src/api/v4/smp.h \
  /root/Orion/kernel/src/generic/linear_ptab.h \
  /root/Orion/kernel/src/arch/powerpc64/pgent.h \
@@ -848,7 +856,8 @@
  /root/Orion/kernel/src/api/v4/schedule.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/api/v4/sched-rr/schedule.h \
- /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h tcb_layout.h
+ /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h \
+ /root/Orion/kernel/rpb8/include/tcb_layout.h
 .depend src/api/v4/processor.o: /root/Orion/kernel/src/api/v4/processor.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -942,7 +951,8 @@
  /root/Orion/kernel/src/api/v4/schedule.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/api/v4/sched-rr/schedule.h \
- /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h tcb_layout.h \
+ /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h \
+ /root/Orion/kernel/rpb8/include/tcb_layout.h \
  /root/Orion/kernel/src/api/v4/interrupt.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/intctrl.h \
  /root/Orion/kernel/src/generic/intctrl.h \
@@ -1027,7 +1037,9 @@
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/abi.h asmsyms.h tcb_layout.h
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/rpb8/include/asmsyms.h \
+ /root/Orion/kernel/rpb8/include/tcb_layout.h
 .depend src/arch/powerpc64/switch.o: /root/Orion/kernel/src/arch/powerpc64/switch.S \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -1180,7 +1192,8 @@
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/api/v4/sched-rr/schedule.h \
- /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h tcb_layout.h \
+ /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h \
+ /root/Orion/kernel/rpb8/include/tcb_layout.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/timer.h \
  /root/Orion/kernel/src/generic/timer.h \
  /root/Orion/kernel/src/arch/powerpc64/1275tree.h \
@@ -1316,7 +1329,8 @@
  /root/Orion/kernel/src/api/v4/schedule.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/api/v4/sched-rr/schedule.h \
- /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h tcb_layout.h \
+ /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h \
+ /root/Orion/kernel/rpb8/include/tcb_layout.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/intctrl.h \
  /root/Orion/kernel/src/generic/intctrl.h \
  /root/Orion/kernel/src/platform/ofpower4/intctrl.h \
