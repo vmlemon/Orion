@@ -121,6 +121,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
  /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h \
  /root/Orion/kernel/src/generic/kmemory.h \
@@ -241,6 +242,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
  /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/fpage.h \
@@ -303,6 +305,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
  /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/fpage.h \
@@ -372,6 +375,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
  /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/fpage.h \
@@ -443,6 +447,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
  /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/fpage.h \
@@ -529,6 +534,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
  /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/fpage.h \
@@ -601,6 +607,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
  /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/fpage.h \
@@ -670,6 +677,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
  /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/fpage.h \
@@ -743,6 +751,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
  /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/fpage.h \
@@ -815,6 +824,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
  /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/fpage.h \
@@ -910,6 +920,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
  /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/fpage.h \
@@ -990,6 +1001,7 @@
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/platform/ofpower4/prom.h \
  /root/Orion/kernel/src/arch/powerpc64/of1275.h \
@@ -1091,6 +1103,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
  /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/fpage.h \
@@ -1149,6 +1162,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
  /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/fpage.h \
@@ -1210,6 +1224,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
  /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
@@ -1272,6 +1287,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
  /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
@@ -1354,6 +1370,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
  /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/fpage.h \
@@ -1406,6 +1423,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
  /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h \
  /root/Orion/kernel/src/generic/kmemory.h \
@@ -1460,6 +1478,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
  /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/fpage.h \
@@ -1532,6 +1551,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
  /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/fpage.h \
@@ -1582,6 +1602,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
  /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
@@ -1651,6 +1672,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
  /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h \
  /root/Orion/kernel/src/generic/kmemory.h \
@@ -1714,6 +1736,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
  /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h \
  /root/Orion/kernel/src/generic/kmemory.h \
@@ -1764,6 +1787,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
  /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/fpage.h \
@@ -1792,4 +1816,6 @@
  /root/Orion/kernel/src/api/v4/generic-utcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
  /root/Orion/kernel/src/api/v4/syscalls.h \
- /root/Orion/kernel/src/arch/powerpc64/msr.h
+ /root/Orion/kernel/src/arch/powerpc64/msr.h \
+ /root/Orion/kernel/src/arch/powerpc64/rtas.h \
+ /root/Orion/kernel/src/arch/powerpc64/1275tree.h
