@@ -26,7 +26,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
- * $Id: pghash.cc,v 1.9 2006/11/17 17:04:18 skoglund Exp $
+ * $Id: pghash.cc,v 1.8 2005/01/19 13:48:09 cvansch Exp $
  *
  ***************************************************************************/
 
@@ -46,9 +46,9 @@ pghash_t pghash;
 void pghash_t::update_mapping( space_t *s, addr_t vaddr, pgent_t *pgent, pgent_t::pgsize_e size )
 {
 #ifdef CONFIG_POWERPC64_LARGE_PAGES
-    ASSERT((size == pgent_t::size_4k) || (size == pgent_t::size_16m));
+    ASSERT(NORMAL, (size == pgent_t::size_4k) || (size == pgent_t::size_16m));
 #else
-    ASSERT((size == pgent_t::size_4k));
+    ASSERT(NORMAL, (size == pgent_t::size_4k));
 #endif
     bool large = (size == pgent_t::size_4k) ? false : true;
     word_t vsid = s->get_vsid( vaddr );
@@ -68,9 +68,9 @@ void pghash_t::update_mapping( space_t *s, addr_t vaddr, pgent_t *pgent, pgent_t
 void pghash_t::flush_mapping( space_t *s, addr_t vaddr, pgent_t *pgent, pgent_t::pgsize_e size )
 {
 #ifdef CONFIG_POWERPC64_LARGE_PAGES
-    ASSERT((size == pgent_t::size_4k) || (size == pgent_t::size_16m));
+    ASSERT(NORMAL, (size == pgent_t::size_4k) || (size == pgent_t::size_16m));
 #else
-    ASSERT((size == pgent_t::size_4k));
+    ASSERT(NORMAL, (size == pgent_t::size_4k));
 #endif
 
     ppc64_pte_t *pte = get_htab()->locate_pte( (word_t)vaddr,
@@ -89,9 +89,9 @@ void pghash_t::insert_mapping( space_t *s, addr_t vaddr, pgent_t *pgent, pgent_t
     bool large = (size == pgent_t::size_4k) ? false : true;
 
 #ifdef CONFIG_POWERPC64_LARGE_PAGES
-    ASSERT((size == pgent_t::size_4k) || (size == pgent_t::size_16m));
+    ASSERT(NORMAL, (size == pgent_t::size_4k) || (size == pgent_t::size_16m));
 #else
-    ASSERT((size == pgent_t::size_4k));
+    ASSERT(NORMAL, (size == pgent_t::size_4k));
 #endif
 
     pte = get_htab()->find_insertion( (word_t)vaddr, vsid,
@@ -115,7 +115,7 @@ void pghash_t::insert_mapping( space_t *s, addr_t vaddr, pgent_t *pgent, pgent_t
 	sync();
 
 	// Update the page table's dirty + referenced bits.
-	ASSERT( evict_space->lookup_mapping( evict_addr, &evict_pgent, &evict_size ) );
+	ASSERT(ALWAYS, evict_space->lookup_mapping( evict_addr, &evict_pgent, &evict_size ) );
 
 #ifdef CONFIG_POWERPC64_LARGE_PAGES
 	evict_pgent->set_accessed( evict_space, pte->x.l ? pgent_t::size_16m : pgent_t::size_4k, pte->x.r );
@@ -234,8 +234,7 @@ SECTION(".init") bool pghash_t::finish_init( word_t phys_start, word_t size )
     {
 	/* Create a dummy page table entry */
 	pg.set_entry( get_kernel_space(), pgsize,
-			(addr_t)(phys_start + i),
-		      6, pgent_t::l4default, true );
+			(addr_t)(phys_start + i), true, true, false, true );
 
 	insert_mapping( get_kernel_space(),
 			(addr_t)(((word_t)virt_start | phys_start) + i),
