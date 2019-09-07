@@ -1317,7 +1317,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/api/v4/sched-rr/schedule.h \
  /root/Orion/kernel/src/api/v4/sched-rr/schedule_functions.h tcb_layout.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/intctrl.h \
+ api/v4/processor.h /root/Orion/kernel/src/glue/v4-powerpc64/intctrl.h \
  /root/Orion/kernel/src/generic/intctrl.h \
  /root/Orion/kernel/src/platform/ofpower4/intctrl.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/timer.h \
