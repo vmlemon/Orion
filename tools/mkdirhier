@@ -8,7 +8,7 @@
 ##                
 ## @LICENSE@
 ##                
-## $Id: mkdirhier,v 1.2 2007/06/11 12:48:24 stoess Exp $
+## $Id: mkdirhier,v 1.1 2001/11/27 15:52:35 skoglund Exp $
 ##                
 ######################################################################
 
@@ -29,7 +29,7 @@ do
 	pfx="$path/"
 	if test ! -z "$path" -a ! -d "$path"
 	then
-	    mkdir -p "$path" || err=$?
+	    mkdir "$path" || err=$?
 	fi
     done
 done
