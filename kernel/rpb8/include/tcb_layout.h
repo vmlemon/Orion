@@ -1,0 +1,28 @@
+/* machine-generated file - do NOT edit */
+#ifndef __TCB_LAYOUT__H__
+#define __TCB_LAYOUT__H__
+
+#define OFS_TCB_MYSELF_GLOBAL 0 
+#define OFS_TCB_MYSELF_LOCAL 8 
+#define OFS_TCB_CPU 16 
+#define OFS_TCB_UTCB 24 
+#define OFS_TCB_THREAD_STATE 32 
+#define OFS_TCB_PARTNER 40 
+#define OFS_TCB_RESOURCE_BITS 48 
+#define OFS_TCB_STACK 56 
+#define OFS_TCB_PDIR_CACHE 64 
+#define OFS_TCB_QUEUE_STATE 72 
+#define OFS_TCB_PRESENT_LIST 80 
+#define OFS_TCB_SEND_LIST 96 
+#define OFS_TCB_SEND_HEAD 112 
+#define OFS_TCB_SCHED_STATE 120 
+#define OFS_TCB_TCB_LOCK 200 
+#define OFS_TCB_SPACE 208 
+#define OFS_TCB_FLAGS 216 
+#define OFS_TCB_ARCH 224 
+#define OFS_TCB_MISC 232 
+#define OFS_TCB_RESOURCES 328 
+#define OFS_TCB_KERNEL_STACK 592 
+#define OFS_TCB_SCHED_STATE_SCHEDULER 190 
+
+#endif /* __TCB_LAYOUT__H__ */
