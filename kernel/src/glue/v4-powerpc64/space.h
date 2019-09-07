@@ -118,10 +118,10 @@ public:
     fpage_t get_utcb_page_area();
 
     /* reference counting */ //This is screwed!
-    void add_tcb(tcb_t * tcb);
-    bool remove_tcb(tcb_t * tcb);
-    void space_t::add_tcb(tcb_t * tcb, cpuid_t cpu);
-	bool space_t::remove_tcb(tcb_t * tcb, cpuid_t cpu);
+    //void add_tcb(tcb_t * tcb);
+    //bool remove_tcb(tcb_t * tcb);
+    //void space_t::add_tcb(tcb_t * tcb, cpuid_t cpu);
+	//bool space_t::remove_tcb(tcb_t * tcb, cpuid_t cpu);
 	
 	/**
  * adds a thread to the space
