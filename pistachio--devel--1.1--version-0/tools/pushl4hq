@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+#  Publishes a release tree in the l4hq.org cvs repository.
+#
+
+if [ -d CVS ] ; then
+  echo "This doesn't look like a release directory!"
+  exit 1
+fi
+
+if [ ! -d kernel ] ; then
+  echo "This doesn't look like a release directory!"
+  exit 1
+fi
+
+if [ $# != 1 ] ; then
+  echo "usage: $0 <release tag>"
+  exit 2
+fi
+
+vendor=l4ka
+release_tag=$1
+export CVSROOT=/tmp/cvsroot
+
+cvs import -I ! -W "*.ps -k 'b'" pistachio $vendor $release_tag
+
+

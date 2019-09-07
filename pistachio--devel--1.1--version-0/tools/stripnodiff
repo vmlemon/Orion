@@ -1,0 +1,39 @@
+#!/usr/bin/perl
+
+#
+# Small script to strip out CVS diffs which contain no diffs..
+#
+
+my $buffered = 0;
+my $buffer;
+
+while (<>) {
+
+  if ($buffered == 0 && /^Index: /) {
+    $buffer = $_;
+    $buffered++;
+  } elsif ($buffered == 1 && /^=+$/) {
+    $buffer .= $_;
+    $buffered++;
+  } elsif ($buffered == 2 && /^RCS file: /) {
+    $buffer .= $_;
+    $buffered++;
+  } elsif (($buffered == 3 || $buffered == 4) && /^retrieving revision /) {
+    $buffer .= $_;
+    $buffered++;
+  } elsif (($buffered == 4 || $buffered == 5) && /^diff /) {
+    $buffer .= $_;
+    $buffered++;
+  } elsif ($buffered == 5 || $buffered == 6) {
+    if (/^Index: /) {
+      $buffer = $_;
+      $buffered = 1;
+    } else {
+      print "$buffer$_";
+      $buffer = '';
+      $buffered = 0;
+    }
+  } else {
+    print "$buffer$_";
+  }
+}

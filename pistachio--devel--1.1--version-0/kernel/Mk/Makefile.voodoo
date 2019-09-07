@@ -1,0 +1,232 @@
+###################### -*- mode: makefile -*- ########################
+##                
+## Copyright (C) 2001-2002,  Karlsruhe University
+##                
+## File path:     Makefile.voodoo
+## Description:   Makefile to hide load of very ugly magic.
+##                
+## Redistribution and use in source and binary forms, with or without
+## modification, are permitted provided that the following conditions
+## are met:
+## 1. Redistributions of source code must retain the above copyright
+##    notice, this list of conditions and the following disclaimer.
+## 2. Redistributions in binary form must reproduce the above copyright
+##    notice, this list of conditions and the following disclaimer in the
+##    documentation and/or other materials provided with the distribution.
+## 
+## THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+## ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+## IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+## ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+## FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+## DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+## OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+## HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+## LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+## OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+## SUCH DAMAGE.
+##                
+## $Id: Makefile.voodoo,v 1.26 2004/05/25 19:21:11 skoglund Exp $
+##                
+######################################################################
+
+
+# create a random filename
+TCBLAYOUTTMP:=$(BUILDDIR)/_$(shell date +%s)_123
+
+# rebuild include/tcb_layout.h if needed
+tcb_layout.h:	$(BUILDDIR)/include/tcb_layout.h
+$(BUILDDIR)/include/tcb_layout.h:	$(SRCDIR)/include/api/$(API)/tcb.h $(SRCDIR)/include/glue/$(API)-$(ARCH)/ktcb.h $(SRCDIR)/include/glue/$(API)-$(ARCH)/utcb.h $(SRCDIR)/Mk/Makefile.voodoo $(BUILDDIR)/config/config.h
+	@${ECHO_MSG} Generating $(subst $(BUILDDIR)/,,$@)
+	@#
+	@# create dummy tcb_layout.h
+	@rm -f $@
+	@if [ ! -d $(dir $@) ]; then $(MKDIRHIER) $(dir $@); fi
+	@touch $@
+	@#
+	@# create offsets in C
+	@$(PRINTF)						 '\
+#include <l4.h>							\n\
+#include INC_API(tcb.h)						\n\
+								\n\
+tcb_t tcb;							\n\
+utcb_t utcb;							\n\
+								\n\
+#define O(w,x) (u32_t)((char*) &w.x - (char*)(&w))		\n\
+								\n\
+void make_offsets() {						\n\
+static u32_t offsets[] __attribute__ ((unused,section(".offsets"))) =	\n\
+{								\n' \
+	> $(TCBLAYOUTTMP).c
+	@( $(CAT) $(SRCDIR)/include/api/$(API)/tcb.h  | \
+	   $(AWK) 'BEGIN{printme=0} \
+	     /TCB_END_MARKER/ { printme = 0} { if (printme == 1 ) { print } } \
+	     /TCB_START_MARKER/ {printme = 1 } ' ) | \
+	   $(CPP) -P | \
+	   $(TR) '*[;' '   ' | \
+	   $(SED) -e 's/[ \t\\]*/ /' | \
+	   $(AWK) -F' ' '{print $$2}' | \
+	   $(GREP) -v '^$$' | \
+	   $(AWK) '{ print "   O(tcb,"$$1")," } ' \
+	>> $(TCBLAYOUTTMP).c
+	@( $(CAT) $(SRCDIR)/include/glue/$(API)-$(ARCH)/ktcb.h  | \
+	   $(AWK) 'BEGIN{printme=0} \
+	     /TCB_END_MARKER/ { printme = 0} { if (printme == 1 ) { print } } \
+	     /TCB_START_MARKER/ {printme = 1 } ' ) | \
+	   $(CPP) -P | \
+	   $(TR) '*[;' '   ' | \
+	   $(SED) -e 's/[ \t\\]*/ /' | \
+	   $(AWK) -F' ' '{print $$2}' | \
+	   $(GREP) -v '^$$' | \
+	   $(AWK) '{ print "   O(tcb,arch."$$1")," } ' \
+	>> $(TCBLAYOUTTMP).c
+	@( $(CAT) $(SRCDIR)/include/glue/$(API)-$(ARCH)/utcb.h  | \
+	   $(AWK) 'BEGIN{printme=0} \
+	     /TCB_END_MARKER/ { printme = 0} { if (printme == 1 ) { print } } \
+	     /TCB_START_MARKER/ {printme = 1 } ' ) | \
+	   $(CPP) -P | \
+	   $(TR) '*[;' '   ' | \
+	   $(SED) -e 's/[ \t\\]*/ /' | \
+	   $(AWK) -F' ' '{print $$2}' | \
+	   $(GREP) -v '^$$' | \
+	   $(AWK) '{ print "   O(utcb,"$$1")," } ' \
+	>> $(TCBLAYOUTTMP).c
+	@$(PRINTF)   '\n};				};	\n' \
+	>> $(TCBLAYOUTTMP).c
+	@#
+	@# build offsets with cross compiler
+	@$(CC) -x c++ -w $(CPPFLAGS) $(CFLAGS) -DBUILD_TCB_LAYOUT -c -o $(TCBLAYOUTTMP).o $(TCBLAYOUTTMP).c || ( $(RM) $(TCBLAYOUTTMP)* $@ ; exit -1 )
+	@# extract offsets into bin
+	@$(OBJCOPY) -j .offsets -Obinary $(TCBLAYOUTTMP).o $(TCBLAYOUTTMP).bin
+	@#
+	@#
+	@#
+	@# create dumper
+	@$(PRINTF)						 '\
+								\n\
+#include <stdio.h>						\n\
+#include <ctype.h>						\n\
+int offsets[] = {						\n' \
+	> $(TCBLAYOUTTMP)-dump.c
+	@hexdump -v -e '"0x%x, "' $(TCBLAYOUTTMP).bin \
+	>> $(TCBLAYOUTTMP)-dump.c
+	@$(PRINTF) '};						\n\
+								\n\
+char* ucase(char* s)						\n\
+{								\n\
+  static char buf[1024];					\n\
+  char *d=buf;							\n\
+  while(*s) *(d++) = toupper(*(s++));				\n\
+  *d = '\0';							\n\
+  return buf;							\n\
+}								\n\
+								\n\
+unsigned gaka(unsigned w)					\n\
+{								\n\
+  if( w > 0x10000 )						\n\
+    w = ((w & 0xff000000) >> 24) |				\n\
+        ((w & 0x00ff0000) >> 8) |				\n\
+	((w & 0x0000ff00) << 8 )  |				\n\
+	((w & 0x000000ff) << 24);				\n\
+  return w;							\n\
+}								\n\
+								\n\
+#define D(x)	printf("#define OFS_%%-30s0x%%02x\t/* %%3d */\\n", ucase(#x), gaka(offsets[idx]), gaka(offsets[idx])); idx++;		\n\
+								\n\
+int idx = 0;							\n\
+int main(void)							\n\
+{								\n' \
+	>> $(TCBLAYOUTTMP)-dump.c
+	@( $(CAT) $(SRCDIR)/include/api/$(API)/tcb.h | \
+	   $(AWK) 'BEGIN{printme=0} \
+	     /TCB_END_MARKER/ { printme = 0} { if (printme == 1 ) { print } } \
+	     /TCB_START_MARKER/ {printme = 1 } ' ) | \
+	   $(CPP) -P | \
+	   $(TR) '*[;' '   ' | \
+	   $(SED) -e 's/[ \t\\]*/ /' | \
+	   $(AWK) -F' ' '{print $$2}' | \
+	   $(GREP) -v '^$$' | \
+	   $(AWK) '{ print "   D(tcb_"$$1");" } ' \
+	>> $(TCBLAYOUTTMP)-dump.c
+	@( $(CAT) $(SRCDIR)/include/glue/$(API)-$(ARCH)/ktcb.h | \
+	   $(AWK) 'BEGIN{printme=0} \
+	     /TCB_END_MARKER/ { printme = 0} { if (printme == 1 ) { print } } \
+	     /TCB_START_MARKER/ {printme = 1 } ' ) | \
+	   $(CPP) -P | \
+	   $(TR) '*[;' '   ' | \
+	   $(SED) -e 's/[ \t\\]*/ /' | \
+	   $(AWK) -F' ' '{print $$2}' | \
+	   $(GREP) -v '^$$' | \
+	   $(AWK) '{ print "   D(tcb_arch_"$$1");" } ' \
+	>> $(TCBLAYOUTTMP)-dump.c
+	@( $(CAT) $(SRCDIR)/include/glue/$(API)-$(ARCH)/utcb.h | \
+	   $(AWK) 'BEGIN{printme=0} \
+	     /TCB_END_MARKER/ { printme = 0} { if (printme == 1 ) { print } } \
+	     /TCB_START_MARKER/ {printme = 1 } ' ) | \
+	   $(CPP) -P | \
+	   $(TR) '*[;' '   ' | \
+	   $(SED) -e 's/[ \t\\]*/ /' | \
+	   $(AWK) -F' ' '{print $$2}' | \
+	   $(GREP) -v '^$$' | \
+	   $(AWK) '{ print "   D(utcb_"$$1");" } ' \
+	>> $(TCBLAYOUTTMP)-dump.c
+	@$(PRINTF) '\n};\n' >> $(TCBLAYOUTTMP)-dump.c
+	@#
+	@# build dumper
+	@g++ -x c++ -o $(TCBLAYOUTTMP)-dump $(TCBLAYOUTTMP)-dump.c
+	@# run dumper
+	@$(PRINTF) '/* machine-generated file - do NOT edit */\n'	>  $@
+	@$(PRINTF) '#ifndef __TCB_LAYOUT__H__\n'			>> $@
+	@$(PRINTF) '#define __TCB_LAYOUT__H__\n\n'			>> $@
+	@$(TCBLAYOUTTMP)-dump >> $@
+	@$(PRINTF) '\n#endif /* __TCB_LAYOUT__H__ */\n'		>> $@
+	@test 10 -gt `$(GREP) -c "[[:space:]]0x00[[:space:]]" $@` || \
+	   ( $(ECHO_MSG); \
+	     $(ECHO_MSG) "FAILED!!! All offsets are 0x00. Weird GCC?"; \
+	     $(ECHO_MSG) "We have seen this with some gcc-3.3 prereleases."; \
+	     $(ECHO_MSG); \
+	     $(RM) $(TCBLAYOUTTMP)* $@ ; exit -1 )
+	@$(RM) $(TCBLAYOUTTMP)*
+
+
+# Temporary object file
+ASMSYMS=	$(BUILDDIR)/asmsyms.o
+
+# Find all asmsyms.cc files
+SYMSRCS=	$(subst $(SRCDIR)/,,\
+		  $(wildcard \
+		    $(addprefix $(SRCDIR)/, \
+		      $(addsuffix /asmsyms.cc, $(SRCSRC)))))
+
+SYMOBJS=	$(patsubst %.cc, %.o, \
+		  $(patsubst %.c, %.o, \
+		    $(patsubst %.S, %.o,\
+		      $(patsubst $(SRCDIR)/%,%, $(SYMSRCS)))))
+
+asmsyms.h:	$(BUILDDIR)/include/asmsyms.h
+$(BUILDDIR)/include/asmsyms.h:  $(SYMOBJS) $(SRCDIR)/Mk/Makefile.voodoo
+	@${ECHO_MSG} Generating $(subst $(BUILDDIR)/,,$@)
+	@$(LD) $(VFLAGS) -r $(SYMOBJS) -o $(ASMSYMS)
+	@$(PRINTF) "/* machine-generated file - do NOT edit */\n"	> $@
+	@$(PRINTF) "#ifndef __ASMSYMS_H__\n"			>> $@
+	@$(PRINTF) "#define __ASMSYMS_H__\n\n"			>> $@
+	@$(NM) --radix=d -S $(ASMSYMS) | \
+	  $(PERL) -ne '\
+		($$val, $$name, $$type, $$num) = 			\
+		  (/^\d+ (\d*) ?. (.*)_(sign|b(\d))$$/);		\
+		$$val /= 32;						\
+		if ($$type eq "sign") {					\
+		    printf ("#define %-25s (%s(0x%x%x))\n",		\
+			    $$name, $$val == 2 ? "" : "-",		\
+			    $$val_high, $$val_low);			\
+		    $$val_low = $$val_high = 0;				\
+		} else {						\
+		    if ($$num <= 3) {					\
+			$$val_low += $$val << ($$num * 8);		\
+		    } elsif ($$num <= 7) {				\
+			$$val_high += $$val << (($$num-4) * 8);		\
+		    }							\
+		}							\
+		'						>> $@
+	@$(PRINTF) "\n\n#endif /* __ASMSYMS_H__ */\n"		>> $@
+	@$(RM) $(ASMSYMS)

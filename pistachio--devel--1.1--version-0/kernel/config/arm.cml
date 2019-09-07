@@ -1,0 +1,135 @@
+######################################################################
+#
+# Copyright (C) 1999, 2000, 2001,  Karlsruhe University
+#
+# File path:     config/arm.cml
+# Description:   rules for Pistachio's ARM CML2 configuration system
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+# OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+# SUCH DAMAGE.
+#
+# $Id: arm.cml,v 1.6 2004/12/02 21:55:06 cvansch Exp $
+#
+######################################################################
+
+symbols
+
+ARCH_ARM        'ARM'
+arm_type        'Processor Type'
+CPU_ARM_SA1100  'StrongARM SA-1100'
+CPU_ARM_XSCALE  'Intel XScale'
+CPU_ARM_ARM926	'ARM 926EJ-S'
+CPU_ARM_ARM920T	'ARM 920T'
+CPU_ARM_OMAP1510 'TI OMAP1510 ARM925T'
+
+arm_platform    'Platform'
+PLAT_PLEB       'PLEB'
+PLAT_PLEB2	'PLEB2 PXA255'
+#PLAT_INTEGRATOR	'Integrator'
+#PLAT_NOMADIK	'Nomadik'
+PLAT_IXDP425	'Intel IXDP425'
+PLAT_INNOVATOR	'OMAP1510 Innovator'
+PLAT_CSB337	'Cogent CSB337 AT91RM9200(ARM920T)'
+PLAT_LN2410SBC	'Little Chips LN2410SBC S3C2410x(ARM920T)'
+
+#nomadik_subplatform	'Nomadik platform'
+
+#SUBPLAT_NOMADIK_MEK0	'MEVK0'
+#SUBPLAT_NOMADIK_MEK1	'MEVK1'
+#SUBPLAT_NOMADIK_MEK2	'MEVK2'
+#SUBPLAT_NOMADIK_MEK3	'MEVK3'
+#SUBPLAT_NOMADIK_MEVKLITE 'MUPOC Lite'
+#SUBPLAT_NOMADIK_MEVKFULL 'MUPOC Full'
+
+DISABLE_ALIGNMENT_EXCEPTIONS	'Disable alignment exceptions' text
+Disable the generation of exceptions for unaligned load and store operations
+who's implementation is per the \'A\' bit in the ARM Control Register. See
+ARM Architecture Reference Manual.
+.
+
+ENABLE_FASS     'Whether or not to enable Fast Addresss Space Switching'
+EXCEPTION_FASTPATH   'Enable Exception-Fastpath'
+
+ENABLE_PLEB_LARGEMEM 'Enable PLEB large memory mode'
+TEXT_IN_ROM	'Build platform with text/rodata in ROM'
+
+choices arm_type
+        CPU_ARM_SA1100
+	CPU_ARM_XSCALE
+	CPU_ARM_ARM926
+	CPU_ARM_ARM920T
+	CPU_ARM_OMAP1510
+        default CPU_ARM_SA1100
+
+
+unless ARCH_ARM suppress dependent arm_type
+
+choices arm_platform
+        PLAT_PLEB
+        PLAT_PLEB2
+#	PLAT_INTEGRATOR
+#	PLAT_NOMADIK
+	PLAT_IXDP425
+	PLAT_INNOVATOR
+	PLAT_CSB337
+	PLAT_LN2410SBC
+        default PLAT_PLEB
+
+unless ARCH_ARM suppress dependent arm_platform
+
+unless CPU_ARM_SA1100 suppress dependent PLAT_PLEB
+unless CPU_ARM_XSCALE suppress dependent PLAT_PLEB2 PLAT_IXDP425
+unless CPU_ARM_ARM920T suppress dependent PLAT_CSB337 PLAT_LN2410SBC
+unless CPU_ARM_OMAP1510 suppress dependent PLAT_INNOVATOR
+
+derive ARM_BIG_ENDIAN from PLAT_IXDP425
+derive ARM_V5 from CPU_ARM_XSCALE or CPU_ARM_OMAP1510 or CPU_ARM_ARM926
+derive ARM_THUMB_SUPPORT from CPU_ARM_XSCALE or CPU_ARM_ARM920T or CPU_ARM_OMAP1510 or CPU_ARM_ARM926
+
+#choices nomadik_subplatform
+#	SUBPLAT_NOMADIK_MEK0
+#	SUBPLAT_NOMADIK_MEK1
+#	SUBPLAT_NOMADIK_MEK2
+#	SUBPLAT_NOMADIK_MEK3
+#	SUBPLAT_NOMADIK_MEVKLITE
+#	SUBPLAT_NOMADIK_MEVKFULL
+#	default SUBPLAT_NOMADIK_MEK0
+
+#unless PLAT_NOMADIK suppress dependent nomadik_subplatform
+
+menu hardware_misc
+#	nomadik_subplatform
+	DISABLE_ALIGNMENT_EXCEPTIONS
+        ENABLE_FASS
+	EXCEPTION_FASTPATH
+	ENABLE_PLEB_LARGEMEM
+	TEXT_IN_ROM
+
+default DISABLE_ALIGNMENT_EXCEPTIONS from n
+default ENABLE_FASS from y
+default EXCEPTION_FASTPATH from n
+default ENABLE_PLEB_LARGEMEM from n
+default TEXT_IN_ROM from n
+
+unless PLAT_PLEB suppress ENABLE_PLEB_LARGEMEM
+unless PLAT_PLEB suppress TEXT_IN_ROM
+unless ARCH_ARM suppress ENABLE_FASS
+unless ARCH_ARM suppress EXCEPTION_FASTPATH
