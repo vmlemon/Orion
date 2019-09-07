@@ -127,22 +127,22 @@ public:
  * adds a thread to the space
  * @param tcb pointer to thread control block
  */
-INLINE void space_t::add_tcb(tcb_t * tcb, cpuid_t cpu)
+/*INLINE void space_t::add_tcb(tcb_t * tcb, cpuid_t cpu)
 {
     x.thread_count ++;
-};
-
+}
+*/
 /**
  * removes a thread from a space
  * @param tcb_t thread control block
  * @return true if it was the last thread
  */
-INLINE bool space_t::remove_tcb(tcb_t * tcb, cpuid_t cpu)
+/*INLINE bool space_t::remove_tcb(tcb_t * tcb, cpuid_t cpu)
 {
     ASSERT(x.thread_count != 0);
     x.thread_count --;
     return (x.thread_count == 0);
-};
+}*/
 
     /* space control */
     word_t space_t::space_control (word_t ctrl, fpage_t kip_area, fpage_t utcb_area, threadid_t redirector_tid) { return 0; }
@@ -168,6 +168,29 @@ public:
     bool handle_hash_miss( addr_t vaddr );
     bool handle_protection_fault( addr_t vaddr, bool dsi );
     bool handle_segment_miss( addr_t vaddr );
+
+
+            /**
+ * adds a thread to the space
+ * @param tcb pointer to thread control block
+ */
+INLINE void space_t::add_tcb(tcb_t * tcb, cpuid_t cpu)
+{
+    x.thread_count ++;
+}
+
+/**
+ * removes a thread from a space
+ * @param tcb_t thread control block
+ * @return true if it was the last thread
+ */
+INLINE bool space_t::remove_tcb(tcb_t * tcb, cpuid_t cpu)
+{
+    ASSERT(x.thread_count != 0);
+    x.thread_count --;
+    return (x.thread_count == 0);
+}
+
 
     inline pgent_t * get_pdir() { return this->pdir; }
     inline word_t get_vsid_asid() { return x.vsid_asid.get( this ); }
