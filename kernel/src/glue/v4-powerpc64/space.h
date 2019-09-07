@@ -223,6 +223,27 @@ private:
     };
 };
 
+/**
+ * adds a thread to the space
+ * @param tcb pointer to thread control block
+ */
+INLINE void space_t::add_tcb(tcb_t * tcb, cpuid_t cpu)
+{
+    x.thread_count ++;
+}
+
+/**
+ * removes a thread from a space
+ * @param tcb_t thread control block
+ * @return true if it was the last thread
+ */
+INLINE bool space_t::remove_tcb(tcb_t * tcb, cpuid_t cpu)
+{
+    ASSERT(x.thread_count != 0);
+    x.thread_count --;
+    return (x.thread_count == 0);
+}
+
 /**********************************************************************
  *
  *                 global declarations
@@ -312,55 +333,25 @@ INLINE void space_t::add_tcb(tcb_t * tcb)
     x.thread_count ++;
 }
 
-INLINE void add_tcb(tcb_t * tcb)
+/*INLINE void add_tcb(tcb_t * tcb)
 //inline void space_t::add_tcb(tcb_t * tcb)
 {
     x.thread_count ++;
-}
+} */
 
 /**
  * removes a thread from a space
  * @param tcb_t thread control block
  * @return true if it was the last thread
  */
-//inline bool space_t::remove_tcb(tcb_t * tcb)
-INLINE bool space_t::remove_tcb(tcb_t * tcb)
+
+/*INLINE bool space_t::remove_tcb(tcb_t * tcb)
 {
     ASSERT(x.thread_count != 0);
     x.thread_count --;
     return (x.thread_count == 0);
-}
+} */
 
-INLINE bool remove_tcb(tcb_t * tcb)
-{
-    ASSERT(x.thread_count != 0);
-    x.thread_count --;
-    return (x.thread_count == 0);
-}
-
-
-//HACK!
-
-/**
- * adds a thread to the space
- * @param tcb pointer to thread control block
- */
-INLINE void space_t::add_tcb(tcb_t * tcb, cpuid_t cpu)
-{
-    x.thread_count ++;
-}
-
-/**
- * removes a thread from a space
- * @param tcb_t thread control block
- * @return true if it was the last thread
- */
-INLINE bool space_t::remove_tcb(tcb_t * tcb, cpuid_t cpu)
-{
-    ASSERT(x.thread_count != 0);
-    x.thread_count --;
-    return (x.thread_count == 0);
-}
 
 INLINE void space_t::flush_tlb( space_t *curspace )
 {
