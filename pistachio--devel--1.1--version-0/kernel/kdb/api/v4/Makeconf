@@ -1,0 +1,2 @@
+SOURCES+=	$(addprefix kdb/api/v4/, input.cc kernelinterface.cc tcb.cc thread.cc \
+		    space.cc schedule.cc sigma0.cc)

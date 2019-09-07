@@ -1,0 +1,23 @@
+LDSCRIPT = $(SRCDIR)/src/glue/$(API)-$(ARCH)/linker-$(PLATFORM).lds
+
+SOURCES+=$(addprefix src/glue/v4-amd64/, \
+	space.cc thread.cc debug.cc exception.cc init.cc idt.cc resources.cc ctors.cc trampoline.S trap.S user.cc syscalls.cc)
+
+CFLAGS_$(CURDIR)/pagefault = -fomit-frame-pointer
+CFLAGS_$(CURDIR)/exception = -fomit-frame-pointer
+
+ifeq ("$(CONFIG_IOAPIC)","y")
+SOURCES += src/generic/acpi.cc src/glue/v4-amd64/timer-apic.cc
+else
+SOURCES += src/glue/v4-amd64/timer.cc
+endif
+
+# use linear_ptab_walker if need be
+ifeq (1,1)
+SOURCES+=src/generic/linear_ptab_walker.cc \
+	 src/generic/mapping_alloc.cc \
+         src/generic/mapping.cc
+else
+SOURCES+=src/glue/v4-amd64/space-stub.cc
+endif
+

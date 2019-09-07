@@ -1,0 +1,9 @@
+SOURCES+=	src/generic/lib.cc \
+		src/generic/kmemory.cc \
+		src/generic/traceids.cc \
+		src/generic/tracebuffer.cc
+
+ifeq ("$(CONFIG_ACPI)","y")
+SOURCES+=	src/generic/acpi.cc
+endif
+

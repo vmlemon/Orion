@@ -1,0 +1,76 @@
+The licensee of the software known as Pistachio, an implementation of
+the L4 microkernel herein referred to as the "software," shall agree
+to the following terms and conditions:
+
+1. The licensee shall not redistribute or disclose the software or
+parts thereof in either binary or source code format before the first
+of February, 2003 with the following exception: the licensee may, at
+his option, distribute and disclose the software or parts thereof in
+either binary or source code format without prior notice, to others
+who have also received the same license from the licensor.  This
+clause does not preclude the licensee from distributing the program or
+parts thereof in either binary or source code format if a different
+license agreement is reached with the licensor.
+
+2. The licensee may use or modify the software for his own purposes
+without further restrictions.
+
+3. THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS
+OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+
+4. At 12:01am the first of February, 2003 or any time thereafter, the
+licensee may relicense the program or parts thereof in either binary
+or source code format under the following terms and conditions:
+
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions
+   are met:
+
+     1. Redistributions of source code must retain the above copyright
+     notice, this list of conditions and the following disclaimer.
+  
+     2. Redistributions in binary form must reproduce the above
+     copyright notice, this list of conditions and the following
+     disclaimer in the documentation and/or other materials provided
+     with the distribution.
+  
+     3. The name of the author may not be used to endorse or promote
+     products derived from this software without specific prior written
+     permission.
+
+   THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS
+   OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+   WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
+   DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+   DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+   GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+   WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+5. If the licensor releases either the software or a newer version of
+   the software which provides at least equivalent functionality
+   before 12:01am on the first of February, 2003 under the same
+   conditions as listed in paragraph four, the licensee shall agree to
+   not relicense the program as permitted by paragraph four.
+
+6. If the license or any clauses thereof with the exception of clause
+   four are not enforceable due to local law or other regulations,
+   this license shall terminate.  The licensee shall have no rights
+   and shall return the software and delete all copies of the
+   software.
+
+7. This license shall expire on the first of February, 2004.
+
+End of the terms and conditions.

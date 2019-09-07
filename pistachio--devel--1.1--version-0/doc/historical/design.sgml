@@ -1,0 +1,503 @@
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.1//EN"[]>
+
+<book id="pistachio">
+  <bookinfo>
+    <title>INSIDE Pistachio</title>
+
+    <authorgroup>
+      <author>
+	<surname>L4Ka Team</surname>
+	<affiliation>
+	  <address><email>contact@l4ka.org</email></address>
+	</affiliation>
+      </author>
+    </authorgroup>
+
+    <copyright>
+      <year>2002</year>
+      <holder>Karlsruhe University</holder>
+    </copyright>
+
+    <legalnotice>
+      <para>
+      </para>
+    </legalnotice>
+
+  </bookinfo>
+
+  <toc></toc>
+
+  <chapter>
+    <title>Introduction</title>
+    <para>
+      This document should document design and implementation decisions
+      in the pistachio project.
+    </para>
+
+    <section>
+      <title>Project Goals</title>
+      <para>
+	Build a Version 4 kernel targeted at:
+	<itemizedlist>
+	  <listitem><para>32bit + 64bit</para></listitem>
+	  <listitem><para>uniprocessor + SMP</para></listitem>
+	  <listitem><para>architectures (ia32, ARM, MIPS, ia64, PowerPC, SHx???)</para></listitem>
+	</itemizedlist>
+      </para>
+    </section>
+  </chapter>
+
+  <chapter>
+    <title>Design</title>
+
+    <section>
+      <title>Abstractions</title>
+      <para>
+	<itemizedlist>
+	  <listitem><para>
+	      What are the user-visible abstractions?  What
+	      state does the kernel maintain for these?
+	    </para></listitem>
+	  <listitem><para>
+	      Reason about design decisions driven by
+	      user-visibility of stuff.
+	    </para></listitem>
+	</itemizedlist>
+      </para>
+
+      <section>
+	<title>Address Spaces</title>
+	<para>
+	</para>
+      </section>
+
+      <section>
+	<title>Threads</title>
+	<para></para>
+      </section>
+
+    </section>
+
+
+    <section>
+      <title>Mechanisms</title>
+      <para>
+	<itemizedlist>
+	  <listitem><para>
+	      Do all system calls represent a mechanism each?
+	    </para></listitem>
+	  <listitem><para>
+	      The kernel is a FSM.  Can we describe the kernel mechanisms in
+	      nice state machine graphs?
+	    </para></listitem>
+	</itemizedlist>
+      </para>
+
+      <section>
+	<title>IPC</title>
+	<section>
+	  <title>Message Transfers</title>
+	  <para></para>
+	</section>
+
+	<section>
+	  <title>Thread Switching</title>
+	  <para></para>
+	</section>
+      </section>
+
+      <section>
+	<title>unmap</title>
+	<section>
+	  <title>Mapping Database</title>
+	  <para></para>
+	</section>
+      </section>
+
+      <section>
+	<title>...</title>
+	<para></para>
+      </section>
+    </section>
+  </chapter>
+
+
+  <chapter>
+    <title>Implementation</title>
+
+    <section>
+      <title>Coding Style</title>
+
+      <section>
+	<title>Indentation</title>
+	<para>
+	  Emacs indentation style Stroustrup will be used.  In particular,
+	  this means tab size of 8 and indentation size of 4 characters.
+	  For MS Developer Studio that works too, except of indentation of
+	  opening and closing parenthese and brackets.
+	</para>
+	<note>
+	  <para>
+	    Putting the following line into your ~/.emacs should do
+	    the trick: <programlisting>(defvar default-c-style "stroustrup")</programlisting>
+
+	    Or if you use vim, for Stroustrup spacing, add the
+	    following to your ~/.vimrc:
+	    <programlisting>set shiftwidth=4</programlisting>
+	  </para>
+	</note>
+      </section>
+
+      <section>
+	<title>Basic Data Types</title>
+	<para>
+	  All code uses the following data types that are defined in
+	  <filename>types.h</filename>.  These types will be
+	  automatically available without having to explicitly include
+	  <filename>types.h</filename>:
+	  <variablelist>
+	    <varlistentry>
+	      <term>u64_t, u32_t, u16_t, u8_t, s64_t, s32_t, s16_t, s8_t</term>
+	      <listitem>
+		<para>
+		  are unsigned and signed integer types of the respective word
+		  width as given by the name.  These types are guaranteed to not
+		  differ across configurations.
+		</para>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>word_t</term>
+	      <listitem>
+		<para>
+		  is an unsigned integer of the CPU's general purpose register
+		  size.  The word width changes with the architecture, i.e. is
+		  64 on 64-bit architectures and 32 on 32-bit architectures.
+		</para>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>addr_t</term>
+	      <listitem>
+		<para>
+		  is a single-byte granular pointer type to be used in address
+		  calculations.  Whenever possible, pointers should be stored
+		  typed.
+		</para>
+	      </listitem>
+	  </variablelist>
+	</para>
+      </section>
+      <section>
+	<title>Macros</title>
+	<para></para>
+      </section>
+
+      <section>
+	<title>Conditional Compilation</title>
+	<para>
+	  For parts of code which is wrapped in <literal>#if</literal> and
+	  <literal>#endif</literal>, except for short conditionals, all
+	  <literal>#else</literal> and <literal>#endif</literal> lines
+	  should have a comment stating the condition. Use of <literal>#if
+	    defined(X)</literal> is preferred over <literal>#ifdef X</literal>.
+	  <programlisting>
+#if defined(USE_FOO)
+ ...
+#else /* !USE_FOO */
+ ...
+#endif /* !USE_FOO */</programlisting>
+	</para>
+      </section>
+
+      <section>
+	<title>Include Files</title>
+	<para>
+	  No previous includes are required before including a header file.
+	  If <literal>x.h</literal> requires something from
+	  <filename>y.h</filename>, then <filename>x.h</filename> includes
+	  <filename>y.h</filename> itself.  It is invalid to assume in
+	  <filename>x.h</filename> that <filename>y.h</filename> has been
+	  included before.
+	</para>
+	<para>
+	  For ensuring that an include file is not included twice, you
+	  should wrap the whole file in <literal>#ifdefs</literal> like:
+	  <programlisting>
+#ifndef __X86__THREAD_H__
+#define __X86__THREAD_H__
+
+ //code
+
+#endif /* !__X86__THREAD_H__ */</programlisting>
+	  The convention being that the pathname is uppercased, directory
+	  separators (/) are turned into double underscores, and dots (.)
+	  and dashes (-) are turned into single underscores. The file name
+	  for the above example would therefore be
+	  <literal>"x86/thread.h"</literal>.
+	</para>
+      </section>
+
+      <section>
+	<title>Comments</title>
+	<para>
+	  Please write descriptive comments in places where it would help
+	  other users/programmers to understand the code.  Such places
+	  would include:
+	  <itemizedlist>
+	    <listitem>
+	      <para>
+		Before blocks of code implementing a complex
+		algorithm.
+	      </para>
+	    </listitem>
+	    <listitem>
+	      <para>
+		In places where special care must be taken not to break
+		anything (e.g., "Do not modify the variable after this
+		point. It would cause...").
+	      </para>
+	    </listitem>
+	    <listitem>
+	      <para>
+		In places where the code heavily depends on something
+		implemented elsewhere in the system.
+	      </para>
+	    </listitem>
+	  </itemizedlist>
+	</para>
+	<para>
+	  Some examples of comments (note that the first word of all
+	  sentences are capitalized and each sentence has two spaces after
+	  its period mark):
+	  <programlisting>
+/* This is a single-line comment. */
+
+// C++-style single-line comments are allowed
+
+/*
+ * Important comments or multi-line comments should be written like
+ * this.  Please use real sentences and fill them so that they look
+ * like paragraphs.
+ */</programlisting>
+
+	  Use uppercased names when referring to the contents of
+	  variables. E.g., "The actual message transfer depends on
+	  MSG_LENGTH."
+	</para>
+      </section>
+
+      <section>
+	<title>File Headers</title>
+	<para>
+	  All files must contain a file header:
+	  <programlisting>
+/****************************************************************
+ *
+ * Copyright (C) 2002,  Karlsruhe University
+ *
+ * File path:
+ * Description:
+ *
+ * @LICENSE@
+ *
+ * $Id$
+ *
+ ***************************************************************/</programlisting>
+	  The path given in the header is relative to the kernel's
+	  <filename>include</filename>, <filename>src</filename> or
+	  <filename>kdb</filename> directory.  A description is mandatory.
+	  At release time, the <literal>@LICENSE@</literal> tag will be
+	  replaced by the appropriate text.  The <literal>$Id$</literal>
+	  tag will be automatically expanded and updated by CVS.
+	</para>
+      </section>
+
+      <section>
+	<title>CVS Log Messages</title>
+	<para>
+	  Log messages written into the CVS should describe all
+	  changes and additions applied to the code.  Giving a
+	  bulleted list of changes is ok.  Do not commit multiple
+	  files with the same log messages unless all the changes
+	  described in the message applies to all committed files.
+	</para>
+      </section>
+
+    </section>
+
+    <section>
+      <title>Memory Layout</title>
+
+      <section>
+	<title>Data/Code Placement</title>
+	<para>
+	  Resources managed by the kernel may happen to be available in
+	  multiple instances on non-uniprocessor systems.  As an example,
+	  the current owner of the FPU must be maintained per physical FPU
+	  (which will probably map to per-CPU).  Also, scalability with
+	  respect to multiple processors requires decoupling of resources.
+	  For instance, instead of a single global one a kernel memory
+	  allocator may be required per node, but not per CPU.
+	</para>
+	<para>
+	  It is necessary to identify some sort of a sharing level per data
+	  item.  This sharing level depends on the actual target system
+	  configuration.  All code can be treated as just another data
+	  item.  Data items that will never have different sharing levels
+	  may be grouped.
+	</para>
+	<para>
+	  Data items must be tagged with a group label that can be used to
+	  assign sharing levels at configuration time.  By default,
+	  untagged data will be shared among all instances of the kernel.
+	</para>
+	<para>
+	  As a first attempt, we place data items in fine-grained sections
+	  by use of the section attribute:
+	  <programlisting>
+int foo1 __attribute__((section(".data.foo")));
+int foo2 __attribute__((section(".data.foo")));</programlisting>
+	  This will be eased by using the macro:
+	  <programlisting>
+int foo1 UNIT("foo");
+int foo2 UNIT("foo");</programlisting>
+	  Having data tagged that way, we can then group it at will by putting
+	  it into different sections that may be treated separately as required.
+	</para>
+	<para>
+	  Example linker script snippet follows:
+	  <programlisting>
+.data.nodelocal:
+{
+  *(.data.kmem)
+}
+.data.cpulocal:
+{
+  *(.data.foo)
+  *(.data.idler)
+}</programlisting>
+	</para>
+	<para>
+	  It is the memory layout management's responsibility to back these
+	  sections with the respective physical pages (and make physical
+	  copies if required).  Thus, the virtual address remains constant.
+	</para>
+	<note><para>
+	  To be discussed: This assumes that no two instances of such a
+	  data item need to be visible at the same time.
+	</para></note>
+      </section>
+    </section>
+
+    <section>
+      <title>Initialization Sequence</title>
+      <para>
+	In Hazelnut there was a single central <function>init()</function>
+	function that called all <function>init_*</function> functions in
+	a fixed sequence.  Among those were also two functions
+	<function>init_arch_1()</function> and
+	<function>init_arch_2()</function> wherein the architecture could
+	initialize itself.  Later, another
+	<function>init_arch_3</function> was added and some functions
+	called from <function>init_arch_2</function> moved there.
+	Obviously, the chosen approach was not flexible enough.
+      </para>
+      <para>
+	The initialization sequence will be fully under control the
+	architecture specific code.  It is its responsibility to call all
+	initialization functions of the generic modules and honor their
+	dependencies if any.
+      </para>
+      <para>
+	To be discussed: Does the initialization sequence depend on the
+	API too?
+      </para>
+    </section>
+
+    <section>
+      <title>Threads</title>
+      <para>
+	Threads are uniquely identified by their respective V4 thread id.
+	The data type is <type>threadid_t</type> allowing identification
+	of local and global thread ids.
+      </para>
+      
+      <section>
+	<title>Thread Control Blocks</title>
+	<para>
+	  The kernel object representing a thread is the thread control block
+	  <type>tcb</type>.  The <type>tcb</type> contains thread state,
+	  queue state, message registers etc.
+	</para>
+	<para>
+	  Depending on the hardware architecture, the layout has to vary.
+	  The important aspects are thereby cache line size, concurrent
+	  access from different CPUs as well as the architecture's
+	  instruction set.  This is particularly important for variables
+	  which are accessed on the critical IPC path.  Efficient encoding
+	  of thread and queue state may vary between architectures.  For
+	  example, on IA32 the uppermost bit (31) can be very easily
+	  checked by checking for condition less than zero.
+	</para>
+	<para>
+	  Thread control blocks are implemented by the <type>tcb</type>
+	  class.  It is split into V4 generic and architecture specific
+	  functionality.
+	</para>
+      </section>
+      
+      <section>
+	<title>Thread Switching</title>
+	<para>
+	  Architecture specific member function of the
+	  <classname>tcb_t</classname> class are thread switching
+	  functions.  A thread switch always happens between exactly two
+	  threads, the currently active and the destination.  The switch to
+	  the idle thread (or kernel threads in general) can be implemented
+	  without address space switching (kernel threads can run in any
+	  user context).  Hence, a specialized thread-switch function
+	  exists for this class of threads.
+	</para>
+	<para>
+	  Each glue layer has to provide two thread-switch functions: 
+	  <funcsynopsis>
+	    <funcprototype>
+	      <funcdef>void <function><classname>tcb_t</classname>::switch_to</function></funcdef>
+	      <paramdef>
+		<parameter>tcb_t * tcb</parameter>
+	      </paramdef>
+	    </funcprototype>
+	    <funcprototype>
+	      <funcdef>void <function><classname>tcb_t</classname>::switch_to_idle</function></funcdef>
+	      <paramdef></paramdef>
+	    </funcprototype>
+	  </funcsynopsis>
+	</para>
+	<para>
+	  <function>switch_to</function> saves the current thread state
+	  into the TCB and switches to the thread provided in the
+	  <parameter>tcb</parameter> parameter.  The function has to save
+	  and restore thread reources and switch page tables if necessary.
+	  Implementation of page table switching is usually part of the
+	  assembly part to avoid code bloat.
+	</para>
+	<para>
+	  <function>switch_to_idle</function> saves the current thread's
+	  context and resources, and switches to the idle tcb.  This
+	  function will potentially change to
+	  <function>switch_to_kernel</function> to provide a generic
+	  function for activation of kernel threads.  On architectures
+	  which have high costs for accessing the active page directory,
+	  such as the Pentium4, the current thread's page directory may be
+	  saved into the destination-thread's TCB (note that kernel threads
+	  have no address space).  When switching to the next thread
+	  unnecessary page table switches can be avoided.
+	</para>
+      </section>
+    </section>
+  </chapter>
+
+  <index></index>
+  
+</book>

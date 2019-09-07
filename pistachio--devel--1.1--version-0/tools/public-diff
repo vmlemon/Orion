@@ -1,0 +1,9 @@
+#!/bin/sh
+
+STRIPNODIFF=`echo $0 | sed 's,/[^/]*$,/stripnodiff,'`
+
+exec cvs di -kk -rpublic -rHEAD $* | $STRIPNODIFF
+
+
+
+
