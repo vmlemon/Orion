@@ -177,7 +177,7 @@
  /root/Orion/kernel/src/generic/sync.h \
  /root/Orion/kernel/src/arch/powerpc64/string.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
- /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
  /root/Orion/kernel/src/generic/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
@@ -211,7 +211,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
- /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
+ /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
 .depend src/glue/v4-powerpc64/rtas.o: /root/Orion/kernel/src/glue/v4-powerpc64/rtas.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
