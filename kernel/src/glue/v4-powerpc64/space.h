@@ -130,7 +130,7 @@ public:
 INLINE void space_t::add_tcb(tcb_t * tcb, cpuid_t cpu)
 {
     x.thread_count ++;
-}
+};
 
 /**
  * removes a thread from a space
@@ -142,7 +142,7 @@ INLINE bool space_t::remove_tcb(tcb_t * tcb, cpuid_t cpu)
     ASSERT(x.thread_count != 0);
     x.thread_count --;
     return (x.thread_count == 0);
-}
+};
 
     /* space control */
     word_t space_t::space_control (word_t ctrl, fpage_t kip_area, fpage_t utcb_area, threadid_t redirector_tid) { return 0; }
@@ -331,11 +331,11 @@ INLINE word_t space_t::get_vsid( addr_t addr )
 
 
 //This is a hack
-INLINE void space_t::add_tcb(tcb_t * tcb)
+//INLINE void space_t::add_tcb(tcb_t * tcb)
 //inline void space_t::add_tcb(tcb_t * tcb)
-{
-    x.thread_count ++;
-}
+//{
+  //  x.thread_count ++;
+//}
 
 /*INLINE void add_tcb(tcb_t * tcb)
 //inline void space_t::add_tcb(tcb_t * tcb)
