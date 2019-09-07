@@ -26,7 +26,7 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 #                
-# $Id: Makefile,v 1.15 2007/03/12 21:19:13 skoglund Exp $
+# $Id: Makefile,v 1.13 2004/05/25 19:18:16 skoglund Exp $
 #                
 ######################################################################
 
@@ -95,9 +95,6 @@ all:
 	@(grep -v SRCDIR $(BUILDDIR)/Makeconf.local.template ; \
 	  echo "SRCDIR=$(CURDIR)") >> $(BUILDDIR)/Makeconf.local
 	@rm -f $(BUILDDIR)/Makeconf.local.template
-	@# Help dependency tracking during first make run
-	@touch -d yesterday $(BUILDDIR)/Makeconf.local 2>&- || \
-	  touch -t `date -v -1d "+%C%y%m%d%H%M"` $(BUILDDIR)/Makeconf.local
 	@echo done.
 	@echo ""
 endif
