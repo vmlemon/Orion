@@ -69,13 +69,13 @@ INLINE void queue_state_t::init()
 INLINE void queue_state_t::clear(state_e state)
 {
     this->state &= ~((word_t)state);
-    ASSERT(IS_CONSISTENT);
+    ASSERT(ALWAYS, IS_CONSISTENT);
 }
 
 INLINE void queue_state_t::set(state_e state)
 {
     this->state |= (word_t)state;
-    ASSERT(IS_CONSISTENT);
+    ASSERT(ALWAYS, IS_CONSISTENT);
 }
 
 INLINE bool queue_state_t::is_set(state_e state)

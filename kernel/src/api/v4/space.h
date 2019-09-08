@@ -1,6 +1,7 @@
 /*********************************************************************
  *                
- * Copyright (C) 2002, 2004, 2006, 2010,  Karlsruhe University
+ * Copyright (C) 2002, 2004,  Karlsruhe University
+ * Copyright (C) 2005,  National ICT Australia (NICTA)
  *                
  * File path:     api/v4/space.h
  * Description:   
@@ -26,7 +27,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id: space.h,v 1.13 2006/11/14 18:45:37 skoglund Exp $
+ * $Id: space.h,v 1.11 2004/11/17 16:46:13 skoglund Exp $
  *                
  ********************************************************************/
 #ifndef __API__V4__SPACE_H__
@@ -36,6 +37,9 @@
 #include INC_GLUE(space.h)
 
 EXTERN_KMEM_GROUP (kmem_utcb);
+
+space_t * allocate_space();
+void free_space(space_t * space);
 
 extern space_t * sigma0_space;
 extern space_t * sigma1_space;
@@ -63,20 +67,27 @@ INLINE bool is_privileged_space(space_t * space)
 	    is_sigma1_space(space));
 }
 
+
 INLINE bool space_t::is_mappable(addr_t addr)
 {
+#ifndef CONFIG_ARCH_ARM
     return (is_user_area(addr) && 
 	(!get_kip_page_area().is_addr_in_fpage(addr)) &&
-	(!get_utcb_page_area().is_addr_in_fpage(addr)) &&
-	is_arch_mappable(addr, 1));
+	(!get_utcb_page_area().is_addr_in_fpage(addr)));
+#else
+    return is_user_area(addr);
+#endif
 }
 
 INLINE bool space_t::is_mappable(fpage_t fpage)
 {
-    return (is_user_area(fpage) &&
-	(!get_kip_page_area().is_overlapping(fpage)) &&
-	(!get_utcb_page_area().is_overlapping(fpage)) &&
-	is_arch_mappable(fpage.get_address(), fpage.get_size()));
+#ifndef CONFIG_ARCH_ARM
+    return (this->is_user_area(fpage) &&
+	(!get_kip_page_area().is_overlapping(fpage) &&
+	(!get_utcb_page_area().is_overlapping(fpage))));
+#else
+    return this->is_user_area(fpage);
+#endif
 }
 
 INLINE bool space_t::is_user_area(fpage_t fpage)
@@ -85,55 +96,11 @@ INLINE bool space_t::is_user_area(fpage_t fpage)
 	is_user_area(addr_offset(fpage.get_address(), fpage.get_size()-1));
 }
 
-
-INLINE bool space_t::is_user_area (addr_t addr)
-{
-#if (USER_AREA_START != 0)
-    return (((word_t) sign_extend(addr)) >= USER_AREA_START &&
-	    ((word_t) sign_extend(addr)) < USER_AREA_END);
-#else
-    return (((word_t) sign_extend(addr)) < USER_AREA_END);
-#endif
-    
-}
-
-INLINE bool space_t::is_kernel_area(addr_t addr)
-{
-    return (((word_t)sign_extend(addr)) >= KERNEL_AREA_START &&
-	    ((word_t)sign_extend(addr)) < KERNEL_AREA_END);
-}
-
-INLINE bool space_t::is_tcb_area (addr_t addr)
-{
-#if defined(CONFIG_STATIC_TCBS)
-    return false;
-#else
-    return (((word_t) sign_extend(addr)) >= KTCB_AREA_START &&
-	    ((word_t) sign_extend(addr)) < KTCB_AREA_END);
-#endif
-}
-
-INLINE bool space_t::is_copy_area (addr_t addr)
-{
-    return (((word_t)sign_extend(addr)) >= COPY_AREA_START &&
-	    ((word_t)sign_extend(addr)) < COPY_AREA_END);
-}
-
+#ifndef CONFIG_ARCH_ARM
 INLINE bool space_t::is_initialized()
 {
     return !get_kip_page_area().is_nil_fpage();
 }
-
-INLINE fpage_t space_t::unmap_fpage (fpage_t fpage, bool flush, bool all)
-{
-    mdb_t::ctrl_t ctrl (0);
-    ctrl.mapctrl_self	= flush;
-    ctrl.unmap		= fpage.is_rwx ();
-    ctrl.set_rights	= ! fpage.is_rwx ();
-    ctrl.reset_status	= 1;
-    ctrl.deliver_status	= 1;
-    fpage.set_rwx (~fpage.get_rwx ());
-    return mapctrl (fpage, ctrl, 0, all);
-}
+#endif
 
 #endif /* !__API__V4__SPACE_H__ */
