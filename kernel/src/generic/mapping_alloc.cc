@@ -1,6 +1,6 @@
 /*********************************************************************
  *                
- * Copyright (C) 1999-2003, 2005-2006,  Karlsruhe University
+ * Copyright (C) 1999, 2000, 2001, 2002, 2003,  Karlsruhe University
  *                
  * File path:     generic/mapping_alloc.cc
  * Description:   Memory management for mapping database
@@ -26,19 +26,14 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id: mapping_alloc.cc,v 1.13 2006/10/07 16:34:09 ud3 Exp $
+ * $Id: mapping_alloc.cc,v 1.9 2003/09/24 19:05:32 skoglund Exp $
  *                
  ********************************************************************/
+#include <l4.h>
 #include <debug.h>
 #include <mapping.h>
 #include <kdb/tracepoints.h>
 #include <kmemory.h>
-
-#if defined(CONFIG_NEW_MDB)
-#include <mdb.h>
-#undef MDB_NUM_PGSIZES
-#define MDB_NUM_PGSIZES	16
-#endif
 
 //#define MDB_BUF_TRACEPOINTS
 
@@ -70,15 +65,15 @@ DECLARE_KMEM_GROUP (kmem_mdb);
     int cnt;								\
 									\
     if (m) {								\
-	ASSERT (m->prev_freelist == NULL);				\
+	ASSERT (ALWAYS, m->prev_freelist == NULL);			\
 	do {								\
-	    ASSERT (m->prev_freelist == p);				\
-	    ASSERT (m->freelist != NULL);				\
-	    ASSERT (m->num_free > 0);					\
-	    ASSERT (m->bl == (_bl_));					\
+	    ASSERT (ALWAYS, m->prev_freelist == p);			\
+	    ASSERT (ALWAYS, m->freelist != NULL);			\
+	    ASSERT (ALWAYS, m->num_free > 0);				\
+	    ASSERT (ALWAYS, bl == (_bl_));				\
 	    for (cnt = 0, l = m->freelist; l; cnt++)			\
 		l = l->next;						\
-	    ASSERT (cnt == m->num_free);				\
+	    ASSERT (ALWAYS, cnt == m->num_free);			\
 	    p = m;							\
 	    m = m->next_freelist;					\
 	} while (m);							\
@@ -98,6 +93,7 @@ mdb_buflist_t mdb_buflists[MDB_NUM_PGSIZES + 3];
 /*
  * Structure used for freelists.
  */
+typedef struct mdb_link_t mdb_link_t;
 struct mdb_link_t {
     mdb_link_t		*next;
 };
@@ -114,14 +110,14 @@ struct mdb_mng_t {
 };
 
 
-void mdb_add_size (word_t size)
+static void mdb_add_size(word_t size)
 {
-    mdb_buflist_t * bl = mdb_buflists;
+    mdb_buflist_t *bl = mdb_buflists;
 
     // Avoid adding the same size twice
     for (word_t k = 0; bl->size; bl++, k++)
     {
-	ASSERT (k < MDB_NUM_PGSIZES + 3);
+	ASSERT (DEBUG, k < MDB_NUM_PGSIZES + 3);
 	if (bl->size == size)
 	    return;
     }
@@ -131,41 +127,9 @@ void mdb_add_size (word_t size)
     bl->size = 0;
 }
 
-#if defined(CONFIG_NEW_MDB)
-
-MDB_INIT_FUNCTION (0, mdb_buflist_init)
+void mdb_buflist_init (void)
 {
-    mdb_buflists[0].size = 0;
-    mdb_add_size (sizeof (mdb_node_t));
-    mdb_add_size (sizeof (mdb_table_t));
-}
-
-MDB_INIT_FUNCTION (2, mdb_buflist_init)
-{
-    mdb_buflist_t * bl;
-    word_t i;
-
-    /*
-     * Initialize the remaining fields in the buflists array.  The max_
-     * free field is calculated here so that we don't have to use
-     * division in the mdb_alloc_buffer() function.
-     */
-    for (bl = mdb_buflists; bl->size; bl++)
-    {
-	bl->list_of_lists = NULL;
-	if (bl->size >= KMEM_CHUNKSIZE)
-	    continue;
-	for (bl->max_free = 0, i = MDB_ALLOC_CHUNKSZ - bl->size;
-	     i >= sizeof (mdb_mng_t);
-	     i -= bl->size, bl->max_free++) {}
-    }
-}
-
-#else /* !CONFIG_NEW_MDB */
-
-void SECTION (".init") mdb_buflist_init (void)
-{
-    mdb_buflist_t * bl;
+    mdb_buflist_t *bl;
     word_t i;
 
     mdb_buflists[0].size = 0;
@@ -188,15 +152,13 @@ void SECTION (".init") mdb_buflist_init (void)
     for (bl = mdb_buflists; bl->size; bl++)
     {
 	bl->list_of_lists = NULL;
-	if (bl->size >= KMEM_CHUNKSIZE)
+	if (bl->size >= MDB_ALLOC_CHUNKSZ)
 	    continue;
 	for (bl->max_free = 0, i = MDB_ALLOC_CHUNKSZ - bl->size;
 	     i >= sizeof (mdb_mng_t);
 	     i -= bl->size, bl->max_free++) {}
     }
 }
-
-#endif
 
 
 
@@ -220,8 +182,7 @@ addr_t mdb_alloc_buffer (word_t size)
     {
 	if (bl->size == 0)
 	{
-	    panic ("Illegal MDB buffer allocation size (%d) (fn=%p).\n",
-		   size, __builtin_return_address (0));
+	    panic ("Illegal MDB buffer allocation size (%d).\n", size);
 	}
     }
 
@@ -234,8 +195,8 @@ addr_t mdb_alloc_buffer (word_t size)
     /*
      * Forward large buffer requests directly to the kmem allocator.
      */
-    if (size >= KMEM_CHUNKSIZE)
-	return kmem.alloc (kmem_mdb, size);
+    if (size >= MDB_ALLOC_CHUNKSZ)
+	return kmem.alloc (kmem_mdb, size);;
 
     disable_interrupts ();
 
@@ -253,6 +214,8 @@ addr_t mdb_alloc_buffer (word_t size)
 	 * First slot of page is dedicated to management strucures.
 	 */
 	mng = (mdb_mng_t *) kmem.alloc (kmem_mdb, MDB_ALLOC_CHUNKSZ);
+	if (mng == NULL)
+	    return NULL;
 	mng->freelist		= (mdb_link_t *)
 	    ((word_t) mng + MDB_ALLOC_CHUNKSZ - bl->max_free*size);
 	mng->num_free		= bl->max_free;
@@ -332,7 +295,7 @@ void mdb_free_buffer (addr_t addr, word_t size)
     /*
      * Forward large buffer requests directly to the kmem allocator.
      */
-    if (size >= KMEM_CHUNKSIZE)
+    if (size >= MDB_ALLOC_CHUNKSZ)
     {
 	kmem.free (kmem_mdb, addr, size);
 	return;

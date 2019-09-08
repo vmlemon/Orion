@@ -29,7 +29,8 @@
  * $Id: lib.cc,v 1.6 2003/09/24 19:05:32 skoglund Exp $
  *                
  ********************************************************************/
-#include <debug.h> // Something pulls in tcb_t, here, do we use it?
+#include <l4.h>
+#include <debug.h>
 
 /*
  * Declare as weak to allow overloading by optimized processor
