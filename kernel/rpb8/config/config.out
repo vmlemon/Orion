@@ -2,7 +2,7 @@
 # Automatically generated, don't edit
 #
 # Generated on: fedora28.novalocal
-# At: Sun, 08 Sep 2019 01:52:55 +0000
+# At: Sun, 08 Sep 2019 04:04:32 +0000
 # Linux version 4.16.3-301.fc28.ppc64 (mockbuild@buildvm-ppc64-06.ppc.fedoraproject.org) (gcc version 8.0.1 20180324 (Red Hat 8.0.1-0.20) (GCC)) #1 SMP Mon Apr 23 21:44:46 UTC 2018
 
 #
@@ -130,7 +130,7 @@ CONFIG_KDB_CONS_BGP_TREE=n
 CONFIG_KDB_CONS_COM=y
 CONFIG_KDB_COMPORT=0x0
 CONFIG_KDB_COMSPEED=115200
-CONFIG_KDB_CONS_RTAS=n
+CONFIG_KDB_CONS_RTAS=y
 CONFIG_KDB_BOOT_CONS=0
 
 CONFIG_KDB_DISAS=n
@@ -143,10 +143,10 @@ CONFIG_KDB_NO_ASSERTS=n
 #
 # Trace Settings
 #
-CONFIG_VERBOSE_INIT=n
+CONFIG_VERBOSE_INIT=y
 CONFIG_TRACEPOINTS=n
 CONFIG_KMEM_TRACE=n
-CONFIG_TRACEBUFFER=n
+CONFIG_TRACEBUFFER=y
 
 
 
