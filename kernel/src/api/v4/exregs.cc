@@ -35,6 +35,10 @@
 
 #include <kdb/tracepoints.h>
 
+#ifdef __powerpc64__
+typedef u64_t			word_t;
+#endif
+
 DECLARE_TRACEPOINT (SYSCALL_EXCHANGE_REGISTERS);
 #if defined(CONFIG_X_CTRLXFER_MSG)
 EXTERN_TRACEPOINT(IPC_CTRLXFER_ITEM);
