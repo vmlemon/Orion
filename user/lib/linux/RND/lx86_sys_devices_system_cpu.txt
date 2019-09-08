@@ -1,0 +1,524 @@
+ree /sys/devices/system/cpu/
+/sys/devices/system/cpu/
+├── cpu0
+│   ├── cache
+│   │   ├── index0
+│   │   │   ├── coherency_line_size
+│   │   │   ├── id
+│   │   │   ├── level
+│   │   │   ├── number_of_sets
+│   │   │   ├── physical_line_partition
+│   │   │   ├── power
+│   │   │   │   ├── async
+│   │   │   │   ├── autosuspend_delay_ms
+│   │   │   │   ├── control
+│   │   │   │   ├── runtime_active_kids
+│   │   │   │   ├── runtime_active_time
+│   │   │   │   ├── runtime_enabled
+│   │   │   │   ├── runtime_status
+│   │   │   │   ├── runtime_suspended_time
+│   │   │   │   └── runtime_usage
+│   │   │   ├── shared_cpu_list
+│   │   │   ├── shared_cpu_map
+│   │   │   ├── size
+│   │   │   ├── type
+│   │   │   ├── uevent
+│   │   │   └── ways_of_associativity
+│   │   ├── index1
+│   │   │   ├── coherency_line_size
+│   │   │   ├── id
+│   │   │   ├── level
+│   │   │   ├── number_of_sets
+│   │   │   ├── physical_line_partition
+│   │   │   ├── power
+│   │   │   │   ├── async
+│   │   │   │   ├── autosuspend_delay_ms
+│   │   │   │   ├── control
+│   │   │   │   ├── runtime_active_kids
+│   │   │   │   ├── runtime_active_time
+│   │   │   │   ├── runtime_enabled
+│   │   │   │   ├── runtime_status
+│   │   │   │   ├── runtime_suspended_time
+│   │   │   │   └── runtime_usage
+│   │   │   ├── shared_cpu_list
+│   │   │   ├── shared_cpu_map
+│   │   │   ├── size
+│   │   │   ├── type
+│   │   │   ├── uevent
+│   │   │   └── ways_of_associativity
+│   │   ├── index2
+│   │   │   ├── coherency_line_size
+│   │   │   ├── id
+│   │   │   ├── level
+│   │   │   ├── number_of_sets
+│   │   │   ├── physical_line_partition
+│   │   │   ├── power
+│   │   │   │   ├── async
+│   │   │   │   ├── autosuspend_delay_ms
+│   │   │   │   ├── control
+│   │   │   │   ├── runtime_active_kids
+│   │   │   │   ├── runtime_active_time
+│   │   │   │   ├── runtime_enabled
+│   │   │   │   ├── runtime_status
+│   │   │   │   ├── runtime_suspended_time
+│   │   │   │   └── runtime_usage
+│   │   │   ├── shared_cpu_list
+│   │   │   ├── shared_cpu_map
+│   │   │   ├── size
+│   │   │   ├── type
+│   │   │   ├── uevent
+│   │   │   └── ways_of_associativity
+│   │   ├── power
+│   │   │   ├── async
+│   │   │   ├── autosuspend_delay_ms
+│   │   │   ├── control
+│   │   │   ├── runtime_active_kids
+│   │   │   ├── runtime_active_time
+│   │   │   ├── runtime_enabled
+│   │   │   ├── runtime_status
+│   │   │   ├── runtime_suspended_time
+│   │   │   └── runtime_usage
+│   │   └── uevent
+│   ├── cpufreq -> ../cpufreq/policy0
+│   ├── cpuidle
+│   │   ├── state0
+│   │   │   ├── above
+│   │   │   ├── below
+│   │   │   ├── desc
+│   │   │   ├── disable
+│   │   │   ├── latency
+│   │   │   ├── name
+│   │   │   ├── power
+│   │   │   ├── residency
+│   │   │   ├── time
+│   │   │   └── usage
+│   │   ├── state1
+│   │   │   ├── above
+│   │   │   ├── below
+│   │   │   ├── desc
+│   │   │   ├── disable
+│   │   │   ├── latency
+│   │   │   ├── name
+│   │   │   ├── power
+│   │   │   ├── residency
+│   │   │   ├── s2idle
+│   │   │   │   ├── time
+│   │   │   │   └── usage
+│   │   │   ├── time
+│   │   │   └── usage
+│   │   ├── state2
+│   │   │   ├── above
+│   │   │   ├── below
+│   │   │   ├── desc
+│   │   │   ├── disable
+│   │   │   ├── latency
+│   │   │   ├── name
+│   │   │   ├── power
+│   │   │   ├── residency
+│   │   │   ├── s2idle
+│   │   │   │   ├── time
+│   │   │   │   └── usage
+│   │   │   ├── time
+│   │   │   └── usage
+│   │   ├── state3
+│   │   │   ├── above
+│   │   │   ├── below
+│   │   │   ├── desc
+│   │   │   ├── disable
+│   │   │   ├── latency
+│   │   │   ├── name
+│   │   │   ├── power
+│   │   │   ├── residency
+│   │   │   ├── s2idle
+│   │   │   │   ├── time
+│   │   │   │   └── usage
+│   │   │   ├── time
+│   │   │   └── usage
+│   │   ├── state4
+│   │   │   ├── above
+│   │   │   ├── below
+│   │   │   ├── desc
+│   │   │   ├── disable
+│   │   │   ├── latency
+│   │   │   ├── name
+│   │   │   ├── power
+│   │   │   ├── residency
+│   │   │   ├── s2idle
+│   │   │   │   ├── time
+│   │   │   │   └── usage
+│   │   │   ├── time
+│   │   │   └── usage
+│   │   ├── state5
+│   │   │   ├── above
+│   │   │   ├── below
+│   │   │   ├── desc
+│   │   │   ├── disable
+│   │   │   ├── latency
+│   │   │   ├── name
+│   │   │   ├── power
+│   │   │   ├── residency
+│   │   │   ├── s2idle
+│   │   │   │   ├── time
+│   │   │   │   └── usage
+│   │   │   ├── time
+│   │   │   └── usage
+│   │   ├── state6
+│   │   │   ├── above
+│   │   │   ├── below
+│   │   │   ├── desc
+│   │   │   ├── disable
+│   │   │   ├── latency
+│   │   │   ├── name
+│   │   │   ├── power
+│   │   │   ├── residency
+│   │   │   ├── s2idle
+│   │   │   │   ├── time
+│   │   │   │   └── usage
+│   │   │   ├── time
+│   │   │   └── usage
+│   │   └── state7
+│   │       ├── above
+│   │       ├── below
+│   │       ├── desc
+│   │       ├── disable
+│   │       ├── latency
+│   │       ├── name
+│   │       ├── power
+│   │       ├── residency
+│   │       ├── s2idle
+│   │       │   ├── time
+│   │       │   └── usage
+│   │       ├── time
+│   │       └── usage
+│   ├── crash_notes
+│   ├── crash_notes_size
+│   ├── driver -> ../../../../bus/cpu/drivers/processor
+│   ├── firmware_node -> ../../../LNXSYSTM:00/LNXCPU:00
+│   ├── hotplug
+│   │   ├── fail
+│   │   ├── state
+│   │   └── target
+│   ├── microcode
+│   │   ├── processor_flags
+│   │   └── version
+│   ├── node0 -> ../../node/node0
+│   ├── power
+│   │   ├── async
+│   │   ├── autosuspend_delay_ms
+│   │   ├── control
+│   │   ├── pm_qos_resume_latency_us
+│   │   ├── runtime_active_kids
+│   │   ├── runtime_active_time
+│   │   ├── runtime_enabled
+│   │   ├── runtime_status
+│   │   ├── runtime_suspended_time
+│   │   └── runtime_usage
+│   ├── subsystem -> ../../../../bus/cpu
+│   ├── thermal_throttle
+│   │   ├── core_throttle_count
+│   │   └── package_throttle_count
+│   ├── topology
+│   │   ├── core_id
+│   │   ├── core_siblings
+│   │   ├── core_siblings_list
+│   │   ├── physical_package_id
+│   │   ├── thread_siblings
+│   │   └── thread_siblings_list
+│   └── uevent
+├── cpu1
+│   ├── cache
+│   │   ├── index0
+│   │   │   ├── coherency_line_size
+│   │   │   ├── id
+│   │   │   ├── level
+│   │   │   ├── number_of_sets
+│   │   │   ├── physical_line_partition
+│   │   │   ├── power
+│   │   │   │   ├── async
+│   │   │   │   ├── autosuspend_delay_ms
+│   │   │   │   ├── control
+│   │   │   │   ├── runtime_active_kids
+│   │   │   │   ├── runtime_active_time
+│   │   │   │   ├── runtime_enabled
+│   │   │   │   ├── runtime_status
+│   │   │   │   ├── runtime_suspended_time
+│   │   │   │   └── runtime_usage
+│   │   │   ├── shared_cpu_list
+│   │   │   ├── shared_cpu_map
+│   │   │   ├── size
+│   │   │   ├── type
+│   │   │   ├── uevent
+│   │   │   └── ways_of_associativity
+│   │   ├── index1
+│   │   │   ├── coherency_line_size
+│   │   │   ├── id
+│   │   │   ├── level
+│   │   │   ├── number_of_sets
+│   │   │   ├── physical_line_partition
+│   │   │   ├── power
+│   │   │   │   ├── async
+│   │   │   │   ├── autosuspend_delay_ms
+│   │   │   │   ├── control
+│   │   │   │   ├── runtime_active_kids
+│   │   │   │   ├── runtime_active_time
+│   │   │   │   ├── runtime_enabled
+│   │   │   │   ├── runtime_status
+│   │   │   │   ├── runtime_suspended_time
+│   │   │   │   └── runtime_usage
+│   │   │   ├── shared_cpu_list
+│   │   │   ├── shared_cpu_map
+│   │   │   ├── size
+│   │   │   ├── type
+│   │   │   ├── uevent
+│   │   │   └── ways_of_associativity
+│   │   ├── index2
+│   │   │   ├── coherency_line_size
+│   │   │   ├── id
+│   │   │   ├── level
+│   │   │   ├── number_of_sets
+│   │   │   ├── physical_line_partition
+│   │   │   ├── power
+│   │   │   │   ├── async
+│   │   │   │   ├── autosuspend_delay_ms
+│   │   │   │   ├── control
+│   │   │   │   ├── runtime_active_kids
+│   │   │   │   ├── runtime_active_time
+│   │   │   │   ├── runtime_enabled
+│   │   │   │   ├── runtime_status
+│   │   │   │   ├── runtime_suspended_time
+│   │   │   │   └── runtime_usage
+│   │   │   ├── shared_cpu_list
+│   │   │   ├── shared_cpu_map
+│   │   │   ├── size
+│   │   │   ├── type
+│   │   │   ├── uevent
+│   │   │   └── ways_of_associativity
+│   │   ├── power
+│   │   │   ├── async
+│   │   │   ├── autosuspend_delay_ms
+│   │   │   ├── control
+│   │   │   ├── runtime_active_kids
+│   │   │   ├── runtime_active_time
+│   │   │   ├── runtime_enabled
+│   │   │   ├── runtime_status
+│   │   │   ├── runtime_suspended_time
+│   │   │   └── runtime_usage
+│   │   └── uevent
+│   ├── cpufreq -> ../cpufreq/policy1
+│   ├── cpuidle
+│   │   ├── state0
+│   │   │   ├── above
+│   │   │   ├── below
+│   │   │   ├── desc
+│   │   │   ├── disable
+│   │   │   ├── latency
+│   │   │   ├── name
+│   │   │   ├── power
+│   │   │   ├── residency
+│   │   │   ├── time
+│   │   │   └── usage
+│   │   ├── state1
+│   │   │   ├── above
+│   │   │   ├── below
+│   │   │   ├── desc
+│   │   │   ├── disable
+│   │   │   ├── latency
+│   │   │   ├── name
+│   │   │   ├── power
+│   │   │   ├── residency
+│   │   │   ├── s2idle
+│   │   │   │   ├── time
+│   │   │   │   └── usage
+│   │   │   ├── time
+│   │   │   └── usage
+│   │   ├── state2
+│   │   │   ├── above
+│   │   │   ├── below
+│   │   │   ├── desc
+│   │   │   ├── disable
+│   │   │   ├── latency
+│   │   │   ├── name
+│   │   │   ├── power
+│   │   │   ├── residency
+│   │   │   ├── s2idle
+│   │   │   │   ├── time
+│   │   │   │   └── usage
+│   │   │   ├── time
+│   │   │   └── usage
+│   │   ├── state3
+│   │   │   ├── above
+│   │   │   ├── below
+│   │   │   ├── desc
+│   │   │   ├── disable
+│   │   │   ├── latency
+│   │   │   ├── name
+│   │   │   ├── power
+│   │   │   ├── residency
+│   │   │   ├── s2idle
+│   │   │   │   ├── time
+│   │   │   │   └── usage
+│   │   │   ├── time
+│   │   │   └── usage
+│   │   ├── state4
+│   │   │   ├── above
+│   │   │   ├── below
+│   │   │   ├── desc
+│   │   │   ├── disable
+│   │   │   ├── latency
+│   │   │   ├── name
+│   │   │   ├── power
+│   │   │   ├── residency
+│   │   │   ├── s2idle
+│   │   │   │   ├── time
+│   │   │   │   └── usage
+│   │   │   ├── time
+│   │   │   └── usage
+│   │   ├── state5
+│   │   │   ├── above
+│   │   │   ├── below
+│   │   │   ├── desc
+│   │   │   ├── disable
+│   │   │   ├── latency
+│   │   │   ├── name
+│   │   │   ├── power
+│   │   │   ├── residency
+│   │   │   ├── s2idle
+│   │   │   │   ├── time
+│   │   │   │   └── usage
+│   │   │   ├── time
+│   │   │   └── usage
+│   │   ├── state6
+│   │   │   ├── above
+│   │   │   ├── below
+│   │   │   ├── desc
+│   │   │   ├── disable
+│   │   │   ├── latency
+│   │   │   ├── name
+│   │   │   ├── power
+│   │   │   ├── residency
+│   │   │   ├── s2idle
+│   │   │   │   ├── time
+│   │   │   │   └── usage
+│   │   │   ├── time
+│   │   │   └── usage
+│   │   └── state7
+│   │       ├── above
+│   │       ├── below
+│   │       ├── desc
+│   │       ├── disable
+│   │       ├── latency
+│   │       ├── name
+│   │       ├── power
+│   │       ├── residency
+│   │       ├── s2idle
+│   │       │   ├── time
+│   │       │   └── usage
+│   │       ├── time
+│   │       └── usage
+│   ├── crash_notes
+│   ├── crash_notes_size
+│   ├── driver -> ../../../../bus/cpu/drivers/processor
+│   ├── firmware_node -> ../../../LNXSYSTM:00/LNXCPU:02
+│   ├── hotplug
+│   │   ├── fail
+│   │   ├── state
+│   │   └── target
+│   ├── microcode
+│   │   ├── processor_flags
+│   │   └── version
+│   ├── node0 -> ../../node/node0
+│   ├── online
+│   ├── power
+│   │   ├── async
+│   │   ├── autosuspend_delay_ms
+│   │   ├── control
+│   │   ├── pm_qos_resume_latency_us
+│   │   ├── runtime_active_kids
+│   │   ├── runtime_active_time
+│   │   ├── runtime_enabled
+│   │   ├── runtime_status
+│   │   ├── runtime_suspended_time
+│   │   └── runtime_usage
+│   ├── subsystem -> ../../../../bus/cpu
+│   ├── thermal_throttle
+│   │   ├── core_throttle_count
+│   │   └── package_throttle_count
+│   ├── topology
+│   │   ├── core_id
+│   │   ├── core_siblings
+│   │   ├── core_siblings_list
+│   │   ├── physical_package_id
+│   │   ├── thread_siblings
+│   │   └── thread_siblings_list
+│   └── uevent
+├── cpufreq
+│   ├── policy0
+│   │   ├── affected_cpus
+│   │   ├── cpuinfo_max_freq
+│   │   ├── cpuinfo_min_freq
+│   │   ├── cpuinfo_transition_latency
+│   │   ├── related_cpus
+│   │   ├── scaling_available_governors
+│   │   ├── scaling_cur_freq
+│   │   ├── scaling_driver
+│   │   ├── scaling_governor
+│   │   ├── scaling_max_freq
+│   │   ├── scaling_min_freq
+│   │   └── scaling_setspeed
+│   └── policy1
+│       ├── affected_cpus
+│       ├── cpuinfo_max_freq
+│       ├── cpuinfo_min_freq
+│       ├── cpuinfo_transition_latency
+│       ├── related_cpus
+│       ├── scaling_available_governors
+│       ├── scaling_cur_freq
+│       ├── scaling_driver
+│       ├── scaling_governor
+│       ├── scaling_max_freq
+│       ├── scaling_min_freq
+│       └── scaling_setspeed
+├── cpuidle
+│   ├── current_driver
+│   └── current_governor_ro
+├── hotplug
+│   └── states
+├── intel_pstate
+│   ├── max_perf_pct
+│   ├── min_perf_pct
+│   ├── no_turbo
+│   ├── num_pstates
+│   ├── status
+│   └── turbo_pct
+├── isolated
+├── kernel_max
+├── microcode
+│   └── reload
+├── modalias
+├── offline
+├── online
+├── possible
+├── power
+│   ├── async
+│   ├── autosuspend_delay_ms
+│   ├── control
+│   ├── runtime_active_kids
+│   ├── runtime_active_time
+│   ├── runtime_enabled
+│   ├── runtime_status
+│   ├── runtime_suspended_time
+│   └── runtime_usage
+├── present
+├── smt
+│   ├── active
+│   └── control
+├── uevent
+└── vulnerabilities
+    ├── l1tf
+    ├── mds
+    ├── meltdown
+    ├── spec_store_bypass
+    ├── spectre_v1
+    └── spectre_v2
+
+
