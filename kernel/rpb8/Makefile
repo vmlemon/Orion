@@ -1,9 +1,9 @@
 ######################################################################
 ##                
-## Copyright (C) 2003-2004, 2007,  Karlsruhe University
+## Copyright (C) 2010,  Karlsruhe University
 ##                
-## File path:     config.mk.in
-## Description:   Configuration settings for current build
+## File path:     template/Makefile
+## Description:   Generic linkser script for x86.
 ##                
 ## Redistribution and use in source and binary forms, with or without
 ## modification, are permitted provided that the following conditions
@@ -26,50 +26,14 @@
 ## OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 ## SUCH DAMAGE.
 ##                
-## $Id: config.mk.in,v 1.13 2006/10/21 04:08:17 reichelt Exp $
+## $Id$
 ##                
 ######################################################################
-
-# config.mk.  Generated from config.mk.in by configure.
-
-ARCH=		powerpc64
-PLAT=           
-KERNEL=		powerpc64-kernel
-
-prefix=		/usr/local
-exec_prefix=	${prefix}
-includedir=	${prefix}/include
-libdir=		${exec_prefix}/lib/l4
-libexecdir=	${exec_prefix}/libexec/l4
-kerneldir=	$(top_builddir)
+.EXPORT_ALL_VARIABLES:
 
 
-SHELL=		/bin/sh
-CC=		gcc
-CXX=		$(CC) -x c++
-AS=		$(CC)
-CFLAGS=		-nostdinc -g -O2 -msoft-float -mminimal-toc   -fno-stack-protector -lssp
-CXXFLAGS=	$(CFLAGS) -fno-exceptions
-LDFLAGS=	-N -L$(top_builddir)/lib -L/usr/lib/gcc/ppc64-redhat-linux/8 -nostdlib 
-CPPFLAGS=	-I$(top_srcdir)/include -I$(top_builddir) -I/usr/lib/gcc/ppc64-redhat-linux/8/include 
-LGCC=		-lgcc
+-include Makeconf.local
 
-TOOLPREFIX=	
-AR=		$(TOOLPREFIX)ar
-RANLIB=		$(TOOLPREFIX)ranlib
-LD=		$(TOOLPREFIX)ld
-OBJCOPY=	$(TOOLPREFIX)objcopy
-RMDIR=		rmdir
-LN_S=		ln -s
-AUTOCONF=	autoconf
-MKDIRHIER=	$(top_srcdir)/../tools/mkdirhier
-AWK=		gawk
+all $(filter-out all, $(MAKECMDGOALS)):
+	@$(MAKE) -f $(SRCDIR)/Makefile $@
 
-INSTALL=	/usr/bin/install -c
-INSTALL_PROGRAM=${INSTALL}
-INSTALL_DATA=	${INSTALL} -m 644
-INSTALL_SCRIPT=	${INSTALL}
-
-KICKSTART_LINKBASE=	
-SIGMA0_LINKBASE=	00100000
-ROOTTASK_LINKBASE=	00300000

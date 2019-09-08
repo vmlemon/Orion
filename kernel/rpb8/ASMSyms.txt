@@ -1,0 +1,20 @@
+[root@fedora28 rpb8]# CC=gcc34 make asmsyms.h
+make[1]: Entering directory '/root/Orion/kernel/rpb8'
+===> src/glue/v4-powerpc64/asmsyms.cc
+cd src/glue/v4-powerpc64/ && gcc34 -nostdinc -I/root/Orion/kernel/rpb8/include -I/root/Orion/kernel/src -I/root/Orion/kernel/src/generic -I/usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/ -Upowerpc64 -Upower4 -Uofpower4 -Uv4 -Urr -D__ARCH__=powerpc64 -D__CPU__=power4 -D__PLATFORM__=ofpower4 -D__API__=v4 -D__SCHED__=rr -imacros /root/Orion/kernel/rpb8/config/config.h -imacros /root/Orion/kernel/src/generic/macros.h -include /root/Orion/kernel/src/generic/config.h  -include /root/Orion/kernel/src/generic/types.h -fno-rtti -fno-builtin  -fomit-frame-pointer -fno-exceptions -Wall -Wno-non-virtual-dtor -Wno-format -O2 -mpowerpc64 -msoft-float -mno-minimal-toc  -mcpu=power4   -Wconversion  -c /root/Orion/kernel/src/glue/v4-powerpc64/asmsyms.cc
+In file included from /root/Orion/kernel/src/api/v4/space.h:36,
+                 from /root/Orion/kernel/src/api/v4/tcb.h:43,
+                 from /root/Orion/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/root/Orion/kernel/src/glue/v4-powerpc64/space.h:312: error: prototype for `void space_t::add_tcb(tcb_t*, cpuid_t)' does not match any in class `space_t'
+/root/Orion/kernel/src/glue/v4-powerpc64/space.h:121: error: candidate is: void space_t::add_tcb(tcb_t*)
+/root/Orion/kernel/src/glue/v4-powerpc64/space.h:322: error: prototype for `bool space_t::remove_tcb(tcb_t*, cpuid_t)' does not match any in class `space_t'
+/root/Orion/kernel/src/glue/v4-powerpc64/space.h:122: error: candidate is: bool space_t::remove_tcb(tcb_t*)
+In file included from /root/Orion/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/root/Orion/kernel/src/api/v4/tcb.h: In static member function `static bool tcb_t::is_tcb(void*)':
+/root/Orion/kernel/src/api/v4/tcb.h:429: warning: comparison is always true due to limited range of data type
+/root/Orion/kernel/src/glue/v4-powerpc64/pgent.h: At global scope:
+/root/Orion/kernel/src/glue/v4-powerpc64/pgent.h:196: warning: inline function `pgent_t* pgent_t::next(space_t*, pgent_t::pgsize_e, word_t)' used but never defined
+make[1]: *** No rule to make target 'src/glue/v4-powerpc64/asmsyms.o', needed by '/root/Orion/kernel/rpb8/include/asmsyms.h'.  Stop.
+make[1]: Leaving directory '/root/Orion/kernel/rpb8'
+make: *** [Makefile:38: asmsyms.h] Error 2
+
