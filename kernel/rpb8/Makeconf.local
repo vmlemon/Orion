@@ -38,7 +38,7 @@ ARCH=powerpc64
 SUBARCH=
 CPU=power4
 PLATFORM=ofpower4
-SCHED=
+SCHED=rr
 
 
 BUILDDIR = $(CURDIR)
