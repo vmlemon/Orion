@@ -10,9 +10,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h
@@ -30,9 +29,8 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h \
  /root/Orion/kernel/src/generic/kmemory.h \
- /root/Orion/kernel/src/generic/sync.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/sync.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -85,8 +83,8 @@
  /root/Orion/kernel/src/arch/powerpc64/1275tree.h \
  /root/Orion/kernel/src/arch/powerpc64/ppc64_registers.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -108,9 +106,8 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/intctrl.h \
- /root/Orion/kernel/src/generic/intctrl.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/intctrl.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -153,8 +150,8 @@
  /root/Orion/kernel/src/generic/types.h \
  /root/Orion/kernel/src/arch/powerpc64/string.h \
  /root/Orion/kernel/src/arch/powerpc64/1275tree.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h
@@ -176,8 +173,8 @@
  /root/Orion/kernel/src/arch/powerpc64/string.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h
@@ -204,8 +201,8 @@
  /root/Orion/kernel/src/arch/powerpc64/1275tree.h \
  /root/Orion/kernel/src/platform/ofpower4/prom.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -223,9 +220,8 @@
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/api/v4/tcb.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/api/v4/tcb.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -283,9 +279,8 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/api/v4/smp.h \
  /root/Orion/kernel/src/api/v4/types.h \
- /root/Orion/kernel/src/api/v4/tcb.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/api/v4/tcb.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
  /root/Orion/kernel/src/api/v4/queueing.h \
  /root/Orion/kernel/src/api/v4/threadstate.h \
@@ -332,9 +327,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -391,9 +385,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -447,9 +440,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -472,9 +464,8 @@
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/api/v4/tcb.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/api/v4/tcb.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -530,9 +521,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -589,9 +579,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -648,8 +637,8 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/l4.h \
  /root/Orion/kernel/src/macros.h /root/Orion/kernel/src/generic/config.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -708,9 +697,8 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h \
  /root/Orion/kernel/src/generic/sync.h \
- /root/Orion/kernel/src/kdb/tracepoints.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/kdb/tracepoints.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -761,9 +749,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -791,9 +778,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -852,8 +838,8 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h \
  /root/Orion/kernel/src/arch/powerpc64/string.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h
@@ -869,9 +855,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -942,8 +927,8 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h \
  /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h
@@ -962,9 +947,8 @@
  /root/Orion/kernel/src/generic/types.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
- /root/Orion/kernel/src/api/v4/tcb.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/api/v4/tcb.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/api/v4/types.h \
@@ -1008,9 +992,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1066,9 +1049,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1122,9 +1104,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1193,9 +1174,8 @@
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/api/v4/tcb.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/api/v4/tcb.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1244,9 +1224,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1284,9 +1263,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1358,9 +1336,8 @@
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/api/v4/tcb.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/api/v4/tcb.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1419,8 +1396,8 @@
  /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
  /root/Orion/kernel/src/arch/powerpc64/power4.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1471,9 +1448,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1525,9 +1501,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1566,9 +1541,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1618,9 +1592,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1639,9 +1612,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1661,9 +1633,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1715,9 +1686,8 @@
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/kdb/kdb.h \
  /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
  kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/kdb/tracepoints.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/kdb/tracepoints.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1735,9 +1705,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1757,9 +1726,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1779,9 +1747,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1799,9 +1766,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1863,9 +1829,8 @@
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/memdesc.h \
  /root/Orion/kernel/src/api/v4/procdesc.h \
- /root/Orion/kernel/src/api/v4/tcb.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/api/v4/tcb.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1909,9 +1874,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1932,9 +1896,8 @@
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/kdb/tracepoints.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/kdb/tracepoints.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -1986,9 +1949,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -2031,9 +1993,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -2070,9 +2031,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -2093,9 +2053,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -2146,9 +2105,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -2171,9 +2129,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -2235,9 +2192,8 @@
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/memdesc.h \
  /root/Orion/kernel/src/api/v4/procdesc.h \
- /root/Orion/kernel/src/api/v4/tcb.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/api/v4/tcb.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -2278,9 +2234,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -2335,9 +2290,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -2406,9 +2360,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -2458,9 +2411,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -2480,9 +2432,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -2502,9 +2453,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -2524,9 +2474,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -2580,9 +2529,8 @@
  /root/Orion/kernel/src/arch/powerpc64/types.h \
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
- /root/Orion/kernel/src/generic/types.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
@@ -2625,9 +2573,8 @@
  /root/Orion/kernel/src/generic/types.h \
  /root/Orion/kernel/src/generic/mkasmsym.h \
  /root/Orion/kernel/src/api/v4/threadstate.h \
- /root/Orion/kernel/src/api/v4/tcb.h \
- /root/Orion/kernel/src/generic/debug.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/debug.h \
+ /root/Orion/kernel/src/api/v4/tcb.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
