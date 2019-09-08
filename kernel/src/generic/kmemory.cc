@@ -41,6 +41,9 @@
 
 //#define DEBUG_KMEM
 
+//No SCONS, here...
+#define CONFIG_ASSERT_LEVEL 2
+
 #ifdef DEBUG_KMEM
 # define ALLOC_TRACE	TRACE
 # define FREE_TRACE	TRACE

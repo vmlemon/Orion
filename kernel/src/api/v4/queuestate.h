@@ -32,6 +32,9 @@
 #ifndef __API__V4__QUEUESTATE_H__
 #define __API__V4__QUEUESTATE_H__
 
+//We don't use SCONS, so set it manually
+#define CONFIG_ASSERT_LEVEL 2
+
 /* VU:
  * The separation of queue_state_t allows architecture specific
  * optimizations. For example, if a certain hardware architecture 

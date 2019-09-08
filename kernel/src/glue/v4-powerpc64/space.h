@@ -167,7 +167,7 @@ private:
     // TODO: when we create a new mapping that disables the cache,
     // we must flush the cache for that page to avoid cache paradoxes.
 
-    void space_t::add_mapping( addr_t vaddr, addr_t paddr,
+    void add_mapping( addr_t vaddr, addr_t paddr,
 		    bool writable, bool executable,
 		    bool kernel, pgent_t::pgsize_e size );
 
