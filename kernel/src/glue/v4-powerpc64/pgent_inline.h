@@ -26,7 +26,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
- * $Id: pgent_inline.h,v 1.10 2006/11/17 17:02:04 skoglund Exp $
+ * $Id: pgent_inline.h,v 1.9 2004/12/09 00:59:15 cvansch Exp $
  *
  ***************************************************************************/
 
@@ -41,11 +41,11 @@
 
 EXTERN_KMEM_GROUP (kmem_pgtab);
 
-extern word_t hw_pgshifts[];
+extern const word_t hw_pgshifts[];
 
 INLINE word_t subtree_size (pgent_t::pgsize_e pgsize)
 {
-    ASSERT( pgsize != pgent_t::size_4k );
+    ASSERT( DEBUG, pgsize != pgent_t::size_4k );
     return 1UL << (hw_pgshifts[pgsize] - hw_pgshifts[pgsize-1]);
 }
 
@@ -77,7 +77,7 @@ inline word_t pgent_t::get_linknode( space_t * s, pgsize_e pgsize )
     /* Presently, large pages are only supported for kernel */
     if ( pgsize != size_4k )
 	printf("get_linknode failed: %p, %d, - %p\n", s, pgsize, this);
-    ASSERT( pgsize == size_4k );
+    ASSERT( DEBUG, pgsize == size_4k );
     return *(word_t *) ((word_t) this + PPC64_SIZE_4k_LEVEL ); 
 }
 
@@ -85,7 +85,7 @@ inline void pgent_t::set_linknode( space_t * s, pgsize_e pgsize, word_t val )
 { 
 //    *(word_t *) ((word_t) this + (pgsize == size_4k) ? PPC64_SIZE_4k_LEVEL : PPC64_SIZE_16m_LEVEL ) = val; 
     /* Presently, large pages are only supported for kernel */
-    ASSERT( pgsize == size_4k );
+    ASSERT( DEBUG, pgsize == size_4k );
     *(word_t *) ((word_t) this + PPC64_SIZE_4k_LEVEL ) = val; 
 }
 
@@ -167,7 +167,7 @@ inline word_t pgent_t::get_pte( space_t *s )
     return this->raw & PPC64_PAGE_PTE_MASK;
 }
 
-inline word_t pgent_t::attributes( space_t * s, pgsize_e pgsize )
+inline word_t pgent_t::get_attributes( space_t * s, pgsize_e pgsize )
 {
     return this->map.wimg;
 }
@@ -216,17 +216,18 @@ inline void pgent_t::remove_subtree( space_t * s, pgsize_e pgsize, bool kernel )
 
 }
 
-/*inline void pgent_t::set_entry( space_t * s, pgsize_e pgsize, addr_t paddr,
-				word_t rwx, word_t attrib, bool kernel )
+inline void pgent_t::set_entry( space_t * s, pgsize_e pgsize,
+	addr_t paddr, bool readable, bool writable,
+	bool executable, bool kernel, word_t attrib )
 {
-    this->map.pp = kernel ? pgent_t::kernel_only : (rwx & 2 ?  pgent_t::read_write : pgent_t::read_only);
+    this->map.pp = kernel ? pgent_t::kernel_only : (writable ?  pgent_t::read_write : pgent_t::read_only);
 
     this->map.wimg = attrib;
 
     this->map.rpn = (word_t)paddr >> POWERPC64_PAGE_BITS;
     this->map.is_valid = 1;
-    this->map.noexecute = ! (rwx & 1);
-}*/
+    this->map.noexecute = (executable == false);
+}
 
 inline void pgent_t::update_rights( space_t *s, pgsize_e pgsize, word_t rwx )
 { 
@@ -244,7 +245,7 @@ inline void pgent_t::revoke_rights( space_t *s, pgsize_e pgsize, word_t rwx )
 	this->map.noexecute = 1;
 }
 
-inline void pgent_t::set_attributes( space_t *s, pgsize_e pgsize, word_t attrib )
+inline void pgent_t::set_attributes( space_t *s, pgsize_e pgsize, wimg_e attrib )
 {
     this->map.wimg = attrib;
 }

@@ -26,7 +26,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
- * $Id: space.h,v 1.15 2006/11/14 18:44:56 skoglund Exp $
+ * $Id: space.h,v 1.12 2005/01/18 12:57:27 cvansch Exp $
  *
  ***************************************************************************/
 
@@ -35,18 +35,16 @@
 
 #include <debug.h>
 
-//Hack - types.h normally defines this
-
-typedef u16_t cpuid_t;
-
 #include INC_ARCH(vsid_asid.h)
 #include INC_ARCH(pghash.h)
 
 #include INC_API(fpage.h)
 #include INC_API(thread.h)
+#include INC_API(queueing.h)
 
 #include INC_GLUE(pgent.h)
 #include INC_GLUE(hwspace.h)
+#include <sync.h>
 
 #if CONFIG_POWERPC64_STAB
 #include INC_ARCH(stab.h)
@@ -54,16 +52,6 @@ typedef u16_t cpuid_t;
 #define HAVE_ARCH_FREE_SPACE
 #endif
 
-// Even if new MDB is not used we need the mdb_t::ctrl_t
-#include <mdb.h>
-
-//translation table (actual declaration in space.cc)
-#define TRANSLATION_TABLE_ENTRIES 32
-extern struct transTable_t {
-	word_t s0addr;
-	paddr_t physaddr;
-	word_t size;
-} transTable[TRANSLATION_TABLE_ENTRIES];
 
 class utcb_t;
 class tcb_t;
@@ -89,44 +77,47 @@ public:
 
     /* sigma0 handling */
     void map_sigma0(addr_t addr);				// glue
-    void map_fpage(fpage_t snd_fp, word_t base, space_t * t_space,
+    bool map_fpage(fpage_t snd_fp, word_t base, space_t * t_space,
 		    fpage_t rcv_fp, bool grant);
     fpage_t unmap_fpage(fpage_t fpage, bool flush, bool unmap_all );
-    fpage_t mapctrl (fpage_t fpage, mdb_t::ctrl_t ctrl,
-		     word_t attribute, bool unmap_all);
     
     /* tcb management */
     void allocate_tcb(addr_t addr);				// glue
     void map_dummy_tcb(addr_t addr);				// glue
     utcb_t * allocate_utcb(tcb_t * tcb);
 
+    tcb_t * get_tcb(threadid_t tid);
+    tcb_t * get_tcb(void * ptr);
+
+    ringlist_t<space_t> get_spaces_list() {
+	return x.spaces_list;
+    }
+    tcb_t * get_thread_list() {
+	return x.thread_list;
+    }
+    void enqueue_spaces();
+    void dequeue_spaces();
+
     /* address ranges */
-    static bool is_user_area(addr_t addr);
-    static bool is_user_area(fpage_t fpage);
-    static bool is_kernel_area(addr_t addr);
-    static bool is_tcb_area(addr_t addr);
-    static  bool is_copy_area (addr_t addr);
+    inline bool is_user_area(addr_t addr);
+    bool is_user_area(fpage_t fpage);
+    bool is_tcb_area(addr_t addr);
+    static inline bool is_kernel_area(addr_t addr);
+    bool is_cpu_area(addr_t addr);
 
     bool is_mappable(addr_t addr);
     bool is_mappable(fpage_t fpage);
-    static const bool is_arch_mappable(addr_t addr, size_t size) { return true; }
-    static const addr_t sign_extend(addr_t addr) { return addr; }
-
-    static bool is_cpu_area(addr_t addr);
-
-    /* Copy area related methods */
-    word_t get_copy_limit (addr_t addr, word_t limit);
 
     /* kip and utcb handling */
     fpage_t get_kip_page_area();
     fpage_t get_utcb_page_area();
 
-    /* space control */
-    word_t space_t::space_control (word_t ctrl, fpage_t kip_area, fpage_t utcb_area, threadid_t redirector_tid) { return 0; }
+    /* reference counting */
+    void add_tcb(tcb_t * tcb);
+    bool remove_tcb(tcb_t * tcb);
 
-    /* sigma0 translation hooks */
-    static paddr_t sigma0_translate(addr_t addr, pgent_t::pgsize_e size) { return (paddr_t)addr; }
-    static word_t sigma0_attributes(pgent_t *pg, addr_t addr, pgent_t::pgsize_e size) { return 0; };
+    /* space control */
+    word_t space_control (word_t ctrl) { return 0; }
 
     /* tlb */
     void flush_tlb( space_t *curspace );
@@ -146,32 +137,6 @@ public:
     bool handle_protection_fault( addr_t vaddr, bool dsi );
     bool handle_segment_miss( addr_t vaddr );
 
-
-            /**
- * adds a thread to the space
- * @param tcb pointer to thread control block
- */
-//INLINE void space_t::add_tcb(tcb_t * tcb, cpuid_t cpu)
-inline void space_t::add_tcb(tcb_t * tcb, cpuid_t cpu)
-{
-    x.thread_count ++;
-}
-
-/**
- * removes a thread from a space
- * @param tcb_t thread control block
- * @return true if it was the last thread
- */
-//INLINE bool space_t::remove_tcb(tcb_t * tcb, cpuid_t cpu)
-inline  bool space_t::remove_tcb(tcb_t * tcb, cpuid_t cpu)
-
-{
-    ASSERT(x.thread_count != 0);
-    x.thread_count --;
-    return (x.thread_count == 0);
-}
-
-
     inline pgent_t * get_pdir() { return this->pdir; }
     inline word_t get_vsid_asid() { return x.vsid_asid.get( this ); }
     word_t get_vsid( addr_t vaddr );
@@ -185,7 +150,7 @@ inline  bool space_t::remove_tcb(tcb_t * tcb, cpuid_t cpu)
     /* Methods needed by linear page table walker. */
     pgent_t *pgent( word_t num, word_t cpu=0 );
     bool lookup_mapping( addr_t vaddr, pgent_t ** r_pg,
-			 pgent_t::pgsize_e *r_size, cpuid_t cpu=0);
+	    pgent_t::pgsize_e *r_size );
     bool readmem (addr_t vaddr, word_t * contents);
     static word_t readmem_phys (addr_t paddr)
 	{ return *phys_to_virt((word_t*)paddr); }
@@ -234,22 +199,49 @@ private:
 	    fpage_t utcb_area;
 	    word_t  thread_count;
 	    vsid_asid_t vsid_asid;  /* 9-bit ASID - shifted to fit VSID */
+	    ringlist_t<space_t>	spaces_list;
+	    tcb_t * thread_list;
 
 #if CONFIG_POWERPC64_SLB
 	    /* XXX - we don't use this yet, we just do random replacement */
 	    u64_t   slb_bitmap;	    /* Segement lookaside buffer usage bitmap */
 	    word_t  segments[48];
-	    word_t  resv[64-48-5];
+	    word_t  resv[64-48-8];
 #elif CONFIG_POWERPC64_STAB
 
 	    ppc64_stab_t segment_table;
-	    word_t  resv[64-5];
+	    word_t  resv[64-8];
 #endif
 	} x;
     };
 };
 
+/**
+ * enqueue a spaces into the spaces list
+ * the present list primarily exists for debugging reasons
+ */
+#ifdef CONFIG_DEBUG
+extern space_t * global_spaces_list;
+extern spinlock_t spaces_list_lock;
+#endif
 
+INLINE void space_t::enqueue_spaces()
+{
+#ifdef CONFIG_DEBUG
+    spaces_list_lock.lock();
+    ENQUEUE_LIST_TAIL(global_spaces_list, this, x.spaces_list);
+    spaces_list_lock.unlock();
+#endif
+}
+
+INLINE void space_t::dequeue_spaces()
+{
+#ifdef CONFIG_DEBUG
+    spaces_list_lock.lock();
+    DEQUEUE_LIST(global_spaces_list, this, x.spaces_list);
+    spaces_list_lock.unlock();
+#endif
+}
 
 /**********************************************************************
  *
@@ -277,30 +269,29 @@ INLINE pgent_t * space_t::pgent( word_t num, word_t cpu )
 }
 
 
+/* XXX these can be optimised */
+INLINE bool space_t::is_user_area(addr_t addr)
+{
+    return (addr >= (addr_t)USER_AREA_START &&
+	    addr < (addr_t)USER_AREA_END);
+}
+
+INLINE bool space_t::is_tcb_area(addr_t addr)
+{
+    return (addr >= (addr_t)KTCB_AREA_START &&
+	    addr < (addr_t)KTCB_AREA_END);
+}
+
+INLINE bool space_t::is_kernel_area(addr_t addr)
+{
+    return (addr >= (addr_t)KERNEL_AREA_START &&
+	    addr < (addr_t)KERNEL_AREA_END);
+}
+
 INLINE bool space_t::is_cpu_area(addr_t addr)
 {
     return (addr >= (addr_t)CPU_AREA_START &&
 	    addr < (addr_t)CPU_AREA_END);
-}
-
-INLINE word_t space_t::get_copy_limit (addr_t addr, word_t len)
-{
-    word_t end = (word_t)addr + len;
-
-    if( is_user_area(addr) )
-    {
-	if( end >= USER_AREA_END )
-	    return (USER_AREA_END - (word_t)addr);
-    }
-    else
-    {
-	ASSERT( is_copy_area(addr) );
-	word_t max = COPY_AREA_SIZE - ((word_t)addr - COPY_AREA_START);
-	if( len > max )
-	    return max;
-    }
-
-    return len;
 }
 
 INLINE fpage_t space_t::get_kip_page_area()
@@ -318,6 +309,17 @@ INLINE word_t space_t::get_from_user(addr_t addr)
     return *(word_t *)(addr);
 }
 
+INLINE tcb_t * space_t::get_tcb( threadid_t tid )
+{
+    return (tcb_t *)((KTCB_AREA_START) + 
+		    ((tid.get_threadno() & (VALID_THREADNO_MASK)) * KTCB_SIZE));
+}
+
+INLINE tcb_t * space_t::get_tcb(void * ptr)
+{
+   return (tcb_t*)((word_t)(ptr) & KTCB_MASK);
+}
+
 INLINE word_t space_t::get_vsid( addr_t addr )
 {
     word_t vsid;
@@ -331,34 +333,6 @@ INLINE word_t space_t::get_vsid( addr_t addr )
     /* Add VSID and ASID */
     return vsid | (((word_t)addr >> POWERPC64_SEGMENT_BITS) & ((1ul << CONFIG_POWERPC64_ESID_BITS)-1));
 }
-
-
-//This is a hack
-//INLINE void space_t::add_tcb(tcb_t * tcb)
-//inline void space_t::add_tcb(tcb_t * tcb)
-//{
-  //  x.thread_count ++;
-//}
-
-/*INLINE void add_tcb(tcb_t * tcb)
-//inline void space_t::add_tcb(tcb_t * tcb)
-{
-    x.thread_count ++;
-} */
-
-/**
- * removes a thread from a space
- * @param tcb_t thread control block
- * @return true if it was the last thread
- */
-
-/*INLINE bool space_t::remove_tcb(tcb_t * tcb)
-{
-    ASSERT(x.thread_count != 0);
-    x.thread_count --;
-    return (x.thread_count == 0);
-} */
-
 
 INLINE void space_t::flush_tlb( space_t *curspace )
 {
