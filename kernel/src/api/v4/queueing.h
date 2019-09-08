@@ -79,11 +79,11 @@ do {							\
 } while(0)
     
 
-template <class T> class ringlist_t
+/*template <class T> class ringlist_t
 {
 public:
     T * next;
     T * prev;
 };
-
+*/
 #endif /* !__API__V4__QUEUEING_H__ */
