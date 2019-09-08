@@ -52,6 +52,11 @@ enum sched_flags_e
     pm_chk_preemption_flag = 6, // PM-scheduling check
 };
 
+//Workaround
+#ifdef __powerpc64__
+#define CACHE_LINE_SIZE 128
+#endif
+
 typedef u8_t sched_flags_t;
 
 
