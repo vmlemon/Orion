@@ -45,13 +45,13 @@ kerneldir=	$(top_builddir)
 
 
 SHELL=		/bin/sh
-CC=		gcc
+CC=		gcc34
 CXX=		$(CC) -x c++
 AS=		$(CC)
 CFLAGS=		-nostdinc -g -O2 -msoft-float -mminimal-toc   -fno-stack-protector -lssp
 CXXFLAGS=	$(CFLAGS) -fno-exceptions
-LDFLAGS=	-N -L$(top_builddir)/lib -L/usr/lib/gcc/ppc64-redhat-linux/8 -nostdlib 
-CPPFLAGS=	-I$(top_srcdir)/include -I$(top_builddir) -I/usr/lib/gcc/ppc64-redhat-linux/8/include 
+LDFLAGS=	-N -L$(top_builddir)/lib -L/usr/lib/gcc/ppc64-redhat-linux/3.4.6 -nostdlib 
+CPPFLAGS=	-I$(top_srcdir)/include -I$(top_builddir) -I/usr/lib/gcc/ppc64-redhat-linux/3.4.6/include 
 LGCC=		-lgcc
 
 TOOLPREFIX=	

@@ -40,65 +40,58 @@ PATH: /bin
 ## ----------- ##
 
 configure:1933: checking for gcc
-configure:1949: found /usr/bin/gcc
-configure:1960: result: gcc
+configure:1960: result: gcc34
 configure:2189: checking for C compiler version
-configure:2198: gcc --version >&5
-gcc (GCC) 8.3.1 20190223 (Red Hat 8.3.1-2)
-Copyright (C) 2018 Free Software Foundation, Inc.
+configure:2198: gcc34 --version >&5
+gcc34 (GCC) 3.4.6 20060404 (Red Hat 3.4.6-46.fc28)
+Copyright (C) 2006 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 configure:2209: $? = 0
-configure:2198: gcc -v >&5
-Using built-in specs.
-COLLECT_GCC=gcc
-COLLECT_LTO_WRAPPER=/usr/libexec/gcc/ppc64-redhat-linux/8/lto-wrapper
-Target: ppc64-redhat-linux
-Configured with: ../configure --enable-bootstrap --enable-languages=c,c++,fortran,objc,obj-c++,ada,go,lto --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-shared --enable-threads=posix --enable-checking=release --enable-multilib --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-gcc-major-version-only --with-linker-hash-style=gnu --enable-plugin --enable-initfini-array --with-isl --disable-libmpx --enable-gnu-indirect-function --enable-secureplt --with-long-double-128 --build=ppc64-redhat-linux
+configure:2198: gcc34 -v >&5
+Reading specs from /usr/lib/gcc/ppc64-redhat-linux/3.4.6/specs
+Configured with: ../configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --enable-shared --enable-threads=posix --disable-checking --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-languages=c,c++,f77 --disable-libgcj --host=ppc64-redhat-linux
 Thread model: posix
-gcc version 8.3.1 20190223 (Red Hat 8.3.1-2) (GCC) 
+gcc version 3.4.6 20060404 (Red Hat 3.4.6-46.fc28)
 configure:2209: $? = 0
-configure:2198: gcc -V >&5
-gcc: error: unrecognized command line option '-V'
-gcc: fatal error: no input files
-compilation terminated.
+configure:2198: gcc34 -V >&5
+gcc34: `-V' option must have argument
 configure:2209: $? = 1
-configure:2198: gcc -qversion >&5
-gcc: error: unrecognized command line option '-qversion'; did you mean '--version'?
-gcc: fatal error: no input files
-compilation terminated.
+configure:2198: gcc34 -qversion >&5
+gcc34: unrecognized option `-qversion'
+gcc34: no input files
 configure:2209: $? = 1
 configure:2229: checking whether the C compiler works
-configure:2251: gcc    conftest.c  >&5
+configure:2251: gcc34    conftest.c  >&5
 configure:2255: $? = 0
 configure:2303: result: yes
 configure:2306: checking for C compiler default output file name
 configure:2308: result: a.out
 configure:2314: checking for suffix of executables
-configure:2321: gcc -o conftest    conftest.c  >&5
+configure:2321: gcc34 -o conftest    conftest.c  >&5
 configure:2325: $? = 0
 configure:2347: result: 
 configure:2369: checking whether we are cross compiling
-configure:2377: gcc -o conftest    conftest.c  >&5
+configure:2377: gcc34 -o conftest    conftest.c  >&5
 configure:2381: $? = 0
 configure:2388: ./conftest
 configure:2392: $? = 0
 configure:2407: result: no
 configure:2412: checking for suffix of object files
-configure:2434: gcc -c   conftest.c >&5
+configure:2434: gcc34 -c   conftest.c >&5
 configure:2438: $? = 0
 configure:2459: result: o
 configure:2463: checking whether we are using the GNU C compiler
-configure:2482: gcc -c   conftest.c >&5
+configure:2482: gcc34 -c   conftest.c >&5
 configure:2482: $? = 0
 configure:2491: result: yes
-configure:2500: checking whether gcc accepts -g
-configure:2520: gcc -c -g  conftest.c >&5
+configure:2500: checking whether gcc34 accepts -g
+configure:2520: gcc34 -c -g  conftest.c >&5
 configure:2520: $? = 0
 configure:2561: result: yes
-configure:2578: checking for gcc option to accept ISO C89
-configure:2641: gcc  -c -g -O2  conftest.c >&5
+configure:2578: checking for gcc34 option to accept ISO C89
+configure:2641: gcc34  -c -g -O2  conftest.c >&5
 configure:2641: $? = 0
 configure:2654: result: none needed
 configure:2717: checking for a BSD-compatible install
@@ -111,9 +104,9 @@ configure:2842: checking for gawk
 configure:2858: found /usr/bin/gawk
 configure:2869: result: gawk
 configure:2953: checking location of libgcc.a
-configure:2957: result: /usr/lib/gcc/ppc64-redhat-linux/8
+configure:2957: result: /usr/lib/gcc/ppc64-redhat-linux/3.4.6
 configure:2960: checking location of stdarg.h
-configure:2980: result: /usr/lib/gcc/ppc64-redhat-linux/8/include
+configure:2980: result: /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include
 configure:2987: checking kernel build directory
 configure:3029: result: $(top_builddir)
 configure:3239: creating ./config.status
@@ -161,8 +154,8 @@ config.status:998: config.h is unchanged
 ## ---------------- ##
 
 ac_cv_c_compiler_gnu=yes
-ac_cv_env_CC_set=
-ac_cv_env_CC_value=
+ac_cv_env_CC_set=set
+ac_cv_env_CC_value=gcc34
 ac_cv_env_CFLAGS_set=
 ac_cv_env_CFLAGS_value=
 ac_cv_env_CPPFLAGS_set=
@@ -180,7 +173,7 @@ ac_cv_env_target_alias_value=
 ac_cv_objext=o
 ac_cv_path_install='/usr/bin/install -c'
 ac_cv_prog_AWK=gawk
-ac_cv_prog_ac_ct_CC=gcc
+ac_cv_prog_ac_ct_CC=gcc34
 ac_cv_prog_cc_c89=
 ac_cv_prog_cc_g=yes
 ac_cv_prog_make_make_set=yes
@@ -191,9 +184,9 @@ ac_cv_prog_make_make_set=yes
 
 ARCH='powerpc64'
 AWK='gawk'
-CC='gcc'
+CC='gcc34'
 CFLAGS='-nostdinc -g -O2 -msoft-float -mminimal-toc'
-CPPFLAGS='-I$(top_srcdir)/include -I$(top_builddir) -I/usr/lib/gcc/ppc64-redhat-linux/8/include '
+CPPFLAGS='-I$(top_srcdir)/include -I$(top_builddir) -I/usr/lib/gcc/ppc64-redhat-linux/3.4.6/include '
 CROSSCC=''
 CXXFLAGS='-fno-exceptions '
 DEFS='-DHAVE_CONFIG_H'
@@ -206,7 +199,7 @@ INSTALL_PROGRAM='${INSTALL}'
 INSTALL_SCRIPT='${INSTALL}'
 KERNEL='powerpc64-kernel'
 KICKSTART_LINKBASE=''
-LDFLAGS='-N -L$(top_builddir)/lib -L/usr/lib/gcc/ppc64-redhat-linux/8 -nostdlib '
+LDFLAGS='-N -L$(top_builddir)/lib -L/usr/lib/gcc/ppc64-redhat-linux/3.4.6 -nostdlib '
 LIBOBJS=''
 LIBS=''
 LN_S='ln -s'
@@ -225,7 +218,7 @@ SET_MAKE=''
 SHELL='/bin/sh'
 SIGMA0_LINKBASE='00100000'
 TOOLPREFIX=''
-ac_ct_CC='gcc'
+ac_ct_CC='gcc34'
 bindir='${exec_prefix}/bin'
 build_alias=''
 datadir='${datarootdir}'
