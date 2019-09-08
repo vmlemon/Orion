@@ -1,6 +1,6 @@
 /*********************************************************************
  *                
- * Copyright (C) 2003, 2007, 2009,  Karlsruhe University
+ * Copyright (C) 2003,  Karlsruhe University
  *                
  * File path:     api/v4/processor.cc
  * Description:   Processor Management
@@ -29,6 +29,7 @@
  * $Id: processor.cc,v 1.5 2003/09/24 19:05:24 skoglund Exp $
  *                
  ********************************************************************/
+#include <l4.h>
 #include <debug.h>
 #include <kdb/tracepoints.h>
 #include <sync.h>
@@ -42,8 +43,9 @@ DECLARE_TRACEPOINT(SYSCALL_PROCESSOR_CONTROL);
 SYS_PROCESSOR_CONTROL (word_t processor_no, word_t internal_frequency,
 		       word_t external_frequency, word_t voltage)
 {
-    TRACEPOINT(SYSCALL_PROCESSOR_CONTROL, "SYS_PROCESSOR_CONTROL (cpu=%d, ifreq=%d, efreq=%d, voltage=%d\n",
-	       processor_no, internal_frequency, external_frequency, voltage);
+    TRACEPOINT(SYSCALL_PROCESSOR_CONTROL, 
+	       printf("SYS_PROCESSOR_CONTROL (cpu=%d, ifreq=%d, efreq=%d, voltage=%d\n",
+		      processor_no, internal_frequency, external_frequency, voltage));
 
     return_processor_control();
 }
@@ -63,14 +65,14 @@ static spinlock_t kiplock;
  * @param internal_freq		internal frequency (in KHz)
  */
 void SECTION(".init")
-init_cpu(cpuid_t processor, word_t external_freq, word_t internal_freq)
+init_processor(cpuid_t processor, word_t external_freq, word_t internal_freq)
 {
-    TRACE_INIT("\tRegistering processor %d in KIP (%dMHz, %dMHz)\n", 
+    TRACE_INIT("Registering processor %d in KIP (%dMHz, %dMHz)\n", 
 	       processor, external_freq/1000, internal_freq/1000);
     kiplock.lock();
 
     procdesc_t * pdesc = get_kip()->processor_info.get_procdesc(processor);
-    ASSERT (pdesc);
+    ASSERT (DEBUG, pdesc);
 
     pdesc->set_external_frequency(external_freq);
     pdesc->set_internal_frequency(internal_freq);
