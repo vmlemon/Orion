@@ -139,6 +139,21 @@ SECTION(".init") void intctrl_t::init_arch()
 
     /* XXX - these should be created lazily for devices!! */
     /* Create a dummy page table entry */
+/*
+void pgent_t::set_entry(space_t*, pgent_t::pgsize_e, void*, word_t, word_t, bool)
+void pgent_t::set_entry(space_t*, pgent_t::pgsize_e, void*,                   word_t, bool)
+void pgent_t::set_entry(space_t*, pgent_t::pgsize_e,                           void*, word_t, word_t, bool)
+set_entry(    get_kernel_space(), pgent_t::size_16m, (addr_t)xicp_table.node[0].addr, true, true, false, true, pgent_t::cache_inhibit );
+
+    pg.set_entry( get_kernel_space(), pgent_t::size_16m,
+		    (addr_t)xicp_table.node[0].addr,
+		    true, true, false, true, pgent_t::cache_inhibit );
+
+inline void pgent_t::set_entry( space_t * s, pgsize_e pgsize, addr_t paddr, word_t rwx, word_t attrib, bool kernel )
+
+g.set_entry( kernel_space, pgent_t::size_16m, 0, 7, pgent_t;:l4default, true );
+
+*/
     pg.set_entry( get_kernel_space(), pgent_t::size_16m,
 		    (addr_t)xicp_table.node[0].addr,
 		    true, true, false, true, pgent_t::cache_inhibit );
