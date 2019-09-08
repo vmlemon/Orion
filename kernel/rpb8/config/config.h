@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: fedora28.novalocal */
-/* At: Sun, 08 Sep 2019 04:04:32 +0000 */
+/* At: Sun, 08 Sep 2019 12:08:02 +0000 */
 /* Linux version 4.16.3-301.fc28.ppc64 (mockbuild@buildvm-ppc64-06.ppc.fedoraproject.org) (gcc version 8.0.1 20180324 (Red Hat 8.0.1-0.20) (GCC)) #1 SMP Mon Apr 23 21:44:46 UTC 2018 */
 
 /* Pistachio Kernel Configuration System */
@@ -80,7 +80,7 @@
 
 
 #undef  CONFIG_IPC_FASTPATH
-#define CONFIG_DEBUG 1
+#undef  CONFIG_DEBUG
 #define CONFIG_DEBUG_SYMBOLS 1
 #undef  CONFIG_STATIC_TCBS
 #undef  CONFIG_PPC64_TRASH_OF
@@ -91,24 +91,24 @@
 /* Kernel Debugger Console */
 #undef  CONFIG_KDB_CONS_BGP_JTAG
 #undef  CONFIG_KDB_CONS_BGP_TREE
-#define CONFIG_KDB_CONS_COM 1
+#undef  CONFIG_KDB_CONS_COM
 #define CONFIG_KDB_COMPORT 0x0
 #define CONFIG_KDB_COMSPEED 115200
-#define CONFIG_KDB_CONS_RTAS 1
+#undef  CONFIG_KDB_CONS_RTAS
 #define CONFIG_KDB_BOOT_CONS 0
 
 #undef  CONFIG_KDB_DISAS
 #undef  CONFIG_KDB_ON_STARTUP
 #undef  CONFIG_KDB_BREAKIN
 #undef  CONFIG_KDB_BREAKIN_BREAK
-#define CONFIG_KDB_BREAKIN_ESCAPE 1
+#undef  CONFIG_KDB_BREAKIN_ESCAPE
 #undef  CONFIG_KDB_NO_ASSERTS
 
 /* Trace Settings */
-#define CONFIG_VERBOSE_INIT 1
+#undef  CONFIG_VERBOSE_INIT
 #undef  CONFIG_TRACEPOINTS
 #undef  CONFIG_KMEM_TRACE
-#define CONFIG_TRACEBUFFER 1
+#undef  CONFIG_TRACEBUFFER
 
 
 
