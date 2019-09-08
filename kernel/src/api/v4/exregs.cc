@@ -36,6 +36,7 @@
 #include <kdb/tracepoints.h>
 
 #ifdef __powerpc64__
+typedef unsigned long		u64_t;
 typedef u64_t			word_t;
 #endif
 
