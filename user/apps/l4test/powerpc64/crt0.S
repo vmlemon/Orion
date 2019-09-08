@@ -52,7 +52,7 @@ _start:
 	subi	%r11, %r11, 4
 
 	li	%r12, 0
-1:	cmp	0, %r10, %r11
+1:	cmpd	0, %r10, %r11
 	beq	2f
 	stwu	%r12, 4(%r10)
 	b	1b
