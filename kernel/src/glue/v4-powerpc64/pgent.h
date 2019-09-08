@@ -179,8 +179,21 @@ public:
     inline void clear( space_t * s, pgsize_e pgsize, bool kernel, addr_t vaddr);
     inline void make_subtree( space_t * s, pgsize_e pgsize, bool kernel );
     inline void remove_subtree( space_t * s, pgsize_e pgsize, bool kernel );
-    inline void set_entry( space_t * s, pgsize_e pgsize, addr_t paddr,
-			   word_t attrib, bool kernel = false );
+    //inline void set_entry( space_t * s, pgsize_e pgsize, addr_t paddr,
+			   //word_t attrib, bool kernel = false );
+
+inline void set_entry( space_t * s, pgsize_e pgsize, addr_t paddr,
+				word_t rwx, word_t attrib, bool kernel )
+{
+    this->map.pp = kernel ? pgent_t::kernel_only : (rwx & 2 ?  pgent_t::read_write : pgent_t::read_only);
+
+    this->map.wimg = attrib;
+
+    this->map.rpn = (word_t)paddr >> POWERPC64_PAGE_BITS;
+    this->map.is_valid = 1;
+    this->map.noexecute = ! (rwx & 1);
+}
+
     inline void update_rights( space_t *s, pgsize_e pgsize, word_t rwx );
     inline void revoke_rights( space_t *s, pgsize_e pgsize, word_t rwx );
     inline void reset_reference_bits( space_t *s, pgsize_e pgsize );
