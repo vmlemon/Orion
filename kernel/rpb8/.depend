@@ -55,7 +55,8 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/l4.h \
  /root/Orion/kernel/src/macros.h /root/Orion/kernel/src/generic/config.h \
- generic/traceids.h
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h
 .depend src/generic/tracebuffer.o: /root/Orion/kernel/src/generic/tracebuffer.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -69,7 +70,7 @@
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h \
- /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
  /root/Orion/kernel/src/debug.h \
  /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
@@ -249,7 +250,7 @@
  /root/Orion/kernel/src/generic/sync.h \
  /root/Orion/kernel/src/arch/powerpc64/string.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
- /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
  /root/Orion/kernel/src/debug.h \
  /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
@@ -283,7 +284,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
- /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
+ /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
 .depend src/glue/v4-powerpc64/rtas.o: /root/Orion/kernel/src/glue/v4-powerpc64/rtas.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -1813,7 +1814,7 @@
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h \
- /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
  /root/Orion/kernel/src/generic/sync.h \
  /root/Orion/kernel/src/api/v4/thread.h \
  /root/Orion/kernel/src/api/v4/kernelinterface.h \

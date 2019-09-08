@@ -52,8 +52,8 @@
 # define FREE_TRACE(x...)
 #endif
 
-DECLARE_TRACEPOINT (KMEM_ALLOC);
-DECLARE_TRACEPOINT (KMEM_FREE);
+//DECLARE_TRACEPOINT (KMEM_ALLOC);
+//DECLARE_TRACEPOINT (KMEM_FREE);
 
 /* THE kernel memory allocator */
 kmem_t kmem;
@@ -116,13 +116,13 @@ void kmem_t::free(void * address, word_t size)
     spinlock.lock();
 
     FREE_TRACE("kmem_free(%p, %x)\n", address, size);
-    TRACEPOINT (KMEM_FREE,
-		printf ("kmem_free (%p, %d [%d%c]), ip: %p\n",
-			address, size,
-			size >= GB (1) ? size >> 30 :
-			size >= MB (1) ? size >> 20 : size >> 10,
-			size >= GB (1) ? 'G' : size >= MB (1) ? 'M' : 'K',
-			__builtin_return_address (0)));
+//    TRACEPOINT (KMEM_FREE,
+//		printf ("kmem_free (%p, %d [%d%c]), ip: %p\n",
+//			address, size,
+//			size >= GB (1) ? size >> 30 :
+//			size >= MB (1) ? size >> 20 : size >> 10,
+//			size >= GB (1) ? 'G' : size >= MB (1) ? 'M' : 'K',
+//			__builtin_return_address (0)));
 
     KMEM_CHECK;
 
@@ -160,7 +160,7 @@ void * kmem_t::alloc(word_t size)
     word_t	i;
 
     spinlock.lock();
-    
+   /* 
     ALLOC_TRACE("%s(%d) kfl: %p\n", __FUNCTION__, size, kmem_free_list);
     TRACEPOINT_TB (KMEM_ALLOC,
 		   printf ("kmem_alloc (%d [%d%c]), ip: %p\n",
@@ -170,7 +170,8 @@ void * kmem_t::alloc(word_t size)
 		       __builtin_return_address (0)),
 		   "kmem_alloc (%d bytes), ip=%x\n",
 		   size, (word_t)__builtin_return_address (0));
-    KMEM_CHECK;
+   */
+		   KMEM_CHECK;
     
     size = max(size, (word_t)KMEM_CHUNKSIZE);
     ASSERT(NORMAL, (size % KMEM_CHUNKSIZE) == 0);
@@ -179,18 +180,18 @@ void * kmem_t::alloc(word_t size)
 	 curr;
 	 prev = curr, curr = (word_t*) *curr)
     {
-	ALLOC_TRACE("curr=%x\n", curr);
+//	ALLOC_TRACE("curr=%x\n", curr);
 	/* properly aligned ??? */
 	if (!((word_t) curr & (size - 1)))
 	{
-	    ALLOC_TRACE("%s(%d):%d: curr=%x\n", __FUNCTION__, 
-			size, __LINE__, curr);
+//	    ALLOC_TRACE("%s(%d):%d: curr=%x\n", __FUNCTION__, 
+//			size, __LINE__, curr);
 
 	    tmp = (word_t*) *curr;
 	    for (i = 1; tmp && (i < (size / KMEM_CHUNKSIZE)); i++)
 	    {
-		ALLOC_TRACE("%s():%d: i=%d, tmp=%x\n", 
-			    __FUNCTION__, __LINE__, i, tmp);
+///		ALLOC_TRACE("%s():%d: i=%d, tmp=%x\n", 
+//			    __FUNCTION__, __LINE__, i, tmp);
 
 		if ((word_t) tmp != ((word_t) curr + KMEM_CHUNKSIZE*i))
 		{
