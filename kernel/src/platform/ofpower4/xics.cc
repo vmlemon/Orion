@@ -139,27 +139,16 @@ SECTION(".init") void intctrl_t::init_arch()
 
     /* XXX - these should be created lazily for devices!! */
     /* Create a dummy page table entry */
+
 /*
-void pgent_t::set_entry(space_t*, pgent_t::pgsize_e, void*, word_t, word_t, bool)
-void pgent_t::set_entry(space_t*, pgent_t::pgsize_e, void*,                   word_t, bool)
-void pgent_t::set_entry(space_t*, pgent_t::pgsize_e,                           void*, word_t, word_t, bool)
-set_entry(    get_kernel_space(), pgent_t::size_16m, (addr_t)xicp_table.node[0].addr, true, true, false, true, pgent_t::cache_inhibit );
-
-    pg.set_entry( , ,
-		    ,
-		    true, true, false, true, pgent_t::cache_inhibit );
-
-inline void pgent_t::set_entry( get_kernel_space(), pgent_t::size_16m, (addr_t)xicp_table.node[0].addr, 6, pgent_t::cache_inhibit, true )
-pg.set_entry( get_kernel_space(), size, (addr_t)(scca_phys & ~(0xfff)),
-		      6, pgent_t::cache_inhibit, true );
-g.set_entry( kernel_space, pgent_t::size_16m, 0, 7, pgent_t;:l4default, true );
+ernel/src/platform/ofpower4/xics.cc
+In file included from /root/Orion/kernel/src/platform/ofpower4/xics.cc:40:
+/root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h:221: error: prototype for `void pgent_t::set_entry(space_t*, pgent_t::pgsize_e, void*, word_t, word_t, bool)' does not match any in class `pgent_t'
+/root/Orion/kernel/src/glue/v4-powerpc64/pgent.h:183: error: candidate is: void pgent_t::set_entry(space_t*, pgent_t::pgsize_e, void*, word_t, bool)
 
 */
-   // pg.set_entry( get_kernel_space(), pgent_t::size_16m,
-	//	    (addr_t)xicp_table.node[0].addr,
-	//	    true, true, false, true, pgent_t::cache_inhibit );
 //THIS PROBABLY WILL EXPLODE, VIOLENTLY!!!!
-pg.set_entry( get_kernel_space(), pgent_t::size_16m, (addr_t)xicp_table.node[0].addr, 6, pgent_t::cache_inhibit, true );
+pg.set_entry( get_kernel_space(), pgent_t::size_16m, (addr_t)xicp_table.node[0].addr, pgent_t::cache_inhibit, true );
     /* Insert the kernel mapping, bolted */
     get_pghash()->insert_mapping( get_kernel_space(),
 		    (addr_t)(DEVICE_AREA_START | xicp_table.node[0].addr),
