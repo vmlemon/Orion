@@ -454,7 +454,7 @@ SYS_EXCHANGE_REGISTERS (threadid_t dst_tid, word_t control,
 
     return_exchange_registers
 	(is_local ? dst->get_global_id () : dst->get_local_id (),
-	 control->raw, usp, uip, uflags, pager_tid, uhandle);
+	 &ctrl.raw, usp, uip, uflags, pager_tid, uhandle);
 
 }
 
