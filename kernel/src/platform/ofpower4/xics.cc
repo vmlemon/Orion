@@ -145,18 +145,21 @@ void pgent_t::set_entry(space_t*, pgent_t::pgsize_e, void*,                   wo
 void pgent_t::set_entry(space_t*, pgent_t::pgsize_e,                           void*, word_t, word_t, bool)
 set_entry(    get_kernel_space(), pgent_t::size_16m, (addr_t)xicp_table.node[0].addr, true, true, false, true, pgent_t::cache_inhibit );
 
-    pg.set_entry( get_kernel_space(), pgent_t::size_16m,
-		    (addr_t)xicp_table.node[0].addr,
+    pg.set_entry( , ,
+		    ,
 		    true, true, false, true, pgent_t::cache_inhibit );
 
-inline void pgent_t::set_entry( space_t * s, pgsize_e pgsize, addr_t paddr, word_t rwx, word_t attrib, bool kernel )
-
+inline void pgent_t::set_entry( get_kernel_space(), pgent_t::size_16m, (addr_t)xicp_table.node[0].addr, 6, pgent_t::cache_inhibit, true )
+pg.set_entry( get_kernel_space(), size, (addr_t)(scca_phys & ~(0xfff)),
+		      6, pgent_t::cache_inhibit, true );
 g.set_entry( kernel_space, pgent_t::size_16m, 0, 7, pgent_t;:l4default, true );
 
 */
-    pg.set_entry( get_kernel_space(), pgent_t::size_16m,
-		    (addr_t)xicp_table.node[0].addr,
-		    true, true, false, true, pgent_t::cache_inhibit );
+   // pg.set_entry( get_kernel_space(), pgent_t::size_16m,
+	//	    (addr_t)xicp_table.node[0].addr,
+	//	    true, true, false, true, pgent_t::cache_inhibit );
+//THIS PROBABLY WILL EXPLODE, VIOLENTLY!!!!
+pg.set_entry( get_kernel_space(), pgent_t::size_16m, (addr_t)xicp_table.node[0].addr, 6, pgent_t::cache_inhibit, true );
     /* Insert the kernel mapping, bolted */
     get_pghash()->insert_mapping( get_kernel_space(),
 		    (addr_t)(DEVICE_AREA_START | xicp_table.node[0].addr),
