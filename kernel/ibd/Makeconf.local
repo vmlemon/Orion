@@ -33,7 +33,7 @@ ARCH=x86
 SUBARCH=x32
 CPU=p4
 PLATFORM=pc99
-SCHED=rr
+SCHED=
 
 BUILDDIR = $(CURDIR)
-SRCDIR=/home/tyson/pistachio/kernel
+SRCDIR=/home/tyson/Orion/kernel
