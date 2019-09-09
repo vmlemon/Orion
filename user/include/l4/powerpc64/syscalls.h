@@ -1,10 +1,10 @@
-/*********************************************************************
- *                
- * Copyright (C) 2003,  National ICT Australia (NICTA)
- *                
- * File path:     glue/v4-powerpc64/syscalls.h
- * Description:   syscall macros
- *                
+/****************************************************************************
+ *
+ * Copyright (C) 2003, University of New South Wales
+ *
+ * File path:	l4/powerpc64/syscalls.h
+ * Description:	PowerPC64 system call implementations.
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -25,184 +25,460 @@
  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
- *                
- * $Id: syscalls.h,v 1.10 2004/06/04 02:52:57 cvansch Exp $
- *                
- ********************************************************************/
-#ifndef __GLUE__V4_POWERPC64__SYSCALLS_H__
-#define __GLUE__V4_POWERPC64__SYSCALLS_H__
+ *
+ * $Id: syscalls.h,v 1.7 2004/08/23 18:43:16 skoglund Exp $
+ *
+ ***************************************************************************/
+#ifndef __L4__POWERPC64__SYSCALLS_H__
+#define __L4__POWERPC64__SYSCALLS_H__
 
-#include INC_ARCH(frame.h)
-#include INC_GLUE(abi.h)
+#include <l4/types.h>
+#include <l4/message.h>
 
+#define __L4_PPC64_CLOBBER_REGS						\
+		"r0",  "r11", "r12", "r14", "r15", "r16", "r17",	\
+		"r18", "r19", "r20", "r21", "r22", "r23", "r24",	\
+		"r25", "r26", "r27", "r28", "r29", "lr", "ctr"
+#if (__GNUC__ >= 3)
+#define __L4_PPC64_CLOBBER_CR_REGS					\
+		"cr0", "cr1", "cr2", "cr3", "cr4", "cr5", "cr6",	\
+		"cr7", "xer"
+#else
+#define __L4_PPC64_CLOBBER_CR_REGS					\
+		"cr0", "cr1", "cr2", "cr3", "cr4", "cr5", "cr6", "cr7"
+#endif
 
-#define L4_TRAP64_MAGIC	    (0x4c345f5050433634ul)  /* "L4_PPC64" */
-#define L4_TRAP64_KDEBUG    (L4_TRAP64_MAGIC + 0)
-#define L4_TRAP64_KPUTC	    (L4_TRAP64_MAGIC + 1)
-#define L4_TRAP64_KGETC	    (L4_TRAP64_MAGIC + 2)
-#define L4_TRAP64_KGETC_NB  (L4_TRAP64_MAGIC + 3)
-#define L4_TRAP_KSET_THRD_NAME	(L4_TRAP64_MAGIC + 5)
+L4_INLINE void * L4_KernelInterface(
+	L4_Word_t *ApiVersion,
+	L4_Word_t *ApiFlags,
+	L4_Word_t *KernelId
+	)
+{
+    register void * base_address asm("r3");
+    register L4_Word_t api_version asm("r4");
+    register L4_Word_t api_flags asm("r5");
+    register L4_Word_t kernel_id asm("r6");
 
-#define SYSCALL_base			(-32000)
-#define SYSCALL_ipc			(SYSCALL_base - 0)
-#define SYSCALL_thread_switch		(SYSCALL_base - 1)
-#define SYSCALL_thread_control		(SYSCALL_base - 2)
-#define SYSCALL_exchange_registers	(SYSCALL_base - 3)
-#define SYSCALL_schedule		(SYSCALL_base - 4)
-#define SYSCALL_unmap			(SYSCALL_base - 5)
-#define SYSCALL_space_control		(SYSCALL_base - 6)
-#define SYSCALL_processor_control	(SYSCALL_base - 7)
-#define SYSCALL_memory_control		(SYSCALL_base - 8)
-#define SYSCALL_unused			(SYSCALL_base - 9)
-#define SYSCALL_rtas_call		(SYSCALL_base - 20)
-#define SYSCALL_last			(SYSCALL_base - 20)
+    __asm__ __volatile__ (
+	"tlbia ;"
+	: /* ouputs */
+	 "=r" (base_address), "=r" (api_version),
+	 "=r" (api_flags), "=r" (kernel_id)
+	: /* inputs */
+    );
 
-#if !defined(ASSEMBLY)
+    if( ApiVersion ) *ApiVersion = api_version;
+    if( ApiFlags ) *ApiFlags = api_flags;
+    if( KernelId ) *KernelId = kernel_id;
 
-/*
- * System call function attributes.
- */
-
-#define SYSCALL_ATTR(sec_name)
-//__attribute__ ((noreturn))
-
-/*
- * Syscall declaration wrappers.
- */
-
-#define SYS_IPC(to, from, timeout)				\
-    word_t SYSCALL_ATTR ("ipc")					\
-	sys_ipc (to, from, timeout)
-
-#define SYS_THREAD_CONTROL(dest, space, scheduler, pager,	\
-		send_redirector, recv_redirector, utcb_loc)	\
-    word_t SYSCALL_ATTR ("thread_control")			\
-	sys_thread_control (dest, space, scheduler, pager,	\
-		  send_redirector, recv_redirector, utcb_loc)
-
-#define SYS_SPACE_CONTROL(space, control, kip_area, utcb_area)		\
-    word_t SYSCALL_ATTR ("space_control")				\
-	sys_space_control (space, control, kip_area, utcb_area)
-
-#define SYS_SCHEDULE(dest, time_control, processor_control,	\
-		     prio, preemption_control)			\
-    word_t SYSCALL_ATTR ("schedule")				\
-	sys_schedule (dest, time_control, processor_control,	\
-			prio, preemption_control)
-
-#define SYS_EXCHANGE_REGISTERS(dest, control, usp, uip,			\
-			       uflags, uhandle, pager, is_local)	\
-    word_t SYSCALL_ATTR ("exchange_registers")				\
-	sys_exchange_registers (dest, control, usp, uip,		\
-				uflags, uhandle, pager, is_local)
-
-#define SYS_THREAD_SWITCH(dest)					\
-    void SYSCALL_ATTR ("thread_switch")				\
-	sys_thread_switch (dest)
-
-#define SYS_UNMAP(control)					\
-    void SYSCALL_ATTR ("unmap") sys_unmap (control)
-
-#define SYS_PROCESSOR_CONTROL(processor_no, internal_frequency,		\
-			      external_frequency, voltage)		\
-    void SYSCALL_ATTR ("processor_control")				\
-	sys_processor_control (processor_no, internal_frequency,	\
-				external_frequency, voltage)
-
-#define SYS_MEMORY_CONTROL(control, attribute0, attribute1,	\
-			   attribute2, attribute3)		\
-    word_t SYSCALL_ATTR ("memory_control")			\
-	sys_memory_control (control, attribute0, attribute1,	\
-			    attribute2, attribute3)
-
-#define SYS_RTAS_CALL(token, nargs, nret, ptr )			\
-    word_t SYSCALL_ATTR ("rtas_call")				\
-	sys_rtas_call (token, nargs, nret, ptr)
-    
-extern "C" SYS_RTAS_CALL( word_t token, word_t nargs, word_t nret, word_t ptr );
-
-
-/* The instruction executed in user mode which requests the kernel interface
- * page.  It is an instruction illegal to use in user mode, and fires a
- * program exception.
- */
-#define KIP_EXCEPT_INSTR	0x7c0002e4      // tlbia
-#define KDEBUG_EXCEPT_INSTR	0x7fe00008      // trap
-
-#define return_user_0param()						\
-do {									\
-    asm volatile (							\
-	    "mtlr %0 ;"							\
-	    "ld %%r1, 0 (%%r1);"					\
-	    "blr ;"							\
-	    : 								\
-	    : "r" (__builtin_return_address(0))				\
-	    );								\
-    while(1);								\
-} while(0)
-
-
-#define return_thread_switch()		return_user_0param()
-#define return_unmap()			return_user_0param()
-#define return_processor_control()	return_user_0param()
-
-#define return_user_1param(param1)					\
-do {									\
-    register word_t ret1 asm("r3") = param1;				\
-    asm volatile (							\
-	    "mtlr %0 ;"							\
-	    "ld %%r1, 0 (%%r1);"					\
-	    "blr ;"							\
-	    : 								\
-	    : "r" (__builtin_return_address(0)),			\
-	      "r" (ret1)						\
-	    );								\
-    while(1);								\
-} while(0)
-
-#define return_thread_control(result)	return_user_1param(result)
-#define return_ipc(from)		return_user_1param(from.get_raw())
-#define return_memory_control(result)	return_user_1param (result)
-
-#define return_user_2param(param1, param2)				\
-do {									\
-    register word_t ret1 asm("r3") = param1;				\
-    register word_t ret2 asm("r4") = param2;				\
-    asm volatile (							\
-	    "mtlr %0 ;"							\
-	    "ld %%r1, 0 (%%r1);"					\
-	    "blr ;"							\
-	    : 								\
-	    : "r" (__builtin_return_address(0)),			\
-	      "r" (ret1), "r" (ret2)					\
-	    );								\
-    while(1);								\
-} while(0)
-
-#define return_space_control( result, control )	return_user_2param( result, control )
-#define return_schedule( result, time_control )	return_user_2param( result, time_control )
-
-#define return_exchange_registers( result, control, sp, ip, flags, pager, handle )  \
-{									\
-    register threadid_t tid asm("r3") = result;				\
-    register word_t ctrl asm("r4") = control;				\
-    register word_t sp_r asm("r5") = sp;				\
-    register word_t ip_r asm("r6") = ip;				\
-    register word_t flg asm("r7") = flags;				\
-    register threadid_t pgr asm("r8") = pager;				\
-    register word_t hdl asm("r9") = handle;				\
-    asm volatile (							\
-	    "mtlr %0 ;"							\
-	    "ld %%r1, 0 (%%r1);"					\
-	    "blr ;"							\
-	    : 								\
-	    : "r" (__builtin_return_address(0)),			\
-	      "r" (tid), "r" (ctrl), "r" (sp_r), "r" (ip_r),		\
-	      "r" (flg), "r" (pgr), "r" (hdl)				\
-	    );								\
-    while(1);								\
+    return base_address;
 }
 
-#endif	/* !defined(ASSEMBLY) */
+typedef L4_Word_t (*__L4_ExchangeRegisters_t)( L4_Word_t, L4_Word_t, L4_Word_t,
+	L4_Word_t, L4_Word_t, L4_Word_t, L4_Word_t );
+extern __L4_ExchangeRegisters_t __L4_ExchangeRegisters;
 
-#endif /* __GLUE__V4_POWERPC64__SYSCALLS_H__ */
+L4_INLINE L4_ThreadId_t L4_ExchangeRegisters(
+	L4_ThreadId_t dest,
+	L4_Word_t control,
+	L4_Word_t sp,
+	L4_Word_t ip,
+	L4_Word_t flags,
+	L4_Word_t UserDefHandle,
+	L4_ThreadId_t pager,
+	L4_Word_t *old_control,
+	L4_Word_t *old_sp,
+	L4_Word_t *old_ip,
+	L4_Word_t *old_flags,
+	L4_Word_t *old_UserDefHandle,
+	L4_ThreadId_t *old_pager
+	)
+{
+    register L4_Word_t r3 asm("r3") = dest.raw;
+    register L4_Word_t r4 asm("r4") = control;
+    register L4_Word_t r5 asm("r5") = sp;
+    register L4_Word_t r6 asm("r6") = ip;
+    register L4_Word_t r7 asm("r7") = flags;
+    register L4_Word_t r8 asm("r8") = UserDefHandle;
+    register L4_Word_t r9 asm("r9") = pager.raw;
+    register L4_Word_t r10 asm("r10") = 0; // -- is_local ??
+
+    __asm__ __volatile__ (
+	"mtctr  %[sys];"
+	"bctrl ;"
+	: /* outputs */
+	 "+r" (r3), "+r" (r4), "+r" (r5), "+r" (r6),
+	 "+r" (r7), "+r" (r8), "+r" (r9), "+r" (r10)
+	: /* inputs */
+	 [sys] "r" (__L4_ExchangeRegisters)
+	: /* clobbers */
+	 __L4_PPC64_CLOBBER_REGS, "memory", __L4_PPC64_CLOBBER_CR_REGS
+    );
+
+    *old_control = r4;
+    *old_sp = r5;
+    *old_ip = r6;
+    *old_flags = r7;
+    *old_UserDefHandle = r8;
+    old_pager->raw = r9;
+
+    return (L4_ThreadId_t) {raw: r3};
+}
+
+typedef L4_Word_t (*__L4_ThreadControl_t)( L4_Word_t, L4_Word_t, L4_Word_t, L4_Word_t, L4_Word_t );
+extern __L4_ThreadControl_t __L4_ThreadControl;
+
+L4_INLINE L4_Word_t L4_ThreadControl(
+	L4_ThreadId_t dest,
+	L4_ThreadId_t SpaceSpecifier,
+	L4_ThreadId_t Scheduler,
+	L4_ThreadId_t Pager,
+	void * UtcbLocation)
+{
+    register L4_Word_t r3 asm("r3") = dest.raw;
+    register L4_Word_t r4 asm("r4") = SpaceSpecifier.raw;
+    register L4_Word_t r5 asm("r5") = Scheduler.raw;
+    register L4_Word_t r6 asm("r6") = Pager.raw;
+    register void *    r7 asm("r7") = UtcbLocation;
+
+    __asm__ __volatile__ (
+	"mtctr  %[sys];"
+	"bctrl;"
+	: /* outputs */
+	 "+r" (r3), "+r" (r4), "+r" (r5), "+r" (r6), "+r" (r7)
+	: /* inputs */
+	 [sys] "r" (__L4_ThreadControl)
+	: /* clobbers */
+	 "r8", "r9", "r10",
+	 __L4_PPC64_CLOBBER_REGS, "memory", __L4_PPC64_CLOBBER_CR_REGS
+    );
+
+    return r3;
+}
+
+typedef L4_Clock_t (*__L4_SystemClock_t)( void );
+extern __L4_SystemClock_t __L4_SystemClock;
+
+L4_INLINE L4_Clock_t L4_SystemClock( void )
+{
+    register L4_Clock_t r3 asm("r3");
+
+    __asm__ __volatile__ (
+	"mtctr  %[sys];"
+	"bctrl;"
+	: /* outputs */
+	 "=r" (r3.raw)
+	: /* inputs */
+	 [sys] "r" (__L4_SystemClock)
+	: /* clobbers */
+	 "r4", "r5", "r6", "r7", "r8", "r9", "r10",
+	 __L4_PPC64_CLOBBER_REGS, "memory", __L4_PPC64_CLOBBER_CR_REGS
+    );
+
+    return ( r3 );
+}
+
+typedef L4_Word_t (*__L4_ThreadSwitch_t)( L4_Word_t );
+extern __L4_ThreadSwitch_t __L4_ThreadSwitch;
+
+L4_INLINE void L4_ThreadSwitch( L4_ThreadId_t dest )
+{
+    register L4_Word_t r3 asm("r3") = dest.raw;
+    
+    __asm__ __volatile__ (
+	"mtctr  %[sys];"
+	"bctrl ;"
+	: /* outputs */
+	 "+r" (r3)
+	: /* inputs */
+	 [sys] "r" (__L4_ThreadSwitch)
+	: /* clobbers */
+	 "r4", "r5", "r6", "r7", "r8", "r9", "r10",
+	 __L4_PPC64_CLOBBER_REGS, "memory", __L4_PPC64_CLOBBER_CR_REGS
+    );
+}
+
+typedef L4_Word_t (*__L4_Schedule_t)( L4_Word_t, L4_Word_t, L4_Word_t, L4_Word_t, L4_Word_t );
+extern __L4_Schedule_t __L4_Schedule;
+
+L4_INLINE L4_Word_t  L4_Schedule(
+	L4_ThreadId_t dest,
+	L4_Word_t TimeControl,
+	L4_Word_t ProcessorControl,
+	L4_Word_t PrioControl,
+	L4_Word_t PreemptionControl,
+	L4_Word_t * old_TimeControl
+	)
+{
+    register L4_Word_t r3 asm("r3") = dest.raw;
+    register L4_Word_t r4 asm("r4") = TimeControl;
+    register L4_Word_t r5 asm("r5") = ProcessorControl;
+    register L4_Word_t r6 asm("r6") = PrioControl;
+    register L4_Word_t r7 asm("r7") = PreemptionControl;
+    
+    __asm__ __volatile__ (
+	"mtctr  %[sys];"
+	"bctrl;"
+	: /* outputs */
+	 "+r" (r3), "+r" (r4)
+	: /* inputs */
+	 [sys] "r" (__L4_Schedule), "r" (r5), "r" (r6), "r" (r7)
+	: /* clobbers */
+	 "r8", "r9", "r10",
+	 __L4_PPC64_CLOBBER_REGS, "memory", __L4_PPC64_CLOBBER_CR_REGS
+    );
+
+    *old_TimeControl = r4;
+    return r3;
+}
+
+typedef L4_Word_t (*__L4_Ipc_t)( L4_Word_t, L4_Word_t, L4_Word_t );
+extern __L4_Ipc_t __L4_Ipc;
+
+L4_INLINE L4_MsgTag_t L4_Ipc(
+	L4_ThreadId_t to,
+	L4_ThreadId_t FromSpecifier,
+	L4_Word_t Timeouts,
+	L4_ThreadId_t *from
+	)
+{
+    register L4_Word_t r3 asm("r3") = to.raw;
+    register L4_Word_t r4 asm("r4") = FromSpecifier.raw;
+    register L4_Word_t r5 asm("r5") = Timeouts;
+
+    register L4_Word_t mr0 asm ("r14");
+    register L4_Word_t mr1 asm ("r15");
+    register L4_Word_t mr2 asm ("r16");
+    register L4_Word_t mr3 asm ("r17");
+    register L4_Word_t mr4 asm ("r18");
+    register L4_Word_t mr5 asm ("r19");
+    register L4_Word_t mr6 asm ("r20");
+    register L4_Word_t mr7 asm ("r21");
+    register L4_Word_t mr8 asm ("r22");
+    register L4_Word_t mr9 asm ("r23");
+
+    // Only load MRs if send phase is included
+    if (! L4_IsNilThread (to))
+    {
+	mr0 = (__L4_PPC64_Utcb())[__L4_TCR_MR_OFFSET + 0];
+	mr1 = (__L4_PPC64_Utcb())[__L4_TCR_MR_OFFSET + 1];
+	mr2 = (__L4_PPC64_Utcb())[__L4_TCR_MR_OFFSET + 2];
+	mr3 = (__L4_PPC64_Utcb())[__L4_TCR_MR_OFFSET + 3];
+	mr4 = (__L4_PPC64_Utcb())[__L4_TCR_MR_OFFSET + 4];
+	mr5 = (__L4_PPC64_Utcb())[__L4_TCR_MR_OFFSET + 5];
+	mr6 = (__L4_PPC64_Utcb())[__L4_TCR_MR_OFFSET + 6];
+	mr7 = (__L4_PPC64_Utcb())[__L4_TCR_MR_OFFSET + 7];
+	mr8 = (__L4_PPC64_Utcb())[__L4_TCR_MR_OFFSET + 8];
+	mr9 = (__L4_PPC64_Utcb())[__L4_TCR_MR_OFFSET + 9];
+
+	asm volatile (
+	    "" ::
+	     "r" (mr0), "r" (mr1), "r" (mr2), "r" (mr3), "r" (mr4),
+	     "r" (mr5), "r" (mr6), "r" (mr7), "r" (mr8), "r" (mr9)
+	);
+    }
+
+    asm volatile (
+	"mtctr	%[sys];"
+	"bctrl;"
+
+	: /* outputs */
+	 "+r" (r3), "+r" (r4), "+r" (r5),
+	 "=r" (mr0), "=r" (mr1), "=r" (mr2), "=r" (mr3), "=r" (mr4),
+	 "=r" (mr5), "=r" (mr6), "=r" (mr7), "=r" (mr8), "=r" (mr9)
+	: /* inputs */
+	 [sys] "r" (__L4_Ipc)
+	: /* clobbers */
+	 "r0", "ctr", "lr", "memory"
+    );
+
+    /* Trash the rest. This allows the compiler to choose which
+     * inputs to use in the asm code above
+     */
+    asm volatile (
+	"" :::
+	 "r0", "r6", "r7", "r8", "r9", "r10", "r11", "r12",
+	 "r24", "r25", "r26", "r27", "r28", "r29",
+	 __L4_PPC64_CLOBBER_CR_REGS
+    );
+
+    if( !L4_IsNilThread(FromSpecifier) ) {
+	from->raw = r3;		    /* Result is in r3 */
+
+	(__L4_PPC64_Utcb())[__L4_TCR_MR_OFFSET + 0] = mr0;
+	(__L4_PPC64_Utcb())[__L4_TCR_MR_OFFSET + 1] = mr1;
+	(__L4_PPC64_Utcb())[__L4_TCR_MR_OFFSET + 2] = mr2;
+	(__L4_PPC64_Utcb())[__L4_TCR_MR_OFFSET + 3] = mr3;
+	(__L4_PPC64_Utcb())[__L4_TCR_MR_OFFSET + 4] = mr4;
+	(__L4_PPC64_Utcb())[__L4_TCR_MR_OFFSET + 5] = mr5;
+	(__L4_PPC64_Utcb())[__L4_TCR_MR_OFFSET + 6] = mr6;
+	(__L4_PPC64_Utcb())[__L4_TCR_MR_OFFSET + 7] = mr7;
+	(__L4_PPC64_Utcb())[__L4_TCR_MR_OFFSET + 8] = mr8;
+	(__L4_PPC64_Utcb())[__L4_TCR_MR_OFFSET + 9] = mr9;
+    }
+
+    return (L4_MsgTag_t){ raw: mr0 };	/* mr0 */
+}
+
+typedef L4_Word_t (*__L4_Lipc_t)( L4_Word_t, L4_Word_t, L4_Word_t );
+extern __L4_Lipc_t __L4_Lipc;
+
+L4_INLINE L4_MsgTag_t L4_Lipc(
+	L4_ThreadId_t to,
+	L4_ThreadId_t FromSpecifier,
+	L4_Word_t Timeouts,
+	L4_ThreadId_t *from
+	)
+{
+    return L4_Ipc( to, FromSpecifier, Timeouts, from );
+}
+
+typedef void (*__L4_Unmap_t)( L4_Word_t );
+extern __L4_Unmap_t __L4_Unmap;
+
+L4_INLINE void L4_Unmap( L4_Word_t control )
+{
+    register L4_Word_t r3 asm("r3") = control;
+ 
+    asm volatile (
+	"mtctr %[sys];"
+	"bctrl ;"
+	: /* outputs */
+	 "+r" (r3)
+	: /* inputs */
+	 [sys] "r" (__L4_Unmap)
+	: /* clobbers */
+	 "r4", "r5", "r6", "r7", "r8", "r9", "r10",
+	 __L4_PPC64_CLOBBER_REGS, "memory", __L4_PPC64_CLOBBER_CR_REGS
+    );
+}
+
+typedef void (*__L4_SpaceControl_t)( L4_Word_t, L4_Word_t, L4_Word_t,
+	L4_Word_t, L4_Word_t );
+extern __L4_SpaceControl_t __L4_SpaceControl;
+
+L4_INLINE L4_Word_t L4_SpaceControl(
+	L4_ThreadId_t SpaceSpecifier,
+	L4_Word_t control,
+	L4_Fpage_t KernelInterfacePageArea,
+	L4_Fpage_t UtcbArea,
+	L4_ThreadId_t redirector,
+	L4_Word_t *old_control
+	)
+{
+    register L4_Word_t r3 asm("r3") = SpaceSpecifier.raw;
+    register L4_Word_t r4 asm("r4") = control;
+    register L4_Word_t r5 asm("r5") = KernelInterfacePageArea.raw;
+    register L4_Word_t r6 asm("r6") = UtcbArea.raw;
+    register L4_Word_t r7 asm("r7") = redirector.raw;
+
+    __asm__ __volatile__ (
+	"mtctr  %[sys];"
+	"bctrl ;"
+	: /* outputs */
+	 "+r" (r3), "+r" (r4), "+r" (r5), "+r" (r6), "+r" (r7)
+	: /* inputs */
+	 [sys] "r" (__L4_SpaceControl)
+	: /* clobbers */
+	 "r8", "r9", "r10",
+	 __L4_PPC64_CLOBBER_REGS, "memory", __L4_PPC64_CLOBBER_CR_REGS
+    );
+
+    *old_control = r4;
+    return r3;
+}
+
+typedef L4_Word_t (*__L4_ProcessorControl_t)( L4_Word_t,  L4_Word_t,
+	L4_Word_t, L4_Word_t );
+extern __L4_ProcessorControl_t __L4_ProcessorControl;
+
+L4_INLINE L4_Word_t L4_ProcessorControl(
+	L4_Word_t ProcessorNo,
+	L4_Word_t InternalFrequency,
+	L4_Word_t ExternalFrequency,
+	L4_Word_t voltage
+	)
+{
+    register L4_Word_t r3 asm("r3") = ProcessorNo;
+    register L4_Word_t r4 asm("r4") = InternalFrequency;
+    register L4_Word_t r5 asm("r5") = ExternalFrequency;
+    register L4_Word_t r6 asm("r6") = voltage;
+
+    __asm__ __volatile__ (
+	    "mtctr  %[sys];"
+	    "bctrl ;"
+	    : /* outputs */
+	      "+r" (r3), "+r" (r4), "+r" (r5), "+r" (r6)
+	    : /* inputs */
+	      [sys] "r" (__L4_ProcessorControl)
+	    : /* clobbers */
+	      "r7", "r8", "r9", "r10",
+	      __L4_PPC64_CLOBBER_REGS, "memory", __L4_PPC64_CLOBBER_CR_REGS
+	    );
+
+    return r3;
+}
+
+typedef L4_Word_t (*__L4_MemoryControl_t)( L4_Word_t, L4_Word_t, L4_Word_t, L4_Word_t, L4_Word_t );
+extern __L4_MemoryControl_t __L4_MemoryControl;
+
+L4_INLINE L4_Word_t L4_MemoryControl(
+	L4_Word_t control,
+	const L4_Word_t attributes[4]
+	)
+{
+    register L4_Word_t r3 asm("r3") = control;
+    register L4_Word_t r4 asm("r4") = attributes[0];
+    register L4_Word_t r5 asm("r5") = attributes[1];
+    register L4_Word_t r6 asm("r6") = attributes[2];
+    register L4_Word_t r7 asm("r7") = attributes[3];
+
+    __asm__ __volatile__ (
+	"mtctr  %[sys];"
+	"bctrl ;"
+	: /* outputs */
+	 "+r" (r3), "+r" (r4), "+r" (r5), "+r" (r6), "+r" (r7)
+	: /* inputs */
+	 [sys] "r" (__L4_MemoryControl)
+	: /* clobbers */
+	 "r8", "r9", "r10",
+	 __L4_PPC64_CLOBBER_REGS, "memory", __L4_PPC64_CLOBBER_CR_REGS
+    );
+
+    return r3;
+}
+
+typedef L4_Word_t (*__L4_RtasCall_t)( L4_Word_t, L4_Word_t, L4_Word_t, L4_Word_t* );
+extern __L4_RtasCall_t __L4_RtasCall;
+
+L4_INLINE L4_Word_t L4_RtasCall(
+	L4_Word_t token,
+	L4_Word_t nargs,
+	L4_Word_t nret,
+	L4_Word_t *ptr
+	)
+{
+    if (!__L4_RtasCall)
+	return -1ul;
+
+    register L4_Word_t r3 asm("r3") = token;
+    register L4_Word_t r4 asm("r4") = nargs;
+    register L4_Word_t r5 asm("r5") = nret;
+    register L4_Word_t r6 asm("r6") = (L4_Word_t)ptr;
+
+    __asm__ __volatile__ (
+	"mtctr  %[sys];"
+	"bctrl ;"
+	: /* outputs */
+	 "+r" (r3), "+r" (r4), "+r" (r5), "+r" (r6)
+	: /* inputs */
+	 [sys] "r" (__L4_RtasCall)
+	: /* clobbers */
+	 "r7", "r8", "r9", "r10",
+	 __L4_PPC64_CLOBBER_REGS, "memory", __L4_PPC64_CLOBBER_CR_REGS
+    );
+
+    return r3;
+}
+
+#endif	/* __L4__POWERPC64__SYSCALLS_H__ */
