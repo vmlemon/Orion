@@ -33,6 +33,10 @@
 #ifndef __API__V4__SPACE_H__
 #define __API__V4__SPACE_H__
 
+//This is the NICTA version of this file, we modified it, previously,
+// and introduced regressions
+// https://github.com/vmlemon/Orion/blob/fdd8bcfaec379824583bd2f8631a0966f53b7c90/kernel/src/glue/v4-powerpc64/space.h.orig
+
 #include <kmemory.h>
 #include INC_GLUE(space.h)
 
