@@ -1,6 +1,6 @@
 /*********************************************************************
  *                
- * Copyright (C) 2002-2007, 2009,  Karlsruhe University
+ * Copyright (C) 2002-2003,  Karlsruhe University
  *                
  * File path:     api/v4/types.h
  * Description:   General type declarations for V4 API
@@ -26,7 +26,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id: types.h,v 1.26 2006/10/18 11:57:20 reichelt Exp $
+ * $Id: types.h,v 1.24 2003/09/24 19:04:24 skoglund Exp $
  *                
  ********************************************************************/
 #ifndef __API__V4__TYPES_H__
@@ -34,113 +34,7 @@
 
 #include INC_API(config.h)
 
-#if !defined(TIME_BITS_WORD)
-#if defined(CONFIG_IS_64BIT)
-#define TIME_BITS_WORD 64
-#elif defined(CONFIG_IS_32BIT)
-#define TIME_BITS_WORD 32
-#endif
-#endif /* !defined(TIME_BITS_WORD) */
-
-/* time */
-class time_t 
-{
-public:
-    u64_t get_microseconds();
-    
-    static time_t never()
-    {
-	time_t ret;
-	ret.raw = 0;
-	return ret;
-    }
-    
-    static time_t zero()
-    {
-	time_t ret;
-	ret.time.mantissa = 0;
-	ret.time.exponent = 1;
-	ret.time.type = 0;
-	return ret;
-    }
-    
-    static time_t period(u16_t mantissa, u16_t exponent)
-    {
-	time_t ret;
-	ret.time.mantissa = mantissa;
-	ret.time.exponent = exponent;
-	ret.time.type = 0;
-	return ret;
-    }
-    
-    static time_t point(u16_t mantissa, u16_t exponent)
-    {
-	time_t ret;
-	ret.time.mantissa = mantissa;
-	ret.time.exponent = exponent;
-	ret.time.type = 1;
-	return ret;
-    }
-    
-    void set_raw(u16_t raw) { this->raw = raw; }
-
-    bool is_never() { return raw == 0; }
-    bool is_zero() { return zero().raw == raw; }
-    bool is_period() { return time.type == 0; }
-    bool is_point() { return time.type == 1; }
-
-    bool operator< (time_t & r);
-    operator u16_t() { return raw ; }
-    
-    union {
-	u16_t raw;
-	struct {
-	    BITFIELD3(u16_t,
-		mantissa	: 10,
-		exponent	: 5,
-		type		: 1);
-	} __attribute__((packed)) time;
-    } __attribute__((packed)); 
-} __attribute__((packed));
-
-INLINE u64_t time_t::get_microseconds()
-{
-    return (1 << time.exponent) * time.mantissa;
-}
-
-
-class timeout_t 
-{
-public:
-    static timeout_t never() 
-	{return (timeout_t){{raw: 0}};}
-
-    inline time_t get_rcv() { return x.rcv_timeout; }
-    inline time_t get_snd() { return x.snd_timeout; }
-    inline void set_raw(word_t raw) { this->raw = raw; }
-    inline bool is_never() { return this->raw == never().raw; }
-public:
-    union {
-	struct {
-#if TIME_BITS_WORD == 64
-	    BITFIELD4( time_t,
-		rcv_timeout,
-		snd_timeout,
-		_rv0,
-		_rv1
-	    );
-#elif TIME_BITS_WORD == 32
-	    BITFIELD2( time_t,
-		rcv_timeout,
-		snd_timeout
-	    );
-#endif
-	} __attribute__((packed)) x;
-	word_t raw;
-    };
-    
-};
-
+extern u64_t get_current_time();
 
 typedef u16_t cpuid_t;
 

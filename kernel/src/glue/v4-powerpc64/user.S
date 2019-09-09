@@ -2,9 +2,9 @@
  *                
  * Copyright (C) 2003-2004,  National ICT Australia (NICTA)
  *                
- * File path:     glue/v4-powerpc64/syscalls.S
+ * File path:     glue/v4-powerpc64/user.S
  * Created:       20/08/2002 by Carl van Schaik
- * Description:   Kernel entry points for syscalls
+ * Description:   KIP entry points for syscalls
  *                
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -46,10 +46,22 @@ name:
     .endfunc
 
 
-#define SYSCALL(name)	    \
+#define SYSCALL(name)		    \
 .section    .user.##name, "ax";	    \
-BEGIN_SYS(user_##name);	    \
+BEGIN_SYS(user_##name);		    \
     li	r0, SYSCALL_##name;	    \
+    sc;				    \
+    blr;			    \
+END_SYS(user_##name);		    \
+.previous
+
+#define SYSCALL_EXREGS(name)	    \
+.section    .user.##name, "ax";	    \
+BEGIN_SYS(user_##name);		    \
+    clrldi. r0,	r3, 64-L4_LOCAL_ID_ZERO_BITS;	\
+    mfcr    r10;		    \
+    rlwinm  r10, r10, 3, 31, 31;    \
+    li	    r0, SYSCALL_##name;	    \
     sc;				    \
     blr;			    \
 END_SYS(user_##name);		    \
@@ -65,13 +77,12 @@ END_SYS(user_##name);		    \
 SYSCALL(ipc)
 SYSCALL(thread_switch)
 SYSCALL(thread_control)
-SYSCALL(exchange_registers)
+SYSCALL_EXREGS(exchange_registers)
 SYSCALL(schedule)
 SYSCALL(unmap)
 SYSCALL(space_control)
 SYSCALL_UNIMPLEMENTED(processor_control)
 SYSCALL(memory_control)
-SYSCALL_UNIMPLEMENTED(system_clock)
 SYSCALL_UNIMPLEMENTED(lipc)
 
 #if (CONFIG_PLAT_OFPOWER4 || CONFIG_PLAT_OFPOWER3)

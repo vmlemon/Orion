@@ -1,6 +1,6 @@
 /*********************************************************************
  *                
- * Copyright (C) 2003, 2010,  National ICT Australia (NICTA)
+ * Copyright (C) 2003,  National ICT Australia (NICTA)
  *                
  * File path:     glue/v4-powerpc64/config.h
  * Description:   
@@ -66,6 +66,11 @@
  * Mapping database - space bits
  */
 #define MDB_SPACE_BITS	(BITS_WORD - 10)
+
+/**
+ * number of message registers
+ */
+#define IPC_NUM_MR			64
 
 /*
  * minimum size of UTCB area and number of UTCBs in this
@@ -138,8 +143,7 @@ extern "C" void SECTION (".user.rtas_call") user_rtas_call (void);
 #define COPY_AREA_END		(COPY_AREA_START + COPY_AREA_SIZE)
 
 #define VALID_THREADNO_BITS	(32)
-#define TOTAL_KTCBS		(__UL(1) << VALID_THREADNO_BITS)
-#define VALID_THREADNO_MASK	(TOTAL_KTCBS - 1)
+#define VALID_THREADNO_MASK	((1ul << VALID_THREADNO_BITS)-1)
 
 #define KTCB_AREA_BITS		(48)
 #define KTCB_AREA_START		(0xFFFF000000000000ul)

@@ -41,6 +41,7 @@
 #define L4_TRAP64_KPUTC	    (L4_TRAP64_MAGIC + 1)
 #define L4_TRAP64_KGETC	    (L4_TRAP64_MAGIC + 2)
 #define L4_TRAP64_KGETC_NB  (L4_TRAP64_MAGIC + 3)
+#define L4_TRAP_KSET_THRD_NAME	(L4_TRAP64_MAGIC + 5)
 
 #define SYSCALL_base			(-32000)
 #define SYSCALL_ipc			(SYSCALL_base - 0)
@@ -52,7 +53,7 @@
 #define SYSCALL_space_control		(SYSCALL_base - 6)
 #define SYSCALL_processor_control	(SYSCALL_base - 7)
 #define SYSCALL_memory_control		(SYSCALL_base - 8)
-#define SYSCALL_system_clock		(SYSCALL_base - 9)
+#define SYSCALL_unused			(SYSCALL_base - 9)
 #define SYSCALL_rtas_call		(SYSCALL_base - 20)
 #define SYSCALL_last			(SYSCALL_base - 20)
 
@@ -73,15 +74,15 @@
     word_t SYSCALL_ATTR ("ipc")					\
 	sys_ipc (to, from, timeout)
 
-#define SYS_THREAD_CONTROL(dest, space, scheduler, pager, utcb_location)    \
-    word_t SYSCALL_ATTR ("thread_control")				    \
-	sys_thread_control (dest, space, scheduler, pager, utcb_location)
+#define SYS_THREAD_CONTROL(dest, space, scheduler, pager,	\
+		send_redirector, recv_redirector, utcb_loc)	\
+    word_t SYSCALL_ATTR ("thread_control")			\
+	sys_thread_control (dest, space, scheduler, pager,	\
+		  send_redirector, recv_redirector, utcb_loc)
 
-#define SYS_SPACE_CONTROL(space, control, kip_area, utcb_area,		\
-			  redirector)					\
+#define SYS_SPACE_CONTROL(space, control, kip_area, utcb_area)		\
     word_t SYSCALL_ATTR ("space_control")				\
-	sys_space_control (space, control, kip_area, utcb_area,		\
-			    redirector)
+	sys_space_control (space, control, kip_area, utcb_area)
 
 #define SYS_SCHEDULE(dest, time_control, processor_control,	\
 		     prio, preemption_control)			\

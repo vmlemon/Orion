@@ -33,11 +33,11 @@
 #include INC_GLUE(intctrl.h)
 #include INC_ARCH(rtas.h)
 #include INC_ARCH(1275tree.h)
-#include INC_ARCH(pgent.h)
 #include INC_PLAT(xics.h)
 #include INC_PLAT(prom.h)
 #include INC_GLUE(space.h)
 #include INC_GLUE(pghash.h)
+#include INC_GLUE(pgent_inline.h)
 
 intctrl_t intctrl;
 
@@ -80,7 +80,7 @@ SECTION(".init") void intctrl_t::init_arch()
 	enter_kdebug( "No external interrupt presentation node found" );
 
     xics_valid.low = 0;
-#if defined(CONFIG_SMP)
+#ifdef CONFIG_SMP
     xics_valid.high = CONFIG_SMP_MAX_CPUS;
 #else
     xics_valid.high = 32;
@@ -139,9 +139,31 @@ SECTION(".init") void intctrl_t::init_arch()
 
     /* XXX - these should be created lazily for devices!! */
     /* Create a dummy page table entry */
-    pg.set_entry( get_kernel_space(), pgent_t::size_16m,
+
+/*
+ernel/src/platform/ofpower4/xics.cc
+In file included from /root/Orion/kernel/src/platform/ofpower4/xics.cc:40:
+/root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h:221: error: prototype for `void pgent_t::set_entry(space_t*, pgent_t::pgsize_e, void*, word_t, word_t, bool)' does not match any in class `pgent_t'
+/root/Orion/kernel/src/glue/v4-powerpc64/pgent.h:183: error: candidate is: 
+void pgent_t::set_entry(space_t*, pgent_t::pgsize_e, void*, word_t, bool)
+pg.set_entry( get_kernel_space(), size, (addr_t)(scca_phys & ~(0xfff)), 6, pgent_t::cache_inhibit, true );
+
+
+pg.set_entry( get_kernel_space(), pgent_t::size_16m, (addr_t)xicp_table.node[0].addr, 7, pgent_t::cache_inhibit, true );
+
+pg.set_entry( kernel_space, pgent_t::size_16m, 0, 7, pgent_t;:l4default, true );
+
+pg.set_entry( get_kernel_space(), pgent_t::size_16m,
 		    (addr_t)xicp_table.node[0].addr,
 		    true, true, false, true, pgent_t::cache_inhibit );
+
+pg.set_entry( kernel_space, pgent_t::size_4k, (addr_t)(i), 7, pgent_t::l4default, true );
+*/
+//THIS PROBABLY WILL EXPLODE, VIOLENTLY!!!!
+//pg.set_entry( get_kernel_space(), pgent_t::size_16m, (addr_t)xicp_table.node[0].addr, pgent_t::cache_inhibit, true );
+
+pg.set_entry( get_kernel_space(), pgent_t::size_16m, (addr_t)xicp_table.node[0].addr, 7, pgent_t::cache_inhibit, true );
+
     /* Insert the kernel mapping, bolted */
     get_pghash()->insert_mapping( get_kernel_space(),
 		    (addr_t)(DEVICE_AREA_START | xicp_table.node[0].addr),

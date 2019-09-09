@@ -26,7 +26,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id: procdesc.h,v 1.5 2006/10/18 11:47:10 reichelt Exp $
+ * $Id: procdesc.h,v 1.4 2003/09/24 19:04:24 skoglund Exp $
  *                
  ********************************************************************/
 #ifndef __API__V4__PROCDESC_H__
@@ -59,12 +59,10 @@ public:
 
 #endif /* !ASSEMBLY */
 
-#if !defined(KIP_PROC_DESC_LOG2SIZE)
 #if defined(CONFIG_IS_64BIT)
 #define KIP_PROC_DESC_LOG2SIZE	5
-#elif defined(CONFIG_IS_32BIT)
+#else
 #define KIP_PROC_DESC_LOG2SIZE	4
 #endif
-#endif /* !defined(KIP_PROC_DESC_LOG2SIZE) */
 
 #endif /* !__API__V4__PROCDESC_H__ */

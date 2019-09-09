@@ -1,6 +1,7 @@
 /*********************************************************************
  *                
- * Copyright (C) 2002-2006, 2008,  Karlsruhe University
+ * Copyright (C) 2002-2004,  Karlsruhe University
+ * Copyright (C) 2005,  National ICT Australia (NICTA)
  *                
  * File path:     api/v4/kernelinterface.cc
  * Description:   defines the kernel interface page
@@ -26,20 +27,22 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id: kernelinterface.cc,v 1.52 2006/10/27 17:45:55 reichelt Exp $
+ * $Id: kernelinterface.cc,v 1.46 2004/06/03 14:57:30 joshua Exp $
  *                
  ********************************************************************/
 
+#include <l4.h>
 #include <debug.h>
 #include INC_API(kernelinterface.h)
 #include INC_API(memdesc.h)
 #include INC_API(user.h)
 #include INC_GLUE(config.h)
+#ifndef SCONS_BUILD
 #include <version.h>
+#endif
 
-#if defined(CONFIG_DEBUG) && !defined(KIP_SECONDARY)
+#if defined(CONFIG_DEBUG)
 extern void kdebug_init();
-extern void kdebug_entry(void *);
 # define KDEBUG_INIT	kdebug_init
 # define KDEBUG_ENTRY	kdebug_entry
 #else
@@ -47,8 +50,8 @@ extern void kdebug_entry(void *);
 # define KDEBUG_ENTRY	(0)
 #endif
 
-// Experimental Version X.2
-#define KIP_API_VERSION   {SHUFFLE2(0x05, 0x84)}
+// NICTA Experimental Version Rev.3
+#define KIP_API_VERSION   {SHUFFLE2(0x03, 0x86)}
 
 // Thread info (sign. bits (arch-specific), sysbase, userbase)
 #define KIP_THREAD_INFO   {SHUFFLE3(VALID_THREADNO_BITS, 0, 0)}
@@ -57,27 +60,21 @@ extern void kdebug_entry(void *);
 #define KIP_PROCESSOR_DESC_PTR (sizeof (kernel_interface_page_t))
 
 // Processor info field.
-#define KIP_PROCESSOR_INFO {SHUFFLE2(0, KIP_PROC_DESC_LOG2SIZE)}
+#define KIP_PROCESSOR_INFO	{SHUFFLE2(0,KIP_PROC_DESC_LOG2SIZE)}
 
 // Put kernel description after processor descriptors
 #define KIP_DESCRIPTION_PTR (sizeof (kernel_interface_page_t) + sizeof(procdesc_t) * CONFIG_SMP_MAX_CPUS)
 
-extern "C" {
-
 // Memory info is calculated by linker script
-#if !defined(KIP_MEMDESCS_SIZE)
-# define KIP_MEMDESCS_SIZE _memory_descriptors_size
-#endif
-#if !defined(KIP_MEMDESCS_RAW)
-# define KIP_MEMDESCS_RAW _memory_descriptors_raw
-#endif
-extern word_t KIP_MEMDESCS_SIZE[];
-extern word_t KIP_MEMDESCS_RAW[];
-#define KIP_MEMORY_INFO {{raw: (addr_word_t) &KIP_MEMDESCS_RAW}}
-  
-kernel_interface_page_t KIP UNIT(KIP_SECTION) =
+extern word_t _memory_descriptors_size[];
+extern word_t _memory_descriptors_offset[];
+#define KIP_MEMORY_INFO					\
+    {SHUFFLE2 ((word_t) &_memory_descriptors_size,	\
+	       (word_t) &_memory_descriptors_offset)}
+
+kernel_interface_page_t kip UNIT("kip")=
 {
-    {{string:{'L','4',(char)230,'K'}}}, // Magic word
+    {{string:{'L','4',230,'K'}}}, // Magic word
     KIP_API_VERSION,
     KIP_API_FLAGS,		// API flags
     KIP_DESCRIPTION_PTR,	// kernel description pointer
@@ -106,19 +103,16 @@ kernel_interface_page_t KIP UNIT(KIP_SECTION) =
     {0, 0},			// dedicated memory 3
     {0, 0},			// dedicated memory 4
 
-#if defined(CONFIG_X_EVT_LOGGING) 
-    0, 0,			// evt logging information
-#else
-    {0, 0},			// reserved1
-#endif
+    {0},			// reserved1
+    { IPC_NUM_MR-1 },		// Virtual register info
     KIP_UTCB_INFO,		// UTCB info
     KIP_KIP_AREA,		// KIP area info
 
-    {0, 0},			// reserved 2
+    {0,},			// reserved 2
     0,				// boot info
     KIP_PROCESSOR_DESC_PTR,	// processor description pointer
 
-    {0, 0},			// clock info
+    {0},			// clock info
     KIP_THREAD_INFO,
     KIP_ARCH_PAGEINFO,		// page info
     KIP_PROCESSOR_INFO,		// processor info
@@ -130,36 +124,38 @@ kernel_interface_page_t KIP UNIT(KIP_SECTION) =
     0, 0, 0, 0			// architecture specific syscalls
 };
 
-}
-
-extern const kernel_descriptor_t kdesc UNIT(KIP_SECTION ".kdesc") =
+extern const kernel_descriptor_t kdesc UNIT("kip.kdesc") =
 {
-    {SHUFFLE2(subid:2, id:4)},
+    {SHUFFLE2(subid:1, id:5)},
+#ifdef SCONS_BUILD
+    {SHUFFLE3(day:(KERNEL_GEN_DAY),month:(KERNEL_GEN_MONTH),year:(KERNEL_GEN_YEAR)) },
+#else
     { KERNELGENDATE },
+#endif
     {SHUFFLE3(KERNEL_VERSION,KERNEL_SUBVERSION,KERNEL_SUBSUBVERSION)},
-    {{{'U','K','a',' '}}}
+    {{{'N','I','C','T'}}}
 };
 
 /*
  * Generate kernel version string.
  */
-__asm__(".section .data." KIP_SECTION ".versionparts,\"aw\",%progbits	\n"
-	"kernel_version_string:						\n"
-	".string \"L4Ka::Pistachio - built on "__DATE__" "__TIME__
-	" by "__USER__" using gcc version "__VERSION__"\" 		\n"
-	".previous							\n");
+__asm__(".section .data.kip.versionparts,\"aw\",%progbits	\n"
+	"kernel_version_string:					\n"
+	".string \"NICTA::Pistachio - built on "__DATE__" "__TIME__
+	" by "__USER__" using gcc version "__VERSION__"\" 	\n"
+	".previous						\n");
 
 /*
  * Terminate the feature string list.
  */
-__asm__ (".section .data." KIP_SECTION ".features.end, \"aw\", %progbits	\n"
-	 ".string \"\"								\n"
-	 ".previous								\n");
+__asm__ (".section .data.kip.features.end, \"aw\", %progbits	\n"
+	 ".string \"\"						\n"
+	 ".previous						\n");
 
 /**
  * processor descriptors
  */
-procdesc_t processor_descriptors[CONFIG_SMP_MAX_CPUS] UNIT (KIP_SECTION ".pdesc");
+procdesc_t processor_descriptors[CONFIG_SMP_MAX_CPUS] UNIT ("kip.pdesc");
 
 procdesc_t * processor_info_t::get_procdesc (word_t num)
 {
@@ -173,13 +169,8 @@ procdesc_t * processor_info_t::get_procdesc (word_t num)
 # define KIP_MIN_MEMDESCS (8)
 #endif
 
-#if !defined(KIP_MEMDESCS)
-# define KIP_MEMDESCS memory_descriptors
-#endif
+memdesc_t memory_descriptors[KIP_MIN_MEMDESCS] UNIT ("kip.mdesc");
 
-extern "C" {
-    memdesc_t KIP_MEMDESCS[KIP_MIN_MEMDESCS] UNIT (KIP_SECTION ".mdesc");
-}
 
 /**
  * Grab memory descriptor from kernel interface page.
@@ -192,7 +183,7 @@ memdesc_t * memory_info_t::get_memdesc (word_t num)
 {
     if (num >= n)
 	return NULL;
-    return &KIP_MEMDESCS[num];
+    return &memory_descriptors[num];
 }
 
 
@@ -210,7 +201,7 @@ memdesc_t * memory_info_t::get_memdesc (word_t num)
 bool memory_info_t::insert (memdesc_t::type_e type, word_t subtype,
 			    bool virt, addr_t low, addr_t high)
 {
-    const word_t max_desc = (addr_word_t) &KIP_MEMDESCS_SIZE;
+    const word_t max_desc = (word_t) &_memory_descriptors_size;
 
     if (n >= max_desc)
     {
@@ -226,15 +217,12 @@ bool memory_info_t::insert (memdesc_t::type_e type, word_t subtype,
 }
 
 
-extern "C" {
-    extern char kernel_version_string[] UNUSED;
-}
-
 /**
  * Print kernel version string.
  */
 void SECTION(".init") init_hello (void)
 {
+    extern char kernel_version_string[] UNUSED;
     printf ("\n" TXT_BRIGHT TXT_FG_YELLOW "%s" TXT_NORMAL "\n",
 	    kernel_version_string);
 }
@@ -257,7 +245,7 @@ void SECTION(".init") init_hello (void)
 
 void SECTION(".init") kernel_interface_page_t::init()
 {
-#if defined(KIP_SYSCALL)
+#if defined(KIP_SYSCALL)    
 #define SET_KIP_SYSCALL(x) \
     this->x##_syscall = KIP_SYSCALL(user_##x)
 
@@ -269,10 +257,9 @@ void SECTION(".init") kernel_interface_page_t::init()
     SET_KIP_SYSCALL(lipc);
     SET_KIP_SYSCALL(unmap);
     SET_KIP_SYSCALL(exchange_registers);
-    SET_KIP_SYSCALL(system_clock);
     SET_KIP_SYSCALL(thread_switch);
     SET_KIP_SYSCALL(schedule);
-#endif
+#endif    
 
 #define SET_KIP_ARCH_SYSCALL(n) \
     this->arch_syscall##n = ARCH_SYSCALL##n
@@ -281,6 +268,10 @@ void SECTION(".init") kernel_interface_page_t::init()
     SET_KIP_ARCH_SYSCALL (1);
     SET_KIP_ARCH_SYSCALL (2);
     SET_KIP_ARCH_SYSCALL (3);
+
+#ifdef ARCH_SPECIAL_SYSCALLS
+    ARCH_SPECIAL_SYSCALLS
+#endif
 }
 
 

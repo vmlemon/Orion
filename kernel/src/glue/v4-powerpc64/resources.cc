@@ -205,7 +205,7 @@ void thread_resources_t::powerpc64_fpu_unavail_exception( tcb_t *tcb )
      * exception if the current tcb already owns the floating point register
      * file.
      */
-    ASSERT( fp_tcb != tcb );
+    ASSERT( DEBUG, fp_tcb != tcb );
 
     ppc64_enable_fpu();
 
@@ -219,7 +219,7 @@ void thread_resources_t::powerpc64_fpu_spill( tcb_t *tcb )
 {
     tcb_t * fp_tcb = get_resources()->get_fp_lazy_tcb();
 
-    ASSERT( tcb );
+    ASSERT( DEBUG, tcb );
 
     if (tcb == fp_tcb) {
 	ppc64_enable_fpu();
