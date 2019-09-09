@@ -55,7 +55,7 @@ INLINE void tcb_t::set_cpu(cpuid_t cpu)
     // update the pdir cache on migration
     if (space && !this->pdir_cache) {
 	this->pdir_cache = (word_t)space->get_top_pdir_phys(cpu);
-	ASSERT(this->pdir_cache);
+	//ASSERT(this->pdir_cache);
     }
 
     // only update UTCB if there is one
@@ -91,7 +91,7 @@ INLINE word_t tcb_t::get_utcb_location()
  */
 INLINE word_t tcb_t::get_mr(word_t index)
 {
-    ASSERT(index < IPC_NUM_MR);
+    //ASSERT(index < IPC_NUM_MR);
     return get_utcb()->mr[index];
 }
 
@@ -102,7 +102,7 @@ INLINE word_t tcb_t::get_mr(word_t index)
  */
 INLINE void tcb_t::set_mr(word_t index, word_t value)
 {
-    ASSERT(index < IPC_NUM_MR);
+    //ASSERT(index < IPC_NUM_MR);
     get_utcb()->mr[index] = value;
 }
 

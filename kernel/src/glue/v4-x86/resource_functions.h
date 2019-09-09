@@ -24,7 +24,7 @@
  */
 INLINE addr_t thread_resources_t::copy_area_address (word_t n)
 {
-    ASSERT (n < COPY_AREA_COUNT);
+    //ASSERT (n < COPY_AREA_COUNT);
     return (addr_t) (COPY_AREA_START + COPY_AREA_SIZE * n);
 }
 
@@ -39,13 +39,13 @@ INLINE addr_t thread_resources_t::copy_area_address (word_t n)
  */
 INLINE addr_t thread_resources_t::copy_area_real_address (word_t n)
 {
-    ASSERT (n < COPY_AREA_COUNT);
+    //ASSERT (n < COPY_AREA_COUNT);
     
     word_t addr = 0;
     pgent_t::pgsize_e pgsize = pgent_t::size_max - COPY_AREA_PDIRS + 1;
     for (word_t i = 0; i < COPY_AREA_PDIRS; i++)
     {
-	ASSERT (pdir_idx[n][i] != ~0UL);
+	//ASSERT (pdir_idx[n][i] != ~0UL);
 	addr |= pdir_idx[n][i] << page_shift(pgsize++);
     }
     return (addr_t) (addr);
@@ -60,8 +60,8 @@ INLINE addr_t thread_resources_t::copy_area_real_address (word_t n)
  */
 INLINE word_t thread_resources_t::copy_area_pdir_idx (word_t n, word_t p)
 {
-    ASSERT (n < COPY_AREA_COUNT);
-    ASSERT (p < COPY_AREA_PDIRS);
+    //ASSERT (n < COPY_AREA_COUNT);
+    //ASSERT (p < COPY_AREA_PDIRS);
     return pdir_idx[n][p];
 }
 
@@ -110,7 +110,7 @@ INLINE void thread_resources_t::enable_copy_area (tcb_t * tcb,
 #endif
 
     word_t n = last_copy_area;
-    ASSERT (n <= COPY_AREA_COUNT);
+    //ASSERT (n <= COPY_AREA_COUNT);
     last_copy_area++;
     if (last_copy_area >= COPY_AREA_COUNT)
 	last_copy_area = 0;
@@ -191,8 +191,8 @@ INLINE void thread_resources_t::release_copy_area (tcb_t * tcb,
  */
 INLINE void thread_resources_t::smp_xcpu_pagetable (tcb_t * tcb, cpuid_t cpu)
 {
-    ASSERT(tcb);
-    ASSERT(tcb->get_space());
+    //ASSERT(tcb);
+    //ASSERT(tcb->get_space());
 
     if ( !tcb->get_space()->has_cpu_top_pdir(cpu) ) 
     {
