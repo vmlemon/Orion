@@ -42,11 +42,8 @@
  /root/Orion/kernel/src/generic/init.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h
 .depend src/generic/traceids.o: /root/Orion/kernel/src/generic/traceids.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -112,10 +109,8 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h \
  /root/Orion/kernel/src/api/v4/interrupt.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/intctrl.h \
  /root/Orion/kernel/src/generic/intctrl.h \
@@ -334,11 +329,8 @@
  /root/Orion/kernel/src/arch/powerpc64/1275tree.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h
 .depend src/api/v4/exregs.o: /root/Orion/kernel/src/api/v4/exregs.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -388,11 +380,8 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h
 .depend src/api/v4/ipc.o: /root/Orion/kernel/src/api/v4/ipc.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -415,11 +404,8 @@
  /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h \
  /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
@@ -474,11 +460,8 @@
  /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h \
  /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
@@ -584,11 +567,8 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h \
  /root/Orion/kernel/src/api/v4/smp.h
 .depend src/api/v4/schedule.o: /root/Orion/kernel/src/api/v4/schedule.cc \
  /root/Orion/kernel/rpb8/config/config.h \
@@ -638,11 +618,8 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h \
  /root/Orion/kernel/src/api/v4/interrupt.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/intctrl.h \
  /root/Orion/kernel/src/generic/intctrl.h \
@@ -673,11 +650,8 @@
  /root/Orion/kernel/src/generic/sync.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h \
  /root/Orion/kernel/src/api/v4/space.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
  /root/Orion/kernel/src/api/v4/tcb.h \
@@ -725,11 +699,8 @@
  /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h \
  /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
@@ -797,11 +768,8 @@
  /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h \
  /root/Orion/kernel/src/generic/sync.h \
  /root/Orion/kernel/src/api/v4/kernelinterface.h \
  /root/Orion/kernel/src/generic/memregion.h \
@@ -1002,11 +970,8 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/timer.h \
  /root/Orion/kernel/src/generic/timer.h \
  /root/Orion/kernel/src/arch/powerpc64/1275tree.h \
@@ -1043,11 +1008,8 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h \
  /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
@@ -1128,11 +1090,8 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h \
  /root/Orion/kernel/src/api/v4/processor.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/intctrl.h \
  /root/Orion/kernel/src/generic/intctrl.h \
@@ -1186,11 +1145,8 @@
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h
 .depend src/glue/v4-powerpc64/pghash.o: /root/Orion/kernel/src/glue/v4-powerpc64/pghash.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -1246,11 +1202,8 @@
  /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h \
  /root/Orion/kernel/src/kdb/console.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/arch/powerpc64/except.h \
@@ -1346,11 +1299,8 @@
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h \
  /root/Orion/kernel/src/arch/powerpc64/pgent.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
  /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
@@ -1413,11 +1363,8 @@
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h \
  /root/Orion/kernel/src/generic/linear_ptab.h \
  /root/Orion/kernel/src/generic/mapping.h
 .depend src/generic/mapping.o: /root/Orion/kernel/src/generic/mapping.cc \
@@ -1509,11 +1456,8 @@
  /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h
 .depend kdb/generic/bootinfo.o: /root/Orion/kernel/kdb/generic/bootinfo.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -1533,8 +1477,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/cmd.h \
  /root/Orion/kernel/src/kdb/linker_set.h /root/Orion/kernel/src/kdb/kdb.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ kdb_class_helper.h /root/Orion/kernel/src/api/v4/kernelinterface.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/memdesc.h \
  /root/Orion/kernel/src/api/v4/procdesc.h \
@@ -1578,8 +1521,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/kdb.h \
  /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/kdb/console.h
+ kdb_class_helper.h /root/Orion/kernel/src/kdb/console.h
 .depend kdb/generic/console.o: /root/Orion/kernel/kdb/generic/console.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -1600,8 +1542,7 @@
  /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/generic/sync.h /root/Orion/kernel/src/kdb/kdb.h \
  /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/kdb/console.h
+ kdb_class_helper.h /root/Orion/kernel/src/kdb/console.h
 .depend kdb/generic/entry.o: /root/Orion/kernel/kdb/generic/entry.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -1621,8 +1562,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/kdb.h \
  /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/api/v4/tcb.h \
+ kdb_class_helper.h /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
  /root/Orion/kernel/src/api/v4/queueing.h \
@@ -1661,18 +1601,15 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/kdb/kdb.h \
  /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/kdb/tracepoints.h /root/Orion/kernel/src/debug.h \
+ kdb_class_helper.h /root/Orion/kernel/src/kdb/tracepoints.h \
+ /root/Orion/kernel/src/debug.h \
  /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/tracebuffer.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h \
  /root/Orion/kernel/src/kdb/init.h /root/Orion/kernel/src/generic/init.h
 .depend kdb/generic/input.o: /root/Orion/kernel/kdb/generic/input.cc \
  /root/Orion/kernel/rpb8/config/config.h \
@@ -1694,7 +1631,7 @@
  /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/input.h \
  /root/Orion/kernel/src/kdb/kdb.h /root/Orion/kernel/src/kdb/cmd.h \
  /root/Orion/kernel/src/kdb/linker_set.h kdb_class_helper.h \
- kdb_autogenerated_protos.h /root/Orion/kernel/src/kdb/console.h
+ /root/Orion/kernel/src/kdb/console.h
 .depend kdb/generic/kmemory.o: /root/Orion/kernel/kdb/generic/kmemory.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -1714,8 +1651,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/cmd.h \
  /root/Orion/kernel/src/kdb/linker_set.h /root/Orion/kernel/src/kdb/kdb.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/generic/kmemory.h \
+ kdb_class_helper.h /root/Orion/kernel/src/generic/kmemory.h \
  /root/Orion/kernel/src/generic/sync.h
 .depend kdb/generic/linker_set.o: /root/Orion/kernel/kdb/generic/linker_set.cc \
  /root/Orion/kernel/rpb8/config/config.h \
@@ -1756,8 +1692,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/kdb.h \
  /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/kdb/input.h \
+ kdb_class_helper.h /root/Orion/kernel/src/kdb/input.h \
  /root/Orion/kernel/src/generic/linear_ptab.h \
  /root/Orion/kernel/src/arch/powerpc64/pgent.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
@@ -1862,8 +1797,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/kdb.h \
  /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/kdb/input.h \
+ kdb_class_helper.h /root/Orion/kernel/src/kdb/input.h \
  /root/Orion/kernel/src/kdb/tid_format.h
 .depend kdb/generic/tracepoints.o: /root/Orion/kernel/kdb/generic/tracepoints.cc \
  /root/Orion/kernel/rpb8/config/config.h \
@@ -1885,14 +1819,11 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h \
  /root/Orion/kernel/src/kdb/kdb.h /root/Orion/kernel/src/kdb/cmd.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/kdb/input.h /root/Orion/kernel/src/api/v4/smp.h \
+ kdb_class_helper.h /root/Orion/kernel/src/kdb/input.h \
+ /root/Orion/kernel/src/api/v4/smp.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
@@ -1950,9 +1881,10 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h \
  /root/Orion/kernel/src/generic/lib.h /root/Orion/kernel/src/kdb/kdb.h \
  /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/kdb/input.h \
+ kdb_class_helper.h /root/Orion/kernel/src/kdb/input.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h \
  /root/Orion/kernel/src/kdb/tracebuffer.h \
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
@@ -2036,8 +1968,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/cmd.h \
  /root/Orion/kernel/src/kdb/linker_set.h /root/Orion/kernel/src/kdb/kdb.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/arch/powerpc64/segment.h \
+ kdb_class_helper.h /root/Orion/kernel/src/arch/powerpc64/segment.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
  /root/Orion/kernel/src/generic/kmemory.h \
  /root/Orion/kernel/src/generic/sync.h \
@@ -2062,8 +1993,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/kdb.h \
  /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/arch/powerpc64/rtas.h \
+ kdb_class_helper.h /root/Orion/kernel/src/arch/powerpc64/rtas.h \
  /root/Orion/kernel/src/arch/powerpc64/1275tree.h \
  /root/Orion/kernel/src/generic/sync.h
 .depend kdb/api/v4/input.o: /root/Orion/kernel/kdb/api/v4/input.cc \
@@ -2086,7 +2016,7 @@
  /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/input.h \
  /root/Orion/kernel/src/kdb/kdb.h /root/Orion/kernel/src/kdb/cmd.h \
  /root/Orion/kernel/src/kdb/linker_set.h kdb_class_helper.h \
- kdb_autogenerated_protos.h /root/Orion/kernel/src/kdb/console.h \
+ /root/Orion/kernel/src/kdb/console.h \
  /root/Orion/kernel/src/api/v4/space.h \
  /root/Orion/kernel/src/generic/kmemory.h \
  /root/Orion/kernel/src/generic/sync.h \
@@ -2131,8 +2061,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/kdb.h \
  /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ kdb_class_helper.h /root/Orion/kernel/src/api/v4/kernelinterface.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/memdesc.h \
  /root/Orion/kernel/src/api/v4/procdesc.h
@@ -2155,8 +2084,8 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/kdb.h \
  /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/kdb/input.h /root/Orion/kernel/src/api/v4/tcb.h \
+ kdb_class_helper.h /root/Orion/kernel/src/kdb/input.h \
+ /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
  /root/Orion/kernel/src/api/v4/queueing.h \
@@ -2184,11 +2113,9 @@
  /root/Orion/kernel/src/api/v4/schedule.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h \
+ /root/Orion/kernel/src/api/v4/cpu.h
 .depend kdb/api/v4/thread.o: /root/Orion/kernel/kdb/api/v4/thread.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -2252,8 +2179,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/kdb.h \
  /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/generic/sync.h \
+ kdb_class_helper.h /root/Orion/kernel/src/generic/sync.h \
  /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
@@ -2282,11 +2208,9 @@
  /root/Orion/kernel/src/api/v4/schedule.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h \
+ /root/Orion/kernel/src/api/v4/cpu.h
 .depend kdb/api/v4/sigma0.o: /root/Orion/kernel/kdb/api/v4/sigma0.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -2306,8 +2230,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/cmd.h \
  /root/Orion/kernel/src/kdb/linker_set.h /root/Orion/kernel/src/kdb/kdb.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/kdb/input.h \
+ kdb_class_helper.h /root/Orion/kernel/src/kdb/input.h \
  /root/Orion/kernel/src/api/v4/kernelinterface.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/memdesc.h \
@@ -2336,11 +2259,8 @@
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/cpu.h \
- /root/Orion/kernel/src/arch/powerpc64/atomic.h \
- /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
+ /root/Orion/kernel/src/generic/traceids.h \
+ /root/Orion/kernel/src/arch/powerpc64/traceids.h
 .depend kdb/arch/powerpc64/prepost.o: /root/Orion/kernel/kdb/arch/powerpc64/prepost.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -2355,7 +2275,7 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/kdb/kdb.h \
  /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
- kdb_class_helper.h kdb_autogenerated_protos.h
+ kdb_class_helper.h
 .depend kdb/arch/powerpc64/frame.o: /root/Orion/kernel/kdb/arch/powerpc64/frame.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -2375,8 +2295,8 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/cmd.h \
  /root/Orion/kernel/src/kdb/linker_set.h /root/Orion/kernel/src/kdb/kdb.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/kdb/input.h /root/Orion/kernel/src/api/v4/tcb.h \
+ kdb_class_helper.h /root/Orion/kernel/src/kdb/input.h \
+ /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
  /root/Orion/kernel/src/api/v4/queueing.h \
@@ -2420,7 +2340,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/cmd.h \
  /root/Orion/kernel/src/kdb/linker_set.h /root/Orion/kernel/src/kdb/kdb.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
+ kdb_class_helper.h \
  /root/Orion/kernel/src/arch/powerpc64/ppc64_registers.h
 .depend kdb/arch/powerpc64/dabr.o: /root/Orion/kernel/kdb/arch/powerpc64/dabr.cc \
  /root/Orion/kernel/rpb8/config/config.h \
@@ -2441,8 +2361,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/cmd.h \
  /root/Orion/kernel/src/kdb/linker_set.h /root/Orion/kernel/src/kdb/kdb.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/kdb/input.h \
+ kdb_class_helper.h /root/Orion/kernel/src/kdb/input.h \
  /root/Orion/kernel/src/arch/powerpc64/ppc64_registers.h
 .depend kdb/arch/powerpc64/single_step.o: /root/Orion/kernel/kdb/arch/powerpc64/single_step.cc \
  /root/Orion/kernel/rpb8/config/config.h \
@@ -2463,8 +2382,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/cmd.h \
  /root/Orion/kernel/src/kdb/linker_set.h /root/Orion/kernel/src/kdb/kdb.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/kdb/input.h \
+ kdb_class_helper.h /root/Orion/kernel/src/kdb/input.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h
 .depend kdb/generic/linear_ptab_dump.o: /root/Orion/kernel/kdb/generic/linear_ptab_dump.cc \
  /root/Orion/kernel/rpb8/config/config.h \
@@ -2485,8 +2403,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/cmd.h \
  /root/Orion/kernel/src/kdb/linker_set.h /root/Orion/kernel/src/kdb/kdb.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/kdb/input.h \
+ kdb_class_helper.h /root/Orion/kernel/src/kdb/input.h \
  /root/Orion/kernel/src/generic/linear_ptab.h \
  /root/Orion/kernel/src/arch/powerpc64/pgent.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
@@ -2539,8 +2456,7 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/cmd.h \
  /root/Orion/kernel/src/kdb/linker_set.h /root/Orion/kernel/src/kdb/kdb.h \
- kdb_class_helper.h kdb_autogenerated_protos.h \
- /root/Orion/kernel/src/kdb/input.h \
+ kdb_class_helper.h /root/Orion/kernel/src/kdb/input.h \
  /root/Orion/kernel/src/generic/mapping.h \
  /root/Orion/kernel/src/arch/powerpc64/pgent.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
