@@ -14,6 +14,12 @@
 #define __API__V4__SCHED_HS__SCHEDULE_H__
 
 #define DELAY_PREEMPT_TICKS	1
+
+#ifdef __powerpc64__
+typedef unsigned long		u64_t;
+typedef u64_t			word_t;
+#endif
+
 typedef u64_t period_cycles_t;
 class schedule_req_t;
 

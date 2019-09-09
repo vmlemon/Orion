@@ -1,6 +1,6 @@
 /*********************************************************************
  *                
- * Copyright (C) 2002-2004, 2006, 2008-2011,  Karlsruhe University
+ * Copyright (C) 2002-2004,  Karlsruhe University
  *                
  * File path:     api/v4/smp.cc
  * Description:   Multiprocessor handling for cross-processor 
@@ -27,32 +27,21 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id: smp.cc,v 1.10 2006/06/16 10:28:44 stoess Exp $
+ * $Id: smp.cc,v 1.9 2004/06/02 08:41:43 sgoetz Exp $
  *                
  ********************************************************************/
+#if defined(CONFIG_SMP)
+
 #include <sync.h>
 #include <kdb/tracepoints.h>
 #include INC_API(smp.h)
 #include INC_API(schedule.h)
 #include INC_API(queueing.h)
 
-cpuid_t	current_cpu UNIT("cpulocal");;
-
-#if defined(CONFIG_SMP)
-
-#ifdef CONFIG_SMP_IDLE_POLL
-void processor_sleep()
-{
-    x86_sleep();
-    process_xcpu_mailbox();
-}
-#endif
-
-
-
 //#define TRACE_IPI(x...) do { printf("CPU %d: ", get_current_cpu()); printf(x); } while(0)
+#define TRACE_IPI(x...)
 
-#if defined(CONFIG_SMP_SYNC_REQUEST)
+#ifdef CONFIG_SMP_SYNC_REQUEST
 
 /*
  * VU: Synchronous XCPU handling
@@ -86,12 +75,6 @@ void sync_entry_t::handle_sync_requests()
 void sync_xcpu_request(cpuid_t dstcpu, xcpu_handler_t handler, tcb_t * tcb, 
 		       word_t param0, word_t param1, word_t param2)
 {
-#if defined(CONFIG_DEBUG)
-    if (get_current_tcb() == get_kdebug_tcb())
-	// Avoid KDB deadlock
-	return;
-#endif
-
     sync_entry_t * entry = &sync_xcpu_entry[get_current_cpu()];
 
     entry->ack_mask = 0;
@@ -134,33 +117,16 @@ void cpu_mb_t::walk_mailbox()
 	entries[first_alloc].handler = NULL;
 	first_alloc = (first_alloc + 1) % MAX_MAILBOX_ENTRIES;
 	lock.unlock();
-	ASSERT(entry.handler);
-	
+	ASSERT(ALWAYS, entry.handler);
 	//printf("CPU%d: XCPU-entry (handler: %t)\n", get_current_cpu(), entry.handler);
 	entry.handler(&entry);
     }
 }
 
 
-void cpu_mb_t::dump_mailbox(word_t cpu)
-{
-    printf("CPU%d Mailbox first alloc %d first free %d\n", cpu, first_alloc, first_free);
-    for (word_t e=0; e < MAX_MAILBOX_ENTRIES; e++)
-    {
-        cpu_mb_entry_t entry = entries[e];
-	if (entry.handler != NULL)
-            printf("\tXCPU-entry %d\n\t\thandler:%t,"
-		   "tcb %t\n\t\tparams %x:%x:%x:%x:%x:%x:%x:%x\n",
-                   cpu, e, entry.handler, entry.tcb,
-                   entry.param[0], entry.param[1], entry.param[2], entry.param[3],
-                   entry.param[4], entry.param[5], entry.param[6], entry.param[7]);
-    }
-}
-
-
 void process_xcpu_mailbox()
 {
-#if defined(CONFIG_SMP_SYNC_REQUEST)
+#ifdef CONFIG_SMP_SYNC_REQUEST
     sync_xcpu_entry[get_current_cpu()].handle_sync_requests();
 #endif
     get_cpu_mailbox (get_current_cpu())->walk_mailbox();

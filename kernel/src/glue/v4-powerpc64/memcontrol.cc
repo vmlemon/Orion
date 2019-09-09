@@ -26,7 +26,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id: memcontrol.cc,v 1.8 2005/03/11 07:10:27 cvansch Exp $
+ * $Id: memcontrol.cc,v 1.7 2004/12/01 23:49:37 cvansch Exp $
  *                
  ********************************************************************/
 
@@ -52,6 +52,11 @@ enum attribute_e {
 #include INC_API(space.h)
 #include INC_GLUE(space.h)
 #include <linear_ptab.h>
+
+static inline addr_t address (fpage_t fp, word_t size)
+{
+    return (addr_t) (fp.raw & ~((1UL << size) - 1));
+}
 
 /**
  * @param fpage		fpage to change

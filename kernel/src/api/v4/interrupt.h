@@ -32,13 +32,8 @@
 #ifndef __API__V4__INTERRUPT_H__
 #define __API__V4__INTERRUPT_H__
 
+#include INC_API(thread.h)
 #include INC_GLUE(intctrl.h)
-
-/**
- * handle_interrupt: callback function for interrupt handling in V4
- * param irq: IRQ number
- */
-void handle_interrupt(word_t irq);
 
 /**
  * initializes interrupt threads
@@ -50,7 +45,7 @@ void init_interrupt_threads();
  */
 bool thread_control_interrupt(threadid_t irq_tid, threadid_t handler_tid);
 
-#if defined(CONFIG_SMP)
+#ifdef CONFIG_SMP
 /**
  * migration function for interrupt threads
  * deals with re-routing

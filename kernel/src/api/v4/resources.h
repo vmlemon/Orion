@@ -1,6 +1,6 @@
 /*********************************************************************
  *                
- * Copyright (C) 2002, 2003, 2007-2008,  Karlsruhe University
+ * Copyright (C) 2002, 2003,  Karlsruhe University
  *                
  * File path:     api/v4/resources.h
  * Description:   
@@ -61,7 +61,7 @@ typedef word_t	resource_bits_t;
  */
 class resource_bits_t
 {
-    bitmask_t<word_t>	resource_bits;
+    bitmask_t	resource_bits;
 
 public:
 
@@ -69,13 +69,13 @@ public:
      * Intialize resources (i.e., clear all resources).
      */
     inline void init (void)
-	{ resource_bits.clear(); }
+	{ resource_bits = 0; }
 
     /**
      * Clear all resources.
      */
     inline void clear (void)
-	{ resource_bits.clear(); }
+	{ resource_bits = 0; }
 
     /**
      * Add resource to resource bits.
