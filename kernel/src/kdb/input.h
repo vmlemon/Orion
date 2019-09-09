@@ -1,6 +1,6 @@
 /*********************************************************************
  *                
- * Copyright (C) 2002, 2003, 2005,  Karlsruhe University
+ * Copyright (C) 2002, 2003,  Karlsruhe University
  *                
  * File path:     kdb/input.h
  * Description:   Declaration of input functions
@@ -26,7 +26,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id: input.h,v 1.7 2005/05/20 12:23:22 skoglund Exp $
+ * $Id: input.h,v 1.5 2003/09/24 19:04:54 skoglund Exp $
  *                
  ********************************************************************/
 #ifndef __KDB__INPUT_H__
@@ -34,8 +34,6 @@
 
 class space_t;
 class tcb_t;
-class comspace_t;
-class vrt_t;
 
 
 /*
@@ -58,7 +56,6 @@ char get_choice (const char * prompt,
 
 space_t * get_space (const char * prompt = NULL);
 tcb_t * get_thread (const char * prompt = NULL);
-comspace_t * get_comspace (const char * prompt = NULL);
-vrt_t * get_thrspace (const char * prompt = NULL);
+
 
 #endif /* !__KDB__INPUT_H__ */
