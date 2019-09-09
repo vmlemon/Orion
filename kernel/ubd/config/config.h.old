@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: tyson-Lenovo-ideapad-120S-14IAP */
-/* At: Mon, 09 Sep 2019 11:57:09 +0000 */
+/* At: Mon, 09 Sep 2019 12:22:36 +0000 */
 /* Linux version 5.0.0-27-generic (buildd@lgw01-amd64-016) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #28-Ubuntu SMP Tue Aug 20 19:53:07 UTC 2019 */
 
 /* Pistachio Kernel Configuration System */
@@ -65,7 +65,7 @@
 #undef  CONFIG_KDB_ON_STARTUP
 #undef  CONFIG_KDB_BREAKIN
 #undef  CONFIG_KDB_INPUT_HLT
-#undef  CONFIG_KDB_NO_ASSERTS
+#define CONFIG_KDB_NO_ASSERTS 1
 
 /* Trace Settings */
 #undef  CONFIG_VERBOSE_INIT
