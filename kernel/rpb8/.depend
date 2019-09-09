@@ -46,7 +46,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
 .depend src/generic/traceids.o: /root/Orion/kernel/src/generic/traceids.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -76,7 +76,7 @@
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/debug.h \
  /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
@@ -250,7 +250,7 @@
  /root/Orion/kernel/src/generic/sync.h \
  /root/Orion/kernel/src/arch/powerpc64/string.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/debug.h \
  /root/Orion/kernel/src/arch/powerpc64/debug.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
@@ -286,7 +286,7 @@
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
 .depend src/glue/v4-powerpc64/rtas.o: /root/Orion/kernel/src/glue/v4-powerpc64/rtas.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -338,7 +338,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
 .depend src/api/v4/exregs.o: /root/Orion/kernel/src/api/v4/exregs.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -392,7 +392,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
 .depend src/api/v4/ipc.o: /root/Orion/kernel/src/api/v4/ipc.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -419,7 +419,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
@@ -478,7 +478,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
@@ -588,7 +588,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/api/v4/smp.h
 .depend src/api/v4/schedule.o: /root/Orion/kernel/src/api/v4/schedule.cc \
  /root/Orion/kernel/rpb8/config/config.h \
@@ -642,7 +642,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/api/v4/interrupt.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/intctrl.h \
  /root/Orion/kernel/src/generic/intctrl.h \
@@ -677,7 +677,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/api/v4/space.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
  /root/Orion/kernel/src/api/v4/tcb.h \
@@ -729,7 +729,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
@@ -801,7 +801,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/generic/sync.h \
  /root/Orion/kernel/src/api/v4/kernelinterface.h \
  /root/Orion/kernel/src/generic/memregion.h \
@@ -1006,7 +1006,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/timer.h \
  /root/Orion/kernel/src/generic/timer.h \
  /root/Orion/kernel/src/arch/powerpc64/1275tree.h \
@@ -1047,7 +1047,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
@@ -1132,7 +1132,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/api/v4/processor.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/intctrl.h \
  /root/Orion/kernel/src/generic/intctrl.h \
@@ -1190,7 +1190,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
 .depend src/glue/v4-powerpc64/pghash.o: /root/Orion/kernel/src/glue/v4-powerpc64/pghash.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -1250,7 +1250,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/kdb/console.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/arch/powerpc64/except.h \
@@ -1350,7 +1350,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/arch/powerpc64/pgent.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
  /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
@@ -1417,7 +1417,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/generic/linear_ptab.h \
  /root/Orion/kernel/src/generic/mapping.h
 .depend src/generic/mapping.o: /root/Orion/kernel/src/generic/mapping.cc \
@@ -1513,7 +1513,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
 .depend kdb/generic/bootinfo.o: /root/Orion/kernel/kdb/generic/bootinfo.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -1672,7 +1672,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/kdb/init.h /root/Orion/kernel/src/generic/init.h
 .depend kdb/generic/input.o: /root/Orion/kernel/kdb/generic/input.cc \
  /root/Orion/kernel/rpb8/config/config.h \
@@ -1804,7 +1804,7 @@
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/generic/sync.h \
  /root/Orion/kernel/src/api/v4/thread.h \
  /root/Orion/kernel/src/api/v4/kernelinterface.h \
@@ -1889,7 +1889,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/kdb/kdb.h /root/Orion/kernel/src/kdb/cmd.h \
  kdb_class_helper.h kdb_autogenerated_protos.h \
  /root/Orion/kernel/src/kdb/input.h /root/Orion/kernel/src/api/v4/smp.h \
@@ -1957,7 +1957,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/api/v4/thread.h \
  /root/Orion/kernel/src/api/v4/kernelinterface.h \
  /root/Orion/kernel/src/api/v4/memdesc.h \
@@ -2188,7 +2188,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
 .depend kdb/api/v4/thread.o: /root/Orion/kernel/kdb/api/v4/thread.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -2286,7 +2286,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
 .depend kdb/api/v4/sigma0.o: /root/Orion/kernel/kdb/api/v4/sigma0.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -2340,7 +2340,7 @@
  /root/Orion/kernel/src/api/v4/cpu.h \
  /root/Orion/kernel/src/arch/powerpc64/atomic.h \
  /root/Orion/kernel/src/arch/powerpc64/tracebuffer.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
 .depend kdb/arch/powerpc64/prepost.o: /root/Orion/kernel/kdb/arch/powerpc64/prepost.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
