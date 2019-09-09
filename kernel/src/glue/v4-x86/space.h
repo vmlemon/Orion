@@ -196,7 +196,7 @@ INLINE bool space_t::is_log_area(fpage_t fpage)
 
 INLINE space_t::top_pdir_t *space_t::get_top_pdir(cpuid_t cpu)
 {
-    ASSERT(cpu < CONFIG_SMP_MAX_CPUS);
+    //ASSERT(cpu < CONFIG_SMP_MAX_CPUS);
     return data.cpu_ptab[cpu].top_pdir;
 }
 
@@ -244,7 +244,7 @@ INLINE word_t space_t::get_copy_limit (addr_t addr, word_t limit)
     {
 	// Address in copy-area.  Make sure that we do not go beyond
 	// the boundary of current copy area.
-	ASSERT (is_copy_area (addr));
+	//ASSERT (is_copy_area (addr));
 	if (addr_align (addr, COPY_AREA_SIZE) !=
 	    addr_align ((addr_t) end, COPY_AREA_SIZE))
 	{
@@ -289,11 +289,11 @@ INLINE void space_t::add_tcb(tcb_t * tcb, cpuid_t cpu)
  */
 INLINE bool space_t::remove_tcb(tcb_t * tcb, cpuid_t cpu)
 {
-    ASSERT (data.thread_count !=  0);
+    //ASSERT (data.thread_count !=  0);
     data.thread_count--;
 
 #if defined(CONFIG_SMP)
-    ASSERT (data.cpu_ptab[cpu].thread_count !=  0);
+    //ASSERT (data.cpu_ptab[cpu].thread_count !=  0);
     data.cpu_ptab[cpu].thread_count--;
 #endif
 #if defined(CONFIG_X_X86_HVM)
@@ -306,7 +306,7 @@ INLINE bool space_t::remove_tcb(tcb_t * tcb, cpuid_t cpu)
 
 INLINE pgent_t * space_t::pgent (word_t num, word_t cpu)
 {
-    ASSERT(cpu < CONFIG_SMP_MAX_CPUS);
+    //ASSERT(cpu < CONFIG_SMP_MAX_CPUS);
     if (!data.cpu_ptab[cpu].top_pdir)
 	return NULL;
     return &data.cpu_ptab[cpu].top_pdir->pgent[num];
