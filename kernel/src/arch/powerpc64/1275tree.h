@@ -34,6 +34,8 @@
 #ifndef __ARCH__POWERPC64__1275TREE_H__
 #define __ARCH__POWERPC64__1275TREE_H__
 
+#define OF1275_KIP_TYPE		0xe
+#define OF1275_KIP_SUBTYPE	0xf
 
 INLINE word_t of1275_align( word_t val )
 {
@@ -73,9 +75,18 @@ protected:
     }
 
 public:
+    enum device_type_e {
+	tNONE,
+	tDEV_TREE,
+	tPCI,
+	tISA,
+	tMAC_IO,
+	tU3,
+    };
     char *get_name()	    { return this->name; }
     u32_t get_handle()	    { return this->handle; }
     u32_t get_prop_count()  { return this->prop_count; }
+    device_type_e get_type();
 
     bool is_valid() { return this->handle != 0; }
 
@@ -83,7 +94,7 @@ public:
     bool get_prop( word_t index, char **name, char **data, u32_t *data_len ); 
     int get_depth();
 
-    bool get_prop( const char *name, word_t *data )
+    bool get_prop( const char *name, u32_t *data )
     {
 	u32_t *ptr, len;
 	if( !this->get_prop(name, (char **)&ptr, &len) )
@@ -103,6 +114,18 @@ public:
 };
 
 
+typedef struct {
+    of1275_device_t * dev;
+    struct {
+	u64_t space;
+	u64_t address;
+	u64_t size;
+    } adr[6];
+    int addrs;
+    int addr_cells;
+    int size_cells;
+} dev_node_t;
+
 class of1275_tree_t
 {
 protected:
@@ -120,9 +143,11 @@ public:
     }
 
     of1275_device_t *find( const char *name );
-    of1275_device_t *find_handle( word_t handle );
+    of1275_device_t *find_handle( u32_t handle );
     of1275_device_t *find_device_type( const char *device_type );
     of1275_device_t *get_parent( of1275_device_t *dev );
+
+    dev_node_t *probe_bus_address( of1275_device_t *dev );
 };
 
 
@@ -131,6 +156,12 @@ INLINE of1275_tree_t *get_of1275_tree()
     extern of1275_tree_t of1275_tree;
     return &of1275_tree;
 }
+
+class of1275_reg_property
+{
+public:
+    u32_t val[8];
+} __attribute__((packed));
 
 class of1275_pci_address
 {
@@ -148,7 +179,7 @@ public:
 	struct {
 	    of1275_pci_address addr;
 	    u32_t phys;
-	    u32_t size_hi;
+	    u32_t size;
 	} pci32;
 	struct {
 	    of1275_pci_address addr;

@@ -1,6 +1,6 @@
 /*********************************************************************
  *                
- * Copyright (C) 2003-2004, 2006, 2010,  National ICT Australia (NICTA)
+ * Copyright (C) 2003-2004,  National ICT Australia (NICTA)
  *                
  * File path:     glue/v4-powerpc64/space.cc
  * Description:   address space management
@@ -26,7 +26,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id: space.cc,v 1.13 2006/11/17 17:04:18 skoglund Exp $
+ * $Id: space.cc,v 1.11 2005/01/18 12:56:23 cvansch Exp $
  *                
  ********************************************************************/
 
@@ -70,9 +70,6 @@ char kernel_space_segment_table[POWERPC64_STAB_SIZE] __attribute__((aligned(POWE
 
 space_t *kernel_space = (space_t*)&kernel_space_object;
 tcb_t *dummy_tcb = NULL;
-
-//translation table
-struct transTable_t transTable[TRANSLATION_TABLE_ENTRIES];
 
 INLINE word_t pagedir_idx (addr_t addr)
 {
@@ -147,9 +144,9 @@ void space_t::add_mapping( addr_t vaddr, addr_t paddr,
      * Sanity check size
      */
 #ifdef CONFIG_POWERPC64_LARGE_PAGES
-    ASSERT((size == pgent_t::size_4k) || (size == pgent_t::size_16m));
+    ASSERT(DEBUG, (size == pgent_t::size_4k) || (size == pgent_t::size_16m));
 #else
-    ASSERT((size == pgent_t::size_4k));
+    ASSERT(DEBUG, (size == pgent_t::size_4k));
 #endif
 
     /*
@@ -183,9 +180,7 @@ void space_t::add_mapping( addr_t vaddr, addr_t paddr,
     /*
      * Modify page table
      */
-    pg->set_entry (this, pgsize, paddr,
-		   4 | (writable ? 2 : 0) | (executable ? 1 : 0),
-		   pgent_t::l4default, kernel );
+    pg->set_entry (this, pgsize, paddr, true, writable, executable, kernel );
 
     get_pghash()->insert_mapping( this, vaddr, pg, size );
 }
@@ -198,15 +193,16 @@ void space_t::add_mapping( addr_t vaddr, addr_t paddr,
 
 void SECTION(".init.memory") init_kernel_space()
 {
-    ASSERT(!dummy_tcb);
+    ASSERT(DEBUG, !dummy_tcb);
     dummy_tcb = (tcb_t*)kmem.alloc( kmem_tcb, POWERPC64_PAGE_SIZE );
-    ASSERT(dummy_tcb);
+    ASSERT(NORMAL, dummy_tcb);
     dummy_tcb = virt_to_phys(dummy_tcb);
 
     TRACE_SPACE( "initialised kernel space of size %x @ %p\n",
 	         sizeof(space_t), kernel_space);
 
     kernel_space->init_kernel_mappings();
+    kernel_space->enqueue_spaces();
 }
 
 void SECTION(".init.memory") space_t::init_kernel_mappings()
@@ -248,8 +244,7 @@ void SECTION(".init.memory") early_kernel_map()
 
 #ifdef CONFIG_POWERPC64_LARGE_PAGES
     /* Create a dummy page table entry */
-    pg.set_entry( kernel_space, pgent_t::size_16m, 0,
-		  7, pgent_t;:l4default, true );
+    pg.set_entry( kernel_space, pgent_t::size_16m, 0, true, true, true, true );
     /* Insert the kernel mapping, bolted */
     get_pghash()->insert_mapping( kernel_space, (addr_t) KERNEL_OFFSET,
 			&pg, pgent_t::size_16m, true );
@@ -260,7 +255,7 @@ void SECTION(".init.memory") early_kernel_map()
     {
 	/* Create a dummy page table entry */
 	pg.set_entry( kernel_space, pgent_t::size_4k,
-		      (addr_t)(i), 7, pgent_t::l4default, true );
+			(addr_t)(i), true, true, true, true );
 
 	/* Insert the kernel mapping, bolted */
 	get_pghash()->insert_mapping( kernel_space,
@@ -302,7 +297,7 @@ void space_t::allocate_tcb(addr_t addr)
     pgent_t::pgsize_e pgsize;
     pgent_t * pg;
 
-    ASSERT(this == kernel_space);
+    ASSERT(DEBUG, this == kernel_space);
 
     addr_t page = kmem.alloc (kmem_tcb, POWERPC64_PAGE_SIZE);
 
@@ -326,7 +321,7 @@ void space_t::release_kernel_mapping (addr_t vaddr, addr_t paddr,
 
 utcb_t *space_t::allocate_utcb( tcb_t *tcb )
 {
-    ASSERT (tcb);
+    ASSERT (DEBUG, tcb);
     addr_t utcb = (addr_t) tcb->get_utcb_location ();
 
     pgent_t::pgsize_e pgsize;
@@ -351,16 +346,16 @@ utcb_t *space_t::allocate_utcb( tcb_t *tcb )
 
 void space_t::map_dummy_tcb(addr_t addr)
 {
-    ASSERT(this == kernel_space);
+    ASSERT(DEBUG, this == kernel_space);
     /* XXX We map the dummy page (kernel/user read-only) since PPC has no
      * support for super-readonly,user-noaccess
      */
-    add_4k_mapping( addr, (addr_t)virt_to_phys(get_dummy_tcb()), false, false );
+    add_4k_mapping( addr, (addr_t)get_dummy_tcb(), false, false );
 }
 
 void space_t::map_sigma0(addr_t addr)
 {
-    ASSERT( 
+    ASSERT( NORMAL,
 	    ((addr < get_kip()->reserved_mem0.low) 
 	     || (addr >= get_kip()->reserved_mem0.high))
     	    && 

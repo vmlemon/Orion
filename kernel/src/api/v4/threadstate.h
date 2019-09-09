@@ -1,6 +1,7 @@
 /*********************************************************************
  *
  * Copyright (C) 2002,  Karlsruhe University
+ * Copyright (C) 2005,  National ICT Australia (NICTA)
  *
  * File path:    api/v4/threadstate.h 
  * Description:  thread state
@@ -51,12 +52,9 @@ public:
     {
 	running			= RUNNABLE_STATE(1),
 	waiting_forever		= BLOCKED_STATE(~0UL),
-	waiting_timeout		= BLOCKED_STATE(2),
-	waiting_tunneled_pf	= BLOCKED_STATE(10),
+	waiting_notify		= BLOCKED_STATE(2),
 	locked_waiting		= BLOCKED_STATE(3),
 	locked_running		= RUNNABLE_STATE(4),
-	locked_running_ipc_done	= RUNNABLE_STATE(9),
-	locked_running_nested	= RUNNABLE_STATE(11),
 	polling			= BLOCKED_STATE(5),
 	halted			= BLOCKED_STATE(6),
 	aborted			= BLOCKED_STATE(7),
@@ -74,8 +72,8 @@ public:
     bool is_sending()
 	{ return state == polling || state == locked_running; }
     bool is_receiving()
-	{ return state == waiting_forever || state == waiting_timeout ||
-	      state == locked_waiting; }
+	{ return state == waiting_forever || state == locked_waiting ||
+	    state == waiting_notify; }
     bool is_halted()
 	{ return state == halted; }
     bool is_aborted()
@@ -83,15 +81,13 @@ public:
     bool is_running()
 	{ return state == running; }
     bool is_waiting()
-	{ return state == waiting_forever || state == waiting_timeout; }
+	{ return state == waiting_forever; }
+    bool is_waiting_notify()
+	{ return state == waiting_notify; }
     bool is_waiting_forever()
 	{ return state == waiting_forever; }
-    bool is_waiting_with_timeout()
-	{ return state == waiting_timeout; }
     bool is_polling()
 	{ return state == polling; }
-    bool is_polling_or_waiting()
-	{ return is_polling() || is_waiting(); }
     bool is_locked_running()
 	{ return state == locked_running; }
     bool is_locked_waiting()
@@ -127,26 +123,25 @@ public:
 	    return (word_t)this->state;
 	}
 
+#ifdef CONFIG_DEBUG
     /* debugging */
     const char * string (void)
 	{
 	    switch (state) {
-	    case running:			return "RUNNING ";
-	    case waiting_forever:		return "WAIT_FE ";
-	    case waiting_timeout:		return "WAIT_TO ";
-	    case waiting_tunneled_pf:		return "WAIT_TP ";
-	    case locked_waiting:		return "LOCK_WT ";
-	    case locked_running:		return "LOCK_RU ";
-	    case locked_running_ipc_done: 	return "LOCK_RD ";
-	    case locked_running_nested:		return "LOCK_RN ";
-	    case polling:			return "POLLING ";
-	    case halted:			return "HALTED  ";
-	    case aborted:			return "ABORTED ";
-	    case xcpu_waiting_deltcb:		return "XCPU_DT ";
-	    case xcpu_waiting_exregs:		return "XCPU_EX ";
-	    default:				return "UNKNOWN ";
+	    case running:		return "RUNNING";
+	    case waiting_forever:	return "WAIT_FOREVER";
+	    case waiting_notify:	return "WAIT_NOTIFY";
+	    case locked_waiting:	return "LCK_WAITING";
+	    case locked_running:	return "LCK_RUNNING";
+	    case polling:		return "POLLING";
+	    case halted:		return "HALTED";
+	    case aborted:		return "ABORTED";
+	    case xcpu_waiting_deltcb:	return "WAIT_XPU_DELTCB";
+	    case xcpu_waiting_exregs:	return "WAIT_XPU_EXREGS";
+	    default:			return "UNKNOWN";
 	    }
 	}
+#endif
 
 private:
     thread_state_e state;

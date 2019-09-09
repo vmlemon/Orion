@@ -132,7 +132,7 @@ INLINE void segment_t::insert_entry( space_t *space, word_t vsid, word_t esid, b
     slbent_t entry;
 
 /* XXX temporary check */
-ASSERT( (vsid >> VSID_REVERSE_SHIFT) == 0 );
+ASSERT( ALWAYS, (vsid >> VSID_REVERSE_SHIFT) == 0 );
 
     /* Search for an empty SLB entry.
      * Don't search entry 0, its the kernel.

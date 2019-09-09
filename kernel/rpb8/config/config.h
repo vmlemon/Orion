@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: fedora28.novalocal */
-/* At: Thu, 05 Sep 2019 11:19:10 +0000 */
+/* At: Sun, 08 Sep 2019 06:00:47 +0000 */
 /* Linux version 4.16.3-301.fc28.ppc64 (mockbuild@buildvm-ppc64-06.ppc.fedoraproject.org) (gcc version 8.0.1 20180324 (Red Hat 8.0.1-0.20) (GCC)) #1 SMP Mon Apr 23 21:44:46 UTC 2018 */
 
 /* Pistachio Kernel Configuration System */
@@ -49,17 +49,17 @@
 
 
 /* Platform */
-#define CONFIG_PLAT_OFG5 1
+#undef  CONFIG_PLAT_OFG5
 #undef  CONFIG_PLAT_OFPOWER3
-#undef  CONFIG_PLAT_OFPOWER4
+#define CONFIG_PLAT_OFPOWER4 1
 
 
 /* Processor Type */
 #undef  CONFIG_CPU_POWERPC64_POWER3
 #undef  CONFIG_CPU_POWERPC64_POWER3p
-#undef  CONFIG_CPU_POWERPC64_POWER4
+#define CONFIG_CPU_POWERPC64_POWER4 1
 #undef  CONFIG_CPU_POWERPC64_POWER4p
-#define CONFIG_CPU_POWERPC64_PPC970 1
+#undef  CONFIG_CPU_POWERPC64_PPC970
 
 
 /* Miscellaneous */
@@ -69,18 +69,19 @@
 
 
 /* Kernel */
-#undef  CONFIG_EXPERIMENTAL
+#define CONFIG_EXPERIMENTAL 1
 
 /* Experimental Features */
+#define CONFIG_X_PAGER_EXREGS 1
 
 /* Kernel scheduling policy */
-#undef  CONFIG_SCHED_RR
+#define CONFIG_SCHED_RR 1
 #undef  CONFIG_X_SCHED_HS
 
 
 #undef  CONFIG_IPC_FASTPATH
-#undef  CONFIG_DEBUG
-#undef  CONFIG_DEBUG_SYMBOLS
+#define CONFIG_DEBUG 1
+#define CONFIG_DEBUG_SYMBOLS 1
 #undef  CONFIG_STATIC_TCBS
 #undef  CONFIG_PPC64_TRASH_OF
 
@@ -90,7 +91,7 @@
 /* Kernel Debugger Console */
 #undef  CONFIG_KDB_CONS_BGP_JTAG
 #undef  CONFIG_KDB_CONS_BGP_TREE
-#undef  CONFIG_KDB_CONS_COM
+#define CONFIG_KDB_CONS_COM 1
 #define CONFIG_KDB_COMPORT 0x0
 #define CONFIG_KDB_COMSPEED 115200
 #undef  CONFIG_KDB_CONS_RTAS
@@ -100,12 +101,12 @@
 #undef  CONFIG_KDB_ON_STARTUP
 #undef  CONFIG_KDB_BREAKIN
 #undef  CONFIG_KDB_BREAKIN_BREAK
-#undef  CONFIG_KDB_BREAKIN_ESCAPE
+#define CONFIG_KDB_BREAKIN_ESCAPE 1
 #undef  CONFIG_KDB_NO_ASSERTS
 
 /* Trace Settings */
 #undef  CONFIG_VERBOSE_INIT
-#undef  CONFIG_TRACEPOINTS
+#define CONFIG_TRACEPOINTS 1
 #undef  CONFIG_KMEM_TRACE
 #undef  CONFIG_TRACEBUFFER
 

@@ -1,0 +1,2650 @@
+tyson@tyson-Lenovo-ideapad-120S-14IAP:~/Orion/user$ ./configure 
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether make sets $(MAKE)... yes
+checking whether ln -s works... yes
+checking for gawk... no
+checking for mawk... mawk
+checking location of libgcc.a... /usr/lib/gcc/x86_64-linux-gnu/8
+checking location of stdarg.h... /usr/lib/gcc/x86_64-linux-gnu/8/include
+checking kernel build directory... $(top_builddir)
+configure: creating ./config.status
+config.status: creating config.mk
+config.status: creating Makefile
+config.status: creating lib/Makefile
+config.status: creating lib/l4/Makefile
+config.status: creating lib/io/Makefile
+config.status: creating serv/Makefile
+config.status: creating serv/sigma0/Makefile
+config.status: creating apps/Makefile
+config.status: creating apps/bench/Makefile
+config.status: creating apps/bench/pingpong/Makefile
+config.status: creating apps/grabmem/Makefile
+config.status: creating apps/l4test/Makefile
+config.status: creating util/Makefile
+config.status: creating util/kickstart/Makefile
+config.status: creating util/grubdisk/Makefile
+config.status: creating util/piggybacker/Makefile
+config.status: creating util/piggybacker/ofppc/Makefile
+config.status: creating util/piggybacker/ofppc64/Makefile
+config.status: creating contrib/Makefile
+config.status: creating contrib/elf-loader/Makefile
+config.status: creating config.h
+config.status: config.h is unchanged
+tyson@tyson-Lenovo-ideapad-120S-14IAP:~/Orion/user$ make
+make[1]: Entering directory '/home/tyson/Orion/user/lib'
+make[2]: Entering directory '/home/tyson/Orion/user/lib/l4'
+===> debug.cc
+gcc -x c++ -I../../include -I../.. -I/usr/lib/gcc/x86_64-linux-gnu/8/include   -nostdinc -g -O2 -m64 -mno-red-zone   -fno-stack-protector -lssp -O2 -g -Wall -Wshadow   -fno-stack-protector  -Wconversion -fno-exceptions -c debug.cc -o debug.o
+In file included from ../../include/l4/types.h:169,
+                 from ../../include/l4/kip.h:35,
+                 from debug.cc:31:
+../../include/l4/amd64/specials.h: In function ‘int __L4_Msb(L4_Word_t)’:
+../../include/l4/amd64/specials.h:62:12: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     return bitnum;
+            ^~~~~~
+../../include/l4/amd64/specials.h: In function ‘int __L4_Lsb(L4_Word_t)’:
+../../include/l4/amd64/specials.h:84:12: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     return bitnum;
+            ^~~~~~
+In file included from ../../include/l4/kip.h:35,
+                 from debug.cc:31:
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_Set_Rights(L4_Fpage_t*, L4_Word_t)’:
+../../include/l4/types.h:183:16: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f->X.rwx = rwx;
+                ^~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageAddRights(L4_Fpage_t, L4_Word_t)’:
+../../include/l4/types.h:189:13: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f.X.rwx |= rwx;
+     ~~~~~~~~^~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageAddRightsTo(L4_Fpage_t*, L4_Word_t)’:
+../../include/l4/types.h:195:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f->X.rwx |= rwx;
+     ~~~~~~~~~^~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageRemoveRights(L4_Fpage_t, L4_Word_t)’:
+../../include/l4/types.h:201:13: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f.X.rwx &= ~rwx;
+     ~~~~~~~~^~~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageRemoveRightsFrom(L4_Fpage_t*, L4_Word_t)’:
+../../include/l4/types.h:207:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f->X.rwx &= ~rwx;
+     ~~~~~~~~~^~~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_Fpage(L4_Word_t, L4_Word_t)’:
+../../include/l4/types.h:238:39: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = (1UL << msb) < FpageSize ? msb + 1 : msb;
+              ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+../../include/l4/types.h:238:39: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageLog2(L4_Word_t, int)’:
+../../include/l4/types.h:247:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = FpageSize;
+              ^~~~~~~~~
+../../include/l4/types.h: In function ‘L4_ThreadId_t L4_GlobalId(L4_Word_t, L4_Word_t)’:
+../../include/l4/types.h:303:28: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     t.global.X.thread_no = threadno;
+                            ^~~~~~~~
+../../include/l4/types.h:304:26: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     t.global.X.version = version;
+                          ^~~~~~~
+../../include/l4/types.h: In function ‘L4_Time_t L4_TimePeriod(L4_Word64_t)’:
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:506:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (10); __L4_TRY_EXPONENT (11);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:506:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (10); __L4_TRY_EXPONENT (11);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:507:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (12); __L4_TRY_EXPONENT (13);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:507:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (12); __L4_TRY_EXPONENT (13);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:508:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (14); __L4_TRY_EXPONENT (15);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:508:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (14); __L4_TRY_EXPONENT (15);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:509:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (16); __L4_TRY_EXPONENT (17);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:509:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (16); __L4_TRY_EXPONENT (17);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:510:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (18); __L4_TRY_EXPONENT (19);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:510:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (18); __L4_TRY_EXPONENT (19);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:511:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (20); __L4_TRY_EXPONENT (21);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:511:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (20); __L4_TRY_EXPONENT (21);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:512:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (22); __L4_TRY_EXPONENT (23);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:512:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (22); __L4_TRY_EXPONENT (23);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:513:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (24); __L4_TRY_EXPONENT (25);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:513:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (24); __L4_TRY_EXPONENT (25);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:514:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (26); __L4_TRY_EXPONENT (27);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:514:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (26); __L4_TRY_EXPONENT (27);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:515:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (28); __L4_TRY_EXPONENT (29);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:515:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (28); __L4_TRY_EXPONENT (29);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:516:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (30); __L4_TRY_EXPONENT (31);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:516:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (30); __L4_TRY_EXPONENT (31);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:527:35: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (l4_exp, man);
+                                   ^~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:527:27: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:5’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (l4_exp, man);
+                           ^~~~~~
+../../include/l4/types.h:496:44: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                                            ^~~
+In file included from ../../include/l4/amd64/syscalls.h:39,
+                 from ../../include/l4/kip.h:36,
+                 from debug.cc:31:
+../../include/l4/message.h: In function ‘void L4_Set_Label(L4_MsgTag_t*, L4_Word_t)’:
+../../include/l4/message.h:144:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:48’ may change value [-Wconversion]
+     t->X.label = label;
+                  ^~~~~
+../../include/l4/message.h: In function ‘L4_MapItem_t L4_MapItem(L4_Fpage_t, L4_Word_t)’:
+../../include/l4/message.h:191:31: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:54’ may change value [-Wconversion]
+     item.X.snd_base = SndBase >> 10;
+                       ~~~~~~~~^~~~~
+../../include/l4/message.h: In function ‘L4_GrantItem_t L4_GrantItem(L4_Fpage_t, L4_Word_t)’:
+../../include/l4/message.h:264:31: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:54’ may change value [-Wconversion]
+     item.X.snd_base = SndBase >> 10;
+                       ~~~~~~~~^~~~~
+../../include/l4/message.h: In function ‘void L4_CtrlXferItemInit(L4_CtrlXferItem_t*, L4_Word_t)’:
+../../include/l4/message.h:489:15: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char’ may change value [-Wconversion]
+     c->X.id = id;
+               ^~
+../../include/l4/message.h: In function ‘void L4_FaultConfCtrlXferItemInit(L4_CtrlXferItem_t*, L4_Word_t, L4_Word_t)’:
+../../include/l4/message.h:498:15: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char’ may change value [-Wconversion]
+     c->X.id = fault_id;
+               ^~~~~~~~
+../../include/l4/message.h:499:17: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:52’ may change value [-Wconversion]
+     c->X.mask = fault_mask;
+                 ^~~~~~~~~~
+../../include/l4/message.h: In function ‘void L4_MsgPut(L4_Msg_t*, L4_Word_t, int, L4_Word_t*, int, void*)’:
+../../include/l4/message.h:620:24: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:48’ may change value [-Wconversion]
+     msg->tag.X.label = label;
+                        ^~~~~
+../../include/l4/message.h:622:20: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.u = u;
+                    ^
+../../include/l4/message.h:623:20: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t = t;
+                    ^
+../../include/l4/message.h: In function ‘void L4_Set_MsgLabel(L4_Msg_t*, L4_Word_t)’:
+../../include/l4/message.h:656:24: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:48’ may change value [-Wconversion]
+     msg->tag.X.label = label;
+                        ^~~~~
+../../include/l4/message.h: In function ‘void L4_MsgAppendMapItem(L4_Msg_t*, L4_MapItem_t)’:
+../../include/l4/message.h:690:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t += 2;
+     ~~~~~~~~~~~~~^~~~
+../../include/l4/message.h: In function ‘void L4_MsgAppendGrantItem(L4_Msg_t*, L4_GrantItem_t)’:
+../../include/l4/message.h:697:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t += 2;
+     ~~~~~~~~~~~~~^~~~
+../../include/l4/message.h: In function ‘void L4_MsgAppendSimpleStringItem(L4_Msg_t*, L4_StringItem_t)’:
+../../include/l4/message.h:706:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t += 2;
+     ~~~~~~~~~~~~~^~~~
+../../include/l4/message.h: In function ‘void L4_MsgAppendStringItem(L4_Msg_t*, L4_StringItem_t*)’:
+../../include/l4/message.h:715:48: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     int size = ((L4_Word_t) e - (L4_Word_t) s) / sizeof (L4_Word_t);
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+../../include/l4/message.h:717:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t += size;
+     ~~~~~~~~~~~~~^~~~~~~
+../../include/l4/message.h: In function ‘void L4_MsgAppendCtrlXferItem(L4_Msg_t*, L4_CtrlXferItem_t*)’:
+../../include/l4/message.h:734:15: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+  msg->tag.X.t += 1 + num;
+  ~~~~~~~~~~~~~^~~~~~~~~~
+../../include/l4/message.h: In function ‘void L4_AppendFaultConfCtrlXferItems(L4_Msg_t*, L4_Word64_t, L4_Word_t, L4_Word_t)’:
+../../include/l4/message.h:763:16: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:1’ may change value [-Wconversion]
+     item.X.C = C;
+                ^
+In file included from debug.cc:32:
+../../include/l4/tracebuffer.h: In function ‘void L4_Tbuf_StoreRecord(L4_TraceRecord_t*, L4_TraceConfig_t, L4_Word_t, L4_Word_t)’:
+../../include/l4/tracebuffer.h:104:20: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘short unsigned int’ may change value [-Wconversion]
+     rec->X.utype = type;
+                    ^~~~
+../../include/l4/tracebuffer.h:105:17: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:48’ may change value [-Wconversion]
+     rec->X.id = id;
+                 ^~
+../../include/l4/tracebuffer.h:106:32: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘short unsigned int’ may change value [-Wconversion]
+     rec->X.cpu = L4_ProcessorNo();
+                  ~~~~~~~~~~~~~~^~
+===> Linking ./libl4.a
+ar cru libl4.a  debug.o amd64.o  
+ar: `u' modifier ignored since `D' is the default (see `U')
+ranlib libl4.a
+cp libl4.a ../../lib/libl4.a
+make[2]: Leaving directory '/home/tyson/Orion/user/lib/l4'
+make[2]: Entering directory '/home/tyson/Orion/user/lib/io'
+===> Making dependencies in .
+===> get_hex.cc
+gcc -x c++ -I../../include -I../.. -I/usr/lib/gcc/x86_64-linux-gnu/8/include   -nostdinc -g -O2 -m64 -mno-red-zone   -fno-stack-protector -lssp -O2 -g -Wall -Wshadow   -fno-stack-protector  -Wconversion -fno-exceptions -c get_hex.cc -o get_hex.o
+In file included from ../../include/l4/types.h:169,
+                 from get_hex.cc:32:
+../../include/l4/amd64/specials.h: In function ‘int __L4_Msb(L4_Word_t)’:
+../../include/l4/amd64/specials.h:62:12: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     return bitnum;
+            ^~~~~~
+../../include/l4/amd64/specials.h: In function ‘int __L4_Lsb(L4_Word_t)’:
+../../include/l4/amd64/specials.h:84:12: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     return bitnum;
+            ^~~~~~
+In file included from get_hex.cc:32:
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_Set_Rights(L4_Fpage_t*, L4_Word_t)’:
+../../include/l4/types.h:183:16: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f->X.rwx = rwx;
+                ^~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageAddRights(L4_Fpage_t, L4_Word_t)’:
+../../include/l4/types.h:189:13: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f.X.rwx |= rwx;
+     ~~~~~~~~^~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageAddRightsTo(L4_Fpage_t*, L4_Word_t)’:
+../../include/l4/types.h:195:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f->X.rwx |= rwx;
+     ~~~~~~~~~^~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageRemoveRights(L4_Fpage_t, L4_Word_t)’:
+../../include/l4/types.h:201:13: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f.X.rwx &= ~rwx;
+     ~~~~~~~~^~~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageRemoveRightsFrom(L4_Fpage_t*, L4_Word_t)’:
+../../include/l4/types.h:207:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f->X.rwx &= ~rwx;
+     ~~~~~~~~~^~~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_Fpage(L4_Word_t, L4_Word_t)’:
+../../include/l4/types.h:238:39: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = (1UL << msb) < FpageSize ? msb + 1 : msb;
+              ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+../../include/l4/types.h:238:39: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageLog2(L4_Word_t, int)’:
+../../include/l4/types.h:247:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = FpageSize;
+              ^~~~~~~~~
+../../include/l4/types.h: In function ‘L4_ThreadId_t L4_GlobalId(L4_Word_t, L4_Word_t)’:
+../../include/l4/types.h:303:28: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     t.global.X.thread_no = threadno;
+                            ^~~~~~~~
+../../include/l4/types.h:304:26: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     t.global.X.version = version;
+                          ^~~~~~~
+../../include/l4/types.h: In function ‘L4_Time_t L4_TimePeriod(L4_Word64_t)’:
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:506:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (10); __L4_TRY_EXPONENT (11);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:506:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (10); __L4_TRY_EXPONENT (11);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:507:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (12); __L4_TRY_EXPONENT (13);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:507:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (12); __L4_TRY_EXPONENT (13);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:508:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (14); __L4_TRY_EXPONENT (15);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:508:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (14); __L4_TRY_EXPONENT (15);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:509:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (16); __L4_TRY_EXPONENT (17);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:509:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (16); __L4_TRY_EXPONENT (17);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:510:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (18); __L4_TRY_EXPONENT (19);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:510:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (18); __L4_TRY_EXPONENT (19);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:511:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (20); __L4_TRY_EXPONENT (21);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:511:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (20); __L4_TRY_EXPONENT (21);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:512:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (22); __L4_TRY_EXPONENT (23);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:512:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (22); __L4_TRY_EXPONENT (23);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:513:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (24); __L4_TRY_EXPONENT (25);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:513:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (24); __L4_TRY_EXPONENT (25);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:514:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (26); __L4_TRY_EXPONENT (27);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:514:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (26); __L4_TRY_EXPONENT (27);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:515:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (28); __L4_TRY_EXPONENT (29);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:515:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (28); __L4_TRY_EXPONENT (29);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:516:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (30); __L4_TRY_EXPONENT (31);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:516:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (30); __L4_TRY_EXPONENT (31);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:527:35: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (l4_exp, man);
+                                   ^~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:527:27: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:5’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (l4_exp, man);
+                           ^~~~~~
+../../include/l4/types.h:496:44: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                                            ^~~
+In file included from get_hex.cc:33:
+../../include/l4io.h: At global scope:
+../../include/l4io.h:46:6: warning: declaration of ‘void putc(int)’ conflicts with built-in declaration ‘int putc(int, void*)’ [-Wbuiltin-declaration-mismatch]
+ void putc(int c);
+      ^~~~
+get_hex.cc: In function ‘L4_Word_t get_hex()’:
+get_hex.cc:42:23: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+   while ((t = c = getc()) != '\r')
+                   ~~~~^~
+get_hex.cc:47:6: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+    c -= '0';
+    ~~^~~~~~
+get_hex.cc:51:6: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+    c -= 'a' - 'A';
+    ~~^~~~~~~~~~~~
+get_hex.cc:53:16: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+    c = c - 'A' + 10;
+        ~~~~~~~~^~~~
+===> print.cc
+gcc -x c++ -I../../include -I../.. -I/usr/lib/gcc/x86_64-linux-gnu/8/include   -nostdinc -g -O2 -m64 -mno-red-zone   -fno-stack-protector -lssp -O2 -g -Wall -Wshadow   -fno-stack-protector  -Wconversion -fno-exceptions -c print.cc -o print.o
+In file included from ../../include/l4/types.h:169,
+                 from print.cc:32:
+../../include/l4/amd64/specials.h: In function ‘int __L4_Msb(L4_Word_t)’:
+../../include/l4/amd64/specials.h:62:12: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     return bitnum;
+            ^~~~~~
+../../include/l4/amd64/specials.h: In function ‘int __L4_Lsb(L4_Word_t)’:
+../../include/l4/amd64/specials.h:84:12: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     return bitnum;
+            ^~~~~~
+In file included from print.cc:32:
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_Set_Rights(L4_Fpage_t*, L4_Word_t)’:
+../../include/l4/types.h:183:16: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f->X.rwx = rwx;
+                ^~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageAddRights(L4_Fpage_t, L4_Word_t)’:
+../../include/l4/types.h:189:13: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f.X.rwx |= rwx;
+     ~~~~~~~~^~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageAddRightsTo(L4_Fpage_t*, L4_Word_t)’:
+../../include/l4/types.h:195:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f->X.rwx |= rwx;
+     ~~~~~~~~~^~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageRemoveRights(L4_Fpage_t, L4_Word_t)’:
+../../include/l4/types.h:201:13: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f.X.rwx &= ~rwx;
+     ~~~~~~~~^~~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageRemoveRightsFrom(L4_Fpage_t*, L4_Word_t)’:
+../../include/l4/types.h:207:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f->X.rwx &= ~rwx;
+     ~~~~~~~~~^~~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_Fpage(L4_Word_t, L4_Word_t)’:
+../../include/l4/types.h:238:39: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = (1UL << msb) < FpageSize ? msb + 1 : msb;
+              ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+../../include/l4/types.h:238:39: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageLog2(L4_Word_t, int)’:
+../../include/l4/types.h:247:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = FpageSize;
+              ^~~~~~~~~
+../../include/l4/types.h: In function ‘L4_ThreadId_t L4_GlobalId(L4_Word_t, L4_Word_t)’:
+../../include/l4/types.h:303:28: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     t.global.X.thread_no = threadno;
+                            ^~~~~~~~
+../../include/l4/types.h:304:26: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     t.global.X.version = version;
+                          ^~~~~~~
+../../include/l4/types.h: In function ‘L4_Time_t L4_TimePeriod(L4_Word64_t)’:
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:506:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (10); __L4_TRY_EXPONENT (11);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:506:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (10); __L4_TRY_EXPONENT (11);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:507:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (12); __L4_TRY_EXPONENT (13);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:507:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (12); __L4_TRY_EXPONENT (13);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:508:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (14); __L4_TRY_EXPONENT (15);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:508:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (14); __L4_TRY_EXPONENT (15);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:509:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (16); __L4_TRY_EXPONENT (17);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:509:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (16); __L4_TRY_EXPONENT (17);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:510:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (18); __L4_TRY_EXPONENT (19);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:510:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (18); __L4_TRY_EXPONENT (19);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:511:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (20); __L4_TRY_EXPONENT (21);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:511:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (20); __L4_TRY_EXPONENT (21);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:512:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (22); __L4_TRY_EXPONENT (23);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:512:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (22); __L4_TRY_EXPONENT (23);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:513:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (24); __L4_TRY_EXPONENT (25);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:513:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (24); __L4_TRY_EXPONENT (25);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:514:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (26); __L4_TRY_EXPONENT (27);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:514:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (26); __L4_TRY_EXPONENT (27);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:515:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (28); __L4_TRY_EXPONENT (29);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:515:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (28); __L4_TRY_EXPONENT (29);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:516:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (30); __L4_TRY_EXPONENT (31);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:516:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (30); __L4_TRY_EXPONENT (31);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:527:35: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (l4_exp, man);
+                                   ^~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:527:27: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:5’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (l4_exp, man);
+                           ^~~~~~
+../../include/l4/types.h:496:44: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                                            ^~~
+In file included from print.cc:34:
+../../include/l4io.h: At global scope:
+../../include/l4io.h:46:6: warning: declaration of ‘void putc(int)’ conflicts with built-in declaration ‘int putc(int, void*)’ [-Wbuiltin-declaration-mismatch]
+ void putc(int c);
+      ^~~~
+print.cc: In function ‘int __l4_vsnprintf(char*, L4_Size_t, const char*, __va_list_tag*)’:
+print.cc:176:13: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+      *p++ = c;
+             ^
+print.cc:363:10: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+print.cc:119:9:
+  *p++ = (ch);   \
+         ~~~~
+print.cc:363:10:
+   PUTCH( signch );
+print.cc:119:10: note: in definition of macro ‘PUTCH’
+  *p++ = (ch);   \
+          ^~
+print.cc:425:33: warning: conversion from ‘long unsigned int’ to ‘char’ may change value [-Wconversion]
+   convert[ numdigits++ ] =  '0' + uval % 10;
+                             ~~~~^~~~~~~~~~~
+print.cc:442:10: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+print.cc:119:9:
+  *p++ = (ch);   \
+         ~~~~
+print.cc:442:10:
+   PUTCH( signch );
+print.cc:119:10: note: in definition of macro ‘PUTCH’
+  *p++ = (ch);   \
+          ^~
+print.cc:468:18: warning: conversion from ‘long unsigned int’ to ‘char’ may change value [-Wconversion]
+print.cc:119:9:
+  *p++ = (ch);   \
+         ~~~~      
+print.cc:468:18:
+       PUTCH( '0' + uval );
+print.cc:119:10: note: in definition of macro ‘PUTCH’
+  *p++ = (ch);   \
+          ^~
+print.cc:529:14: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+print.cc:119:9:
+  *p++ = (ch);   \
+         ~~~~  
+print.cc:529:14:
+       PUTCH( c );
+print.cc:119:10: note: in definition of macro ‘PUTCH’
+  *p++ = (ch);   \
+          ^~
+print.cc:532:14: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+print.cc:119:9:
+  *p++ = (ch);   \
+         ~~~~  
+print.cc:532:14:
+       PUTCH( c );
+print.cc:119:10: note: in definition of macro ‘PUTCH’
+  *p++ = (ch);   \
+          ^~
+print.cc:539:25: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+      PUTCH( va_arg( ap, int ) );
+                         ^
+print.cc:119:10: note: in definition of macro ‘PUTCH’
+  *p++ = (ch);   \
+          ^~
+print.cc:539:13: note: in expansion of macro ‘va_arg’
+      PUTCH( va_arg( ap, int ) );
+             ^~~~~~
+print.cc:547:33: warning: conversion from ‘long int’ to ‘int’ may change value [-Wconversion]
+      *(va_arg( ap, int * )) = p - str;
+                               ~~^~~~~
+print.cc:552:12: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+print.cc:119:9:
+  *p++ = (ch);   \
+         ~~~~
+print.cc:552:12:
+      PUTCH(c);
+print.cc:119:10: note: in definition of macro ‘PUTCH’
+  *p++ = (ch);   \
+          ^~
+print.cc:566:14: warning: conversion from ‘long int’ to ‘int’ may change value [-Wconversion]
+     return p - str;
+            ~~^~~~~
+print.cc:111:25: warning: variable ‘uval2’ set but not used [-Wunused-but-set-variable]
+     unsigned long uval, uval2;
+                         ^~~~~
+In file included from print.cc:35:
+lib.h: At global scope:
+lib.h:112:1: warning: ‘char* strchr(const char*, int)’ defined but not used [-Wunused-function]
+ strchr(const char *p, int ch)
+ ^~~~~~
+lib.h:93:1: warning: ‘char* strstr(const char*, const char*)’ defined but not used [-Wunused-function]
+ strstr(const char *s, const char *find)
+ ^~~~~~
+lib.h:67:1: warning: ‘int strcmp(const char*, const char*)’ defined but not used [-Wunused-function]
+ strcmp(const char *s1, const char *s2)
+ ^~~~~~
+lib.h:44:13: warning: ‘void strcpy(char*, const char*)’ defined but not used [-Wunused-function]
+ static void strcpy( char *dst, const char *src )
+             ^~~~~~
+===> Linking ./libio.a
+ar cru libio.a  get_hex.o print.o amd64.o  
+ar: `u' modifier ignored since `D' is the default (see `U')
+ranlib libio.a
+cp libio.a ../../lib/libio.a
+make[2]: Leaving directory '/home/tyson/Orion/user/lib/io'
+make[1]: Leaving directory '/home/tyson/Orion/user/lib'
+make[1]: Entering directory '/home/tyson/Orion/user/serv'
+make[2]: Entering directory '/home/tyson/Orion/user/serv/sigma0'
+===> Making dependencies in .
+===> sigma0.cc
+gcc -x c++ -I../../include -I../.. -I/usr/lib/gcc/x86_64-linux-gnu/8/include   -nostdinc -g -O2 -m64 -mno-red-zone   -fno-stack-protector -lssp -O2 -g -Wall -Wshadow   -fno-stack-protector  -Wconversion -fno-exceptions -c sigma0.cc -o sigma0.o
+In file included from ../../include/l4/types.h:169,
+                 from ../../include/l4/kip.h:35,
+                 from sigma0.cc:32:
+../../include/l4/amd64/specials.h: In function ‘int __L4_Msb(L4_Word_t)’:
+../../include/l4/amd64/specials.h:62:12: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     return bitnum;
+            ^~~~~~
+../../include/l4/amd64/specials.h: In function ‘int __L4_Lsb(L4_Word_t)’:
+../../include/l4/amd64/specials.h:84:12: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     return bitnum;
+            ^~~~~~
+In file included from ../../include/l4/kip.h:35,
+                 from sigma0.cc:32:
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_Set_Rights(L4_Fpage_t*, L4_Word_t)’:
+../../include/l4/types.h:183:16: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f->X.rwx = rwx;
+                ^~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageAddRights(L4_Fpage_t, L4_Word_t)’:
+../../include/l4/types.h:189:13: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f.X.rwx |= rwx;
+     ~~~~~~~~^~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageAddRightsTo(L4_Fpage_t*, L4_Word_t)’:
+../../include/l4/types.h:195:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f->X.rwx |= rwx;
+     ~~~~~~~~~^~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageRemoveRights(L4_Fpage_t, L4_Word_t)’:
+../../include/l4/types.h:201:13: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f.X.rwx &= ~rwx;
+     ~~~~~~~~^~~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageRemoveRightsFrom(L4_Fpage_t*, L4_Word_t)’:
+../../include/l4/types.h:207:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f->X.rwx &= ~rwx;
+     ~~~~~~~~~^~~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_Fpage(L4_Word_t, L4_Word_t)’:
+../../include/l4/types.h:238:39: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = (1UL << msb) < FpageSize ? msb + 1 : msb;
+              ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+../../include/l4/types.h:238:39: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageLog2(L4_Word_t, int)’:
+../../include/l4/types.h:247:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = FpageSize;
+              ^~~~~~~~~
+../../include/l4/types.h: In function ‘L4_ThreadId_t L4_GlobalId(L4_Word_t, L4_Word_t)’:
+../../include/l4/types.h:303:28: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     t.global.X.thread_no = threadno;
+                            ^~~~~~~~
+../../include/l4/types.h:304:26: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     t.global.X.version = version;
+                          ^~~~~~~
+../../include/l4/types.h: In function ‘L4_Time_t L4_TimePeriod(L4_Word64_t)’:
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:506:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (10); __L4_TRY_EXPONENT (11);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:506:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (10); __L4_TRY_EXPONENT (11);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:507:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (12); __L4_TRY_EXPONENT (13);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:507:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (12); __L4_TRY_EXPONENT (13);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:508:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (14); __L4_TRY_EXPONENT (15);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:508:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (14); __L4_TRY_EXPONENT (15);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:509:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (16); __L4_TRY_EXPONENT (17);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:509:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (16); __L4_TRY_EXPONENT (17);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:510:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (18); __L4_TRY_EXPONENT (19);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:510:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (18); __L4_TRY_EXPONENT (19);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:511:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (20); __L4_TRY_EXPONENT (21);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:511:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (20); __L4_TRY_EXPONENT (21);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:512:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (22); __L4_TRY_EXPONENT (23);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:512:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (22); __L4_TRY_EXPONENT (23);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:513:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (24); __L4_TRY_EXPONENT (25);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:513:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (24); __L4_TRY_EXPONENT (25);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:514:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (26); __L4_TRY_EXPONENT (27);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:514:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (26); __L4_TRY_EXPONENT (27);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:515:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (28); __L4_TRY_EXPONENT (29);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:515:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (28); __L4_TRY_EXPONENT (29);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:516:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (30); __L4_TRY_EXPONENT (31);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:516:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (30); __L4_TRY_EXPONENT (31);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:527:35: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (l4_exp, man);
+                                   ^~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:527:27: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:5’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (l4_exp, man);
+                           ^~~~~~
+../../include/l4/types.h:496:44: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                                            ^~~
+In file included from ../../include/l4/amd64/syscalls.h:39,
+                 from ../../include/l4/kip.h:36,
+                 from sigma0.cc:32:
+../../include/l4/message.h: In function ‘void L4_Set_Label(L4_MsgTag_t*, L4_Word_t)’:
+../../include/l4/message.h:144:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:48’ may change value [-Wconversion]
+     t->X.label = label;
+                  ^~~~~
+../../include/l4/message.h: In function ‘L4_MapItem_t L4_MapItem(L4_Fpage_t, L4_Word_t)’:
+../../include/l4/message.h:191:31: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:54’ may change value [-Wconversion]
+     item.X.snd_base = SndBase >> 10;
+                       ~~~~~~~~^~~~~
+../../include/l4/message.h: In function ‘L4_GrantItem_t L4_GrantItem(L4_Fpage_t, L4_Word_t)’:
+../../include/l4/message.h:264:31: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:54’ may change value [-Wconversion]
+     item.X.snd_base = SndBase >> 10;
+                       ~~~~~~~~^~~~~
+../../include/l4/message.h: In function ‘void L4_CtrlXferItemInit(L4_CtrlXferItem_t*, L4_Word_t)’:
+../../include/l4/message.h:489:15: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char’ may change value [-Wconversion]
+     c->X.id = id;
+               ^~
+../../include/l4/message.h: In function ‘void L4_FaultConfCtrlXferItemInit(L4_CtrlXferItem_t*, L4_Word_t, L4_Word_t)’:
+../../include/l4/message.h:498:15: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char’ may change value [-Wconversion]
+     c->X.id = fault_id;
+               ^~~~~~~~
+../../include/l4/message.h:499:17: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:52’ may change value [-Wconversion]
+     c->X.mask = fault_mask;
+                 ^~~~~~~~~~
+../../include/l4/message.h: In function ‘void L4_MsgPut(L4_Msg_t*, L4_Word_t, int, L4_Word_t*, int, void*)’:
+../../include/l4/message.h:620:24: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:48’ may change value [-Wconversion]
+     msg->tag.X.label = label;
+                        ^~~~~
+../../include/l4/message.h:622:20: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.u = u;
+                    ^
+../../include/l4/message.h:623:20: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t = t;
+                    ^
+../../include/l4/message.h: In function ‘void L4_Set_MsgLabel(L4_Msg_t*, L4_Word_t)’:
+../../include/l4/message.h:656:24: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:48’ may change value [-Wconversion]
+     msg->tag.X.label = label;
+                        ^~~~~
+../../include/l4/message.h: In function ‘void L4_MsgAppendMapItem(L4_Msg_t*, L4_MapItem_t)’:
+../../include/l4/message.h:690:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t += 2;
+     ~~~~~~~~~~~~~^~~~
+../../include/l4/message.h: In function ‘void L4_MsgAppendGrantItem(L4_Msg_t*, L4_GrantItem_t)’:
+../../include/l4/message.h:697:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t += 2;
+     ~~~~~~~~~~~~~^~~~
+../../include/l4/message.h: In function ‘void L4_MsgAppendSimpleStringItem(L4_Msg_t*, L4_StringItem_t)’:
+../../include/l4/message.h:706:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t += 2;
+     ~~~~~~~~~~~~~^~~~
+../../include/l4/message.h: In function ‘void L4_MsgAppendStringItem(L4_Msg_t*, L4_StringItem_t*)’:
+../../include/l4/message.h:715:48: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     int size = ((L4_Word_t) e - (L4_Word_t) s) / sizeof (L4_Word_t);
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+../../include/l4/message.h:717:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t += size;
+     ~~~~~~~~~~~~~^~~~~~~
+../../include/l4/message.h: In function ‘void L4_MsgAppendCtrlXferItem(L4_Msg_t*, L4_CtrlXferItem_t*)’:
+../../include/l4/message.h:734:15: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+  msg->tag.X.t += 1 + num;
+  ~~~~~~~~~~~~~^~~~~~~~~~
+../../include/l4/message.h: In function ‘void L4_AppendFaultConfCtrlXferItems(L4_Msg_t*, L4_Word64_t, L4_Word_t, L4_Word_t)’:
+../../include/l4/message.h:763:16: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:1’ may change value [-Wconversion]
+     item.X.C = C;
+                ^
+In file included from sigma0.cc:34:
+../../include/l4/misc.h: In function ‘L4_Word_t L4_Set_PageAttributes(L4_Word_t, L4_Fpage_t*, const L4_Word_t*)’:
+../../include/l4/misc.h:64:20: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     L4_LoadMRs (0, n, (L4_Word_t *) f);
+                    ^
+In file included from sigma0.cc:36:
+../../include/l4io.h: At global scope:
+../../include/l4io.h:46:6: warning: declaration of ‘void putc(int)’ conflicts with built-in declaration ‘int putc(int, void*)’ [-Wbuiltin-declaration-mismatch]
+ void putc(int c);
+      ^~~~
+In file included from ../../include/l4/arch.h:37,
+                 from sigma0.h:101,
+                 from sigma0.cc:38:
+../../include/l4/amd64/arch.h: In function ‘L4_Fpage_t L4_IoFpage(L4_Word_t, int)’:
+../../include/l4/amd64/arch.h:63:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     fp.X.p = BasePort;
+              ^~~~~~~~
+../../include/l4/amd64/arch.h:63:14: warning: conversion from ‘unsigned int’ to ‘short unsigned int’ may change value [-Wconversion]
+../../include/l4/amd64/arch.h:65:51: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     fp.X.s = (1UL << msb) < (L4_Word_t) FpageSize ? msb + 1 : msb;
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+../../include/l4/amd64/arch.h:65:51: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+../../include/l4/amd64/arch.h:65:63: warning: conversion from ‘unsigned int’ to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = (1UL << msb) < (L4_Word_t) FpageSize ? msb + 1 : msb;
+                                                               ^~~
+../../include/l4/amd64/arch.h:65:63: warning: conversion from ‘unsigned int’ to ‘unsigned char:6’ may change value [-Wconversion]
+../../include/l4/amd64/arch.h: In function ‘L4_Fpage_t L4_IoFpageLog2(L4_Word_t, int)’:
+../../include/l4/amd64/arch.h:75:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     fp.X.p = BasePort;
+              ^~~~~~~~
+../../include/l4/amd64/arch.h:75:14: warning: conversion from ‘unsigned int’ to ‘short unsigned int’ may change value [-Wconversion]
+../../include/l4/amd64/arch.h:77:14: warning: conversion from ‘unsigned int’ to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = FpageSize;
+              ^~~~~~~~~
+sigma0.cc: At global scope:
+sigma0.cc:64:1: warning: declaration of ‘void* memcpy(void*, const void*, unsigned int)’ conflicts with built-in declaration ‘void* memcpy(void*, const void*, long unsigned int)’ [-Wbuiltin-declaration-mismatch]
+ memcpy (void * dst, const void * src, unsigned int len)
+ ^~~~~~
+sigma0.cc: In function ‘void sigma0_main()’:
+sigma0.cc:288:20: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+   verbose = L4_Get (&msg, 1);
+             ~~~~~~~^~~~~~~~~
+===> sigma0_mem.cc
+gcc -x c++ -I../../include -I../.. -I/usr/lib/gcc/x86_64-linux-gnu/8/include   -nostdinc -g -O2 -m64 -mno-red-zone   -fno-stack-protector -lssp -O2 -g -Wall -Wshadow   -fno-stack-protector  -Wconversion -fno-exceptions -c sigma0_mem.cc -o sigma0_mem.o
+In file included from ../../include/l4/types.h:169,
+                 from ../../include/l4/kip.h:35,
+                 from sigma0_mem.cc:32:
+../../include/l4/amd64/specials.h: In function ‘int __L4_Msb(L4_Word_t)’:
+../../include/l4/amd64/specials.h:62:12: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     return bitnum;
+            ^~~~~~
+../../include/l4/amd64/specials.h: In function ‘int __L4_Lsb(L4_Word_t)’:
+../../include/l4/amd64/specials.h:84:12: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     return bitnum;
+            ^~~~~~
+In file included from ../../include/l4/kip.h:35,
+                 from sigma0_mem.cc:32:
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_Set_Rights(L4_Fpage_t*, L4_Word_t)’:
+../../include/l4/types.h:183:16: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f->X.rwx = rwx;
+                ^~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageAddRights(L4_Fpage_t, L4_Word_t)’:
+../../include/l4/types.h:189:13: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f.X.rwx |= rwx;
+     ~~~~~~~~^~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageAddRightsTo(L4_Fpage_t*, L4_Word_t)’:
+../../include/l4/types.h:195:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f->X.rwx |= rwx;
+     ~~~~~~~~~^~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageRemoveRights(L4_Fpage_t, L4_Word_t)’:
+../../include/l4/types.h:201:13: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f.X.rwx &= ~rwx;
+     ~~~~~~~~^~~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageRemoveRightsFrom(L4_Fpage_t*, L4_Word_t)’:
+../../include/l4/types.h:207:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f->X.rwx &= ~rwx;
+     ~~~~~~~~~^~~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_Fpage(L4_Word_t, L4_Word_t)’:
+../../include/l4/types.h:238:39: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = (1UL << msb) < FpageSize ? msb + 1 : msb;
+              ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+../../include/l4/types.h:238:39: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageLog2(L4_Word_t, int)’:
+../../include/l4/types.h:247:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = FpageSize;
+              ^~~~~~~~~
+../../include/l4/types.h: In function ‘L4_ThreadId_t L4_GlobalId(L4_Word_t, L4_Word_t)’:
+../../include/l4/types.h:303:28: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     t.global.X.thread_no = threadno;
+                            ^~~~~~~~
+../../include/l4/types.h:304:26: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     t.global.X.version = version;
+                          ^~~~~~~
+../../include/l4/types.h: In function ‘L4_Time_t L4_TimePeriod(L4_Word64_t)’:
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:506:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (10); __L4_TRY_EXPONENT (11);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:506:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (10); __L4_TRY_EXPONENT (11);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:507:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (12); __L4_TRY_EXPONENT (13);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:507:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (12); __L4_TRY_EXPONENT (13);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:508:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (14); __L4_TRY_EXPONENT (15);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:508:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (14); __L4_TRY_EXPONENT (15);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:509:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (16); __L4_TRY_EXPONENT (17);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:509:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (16); __L4_TRY_EXPONENT (17);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:510:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (18); __L4_TRY_EXPONENT (19);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:510:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (18); __L4_TRY_EXPONENT (19);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:511:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (20); __L4_TRY_EXPONENT (21);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:511:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (20); __L4_TRY_EXPONENT (21);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:512:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (22); __L4_TRY_EXPONENT (23);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:512:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (22); __L4_TRY_EXPONENT (23);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:513:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (24); __L4_TRY_EXPONENT (25);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:513:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (24); __L4_TRY_EXPONENT (25);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:514:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (26); __L4_TRY_EXPONENT (27);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:514:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (26); __L4_TRY_EXPONENT (27);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:515:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (28); __L4_TRY_EXPONENT (29);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:515:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (28); __L4_TRY_EXPONENT (29);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:516:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (30); __L4_TRY_EXPONENT (31);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:516:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (30); __L4_TRY_EXPONENT (31);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:527:35: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (l4_exp, man);
+                                   ^~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:527:27: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:5’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (l4_exp, man);
+                           ^~~~~~
+../../include/l4/types.h:496:44: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                                            ^~~
+In file included from ../../include/l4/amd64/syscalls.h:39,
+                 from ../../include/l4/kip.h:36,
+                 from sigma0_mem.cc:32:
+../../include/l4/message.h: In function ‘void L4_Set_Label(L4_MsgTag_t*, L4_Word_t)’:
+../../include/l4/message.h:144:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:48’ may change value [-Wconversion]
+     t->X.label = label;
+                  ^~~~~
+../../include/l4/message.h: In function ‘L4_MapItem_t L4_MapItem(L4_Fpage_t, L4_Word_t)’:
+../../include/l4/message.h:191:31: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:54’ may change value [-Wconversion]
+     item.X.snd_base = SndBase >> 10;
+                       ~~~~~~~~^~~~~
+../../include/l4/message.h: In function ‘L4_GrantItem_t L4_GrantItem(L4_Fpage_t, L4_Word_t)’:
+../../include/l4/message.h:264:31: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:54’ may change value [-Wconversion]
+     item.X.snd_base = SndBase >> 10;
+                       ~~~~~~~~^~~~~
+../../include/l4/message.h: In function ‘void L4_CtrlXferItemInit(L4_CtrlXferItem_t*, L4_Word_t)’:
+../../include/l4/message.h:489:15: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char’ may change value [-Wconversion]
+     c->X.id = id;
+               ^~
+../../include/l4/message.h: In function ‘void L4_FaultConfCtrlXferItemInit(L4_CtrlXferItem_t*, L4_Word_t, L4_Word_t)’:
+../../include/l4/message.h:498:15: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char’ may change value [-Wconversion]
+     c->X.id = fault_id;
+               ^~~~~~~~
+../../include/l4/message.h:499:17: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:52’ may change value [-Wconversion]
+     c->X.mask = fault_mask;
+                 ^~~~~~~~~~
+../../include/l4/message.h: In function ‘void L4_MsgPut(L4_Msg_t*, L4_Word_t, int, L4_Word_t*, int, void*)’:
+../../include/l4/message.h:620:24: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:48’ may change value [-Wconversion]
+     msg->tag.X.label = label;
+                        ^~~~~
+../../include/l4/message.h:622:20: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.u = u;
+                    ^
+../../include/l4/message.h:623:20: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t = t;
+                    ^
+../../include/l4/message.h: In function ‘void L4_Set_MsgLabel(L4_Msg_t*, L4_Word_t)’:
+../../include/l4/message.h:656:24: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:48’ may change value [-Wconversion]
+     msg->tag.X.label = label;
+                        ^~~~~
+../../include/l4/message.h: In function ‘void L4_MsgAppendMapItem(L4_Msg_t*, L4_MapItem_t)’:
+../../include/l4/message.h:690:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t += 2;
+     ~~~~~~~~~~~~~^~~~
+../../include/l4/message.h: In function ‘void L4_MsgAppendGrantItem(L4_Msg_t*, L4_GrantItem_t)’:
+../../include/l4/message.h:697:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t += 2;
+     ~~~~~~~~~~~~~^~~~
+../../include/l4/message.h: In function ‘void L4_MsgAppendSimpleStringItem(L4_Msg_t*, L4_StringItem_t)’:
+../../include/l4/message.h:706:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t += 2;
+     ~~~~~~~~~~~~~^~~~
+../../include/l4/message.h: In function ‘void L4_MsgAppendStringItem(L4_Msg_t*, L4_StringItem_t*)’:
+../../include/l4/message.h:715:48: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     int size = ((L4_Word_t) e - (L4_Word_t) s) / sizeof (L4_Word_t);
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+../../include/l4/message.h:717:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t += size;
+     ~~~~~~~~~~~~~^~~~~~~
+../../include/l4/message.h: In function ‘void L4_MsgAppendCtrlXferItem(L4_Msg_t*, L4_CtrlXferItem_t*)’:
+../../include/l4/message.h:734:15: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+  msg->tag.X.t += 1 + num;
+  ~~~~~~~~~~~~~^~~~~~~~~~
+../../include/l4/message.h: In function ‘void L4_AppendFaultConfCtrlXferItems(L4_Msg_t*, L4_Word64_t, L4_Word_t, L4_Word_t)’:
+../../include/l4/message.h:763:16: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:1’ may change value [-Wconversion]
+     item.X.C = C;
+                ^
+In file included from sigma0_mem.cc:35:
+../../include/l4io.h: At global scope:
+../../include/l4io.h:46:6: warning: declaration of ‘void putc(int)’ conflicts with built-in declaration ‘int putc(int, void*)’ [-Wbuiltin-declaration-mismatch]
+ void putc(int c);
+      ^~~~
+In file included from ../../include/l4/arch.h:37,
+                 from sigma0.h:101,
+                 from sigma0_mem.cc:37:
+../../include/l4/amd64/arch.h: In function ‘L4_Fpage_t L4_IoFpage(L4_Word_t, int)’:
+../../include/l4/amd64/arch.h:63:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     fp.X.p = BasePort;
+              ^~~~~~~~
+../../include/l4/amd64/arch.h:63:14: warning: conversion from ‘unsigned int’ to ‘short unsigned int’ may change value [-Wconversion]
+../../include/l4/amd64/arch.h:65:51: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     fp.X.s = (1UL << msb) < (L4_Word_t) FpageSize ? msb + 1 : msb;
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+../../include/l4/amd64/arch.h:65:51: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+../../include/l4/amd64/arch.h:65:63: warning: conversion from ‘unsigned int’ to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = (1UL << msb) < (L4_Word_t) FpageSize ? msb + 1 : msb;
+                                                               ^~~
+../../include/l4/amd64/arch.h:65:63: warning: conversion from ‘unsigned int’ to ‘unsigned char:6’ may change value [-Wconversion]
+../../include/l4/amd64/arch.h: In function ‘L4_Fpage_t L4_IoFpageLog2(L4_Word_t, int)’:
+../../include/l4/amd64/arch.h:75:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     fp.X.p = BasePort;
+              ^~~~~~~~
+../../include/l4/amd64/arch.h:75:14: warning: conversion from ‘unsigned int’ to ‘short unsigned int’ may change value [-Wconversion]
+../../include/l4/amd64/arch.h:77:14: warning: conversion from ‘unsigned int’ to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = FpageSize;
+              ^~~~~~~~~
+sigma0_mem.cc: In function ‘bool allocate_page(L4_ThreadId_t, L4_Paddr_t, L4_Word_t, L4_MapItem_t&, bool)’:
+sigma0_mem.cc:319:21: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+      kip_area.X.s = log2size;
+                     ^~~~~~~~
+sigma0_mem.cc:320:34: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:54’ may change value [-Wconversion]
+         kip_area.X.b = shortaddr >> 10;
+                        ~~~~~~~~~~^~~~~
+sigma0_mem.cc:362:24: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+   (L4_FpageLog2 (addr, log2size) + L4_FullyAccessible, addr);
+                        ^~~~~~~~
+sigma0_mem.cc:417:54: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     map = L4_MapItem (L4_FpageLog2 ((L4_Word_t)addr, log2size) + L4_FullyAccessible,
+                                                      ^~~~~~~~
+===> region.cc
+gcc -x c++ -I../../include -I../.. -I/usr/lib/gcc/x86_64-linux-gnu/8/include   -nostdinc -g -O2 -m64 -mno-red-zone   -fno-stack-protector -lssp -O2 -g -Wall -Wshadow   -fno-stack-protector  -Wconversion -fno-exceptions -c region.cc -o region.o
+In file included from ../../include/l4/types.h:169,
+                 from ../../include/l4/message.h:36,
+                 from region.cc:32:
+../../include/l4/amd64/specials.h: In function ‘int __L4_Msb(L4_Word_t)’:
+../../include/l4/amd64/specials.h:62:12: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     return bitnum;
+            ^~~~~~
+../../include/l4/amd64/specials.h: In function ‘int __L4_Lsb(L4_Word_t)’:
+../../include/l4/amd64/specials.h:84:12: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     return bitnum;
+            ^~~~~~
+In file included from ../../include/l4/message.h:36,
+                 from region.cc:32:
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_Set_Rights(L4_Fpage_t*, L4_Word_t)’:
+../../include/l4/types.h:183:16: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f->X.rwx = rwx;
+                ^~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageAddRights(L4_Fpage_t, L4_Word_t)’:
+../../include/l4/types.h:189:13: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f.X.rwx |= rwx;
+     ~~~~~~~~^~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageAddRightsTo(L4_Fpage_t*, L4_Word_t)’:
+../../include/l4/types.h:195:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f->X.rwx |= rwx;
+     ~~~~~~~~~^~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageRemoveRights(L4_Fpage_t, L4_Word_t)’:
+../../include/l4/types.h:201:13: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f.X.rwx &= ~rwx;
+     ~~~~~~~~^~~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageRemoveRightsFrom(L4_Fpage_t*, L4_Word_t)’:
+../../include/l4/types.h:207:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f->X.rwx &= ~rwx;
+     ~~~~~~~~~^~~~~~~
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_Fpage(L4_Word_t, L4_Word_t)’:
+../../include/l4/types.h:238:39: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = (1UL << msb) < FpageSize ? msb + 1 : msb;
+              ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+../../include/l4/types.h:238:39: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageLog2(L4_Word_t, int)’:
+../../include/l4/types.h:247:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = FpageSize;
+              ^~~~~~~~~
+../../include/l4/types.h: In function ‘L4_ThreadId_t L4_GlobalId(L4_Word_t, L4_Word_t)’:
+../../include/l4/types.h:303:28: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     t.global.X.thread_no = threadno;
+                            ^~~~~~~~
+../../include/l4/types.h:304:26: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     t.global.X.version = version;
+                          ^~~~~~~
+../../include/l4/types.h: In function ‘L4_Time_t L4_TimePeriod(L4_Word64_t)’:
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:506:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (10); __L4_TRY_EXPONENT (11);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:506:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (10); __L4_TRY_EXPONENT (11);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:507:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (12); __L4_TRY_EXPONENT (13);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:507:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (12); __L4_TRY_EXPONENT (13);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:508:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (14); __L4_TRY_EXPONENT (15);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:508:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (14); __L4_TRY_EXPONENT (15);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:509:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (16); __L4_TRY_EXPONENT (17);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:509:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (16); __L4_TRY_EXPONENT (17);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:510:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (18); __L4_TRY_EXPONENT (19);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:510:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (18); __L4_TRY_EXPONENT (19);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:511:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (20); __L4_TRY_EXPONENT (21);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:511:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (20); __L4_TRY_EXPONENT (21);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:512:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (22); __L4_TRY_EXPONENT (23);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:512:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (22); __L4_TRY_EXPONENT (23);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:513:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (24); __L4_TRY_EXPONENT (25);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:513:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (24); __L4_TRY_EXPONENT (25);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:514:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (26); __L4_TRY_EXPONENT (27);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:514:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (26); __L4_TRY_EXPONENT (27);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:515:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (28); __L4_TRY_EXPONENT (29);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:515:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (28); __L4_TRY_EXPONENT (29);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:516:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (30); __L4_TRY_EXPONENT (31);
+  ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:516:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (30); __L4_TRY_EXPONENT (31);
+                          ^~~~~~~~~~~~~~~~~
+../../include/l4/types.h:527:35: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (l4_exp, man);
+                                   ^~~
+../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../include/l4/types.h:527:27: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:5’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (l4_exp, man);
+                           ^~~~~~
+../../include/l4/types.h:496:44: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                                            ^~~
+In file included from region.cc:32:
+../../include/l4/message.h: In function ‘void L4_Set_Label(L4_MsgTag_t*, L4_Word_t)’:
+../../include/l4/message.h:144:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:48’ may change value [-Wconversion]
+     t->X.label = label;
+                  ^~~~~
+../../include/l4/message.h: In function ‘L4_MapItem_t L4_MapItem(L4_Fpage_t, L4_Word_t)’:
+../../include/l4/message.h:191:31: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:54’ may change value [-Wconversion]
+     item.X.snd_base = SndBase >> 10;
+                       ~~~~~~~~^~~~~
+../../include/l4/message.h: In function ‘L4_GrantItem_t L4_GrantItem(L4_Fpage_t, L4_Word_t)’:
+../../include/l4/message.h:264:31: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:54’ may change value [-Wconversion]
+     item.X.snd_base = SndBase >> 10;
+                       ~~~~~~~~^~~~~
+../../include/l4/message.h: In function ‘void L4_CtrlXferItemInit(L4_CtrlXferItem_t*, L4_Word_t)’:
+../../include/l4/message.h:489:15: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char’ may change value [-Wconversion]
+     c->X.id = id;
+               ^~
+../../include/l4/message.h: In function ‘void L4_FaultConfCtrlXferItemInit(L4_CtrlXferItem_t*, L4_Word_t, L4_Word_t)’:
+../../include/l4/message.h:498:15: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char’ may change value [-Wconversion]
+     c->X.id = fault_id;
+               ^~~~~~~~
+../../include/l4/message.h:499:17: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:52’ may change value [-Wconversion]
+     c->X.mask = fault_mask;
+                 ^~~~~~~~~~
+../../include/l4/message.h: In function ‘void L4_MsgPut(L4_Msg_t*, L4_Word_t, int, L4_Word_t*, int, void*)’:
+../../include/l4/message.h:620:24: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:48’ may change value [-Wconversion]
+     msg->tag.X.label = label;
+                        ^~~~~
+../../include/l4/message.h:622:20: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.u = u;
+                    ^
+../../include/l4/message.h:623:20: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t = t;
+                    ^
+../../include/l4/message.h: In function ‘void L4_Set_MsgLabel(L4_Msg_t*, L4_Word_t)’:
+../../include/l4/message.h:656:24: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:48’ may change value [-Wconversion]
+     msg->tag.X.label = label;
+                        ^~~~~
+../../include/l4/message.h: In function ‘void L4_MsgAppendMapItem(L4_Msg_t*, L4_MapItem_t)’:
+../../include/l4/message.h:690:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t += 2;
+     ~~~~~~~~~~~~~^~~~
+../../include/l4/message.h: In function ‘void L4_MsgAppendGrantItem(L4_Msg_t*, L4_GrantItem_t)’:
+../../include/l4/message.h:697:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t += 2;
+     ~~~~~~~~~~~~~^~~~
+../../include/l4/message.h: In function ‘void L4_MsgAppendSimpleStringItem(L4_Msg_t*, L4_StringItem_t)’:
+../../include/l4/message.h:706:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t += 2;
+     ~~~~~~~~~~~~~^~~~
+../../include/l4/message.h: In function ‘void L4_MsgAppendStringItem(L4_Msg_t*, L4_StringItem_t*)’:
+../../include/l4/message.h:715:48: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     int size = ((L4_Word_t) e - (L4_Word_t) s) / sizeof (L4_Word_t);
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+../../include/l4/message.h:717:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t += size;
+     ~~~~~~~~~~~~~^~~~~~~
+../../include/l4/message.h: In function ‘void L4_MsgAppendCtrlXferItem(L4_Msg_t*, L4_CtrlXferItem_t*)’:
+../../include/l4/message.h:734:15: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+  msg->tag.X.t += 1 + num;
+  ~~~~~~~~~~~~~^~~~~~~~~~
+../../include/l4/message.h: In function ‘void L4_AppendFaultConfCtrlXferItems(L4_Msg_t*, L4_Word64_t, L4_Word_t, L4_Word_t)’:
+../../include/l4/message.h:763:16: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:1’ may change value [-Wconversion]
+     item.X.C = C;
+                ^
+In file included from region.cc:34:
+../../include/l4io.h: At global scope:
+../../include/l4io.h:46:6: warning: declaration of ‘void putc(int)’ conflicts with built-in declaration ‘int putc(int, void*)’ [-Wbuiltin-declaration-mismatch]
+ void putc(int c);
+      ^~~~
+In file included from ../../include/l4/arch.h:37,
+                 from sigma0.h:101,
+                 from region.cc:36:
+../../include/l4/amd64/arch.h: In function ‘L4_Fpage_t L4_IoFpage(L4_Word_t, int)’:
+../../include/l4/amd64/arch.h:63:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     fp.X.p = BasePort;
+              ^~~~~~~~
+../../include/l4/amd64/arch.h:63:14: warning: conversion from ‘unsigned int’ to ‘short unsigned int’ may change value [-Wconversion]
+../../include/l4/amd64/arch.h:65:51: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     fp.X.s = (1UL << msb) < (L4_Word_t) FpageSize ? msb + 1 : msb;
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+../../include/l4/amd64/arch.h:65:51: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+../../include/l4/amd64/arch.h:65:63: warning: conversion from ‘unsigned int’ to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = (1UL << msb) < (L4_Word_t) FpageSize ? msb + 1 : msb;
+                                                               ^~~
+../../include/l4/amd64/arch.h:65:63: warning: conversion from ‘unsigned int’ to ‘unsigned char:6’ may change value [-Wconversion]
+../../include/l4/amd64/arch.h: In function ‘L4_Fpage_t L4_IoFpageLog2(L4_Word_t, int)’:
+../../include/l4/amd64/arch.h:75:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     fp.X.p = BasePort;
+              ^~~~~~~~
+../../include/l4/amd64/arch.h:75:14: warning: conversion from ‘unsigned int’ to ‘short unsigned int’ may change value [-Wconversion]
+../../include/l4/amd64/arch.h:77:14: warning: conversion from ‘unsigned int’ to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = FpageSize;
+              ^~~~~~~~~
+region.cc: In member function ‘L4_Fpage_t region_t::allocate(L4_Word_t, L4_ThreadId_t, L4_Fpage_t (*)(L4_Word_t, int))’:
+region.cc:171:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+   kip_area.X.s = log2size;
+                  ^~~~~~~~
+region.cc:172:28: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:54’ may change value [-Wconversion]
+   kip_area.X.b = shortaddr >> 10;
+                  ~~~~~~~~~~^~~~~
+region.cc:180:39: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     ret = make_fpage ((L4_Word_t)low, log2size) + L4_FullyAccessible;
+                                       ^~~~~~~~
+region.cc:192:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+   kip_area.X.s = log2size;
+                  ^~~~~~~~
+region.cc:193:28: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:54’ may change value [-Wconversion]
+   kip_area.X.b = shortaddr >> 10;
+                  ~~~~~~~~~~^~~~~
+region.cc:201:55: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     ret = make_fpage ((L4_Word_t)(high_a) - size + 1, log2size) + L4_FullyAccessible;
+                                                       ^~~~~~~~
+region.cc:210:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+   kip_area.X.s = log2size;
+                  ^~~~~~~~
+region.cc:211:28: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:54’ may change value [-Wconversion]
+   kip_area.X.b = shortaddr >> 10;
+                  ~~~~~~~~~~^~~~~
+region.cc:220:38: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+  ret = make_fpage ((L4_Word_t)low_a, log2size) + L4_FullyAccessible;
+                                      ^~~~~~~~
+region.cc: In member function ‘L4_Fpage_t region_t::allocate(L4_Paddr_t, L4_Word_t, L4_ThreadId_t, L4_Fpage_t (*)(L4_Word_t, int))’:
+region.cc:270:36: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+  ret = make_fpage ((L4_Word_t)low, log2size) + L4_FullyAccessible;
+                                    ^~~~~~~~
+region.cc:279:52: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+  ret = make_fpage ((L4_Word_t)(high_a - size + 1), log2size) + L4_FullyAccessible;
+                                                    ^~~~~~~~
+region.cc:285:37: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+  ret = make_fpage ((L4_Word_t)addr, log2size) + L4_FullyAccessible;
+                                     ^~~~~~~~
+===> Linking ./sigma0
+ld -e_start -N -L../../lib -L/usr/lib/gcc/x86_64-linux-gnu/8 -nostdlib  -melf_x86_64  -Ttext=00f00000 crt0-amd64.o sigma0_io.o sigma0.o sigma0_mem.o region.o    -ll4 -lio -lgcc -o sigma0
+make[2]: Leaving directory '/home/tyson/Orion/user/serv/sigma0'
+make[1]: Leaving directory '/home/tyson/Orion/user/serv'
+make[1]: Entering directory '/home/tyson/Orion/user/apps'
+make[2]: Entering directory '/home/tyson/Orion/user/apps/bench'
+make[3]: Entering directory '/home/tyson/Orion/user/apps/bench/pingpong'
+===> Making dependencies in .
+===> pingpong.cc
+gcc -x c++ -I../../../include -I../../.. -I/usr/lib/gcc/x86_64-linux-gnu/8/include   -nostdinc -g -O2 -m64 -mno-red-zone   -fno-stack-protector -lssp -O2 -g -Wall -Wshadow   -fno-stack-protector  -Wconversion -fno-exceptions -c pingpong.cc -o pingpong.o
+In file included from ../../../include/l4/types.h:169,
+                 from ../../../include/l4/kip.h:35,
+                 from pingpong.cc:34:
+../../../include/l4/amd64/specials.h: In function ‘int __L4_Msb(L4_Word_t)’:
+../../../include/l4/amd64/specials.h:62:12: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     return bitnum;
+            ^~~~~~
+../../../include/l4/amd64/specials.h: In function ‘int __L4_Lsb(L4_Word_t)’:
+../../../include/l4/amd64/specials.h:84:12: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     return bitnum;
+            ^~~~~~
+In file included from ../../../include/l4/kip.h:35,
+                 from pingpong.cc:34:
+../../../include/l4/types.h: In function ‘L4_Fpage_t L4_Set_Rights(L4_Fpage_t*, L4_Word_t)’:
+../../../include/l4/types.h:183:16: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f->X.rwx = rwx;
+                ^~~
+../../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageAddRights(L4_Fpage_t, L4_Word_t)’:
+../../../include/l4/types.h:189:13: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f.X.rwx |= rwx;
+     ~~~~~~~~^~~~~~
+../../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageAddRightsTo(L4_Fpage_t*, L4_Word_t)’:
+../../../include/l4/types.h:195:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f->X.rwx |= rwx;
+     ~~~~~~~~~^~~~~~
+../../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageRemoveRights(L4_Fpage_t, L4_Word_t)’:
+../../../include/l4/types.h:201:13: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f.X.rwx &= ~rwx;
+     ~~~~~~~~^~~~~~~
+../../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageRemoveRightsFrom(L4_Fpage_t*, L4_Word_t)’:
+../../../include/l4/types.h:207:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:3’ may change value [-Wconversion]
+     f->X.rwx &= ~rwx;
+     ~~~~~~~~~^~~~~~~
+../../../include/l4/types.h: In function ‘L4_Fpage_t L4_Fpage(L4_Word_t, L4_Word_t)’:
+../../../include/l4/types.h:238:39: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = (1UL << msb) < FpageSize ? msb + 1 : msb;
+              ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+../../../include/l4/types.h:238:39: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+../../../include/l4/types.h: In function ‘L4_Fpage_t L4_FpageLog2(L4_Word_t, int)’:
+../../../include/l4/types.h:247:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = FpageSize;
+              ^~~~~~~~~
+../../../include/l4/types.h: In function ‘L4_ThreadId_t L4_GlobalId(L4_Word_t, L4_Word_t)’:
+../../../include/l4/types.h:303:28: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     t.global.X.thread_no = threadno;
+                            ^~~~~~~~
+../../../include/l4/types.h:304:26: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     t.global.X.version = version;
+                          ^~~~~~~
+../../../include/l4/types.h: In function ‘L4_Time_t L4_TimePeriod(L4_Word64_t)’:
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:506:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (10); __L4_TRY_EXPONENT (11);
+  ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:506:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (10); __L4_TRY_EXPONENT (11);
+                          ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:507:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (12); __L4_TRY_EXPONENT (13);
+  ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:507:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (12); __L4_TRY_EXPONENT (13);
+                          ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:508:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (14); __L4_TRY_EXPONENT (15);
+  ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:508:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (14); __L4_TRY_EXPONENT (15);
+                          ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:509:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (16); __L4_TRY_EXPONENT (17);
+  ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:509:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (16); __L4_TRY_EXPONENT (17);
+                          ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:510:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (18); __L4_TRY_EXPONENT (19);
+  ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:510:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (18); __L4_TRY_EXPONENT (19);
+                          ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:511:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (20); __L4_TRY_EXPONENT (21);
+  ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:511:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (20); __L4_TRY_EXPONENT (21);
+                          ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:512:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (22); __L4_TRY_EXPONENT (23);
+  ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:512:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (22); __L4_TRY_EXPONENT (23);
+                          ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:513:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (24); __L4_TRY_EXPONENT (25);
+  ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:513:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (24); __L4_TRY_EXPONENT (25);
+                          ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:514:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (26); __L4_TRY_EXPONENT (27);
+  ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:514:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (26); __L4_TRY_EXPONENT (27);
+                          ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:515:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (28); __L4_TRY_EXPONENT (29);
+  ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:515:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (28); __L4_TRY_EXPONENT (29);
+                          ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:516:2: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (30); __L4_TRY_EXPONENT (31);
+  ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:499:48: warning: conversion from ‘L4_Word64_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (N - 10, microseconds >> (N - 10))
+                                   ~~~~~~~~~~~~~^~~~~~~~~~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:516:26: note: in expansion of macro ‘__L4_TRY_EXPONENT’
+  __L4_TRY_EXPONENT (30); __L4_TRY_EXPONENT (31);
+                          ^~~~~~~~~~~~~~~~~
+../../../include/l4/types.h:527:35: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘short unsigned int:10’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (l4_exp, man);
+                                   ^~~
+../../../include/l4/types.h:496:23: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                       ^~~
+../../../include/l4/types.h:527:27: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:5’ may change value [-Wconversion]
+      __L4_SET_TIMEPERIOD (l4_exp, man);
+                           ^~~~~~
+../../../include/l4/types.h:496:44: note: in definition of macro ‘__L4_SET_TIMEPERIOD’
+  do { time.period.m = man; time.period.e = exp; } while (0)
+                                            ^~~
+In file included from ../../../include/l4/amd64/syscalls.h:39,
+                 from ../../../include/l4/kip.h:36,
+                 from pingpong.cc:34:
+../../../include/l4/message.h: In function ‘void L4_Set_Label(L4_MsgTag_t*, L4_Word_t)’:
+../../../include/l4/message.h:144:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:48’ may change value [-Wconversion]
+     t->X.label = label;
+                  ^~~~~
+../../../include/l4/message.h: In function ‘L4_MapItem_t L4_MapItem(L4_Fpage_t, L4_Word_t)’:
+../../../include/l4/message.h:191:31: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:54’ may change value [-Wconversion]
+     item.X.snd_base = SndBase >> 10;
+                       ~~~~~~~~^~~~~
+../../../include/l4/message.h: In function ‘L4_GrantItem_t L4_GrantItem(L4_Fpage_t, L4_Word_t)’:
+../../../include/l4/message.h:264:31: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:54’ may change value [-Wconversion]
+     item.X.snd_base = SndBase >> 10;
+                       ~~~~~~~~^~~~~
+../../../include/l4/message.h: In function ‘void L4_CtrlXferItemInit(L4_CtrlXferItem_t*, L4_Word_t)’:
+../../../include/l4/message.h:489:15: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char’ may change value [-Wconversion]
+     c->X.id = id;
+               ^~
+../../../include/l4/message.h: In function ‘void L4_FaultConfCtrlXferItemInit(L4_CtrlXferItem_t*, L4_Word_t, L4_Word_t)’:
+../../../include/l4/message.h:498:15: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char’ may change value [-Wconversion]
+     c->X.id = fault_id;
+               ^~~~~~~~
+../../../include/l4/message.h:499:17: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:52’ may change value [-Wconversion]
+     c->X.mask = fault_mask;
+                 ^~~~~~~~~~
+../../../include/l4/message.h: In function ‘void L4_MsgPut(L4_Msg_t*, L4_Word_t, int, L4_Word_t*, int, void*)’:
+../../../include/l4/message.h:620:24: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:48’ may change value [-Wconversion]
+     msg->tag.X.label = label;
+                        ^~~~~
+../../../include/l4/message.h:622:20: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.u = u;
+                    ^
+../../../include/l4/message.h:623:20: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t = t;
+                    ^
+../../../include/l4/message.h: In function ‘void L4_Set_MsgLabel(L4_Msg_t*, L4_Word_t)’:
+../../../include/l4/message.h:656:24: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:48’ may change value [-Wconversion]
+     msg->tag.X.label = label;
+                        ^~~~~
+../../../include/l4/message.h: In function ‘void L4_MsgAppendMapItem(L4_Msg_t*, L4_MapItem_t)’:
+../../../include/l4/message.h:690:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t += 2;
+     ~~~~~~~~~~~~~^~~~
+../../../include/l4/message.h: In function ‘void L4_MsgAppendGrantItem(L4_Msg_t*, L4_GrantItem_t)’:
+../../../include/l4/message.h:697:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t += 2;
+     ~~~~~~~~~~~~~^~~~
+../../../include/l4/message.h: In function ‘void L4_MsgAppendSimpleStringItem(L4_Msg_t*, L4_StringItem_t)’:
+../../../include/l4/message.h:706:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t += 2;
+     ~~~~~~~~~~~~~^~~~
+../../../include/l4/message.h: In function ‘void L4_MsgAppendStringItem(L4_Msg_t*, L4_StringItem_t*)’:
+../../../include/l4/message.h:715:48: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     int size = ((L4_Word_t) e - (L4_Word_t) s) / sizeof (L4_Word_t);
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+../../../include/l4/message.h:717:18: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     msg->tag.X.t += size;
+     ~~~~~~~~~~~~~^~~~~~~
+../../../include/l4/message.h: In function ‘void L4_MsgAppendCtrlXferItem(L4_Msg_t*, L4_CtrlXferItem_t*)’:
+../../../include/l4/message.h:734:15: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+  msg->tag.X.t += 1 + num;
+  ~~~~~~~~~~~~~^~~~~~~~~~
+../../../include/l4/message.h: In function ‘void L4_AppendFaultConfCtrlXferItems(L4_Msg_t*, L4_Word64_t, L4_Word_t, L4_Word_t)’:
+../../../include/l4/message.h:763:16: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:1’ may change value [-Wconversion]
+     item.X.C = C;
+                ^
+In file included from pingpong.cc:36:
+../../../include/l4/schedule.h: In function ‘L4_Word_t L4_Timeslice(L4_ThreadId_t, L4_Time_t*, L4_Time_t*)’:
+../../../include/l4/schedule.h:78:31: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘L4_Word16_t’ {aka ‘short unsigned int’} may change value [-Wconversion]
+     timeslice->raw = timectrl >> 16;
+                      ~~~~~~~~~^~~~~
+../../../include/l4/schedule.h:79:25: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘L4_Word16_t’ {aka ‘short unsigned int’} may change value [-Wconversion]
+     totalquantum->raw = timectrl;
+                         ^~~~~~~~
+In file included from pingpong.cc:38:
+../../../include/l4io.h: At global scope:
+../../../include/l4io.h:46:6: warning: declaration of ‘void putc(int)’ conflicts with built-in declaration ‘int putc(int, void*)’ [-Wbuiltin-declaration-mismatch]
+ void putc(int c);
+      ^~~~
+In file included from ../../../include/l4/arch.h:37,
+                 from pingpong.cc:39:
+../../../include/l4/amd64/arch.h: In function ‘L4_Fpage_t L4_IoFpage(L4_Word_t, int)’:
+../../../include/l4/amd64/arch.h:63:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     fp.X.p = BasePort;
+              ^~~~~~~~
+../../../include/l4/amd64/arch.h:63:14: warning: conversion from ‘unsigned int’ to ‘short unsigned int’ may change value [-Wconversion]
+../../../include/l4/amd64/arch.h:65:51: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     fp.X.s = (1UL << msb) < (L4_Word_t) FpageSize ? msb + 1 : msb;
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+../../../include/l4/amd64/arch.h:65:51: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+../../../include/l4/amd64/arch.h:65:63: warning: conversion from ‘unsigned int’ to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = (1UL << msb) < (L4_Word_t) FpageSize ? msb + 1 : msb;
+                                                               ^~~
+../../../include/l4/amd64/arch.h:65:63: warning: conversion from ‘unsigned int’ to ‘unsigned char:6’ may change value [-Wconversion]
+../../../include/l4/amd64/arch.h: In function ‘L4_Fpage_t L4_IoFpageLog2(L4_Word_t, int)’:
+../../../include/l4/amd64/arch.h:75:14: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     fp.X.p = BasePort;
+              ^~~~~~~~
+../../../include/l4/amd64/arch.h:75:14: warning: conversion from ‘unsigned int’ to ‘short unsigned int’ may change value [-Wconversion]
+../../../include/l4/amd64/arch.h:77:14: warning: conversion from ‘unsigned int’ to ‘unsigned char:6’ may change value [-Wconversion]
+     fp.X.s = FpageSize;
+              ^~~~~~~~~
+pingpong.cc: At global scope:
+pingpong.cc:83:17: warning: declaration of ‘void memset(char*, char, int)’ conflicts with built-in declaration ‘void* memset(void*, int, long unsigned int)’ [-Wbuiltin-declaration-mismatch]
+ extern "C" void memset (char * p, char c, int size)
+                 ^~~~~~
+In file included from amd64.h:34,
+                 from pingpong.cc:105:
+../../../include/l4/amd64/compat.h: In function ‘L4_ThreadId32_t L4_GlobalId32(L4_Word32_t, L4_Word32_t)’:
+../../../include/l4/amd64/compat.h:74:28: warning: conversion from ‘L4_Word32_t’ {aka ‘unsigned int’} to ‘unsigned int:18’ may change value [-Wconversion]
+     t.global.X.thread_no = threadno;
+                            ^~~~~~~~
+../../../include/l4/amd64/compat.h:75:26: warning: conversion from ‘L4_Word32_t’ {aka ‘unsigned int’} to ‘short unsigned int:14’ may change value [-Wconversion]
+     t.global.X.version = version;
+                          ^~~~~~~
+../../../include/l4/amd64/compat.h: In function ‘L4_ThreadId32_t L4_ThreadId32(L4_ThreadId_t)’:
+../../../include/l4/amd64/compat.h:140:17: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘L4_Word32_t’ {aka ‘unsigned int’} may change value [-Wconversion]
+      t.raw = id.raw;
+              ~~~^~~
+../../../include/l4/amd64/compat.h:144:34: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘L4_Word32_t’ {aka ‘unsigned int’} may change value [-Wconversion]
+  return L4_GlobalId32(L4_ThreadNo(id), L4_Version(id));
+                       ~~~~~~~~~~~^~~~
+../../../include/l4/amd64/compat.h:144:50: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘L4_Word32_t’ {aka ‘unsigned int’} may change value [-Wconversion]
+  return L4_GlobalId32(L4_ThreadNo(id), L4_Version(id));
+                                        ~~~~~~~~~~^~~~
+In file included from pingpong.cc:105:
+amd64.h: In function ‘L4_Fpage_t handle_arch_pagefault(L4_MsgTag_t, L4_Word_t, L4_Word_t, L4_Word_t)’:
+amd64.h:72:33: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     return L4_FpageLog2 (faddr, log2size);
+                                 ^~~~~~~~
+In file included from pingpong.cc:107:
+../../../include/l4/tracebuffer.h: In function ‘void L4_Tbuf_StoreRecord(L4_TraceRecord_t*, L4_TraceConfig_t, L4_Word_t, L4_Word_t)’:
+../../../include/l4/tracebuffer.h:104:20: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘short unsigned int’ may change value [-Wconversion]
+     rec->X.utype = type;
+                    ^~~~
+../../../include/l4/tracebuffer.h:105:17: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:48’ may change value [-Wconversion]
+     rec->X.id = id;
+                 ^~
+../../../include/l4/tracebuffer.h:106:32: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘short unsigned int’ may change value [-Wconversion]
+     rec->X.cpu = L4_ProcessorNo();
+                  ~~~~~~~~~~~~~~^~
+pingpong.cc: In function ‘L4_Word_t pingpong_lipc(L4_ThreadId_t, L4_Word_t)’:
+pingpong.cc:176:15: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     tag.X.u = untyped;
+               ^~~~~~~
+pingpong.cc: In function ‘void ping_thread()’:
+pingpong.cc:292:20: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+      char c = getc ();
+               ~~~~~^~
+pingpong.cc:218:19: warning: variable ‘pong_ltid’ set but not used [-Wunused-but-set-variable]
+     L4_ThreadId_t pong_ltid = L4_LocalId (pong_tid);
+                   ^~~~~~~~~
+pingpong.cc: In function ‘int main()’:
+pingpong.cc:409:66: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     kip_area = L4_FpageLog2 ((L4_Word_t) kip, L4_KipAreaSizeLog2 (kip));
+                                               ~~~~~~~~~~~~~~~~~~~^~~~~
+pingpong.cc:416:21: warning: variable ‘q’ set but not used [-Wunused-but-set-variable]
+  volatile L4_Word_t q;
+                     ^
+pingpong.cc:422:36: warning: conversion from ‘L4_Word_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+          L4_UtcbAreaSizeLog2 (kip) + 1);
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+pingpong.cc:435:28: warning: conversion from ‘L4_Bool_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+     hsched  = L4_HasFeature("hscheduling");
+               ~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+pingpong.cc:452:54: warning: variable ‘result’ set but not used [-Wunused-but-set-variable]
+  L4_Word_t sched_control = 0, old_sched_control = 0, result = 0;
+                                                      ^~~~~~
+pingpong.cc:500:20: warning: conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+      char c = getc ();
+               ~~~~~^~
+In file included from ../../../include/l4/kip.h:36,
+                 from pingpong.cc:34:
+../../../include/l4/amd64/syscalls.h: In function ‘L4_Clock_t L4_SystemClock()’:
+../../../include/l4/amd64/syscalls.h:197:19: warning: ‘ret.L4_Clock_t::raw’ is used uninitialized in this function [-Wuninitialized]
+  [dest]  "0" (ret.raw)  /* %1 RAX */
+               ~~~~^~~
+../../../include/l4/amd64/syscalls.h: In function ‘void ping_thread()’:
+../../../include/l4/amd64/syscalls.h:201:3: warning: ‘ret.L4_Clock_t::raw’ is used uninitialized in this function [-Wuninitialized]
+  );
+   ^
+../../../include/l4/amd64/syscalls.h:187:16: note: ‘ret.L4_Clock_t::raw’ was declared here
+     L4_Clock_t ret;
+                ^~~
+../../../include/l4/amd64/syscalls.h:201:3: warning: ‘ret.L4_Clock_t::raw’ is used uninitialized in this function [-Wuninitialized]
+  );
+   ^
+../../../include/l4/amd64/syscalls.h:187:16: note: ‘ret.L4_Clock_t::raw’ was declared here
+     L4_Clock_t ret;
+                ^~~
+gcc -I../../../include -I../../.. -I/usr/lib/gcc/x86_64-linux-gnu/8/include    -m32 -fno-exceptions  -fno-stack-protector -lssp  -fno-stack-protector -lssp -x c++ -c pingpong-amd64-32.cc -o pingpong-amd64-32.o
+objcopy -g -O elf64-x86-64 pingpong-amd64-32.o pingpong-amd64-32.o
+===> Linking ./pingpong
+ld -e_start -N -L../../../lib -L/usr/lib/gcc/x86_64-linux-gnu/8 -nostdlib  -melf_x86_64  -Ttext=01000000  -fno-stack-protector -lssp crt0-amd64.o pingpong.o pingpong-amd64-32.o    -ll4 -lio -lgcc -o pingpong
+ld: -f may not be used without -shared
+make[3]: *** [../../../Mk/l4.prog.mk:54: pingpong] Error 1
+make[3]: Leaving directory '/home/tyson/Orion/user/apps/bench/pingpong'
+make[2]: *** [../../Mk/l4.subdir.mk:41: subdirs-all] Error 2
+make[2]: Leaving directory '/home/tyson/Orion/user/apps/bench'
+make[1]: *** [../Mk/l4.subdir.mk:41: subdirs-all] Error 2
+make[1]: Leaving directory '/home/tyson/Orion/user/apps'
+make: *** [Mk/l4.subdir.mk:41: subdirs-all] Error 2
+tyson@tyson-Lenovo-ideapad-120S-14IAP:~/Orion/user$ 
+
+

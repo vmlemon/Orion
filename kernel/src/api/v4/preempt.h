@@ -1,6 +1,7 @@
 /*********************************************************************
  *                
  * Copyright (C) 2003,  Karlsruhe University
+ * Copyright (C) 2005,  National ICT Australia (NICTA)
  *                
  * File path:     api/v4/preempt.h
  * Description:   Preemption flags
@@ -38,27 +39,15 @@ public:
     union {
 	u8_t raw;
 	struct {
-	    BITFIELD4 (u8_t,
+	    BITFIELD3 (u8_t,
 		       : 5,
 		       signaled	: 1,
-		       delayed	: 1,
-		       pending	: 1);
+		       : 2
+		      );
 	} flags;
     };
 
     bool is_signaled()	{ return flags.signaled; }
-    bool is_delayed()	{ return flags.delayed; }
-    bool is_pending()	{ return flags.pending; }
-    preempt_flags_t set_pending() 
-	{ 
-	    flags.pending = true; 
-	    return (*this); 
-	}
-    preempt_flags_t clear_pending()
-	{
-	    flags.pending = false;
-	    return (*this);
-	}
 } __attribute__((packed));
 
 #endif /* !__API__V4__PREEMPT_H__ */

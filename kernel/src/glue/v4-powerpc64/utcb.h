@@ -1,6 +1,6 @@
 /*********************************************************************
  *                
- * Copyright (C) 2003, 2006,  National ICT Australia (NICTA)
+ * Copyright (C) 2003,  National ICT Australia (NICTA)
  *                
  * File path:     glue/v4-powerpc64/utcb.h
  * Description:   UTCB for PowerPC64
@@ -41,39 +41,23 @@ public:
     word_t		user_defined_handle;	/* 16 */
     threadid_t		pager;			/* 24 */
     threadid_t		exception_handler;	/* 32 */
-    u8_t		preempt_flags;		/* 40 */
-    u8_t		cop_flags;              /* 41 */
-    u16_t		__reserved0;            /* 42 */
-    u32_t               __reserved1;		/* 44 */
-    timeout_t		xfer_timeout;		/* 48 */
-    word_t		error_code;		/* 56 */
-    threadid_t		intended_receiver;	/* 64 */
-    threadid_t		virtual_sender;		/* 72 */
-    word_t              __padding0[6];          /* 80 .. 128 */
+    struct {
+	    BITFIELD3( word_t,
+		      preempt_flags : 8,	/* 40 */
+		      cop_flags	    : 8,	/* 41 */
+		      __reserved0   : 48 )	/* 42 */
+    };
+    acceptor_t		acceptor;		/* 48 */
+    word_t		notify_mask;		/* 56 */
+    word_t		error_code;		/* 64 */
+    threadid_t		intended_receiver;	/* 72 */
+    threadid_t		virtual_sender;		/* 80 */
+    word_t		preempt_callback_ip;	/* 88 */
+    word_t		preempted_ip;		/* 96 */
+    /* Reserved for future kernel use */
+    word_t              kernel_reserved[3];	/* 104 .. 128 */
     word_t		mr[IPC_NUM_MR];		/* 128 .. 640 */
-    word_t		br[IPC_NUM_BR];		/* 640 .. 904 */
-    word_t              __padding1[15];         /* 904 .. 1024 */
-
-public:
-    void set_my_global_id(threadid_t tid);
-    word_t get_user_defined_handle();
-    void set_user_defined_handle(word_t handle);
-    threadid_t get_pager();
-    void set_pager(threadid_t tid);
-    threadid_t get_exception_handler();
-    void set_exception_handler(threadid_t tid);
-    u8_t get_preempt_flags();
-    void set_preempt_flags(u8_t flags);
-    u8_t get_cop_flags();
-    word_t get_error_code();
-    void set_error_code(word_t err);
-    timeout_t get_xfer_timeout();
-    threadid_t get_intended_receiver();
-    threadid_t get_virtual_sender();
-    void set_virtual_sender(threadid_t tid);
-
-}; // __attribute__((packed));
-
-#include INC_API(generic-utcb.h)
+    word_t              __padding1[48];		/* 640 .. 1024 */
+};
 
 #endif /* __GLUE__V4_POWERPC__UTCB_H__ */

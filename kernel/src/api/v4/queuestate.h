@@ -32,6 +32,9 @@
 #ifndef __API__V4__QUEUESTATE_H__
 #define __API__V4__QUEUESTATE_H__
 
+//We don't use SCONS, so set it manually
+#define CONFIG_ASSERT_LEVEL 2
+
 /* VU:
  * The separation of queue_state_t allows architecture specific
  * optimizations. For example, if a certain hardware architecture 
@@ -69,13 +72,13 @@ INLINE void queue_state_t::init()
 INLINE void queue_state_t::clear(state_e state)
 {
     this->state &= ~((word_t)state);
-    ASSERT(IS_CONSISTENT);
+    ASSERT(ALWAYS, IS_CONSISTENT);
 }
 
 INLINE void queue_state_t::set(state_e state)
 {
     this->state |= (word_t)state;
-    ASSERT(IS_CONSISTENT);
+    ASSERT(ALWAYS, IS_CONSISTENT);
 }
 
 INLINE bool queue_state_t::is_set(state_e state)
