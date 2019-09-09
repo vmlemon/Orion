@@ -36,4 +36,4 @@ PLATFORM=pc99
 SCHED=rr
 
 BUILDDIR = $(CURDIR)
-SRCDIR=/home/tyson/Desktop/Orion/pistachio/kernel
+SRCDIR=/home/tyson/Orion/pistachio/kernel
