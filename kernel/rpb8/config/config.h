@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: fedora28.novalocal */
-/* At: Sun, 08 Sep 2019 06:00:47 +0000 */
+/* At: Mon, 09 Sep 2019 19:26:26 +0000 */
 /* Linux version 4.16.3-301.fc28.ppc64 (mockbuild@buildvm-ppc64-06.ppc.fedoraproject.org) (gcc version 8.0.1 20180324 (Red Hat 8.0.1-0.20) (GCC)) #1 SMP Mon Apr 23 21:44:46 UTC 2018 */
 
 /* Pistachio Kernel Configuration System */
@@ -106,9 +106,9 @@
 
 /* Trace Settings */
 #undef  CONFIG_VERBOSE_INIT
-#define CONFIG_TRACEPOINTS 1
+#undef  CONFIG_TRACEPOINTS
 #undef  CONFIG_KMEM_TRACE
-#undef  CONFIG_TRACEBUFFER
+#define CONFIG_TRACEBUFFER 1
 
 
 

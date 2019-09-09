@@ -718,7 +718,8 @@ INLINE space_t * get_current_space()
     return get_current_tcb()->get_space();
 }
 
-#ifndef CONFIG_SMP
+//src/api/v4/cpu.h:70 already defines this, for us...
+/*#ifndef CONFIG_SMP
 INLINE cpuid_t get_current_cpu()
 {
     return 0;
@@ -729,6 +730,8 @@ INLINE bool tcb_t::migrate_to_processor(cpuid_t processor)
     return processor == 0;
 }
 #endif
+*/
+//PREDEFINED LOGIC - CPU.H
 
 INLINE bool tcb_t::is_local_cpu()
 {

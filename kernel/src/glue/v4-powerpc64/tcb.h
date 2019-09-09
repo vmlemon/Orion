@@ -745,7 +745,7 @@ INLINE msg_tag_t tcb_t::do_ipc (threadid_t to_tid, threadid_t from_tid,
  * adds a thread to the space
  * @param tcb pointer to thread control block
  */
-INLINE void space_t::add_tcb(tcb_t * tcb)
+inline void space_t::add_tcb(tcb_t * tcb)
 {
     x.thread_count ++;
 #ifdef CONFIG_DEBUG
@@ -760,7 +760,7 @@ INLINE void space_t::add_tcb(tcb_t * tcb)
  * @param tcb_t thread control block
  * @return true if it was the last thread
  */
-INLINE bool space_t::remove_tcb(tcb_t * tcb)
+inline bool space_t::remove_tcb(tcb_t * tcb)
 {
     ASSERT(DEBUG, x.thread_count != 0);
     x.thread_count --;

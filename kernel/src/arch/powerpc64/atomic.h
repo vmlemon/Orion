@@ -1,9 +1,10 @@
 /*********************************************************************
  *                
- * Copyright (C) 2003, 2007, 2010,  Karlsruhe University
+ * Copyright (C) 1999-2010,  Karlsruhe University
+ * Copyright (C) 2008-2009,  Volkmar Uhlig, IBM Corporation
  *                
- * File path:     api/v4/cpu.h
- * Description:   processor management
+ * File path:     src/arch/powerpc/atomic.h
+ * Description:   
  *                
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -26,51 +27,66 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id: processor.h,v 1.2 2003/09/24 19:04:24 skoglund Exp $
+ * $Id$
  *                
  ********************************************************************/
-#ifndef __API__V4__CPU_H__
-#define __API__V4__CPU_H__
+#pragma once
 
-typedef u16_t cpuid_t;
-void init_cpu(cpuid_t processor, word_t external_freq, word_t internal_freq);
-
-class cpu_t {
+class atomic_t {
 public:
-    cpu_t() 
-	{ id = ~0UL; }
+    int operator ++ (int) 
+	{
+	    int tmp;
+	    sync();
+	    __asm__ __volatile__(
+		"1:	lwarx	%0,0,%1\n"
+		"	addic	%0,%0,1\n"
+		"	stwcx.	%0,0,%1 \n"
+		"	bne-	1b"
+		: "=&r" (tmp)
+		: "r" (&val)
+		: "cc");
+	    isync();
+	    return tmp;
+	}
 
-    bool is_valid()
-	{ return this->id < ~0UL; }
+    int operator -- (int) 
+	{
+	    int tmp;
+	    sync();
+	    __asm__ __volatile__(
+		"1:	lwarx	%0,0,%1\n"
+		"	addic	%0,%0,-1\n"
+		"	stwcx.	%0,0,%1 \n"
+		"	bne-	1b"
+		: "=&r" (tmp)
+		: "r" (&val)
+		: "cc");
+	    isync();
+	    return tmp;
+	}
 
-    void set_id(word_t id)
-	{ this->id = id; }
+    int operator = (word_t val) 
+	{ return this->val = val; }
 
-    word_t get_id() 
-	{ return id; }
+    int operator = (int val) 
+	{ return this->val = val; }
+
+    bool operator == (word_t val) 
+	{ return (this->val == val); }
+    
+    bool operator == (int val) 
+	{ return (this->val == (word_t) val); }
+
+    bool operator != (word_t val) 
+	{ return (this->val != val); }
+
+    bool operator != (int val) 
+	{ return (this->val != (word_t) val); }
+
+    operator word_t (void) 
+	{ return val; }
 
 private:
-    word_t id;
-    static cpu_t descriptors[CONFIG_SMP_MAX_CPUS];
-public:
-    static word_t count;
-    static cpu_t * get(cpuid_t cpuid) {
-	return &descriptors[cpuid];
-    }
-
-    static bool add_cpu(word_t id) {
-	if (count >= CONFIG_SMP_MAX_CPUS)
-	    return false;
-	descriptors[count++].id = id;
-	return true;
-    }
+    word_t val;
 };
-
-inline cpuid_t get_current_cpu()
-{
-    extern cpuid_t current_cpu;
-    return current_cpu;
-}
-
-
-#endif /* !__API__V4__CPU_H__ */
