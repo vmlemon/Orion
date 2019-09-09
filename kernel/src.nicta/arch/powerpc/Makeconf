@@ -1,1 +1,0 @@
-SOURCES += $(addprefix src/arch/powerpc/, string.cc pghash.cc)
