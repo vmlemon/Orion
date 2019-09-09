@@ -32,9 +32,9 @@
 
 # config.mk.  Generated from config.mk.in by configure.
 
-ARCH=		powerpc64
-PLAT=           
-KERNEL=		powerpc64-kernel
+ARCH=		amd64
+PLAT=           amd64-pc99
+KERNEL=		x86-kernel
 
 prefix=		/usr/local
 exec_prefix=	${prefix}
@@ -44,14 +44,14 @@ libexecdir=	${exec_prefix}/libexec/l4
 kerneldir=	$(top_builddir)
 
 
-SHELL=		/bin/sh
+SHELL=		/bin/bash
 CC=		clang
 CXX=		$(CC) -x c++
 AS=		$(CC)
-CFLAGS=		-fno-stack-protector -nostdinc -g -O2 -msoft-float -mminimal-toc   -fno-stack-protector -lssp
+CFLAGS=		-fno-stack-protector -nostdinc -g -O2 -m64 -mno-red-zone   -fno-stack-protector -lssp
 CXXFLAGS=	$(CFLAGS) -fno-exceptions
-LDFLAGS=	-N -L$(top_builddir)/lib -L/usr/bin/../lib/gcc/ppc64-redhat-linux/8 -nostdlib 
-CPPFLAGS=	-I$(top_srcdir)/include -I$(top_builddir) -I/usr/bin/../lib/gcc/ppc64-redhat-linux/8/include 
+LDFLAGS=	-N -L$(top_builddir)/lib -L/usr/bin/../lib/gcc/x86_64-linux-gnu/8 -nostdlib  -melf_x86_64
+CPPFLAGS=	-I$(top_srcdir)/include -I$(top_builddir) -I/usr/bin/../lib/gcc/x86_64-linux-gnu/8/include 
 LGCC=		-lgcc
 
 TOOLPREFIX=	clang
@@ -70,6 +70,6 @@ INSTALL_PROGRAM=${INSTALL}
 INSTALL_DATA=	${INSTALL} -m 644
 INSTALL_SCRIPT=	${INSTALL}
 
-KICKSTART_LINKBASE=	
-SIGMA0_LINKBASE=	00100000
-ROOTTASK_LINKBASE=	00300000
+KICKSTART_LINKBASE=	00100000
+SIGMA0_LINKBASE=	00f00000
+ROOTTASK_LINKBASE=	01000000
