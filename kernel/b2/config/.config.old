@@ -2,7 +2,7 @@
 # Automatically generated, don't edit
 #
 # Generated on: fedora28.novalocal
-# At: Mon, 09 Sep 2019 15:33:52 +0000
+# At: Mon, 09 Sep 2019 15:35:09 +0000
 # Linux version 4.16.3-301.fc28.ppc64 (mockbuild@buildvm-ppc64-06.ppc.fedoraproject.org) (gcc version 8.0.1 20180324 (Red Hat 8.0.1-0.20) (GCC)) #1 SMP Mon Apr 23 21:44:46 UTC 2018
 
 #
@@ -59,8 +59,8 @@ CONFIG_PLAT_OFPOWER4=y
 #
 # CONFIG_CPU_POWERPC64_POWER3 is not set
 # CONFIG_CPU_POWERPC64_POWER3p is not set
-# CONFIG_CPU_POWERPC64_POWER4 is not set
-CONFIG_CPU_POWERPC64_POWER4p=y
+CONFIG_CPU_POWERPC64_POWER4=y
+# CONFIG_CPU_POWERPC64_POWER4p is not set
 # CONFIG_CPU_POWERPC64_PPC970 is not set
 
 
@@ -76,7 +76,7 @@ CONFIG_BOOTMEM_PAGES=1024
 #
 # CONFIG_EXPERIMENTAL is not set
 # CONFIG_IPC_FASTPATH is not set
-CONFIG_DEBUG=y
+# CONFIG_DEBUG is not set
 # CONFIG_DEBUG_SYMBOLS is not set
 # CONFIG_STATIC_TCBS is not set
 # CONFIG_PPC64_TRASH_OF is not set
@@ -89,6 +89,7 @@ CONFIG_DEBUG=y
 #
 # Kernel Debugger Console
 #
+# CONFIG_KDB_CONS_COM is not set
 # CONFIG_KDB_CONS_RTAS is not set
 CONFIG_KDB_BOOT_CONS=0
 
@@ -96,6 +97,7 @@ CONFIG_KDB_BOOT_CONS=0
 # CONFIG_KDB_ON_STARTUP is not set
 # CONFIG_KDB_BREAKIN is not set
 # CONFIG_KDB_BREAKIN_BREAK is not set
+# CONFIG_KDB_BREAKIN_ESCAPE is not set
 # CONFIG_KDB_NO_ASSERTS is not set
 
 #

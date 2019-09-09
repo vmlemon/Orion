@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: fedora28.novalocal */
-/* At: Mon, 09 Sep 2019 15:35:09 +0000 */
+/* At: Mon, 09 Sep 2019 16:26:50 +0000 */
 /* Linux version 4.16.3-301.fc28.ppc64 (mockbuild@buildvm-ppc64-06.ppc.fedoraproject.org) (gcc version 8.0.1 20180324 (Red Hat 8.0.1-0.20) (GCC)) #1 SMP Mon Apr 23 21:44:46 UTC 2018 */
 
 /* Pistachio Kernel Configuration System */
@@ -34,14 +34,14 @@
 
 /* Platform */
 #undef  CONFIG_PLAT_OFG5
-#undef  CONFIG_PLAT_OFPOWER3
-#define CONFIG_PLAT_OFPOWER4 1
+#define CONFIG_PLAT_OFPOWER3 1
+#undef  CONFIG_PLAT_OFPOWER4
 
 
 /* Processor Type */
 #undef  CONFIG_CPU_POWERPC64_POWER3
-#undef  CONFIG_CPU_POWERPC64_POWER3p
-#define CONFIG_CPU_POWERPC64_POWER4 1
+#define CONFIG_CPU_POWERPC64_POWER3p 1
+#undef  CONFIG_CPU_POWERPC64_POWER4
 #undef  CONFIG_CPU_POWERPC64_POWER4p
 #undef  CONFIG_CPU_POWERPC64_PPC970
 

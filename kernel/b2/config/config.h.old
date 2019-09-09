@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: fedora28.novalocal */
-/* At: Mon, 09 Sep 2019 15:33:52 +0000 */
+/* At: Mon, 09 Sep 2019 15:35:09 +0000 */
 /* Linux version 4.16.3-301.fc28.ppc64 (mockbuild@buildvm-ppc64-06.ppc.fedoraproject.org) (gcc version 8.0.1 20180324 (Red Hat 8.0.1-0.20) (GCC)) #1 SMP Mon Apr 23 21:44:46 UTC 2018 */
 
 /* Pistachio Kernel Configuration System */
@@ -41,8 +41,8 @@
 /* Processor Type */
 #undef  CONFIG_CPU_POWERPC64_POWER3
 #undef  CONFIG_CPU_POWERPC64_POWER3p
-#undef  CONFIG_CPU_POWERPC64_POWER4
-#define CONFIG_CPU_POWERPC64_POWER4p 1
+#define CONFIG_CPU_POWERPC64_POWER4 1
+#undef  CONFIG_CPU_POWERPC64_POWER4p
 #undef  CONFIG_CPU_POWERPC64_PPC970
 
 
@@ -54,7 +54,7 @@
 /* Kernel */
 #undef  CONFIG_EXPERIMENTAL
 #undef  CONFIG_IPC_FASTPATH
-#define CONFIG_DEBUG 1
+#undef  CONFIG_DEBUG
 #undef  CONFIG_DEBUG_SYMBOLS
 #undef  CONFIG_STATIC_TCBS
 #undef  CONFIG_PPC64_TRASH_OF
@@ -63,6 +63,7 @@
 /* Debugger */
 
 /* Kernel Debugger Console */
+#undef  CONFIG_KDB_CONS_COM
 #undef  CONFIG_KDB_CONS_RTAS
 #define CONFIG_KDB_BOOT_CONS 0
 
@@ -70,6 +71,7 @@
 #undef  CONFIG_KDB_ON_STARTUP
 #undef  CONFIG_KDB_BREAKIN
 #undef  CONFIG_KDB_BREAKIN_BREAK
+#undef  CONFIG_KDB_BREAKIN_ESCAPE
 #undef  CONFIG_KDB_NO_ASSERTS
 
 /* Trace Settings */
