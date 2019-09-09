@@ -1,6 +1,6 @@
 /*********************************************************************
  *                
- * Copyright (C) 2002-2003, 2006, 2008-2010,  Karlsruhe University
+ * Copyright (C) 2002-2003,  Karlsruhe University
  *                
  * File path:     api/v4/smp.h
  * Description:   multiprocessor handling
@@ -26,7 +26,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id: smp.h,v 1.14 2006/09/27 14:14:42 stoess Exp $
+ * $Id: smp.h,v 1.11 2003/09/24 19:04:24 skoglund Exp $
  *                
  ********************************************************************/
 #ifndef __API__V4__SMP_H__
@@ -34,28 +34,8 @@
 
 #include INC_API(types.h)
 #include INC_API(tcb.h)
-#include <generic/linear_ptab.h>
 
-template<typename T> INLINE T *get_on_cpu(cpuid_t cpu, T *item)
-{
-#if defined(CONFIG_SMP)
-    pgent_t *pgent;
-    pgent_t::pgsize_e pgsize;
-    space_t *kspace = get_kernel_space();
-    bool ret = kspace->lookup_mapping(item, &pgent, &pgsize, cpu);
-    
-    if (ret)
-        return (T *) addr_offset(phys_to_virt((addr_t)pgent->address(kspace, pgsize)),
-                                 addr_mask(item, page_mask (pgsize)));
-    else 
-        return NULL;
-    
-#else
-    return item;
-#endif
-}
-
-#if defined(CONFIG_SMP)
+#if defined (CONFIG_SMP)
 
 #define ON_CONFIG_SMP(x) do { x; } while(0)
 
@@ -125,7 +105,6 @@ class cpu_mb_t
 {
 public:
     void walk_mailbox();
-    void dump_mailbox(word_t cpu);
     cpu_mb_entry_t * alloc()
 	{
 	    lock.lock();
@@ -181,7 +160,7 @@ private:
 extern cpu_mb_t cpu_mailboxes[];
 INLINE cpu_mb_t * get_cpu_mailbox (cpuid_t dst)
 {
-    ASSERT(dst < CONFIG_SMP_MAX_CPUS);
+    ASSERT(ALWAYS, dst < CONFIG_SMP_MAX_CPUS);
     return &cpu_mailboxes[dst];
 }
 
@@ -190,17 +169,9 @@ INLINE void xcpu_request(cpuid_t dstcpu, xcpu_handler_t handler,
 			 word_t param0 = 0, word_t param1 = 0, 
 			 word_t param2 = 0 )
 {
-    bool entered = get_cpu_mailbox(dstcpu)->enter(handler, tcb, 
-						  param0, param1, param2);
-
-    if (!entered)
-    {
-	printf("CPU %d tcb %t Failing XCPU requests are unimplemented cpu %d ra %x\n", 
-	       get_current_cpu(), get_current_tcb(), dstcpu, __builtin_return_address(0));
-	get_cpu_mailbox(dstcpu)->dump_mailbox(dstcpu);
-	enter_kdebug("BUG");
-	spin_forever();
-    }
+    if (! get_cpu_mailbox(dstcpu)->enter(handler, tcb, 
+					 param0, param1, param2) )
+	UNIMPLEMENTED();
 
 #ifndef CONFIG_SMP_IDLE_POLL
     /* trigger an IPI */
@@ -214,20 +185,11 @@ INLINE void xcpu_request(cpuid_t dstcpu, xcpu_handler_t handler, tcb_t * tcb,
 			 word_t param4 = 0, word_t param5 = 0,
 			 word_t param6 = 0, word_t param7 = 0)
 {
-    bool entered =  get_cpu_mailbox(dstcpu)->enter(handler, tcb, 
-						   param0, param1, param2, param3,
-						   param4, param5, param6, param7);
-    
-    if (!entered)
-    {
-	printf("CPU %d Failing XCPU requests are unimplemented cpu %d ra %x\n", 
-	       get_current_cpu(), dstcpu, __builtin_return_address(0));
-	get_cpu_mailbox(dstcpu)->dump_mailbox(dstcpu);
-	enter_kdebug("BUG");
-	spin_forever();
-    }
-    
-    
+    if (! get_cpu_mailbox(dstcpu)->enter(handler, tcb, 
+					 param0, param1, param2, param3,
+					 param4, param5, param6, param7))
+	UNIMPLEMENTED();
+
 #ifndef CONFIG_SMP_IDLE_POLL
     /* trigger an IPI */
     smp_xcpu_trigger(dstcpu);
@@ -240,7 +202,7 @@ INLINE void xcpu_request(cpuid_t dstcpu, xcpu_handler_t handler, tcb_t * tcb,
  *                   Synchronous XCPU handling
  *
  **********************************************************************/
-#if defined(CONFIG_SMP_SYNC_REQUEST)
+#ifdef CONFIG_SMP_SYNC_REQUEST
 
 /*
  * synchronous XCPU request handling, depends on the hardware

@@ -36,7 +36,6 @@ extern "C" void SECTION(".user.syscall.ipc") user_ipc();
 extern "C" void SECTION(".user.syscall.lipc") user_lipc();
 extern "C" void SECTION(".user.syscall.exregs") user_exchange_registers();
 extern "C" void SECTION(".user.syscall.threadctrl") user_thread_control();
-extern "C" void SECTION(".user.syscall.sysclock") user_system_clock();
 extern "C" void SECTION(".user.syscall.threadswtch") user_thread_switch();
 extern "C" void SECTION(".user.syscall.schedule") user_schedule();
 extern "C" void SECTION(".user.syscall.unmap") user_unmap();

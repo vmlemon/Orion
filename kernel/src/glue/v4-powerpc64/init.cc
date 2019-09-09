@@ -26,7 +26,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
- * $Id: init.cc,v 1.13 2006/11/17 17:04:18 skoglund Exp $
+ * $Id: init.cc,v 1.12 2005/01/19 13:50:40 cvansch Exp $
  *
  ***************************************************************************/
 
@@ -51,7 +51,7 @@ extern void init_serial_console();
 #include INC_API(tcb.h)
 #include INC_API(kernelinterface.h)
 #include INC_API(schedule.h)
-#include INC_API(cpu.h)
+#include INC_API(processor.h)
 
 #include INC_GLUE(intctrl.h)
 #include INC_GLUE(timer.h)
@@ -67,25 +67,22 @@ DECLARE_KMEM_GROUP(kmem_cpu);
 
 SECTION(".init") addr_t kip_get_phys_mem( kernel_interface_page_t *kip )
     /* Search through the kip's memory descriptors for the size
-     * of physical memory.  We assume that physical memory always starts at 0.
+     * of physical memory.
      */
 {
-    addr_t max = 0;
-
-    max = kip->main_mem.high;
+    word_t total = 0;
 
     for( word_t i = 0; i < kip->memory_info.get_num_descriptors(); i++ ) 
     {
 	memdesc_t *mdesc = kip->memory_info.get_memdesc( i );
 	if( (mdesc->type() == memdesc_t::conventional)
-		&& !mdesc->is_virtual()
-		&& (mdesc->high() > max) )
+		&& !mdesc->is_virtual() )
 	{
-	    max = mdesc->high();
+	    total += (word_t)mdesc->high() + 1 - (word_t)mdesc->low();
 	}
     }
 
-    return max;
+    return (addr_t)total;
 }
 
 SECTION(".init") static void kip_mem_init( kernel_interface_page_t *kip )
@@ -97,17 +94,17 @@ SECTION(".init") static void kip_mem_init( kernel_interface_page_t *kip )
     kip->memory_info.insert( memdesc_t::conventional, true,
 	    (addr_t)0, (addr_t)USER_AREA_END );
 
-    // Define the area reserved for the exception vectors.
+    // Define the area reserved for the system.
     kip->memory_info.insert( memdesc_t::reserved, false, 
 	    (addr_t)0, (addr_t)KERNEL_PHYS_START );
+
+    // Define the area reserved for the exception vectors.
+    kip->memory_info.insert( memdesc_t::reserved, false, 
+	    (addr_t)KERNEL_PHYS_START, (addr_t)_start_kernel_phys );
 
     // Define the area reserved for kernel code.
     kip->memory_info.insert( memdesc_t::reserved, false,
 	    _start_kernel_phys, _end_kernel_phys );
-
-    // Reserve all other physical memory
-    kip->memory_info.insert( memdesc_t::reserved, false, 
-	    addr_align_up (kip->main_mem.high, KB(4)), (addr_t)~0ul);
 
     TRACEF( "Inserted kernel regions\n" );
 }
@@ -224,7 +221,7 @@ static SECTION(".init") void cpulocal_init( cpuid_t cpu )
 	/* Create a dummy page table entry */
 	pg.set_entry( get_kernel_space(), pgent_t::size_4k,
 			virt_to_phys((addr_t)((word_t)cpu_area + i)),
-		      6, (pgent_t::l4default), true );
+			true, true, false, true );
 	/* Insert the kernel mapping, bolted */
 	get_pghash()->insert_mapping( get_kernel_space(),
 			(addr_t)(KERNEL_CPU_OFFSET + i),
@@ -239,10 +236,10 @@ SECTION(".init") static void finish_api_init( void )
 {
     get_timer()->init_global();
 
-#if defined(CONFIG_SMP)
-    init_cpu( boot_cpu, boot_buskhz, boot_cpukhz );
+#ifdef CONFIG_SMP
+    init_processor( boot_cpu, boot_buskhz, boot_cpukhz );
 #else
-    init_cpu( 0, boot_buskhz, boot_cpukhz );
+    init_processor( 0, boot_buskhz, boot_cpukhz );
 #endif
 
     get_interrupt_ctrl()->init_arch();
@@ -338,7 +335,7 @@ extern "C" SECTION(".init") void virtmode_call(void)
     printf( "PPC64 %dMHz   ", boot_cpukhz/1000 );
 #endif
 
-#if defined(CONFIG_DEBUG)
+#ifdef CONFIG_DEBUG
     init_serial_console();
 #endif
 

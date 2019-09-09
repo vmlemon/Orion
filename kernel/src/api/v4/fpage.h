@@ -1,6 +1,6 @@
 /*********************************************************************
  *                
- * Copyright (C) 2002-2006,  Karlsruhe University
+ * Copyright (C) 2002-2004,  Karlsruhe University
  *                
  * File path:     api/v4/fpage.h
  * Description:   V4 flexpages
@@ -26,33 +26,13 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id: fpage.h,v 1.26 2006/11/14 18:46:31 skoglund Exp $
+ * $Id: fpage.h,v 1.22 2004/11/08 17:22:51 uhlig Exp $
  *                
  ********************************************************************/
 #ifndef __API__V4__FPAGE_H__
 #define __API__V4__FPAGE_H__
 
 #include INC_API(config.h)
-#include INC_GLUE(fpage.h)
-
-class mempage_t 
-{
-public:
-    union {
-	struct {
-	    BITFIELD7(word_t,
-		      execute		: 1,
-		      write		: 1,
-		      read		: 1,
-		      reserved		: 1,
-		      size		: 6,
-		      base		: L4_FPAGE_BASE_BITS,
-		      : BITS_WORD - L4_FPAGE_BASE_BITS - 10
-		);
-	} x __attribute__((packed));
-	word_t raw;
-    };
-};
 
 /**
  * Flexpages are size-aligned memory objects and can cover 
@@ -64,10 +44,20 @@ class fpage_t
     /* data members */
 public:
     union {
-	mempage_t mem;
-	arch_fpage_t arch;
+	struct {
+	    BITFIELD7(word_t,
+		execute		: 1,
+		write		: 1,
+		read		: 1,
+		reserved	: 1,
+		size		: 6,
+		base		: L4_FPAGE_BASE_BITS,
+				: BITS_WORD - L4_FPAGE_BASE_BITS - 10
+		);
+	} x;
 	word_t raw;
     };
+
     /* member functions */
 public:
     /**
@@ -75,19 +65,12 @@ public:
      */
     void set(word_t base, word_t size, bool read, bool write, bool exec)
 	{
-	    if (EXPECT_FALSE(arch.is_valid_page() == false))
-	    {
-		raw = 0;
-		mem.x.base = (base & (~0UL << size)) >> 10;
-		mem.x.size = size;
-		mem.x.read = read;
-		mem.x.write = write;
-		mem.x.execute = exec;
-	    }
-	    else 
-	    {
-		arch.set(base, size, read, write, exec);
-	    }
+	    raw = 0;
+	    x.base = (base & (~0 >> (L4_FPAGE_BASE_BITS - size))) >> 10;
+	    x.size = size;
+	    x.read = read;
+	    x.write = write;
+	    x.execute = exec;
 	}
     
     /**
@@ -95,32 +78,14 @@ public:
      */
     bool is_nil_fpage() 
 	{ return raw == 0; }
-    
-    /**
-     * @return true if the flexpage is a memory page
-     */
-    bool is_mempage (void)
-	{ return arch.is_valid_page() == false; }
-
-
-    /**
-     * @return true if the flexpage is an architecture specific page
-     */
-    bool is_archpage (void)
-	{ return arch.is_valid_page() == true; }
-
 
     /**
      * @return true if flexpage covers the whole address space
      * the complete fpage is a special value defined in the V4 API
      */
-    bool is_complete_mempage() 
-	{ return is_mempage () && mem.x.size == 1 && mem.x.base == 0; }
-
     bool is_complete_fpage() 
-	{ return (is_mempage () && is_complete_mempage()) ||
-		(arch.is_valid_page () && arch.is_complete_page()); }
-    
+	{ return (x.size == 1) && (x.base == 0); }
+
     /**
      * checks if a given address range is contained completely within
      * the fpage
@@ -131,10 +96,11 @@ public:
     bool is_range_in_fpage(addr_t start, addr_t end)
 	{
 	    /* VU: should we make sure, that base is valid? */
-	    return (is_complete_fpage()) ||
-		(get_address() <= start && addr_offset(get_address(), get_size()) >= end);
+	    return is_complete_fpage () ||
+		(get_address() <= start &&
+		 addr_offset(get_address(), get_size()) >= end);
 	}
-    
+
     /**
      * @param addr returns true if addr is within the range of 
      * the flexpage
@@ -148,9 +114,7 @@ public:
      */
     bool is_overlapping(fpage_t fpage)
 	{
-	    if (is_complete_fpage ())
-		return true;
-	    else if (fpage.get_address() < this->get_address())
+	    if (fpage.get_address() < this->get_address())
 		return (addr_offset(fpage.get_address(), fpage.get_size()) >
 			this->get_address());
 	    else 
@@ -160,9 +124,7 @@ public:
 
     bool is_range_overlapping(addr_t start, addr_t end)
 	{
-	    if (is_complete_fpage ())
-		return true;
-	    else if (start < get_address())
+	    if (start < get_address())
 		return end > get_address();
 	    else
 		return addr_offset(get_address(), get_size()) > start;
@@ -173,71 +135,58 @@ public:
      * get_base does not size-align the address
      */
     addr_t get_base() 
-	{ return is_mempage() ? (addr_t)(mem.x.base << 10) : arch.get_base(); }
+	{ return (addr_t)(x.base << 10); }
 
     /**
      * @return size aligned address of the fpage
      */
-    addr_t get_address()
-	{ return is_mempage() 
-		? (addr_t)((mem.x.base << 10) & (~0UL << mem.x.size))
-		: (addr_t)(arch.get_address());
-	}
-    
-    
+    addr_t get_address() 
+	{ return (addr_t)(x.base << 10 & ~((~0UL) >> ((sizeof(word_t)*8) - x.size))); }
+
     /**
      * @return size of the flexpage
      */
     word_t get_size() 
-	{ return is_mempage() ? (1UL << mem.x.size) : arch.get_size(); }
+	{ return 1UL << x.size; }
 
     /**
      * @return log2 size of the fpage
      */
     word_t get_size_log2() 
-	{ return is_mempage() 
-		? is_complete_mempage() ? sizeof(word_t) * 8 : mem.x.size
-		: arch.get_size_log2(); 
-	}
-
-    /**
-     * @return access rights of fpage
-     */
-    word_t get_access (void)
-	   { return get_rwx(); }
+	{ return is_complete_fpage() ? sizeof(word_t) * 8 : x.size; }
 
     /**
      * @return true if the read bit is set
-     */  
+     */
     bool is_read() 
-	{ return mem.x.read; }
+	{ return x.read; }
 
     /** 
      * @return true if the write bit is set
      */
     bool is_write() 
-	{ return mem.x.write; }
+	{ return x.write; }
 
     /**
      * @return true if the execute bit is set
      */
     bool is_execute() 
-	{ return mem.x.execute; }
+	{ return x.execute; }
 
     /**
      * @return true if read, write and execute bits are set
      */
     bool is_rwx()
-	{ return mem.x.read && mem.x.write && mem.x.execute; }
+	{ return x.read && x.write && x.execute; }
 
     /**
      * sets all permission bits in the fpage
      */
     void set_rwx()
-	{ mem.x.read = 1; mem.x.write = 1; mem.x.execute = 1; }
+	{ x.read = 1; x.write = 1; x.execute = 1; }
 
     void set_rwx(word_t rwx)
-	{ raw = (raw & ~7) | (rwx & 7); }
+	{ raw |= (rwx & 7); }
 
     /**
      * @return access rights of fpage
@@ -248,23 +197,11 @@ public:
     /**
      * @return delivers an fpage covering the complete address space
      */
-    static fpage_t complete_mem()
+    static fpage_t complete()
 	{
 	    fpage_t ret;
 	    ret.raw = 0;
-	    ret.mem.x.size = 1;
-	    return ret;
-	}
-
-
-   /**
-     * @return delivers an fpage covering the complete architecture-specific
-     * address space
-     */
-    static fpage_t complete_arch ()
-	{
-	    fpage_t ret;
-	    ret.arch = arch_fpage_t::complete();
+	    ret.x.size = 1;
 	    return ret;
 	}
 
@@ -277,25 +214,6 @@ public:
 	    ret.raw = 0;
 	    return ret;
 	}
-    
-
 };
-
-
-/*
- * Helper functions used in conjunction with mapping.
- */
-
-INLINE word_t base_mask (fpage_t fp, word_t size)
-{
-    return ((~0UL) >> ((sizeof (word_t) * 8) - fp.get_size_log2 ())) &
-	((size == 0 ? (~0UL) : ~((~0UL) >> ((sizeof (word_t) * 8) - size))));
-}
-
-INLINE addr_t address (fpage_t fp, word_t size)
-{
-    return (addr_t) ((word_t) fp.get_base () & ~((1UL << size) - 1));
-}
-
 
 #endif /* !__API__V4__FPAGE_H__ */

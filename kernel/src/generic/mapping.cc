@@ -1,6 +1,6 @@
 /*********************************************************************
  *                
- * Copyright (C) 2000-2006, 2010,  Karlsruhe University
+ * Copyright (C) 2000-2004,  Karlsruhe University
  *                
  * File path:     generic/mapping.cc
  * Description:   Generic mapping database implementation
@@ -26,9 +26,10 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id: mapping.cc,v 1.27 2006/10/07 16:34:09 ud3 Exp $
+ * $Id: mapping.cc,v 1.25 2004/12/01 17:45:11 skoglund Exp $
  *                
  ********************************************************************/
+#include <l4.h>
 #include <debug.h>
 #include <mapping.h>
 #include <linear_ptab.h>
@@ -38,7 +39,7 @@
 
 spinlock_t mdb_lock;
 
-word_t mdb_pgshifts[] = MDB_PGSHIFTS;
+const word_t mdb_pgshifts[] = MDB_PGSHIFTS;
 
 
 // The sigma0_mapnode is initialized to own the whole address space.
@@ -48,12 +49,14 @@ mapnode_t * sigma0_mapnode;
 static rootnode_t * mdb_create_roots (mapnode_t::pgsize_e size) NOINLINE;
 static dualnode_t * mdb_create_dual (mapnode_t * map, rootnode_t * root)
     NOINLINE;
+static rootnode_t * mdb_create_tree (mapnode_t::pgsize_e f_pgsize,
+	mapnode_t::pgsize_e t_pgsize, addr_t addr) NOINLINE;
 
 
 /**
  * Initialize mapping database structures
  */
-void SECTION (".init") init_mdb (void)
+void init_mdb (void)
 {
     dualnode_t *dual;
 
@@ -64,6 +67,7 @@ void SECTION (".init") init_mdb (void)
 
     // Frame table for the complete address space.
     dual = mdb_create_dual (NULL, mdb_create_roots (mapnode_t::size_max));
+    ASSERT (ALWAYS, dual != NULL && dual->root != NULL);
 
     // Let sigma0 own the whole address space.
     sigma0_mapnode = &__sigma0_mapnode;
@@ -200,6 +204,7 @@ mapnode_t * mdb_map (mapnode_t * f_map, pgent_t * f_pg,
 {
     rootnode_t *root, *proot;
     mapnode_t *nmap;
+    dualnode_t *dual;
 
     //space_t::begin_update();
     mdb_lock.lock();
@@ -223,6 +228,12 @@ mapnode_t * mdb_map (mapnode_t * f_map, pgent_t * f_pg,
     mapnode_t::pgsize_e t_pgsize = mdb_pgsize (t_hwpgsize);
 
     mapnode_t * newmap = (mapnode_t *) mdb_alloc_buffer (sizeof (mapnode_t));
+    if (newmap == NULL)
+    {
+	mdb_lock.unlock();
+	//space_t::end_update();
+	return NULL;
+    }
 
     if (f_pgsize == t_pgsize)
     {
@@ -235,7 +246,17 @@ mapnode_t * mdb_map (mapnode_t * f_map, pgent_t * f_pg,
 
 	// Fixup prev->next pointer
 	if (f_map->is_next_root ())
-	    f_map->set_next (mdb_create_dual (newmap, f_map->get_nextroot ()));
+	{
+	    dual = mdb_create_dual (newmap, f_map->get_nextroot ());
+	    if (dual == NULL)
+	    {
+		mdb_free_buffer (newmap, sizeof (mapnode_t));
+		mdb_lock.unlock();
+		//space_t::end_update();
+		return NULL;
+	    }
+	    f_map->set_next (dual);
+	}
 	else if (f_map->is_next_both ())
 	    f_map->get_nextdual ()->map = newmap;
 	else
@@ -272,19 +293,40 @@ mapnode_t * mdb_map (mapnode_t * f_map, pgent_t * f_pg,
 
 	if (! root)
 	{
+	    if (nmap)
+	    {
+		dual = mdb_create_dual (nmap, NULL);
+		if (dual == NULL)
+		{
+		    mdb_free_buffer (newmap, sizeof (mapnode_t));
+		    mdb_lock.unlock();
+		    //space_t::end_update();
+		    return NULL;
+		}
+	    }
 	    // New array needs to be created
-	    root = mdb_create_roots (f_pgsize);
+	    root = mdb_create_tree (f_pgsize, t_pgsize, f_addr);
+	    if (root == NULL)
+	    {
+		mdb_free_buffer (dual, sizeof (dualnode_t));
+		mdb_free_buffer (newmap, sizeof (mapnode_t));
+		mdb_lock.unlock();
+		//space_t::end_update();
+		return NULL;
+	    }
+	    if (nmap)
+		dual->root = root;
 
 	    if (proot)
 		// Insert below previous root node
 		if (nmap)
-		    proot->set_ptr (mdb_create_dual (nmap, root));
+		    proot->set_ptr (dual);
 		else
 		    proot->set_ptr (root);
 	    else
 		// Insert below original mapping node
 		if (nmap)
-		    f_map->set_next (mdb_create_dual (nmap, root));
+		    f_map->set_next (dual);
 		else
 		    f_map->set_next (root);
 	}
@@ -308,7 +350,18 @@ mapnode_t * mdb_map (mapnode_t * f_map, pgent_t * f_pg,
 
     // Fixup root->next pointer
     if (root->is_next_root ())
-	root->set_ptr (mdb_create_dual (newmap, root->get_root ()));
+    {
+	// if root has a next, we didn't allocate it above
+	dual = mdb_create_dual (newmap, root->get_root ());
+	if (dual == NULL)
+	{
+	    mdb_free_buffer (newmap, sizeof (mapnode_t));
+	    mdb_lock.unlock();
+	    //space_t::end_update();
+	    return NULL;
+	}
+	root->set_ptr (dual);
+    }
     else if (root->is_next_both ())
 	root->get_dual ()->map = newmap;
     else
@@ -392,7 +445,7 @@ word_t mdb_flush (mapnode_t * f_map, pgent_t * f_pg,
 
 	rwx = 0;
 	parent_pg = f_pg;
-	parent_space = f_map->get_space ();
+	parent_space = space;
 	parent_pgsize = f_hwpgsize;
     }
 
@@ -437,7 +490,7 @@ word_t mdb_flush (mapnode_t * f_map, pgent_t * f_pg,
 		(f_pg->reference_bits (space, f_hwpgsize, vaddr));
 	    rwx |= f_pg->reference_bits (space, f_hwpgsize, vaddr);
 
-	    ASSERT (f_pgsize <= t_pgsize);
+	    ASSERT (DEBUG, f_pgsize <= t_pgsize);
 
 	    if (fp.is_rwx ())
 	    {
@@ -480,7 +533,7 @@ word_t mdb_flush (mapnode_t * f_map, pgent_t * f_pg,
 	    if (f_pgsize < t_pgsize)
 	    {
 		// Recurse into subarray before checking mappings
-		ASSERT (f_pgsize < mapnode_t::size_max);
+		ASSERT (DEBUG, f_pgsize < mapnode_t::size_max);
 		r_prev[f_pgsize] = pmap ? (word_t) pmap | 1 : (word_t) proot;
 		r_nmap[f_pgsize] = nmap;
 		r_root[f_pgsize] = root;
@@ -523,7 +576,7 @@ word_t mdb_flush (mapnode_t * f_map, pgent_t * f_pg,
 				     sizeof (rootnode_t));
 		}
 
-		ASSERT (f_pgsize < mapnode_t::size_max);
+		ASSERT (DEBUG, f_pgsize < mapnode_t::size_max);
 		f_map = r_nmap[f_pgsize];
 		root  = r_root[f_pgsize];
 		rcnt  = r_rcnt[f_pgsize];
@@ -567,7 +620,7 @@ word_t mdb_flush (mapnode_t * f_map, pgent_t * f_pg,
 		if (fp.is_rwx ())
 		    root->set_ptr (f_map); // Remove subarray
 
-		ASSERT (f_pgsize < mapnode_t::size_max);
+		ASSERT (DEBUG, f_pgsize < mapnode_t::size_max);
 		r_prev[f_pgsize] = (word_t) root;
 		r_nmap[f_pgsize] = f_map;
 		r_root[f_pgsize] = root;
@@ -624,6 +677,8 @@ static NOINLINE rootnode_t * mdb_create_roots (mapnode_t::pgsize_e size)
 
     word_t num = mdb_arraysize (size);
     newnodes = (rootnode_t *) mdb_alloc_buffer (sizeof (rootnode_t) * num);
+    if (newnodes == NULL)
+	return NULL;
 
     for (n = newnodes; num--; n++)
 	n->set_ptr ((mapnode_t *) NULL);
@@ -646,7 +701,49 @@ static NOINLINE dualnode_t * mdb_create_dual (mapnode_t * map,
 					      rootnode_t * root)
 {
     dualnode_t * dual = (dualnode_t *) mdb_alloc_buffer (sizeof (dualnode_t));
+    if (dual == NULL)
+	return NULL;
     dual->map = map;
     dual->root = root;
     return dual;
+}
+
+
+/**
+ * Create a subtree of root nodes
+ * 
+ * @param f_pgsize  the size of largest level to allocate
+ * @param t_pgsize  the size of smallest level to allocate
+ * @param addr	    the address to branch along
+ * 
+ * Allocates a branch of root nodes
+ * 
+ * @returns pointer to the root of the subtree, or NULL on failure
+ */
+static NOINLINE rootnode_t *
+mdb_create_tree (mapnode_t::pgsize_e f_pgsize, mapnode_t::pgsize_e t_pgsize, 
+	addr_t addr)
+{
+    rootnode_t *root = NULL, *proot;
+    mapnode_t::pgsize_e pgsize;
+
+    for (pgsize = t_pgsize; pgsize <= f_pgsize; pgsize++)
+    {
+	proot = mdb_create_roots (pgsize);
+	if (proot == NULL)
+	    break;
+	if (root != NULL)
+	    mdb_index_root (pgsize, proot, addr)->set_ptr (root);
+	root = proot;
+    }
+    if (pgsize > f_pgsize)
+	return root;
+    // otherwise, we ran out of memory -- clean up
+    for (; pgsize > t_pgsize; pgsize--)
+    {
+	proot = root;
+	root = mdb_index_root (pgsize - 1, proot, addr);
+	mdb_free_buffer (root, mdb_arraysize (pgsize - 1) * sizeof (rootnode_t));
+    }
+    return NULL;
 }

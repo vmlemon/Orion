@@ -1,8 +1,0 @@
-		*(.data.kip)
-		*(.data.kip.pdesc)
-		*(.data.kip.kdesc)
-		*(.data.kip.versionparts)
-		*(.data.kip.features)
-		*(.data.kip.features.end)
-		. = ALIGN(16);
-		*(.data.kip.mdesc)
