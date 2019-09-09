@@ -1,0 +1,5 @@
+make[1]: Entering directory '/home/tyson/Orion/kernel/ubd'
+===> Building dependencies
+make[1]: *** No rule to make target 'arch/x86/debug.h', needed by 'src/glue/v4-x86/x32/init.o'. Stop.
+make[1]: Leaving directory '/home/tyson/Orion/kernel/ubd'
+make: *** [Makefile:38: all] Error 2
