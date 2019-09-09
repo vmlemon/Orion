@@ -1,0 +1,17 @@
+make[1]: Entering directory '/home/tyson/Orion/kernel/ibd'
+bash: gcc34: command not found
+bash: gcc34: command not found
+bash: gcc34: command not found
+===> Building dependencies
+bash: gcc34: command not found
+bash: gcc34: command not found
+bash: gcc34: command not found
+===> src/glue/v4-x86/asmsyms.cc
+cd src/glue/v4-x86/ && gcc34 -nostdinc -I/home/tyson/Orion/kernel/ibd/include -I/home/tyson/Orion/kernel/src -I/home/tyson/Orion/kernel/src/generic -I/usr/include -Ux32 -Ux86 -Up4 -Upc99 -Uv4 -Urr -D__SUBARCH__=x32 -D__ARCH__=x86 -D__CPU__=p4 -D__PLATFORM__=pc99 -D__API__=v4 -D__SCHED__=rr -imacros /home/tyson/Orion/kernel/ibd/config/config.h -imacros /home/tyson/Orion/kernel/src/generic/macros.h -include /home/tyson/Orion/kernel/src/generic/config.h  -include /home/tyson/Orion/kernel/src/generic/types.h -fno-rtti -fno-builtin  -fomit-frame-pointer -fno-exceptions -Wall -Wno-non-virtual-dtor -Wno-format -O2 -m32 -mpreferred-stack-boundary=2 -fno-stack-protector -lssp  -mno-mmx -mno-sse -mno-sse2 -mno-sse3 -march=pentium4   -Wconversion  -c /home/tyson/Orion/kernel/src/glue/v4-x86/asmsyms.cc
+bash: gcc34: command not found
+===> src/glue/v4-x86/x32/init.cc
+cd src/glue/v4-x86/x32/ && gcc34 -nostdinc -I/home/tyson/Orion/kernel/ibd/include -I/home/tyson/Orion/kernel/src -I/home/tyson/Orion/kernel/src/generic -I/usr/include -Ux32 -Ux86 -Up4 -Upc99 -Uv4 -Urr -D__SUBARCH__=x32 -D__ARCH__=x86 -D__CPU__=p4 -D__PLATFORM__=pc99 -D__API__=v4 -D__SCHED__=rr -imacros /home/tyson/Orion/kernel/ibd/config/config.h -imacros /home/tyson/Orion/kernel/src/generic/macros.h -include /home/tyson/Orion/kernel/src/generic/config.h  -include /home/tyson/Orion/kernel/src/generic/types.h -fno-rtti -fno-builtin  -fomit-frame-pointer -fno-exceptions -Wall -Wno-non-virtual-dtor -Wno-format -O2 -m32 -mpreferred-stack-boundary=2 -fno-stack-protector -lssp  -mno-mmx -mno-sse -mno-sse2 -mno-sse3 -march=pentium4   -Wconversion  -c /home/tyson/Orion/kernel/src/glue/v4-x86/x32/init.cc
+bash: gcc34: command not found
+make[1]: *** [/home/tyson/Orion/kernel/Mk/Makeconf:208: src/glue/v4-x86/x32/init.o] Error 127
+make[1]: Leaving directory '/home/tyson/Orion/kernel/ibd'
+make: *** [Makefile:38: all] Error 2
