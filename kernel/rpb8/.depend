@@ -12,7 +12,12 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/l4.h \
  /root/Orion/kernel/src/macros.h /root/Orion/kernel/src/generic/config.h \
- /root/Orion/kernel/src/debug.h
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h
 .depend src/generic/kmemory.o: /root/Orion/kernel/src/generic/kmemory.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -29,10 +34,18 @@
  /root/Orion/kernel/src/macros.h /root/Orion/kernel/src/generic/config.h \
  /root/Orion/kernel/src/generic/kmemory.h \
  /root/Orion/kernel/src/generic/sync.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/generic/init.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h
+ /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
 .depend src/generic/traceids.o: /root/Orion/kernel/src/generic/traceids.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -62,8 +75,14 @@
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
- /root/Orion/kernel/src/debug.h /root/Orion/kernel/src/generic/kmemory.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
+ /root/Orion/kernel/src/generic/kmemory.h \
  /root/Orion/kernel/src/generic/sync.h \
  /root/Orion/kernel/src/api/v4/kernelinterface.h \
  /root/Orion/kernel/src/generic/memregion.h \
@@ -75,31 +94,35 @@
  /root/Orion/kernel/src/api/v4/queuestate.h \
  /root/Orion/kernel/src/api/v4/queueing.h \
  /root/Orion/kernel/src/api/v4/threadstate.h \
- /root/Orion/kernel/src/api/v4/space.h glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/api/v4/space.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
  /root/Orion/kernel/src/api/v4/resources.h \
  /root/Orion/kernel/src/bitmask.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
- /root/Orion/kernel/src/api/v4/thread.h \
  /root/Orion/kernel/src/api/v4/preempt.h \
- /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/api/v4/ipc.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
  /root/Orion/kernel/src/api/v4/syscalls.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
- /root/Orion/kernel/src/arch/powerpc64/frame.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
  /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/interrupt.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h /root/Orion/kernel/src/api/v4/interrupt.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/intctrl.h \
  /root/Orion/kernel/src/generic/intctrl.h \
- /root/Orion/kernel/src/platform/ofpower4/intctrl.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h
+ /root/Orion/kernel/src/platform/ofpower4/intctrl.h
 .depend src/platform/ofpower4/head.o: /root/Orion/kernel/src/platform/ofpower4/head.S \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -146,6 +169,11 @@
  /root/Orion/kernel/src/arch/powerpc64/ppc64_registers.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
  /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/api/v4/kernelinterface.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/memdesc.h \
@@ -165,19 +193,33 @@
  /root/Orion/kernel/src/generic/types.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/intctrl.h \
  /root/Orion/kernel/src/generic/intctrl.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/platform/ofpower4/intctrl.h \
  /root/Orion/kernel/src/arch/powerpc64/rtas.h \
  /root/Orion/kernel/src/arch/powerpc64/1275tree.h \
  /root/Orion/kernel/src/generic/sync.h \
  /root/Orion/kernel/src/platform/ofpower4/xics.h \
  /root/Orion/kernel/src/platform/ofpower4/prom.h \
- /root/Orion/kernel/src/arch/powerpc64/of1275.h glue/v4-powerpc64/space.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/of1275.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
  /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
  /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h \
  /root/Orion/kernel/src/generic/kmemory.h
 .depend src/arch/powerpc64/1275tree.o: /root/Orion/kernel/src/arch/powerpc64/1275tree.cc \
@@ -195,7 +237,12 @@
  /root/Orion/kernel/src/generic/types.h \
  /root/Orion/kernel/src/arch/powerpc64/string.h \
  /root/Orion/kernel/src/arch/powerpc64/1275tree.h \
- /root/Orion/kernel/src/debug.h
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h
 .depend src/arch/powerpc64/of1275.o: /root/Orion/kernel/src/arch/powerpc64/of1275.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -213,8 +260,13 @@
  /root/Orion/kernel/src/generic/sync.h \
  /root/Orion/kernel/src/arch/powerpc64/string.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
- /root/Orion/kernel/src/debug.h
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h
 .depend src/arch/powerpc64/rtas.o: /root/Orion/kernel/src/arch/powerpc64/rtas.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -239,7 +291,12 @@
  /root/Orion/kernel/src/platform/ofpower4/prom.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
  /root/Orion/kernel/src/debug.h \
- /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
 .depend src/glue/v4-powerpc64/rtas.o: /root/Orion/kernel/src/glue/v4-powerpc64/rtas.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -254,37 +311,49 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h \
  /root/Orion/kernel/src/api/v4/tcb.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
  /root/Orion/kernel/src/api/v4/queueing.h \
  /root/Orion/kernel/src/api/v4/threadstate.h \
  /root/Orion/kernel/src/api/v4/space.h \
  /root/Orion/kernel/src/generic/kmemory.h \
- /root/Orion/kernel/src/generic/sync.h glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
  /root/Orion/kernel/src/api/v4/resources.h \
  /root/Orion/kernel/src/bitmask.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
- /root/Orion/kernel/src/api/v4/thread.h \
- /root/Orion/kernel/src/api/v4/kernelinterface.h \
- /root/Orion/kernel/src/generic/memregion.h \
- /root/Orion/kernel/src/api/v4/memdesc.h \
- /root/Orion/kernel/src/api/v4/procdesc.h \
  /root/Orion/kernel/src/api/v4/preempt.h \
- /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/api/v4/ipc.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
  /root/Orion/kernel/src/api/v4/syscalls.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
- /root/Orion/kernel/src/arch/powerpc64/frame.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/arch/powerpc64/rtas.h \
  /root/Orion/kernel/src/arch/powerpc64/1275tree.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h
+ /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
 .depend src/api/v4/exregs.o: /root/Orion/kernel/src/api/v4/exregs.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -305,22 +374,31 @@
  /root/Orion/kernel/src/api/v4/smp.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/tcb.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
  /root/Orion/kernel/src/api/v4/queueing.h \
  /root/Orion/kernel/src/api/v4/threadstate.h \
  /root/Orion/kernel/src/api/v4/space.h \
  /root/Orion/kernel/src/generic/kmemory.h \
- /root/Orion/kernel/src/generic/sync.h glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
  /root/Orion/kernel/src/api/v4/resources.h \
  /root/Orion/kernel/src/bitmask.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
- /root/Orion/kernel/src/api/v4/thread.h \
- /root/Orion/kernel/src/api/v4/kernelinterface.h \
- /root/Orion/kernel/src/generic/memregion.h \
- /root/Orion/kernel/src/api/v4/memdesc.h \
- /root/Orion/kernel/src/api/v4/procdesc.h \
  /root/Orion/kernel/src/api/v4/preempt.h \
- /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/api/v4/ipc.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
@@ -331,7 +409,10 @@
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h
+ /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
 .depend src/api/v4/ipc.o: /root/Orion/kernel/src/api/v4/ipc.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -346,9 +427,18 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/l4.h \
  /root/Orion/kernel/src/macros.h /root/Orion/kernel/src/generic/config.h \
- /root/Orion/kernel/src/debug.h /root/Orion/kernel/src/kdb/tracepoints.h \
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
+ /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
  /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
@@ -356,25 +446,29 @@
  /root/Orion/kernel/src/api/v4/threadstate.h \
  /root/Orion/kernel/src/api/v4/space.h \
  /root/Orion/kernel/src/generic/kmemory.h \
- /root/Orion/kernel/src/generic/sync.h glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
  /root/Orion/kernel/src/api/v4/resources.h \
  /root/Orion/kernel/src/bitmask.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
- /root/Orion/kernel/src/api/v4/thread.h \
- /root/Orion/kernel/src/api/v4/kernelinterface.h \
- /root/Orion/kernel/src/generic/memregion.h \
- /root/Orion/kernel/src/api/v4/memdesc.h \
- /root/Orion/kernel/src/api/v4/procdesc.h \
  /root/Orion/kernel/src/api/v4/preempt.h \
- /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/api/v4/ipc.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
  /root/Orion/kernel/src/api/v4/syscalls.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
- /root/Orion/kernel/src/arch/powerpc64/frame.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/api/v4/schedule.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
@@ -397,9 +491,18 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/l4.h \
  /root/Orion/kernel/src/macros.h /root/Orion/kernel/src/generic/config.h \
- /root/Orion/kernel/src/debug.h /root/Orion/kernel/src/kdb/tracepoints.h \
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
+ /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
  /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
@@ -407,25 +510,29 @@
  /root/Orion/kernel/src/api/v4/threadstate.h \
  /root/Orion/kernel/src/api/v4/space.h \
  /root/Orion/kernel/src/generic/kmemory.h \
- /root/Orion/kernel/src/generic/sync.h glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
  /root/Orion/kernel/src/api/v4/resources.h \
  /root/Orion/kernel/src/bitmask.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
- /root/Orion/kernel/src/api/v4/thread.h \
- /root/Orion/kernel/src/api/v4/kernelinterface.h \
- /root/Orion/kernel/src/generic/memregion.h \
- /root/Orion/kernel/src/api/v4/memdesc.h \
- /root/Orion/kernel/src/api/v4/procdesc.h \
  /root/Orion/kernel/src/api/v4/preempt.h \
- /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/api/v4/ipc.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
  /root/Orion/kernel/src/api/v4/syscalls.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
- /root/Orion/kernel/src/arch/powerpc64/frame.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/api/v4/schedule.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h
@@ -444,6 +551,11 @@
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/l4.h \
  /root/Orion/kernel/src/macros.h /root/Orion/kernel/src/generic/config.h \
  /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/api/v4/kernelinterface.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/api/v4/memdesc.h \
@@ -465,31 +577,40 @@
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/l4.h \
  /root/Orion/kernel/src/macros.h /root/Orion/kernel/src/generic/config.h \
  /root/Orion/kernel/src/api/v4/tcb.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
  /root/Orion/kernel/src/api/v4/queueing.h \
  /root/Orion/kernel/src/api/v4/threadstate.h \
  /root/Orion/kernel/src/api/v4/space.h \
  /root/Orion/kernel/src/generic/kmemory.h \
- /root/Orion/kernel/src/generic/sync.h glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
  /root/Orion/kernel/src/api/v4/resources.h \
  /root/Orion/kernel/src/bitmask.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
- /root/Orion/kernel/src/api/v4/thread.h \
- /root/Orion/kernel/src/api/v4/kernelinterface.h \
- /root/Orion/kernel/src/generic/memregion.h \
- /root/Orion/kernel/src/api/v4/memdesc.h \
- /root/Orion/kernel/src/api/v4/procdesc.h \
  /root/Orion/kernel/src/api/v4/preempt.h \
- /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/api/v4/ipc.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
  /root/Orion/kernel/src/api/v4/syscalls.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
- /root/Orion/kernel/src/arch/powerpc64/frame.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/api/v4/interrupt.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/intctrl.h \
@@ -500,6 +621,9 @@
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
  /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/api/v4/smp.h
 .depend src/api/v4/schedule.o: /root/Orion/kernel/src/api/v4/schedule.cc \
  /root/Orion/kernel/rpb8/config/config.h \
@@ -515,38 +639,50 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/l4.h \
  /root/Orion/kernel/src/macros.h /root/Orion/kernel/src/generic/config.h \
- /root/Orion/kernel/src/debug.h /root/Orion/kernel/src/api/v4/tcb.h \
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
  /root/Orion/kernel/src/api/v4/queueing.h \
  /root/Orion/kernel/src/api/v4/threadstate.h \
  /root/Orion/kernel/src/api/v4/space.h \
  /root/Orion/kernel/src/generic/kmemory.h \
- /root/Orion/kernel/src/generic/sync.h glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
  /root/Orion/kernel/src/api/v4/resources.h \
  /root/Orion/kernel/src/bitmask.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
- /root/Orion/kernel/src/api/v4/thread.h \
- /root/Orion/kernel/src/api/v4/kernelinterface.h \
- /root/Orion/kernel/src/generic/memregion.h \
- /root/Orion/kernel/src/api/v4/memdesc.h \
- /root/Orion/kernel/src/api/v4/procdesc.h \
  /root/Orion/kernel/src/api/v4/preempt.h \
- /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/api/v4/ipc.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
  /root/Orion/kernel/src/api/v4/syscalls.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
- /root/Orion/kernel/src/arch/powerpc64/frame.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/api/v4/schedule.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
  /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/api/v4/interrupt.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/intctrl.h \
  /root/Orion/kernel/src/generic/intctrl.h \
@@ -567,35 +703,48 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/l4.h \
  /root/Orion/kernel/src/macros.h /root/Orion/kernel/src/generic/config.h \
- /root/Orion/kernel/src/debug.h /root/Orion/kernel/src/generic/kmemory.h \
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
+ /root/Orion/kernel/src/generic/kmemory.h \
  /root/Orion/kernel/src/generic/sync.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
  /root/Orion/kernel/src/kdb/tracebuffer.h \
- /root/Orion/kernel/src/api/v4/space.h glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
+ /root/Orion/kernel/src/api/v4/space.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
  /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
- /root/Orion/kernel/src/api/v4/queueing.h \
  /root/Orion/kernel/src/api/v4/threadstate.h \
  /root/Orion/kernel/src/api/v4/resources.h \
  /root/Orion/kernel/src/bitmask.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
- /root/Orion/kernel/src/api/v4/thread.h \
- /root/Orion/kernel/src/api/v4/kernelinterface.h \
- /root/Orion/kernel/src/generic/memregion.h \
- /root/Orion/kernel/src/api/v4/memdesc.h \
- /root/Orion/kernel/src/api/v4/procdesc.h \
  /root/Orion/kernel/src/api/v4/preempt.h \
- /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/api/v4/ipc.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
  /root/Orion/kernel/src/api/v4/syscalls.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
- /root/Orion/kernel/src/arch/powerpc64/frame.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/api/v4/schedule.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h
@@ -613,9 +762,18 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/l4.h \
  /root/Orion/kernel/src/macros.h /root/Orion/kernel/src/generic/config.h \
- /root/Orion/kernel/src/debug.h /root/Orion/kernel/src/kdb/tracepoints.h \
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
+ /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
  /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
@@ -623,25 +781,29 @@
  /root/Orion/kernel/src/api/v4/threadstate.h \
  /root/Orion/kernel/src/api/v4/space.h \
  /root/Orion/kernel/src/generic/kmemory.h \
- /root/Orion/kernel/src/generic/sync.h glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
  /root/Orion/kernel/src/api/v4/resources.h \
  /root/Orion/kernel/src/bitmask.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
- /root/Orion/kernel/src/api/v4/thread.h \
- /root/Orion/kernel/src/api/v4/kernelinterface.h \
- /root/Orion/kernel/src/generic/memregion.h \
- /root/Orion/kernel/src/api/v4/memdesc.h \
- /root/Orion/kernel/src/api/v4/procdesc.h \
  /root/Orion/kernel/src/api/v4/preempt.h \
- /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/api/v4/ipc.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
  /root/Orion/kernel/src/api/v4/syscalls.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
- /root/Orion/kernel/src/arch/powerpc64/frame.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/api/v4/interrupt.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/intctrl.h \
@@ -677,9 +839,18 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/l4.h \
  /root/Orion/kernel/src/macros.h /root/Orion/kernel/src/generic/config.h \
- /root/Orion/kernel/src/debug.h /root/Orion/kernel/src/kdb/tracepoints.h \
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
+ /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
  /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/generic/sync.h \
  /root/Orion/kernel/src/api/v4/kernelinterface.h \
  /root/Orion/kernel/src/generic/memregion.h \
@@ -688,10 +859,7 @@
  /root/Orion/kernel/src/api/v4/syscalls.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/fpage.h \
- /root/Orion/kernel/src/api/v4/thread.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
- /root/Orion/kernel/src/arch/powerpc64/frame.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/abi.h
+ /root/Orion/kernel/src/api/v4/thread.h
 .depend src/arch/powerpc64/string.o: /root/Orion/kernel/src/arch/powerpc64/string.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -706,7 +874,12 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h \
  /root/Orion/kernel/src/arch/powerpc64/string.h \
- /root/Orion/kernel/src/debug.h
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h
 .depend src/arch/powerpc64/pghash.o: /root/Orion/kernel/src/arch/powerpc64/pghash.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -720,13 +893,29 @@
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
  /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/platform/ofpower4/prom.h \
  /root/Orion/kernel/src/arch/powerpc64/of1275.h \
  /root/Orion/kernel/src/generic/sync.h \
- /root/Orion/kernel/src/arch/powerpc64/string.h glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/string.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
  /root/Orion/kernel/src/arch/powerpc64/segment.h \
  /root/Orion/kernel/src/arch/powerpc64/slb.h \
  /root/Orion/kernel/src/arch/powerpc64/ppc64_registers.h \
@@ -747,8 +936,7 @@
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
- /root/Orion/kernel/rpb8/include/asmsyms.h \
- /root/Orion/kernel/rpb8/include/tcb_layout.h
+ /root/Orion/kernel/rpb8/include/asmsyms.h tcb_layout.h
 .depend src/arch/powerpc64/switch.o: /root/Orion/kernel/src/arch/powerpc64/switch.S \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -776,7 +964,12 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h \
  /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
- /root/Orion/kernel/src/debug.h
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h
 .depend src/glue/v4-powerpc64/thread.o: /root/Orion/kernel/src/glue/v4-powerpc64/thread.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -793,30 +986,39 @@
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/arch/powerpc64/frame.h \
  /root/Orion/kernel/src/api/v4/tcb.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
  /root/Orion/kernel/src/api/v4/queueing.h \
  /root/Orion/kernel/src/api/v4/threadstate.h \
  /root/Orion/kernel/src/api/v4/space.h \
  /root/Orion/kernel/src/generic/kmemory.h \
- /root/Orion/kernel/src/generic/sync.h glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
  /root/Orion/kernel/src/api/v4/resources.h \
  /root/Orion/kernel/src/bitmask.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
- /root/Orion/kernel/src/api/v4/thread.h \
- /root/Orion/kernel/src/api/v4/kernelinterface.h \
- /root/Orion/kernel/src/generic/memregion.h \
- /root/Orion/kernel/src/api/v4/memdesc.h \
- /root/Orion/kernel/src/api/v4/procdesc.h \
  /root/Orion/kernel/src/api/v4/preempt.h \
- /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/api/v4/ipc.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
- /root/Orion/kernel/src/api/v4/syscalls.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/abi.h
+ /root/Orion/kernel/src/api/v4/syscalls.h
 .depend src/glue/v4-powerpc64/timer.o: /root/Orion/kernel/src/glue/v4-powerpc64/timer.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -830,6 +1032,11 @@
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/api/v4/schedule.h \
  /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
@@ -838,30 +1045,37 @@
  /root/Orion/kernel/src/api/v4/threadstate.h \
  /root/Orion/kernel/src/api/v4/space.h \
  /root/Orion/kernel/src/generic/kmemory.h \
- /root/Orion/kernel/src/generic/sync.h glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
  /root/Orion/kernel/src/api/v4/resources.h \
  /root/Orion/kernel/src/bitmask.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
- /root/Orion/kernel/src/api/v4/thread.h \
- /root/Orion/kernel/src/api/v4/kernelinterface.h \
- /root/Orion/kernel/src/generic/memregion.h \
- /root/Orion/kernel/src/api/v4/memdesc.h \
- /root/Orion/kernel/src/api/v4/procdesc.h \
  /root/Orion/kernel/src/api/v4/preempt.h \
- /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/api/v4/ipc.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
  /root/Orion/kernel/src/api/v4/syscalls.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
- /root/Orion/kernel/src/arch/powerpc64/frame.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
  /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/timer.h \
  /root/Orion/kernel/src/generic/timer.h \
  /root/Orion/kernel/src/arch/powerpc64/1275tree.h \
@@ -879,6 +1093,11 @@
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/generic/kmemory.h \
  /root/Orion/kernel/src/generic/sync.h \
  /root/Orion/kernel/src/generic/linear_ptab.h \
@@ -889,34 +1108,36 @@
  /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h \
- glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
  /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
- /root/Orion/kernel/src/api/v4/queueing.h \
  /root/Orion/kernel/src/api/v4/threadstate.h \
  /root/Orion/kernel/src/api/v4/space.h \
  /root/Orion/kernel/src/api/v4/resources.h \
  /root/Orion/kernel/src/bitmask.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
- /root/Orion/kernel/src/api/v4/thread.h \
- /root/Orion/kernel/src/api/v4/kernelinterface.h \
- /root/Orion/kernel/src/api/v4/memdesc.h \
- /root/Orion/kernel/src/api/v4/procdesc.h \
  /root/Orion/kernel/src/api/v4/preempt.h \
- /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/api/v4/ipc.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
  /root/Orion/kernel/src/api/v4/syscalls.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
- /root/Orion/kernel/src/arch/powerpc64/frame.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h
 .depend src/glue/v4-powerpc64/init.o: /root/Orion/kernel/src/glue/v4-powerpc64/init.cc \
  /root/Orion/kernel/rpb8/config/config.h \
@@ -931,6 +1152,11 @@
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/generic/kmemory.h \
  /root/Orion/kernel/src/generic/sync.h \
  /root/Orion/kernel/src/generic/mapping.h \
@@ -941,9 +1167,16 @@
  /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h \
- glue/v4-powerpc64/space.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
  /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h \
  /root/Orion/kernel/src/platform/ofpower4/prom.h \
  /root/Orion/kernel/src/arch/powerpc64/of1275.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
@@ -952,30 +1185,25 @@
  /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
- /root/Orion/kernel/src/api/v4/queueing.h \
  /root/Orion/kernel/src/api/v4/threadstate.h \
  /root/Orion/kernel/src/api/v4/space.h \
  /root/Orion/kernel/src/api/v4/resources.h \
  /root/Orion/kernel/src/bitmask.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
- /root/Orion/kernel/src/api/v4/thread.h \
- /root/Orion/kernel/src/api/v4/kernelinterface.h \
- /root/Orion/kernel/src/api/v4/memdesc.h \
- /root/Orion/kernel/src/api/v4/procdesc.h \
  /root/Orion/kernel/src/api/v4/preempt.h \
  /root/Orion/kernel/src/api/v4/ipc.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
  /root/Orion/kernel/src/api/v4/syscalls.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
- /root/Orion/kernel/src/arch/powerpc64/frame.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/api/v4/schedule.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
  /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/api/v4/processor.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/intctrl.h \
  /root/Orion/kernel/src/generic/intctrl.h \
@@ -998,35 +1226,47 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h \
  /root/Orion/kernel/src/api/v4/tcb.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
  /root/Orion/kernel/src/api/v4/queueing.h \
  /root/Orion/kernel/src/api/v4/threadstate.h \
  /root/Orion/kernel/src/api/v4/space.h \
  /root/Orion/kernel/src/generic/kmemory.h \
- /root/Orion/kernel/src/generic/sync.h glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
  /root/Orion/kernel/src/api/v4/resources.h \
  /root/Orion/kernel/src/bitmask.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
- /root/Orion/kernel/src/api/v4/thread.h \
- /root/Orion/kernel/src/api/v4/kernelinterface.h \
- /root/Orion/kernel/src/generic/memregion.h \
- /root/Orion/kernel/src/api/v4/memdesc.h \
- /root/Orion/kernel/src/api/v4/procdesc.h \
  /root/Orion/kernel/src/api/v4/preempt.h \
- /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/api/v4/ipc.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
  /root/Orion/kernel/src/api/v4/syscalls.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
- /root/Orion/kernel/src/arch/powerpc64/frame.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h
+ /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
 .depend src/glue/v4-powerpc64/pghash.o: /root/Orion/kernel/src/glue/v4-powerpc64/pghash.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -1040,6 +1280,11 @@
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/generic/linear_ptab.h \
  /root/Orion/kernel/src/arch/powerpc64/pgent.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
@@ -1049,11 +1294,17 @@
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h \
  /root/Orion/kernel/src/generic/kmemory.h \
- /root/Orion/kernel/src/generic/sync.h glue/v4-powerpc64/space.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
  /root/Orion/kernel/src/api/v4/kernelinterface.h \
  /root/Orion/kernel/src/api/v4/memdesc.h \
  /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h \
  /root/Orion/kernel/src/platform/ofpower4/prom.h \
  /root/Orion/kernel/src/arch/powerpc64/of1275.h
 .depend src/glue/v4-powerpc64/exception.o: /root/Orion/kernel/src/glue/v4-powerpc64/exception.cc \
@@ -1069,9 +1320,18 @@
  /root/Orion/kernel/src/arch/powerpc64/page.h \
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
  /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
+ /root/Orion/kernel/src/kdb/console.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/arch/powerpc64/except.h \
  /root/Orion/kernel/src/platform/ofpower4/prom.h \
@@ -1083,30 +1343,30 @@
  /root/Orion/kernel/src/api/v4/queueing.h \
  /root/Orion/kernel/src/api/v4/threadstate.h \
  /root/Orion/kernel/src/api/v4/space.h \
- /root/Orion/kernel/src/generic/kmemory.h glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/generic/kmemory.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
  /root/Orion/kernel/src/api/v4/resources.h \
  /root/Orion/kernel/src/bitmask.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
- /root/Orion/kernel/src/api/v4/thread.h \
- /root/Orion/kernel/src/api/v4/kernelinterface.h \
- /root/Orion/kernel/src/generic/memregion.h \
- /root/Orion/kernel/src/api/v4/memdesc.h \
- /root/Orion/kernel/src/api/v4/procdesc.h \
  /root/Orion/kernel/src/api/v4/preempt.h \
- /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/api/v4/ipc.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
  /root/Orion/kernel/src/api/v4/syscalls.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
- /root/Orion/kernel/src/arch/powerpc64/frame.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h \
- /root/Orion/kernel/src/arch/powerpc64/pghash.h \
- /root/Orion/kernel/src/arch/powerpc64/power4.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
- /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/exception.h
 .depend src/glue/v4-powerpc64/user.o: /root/Orion/kernel/src/glue/v4-powerpc64/user.S \
@@ -1137,40 +1397,48 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h \
  /root/Orion/kernel/src/api/v4/tcb.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
  /root/Orion/kernel/src/api/v4/queueing.h \
  /root/Orion/kernel/src/api/v4/threadstate.h \
  /root/Orion/kernel/src/api/v4/space.h \
  /root/Orion/kernel/src/generic/kmemory.h \
- /root/Orion/kernel/src/generic/sync.h glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
  /root/Orion/kernel/src/api/v4/resources.h \
  /root/Orion/kernel/src/bitmask.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
- /root/Orion/kernel/src/api/v4/thread.h \
- /root/Orion/kernel/src/api/v4/kernelinterface.h \
- /root/Orion/kernel/src/generic/memregion.h \
- /root/Orion/kernel/src/api/v4/memdesc.h \
- /root/Orion/kernel/src/api/v4/procdesc.h \
  /root/Orion/kernel/src/api/v4/preempt.h \
- /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/api/v4/ipc.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
  /root/Orion/kernel/src/api/v4/syscalls.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
- /root/Orion/kernel/src/arch/powerpc64/frame.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
  /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/arch/powerpc64/pgent.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
- /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
- /root/Orion/kernel/src/arch/powerpc64/pghash.h \
- /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h \
  /root/Orion/kernel/src/generic/linear_ptab.h
@@ -1194,38 +1462,46 @@
  /root/Orion/kernel/src/arch/powerpc64/pghash.h \
  /root/Orion/kernel/src/arch/powerpc64/power4.h \
  /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h \
  /root/Orion/kernel/src/generic/kmemory.h \
- /root/Orion/kernel/src/generic/sync.h glue/v4-powerpc64/space.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
  /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h \
  /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
- /root/Orion/kernel/src/api/v4/queueing.h \
  /root/Orion/kernel/src/api/v4/threadstate.h \
  /root/Orion/kernel/src/api/v4/space.h \
  /root/Orion/kernel/src/api/v4/resources.h \
  /root/Orion/kernel/src/bitmask.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
- /root/Orion/kernel/src/api/v4/thread.h \
- /root/Orion/kernel/src/api/v4/kernelinterface.h \
- /root/Orion/kernel/src/api/v4/memdesc.h \
- /root/Orion/kernel/src/api/v4/procdesc.h \
  /root/Orion/kernel/src/api/v4/preempt.h \
  /root/Orion/kernel/src/api/v4/ipc.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
  /root/Orion/kernel/src/api/v4/syscalls.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
- /root/Orion/kernel/src/arch/powerpc64/frame.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
  /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
  /root/Orion/kernel/src/generic/linear_ptab.h \
  /root/Orion/kernel/src/generic/mapping.h
 .depend src/generic/mapping.o: /root/Orion/kernel/src/generic/mapping.cc \
@@ -1242,7 +1518,13 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/l4.h \
  /root/Orion/kernel/src/macros.h /root/Orion/kernel/src/generic/config.h \
- /root/Orion/kernel/src/debug.h /root/Orion/kernel/src/generic/mapping.h \
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
+ /root/Orion/kernel/src/generic/mapping.h \
  /root/Orion/kernel/src/arch/powerpc64/pgent.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
  /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
@@ -1251,32 +1533,32 @@
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h \
  /root/Orion/kernel/src/generic/kmemory.h \
- /root/Orion/kernel/src/generic/sync.h glue/v4-powerpc64/space.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
  /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h \
  /root/Orion/kernel/src/generic/linear_ptab.h \
  /root/Orion/kernel/src/api/v4/tcb.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
- /root/Orion/kernel/src/api/v4/queueing.h \
  /root/Orion/kernel/src/api/v4/threadstate.h \
  /root/Orion/kernel/src/api/v4/space.h \
  /root/Orion/kernel/src/api/v4/resources.h \
  /root/Orion/kernel/src/bitmask.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
- /root/Orion/kernel/src/api/v4/thread.h \
- /root/Orion/kernel/src/api/v4/kernelinterface.h \
- /root/Orion/kernel/src/api/v4/memdesc.h \
- /root/Orion/kernel/src/api/v4/procdesc.h \
  /root/Orion/kernel/src/api/v4/preempt.h \
  /root/Orion/kernel/src/api/v4/ipc.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
  /root/Orion/kernel/src/api/v4/syscalls.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
- /root/Orion/kernel/src/arch/powerpc64/frame.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h
 .depend src/generic/mapping_alloc.o: /root/Orion/kernel/src/generic/mapping_alloc.cc \
  /root/Orion/kernel/rpb8/config/config.h \
@@ -1292,7 +1574,13 @@
  /root/Orion/kernel/src/platform/ofpower4/config.h \
  /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/l4.h \
  /root/Orion/kernel/src/macros.h /root/Orion/kernel/src/generic/config.h \
- /root/Orion/kernel/src/debug.h /root/Orion/kernel/src/generic/mapping.h \
+ /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
+ /root/Orion/kernel/src/generic/mapping.h \
  /root/Orion/kernel/src/arch/powerpc64/pgent.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
  /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
@@ -1301,12 +1589,1147 @@
  /root/Orion/kernel/src/generic/memregion.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h \
  /root/Orion/kernel/src/generic/kmemory.h \
- /root/Orion/kernel/src/generic/sync.h glue/v4-powerpc64/space.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
  /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h \
  /root/Orion/kernel/src/kdb/tracepoints.h \
  /root/Orion/kernel/src/kdb/linker_set.h \
- /root/Orion/kernel/src/kdb/tracebuffer.h
+ /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
+.depend kdb/generic/bootinfo.o: /root/Orion/kernel/kdb/generic/bootinfo.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/cmd.h \
+ /root/Orion/kernel/src/kdb/linker_set.h /root/Orion/kernel/src/kdb/kdb.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/api/v4/tcb.h \
+ /root/Orion/kernel/src/api/v4/types.h \
+ /root/Orion/kernel/src/api/v4/queuestate.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/api/v4/threadstate.h \
+ /root/Orion/kernel/src/api/v4/space.h \
+ /root/Orion/kernel/src/generic/kmemory.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/api/v4/resources.h \
+ /root/Orion/kernel/src/bitmask.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
+ /root/Orion/kernel/src/api/v4/preempt.h \
+ /root/Orion/kernel/src/api/v4/ipc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
+ /root/Orion/kernel/src/api/v4/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/msr.h
+.depend kdb/generic/cmd.o: /root/Orion/kernel/kdb/generic/cmd.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/kdb.h \
+ /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/kdb/console.h
+.depend kdb/generic/console.o: /root/Orion/kernel/kdb/generic/console.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
+ /root/Orion/kernel/src/generic/sync.h /root/Orion/kernel/src/kdb/kdb.h \
+ /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/kdb/console.h
+.depend kdb/generic/entry.o: /root/Orion/kernel/kdb/generic/entry.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/kdb.h \
+ /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/api/v4/tcb.h \
+ /root/Orion/kernel/src/api/v4/types.h \
+ /root/Orion/kernel/src/api/v4/queuestate.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/api/v4/threadstate.h \
+ /root/Orion/kernel/src/api/v4/space.h \
+ /root/Orion/kernel/src/generic/kmemory.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/api/v4/resources.h \
+ /root/Orion/kernel/src/bitmask.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
+ /root/Orion/kernel/src/api/v4/preempt.h \
+ /root/Orion/kernel/src/api/v4/ipc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
+ /root/Orion/kernel/src/api/v4/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/msr.h
+.depend kdb/generic/init.o: /root/Orion/kernel/kdb/generic/init.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/kdb/kdb.h \
+ /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/kdb/tracepoints.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
+ /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
+ /root/Orion/kernel/src/kdb/init.h /root/Orion/kernel/src/generic/init.h
+.depend kdb/generic/input.o: /root/Orion/kernel/kdb/generic/input.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/input.h \
+ /root/Orion/kernel/src/kdb/kdb.h /root/Orion/kernel/src/kdb/cmd.h \
+ /root/Orion/kernel/src/kdb/linker_set.h kdb_class_helper.h \
+ kdb_autogenerated_protos.h /root/Orion/kernel/src/kdb/console.h
+.depend kdb/generic/kmemory.o: /root/Orion/kernel/kdb/generic/kmemory.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/cmd.h \
+ /root/Orion/kernel/src/kdb/linker_set.h /root/Orion/kernel/src/kdb/kdb.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/generic/kmemory.h \
+ /root/Orion/kernel/src/generic/sync.h
+.depend kdb/generic/linker_set.o: /root/Orion/kernel/kdb/generic/linker_set.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
+ /root/Orion/kernel/src/generic/init.h \
+ /root/Orion/kernel/src/kdb/linker_set.h
+.depend kdb/generic/memdump.o: /root/Orion/kernel/kdb/generic/memdump.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/kdb.h \
+ /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/kdb/input.h \
+ /root/Orion/kernel/src/generic/linear_ptab.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgent.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h \
+ /root/Orion/kernel/src/generic/kmemory.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h \
+ /root/Orion/kernel/src/api/v4/tcb.h \
+ /root/Orion/kernel/src/api/v4/types.h \
+ /root/Orion/kernel/src/api/v4/queuestate.h \
+ /root/Orion/kernel/src/api/v4/threadstate.h \
+ /root/Orion/kernel/src/api/v4/space.h \
+ /root/Orion/kernel/src/api/v4/resources.h \
+ /root/Orion/kernel/src/bitmask.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
+ /root/Orion/kernel/src/api/v4/preempt.h \
+ /root/Orion/kernel/src/api/v4/ipc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
+ /root/Orion/kernel/src/api/v4/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/msr.h
+.depend kdb/generic/print.o: /root/Orion/kernel/kdb/generic/print.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/api/v4/tcb.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/types.h \
+ /root/Orion/kernel/src/api/v4/queuestate.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/api/v4/threadstate.h \
+ /root/Orion/kernel/src/api/v4/space.h \
+ /root/Orion/kernel/src/generic/kmemory.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/api/v4/resources.h \
+ /root/Orion/kernel/src/bitmask.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
+ /root/Orion/kernel/src/api/v4/preempt.h \
+ /root/Orion/kernel/src/api/v4/ipc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
+ /root/Orion/kernel/src/api/v4/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/msr.h \
+ /root/Orion/kernel/src/generic/linear_ptab.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgent.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h
+.depend kdb/generic/tid_format.o: /root/Orion/kernel/kdb/generic/tid_format.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/kdb.h \
+ /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/kdb/input.h \
+ /root/Orion/kernel/src/kdb/tid_format.h
+.depend kdb/generic/tracepoints.o: /root/Orion/kernel/kdb/generic/tracepoints.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/kdb/tracepoints.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
+ /root/Orion/kernel/src/kdb/linker_set.h \
+ /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
+ /root/Orion/kernel/src/kdb/kdb.h /root/Orion/kernel/src/kdb/cmd.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/kdb/input.h /root/Orion/kernel/src/api/v4/smp.h \
+ /root/Orion/kernel/src/api/v4/types.h \
+ /root/Orion/kernel/src/api/v4/tcb.h \
+ /root/Orion/kernel/src/api/v4/queuestate.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/api/v4/threadstate.h \
+ /root/Orion/kernel/src/api/v4/space.h \
+ /root/Orion/kernel/src/generic/kmemory.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/api/v4/resources.h \
+ /root/Orion/kernel/src/bitmask.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
+ /root/Orion/kernel/src/api/v4/preempt.h \
+ /root/Orion/kernel/src/api/v4/ipc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
+ /root/Orion/kernel/src/api/v4/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/msr.h
+.depend kdb/generic/tracebuffer.o: /root/Orion/kernel/kdb/generic/tracebuffer.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
+ /root/Orion/kernel/src/generic/linear_ptab.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgent.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h \
+ /root/Orion/kernel/src/generic/kmemory.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h \
+ /root/Orion/kernel/src/generic/lib.h /root/Orion/kernel/src/kdb/kdb.h \
+ /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/kdb/input.h \
+ /root/Orion/kernel/src/kdb/tracepoints.h \
+ /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
+ /root/Orion/kernel/src/api/v4/tcb.h \
+ /root/Orion/kernel/src/api/v4/types.h \
+ /root/Orion/kernel/src/api/v4/queuestate.h \
+ /root/Orion/kernel/src/api/v4/threadstate.h \
+ /root/Orion/kernel/src/api/v4/space.h \
+ /root/Orion/kernel/src/api/v4/resources.h \
+ /root/Orion/kernel/src/bitmask.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
+ /root/Orion/kernel/src/api/v4/preempt.h \
+ /root/Orion/kernel/src/api/v4/ipc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
+ /root/Orion/kernel/src/api/v4/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/msr.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h
+.depend kdb/arch/powerpc64/ofio.o: /root/Orion/kernel/kdb/arch/powerpc64/ofio.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
+ /root/Orion/kernel/src/kdb/console.h \
+ /root/Orion/kernel/src/platform/ofpower4/prom.h \
+ /root/Orion/kernel/src/arch/powerpc64/of1275.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/arch/powerpc64/rtas.h \
+ /root/Orion/kernel/src/arch/powerpc64/1275tree.h \
+ /root/Orion/kernel/src/arch/powerpc64/string.h \
+ /root/Orion/kernel/src/arch/powerpc64/segment.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/arch/powerpc64/slb.h \
+ /root/Orion/kernel/src/arch/powerpc64/ppc64_registers.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h \
+ /root/Orion/kernel/src/generic/kmemory.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h
+.depend kdb/arch/powerpc64/slb.o: /root/Orion/kernel/kdb/arch/powerpc64/slb.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/cmd.h \
+ /root/Orion/kernel/src/kdb/linker_set.h /root/Orion/kernel/src/kdb/kdb.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/arch/powerpc64/segment.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/arch/powerpc64/slb.h \
+ /root/Orion/kernel/src/arch/powerpc64/ppc64_registers.h
+.depend kdb/arch/powerpc64/reboot.o: /root/Orion/kernel/kdb/arch/powerpc64/reboot.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/kdb.h \
+ /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/arch/powerpc64/rtas.h \
+ /root/Orion/kernel/src/arch/powerpc64/1275tree.h \
+ /root/Orion/kernel/src/generic/sync.h
+.depend kdb/api/v4/input.o: /root/Orion/kernel/kdb/api/v4/input.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/input.h \
+ /root/Orion/kernel/src/kdb/kdb.h /root/Orion/kernel/src/kdb/cmd.h \
+ /root/Orion/kernel/src/kdb/linker_set.h kdb_class_helper.h \
+ kdb_autogenerated_protos.h /root/Orion/kernel/src/kdb/console.h \
+ /root/Orion/kernel/src/api/v4/space.h \
+ /root/Orion/kernel/src/generic/kmemory.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/api/v4/tcb.h \
+ /root/Orion/kernel/src/api/v4/types.h \
+ /root/Orion/kernel/src/api/v4/queuestate.h \
+ /root/Orion/kernel/src/api/v4/threadstate.h \
+ /root/Orion/kernel/src/api/v4/resources.h \
+ /root/Orion/kernel/src/bitmask.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
+ /root/Orion/kernel/src/api/v4/preempt.h \
+ /root/Orion/kernel/src/api/v4/ipc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
+ /root/Orion/kernel/src/api/v4/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/msr.h
+.depend kdb/api/v4/kernelinterface.o: /root/Orion/kernel/kdb/api/v4/kernelinterface.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/kdb.h \
+ /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h
+.depend kdb/api/v4/tcb.o: /root/Orion/kernel/kdb/api/v4/tcb.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/kdb.h \
+ /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/kdb/input.h /root/Orion/kernel/src/api/v4/tcb.h \
+ /root/Orion/kernel/src/api/v4/types.h \
+ /root/Orion/kernel/src/api/v4/queuestate.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/api/v4/threadstate.h \
+ /root/Orion/kernel/src/api/v4/space.h \
+ /root/Orion/kernel/src/generic/kmemory.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/api/v4/resources.h \
+ /root/Orion/kernel/src/bitmask.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
+ /root/Orion/kernel/src/api/v4/preempt.h \
+ /root/Orion/kernel/src/api/v4/ipc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
+ /root/Orion/kernel/src/api/v4/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/msr.h \
+ /root/Orion/kernel/src/api/v4/schedule.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
+ /root/Orion/kernel/src/kdb/tracepoints.h \
+ /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
+.depend kdb/api/v4/thread.o: /root/Orion/kernel/kdb/api/v4/thread.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/kdb/tid_format.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/api/v4/tcb.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/types.h \
+ /root/Orion/kernel/src/api/v4/queuestate.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/api/v4/threadstate.h \
+ /root/Orion/kernel/src/api/v4/space.h \
+ /root/Orion/kernel/src/generic/kmemory.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/api/v4/resources.h \
+ /root/Orion/kernel/src/bitmask.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
+ /root/Orion/kernel/src/api/v4/preempt.h \
+ /root/Orion/kernel/src/api/v4/ipc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
+ /root/Orion/kernel/src/api/v4/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/msr.h
+.depend kdb/api/v4/schedule-rr.o: /root/Orion/kernel/kdb/api/v4/schedule-rr.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/kdb.h \
+ /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/api/v4/tcb.h \
+ /root/Orion/kernel/src/api/v4/types.h \
+ /root/Orion/kernel/src/api/v4/queuestate.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/api/v4/threadstate.h \
+ /root/Orion/kernel/src/api/v4/space.h \
+ /root/Orion/kernel/src/generic/kmemory.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/api/v4/resources.h \
+ /root/Orion/kernel/src/bitmask.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
+ /root/Orion/kernel/src/api/v4/preempt.h \
+ /root/Orion/kernel/src/api/v4/ipc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
+ /root/Orion/kernel/src/api/v4/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/msr.h \
+ /root/Orion/kernel/src/api/v4/smp.h \
+ /root/Orion/kernel/src/api/v4/schedule.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
+ /root/Orion/kernel/src/kdb/tracepoints.h \
+ /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
+.depend kdb/api/v4/sigma0.o: /root/Orion/kernel/kdb/api/v4/sigma0.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/cmd.h \
+ /root/Orion/kernel/src/kdb/linker_set.h /root/Orion/kernel/src/kdb/kdb.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/kdb/input.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/schedule.h \
+ /root/Orion/kernel/src/api/v4/tcb.h \
+ /root/Orion/kernel/src/api/v4/types.h \
+ /root/Orion/kernel/src/api/v4/queuestate.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/api/v4/threadstate.h \
+ /root/Orion/kernel/src/api/v4/space.h \
+ /root/Orion/kernel/src/generic/kmemory.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/api/v4/resources.h \
+ /root/Orion/kernel/src/bitmask.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
+ /root/Orion/kernel/src/api/v4/preempt.h \
+ /root/Orion/kernel/src/api/v4/ipc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
+ /root/Orion/kernel/src/api/v4/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/msr.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/schedule.h \
+ /root/Orion/kernel/src/kdb/tracepoints.h \
+ /root/Orion/kernel/src/kdb/tracebuffer.h \
+ /root/Orion/kernel/src/api/v4/cpu.h arch/powerpc64/atomic.h \
+ arch/powerpc64/tracebuffer.h \
+ /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
+.depend kdb/arch/powerpc64/prepost.o: /root/Orion/kernel/kdb/arch/powerpc64/prepost.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/kdb/kdb.h \
+ /root/Orion/kernel/src/kdb/cmd.h /root/Orion/kernel/src/kdb/linker_set.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h
+.depend kdb/arch/powerpc64/frame.o: /root/Orion/kernel/kdb/arch/powerpc64/frame.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/cmd.h \
+ /root/Orion/kernel/src/kdb/linker_set.h /root/Orion/kernel/src/kdb/kdb.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/kdb/input.h /root/Orion/kernel/src/api/v4/tcb.h \
+ /root/Orion/kernel/src/api/v4/types.h \
+ /root/Orion/kernel/src/api/v4/queuestate.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/api/v4/threadstate.h \
+ /root/Orion/kernel/src/api/v4/space.h \
+ /root/Orion/kernel/src/generic/kmemory.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/api/v4/resources.h \
+ /root/Orion/kernel/src/bitmask.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
+ /root/Orion/kernel/src/api/v4/preempt.h \
+ /root/Orion/kernel/src/api/v4/ipc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
+ /root/Orion/kernel/src/api/v4/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/msr.h
+.depend kdb/arch/powerpc64/spr.o: /root/Orion/kernel/kdb/arch/powerpc64/spr.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/cmd.h \
+ /root/Orion/kernel/src/kdb/linker_set.h /root/Orion/kernel/src/kdb/kdb.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/arch/powerpc64/ppc64_registers.h
+.depend kdb/arch/powerpc64/dabr.o: /root/Orion/kernel/kdb/arch/powerpc64/dabr.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/cmd.h \
+ /root/Orion/kernel/src/kdb/linker_set.h /root/Orion/kernel/src/kdb/kdb.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/kdb/input.h \
+ /root/Orion/kernel/src/arch/powerpc64/ppc64_registers.h
+.depend kdb/arch/powerpc64/single_step.o: /root/Orion/kernel/kdb/arch/powerpc64/single_step.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/cmd.h \
+ /root/Orion/kernel/src/kdb/linker_set.h /root/Orion/kernel/src/kdb/kdb.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/kdb/input.h \
+ /root/Orion/kernel/src/arch/powerpc64/msr.h
+.depend kdb/generic/linear_ptab_dump.o: /root/Orion/kernel/kdb/generic/linear_ptab_dump.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/cmd.h \
+ /root/Orion/kernel/src/kdb/linker_set.h /root/Orion/kernel/src/kdb/kdb.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/kdb/input.h \
+ /root/Orion/kernel/src/generic/linear_ptab.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgent.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h \
+ /root/Orion/kernel/src/generic/kmemory.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h \
+ /root/Orion/kernel/src/api/v4/tcb.h \
+ /root/Orion/kernel/src/api/v4/types.h \
+ /root/Orion/kernel/src/api/v4/queuestate.h \
+ /root/Orion/kernel/src/api/v4/threadstate.h \
+ /root/Orion/kernel/src/api/v4/space.h \
+ /root/Orion/kernel/src/api/v4/resources.h \
+ /root/Orion/kernel/src/bitmask.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
+ /root/Orion/kernel/src/api/v4/preempt.h \
+ /root/Orion/kernel/src/api/v4/ipc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
+ /root/Orion/kernel/src/api/v4/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/msr.h
+.depend kdb/generic/mapping.o: /root/Orion/kernel/kdb/generic/mapping.cc \
+ /root/Orion/kernel/rpb8/config/config.h \
+ /root/Orion/kernel/src/generic/macros.h \
+ /root/Orion/kernel/src/generic/config.h \
+ /root/Orion/kernel/src/api/v4/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/config.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/offsets.h \
+ /root/Orion/kernel/src/arch/powerpc64/cache.h \
+ /root/Orion/kernel/src/generic/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/types.h \
+ /root/Orion/kernel/src/arch/powerpc64/page.h \
+ /root/Orion/kernel/src/platform/ofpower4/config.h \
+ /root/Orion/kernel/src/generic/types.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h /root/Orion/kernel/src/kdb/cmd.h \
+ /root/Orion/kernel/src/kdb/linker_set.h /root/Orion/kernel/src/kdb/kdb.h \
+ kdb_class_helper.h kdb_autogenerated_protos.h \
+ /root/Orion/kernel/src/kdb/input.h \
+ /root/Orion/kernel/src/generic/mapping.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgent.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent_inline.h \
+ /root/Orion/kernel/src/generic/kmemory.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/api/v4/queueing.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pghash.h \
+ /root/Orion/kernel/src/generic/linear_ptab.h
 .depend src/glue/v4-powerpc64/asmsyms.o: /root/Orion/kernel/src/glue/v4-powerpc64/asmsyms.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \
@@ -1323,30 +2746,39 @@
  /root/Orion/kernel/src/generic/mkasmsym.h \
  /root/Orion/kernel/src/api/v4/threadstate.h \
  /root/Orion/kernel/src/api/v4/tcb.h /root/Orion/kernel/src/debug.h \
+ /root/Orion/kernel/src/arch/powerpc64/debug.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
+ /root/Orion/kernel/src/arch/powerpc64/frame.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
+ /root/Orion/kernel/src/tracebuffer.h \
  /root/Orion/kernel/src/api/v4/types.h \
  /root/Orion/kernel/src/api/v4/queuestate.h \
  /root/Orion/kernel/src/api/v4/queueing.h \
  /root/Orion/kernel/src/api/v4/space.h \
  /root/Orion/kernel/src/generic/kmemory.h \
- /root/Orion/kernel/src/generic/sync.h glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/generic/sync.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/space.h \
+ /root/Orion/kernel/src/arch/powerpc64/vsid_asid.h \
+ /root/Orion/kernel/src/arch/powerpc64/pghash.h \
+ /root/Orion/kernel/src/arch/powerpc64/power4.h \
+ /root/Orion/kernel/src/generic/memregion.h \
+ /root/Orion/kernel/src/api/v4/fpage.h \
+ /root/Orion/kernel/src/api/v4/thread.h \
+ /root/Orion/kernel/src/api/v4/kernelinterface.h \
+ /root/Orion/kernel/src/api/v4/memdesc.h \
+ /root/Orion/kernel/src/api/v4/procdesc.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/pgent.h \
+ /root/Orion/kernel/src/arch/powerpc64/pgtab.h \
+ /root/Orion/kernel/src/glue/v4-powerpc64/hwspace.h \
  /root/Orion/kernel/src/api/v4/resources.h \
  /root/Orion/kernel/src/bitmask.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/resources.h \
- /root/Orion/kernel/src/api/v4/thread.h \
- /root/Orion/kernel/src/api/v4/kernelinterface.h \
- /root/Orion/kernel/src/generic/memregion.h \
- /root/Orion/kernel/src/api/v4/memdesc.h \
- /root/Orion/kernel/src/api/v4/procdesc.h \
  /root/Orion/kernel/src/api/v4/preempt.h \
- /root/Orion/kernel/src/api/v4/fpage.h \
  /root/Orion/kernel/src/api/v4/ipc.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/ktcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/utcb.h \
  /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h \
  /root/Orion/kernel/src/api/v4/syscalls.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h \
- /root/Orion/kernel/src/arch/powerpc64/frame.h \
- /root/Orion/kernel/src/glue/v4-powerpc64/abi.h \
  /root/Orion/kernel/src/arch/powerpc64/msr.h \
  /root/Orion/kernel/src/arch/powerpc64/rtas.h \
  /root/Orion/kernel/src/arch/powerpc64/1275tree.h
