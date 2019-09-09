@@ -871,7 +871,7 @@
  /home/tyson/Orion/kernel/src/generic/types.h \
  /home/tyson/Orion/kernel/src/arch/x86/types.h \
  /home/tyson/Orion/kernel/src/arch/x86/x32/types.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+ /usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h \
  /home/tyson/Orion/kernel/src/debug.h \
  /home/tyson/Orion/kernel/src/arch/x86/debug.h \
  /home/tyson/Orion/kernel/src/generic/kmemory.h \
@@ -2552,7 +2552,7 @@
  /home/tyson/Orion/kernel/src/generic/types.h \
  /home/tyson/Orion/kernel/src/arch/x86/types.h \
  /home/tyson/Orion/kernel/src/arch/x86/x32/types.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+ /usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h \
  /home/tyson/Orion/kernel/src/generic/sync.h \
  /home/tyson/Orion/kernel/src/api/v4/thread.h \
  /home/tyson/Orion/kernel/src/api/v4/kernelinterface.h \
