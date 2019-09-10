@@ -1,6 +1,6 @@
 /*********************************************************************
  *                
- * Copyright (C) 2002, 2006,  Karlsruhe University
+ * Copyright (C) 2002,  Karlsruhe University
  *                
  * File path:     platform/efi/acpi.cc
  * Description:   ACPI support code for EFI
@@ -26,7 +26,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id: acpi.cc,v 1.5 2006/05/24 09:43:56 stoess Exp $
+ * $Id: acpi.cc,v 1.4 2003/09/24 19:05:43 skoglund Exp $
  *                
  ********************************************************************/
 #include <debug.h>
@@ -36,7 +36,7 @@
 /* ACPI 2.0 Specification, 5.2.4.2
    Finding the RSDP on EFI Enabled Systems */
 
-acpi_rsdp_t* acpi_rsdp_t::locate(addr_t addr)
+acpi_rsdp_t* acpi_rsdp_t::locate()
 {
     acpi_rsdp_t *p;
 
