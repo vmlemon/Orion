@@ -45,16 +45,16 @@ kerneldir=	$(top_builddir)
 
 
 SHELL=		/bin/bash
-CC=		clang
+CC=		gcc-6
 CXX=		$(CC) -x c++
 AS=		$(CC)
-CFLAGS=		-fno-stack-protector -nostdinc -g -O2 -m64 -mno-red-zone   -fno-stack-protector -lssp
+CFLAGS=		-nostdinc -g -O2 -m64 -mno-red-zone   -fno-stack-protector -lssp
 CXXFLAGS=	$(CFLAGS) -fno-exceptions
-LDFLAGS=	-N -L$(top_builddir)/lib -L/usr/bin/../lib/gcc/x86_64-linux-gnu/8 -nostdlib  -melf_x86_64
-CPPFLAGS=	-I$(top_srcdir)/include -I$(top_builddir) -I/usr/bin/../lib/gcc/x86_64-linux-gnu/8/include 
+LDFLAGS=	-N -L$(top_builddir)/lib -L/usr/lib/gcc/x86_64-linux-gnu/6 -nostdlib  -melf_x86_64
+CPPFLAGS=	-I$(top_srcdir)/include -I$(top_builddir) -I/usr/lib/gcc/x86_64-linux-gnu/6/include 
 LGCC=		-lgcc
 
-TOOLPREFIX=	clang
+TOOLPREFIX=	
 AR=		$(TOOLPREFIX)ar
 RANLIB=		$(TOOLPREFIX)ranlib
 LD=		$(TOOLPREFIX)ld

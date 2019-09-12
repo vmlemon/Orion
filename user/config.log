@@ -43,65 +43,64 @@ PATH: /snap/bin
 ## ----------- ##
 
 configure:1941: checking for gcc
-configure:1968: result: clang
+configure:1968: result: gcc-6
 configure:2197: checking for C compiler version
-configure:2206: clang --version >&5
-clang version 8.0.0-3 (tags/RELEASE_800/final)
-Target: x86_64-pc-linux-gnu
-Thread model: posix
-InstalledDir: /usr/bin
+configure:2206: gcc-6 --version >&5
+gcc-6 (Ubuntu 6.5.0-2ubuntu1) 6.5.0 20181026
+Copyright (C) 2017 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
 configure:2217: $? = 0
-configure:2206: clang -v >&5
-clang version 8.0.0-3 (tags/RELEASE_800/final)
-Target: x86_64-pc-linux-gnu
+configure:2206: gcc-6 -v >&5
+Using built-in specs.
+COLLECT_GCC=gcc-6
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/6/lto-wrapper
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 6.5.0-2ubuntu1' --with-bugurl=file:///usr/share/doc/gcc-6/README.Bugs --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++ --prefix=/usr --with-as=/usr/bin/x86_64-linux-gnu-as --with-ld=/usr/bin/x86_64-linux-gnu-ld --program-suffix=-6 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
 Thread model: posix
-InstalledDir: /usr/bin
-Found candidate GCC installation: /usr/bin/../lib/gcc/i686-linux-gnu/9
-Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/6
-Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/6.5.0
-Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/7
-Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/7.4.0
-Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/8
-... rest of stderr output deleted ...
+gcc version 6.5.0 20181026 (Ubuntu 6.5.0-2ubuntu1) 
 configure:2217: $? = 0
-configure:2206: clang -V >&5
-clang: error: argument to '-V' is missing (expected 1 value)
-clang: error: no input files
+configure:2206: gcc-6 -V >&5
+gcc-6: error: unrecognized command line option '-V'
+gcc-6: fatal error: no input files
+compilation terminated.
 configure:2217: $? = 1
-configure:2206: clang -qversion >&5
-clang: error: unknown argument '-qversion', did you mean '--version'?
-clang: error: no input files
+configure:2206: gcc-6 -qversion >&5
+gcc-6: error: unrecognized command line option '-qversion'; did you mean '--version'?
+gcc-6: fatal error: no input files
+compilation terminated.
 configure:2217: $? = 1
 configure:2237: checking whether the C compiler works
-configure:2259: clang    conftest.c  >&5
+configure:2259: gcc-6    conftest.c  >&5
 configure:2263: $? = 0
 configure:2311: result: yes
 configure:2314: checking for C compiler default output file name
 configure:2316: result: a.out
 configure:2322: checking for suffix of executables
-configure:2329: clang -o conftest    conftest.c  >&5
+configure:2329: gcc-6 -o conftest    conftest.c  >&5
 configure:2333: $? = 0
 configure:2355: result: 
 configure:2377: checking whether we are cross compiling
-configure:2385: clang -o conftest    conftest.c  >&5
+configure:2385: gcc-6 -o conftest    conftest.c  >&5
 configure:2389: $? = 0
 configure:2396: ./conftest
 configure:2400: $? = 0
 configure:2388: result: no
 configure:2393: checking for suffix of object files
-configure:2415: clang -c   conftest.c >&5
+configure:2415: gcc-6 -c   conftest.c >&5
 configure:2419: $? = 0
 configure:2440: result: o
 configure:2444: checking whether we are using the GNU C compiler
-configure:2463: clang -c   conftest.c >&5
+configure:2463: gcc-6 -c   conftest.c >&5
 configure:2463: $? = 0
 configure:2472: result: yes
-configure:2481: checking whether clang accepts -g
-configure:2501: clang -c -g  conftest.c >&5
+configure:2481: checking whether gcc-6 accepts -g
+configure:2501: gcc-6 -c -g  conftest.c >&5
 configure:2501: $? = 0
 configure:2542: result: yes
-configure:2559: checking for clang option to accept ISO C89
-configure:2622: clang  -c -g -O2  conftest.c >&5
+configure:2559: checking for gcc-6 option to accept ISO C89
+configure:2622: gcc-6  -c -g -O2  conftest.c >&5
 configure:2622: $? = 0
 configure:2635: result: none needed
 configure:2698: checking for a BSD-compatible install
@@ -114,9 +113,9 @@ configure:2823: checking for gawk
 configure:2839: found /usr/bin/gawk
 configure:2850: result: gawk
 configure:2934: checking location of libgcc.a
-configure:2938: result: /usr/bin/../lib/gcc/x86_64-linux-gnu/8
+configure:2938: result: /usr/lib/gcc/x86_64-linux-gnu/6
 configure:2941: checking location of stdarg.h
-configure:2961: result: /usr/bin/../lib/gcc/x86_64-linux-gnu/8/include
+configure:2961: result: /usr/lib/gcc/x86_64-linux-gnu/6/include
 configure:2968: checking kernel build directory
 configure:3010: result: $(top_builddir)
 configure:3212: creating ./config.status
@@ -165,7 +164,7 @@ config.status:995: config.h is unchanged
 
 ac_cv_c_compiler_gnu=yes
 ac_cv_env_CC_set=set
-ac_cv_env_CC_value=clang
+ac_cv_env_CC_value=gcc-6
 ac_cv_env_CFLAGS_set=
 ac_cv_env_CFLAGS_value=
 ac_cv_env_CPPFLAGS_set=
@@ -183,7 +182,7 @@ ac_cv_env_target_alias_value=
 ac_cv_objext=o
 ac_cv_path_install='/usr/bin/install -c'
 ac_cv_prog_AWK=gawk
-ac_cv_prog_ac_ct_CC=clang
+ac_cv_prog_ac_ct_CC=gcc-6
 ac_cv_prog_cc_c89=
 ac_cv_prog_cc_g=yes
 ac_cv_prog_make_make_set=yes
@@ -194,9 +193,9 @@ ac_cv_prog_make_make_set=yes
 
 ARCH='amd64'
 AWK='gawk'
-CC='clang'
-CFLAGS='-fno-stack-protector -nostdinc -g -O2 -m64 -mno-red-zone'
-CPPFLAGS='-I$(top_srcdir)/include -I$(top_builddir) -I/usr/bin/../lib/gcc/x86_64-linux-gnu/8/include '
+CC='gcc-6'
+CFLAGS='-nostdinc -g -O2 -m64 -mno-red-zone'
+CPPFLAGS='-I$(top_srcdir)/include -I$(top_builddir) -I/usr/lib/gcc/x86_64-linux-gnu/6/include '
 CROSSCC=''
 CXXFLAGS='-fno-exceptions '
 DEFS='-DHAVE_CONFIG_H'
@@ -209,7 +208,7 @@ INSTALL_PROGRAM='${INSTALL}'
 INSTALL_SCRIPT='${INSTALL}'
 KERNEL='x86-kernel'
 KICKSTART_LINKBASE='00100000'
-LDFLAGS='-N -L$(top_builddir)/lib -L/usr/bin/../lib/gcc/x86_64-linux-gnu/8 -nostdlib  -melf_x86_64'
+LDFLAGS='-N -L$(top_builddir)/lib -L/usr/lib/gcc/x86_64-linux-gnu/6 -nostdlib  -melf_x86_64'
 LIBOBJS=''
 LIBS=''
 LN_S='ln -s'
@@ -227,8 +226,8 @@ ROOTTASK_LINKBASE='01000000'
 SET_MAKE=''
 SHELL='/bin/bash'
 SIGMA0_LINKBASE='00f00000'
-TOOLPREFIX='clang'
-ac_ct_CC='clang'
+TOOLPREFIX=''
+ac_ct_CC='gcc-6'
 bindir='${exec_prefix}/bin'
 build_alias=''
 datadir='${datarootdir}'
