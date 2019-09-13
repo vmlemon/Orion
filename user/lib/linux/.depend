@@ -1,16 +1,15 @@
-fakekern.o: fakekern.c
 stdio.o: stdio.c ../../include/errno.h ../../include/sys/cdefs.h \
  ../../include/fcntl.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
  ../../include/unistd.h ../../include/stdio.h ../../include/sys/_null.h \
- ../../include/local.h
+ local.h wcio.h fileext.h
 fopen.o: fopen.c ../../include/sys/cdefs.h namespace.h \
  ../../include/sys/types.h ../../include/sys/stat.h \
  ../../include/sys/_timespec.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
  ../../include/sys/time.h ../../include/fcntl.h ../../include/unistd.h \
  ../../include/stdio.h ../../include/sys/_null.h ../../include/errno.h \
- ../../include/limits.h un-namespace.h ../../include/local.h
+ ../../include/limits.h un-namespace.h local.h wcio.h fileext.h
 nedmalloc.o: nedmalloc.c ../../include/stdio.h ../../include/sys/cdefs.h \
  ../../include/sys/_null.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
@@ -29,5 +28,5 @@ fread.o: fread.c ../../include/sys/cdefs.h namespace.h \
  ../../include/errno.h ../../include/stdint.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
  machine/_stdint.h sys/_stdint.h ../../include/stdio.h \
- ../../include/sys/_null.h ../../include/string.h un-namespace.h \
- ../../include/local.h libc_private.h
+ ../../include/sys/_null.h ../../include/string.h un-namespace.h local.h \
+ wcio.h fileext.h libc_private.h
