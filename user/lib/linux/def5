@@ -1,0 +1,13 @@
+===> nedmalloc.c
+gcc-6 -I../../include -I../.. -I/usr/lib/gcc/x86_64-linux-gnu/6/include   -nostdinc -g -O2 -m64 -mno-red-zone   -fno-stack-protector -lssp -O2 -g -Wall -Wshadow   -fno-stack-protector  -Wconversion -std=c99 -c nedmalloc.c -o nedmalloc.o
+nedmalloc.c:117:4: warning: #warning DEBUG may not be defined but without NDEBUG being defined allocator will run with assert checking! Define NDEBUG to run at full speed. [-Wcpp]
+   #warning DEBUG may not be defined but without NDEBUG being defined allocator will run with assert checking! Define NDEBUG to run at full speed.
+    ^~~~~~~
+In file included from ../../include/fcntl.h:50:0,
+                 from malloc.c.h:1445,
+                 from nedmalloc.c:168:
+../../include/sys/_types.h:35:28: fatal error: machine/_types.h: No such file or directory
+ #include <machine/_types.h>
+                            ^
+compilation terminated.
+make: *** [../../Mk/l4.build.mk:62: nedmalloc.o] Error 1
