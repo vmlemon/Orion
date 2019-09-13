@@ -22,6 +22,7 @@
 //In order to be compatible with FreeBSD headers, we need to lace through all of the following:
 typedef L4_SignedWord32_t __int32_t;
 typedef L4_SignedWord64_t __int64_t;
+typedef L4_SignedWord16_t __int16_t;
 typedef L4_Word32_t __uint32_t;
 typedef L4_Word64_t __uint64_t;
 typedef L4_Word16_t __uint16_t;
