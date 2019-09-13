@@ -47,11 +47,15 @@ typedef L4_Word8_t __uint8_t;
 //		../../include/sys/_types.h:66:9: error: unknown type name ‘__uint32_t’
 //		../../include/sys/_types.h:71:9: error: unknown type name ‘__int64_t’
 //		../../include/sys/_types.h:97:9: error: unknown type name ‘__uint_least16_t’
+//These are seemingly-specific to FreeBSD
+typedef __uint16_t      __uint_least16_t;
+typedef __uint32_t      __uint_least32_t;
 //		../../include/sys/_types.h:98:9: error: unknown type name ‘__uint_least32_t’
 //		../../include/sys/_types.h:113:9: error: unknown type name ‘__uint64_t’
 //		../../include/sys/_types.h:115:9: error: unknown type name ‘__uint32_t’
 //		../../include/sys/_types.h:123:2: error: unknown type name ‘__int64_t’
 //		../../include/sys/_types.h:126:9: error: unknown type name ‘__uintmax_t’
+typedef __uint64_t      __uintmax_t;
 //
 
 
