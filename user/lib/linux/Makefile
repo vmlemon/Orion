@@ -1,8 +1,9 @@
 ######################################################################
 ##                
-## Copyright (C) 2003-2004, 2007,  Karlsruhe University
+## Copyright (C) 2003, 2007, 2010,  Karlsruhe University
+## Copyright (C) 2019 Tyson Key <tyson.key@gmail.com>
 ##                
-## File path:     grabmem/Makefile.in
+## File path:     Makefile.in
 ##                
 ## Redistribution and use in source and binary forms, with or without
 ## modification, are permitted provided that the following conditions
@@ -25,30 +26,24 @@
 ## OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 ## SUCH DAMAGE.
 ##                
-## $Id: Makefile.in,v 1.2 2004/04/22 15:08:18 skoglund Exp $
+## $Id: Makefile.in,v 1.11 2006/02/23 21:07:58 ud3 Exp $
 ##                
 ######################################################################
 
-srcdir=		.
-top_srcdir=	../..
-top_builddir=	../..
+srcdir=		@srcdir@
+top_srcdir=	@top_srcdir@
+top_builddir=	@top_builddir@
 
 include $(top_srcdir)/Mk/l4.base.mk
 
 
-PROGRAM=	syslaunch
-PROGRAM_DEPS=	$(top_builddir)/lib/l4/libl4.a \
-		$(top_builddir)/lib/io/libio.a #\
-		#$(top_builddir)/lib/libl4e/libl4e.a\
-		#$(top_builddir)/lib/libelf/libelf.a
+#powerpc_SRCS=	1275tree.cc fdt.cc 
 
-SRCS=		crt0-$(ARCH).S syslaunch.cc #nedmalloc.c #clefia_ref.c #$(wildcard *.c)  
+LIBRARY=	linux
+SRCS=		 $(wildcard *.c) $(wildcard *.cc) $(ARCH).cc $($(ARCH)_SRCS)
 
-LIBS+=		-ll4 -lio # -ll4e -lelf
-LDFLAGS+=	-Ttext=$(ROOTTASK_LINKBASE)
+include $(top_srcdir)/Mk/l4.lib.mk
 
-CFLAGS_powerpc+=	-fno-builtin -msoft-float
-CXXFLAGS_powerpc+=	-fno-rtti
-CFLAGS_ia32 += -std=c++11  -DINT_MAX -DUCHAR_MAX
-
-include $(top_srcdir)/Mk/l4.prog.mk
+test:
+	@echo SRCS=${SRCS}
+@echo OBJS=${OBJS}
