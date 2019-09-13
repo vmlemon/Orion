@@ -46,7 +46,7 @@ include $(top_srcdir)/Mk/l4.base.mk
 #powerpc_SRCS=	1275tree.cc fdt.cc 
 
 LIBRARY=	linux
-SRCS=		 #$(wildcard *.c) $(wildcard *.cc) #$(ARCH).cc $($(ARCH)_SRCS)
+SRCS=		 $(wildcard *.c) $(wildcard *.cc) #$(ARCH).cc $($(ARCH)_SRCS)
 
 include $(top_srcdir)/Mk/l4.lib.mk
 
