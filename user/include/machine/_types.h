@@ -43,4 +43,13 @@ typedef	__int64_t	__ssize_t;
 typedef	__int32_t	__ssize_t;
 #endif
 
+//__clock_t can be either unsigned long, or __int32_t
+#ifdef	__LP64__
+typedef	__int32_t	__clock_t;		/* clock()... */
+typedef	__int64_t	__time_t;		/* time()... */
+#else
+typedef	unsigned long	__clock_t;
+typedef	__int32_t	__time_t;
+#endif
+
 #endif
