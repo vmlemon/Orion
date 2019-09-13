@@ -1,6 +1,8 @@
-nedmalloc.o: nedmalloc.c ../../include/stdio.h nedmalloc.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h ../../include/errno.h \
- ../../include/sys/cdefs.h malloc.c.h ../../include/sys/types.h \
+nedmalloc.o: nedmalloc.c ../../include/stdio.h ../../include/sys/cdefs.h \
+ ../../include/sys/_null.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ nedmalloc.h /usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h \
+ ../../include/errno.h malloc.c.h ../../include/sys/types.h \
  ../../include/time.h ../../include/stdlib.h ../../include/string.h \
  ../../include/sys/mman.h ../../include/fcntl.h ../../include/unistd.h \
  ../../include/pthread.h ../../include/sys/param.h \
