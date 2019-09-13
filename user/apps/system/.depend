@@ -8,19 +8,5 @@ syslaunch.o: syslaunch.cc syslaunch.h ../../include/l4io.h \
  ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
  ../../include/l4/ipc.h ../../include/l4/thread.h \
  ../../include/l4/kdebug.h
-embedded_printf.o: ned14-nedmalloc-c327716/embedded_printf.c
-make_pgos.o: ned14-nedmalloc-c327716/make_pgos.c stdio.h stdlib.h \
- assert.h ned14-nedmalloc-c327716/nedmalloc.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h
-nedmalloc.o: ned14-nedmalloc-c327716/nedmalloc.c stdio.h \
- ned14-nedmalloc-c327716/nedmalloc.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h errno.h \
- ned14-nedmalloc-c327716/malloc.c.h sys/types.h time.h stdlib.h string.h \
- sys/mman.h fcntl.h unistd.h pthread.h sys/param.h sys/time.h
-test.o: ned14-nedmalloc-c327716/test.c stdio.h stdlib.h string.h assert.h \
- ned14-nedmalloc-c327716/nedmalloc.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h pthread.h sys/time.h \
- time.h unistd.h
-usermodepageallocator.o: ned14-nedmalloc-c327716/usermodepageallocator.c
-winpatcher.o: ned14-nedmalloc-c327716/winpatcher.c \
- ned14-nedmalloc-c327716/embedded_printf.h stdlib.h assert.h
+nedmalloc.o: nedmalloc.c stdio.h nedmalloc.h errno.h malloc.c.h \
+ sys/time.h
