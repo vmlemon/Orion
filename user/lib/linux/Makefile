@@ -49,7 +49,7 @@ LIBRARY=	linux
 SRCS=		 $(wildcard *.c) $(wildcard *.cc) #$(ARCH).cc $($(ARCH)_SRCS)
 
 include $(top_srcdir)/Mk/l4.lib.mk
-
+CXXFLAGS += -D_WANT_FREEBSD11_STAT
 test:
 	@echo SRCS=${SRCS}
 	@echo OBJS=${OBJS}

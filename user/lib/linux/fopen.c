@@ -50,6 +50,10 @@ __FBSDID("$FreeBSD$");
 
 #include "local.h"
 
+//#define __STAT_TIME_T_EXT
+//Workaround
+
+
 FILE *
 fopen(const char * __restrict file, const char * __restrict mode)
 {

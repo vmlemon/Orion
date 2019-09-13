@@ -1,3 +1,7 @@
+fscanf.o: fscanf.c ../../include/stdio.h ../../include/sys/cdefs.h \
+ ../../include/sys/_null.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ /usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h
 stdio.o: stdio.c ../../include/errno.h ../../include/sys/cdefs.h \
  ../../include/fcntl.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
@@ -30,3 +34,10 @@ fread.o: fread.c ../../include/sys/cdefs.h namespace.h \
  machine/_stdint.h sys/_stdint.h ../../include/stdio.h \
  ../../include/sys/_null.h ../../include/string.h un-namespace.h local.h \
  wcio.h fileext.h libc_private.h
+vfscanf.o: vfscanf.c ctype.h inttypes.h \
+ /usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h \
+ /usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h ../../include/stdio.h \
+ ../../include/sys/cdefs.h ../../include/sys/_null.h \
+ ../../include/sys/_types.h ../../include/machine/_types.h \
+ ../../include/l4/amd64/types.h ../../include/stdlib.h local.h wcio.h \
+ fileext.h
