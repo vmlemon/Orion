@@ -8,7 +8,8 @@ syslaunch.o: syslaunch.cc syslaunch.h ../../include/l4io.h \
  ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
  ../../include/l4/ipc.h ../../include/l4/thread.h \
  ../../include/l4/kdebug.h
-test-fseek.o: test-fseek.c ../../include/stdio.h \
+CacheLineSize.o: CacheLineSize.c CacheLineSize.h \
+ /usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h ../../include/stdio.h \
  ../../include/sys/cdefs.h ../../include/sys/_null.h \
  ../../include/sys/_types.h ../../include/machine/_types.h \
- ../../include/l4/amd64/types.h ../test-skeleton.c
+ ../../include/l4/amd64/types.h
