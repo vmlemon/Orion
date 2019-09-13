@@ -32,6 +32,14 @@ typedef __uint16_t      __uint_least16_t;
 typedef __uint32_t      __uint_least32_t;
 typedef __uint64_t      __uintmax_t;
 
+/* Dynamic size_t() - on FreeBSD, this is __uint64_t (LP64), or __uint32_t */
+typedef	L4_Size_t	__size_t; 
 
+/* This is the way that FreeBSD does it... */
+#ifdef	__LP64__
+typedef	__int64_t	__ssize_t;	
+#else
+typedef	__int32_t	__ssize_t;
+#endif
 
 #endif
