@@ -14,6 +14,7 @@
 #include <l4/powerpc64/types.h>
 #endif
 
+#ifdef __powerpc__
 /* On PowerPC 32-bit (standard configuration) */
 #include <l4/powerpc/types.h>
 #endif
@@ -21,25 +22,27 @@
 //
 //	In order to be compatible with FreeBSD headers, we need to lace through all of the following:
 //  		../../include/sys/_types.h:40:9: error: unknown type name ‘__int32_t’
-typedef L4_SignedWord32_t __int32_t’
+typedef L4_SignedWord32_t __int32_t;
 //		../../include/sys/_types.h:41:9: error: unknown type name ‘__int64_t’
-typedef L4_SignedWord64_t __int64_t
+typedef L4_SignedWord64_t __int64_t;
 //		../../include/sys/_types.h:43:9: error: unknown type name ‘__uint32_t’
-typedef L4_Word32_t __uint32_t
+typedef L4_Word32_t __uint32_t;
 //		../../include/sys/_types.h:44:9: error: unknown type name ‘__uint64_t’
-typedef L4_Word64_t __uint64_t
+typedef L4_Word64_t __uint64_t;
 //		../../include/sys/_types.h:45:9: error: unknown type name ‘__uint64_t’
 //		../../include/sys/_types.h:46:9: error: unknown type name ‘__uint32_t’
 //		../../include/sys/_types.h:47:9: error: unknown type name ‘__int64_t’
 //		../../include/sys/_types.h:48:9: error: unknown type name ‘__uint64_t’
 //		../../include/sys/_types.h:50:9: error: unknown type name ‘__int32_t’
 //		../../include/sys/_types.h:51:9: error: unknown type name ‘__uint16_t’
+typedef L4_Word16_t __uint16_t;
 //		../../include/sys/_types.h:54:9: error: unknown type name ‘__uint64_t’
 //		../../include/sys/_types.h:55:9: error: unknown type name ‘__int64_t’
 //		../../include/sys/_types.h:56:9: error: unknown type name ‘__int64_t’
 //		../../include/sys/_types.h:57:9: error: unknown type name ‘__int32_t’
 //		../../include/sys/_types.h:58:9: error: unknown type name ‘__int64_t’
 //		../../include/sys/_types.h:61:9: error: unknown type name ‘__uint8_t’
+typedef L4_Word8_t __uint8_t;
 //		../../include/sys/_types.h:62:9: error: unknown type name ‘__uint32_t’
 //		../../include/sys/_types.h:66:9: error: unknown type name ‘__uint32_t’
 //		../../include/sys/_types.h:71:9: error: unknown type name ‘__int64_t’

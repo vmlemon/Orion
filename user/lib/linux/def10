@@ -1,0 +1,4106 @@
+===> nedmalloc.c
+gcc-6 -I../../include -I../.. -I/usr/lib/gcc/x86_64-linux-gnu/6/include   -nostdinc -g -O2 -m64 -mno-red-zone   -fno-stack-protector -lssp -O2 -g -Wall -Wshadow   -fno-stack-protector  -Wconversion -std=c99 -c nedmalloc.c -o nedmalloc.o
+nedmalloc.c:117:4: warning: #warning DEBUG may not be defined but without NDEBUG being defined allocator will run with assert checking! Define NDEBUG to run at full speed. [-Wcpp]
+   #warning DEBUG may not be defined but without NDEBUG being defined allocator will run with assert checking! Define NDEBUG to run at full speed.
+    ^~~~~~~
+In file included from ../../include/fcntl.h:50:0,
+                 from malloc.c.h:1445,
+                 from nedmalloc.c:168:
+../../include/sys/_types.h:61:9: error: unknown type name ‘__uint8_t’
+ typedef __uint8_t __sa_family_t;
+         ^~~~~~~~~
+../../include/sys/_types.h:97:9: error: unknown type name ‘__uint_least16_t’
+ typedef __uint_least16_t __char16_t;
+         ^~~~~~~~~~~~~~~~
+../../include/sys/_types.h:98:9: error: unknown type name ‘__uint_least32_t’
+ typedef __uint_least32_t __char32_t;
+         ^~~~~~~~~~~~~~~~
+../../include/sys/_types.h:126:9: error: unknown type name ‘__uintmax_t’
+ typedef __uintmax_t     __rman_res_t;
+         ^~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h: In function ‘posix_mmap’:
+malloc.c.h:1635:31: error: ‘MAP_PRIVATE’ undeclared (first use in this function)
+ #define MMAP_FLAGS           (MAP_PRIVATE)
+                               ^
+malloc.c.h:1642:15: note: in expansion of macro ‘MMAP_FLAGS’
+   int flags = MMAP_FLAGS, fd = -1;
+               ^~~~~~~~~~
+malloc.c.h:1635:31: note: each undeclared identifier is reported only once for each function it appears in
+ #define MMAP_FLAGS           (MAP_PRIVATE)
+                               ^
+malloc.c.h:1642:15: note: in expansion of macro ‘MMAP_FLAGS’
+   int flags = MMAP_FLAGS, fd = -1;
+               ^~~~~~~~~~
+malloc.c.h:1660:11: warning: implicit declaration of function ‘mmap’ [-Wimplicit-function-declaration]
+     ptr = mmap(baseaddress, size, MMAP_PROT, flags, fd, 0);
+           ^~~~
+malloc.c.h:1631:31: error: ‘PROT_READ’ undeclared (first use in this function)
+ #define MMAP_PROT            (PROT_READ|PROT_WRITE)
+                               ^
+malloc.c.h:1660:35: note: in expansion of macro ‘MMAP_PROT’
+     ptr = mmap(baseaddress, size, MMAP_PROT, flags, fd, 0);
+                                   ^~~~~~~~~
+malloc.c.h:1631:41: error: ‘PROT_WRITE’ undeclared (first use in this function)
+ #define MMAP_PROT            (PROT_READ|PROT_WRITE)
+                                         ^
+malloc.c.h:1660:35: note: in expansion of macro ‘MMAP_PROT’
+     ptr = mmap(baseaddress, size, MMAP_PROT, flags, fd, 0);
+                                   ^~~~~~~~~
+malloc.c.h: In function ‘posix_direct_mmap’:
+malloc.c.h:1635:31: error: ‘MAP_PRIVATE’ undeclared (first use in this function)
+ #define MMAP_FLAGS           (MAP_PRIVATE)
+                               ^
+malloc.c.h:1671:15: note: in expansion of macro ‘MMAP_FLAGS’
+   int flags = MMAP_FLAGS, fd = -1;
+               ^~~~~~~~~~
+malloc.c.h:1682:2: warning: #warning Cannot figure out how to request memory from the top of the address space! [-Wcpp]
+ #warning Cannot figure out how to request memory from the top of the address space!
+  ^~~~~~~
+malloc.c.h:1631:31: error: ‘PROT_READ’ undeclared (first use in this function)
+ #define MMAP_PROT            (PROT_READ|PROT_WRITE)
+                               ^
+malloc.c.h:1684:23: note: in expansion of macro ‘MMAP_PROT’
+   ptr = mmap(0, size, MMAP_PROT, flags, fd, 0);
+                       ^~~~~~~~~
+malloc.c.h:1631:41: error: ‘PROT_WRITE’ undeclared (first use in this function)
+ #define MMAP_PROT            (PROT_READ|PROT_WRITE)
+                                         ^
+malloc.c.h:1684:23: note: in expansion of macro ‘MMAP_PROT’
+   ptr = mmap(0, size, MMAP_PROT, flags, fd, 0);
+                       ^~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h: At top level:
+malloc.c.h:2055:3: error: unknown type name ‘pthread_t’
+   pthread_t threadid;
+   ^~~~~~~~~
+malloc.c.h: In function ‘pthread_acquire_lock’:
+malloc.c.h:2069:3: error: unknown type name ‘pthread_t’
+   pthread_t mythreadid = CURRENT_THREAD;
+   ^~~~~~~~~
+malloc.c.h:2058:31: warning: implicit declaration of function ‘pthread_self’ [-Wimplicit-function-declaration]
+ #define CURRENT_THREAD        pthread_self()
+                               ^
+malloc.c.h:2069:26: note: in expansion of macro ‘CURRENT_THREAD’
+   pthread_t mythreadid = CURRENT_THREAD;
+                          ^~~~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: implicit declaration of function ‘abort’ [-Wimplicit-function-declaration]
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:2086:9: note: in expansion of macro ‘assert’
+         assert(!sl->threadid);
+         ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:2086:9: note: in expansion of macro ‘assert’
+         assert(!sl->threadid);
+         ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:2086:9: note: in expansion of macro ‘assert’
+         assert(!sl->threadid);
+         ^~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:2097:7: warning: implicit declaration of function ‘sched_yield’ [-Wimplicit-function-declaration]
+       sched_yield();
+       ^~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h: In function ‘pthread_release_lock’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:2108:3: note: in expansion of macro ‘assert’
+   assert(*lp != 0);
+   ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:2108:3: note: in expansion of macro ‘assert’
+   assert(*lp != 0);
+   ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:2109:3: note: in expansion of macro ‘assert’
+   assert(sl->threadid == CURRENT_THREAD);
+   ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:2109:3: note: in expansion of macro ‘assert’
+   assert(sl->threadid == CURRENT_THREAD);
+   ^~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h: In function ‘pthread_try_lock’:
+malloc.c.h:2117:3: error: unknown type name ‘pthread_t’
+   pthread_t mythreadid = CURRENT_THREAD;
+   ^~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:2131:7: note: in expansion of macro ‘assert’
+       assert(!sl->threadid);
+       ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:2131:7: note: in expansion of macro ‘assert’
+       assert(!sl->threadid);
+       ^~~~~~
+malloc.c.h: In function ‘init_mparams’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3403:7: note: in expansion of macro ‘ABORT’
+       ABORT;
+       ^~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3403:7: note: in expansion of macro ‘ABORT’
+       ABORT;
+       ^~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:3436:26: warning: implicit declaration of function ‘time’ [-Wimplicit-function-declaration]
+         magic = (size_t)(time(0) ^ (size_t)0x55555555U);
+                          ^~~~
+malloc.c.h: In function ‘internal_malloc_stats’:
+malloc.c.h:3808:5: warning: implicit declaration of function ‘fprintf’ [-Wimplicit-function-declaration]
+     fprintf(stderr, "max system bytes = %10lu\n", (unsigned long)(maxfp));
+     ^~~~~~~
+malloc.c.h:3808:5: warning: incompatible implicit declaration of built-in function ‘fprintf’
+malloc.c.h:3808:5: note: include ‘<stdio.h>’ or provide a declaration of ‘fprintf’
+malloc.c.h:3808:13: error: ‘stderr’ undeclared (first use in this function)
+     fprintf(stderr, "max system bytes = %10lu\n", (unsigned long)(maxfp));
+             ^~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h: In function ‘mmap_alloc’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4103:7: note: in expansion of macro ‘assert’
+       assert(is_aligned(chunk2mem(p)));
+       ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4103:7: note: in expansion of macro ‘assert’
+       assert(is_aligned(chunk2mem(p)));
+       ^~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h: In function ‘prepend_alloc’:
+malloc.c.h:4198:18: warning: conversion to ‘size_t {aka long unsigned int}’ from ‘long int’ may change the sign of the result [-Wsign-conversion]
+   size_t psize = (char*)oldfirst - (char*)p;
+                  ^
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4203:3: note: in expansion of macro ‘assert’
+   assert((char*)oldfirst > (char*)q);
+   ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4203:3: note: in expansion of macro ‘assert’
+   assert((char*)oldfirst > (char*)q);
+   ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4204:3: note: in expansion of macro ‘assert’
+   assert(pinuse(oldfirst));
+   ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4204:3: note: in expansion of macro ‘assert’
+   assert(pinuse(oldfirst));
+   ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4205:3: note: in expansion of macro ‘assert’
+   assert(qsize >= MIN_CHUNK_SIZE);
+   ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4205:3: note: in expansion of macro ‘assert’
+   assert(qsize >= MIN_CHUNK_SIZE);
+   ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3849:3: note: in expansion of macro ‘assert’
+   assert(P != B);\
+   ^~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4222:7: note: in expansion of macro ‘unlink_chunk’
+       unlink_chunk(m, oldfirst, nsize);
+       ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3849:3: note: in expansion of macro ‘assert’
+   assert(P != B);\
+   ^~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4222:7: note: in expansion of macro ‘unlink_chunk’
+       unlink_chunk(m, oldfirst, nsize);
+       ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3850:3: note: in expansion of macro ‘assert’
+   assert(P != F);\
+   ^~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4222:7: note: in expansion of macro ‘unlink_chunk’
+       unlink_chunk(m, oldfirst, nsize);
+       ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3850:3: note: in expansion of macro ‘assert’
+   assert(P != F);\
+   ^~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4222:7: note: in expansion of macro ‘unlink_chunk’
+       unlink_chunk(m, oldfirst, nsize);
+       ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3851:3: note: in expansion of macro ‘assert’
+   assert(chunksize(P) == small_index2size(I));\
+   ^~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4222:7: note: in expansion of macro ‘unlink_chunk’
+       unlink_chunk(m, oldfirst, nsize);
+       ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3851:3: note: in expansion of macro ‘assert’
+   assert(chunksize(P) == small_index2size(I));\
+   ^~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4222:7: note: in expansion of macro ‘unlink_chunk’
+       unlink_chunk(m, oldfirst, nsize);
+       ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3860:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4222:7: note: in expansion of macro ‘unlink_chunk’
+       unlink_chunk(m, oldfirst, nsize);
+       ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3860:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4222:7: note: in expansion of macro ‘unlink_chunk’
+       unlink_chunk(m, oldfirst, nsize);
+       ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3978:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4222:7: note: in expansion of macro ‘unlink_chunk’
+       unlink_chunk(m, oldfirst, nsize);
+       ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3978:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4222:7: note: in expansion of macro ‘unlink_chunk’
+       unlink_chunk(m, oldfirst, nsize);
+       ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3993:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4222:7: note: in expansion of macro ‘unlink_chunk’
+       unlink_chunk(m, oldfirst, nsize);
+       ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3993:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4222:7: note: in expansion of macro ‘unlink_chunk’
+       unlink_chunk(m, oldfirst, nsize);
+       ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4010:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4222:7: note: in expansion of macro ‘unlink_chunk’
+       unlink_chunk(m, oldfirst, nsize);
+       ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4010:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4222:7: note: in expansion of macro ‘unlink_chunk’
+       unlink_chunk(m, oldfirst, nsize);
+       ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4021:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4222:7: note: in expansion of macro ‘unlink_chunk’
+       unlink_chunk(m, oldfirst, nsize);
+       ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4021:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4222:7: note: in expansion of macro ‘unlink_chunk’
+       unlink_chunk(m, oldfirst, nsize);
+       ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4029:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4222:7: note: in expansion of macro ‘unlink_chunk’
+       unlink_chunk(m, oldfirst, nsize);
+       ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4029:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4222:7: note: in expansion of macro ‘unlink_chunk’
+       unlink_chunk(m, oldfirst, nsize);
+       ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4033:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4222:7: note: in expansion of macro ‘unlink_chunk’
+       unlink_chunk(m, oldfirst, nsize);
+       ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4033:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4222:7: note: in expansion of macro ‘unlink_chunk’
+       unlink_chunk(m, oldfirst, nsize);
+       ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3830:3: note: in expansion of macro ‘assert’
+   assert(S >= MIN_CHUNK_SIZE);\
+   ^~~~~~
+malloc.c.h:4041:20: note: in expansion of macro ‘insert_small_chunk’
+   if (is_small(S)) insert_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4227:5: note: in expansion of macro ‘insert_chunk’
+     insert_chunk(m, q, qsize);
+     ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3830:3: note: in expansion of macro ‘assert’
+   assert(S >= MIN_CHUNK_SIZE);\
+   ^~~~~~
+malloc.c.h:4041:20: note: in expansion of macro ‘insert_small_chunk’
+   if (is_small(S)) insert_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4227:5: note: in expansion of macro ‘insert_chunk’
+     insert_chunk(m, q, qsize);
+     ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3836:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4041:20: note: in expansion of macro ‘insert_small_chunk’
+   if (is_small(S)) insert_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4227:5: note: in expansion of macro ‘insert_chunk’
+     insert_chunk(m, q, qsize);
+     ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3836:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4041:20: note: in expansion of macro ‘insert_small_chunk’
+   if (is_small(S)) insert_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4227:5: note: in expansion of macro ‘insert_chunk’
+     insert_chunk(m, q, qsize);
+     ^~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:4227:24: warning: conversion to ‘unsigned int’ from ‘size_t {aka long unsigned int}’ may alter its value [-Wconversion]
+     insert_chunk(m, q, qsize);
+                        ^
+malloc.c.h:3072:20: note: in definition of macro ‘compute_tree_index’
+   unsigned int X = S >> TREEBIN_SHIFT;\
+                    ^
+malloc.c.h:4042:41: note: in expansion of macro ‘insert_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); insert_large_chunk(M, TP, S); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4227:5: note: in expansion of macro ‘insert_chunk’
+     insert_chunk(m, q, qsize);
+     ^~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3928:11: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+           CORRUPTION_ERROR_ACTION(M);\
+           ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4042:41: note: in expansion of macro ‘insert_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); insert_large_chunk(M, TP, S); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4227:5: note: in expansion of macro ‘insert_chunk’
+     insert_chunk(m, q, qsize);
+     ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3928:11: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+           CORRUPTION_ERROR_ACTION(M);\
+           ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4042:41: note: in expansion of macro ‘insert_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); insert_large_chunk(M, TP, S); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4227:5: note: in expansion of macro ‘insert_chunk’
+     insert_chunk(m, q, qsize);
+     ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3942:11: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+           CORRUPTION_ERROR_ACTION(M);\
+           ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4042:41: note: in expansion of macro ‘insert_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); insert_large_chunk(M, TP, S); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4227:5: note: in expansion of macro ‘insert_chunk’
+     insert_chunk(m, q, qsize);
+     ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3942:11: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+           CORRUPTION_ERROR_ACTION(M);\
+           ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4042:41: note: in expansion of macro ‘insert_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); insert_large_chunk(M, TP, S); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4227:5: note: in expansion of macro ‘insert_chunk’
+     insert_chunk(m, q, qsize);
+     ^~~~~~~~~~~~
+malloc.c.h: In function ‘add_segment’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4256:3: note: in expansion of macro ‘assert’
+   assert(is_aligned(ss));
+   ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4256:3: note: in expansion of macro ‘assert’
+   assert(is_aligned(ss));
+   ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4274:3: note: in expansion of macro ‘assert’
+   assert(nfences >= 2);
+   ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4274:3: note: in expansion of macro ‘assert’
+   assert(nfences >= 2);
+   ^~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:4279:20: warning: conversion to ‘size_t {aka long unsigned int}’ from ‘long int’ may change the sign of the result [-Wsign-conversion]
+     size_t psize = csp - old_top;
+                    ^~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3830:3: note: in expansion of macro ‘assert’
+   assert(S >= MIN_CHUNK_SIZE);\
+   ^~~~~~
+malloc.c.h:4041:20: note: in expansion of macro ‘insert_small_chunk’
+   if (is_small(S)) insert_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4282:5: note: in expansion of macro ‘insert_chunk’
+     insert_chunk(m, q, psize);
+     ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3830:3: note: in expansion of macro ‘assert’
+   assert(S >= MIN_CHUNK_SIZE);\
+   ^~~~~~
+malloc.c.h:4041:20: note: in expansion of macro ‘insert_small_chunk’
+   if (is_small(S)) insert_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4282:5: note: in expansion of macro ‘insert_chunk’
+     insert_chunk(m, q, psize);
+     ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3836:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4041:20: note: in expansion of macro ‘insert_small_chunk’
+   if (is_small(S)) insert_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4282:5: note: in expansion of macro ‘insert_chunk’
+     insert_chunk(m, q, psize);
+     ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3836:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4041:20: note: in expansion of macro ‘insert_small_chunk’
+   if (is_small(S)) insert_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4282:5: note: in expansion of macro ‘insert_chunk’
+     insert_chunk(m, q, psize);
+     ^~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:4282:24: warning: conversion to ‘unsigned int’ from ‘size_t {aka long unsigned int}’ may alter its value [-Wconversion]
+     insert_chunk(m, q, psize);
+                        ^
+malloc.c.h:3072:20: note: in definition of macro ‘compute_tree_index’
+   unsigned int X = S >> TREEBIN_SHIFT;\
+                    ^
+malloc.c.h:4042:41: note: in expansion of macro ‘insert_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); insert_large_chunk(M, TP, S); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4282:5: note: in expansion of macro ‘insert_chunk’
+     insert_chunk(m, q, psize);
+     ^~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3928:11: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+           CORRUPTION_ERROR_ACTION(M);\
+           ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4042:41: note: in expansion of macro ‘insert_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); insert_large_chunk(M, TP, S); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4282:5: note: in expansion of macro ‘insert_chunk’
+     insert_chunk(m, q, psize);
+     ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3928:11: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+           CORRUPTION_ERROR_ACTION(M);\
+           ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4042:41: note: in expansion of macro ‘insert_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); insert_large_chunk(M, TP, S); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4282:5: note: in expansion of macro ‘insert_chunk’
+     insert_chunk(m, q, psize);
+     ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3942:11: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+           CORRUPTION_ERROR_ACTION(M);\
+           ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4042:41: note: in expansion of macro ‘insert_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); insert_large_chunk(M, TP, S); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4282:5: note: in expansion of macro ‘insert_chunk’
+     insert_chunk(m, q, psize);
+     ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3942:11: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+           CORRUPTION_ERROR_ACTION(M);\
+           ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4042:41: note: in expansion of macro ‘insert_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); insert_large_chunk(M, TP, S); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4282:5: note: in expansion of macro ‘insert_chunk’
+     insert_chunk(m, q, psize);
+     ^~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h: In function ‘sys_alloc’:
+malloc.c.h:4408:24: warning: conversion to ‘size_t {aka long unsigned int}’ from ‘long int’ may change the sign of the result [-Wsign-conversion]
+         size_t ssize = end - br;
+                        ^~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h: In function ‘release_unused_segments’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4510:9: note: in expansion of macro ‘assert’
+         assert(segment_holds(sp, (char*)sp));
+         ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4510:9: note: in expansion of macro ‘assert’
+         assert(segment_holds(sp, (char*)sp));
+         ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3978:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4516:11: note: in expansion of macro ‘unlink_large_chunk’
+           unlink_large_chunk(m, tp);
+           ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3978:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4516:11: note: in expansion of macro ‘unlink_large_chunk’
+           unlink_large_chunk(m, tp);
+           ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3993:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4516:11: note: in expansion of macro ‘unlink_large_chunk’
+           unlink_large_chunk(m, tp);
+           ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3993:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4516:11: note: in expansion of macro ‘unlink_large_chunk’
+           unlink_large_chunk(m, tp);
+           ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4010:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4516:11: note: in expansion of macro ‘unlink_large_chunk’
+           unlink_large_chunk(m, tp);
+           ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4010:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4516:11: note: in expansion of macro ‘unlink_large_chunk’
+           unlink_large_chunk(m, tp);
+           ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4021:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4516:11: note: in expansion of macro ‘unlink_large_chunk’
+           unlink_large_chunk(m, tp);
+           ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4021:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4516:11: note: in expansion of macro ‘unlink_large_chunk’
+           unlink_large_chunk(m, tp);
+           ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4029:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4516:11: note: in expansion of macro ‘unlink_large_chunk’
+           unlink_large_chunk(m, tp);
+           ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4029:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4516:11: note: in expansion of macro ‘unlink_large_chunk’
+           unlink_large_chunk(m, tp);
+           ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4033:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4516:11: note: in expansion of macro ‘unlink_large_chunk’
+           unlink_large_chunk(m, tp);
+           ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4033:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4516:11: note: in expansion of macro ‘unlink_large_chunk’
+           unlink_large_chunk(m, tp);
+           ^~~~~~~~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:1692:45: warning: implicit declaration of function ‘munmap’ [-Wimplicit-function-declaration]
+ #define MUNMAP_DEFAULT(h, a, s)             munmap((a), (s))
+                                             ^
+malloc.c.h:1968:49: note: in expansion of macro ‘MUNMAP_DEFAULT’
+         #define CALL_MUNMAP(h, a, s)            MUNMAP_DEFAULT((h), (a), (s))
+                                                 ^~~~~~~~~~~~~~
+malloc.c.h:4518:13: note: in expansion of macro ‘CALL_MUNMAP’
+         if (CALL_MUNMAP(0/*segment*/, base, size) == 0) {
+             ^~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:4526:37: warning: conversion to ‘unsigned int’ from ‘size_t {aka long unsigned int}’ may alter its value [-Wconversion]
+           insert_large_chunk(m, tp, psize);
+                                     ^
+malloc.c.h:3072:20: note: in definition of macro ‘compute_tree_index’
+   unsigned int X = S >> TREEBIN_SHIFT;\
+                    ^
+malloc.c.h:4526:11: note: in expansion of macro ‘insert_large_chunk’
+           insert_large_chunk(m, tp, psize);
+           ^~~~~~~~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3928:11: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+           CORRUPTION_ERROR_ACTION(M);\
+           ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4526:11: note: in expansion of macro ‘insert_large_chunk’
+           insert_large_chunk(m, tp, psize);
+           ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3928:11: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+           CORRUPTION_ERROR_ACTION(M);\
+           ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4526:11: note: in expansion of macro ‘insert_large_chunk’
+           insert_large_chunk(m, tp, psize);
+           ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3942:11: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+           CORRUPTION_ERROR_ACTION(M);\
+           ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4526:11: note: in expansion of macro ‘insert_large_chunk’
+           insert_large_chunk(m, tp, psize);
+           ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3942:11: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+           CORRUPTION_ERROR_ACTION(M);\
+           ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4526:11: note: in expansion of macro ‘insert_large_chunk’
+           insert_large_chunk(m, tp, psize);
+           ^~~~~~~~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:4536:23: warning: conversion to ‘size_t {aka long unsigned int}’ from ‘int’ may change the sign of the result [-Wsign-conversion]
+   m->release_checks = ((nsegs > MAX_RELEASE_CHECK_RATE)?
+                       ^
+malloc.c.h: In function ‘sys_trim’:
+malloc.c.h:4578:28: warning: conversion to ‘size_t {aka long unsigned int}’ from ‘long int’ may change the sign of the result [-Wsign-conversion]
+                 released = old_br - new_br;
+                            ^~~~~~
+malloc.c.h: In function ‘tmalloc_large’:
+malloc.c.h:4614:22: warning: conversion to ‘unsigned int’ from ‘size_t {aka long unsigned int}’ may alter its value [-Wconversion]
+   compute_tree_index(nb, idx);
+                      ^
+malloc.c.h:3072:20: note: in definition of macro ‘compute_tree_index’
+   unsigned int X = S >> TREEBIN_SHIFT;\
+                    ^
+malloc.c.h:3176:7: warning: conversion to ‘unsigned int’ from ‘int’ may change the sign of the result [-Wsign-conversion]
+   J = __builtin_ctz(X); \
+       ^
+malloc.c.h:4643:7: note: in expansion of macro ‘compute_bit2idx’
+       compute_bit2idx(leastbit, i);
+       ^~~~~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4661:7: note: in expansion of macro ‘assert’
+       assert(chunksize(v) == rsize + nb);
+       ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4661:7: note: in expansion of macro ‘assert’
+       assert(chunksize(v) == rsize + nb);
+       ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3978:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4663:9: note: in expansion of macro ‘unlink_large_chunk’
+         unlink_large_chunk(m, v);
+         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3978:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4663:9: note: in expansion of macro ‘unlink_large_chunk’
+         unlink_large_chunk(m, v);
+         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3993:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4663:9: note: in expansion of macro ‘unlink_large_chunk’
+         unlink_large_chunk(m, v);
+         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3993:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4663:9: note: in expansion of macro ‘unlink_large_chunk’
+         unlink_large_chunk(m, v);
+         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4010:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4663:9: note: in expansion of macro ‘unlink_large_chunk’
+         unlink_large_chunk(m, v);
+         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4010:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4663:9: note: in expansion of macro ‘unlink_large_chunk’
+         unlink_large_chunk(m, v);
+         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4021:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4663:9: note: in expansion of macro ‘unlink_large_chunk’
+         unlink_large_chunk(m, v);
+         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4021:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4663:9: note: in expansion of macro ‘unlink_large_chunk’
+         unlink_large_chunk(m, v);
+         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4029:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4663:9: note: in expansion of macro ‘unlink_large_chunk’
+         unlink_large_chunk(m, v);
+         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4029:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4663:9: note: in expansion of macro ‘unlink_large_chunk’
+         unlink_large_chunk(m, v);
+         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4033:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4663:9: note: in expansion of macro ‘unlink_large_chunk’
+         unlink_large_chunk(m, v);
+         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4033:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4663:9: note: in expansion of macro ‘unlink_large_chunk’
+         unlink_large_chunk(m, v);
+         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3830:3: note: in expansion of macro ‘assert’
+   assert(S >= MIN_CHUNK_SIZE);\
+   ^~~~~~
+malloc.c.h:4041:20: note: in expansion of macro ‘insert_small_chunk’
+   if (is_small(S)) insert_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4669:11: note: in expansion of macro ‘insert_chunk’
+           insert_chunk(m, r, rsize);
+           ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3830:3: note: in expansion of macro ‘assert’
+   assert(S >= MIN_CHUNK_SIZE);\
+   ^~~~~~
+malloc.c.h:4041:20: note: in expansion of macro ‘insert_small_chunk’
+   if (is_small(S)) insert_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4669:11: note: in expansion of macro ‘insert_chunk’
+           insert_chunk(m, r, rsize);
+           ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3836:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4041:20: note: in expansion of macro ‘insert_small_chunk’
+   if (is_small(S)) insert_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4669:11: note: in expansion of macro ‘insert_chunk’
+           insert_chunk(m, r, rsize);
+           ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3836:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4041:20: note: in expansion of macro ‘insert_small_chunk’
+   if (is_small(S)) insert_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4669:11: note: in expansion of macro ‘insert_chunk’
+           insert_chunk(m, r, rsize);
+           ^~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:4669:30: warning: conversion to ‘unsigned int’ from ‘size_t {aka long unsigned int}’ may alter its value [-Wconversion]
+           insert_chunk(m, r, rsize);
+                              ^
+malloc.c.h:3072:20: note: in definition of macro ‘compute_tree_index’
+   unsigned int X = S >> TREEBIN_SHIFT;\
+                    ^
+malloc.c.h:4042:41: note: in expansion of macro ‘insert_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); insert_large_chunk(M, TP, S); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4669:11: note: in expansion of macro ‘insert_chunk’
+           insert_chunk(m, r, rsize);
+           ^~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3928:11: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+           CORRUPTION_ERROR_ACTION(M);\
+           ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4042:41: note: in expansion of macro ‘insert_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); insert_large_chunk(M, TP, S); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4669:11: note: in expansion of macro ‘insert_chunk’
+           insert_chunk(m, r, rsize);
+           ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3928:11: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+           CORRUPTION_ERROR_ACTION(M);\
+           ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4042:41: note: in expansion of macro ‘insert_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); insert_large_chunk(M, TP, S); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4669:11: note: in expansion of macro ‘insert_chunk’
+           insert_chunk(m, r, rsize);
+           ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3942:11: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+           CORRUPTION_ERROR_ACTION(M);\
+           ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4042:41: note: in expansion of macro ‘insert_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); insert_large_chunk(M, TP, S); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4669:11: note: in expansion of macro ‘insert_chunk’
+           insert_chunk(m, r, rsize);
+           ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3942:11: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+           CORRUPTION_ERROR_ACTION(M);\
+           ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4042:41: note: in expansion of macro ‘insert_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); insert_large_chunk(M, TP, S); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4669:11: note: in expansion of macro ‘insert_chunk’
+           insert_chunk(m, r, rsize);
+           ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4674:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(m);
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4674:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(m);
+     ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h: In function ‘tmalloc_small’:
+malloc.c.h:3176:7: warning: conversion to ‘unsigned int’ from ‘int’ may change the sign of the result [-Wsign-conversion]
+   J = __builtin_ctz(X); \
+       ^
+malloc.c.h:4685:3: note: in expansion of macro ‘compute_bit2idx’
+   compute_bit2idx(leastbit, i);
+   ^~~~~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4699:5: note: in expansion of macro ‘assert’
+     assert(chunksize(v) == rsize + nb);
+     ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4699:5: note: in expansion of macro ‘assert’
+     assert(chunksize(v) == rsize + nb);
+     ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3978:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4701:7: note: in expansion of macro ‘unlink_large_chunk’
+       unlink_large_chunk(m, v);
+       ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3978:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4701:7: note: in expansion of macro ‘unlink_large_chunk’
+       unlink_large_chunk(m, v);
+       ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3993:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4701:7: note: in expansion of macro ‘unlink_large_chunk’
+       unlink_large_chunk(m, v);
+       ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3993:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4701:7: note: in expansion of macro ‘unlink_large_chunk’
+       unlink_large_chunk(m, v);
+       ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4010:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4701:7: note: in expansion of macro ‘unlink_large_chunk’
+       unlink_large_chunk(m, v);
+       ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4010:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4701:7: note: in expansion of macro ‘unlink_large_chunk’
+       unlink_large_chunk(m, v);
+       ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4021:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4701:7: note: in expansion of macro ‘unlink_large_chunk’
+       unlink_large_chunk(m, v);
+       ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4021:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4701:7: note: in expansion of macro ‘unlink_large_chunk’
+       unlink_large_chunk(m, v);
+       ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4029:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4701:7: note: in expansion of macro ‘unlink_large_chunk’
+       unlink_large_chunk(m, v);
+       ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4029:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4701:7: note: in expansion of macro ‘unlink_large_chunk’
+       unlink_large_chunk(m, v);
+       ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4033:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4701:7: note: in expansion of macro ‘unlink_large_chunk’
+       unlink_large_chunk(m, v);
+       ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4033:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4701:7: note: in expansion of macro ‘unlink_large_chunk’
+       unlink_large_chunk(m, v);
+       ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3889:5: note: in expansion of macro ‘assert’
+     assert(is_small(DVS));\
+     ^~~~~~
+malloc.c.h:4707:9: note: in expansion of macro ‘replace_dv’
+         replace_dv(m, r, rsize);
+         ^~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3889:5: note: in expansion of macro ‘assert’
+     assert(is_small(DVS));\
+     ^~~~~~
+malloc.c.h:4707:9: note: in expansion of macro ‘replace_dv’
+         replace_dv(m, r, rsize);
+         ^~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3830:3: note: in expansion of macro ‘assert’
+   assert(S >= MIN_CHUNK_SIZE);\
+   ^~~~~~
+malloc.c.h:3890:5: note: in expansion of macro ‘insert_small_chunk’
+     insert_small_chunk(M, DV, DVS);\
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4707:9: note: in expansion of macro ‘replace_dv’
+         replace_dv(m, r, rsize);
+         ^~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3830:3: note: in expansion of macro ‘assert’
+   assert(S >= MIN_CHUNK_SIZE);\
+   ^~~~~~
+malloc.c.h:3890:5: note: in expansion of macro ‘insert_small_chunk’
+     insert_small_chunk(M, DV, DVS);\
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4707:9: note: in expansion of macro ‘replace_dv’
+         replace_dv(m, r, rsize);
+         ^~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3836:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:3890:5: note: in expansion of macro ‘insert_small_chunk’
+     insert_small_chunk(M, DV, DVS);\
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4707:9: note: in expansion of macro ‘replace_dv’
+         replace_dv(m, r, rsize);
+         ^~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3836:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:3890:5: note: in expansion of macro ‘insert_small_chunk’
+     insert_small_chunk(M, DV, DVS);\
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h:4707:9: note: in expansion of macro ‘replace_dv’
+         replace_dv(m, r, rsize);
+         ^~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4713:3: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+   CORRUPTION_ERROR_ACTION(m);
+   ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4713:3: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+   CORRUPTION_ERROR_ACTION(m);
+   ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h: In function ‘internal_realloc’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:4762:7: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+       USAGE_ERROR_ACTION(m, oldmem);
+       ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:4762:7: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+       USAGE_ERROR_ACTION(m, oldmem);
+       ^~~~~~~~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:4786:9: warning: implicit declaration of function ‘memcpy’ [-Wimplicit-function-declaration]
+         memcpy(newmem, oldmem, (oc < bytes)? oc : bytes);
+         ^~~~~~
+malloc.c.h:4786:9: warning: incompatible implicit declaration of built-in function ‘memcpy’
+malloc.c.h:4786:9: note: include ‘<string.h>’ or provide a declaration of ‘memcpy’
+malloc.c.h: In function ‘internal_memalign’:
+malloc.c.h:4839:27: warning: conversion to ‘size_t {aka long unsigned int}’ from ‘long int’ may change the sign of the result [-Wsign-conversion]
+         size_t leadsize = pos - (char*)(p);
+                           ^~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4866:7: note: in expansion of macro ‘assert’
+       assert (chunksize(p) >= nb);
+       ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4866:7: note: in expansion of macro ‘assert’
+       assert (chunksize(p) >= nb);
+       ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4867:7: note: in expansion of macro ‘assert’
+       assert((((size_t)(chunk2mem(p))) % alignment) == 0);
+       ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4867:7: note: in expansion of macro ‘assert’
+       assert((((size_t)(chunk2mem(p))) % alignment) == 0);
+       ^~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h: In function ‘ialloc’:
+malloc.c.h:2896:47: warning: conversion to ‘flag_t {aka unsigned int}’ from ‘long unsigned int’ may alter its value [-Wconversion]
+ #define disable_mmap(M)       ((M)->mflags &= ~USE_MMAP_BIT)
+                                               ^
+malloc.c.h:4946:3: note: in expansion of macro ‘disable_mmap’
+   disable_mmap(m);
+   ^~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4957:3: note: in expansion of macro ‘assert’
+   assert(!is_mmapped(p));
+   ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:4957:3: note: in expansion of macro ‘assert’
+   assert(!is_mmapped(p));
+   ^~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:4960:5: warning: implicit declaration of function ‘memset’ [-Wimplicit-function-declaration]
+     memset((size_t*)mem, 0, remainder_size - SIZE_T_SIZE - array_size);
+     ^~~~~~
+malloc.c.h:4960:5: warning: incompatible implicit declaration of built-in function ‘memset’
+malloc.c.h:4960:5: note: include ‘<string.h>’ or provide a declaration of ‘memset’
+malloc.c.h: In function ‘init_user_mstate’:
+malloc.c.h:5381:3: warning: incompatible implicit declaration of built-in function ‘memset’
+   memset(m, 0, msize);
+   ^~~~~~
+malloc.c.h:5381:3: note: include ‘<string.h>’ or provide a declaration of ‘memset’
+malloc.c.h:2059:73: warning: right-hand operand of comma expression has no effect [-Wunused-value]
+ #define INITIAL_LOCK(sl)      ((sl)->threadid = 0, (sl)->l = (sl)->c = 0, 0)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+malloc.c.h:5382:3: note: in expansion of macro ‘INITIAL_LOCK’
+   INITIAL_LOCK(&m->mutex);
+   ^~~~~~~~~~~~
+malloc.c.h: In function ‘mspace_track_large_chunks’:
+malloc.c.h:2896:47: warning: conversion to ‘flag_t {aka unsigned int}’ from ‘long unsigned int’ may alter its value [-Wconversion]
+ #define disable_mmap(M)       ((M)->mflags &= ~USE_MMAP_BIT)
+                                               ^
+malloc.c.h:5441:7: note: in expansion of macro ‘disable_mmap’
+       disable_mmap(ms);
+       ^~~~~~~~~~~~
+malloc.c.h: In function ‘destroy_mspace’:
+malloc.c.h:2060:31: warning: statement with no effect [-Wunused-value]
+ #define DESTROY_LOCK(sl)      (0)
+                               ^
+malloc.c.h:5461:5: note: in expansion of macro ‘DESTROY_LOCK’
+     DESTROY_LOCK(&ms->mutex);
+     ^~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5464:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5464:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h: In function ‘mspace_malloc_implementation’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:5491:11: note: in expansion of macro ‘assert’
+           assert(chunksize(p) == small_index2size(idx));
+           ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:5491:11: note: in expansion of macro ‘assert’
+           assert(chunksize(p) == small_index2size(idx));
+           ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3867:3: note: in expansion of macro ‘assert’
+   assert(P != B);\
+   ^~~~~~
+malloc.c.h:5492:11: note: in expansion of macro ‘unlink_first_small_chunk’
+           unlink_first_small_chunk(ms, b, p, idx);
+           ^~~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3867:3: note: in expansion of macro ‘assert’
+   assert(P != B);\
+   ^~~~~~
+malloc.c.h:5492:11: note: in expansion of macro ‘unlink_first_small_chunk’
+           unlink_first_small_chunk(ms, b, p, idx);
+           ^~~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3868:3: note: in expansion of macro ‘assert’
+   assert(P != F);\
+   ^~~~~~
+malloc.c.h:5492:11: note: in expansion of macro ‘unlink_first_small_chunk’
+           unlink_first_small_chunk(ms, b, p, idx);
+           ^~~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3868:3: note: in expansion of macro ‘assert’
+   assert(P != F);\
+   ^~~~~~
+malloc.c.h:5492:11: note: in expansion of macro ‘unlink_first_small_chunk’
+           unlink_first_small_chunk(ms, b, p, idx);
+           ^~~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3869:3: note: in expansion of macro ‘assert’
+   assert(chunksize(P) == small_index2size(I));\
+   ^~~~~~
+malloc.c.h:5492:11: note: in expansion of macro ‘unlink_first_small_chunk’
+           unlink_first_small_chunk(ms, b, p, idx);
+           ^~~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3869:3: note: in expansion of macro ‘assert’
+   assert(chunksize(P) == small_index2size(I));\
+   ^~~~~~
+malloc.c.h:5492:11: note: in expansion of macro ‘unlink_first_small_chunk’
+           unlink_first_small_chunk(ms, b, p, idx);
+           ^~~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3877:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:5492:11: note: in expansion of macro ‘unlink_first_small_chunk’
+           unlink_first_small_chunk(ms, b, p, idx);
+           ^~~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3877:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:5492:11: note: in expansion of macro ‘unlink_first_small_chunk’
+           unlink_first_small_chunk(ms, b, p, idx);
+           ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:3176:7: warning: conversion to ‘unsigned int’ from ‘int’ may change the sign of the result [-Wsign-conversion]
+   J = __builtin_ctz(X); \
+       ^
+malloc.c.h:5506:13: note: in expansion of macro ‘compute_bit2idx’
+             compute_bit2idx(leastbit, i);
+             ^~~~~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:5509:13: note: in expansion of macro ‘assert’
+             assert(chunksize(p) == small_index2size(i));
+             ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:5509:13: note: in expansion of macro ‘assert’
+             assert(chunksize(p) == small_index2size(i));
+             ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3867:3: note: in expansion of macro ‘assert’
+   assert(P != B);\
+   ^~~~~~
+malloc.c.h:5510:13: note: in expansion of macro ‘unlink_first_small_chunk’
+             unlink_first_small_chunk(ms, b, p, i);
+             ^~~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3867:3: note: in expansion of macro ‘assert’
+   assert(P != B);\
+   ^~~~~~
+malloc.c.h:5510:13: note: in expansion of macro ‘unlink_first_small_chunk’
+             unlink_first_small_chunk(ms, b, p, i);
+             ^~~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3868:3: note: in expansion of macro ‘assert’
+   assert(P != F);\
+   ^~~~~~
+malloc.c.h:5510:13: note: in expansion of macro ‘unlink_first_small_chunk’
+             unlink_first_small_chunk(ms, b, p, i);
+             ^~~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3868:3: note: in expansion of macro ‘assert’
+   assert(P != F);\
+   ^~~~~~
+malloc.c.h:5510:13: note: in expansion of macro ‘unlink_first_small_chunk’
+             unlink_first_small_chunk(ms, b, p, i);
+             ^~~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3869:3: note: in expansion of macro ‘assert’
+   assert(chunksize(P) == small_index2size(I));\
+   ^~~~~~
+malloc.c.h:5510:13: note: in expansion of macro ‘unlink_first_small_chunk’
+             unlink_first_small_chunk(ms, b, p, i);
+             ^~~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3869:3: note: in expansion of macro ‘assert’
+   assert(chunksize(P) == small_index2size(I));\
+   ^~~~~~
+malloc.c.h:5510:13: note: in expansion of macro ‘unlink_first_small_chunk’
+             unlink_first_small_chunk(ms, b, p, i);
+             ^~~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3877:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:5510:13: note: in expansion of macro ‘unlink_first_small_chunk’
+             unlink_first_small_chunk(ms, b, p, i);
+             ^~~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3877:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:5510:13: note: in expansion of macro ‘unlink_first_small_chunk’
+             unlink_first_small_chunk(ms, b, p, i);
+             ^~~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3889:5: note: in expansion of macro ‘assert’
+     assert(is_small(DVS));\
+     ^~~~~~
+malloc.c.h:5519:15: note: in expansion of macro ‘replace_dv’
+               replace_dv(ms, r, rsize);
+               ^~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3889:5: note: in expansion of macro ‘assert’
+     assert(is_small(DVS));\
+     ^~~~~~
+malloc.c.h:5519:15: note: in expansion of macro ‘replace_dv’
+               replace_dv(ms, r, rsize);
+               ^~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3830:3: note: in expansion of macro ‘assert’
+   assert(S >= MIN_CHUNK_SIZE);\
+   ^~~~~~
+malloc.c.h:3890:5: note: in expansion of macro ‘insert_small_chunk’
+     insert_small_chunk(M, DV, DVS);\
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5519:15: note: in expansion of macro ‘replace_dv’
+               replace_dv(ms, r, rsize);
+               ^~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3830:3: note: in expansion of macro ‘assert’
+   assert(S >= MIN_CHUNK_SIZE);\
+   ^~~~~~
+malloc.c.h:3890:5: note: in expansion of macro ‘insert_small_chunk’
+     insert_small_chunk(M, DV, DVS);\
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5519:15: note: in expansion of macro ‘replace_dv’
+               replace_dv(ms, r, rsize);
+               ^~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3836:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:3890:5: note: in expansion of macro ‘insert_small_chunk’
+     insert_small_chunk(M, DV, DVS);\
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5519:15: note: in expansion of macro ‘replace_dv’
+               replace_dv(ms, r, rsize);
+               ^~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3836:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:3890:5: note: in expansion of macro ‘insert_small_chunk’
+     insert_small_chunk(M, DV, DVS);\
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5519:15: note: in expansion of macro ‘replace_dv’
+               replace_dv(ms, r, rsize);
+               ^~~~~~~~~~
+malloc.c.h: In function ‘mspace_malloc’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5587:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5587:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h: In function ‘mspace_malloc2’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5596:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5596:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:5606:7: warning: incompatible implicit declaration of built-in function ‘memset’
+       memset(mem, 0, chunksize(p) - overhead_for(p));
+       ^~~~~~
+malloc.c.h:5606:7: note: include ‘<string.h>’ or provide a declaration of ‘memset’
+In file included from nedmalloc.c:168:0:
+malloc.c.h: In function ‘mspace_free’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5621:7: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+       USAGE_ERROR_ACTION(fm, p);
+       ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5621:7: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+       USAGE_ERROR_ACTION(fm, p);
+       ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3849:3: note: in expansion of macro ‘assert’
+   assert(P != B);\
+   ^~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5644:17: note: in expansion of macro ‘unlink_chunk’
+                 unlink_chunk(fm, p, prevsize);
+                 ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3849:3: note: in expansion of macro ‘assert’
+   assert(P != B);\
+   ^~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5644:17: note: in expansion of macro ‘unlink_chunk’
+                 unlink_chunk(fm, p, prevsize);
+                 ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3850:3: note: in expansion of macro ‘assert’
+   assert(P != F);\
+   ^~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5644:17: note: in expansion of macro ‘unlink_chunk’
+                 unlink_chunk(fm, p, prevsize);
+                 ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3850:3: note: in expansion of macro ‘assert’
+   assert(P != F);\
+   ^~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5644:17: note: in expansion of macro ‘unlink_chunk’
+                 unlink_chunk(fm, p, prevsize);
+                 ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3851:3: note: in expansion of macro ‘assert’
+   assert(chunksize(P) == small_index2size(I));\
+   ^~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5644:17: note: in expansion of macro ‘unlink_chunk’
+                 unlink_chunk(fm, p, prevsize);
+                 ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3851:3: note: in expansion of macro ‘assert’
+   assert(chunksize(P) == small_index2size(I));\
+   ^~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5644:17: note: in expansion of macro ‘unlink_chunk’
+                 unlink_chunk(fm, p, prevsize);
+                 ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3860:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5644:17: note: in expansion of macro ‘unlink_chunk’
+                 unlink_chunk(fm, p, prevsize);
+                 ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3860:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5644:17: note: in expansion of macro ‘unlink_chunk’
+                 unlink_chunk(fm, p, prevsize);
+                 ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3978:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5644:17: note: in expansion of macro ‘unlink_chunk’
+                 unlink_chunk(fm, p, prevsize);
+                 ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3978:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5644:17: note: in expansion of macro ‘unlink_chunk’
+                 unlink_chunk(fm, p, prevsize);
+                 ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3993:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5644:17: note: in expansion of macro ‘unlink_chunk’
+                 unlink_chunk(fm, p, prevsize);
+                 ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3993:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5644:17: note: in expansion of macro ‘unlink_chunk’
+                 unlink_chunk(fm, p, prevsize);
+                 ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4010:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5644:17: note: in expansion of macro ‘unlink_chunk’
+                 unlink_chunk(fm, p, prevsize);
+                 ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4010:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5644:17: note: in expansion of macro ‘unlink_chunk’
+                 unlink_chunk(fm, p, prevsize);
+                 ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4021:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5644:17: note: in expansion of macro ‘unlink_chunk’
+                 unlink_chunk(fm, p, prevsize);
+                 ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4021:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5644:17: note: in expansion of macro ‘unlink_chunk’
+                 unlink_chunk(fm, p, prevsize);
+                 ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4029:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5644:17: note: in expansion of macro ‘unlink_chunk’
+                 unlink_chunk(fm, p, prevsize);
+                 ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4029:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5644:17: note: in expansion of macro ‘unlink_chunk’
+                 unlink_chunk(fm, p, prevsize);
+                 ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4033:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5644:17: note: in expansion of macro ‘unlink_chunk’
+                 unlink_chunk(fm, p, prevsize);
+                 ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4033:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5644:17: note: in expansion of macro ‘unlink_chunk’
+                 unlink_chunk(fm, p, prevsize);
+                 ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3849:3: note: in expansion of macro ‘assert’
+   assert(P != B);\
+   ^~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5680:15: note: in expansion of macro ‘unlink_chunk’
+               unlink_chunk(fm, next, nsize);
+               ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3849:3: note: in expansion of macro ‘assert’
+   assert(P != B);\
+   ^~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5680:15: note: in expansion of macro ‘unlink_chunk’
+               unlink_chunk(fm, next, nsize);
+               ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3850:3: note: in expansion of macro ‘assert’
+   assert(P != F);\
+   ^~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5680:15: note: in expansion of macro ‘unlink_chunk’
+               unlink_chunk(fm, next, nsize);
+               ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3850:3: note: in expansion of macro ‘assert’
+   assert(P != F);\
+   ^~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5680:15: note: in expansion of macro ‘unlink_chunk’
+               unlink_chunk(fm, next, nsize);
+               ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3851:3: note: in expansion of macro ‘assert’
+   assert(chunksize(P) == small_index2size(I));\
+   ^~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5680:15: note: in expansion of macro ‘unlink_chunk’
+               unlink_chunk(fm, next, nsize);
+               ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3851:3: note: in expansion of macro ‘assert’
+   assert(chunksize(P) == small_index2size(I));\
+   ^~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5680:15: note: in expansion of macro ‘unlink_chunk’
+               unlink_chunk(fm, next, nsize);
+               ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3860:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5680:15: note: in expansion of macro ‘unlink_chunk’
+               unlink_chunk(fm, next, nsize);
+               ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3860:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4045:20: note: in expansion of macro ‘unlink_small_chunk’
+   if (is_small(S)) unlink_small_chunk(M, P, S)\
+                    ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5680:15: note: in expansion of macro ‘unlink_chunk’
+               unlink_chunk(fm, next, nsize);
+               ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3978:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5680:15: note: in expansion of macro ‘unlink_chunk’
+               unlink_chunk(fm, next, nsize);
+               ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3978:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5680:15: note: in expansion of macro ‘unlink_chunk’
+               unlink_chunk(fm, next, nsize);
+               ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3993:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5680:15: note: in expansion of macro ‘unlink_chunk’
+               unlink_chunk(fm, next, nsize);
+               ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3993:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5680:15: note: in expansion of macro ‘unlink_chunk’
+               unlink_chunk(fm, next, nsize);
+               ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4010:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5680:15: note: in expansion of macro ‘unlink_chunk’
+               unlink_chunk(fm, next, nsize);
+               ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4010:7: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+       CORRUPTION_ERROR_ACTION(M);\
+       ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5680:15: note: in expansion of macro ‘unlink_chunk’
+               unlink_chunk(fm, next, nsize);
+               ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4021:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5680:15: note: in expansion of macro ‘unlink_chunk’
+               unlink_chunk(fm, next, nsize);
+               ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4021:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5680:15: note: in expansion of macro ‘unlink_chunk’
+               unlink_chunk(fm, next, nsize);
+               ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4029:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5680:15: note: in expansion of macro ‘unlink_chunk’
+               unlink_chunk(fm, next, nsize);
+               ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4029:13: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+             CORRUPTION_ERROR_ACTION(M);\
+             ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5680:15: note: in expansion of macro ‘unlink_chunk’
+               unlink_chunk(fm, next, nsize);
+               ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4033:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5680:15: note: in expansion of macro ‘unlink_chunk’
+               unlink_chunk(fm, next, nsize);
+               ^~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:4033:9: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+         CORRUPTION_ERROR_ACTION(M);\
+         ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:4046:41: note: in expansion of macro ‘unlink_large_chunk’
+   else { tchunkptr TP = (tchunkptr)(P); unlink_large_chunk(M, TP); }
+                                         ^~~~~~~~~~~~~~~~~~
+malloc.c.h:5680:15: note: in expansion of macro ‘unlink_chunk’
+               unlink_chunk(fm, next, nsize);
+               ^~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3830:3: note: in expansion of macro ‘assert’
+   assert(S >= MIN_CHUNK_SIZE);\
+   ^~~~~~
+malloc.c.h:5692:13: note: in expansion of macro ‘insert_small_chunk’
+             insert_small_chunk(fm, p, psize);
+             ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+malloc.c.h:3830:3: note: in expansion of macro ‘assert’
+   assert(S >= MIN_CHUNK_SIZE);\
+   ^~~~~~
+malloc.c.h:5692:13: note: in expansion of macro ‘insert_small_chunk’
+             insert_small_chunk(fm, p, psize);
+             ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3836:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:5692:13: note: in expansion of macro ‘insert_small_chunk’
+             insert_small_chunk(fm, p, psize);
+             ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3836:5: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+     CORRUPTION_ERROR_ACTION(M);\
+     ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:5692:13: note: in expansion of macro ‘insert_small_chunk’
+             insert_small_chunk(fm, p, psize);
+             ^~~~~~~~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:5697:40: warning: conversion to ‘unsigned int’ from ‘size_t {aka long unsigned int}’ may alter its value [-Wconversion]
+             insert_large_chunk(fm, tp, psize);
+                                        ^
+malloc.c.h:3072:20: note: in definition of macro ‘compute_tree_index’
+   unsigned int X = S >> TREEBIN_SHIFT;\
+                    ^
+malloc.c.h:5697:13: note: in expansion of macro ‘insert_large_chunk’
+             insert_large_chunk(fm, tp, psize);
+             ^~~~~~~~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3928:11: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+           CORRUPTION_ERROR_ACTION(M);\
+           ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:5697:13: note: in expansion of macro ‘insert_large_chunk’
+             insert_large_chunk(fm, tp, psize);
+             ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3928:11: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+           CORRUPTION_ERROR_ACTION(M);\
+           ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:5697:13: note: in expansion of macro ‘insert_large_chunk’
+             insert_large_chunk(fm, tp, psize);
+             ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3942:11: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+           CORRUPTION_ERROR_ACTION(M);\
+           ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:5697:13: note: in expansion of macro ‘insert_large_chunk’
+             insert_large_chunk(fm, tp, psize);
+             ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3015:36: note: in expansion of macro ‘ABORT’
+ #define CORRUPTION_ERROR_ACTION(m) ABORT
+                                    ^~~~~
+malloc.c.h:3942:11: note: in expansion of macro ‘CORRUPTION_ERROR_ACTION’
+           CORRUPTION_ERROR_ACTION(M);\
+           ^~~~~~~~~~~~~~~~~~~~~~~
+malloc.c.h:5697:13: note: in expansion of macro ‘insert_large_chunk’
+             insert_large_chunk(fm, tp, psize);
+             ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5706:7: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+       USAGE_ERROR_ACTION(fm, p);
+       ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5706:7: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+       USAGE_ERROR_ACTION(fm, p);
+       ^~~~~~~~~~~~~~~~~~
+malloc.c.h: In function ‘mspace_calloc’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5718:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5718:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:5731:7: warning: incompatible implicit declaration of built-in function ‘memset’
+       memset(mem, 0, chunksize(p) - overhead_for(p));
+       ^~~~~~
+malloc.c.h:5731:7: note: include ‘<string.h>’ or provide a declaration of ‘memset’
+In file included from nedmalloc.c:168:0:
+malloc.c.h: In function ‘mspace_realloc2’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5755:7: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+       USAGE_ERROR_ACTION(ms,ms);
+       ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5755:7: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+       USAGE_ERROR_ACTION(ms,ms);
+       ^~~~~~~~~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:5763:9: warning: incompatible implicit declaration of built-in function ‘memset’
+         memset((char*)mem + oldsize, 0, newsize - oldsize);
+         ^~~~~~
+malloc.c.h:5763:9: note: include ‘<string.h>’ or provide a declaration of ‘memset’
+In file included from nedmalloc.c:168:0:
+malloc.c.h: In function ‘mspace_memalign’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5776:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5776:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h: In function ‘mspace_independent_calloc’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5787:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5787:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h: In function ‘mspace_independent_comalloc’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5797:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5797:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h: In function ‘mspace_trim’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5813:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5813:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h: In function ‘mspace_malloc_stats’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5824:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5824:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h: In function ‘mspace_footprint’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5835:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5835:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h: In function ‘mspace_max_footprint’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5848:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5848:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h: In function ‘mspace_mallinfo’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5858:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:3019:33: note: in expansion of macro ‘ABORT’
+ #define USAGE_ERROR_ACTION(m,p) ABORT
+                                 ^~~~~
+malloc.c.h:5858:5: note: in expansion of macro ‘USAGE_ERROR_ACTION’
+     USAGE_ERROR_ACTION(ms,ms);
+     ^~~~~~~~~~~~~~~~~~
+nedmalloc.c: At top level:
+nedmalloc.c:299:28: error: ‘malloc’ undeclared here (not in a function)
+ void *(*sysmalloc)(size_t)=malloc;
+                            ^~~~~~
+nedmalloc.c:300:36: error: ‘calloc’ undeclared here (not in a function)
+ void *(*syscalloc)(size_t, size_t)=calloc;
+                                    ^~~~~~
+nedmalloc.c:301:37: error: ‘realloc’ undeclared here (not in a function)
+ void *(*sysrealloc)(void *, size_t)=realloc;
+                                     ^~~~~~~
+nedmalloc.c:302:25: error: ‘free’ undeclared here (not in a function)
+ void (*sysfree)(void *)=free;
+                         ^~~~
+nedmalloc.c: In function ‘CallMalloc’:
+nedmalloc.c:325:90: warning: declaration of ‘mspace’ shadows a global declaration [-Wshadow]
+ static FORCEINLINE NEDMALLOCNOALIASATTR NEDMALLOCPTRATTR void *CallMalloc(void *RESTRICT mspace, size_t size, size_t alignment, unsigned flags) THROWSPEC
+                                                                                          ^~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:1179:15: note: shadowed declaration is here
+ typedef void* mspace;
+               ^~~~~~
+nedmalloc.c: In function ‘CallRealloc’:
+nedmalloc.c:374:91: warning: declaration of ‘mspace’ shadows a global declaration [-Wshadow]
+ static FORCEINLINE NEDMALLOCNOALIASATTR NEDMALLOCPTRATTR void *CallRealloc(void *RESTRICT mspace, void *RESTRICT mem, int isforeign, size_t oldsize, size_t newsize, size_t alignment, unsigned flags) THROWSPEC
+                                                                                           ^~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:1179:15: note: shadowed declaration is here
+ typedef void* mspace;
+               ^~~~~~
+nedmalloc.c:389:4: warning: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]
+    printf("*** nedmalloc frees system allocated block %p\n", mem);
+    ^~~~~~
+nedmalloc.c:389:4: warning: incompatible implicit declaration of built-in function ‘printf’
+nedmalloc.c:389:4: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+nedmalloc.c:391:4: warning: incompatible implicit declaration of built-in function ‘memcpy’
+    memcpy(ret, mem, oldsize<newsize ? oldsize : newsize);
+    ^~~~~~
+nedmalloc.c:391:4: note: include ‘<string.h>’ or provide a declaration of ‘memcpy’
+nedmalloc.c: In function ‘CallFree’:
+nedmalloc.c:435:49: warning: declaration of ‘mspace’ shadows a global declaration [-Wshadow]
+ static FORCEINLINE void CallFree(void *RESTRICT mspace, void *RESTRICT mem, int isforeign) THROWSPEC
+                                                 ^~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:1179:15: note: shadowed declaration is here
+ typedef void* mspace;
+               ^~~~~~
+nedmalloc.c:447:3: warning: incompatible implicit declaration of built-in function ‘printf’
+   printf("*** nedmalloc frees system allocated block %p\n", mem);
+   ^~~~~~
+nedmalloc.c:447:3: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+In file included from nedmalloc.c:168:0:
+nedmalloc.c: In function ‘nedblkmstate’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:583:5: note: in expansion of macro ‘assert’
+     assert(ok_magic(fm)); /* If this fails, someone tried to free a block twice */
+     ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:583:5: note: in expansion of macro ‘assert’
+     assert(ok_magic(fm)); /* If this fails, someone tried to free a block twice */
+     ^~~~~~
+nedmalloc.c: In function ‘nedblksize’:
+nedmalloc.c:616:13: warning: negative integer implicitly converted to unsigned type [-Wsign-conversion]
+   if((flags & NM_SKIP_TOLERANCE_CHECKS) || nedblkmstate(mem))
+             ^
+nedmalloc.c:625:8: warning: unused variable ‘a’ [-Wunused-variable]
+    int a=1; /* Set breakpoints here if needed */
+        ^
+nedmalloc.c: In function ‘nedmalloc2’:
+nedmalloc.c:643:1: warning: ‘nedpmalloc2’ is deprecated [-Wdeprecated-declarations]
+ NEDMALLOCNOALIASATTR NEDMALLOCPTRATTR void * nedmalloc2(size_t size, size_t alignment, unsigned flags) THROWSPEC    { return nedpmalloc2((nedpool *) 0, size, alignment, flags); }
+ ^~~~~~~~~~~~~~~~~~~~
+In file included from nedmalloc.c:78:0:
+nedmalloc.h:606:83: note: declared here
+ NEDMALLOCDEPRECATED NEDMALLOCEXTSPEC NEDMALLOCNOALIASATTR NEDMALLOCPTRATTR void * nedpmalloc2(nedpool *p, size_t size, size_t alignment, unsigned flags) THROWSPEC;
+                                                                                   ^~~~~~~~~~~
+nedmalloc.c: In function ‘nedrealloc2’:
+nedmalloc.c:644:1: warning: ‘nedprealloc2’ is deprecated [-Wdeprecated-declarations]
+ NEDMALLOCNOALIASATTR NEDMALLOCPTRATTR void * nedrealloc2(void *mem, size_t size, size_t alignment, unsigned flags) THROWSPEC { return nedprealloc2((nedpool *) 0, mem, size, alignment, flags); }
+ ^~~~~~~~~~~~~~~~~~~~
+In file included from nedmalloc.c:78:0:
+nedmalloc.h:607:83: note: declared here
+ NEDMALLOCDEPRECATED NEDMALLOCEXTSPEC NEDMALLOCNOALIASATTR NEDMALLOCPTRATTR void * nedprealloc2(nedpool *p, void *mem, size_t size, size_t alignment, unsigned flags) THROWSPEC;
+                                                                                   ^~~~~~~~~~~~
+nedmalloc.c: In function ‘nedfree2’:
+nedmalloc.c:645:1: warning: ‘nedpfree2’ is deprecated [-Wdeprecated-declarations]
+ NEDMALLOCNOALIASATTR void   nedfree2(void *mem, unsigned flags) THROWSPEC              { nedpfree2((nedpool *) 0, mem, flags); }
+ ^~~~~~~~~~~~~~~~~~~~
+In file included from nedmalloc.c:78:0:
+nedmalloc.h:608:66: note: declared here
+ NEDMALLOCDEPRECATED NEDMALLOCEXTSPEC NEDMALLOCNOALIASATTR void   nedpfree2(nedpool *p, void *mem, unsigned flags) THROWSPEC;
+                                                                  ^~~~~~~~~
+nedmalloc.c: In function ‘GetTimestamp’:
+nedmalloc.c:689:17: error: storage size of ‘tv’ isn’t known
+  struct timeval tv;
+                 ^~
+nedmalloc.c:690:2: warning: implicit declaration of function ‘gettimeofday’ [-Wimplicit-function-declaration]
+  gettimeofday(&tv, 0);
+  ^~~~~~~~~~~~
+nedmalloc.c:689:17: warning: unused variable ‘tv’ [-Wunused-variable]
+  struct timeval tv;
+                 ^~
+nedmalloc.c: At top level:
+nedmalloc.c:252:19: error: unknown type name ‘pthread_key_t’
+  #define TLSVAR   pthread_key_t
+                   ^
+nedmalloc.c:791:2: note: in expansion of macro ‘TLSVAR’
+  TLSVAR mycache;      /* Thread cache for this thread. 0 for unset, negative for use mspace-1 directly, otherwise is cache-1 */
+  ^~~~~~
+nedmalloc.c: In function ‘LogOperation’:
+nedmalloc.c:1012:96: warning: declaration of ‘mspace’ shadows a global declaration [-Wshadow]
+ static FORCEINLINE logentry *LogOperation(threadcache *tc, nedpool *np, LogEntryType type, int mspace, size_t size, void *mem, size_t alignment, unsigned flags, void *returned) THROWSPEC
+                                                                                                ^~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:1179:15: note: shadowed declaration is here
+ typedef void* mspace;
+               ^~~~~~
+nedmalloc.c: In function ‘size2binidx’:
+nedmalloc.c:1056:48: warning: conversion to ‘long unsigned int’ from ‘int’ may change the sign of the result [-Wsign-conversion]
+         topbit = sizeof(size)*__CHAR_BIT__ - 1 - __builtin_clz(size);
+                                                ^
+nedmalloc.c:1056:18: warning: conversion to ‘unsigned int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+         topbit = sizeof(size)*__CHAR_BIT__ - 1 - __builtin_clz(size);
+                  ^~~~~~
+In file included from nedmalloc.c:168:0:
+nedmalloc.c: In function ‘RemoveCacheEntries’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1156:5: note: in expansion of macro ‘assert’
+     assert(blksize<=nedblksize(0, f, 0));
+     ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1156:5: note: in expansion of macro ‘assert’
+     assert(blksize<=nedblksize(0, f, 0));
+     ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1157:5: note: in expansion of macro ‘assert’
+     assert(blksize);
+     ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1157:5: note: in expansion of macro ‘assert’
+     assert(blksize);
+     ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1167:5: note: in expansion of macro ‘assert’
+     assert((long) tc->freeInCache>=0);
+     ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1167:5: note: in expansion of macro ‘assert’
+     assert((long) tc->freeInCache>=0);
+     ^~~~~~
+nedmalloc.c:1170:53: warning: conversion to ‘int’ from ‘unsigned int’ may change the sign of the result [-Wsign-conversion]
+     LogOperation(tc, p, LOGENTRY_THREADCACHE_CLEAN, age, blksize, f, 0, 0, 0);
+                                                     ^~~
+In file included from nedmalloc.c:168:0:
+nedmalloc.c: In function ‘nedflushlogs’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1200:5: note: in expansion of macro ‘assert’
+     assert(!tc->freeInCache);
+     ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1200:5: note: in expansion of macro ‘assert’
+     assert(!tc->freeInCache);
+     ^~~~~~
+nedmalloc.c: In function ‘AllocCache’:
+nedmalloc.c:1322:15: warning: implicit declaration of function ‘abs’ [-Wimplicit-function-declaration]
+  tc->mymspace=abs(tc->threadid) % end;
+               ^~~
+nedmalloc.c:256:23: warning: implicit declaration of function ‘pthread_setspecific’ [-Wimplicit-function-declaration]
+  #define TLSSET(k, a) pthread_setspecific(k, a)
+                       ^
+nedmalloc.c:1343:5: note: in expansion of macro ‘TLSSET’
+  if(TLSSET(p->mycache, (void *)(size_t)(n+1))) abort();
+     ^~~~~~
+nedmalloc.c:1343:48: warning: incompatible implicit declaration of built-in function ‘abort’
+  if(TLSSET(p->mycache, (void *)(size_t)(n+1))) abort();
+                                                ^~~~~
+nedmalloc.c:1343:48: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+nedmalloc.c: In function ‘threadcache_malloc’:
+nedmalloc.c:1358:11: warning: conversion to ‘unsigned int’ from ‘int’ may change the sign of the result [-Wsign-conversion]
+  bestsize=1<<(idx+4);
+           ^
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1379:2: note: in expansion of macro ‘assert’
+  assert(bestsize>=size);
+  ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1379:2: note: in expansion of macro ‘assert’
+  assert(bestsize>=size);
+  ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1381:2: note: in expansion of macro ‘assert’
+  assert(size<=THREADCACHEMAX);
+  ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1381:2: note: in expansion of macro ‘assert’
+  assert(size<=THREADCACHEMAX);
+  ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1382:2: note: in expansion of macro ‘assert’
+  assert(idx<=THREADCACHEMAXBINS);
+  ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1382:2: note: in expansion of macro ‘assert’
+  assert(idx<=THREADCACHEMAXBINS);
+  ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1398:3: note: in expansion of macro ‘assert’
+   assert(nedblksize(0, blk, 0)>=blksize);
+   ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1398:3: note: in expansion of macro ‘assert’
+   assert(nedblksize(0, blk, 0)>=blksize);
+   ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1399:3: note: in expansion of macro ‘assert’
+   assert(blksize>=size);
+   ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1399:3: note: in expansion of macro ‘assert’
+   assert(blksize>=size);
+   ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1408:3: note: in expansion of macro ‘assert’
+   assert(binsptr[0]!=blk && binsptr[1]!=blk);
+   ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1408:3: note: in expansion of macro ‘assert’
+   assert(binsptr[0]!=blk && binsptr[1]!=blk);
+   ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1409:3: note: in expansion of macro ‘assert’
+   assert(nedblksize(0, blk, 0)>=sizeof(threadcacheblk) && nedblksize(0, blk, 0)<=THREADCACHEMAX+CHUNK_OVERHEAD);
+   ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1409:3: note: in expansion of macro ‘assert’
+   assert(nedblksize(0, blk, 0)>=sizeof(threadcacheblk) && nedblksize(0, blk, 0)<=THREADCACHEMAX+CHUNK_OVERHEAD);
+   ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1416:3: note: in expansion of macro ‘assert’
+   assert(blksize>=size);
+   ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1416:3: note: in expansion of macro ‘assert’
+   assert(blksize>=size);
+   ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1419:3: note: in expansion of macro ‘assert’
+   assert((long) tc->freeInCache>=0);
+   ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1419:3: note: in expansion of macro ‘assert’
+   assert((long) tc->freeInCache>=0);
+   ^~~~~~
+nedmalloc.c: In function ‘threadcache_free’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1455:2: note: in expansion of macro ‘assert’
+  assert(size>=sizeof(threadcacheblk) && size<=THREADCACHEMAX+CHUNK_OVERHEAD);
+  ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1455:2: note: in expansion of macro ‘assert’
+  assert(size>=sizeof(threadcacheblk) && size<=THREADCACHEMAX+CHUNK_OVERHEAD);
+  ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1458:2: note: in expansion of macro ‘assert’
+  assert(nedblksize(0, mem, 0));
+  ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1458:2: note: in expansion of macro ‘assert’
+  assert(nedblksize(0, mem, 0));
+  ^~~~~~
+nedmalloc.c:1464:11: warning: conversion to ‘unsigned int’ from ‘int’ may change the sign of the result [-Wsign-conversion]
+  bestsize=1<<(idx+4);
+           ^
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1481:2: note: in expansion of macro ‘assert’
+  assert(idx<=THREADCACHEMAXBINS);
+  ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1481:2: note: in expansion of macro ‘assert’
+  assert(idx<=THREADCACHEMAXBINS);
+  ^~~~~~
+nedmalloc.c:1484:3: warning: incompatible implicit declaration of built-in function ‘fprintf’
+   fprintf(stderr, "nedmalloc: Attempt to free already freed memory block %p - aborting!\n", tck);
+   ^~~~~~~
+nedmalloc.c:1484:3: note: include ‘<stdio.h>’ or provide a declaration of ‘fprintf’
+nedmalloc.c:1484:11: error: ‘stderr’ undeclared (first use in this function)
+   fprintf(stderr, "nedmalloc: Attempt to free already freed memory block %p - aborting!\n", tck);
+           ^~~~~~
+nedmalloc.c:1485:3: warning: incompatible implicit declaration of built-in function ‘abort’
+   abort();
+   ^~~~~
+nedmalloc.c:1485:3: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1499:2: note: in expansion of macro ‘assert’
+  assert(!*binsptr || (*binsptr)->size==tck->size);
+  ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1499:2: note: in expansion of macro ‘assert’
+  assert(!*binsptr || (*binsptr)->size==tck->size);
+  ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1501:2: note: in expansion of macro ‘assert’
+  assert(tck==tc->bins[idx*2]);
+  ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1501:2: note: in expansion of macro ‘assert’
+  assert(tck==tc->bins[idx*2]);
+  ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1502:2: note: in expansion of macro ‘assert’
+  assert(tc->bins[idx*2+1]==tck || binsptr[0]->next->prev==tck);
+  ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1502:2: note: in expansion of macro ‘assert’
+  assert(tc->bins[idx*2+1]==tck || binsptr[0]->next->prev==tck);
+  ^~~~~~
+nedmalloc.c: In function ‘InitPool’:
+nedmalloc.c:253:22: warning: implicit declaration of function ‘pthread_key_create’ [-Wimplicit-function-declaration]
+  #define TLSALLOC(k) pthread_key_create(k, 0)
+                      ^
+nedmalloc.c:1525:5: note: in expansion of macro ‘TLSALLOC’
+  if(TLSALLOC(&p->mycache)) goto err;
+     ^~~~~~~~
+nedmalloc.c:1538:3: warning: incompatible implicit declaration of built-in function ‘abort’
+   abort();   /* If you can't allocate for system pool, we're screwed */
+   ^~~~~
+nedmalloc.c:1538:3: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+nedmalloc.c:254:22: warning: implicit declaration of function ‘pthread_key_delete’ [-Wimplicit-function-declaration]
+  #define TLSFREE(k)  pthread_key_delete(k)
+                      ^
+nedmalloc.c:1549:6: note: in expansion of macro ‘TLSFREE’
+   if(TLSFREE(p->mycache)) abort();
+      ^~~~~~~
+nedmalloc.c:1549:27: warning: incompatible implicit declaration of built-in function ‘abort’
+   if(TLSFREE(p->mycache)) abort();
+                           ^~~~~
+nedmalloc.c:1549:27: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+nedmalloc.c: In function ‘FindMSpace’:
+nedmalloc.c:1615:52: warning: incompatible implicit declaration of built-in function ‘abort’
+   if(TLSSET(p->mycache, (void *)(size_t)(-(n+1)))) abort();
+                                                    ^~~~~
+nedmalloc.c:1615:52: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+In file included from nedmalloc.c:168:0:
+nedmalloc.c: In function ‘nedcreatepool’:
+malloc.c.h:2059:73: warning: right-hand operand of comma expression has no effect [-Wunused-value]
+ #define INITIAL_LOCK(sl)      ((sl)->threadid = 0, (sl)->l = (sl)->c = 0, 0)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+nedmalloc.c:1642:3: note: in expansion of macro ‘INITIAL_LOCK’
+   INITIAL_LOCK(&poollistlock);
+   ^~~~~~~~~~~~
+nedmalloc.c:1659:3: warning: incompatible implicit declaration of built-in function ‘memset’
+   memset(&poollist->list[poollist->size], 0, newsize-((size_t)&poollist->list[poollist->size]-(size_t)&poollist->list[0]));
+   ^~~~~~
+nedmalloc.c:1659:3: note: include ‘<string.h>’ or provide a declaration of ‘memset’
+nedmalloc.c:1660:27: warning: conversion to ‘long unsigned int’ from ‘long int’ may change the sign of the result [-Wsign-conversion]
+   poollist->size=((newsize-((char *)&poollist->list[0]-(char *)poollist))/sizeof(nedpool *))-1;
+                           ^
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1661:3: note: in expansion of macro ‘assert’
+   assert(poollist->size>poollist->length);
+   ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1661:3: note: in expansion of macro ‘assert’
+   assert(poollist->size>poollist->length);
+   ^~~~~~
+In file included from nedmalloc.c:168:0:
+nedmalloc.c: In function ‘neddestroypool’:
+malloc.c.h:2060:31: warning: statement with no effect [-Wunused-value]
+ #define DESTROY_LOCK(sl)      (0)
+                               ^
+nedmalloc.c:1694:2: note: in expansion of macro ‘DESTROY_LOCK’
+  DESTROY_LOCK(&p->mutex);
+  ^~~~~~~~~~~~
+nedmalloc.c:1696:26: warning: incompatible implicit declaration of built-in function ‘abort’
+  if(TLSFREE(p->mycache)) abort();
+                          ^~~~~
+nedmalloc.c:1696:26: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1701:2: note: in expansion of macro ‘assert’
+  assert(poollist);
+  ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1701:2: note: in expansion of macro ‘assert’
+  assert(poollist);
+  ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1703:2: note: in expansion of macro ‘assert’
+  assert(n!=poollist->length);
+  ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1703:2: note: in expansion of macro ‘assert’
+  assert(n!=poollist->length);
+  ^~~~~~
+nedmalloc.c:1704:2: warning: implicit declaration of function ‘memmove’ [-Wimplicit-function-declaration]
+  memmove(&poollist->list[n], &poollist->list[n+1], (size_t)&poollist->list[poollist->length]-(size_t)&poollist->list[n]);
+  ^~~~~~~
+nedmalloc.c:1704:2: warning: incompatible implicit declaration of built-in function ‘memmove’
+nedmalloc.c:1704:2: note: include ‘<string.h>’ or provide a declaration of ‘memmove’
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1707:3: note: in expansion of macro ‘assert’
+   assert(!poollist->list[0]);
+   ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1707:3: note: in expansion of macro ‘assert’
+   assert(!poollist->list[0]);
+   ^~~~~~
+nedmalloc.c: In function ‘neddestroysyspool’:
+nedmalloc.c:1735:26: warning: incompatible implicit declaration of built-in function ‘abort’
+  if(TLSFREE(p->mycache)) abort();
+                          ^~~~~
+nedmalloc.c:1735:26: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+In file included from nedmalloc.c:168:0:
+malloc.c.h:2060:31: warning: statement with no effect [-Wunused-value]
+ #define DESTROY_LOCK(sl)      (0)
+                               ^
+nedmalloc.c:1738:2: note: in expansion of macro ‘DESTROY_LOCK’
+  DESTROY_LOCK(&p->mutex);
+  ^~~~~~~~~~~~
+nedmalloc.c: In function ‘nedpoollist’:
+nedmalloc.c:1750:3: warning: incompatible implicit declaration of built-in function ‘memcpy’
+   memcpy(ret, poollist->list, (poollist->length+1)*sizeof(nedpool *));
+   ^~~~~~
+nedmalloc.c:1750:3: note: include ‘<string.h>’ or provide a declaration of ‘memcpy’
+nedmalloc.c: In function ‘nedtrimthreadcache’:
+nedmalloc.c:255:21: warning: implicit declaration of function ‘pthread_getspecific’ [-Wimplicit-function-declaration]
+  #define TLSGET(k)  pthread_getspecific(k)
+                     ^
+nedmalloc.c:1784:24: note: in expansion of macro ‘TLSGET’
+  mycache=(int)(size_t) TLSGET(p->mycache);
+                        ^~~~~~
+nedmalloc.c:1787:57: warning: incompatible implicit declaration of built-in function ‘abort’
+   if(disable && TLSSET(p->mycache, (void *)(size_t)-1)) abort();
+                                                         ^~~~~
+nedmalloc.c:1787:57: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+nedmalloc.c:1793:3: warning: incompatible implicit declaration of built-in function ‘printf’
+   printf("Threadcache utilisation: %lf%% in cache with %lf%% lost to other threads\n",
+   ^~~~~~
+nedmalloc.c:1793:3: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+nedmalloc.c:1796:70: warning: incompatible implicit declaration of built-in function ‘abort’
+   if(disable && TLSSET(p->mycache, (void *)(size_t)(-tc->mymspace))) abort();
+                                                                      ^~~~~
+nedmalloc.c:1796:70: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1799:3: note: in expansion of macro ‘assert’
+   assert(!tc->freeInCache);
+   ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1799:3: note: in expansion of macro ‘assert’
+   assert(!tc->freeInCache);
+   ^~~~~~
+nedmalloc.c: In function ‘GetMSpace’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1834:2: note: in expansion of macro ‘assert’
+  assert(m);
+  ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1834:2: note: in expansion of macro ‘assert’
+  assert(m);
+  ^~~~~~
+nedmalloc.c: In function ‘GetThreadCache_cold2’:
+nedmalloc.c:1853:50: warning: incompatible implicit declaration of built-in function ‘abort’
+    if(TLSSET((*p)->mycache, (void *)(size_t)-1)) abort();
+                                                  ^~~~~
+nedmalloc.c:1853:50: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+In file included from nedmalloc.c:168:0:
+nedmalloc.c: In function ‘GetThreadCache’:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1880:2: note: in expansion of macro ‘assert’
+  assert(*mymspace>=0);
+  ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1880:2: note: in expansion of macro ‘assert’
+  assert(*mymspace>=0);
+  ^~~~~~
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1882:2: note: in expansion of macro ‘assert’
+  assert(!(*tc) || (long)(size_t)CURRENT_THREAD==(*tc)->threadid);
+  ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1882:2: note: in expansion of macro ‘assert’
+  assert(!(*tc) || (long)(size_t)CURRENT_THREAD==(*tc)->threadid);
+  ^~~~~~
+nedmalloc.c: In function ‘nedpmalloc2’:
+nedmalloc.c:1907:5: warning: incompatible implicit declaration of built-in function ‘memset’
+     memset(ret, 0, size);
+     ^~~~~~
+nedmalloc.c:1907:5: note: include ‘<string.h>’ or provide a declaration of ‘memset’
+nedmalloc.c: In function ‘nedprealloc2’:
+nedmalloc.c:1928:2: warning: ‘nedpmalloc2’ is deprecated [-Wdeprecated-declarations]
+  if(!mem) return nedpmalloc2(p, size, alignment, flags);
+  ^~
+nedmalloc.c:1895:46: note: declared here
+ NEDMALLOCNOALIASATTR NEDMALLOCPTRATTR void * nedpmalloc2(nedpool *p, size_t size, size_t alignment, unsigned flags) THROWSPEC
+                                              ^~~~~~~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1937:2: note: in expansion of macro ‘assert’
+  assert(memsize);
+  ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1937:2: note: in expansion of macro ‘assert’
+  assert(memsize);
+  ^~~~~~
+nedmalloc.c:1940:3: warning: incompatible implicit declaration of built-in function ‘fprintf’
+   fprintf(stderr, "nedmalloc: nedprealloc() called with a block not created by nedmalloc!\n");
+   ^~~~~~~
+nedmalloc.c:1940:3: note: include ‘<stdio.h>’ or provide a declaration of ‘fprintf’
+nedmalloc.c:1940:11: error: ‘stderr’ undeclared (first use in this function)
+   fprintf(stderr, "nedmalloc: nedprealloc() called with a block not created by nedmalloc!\n");
+           ^~~~~~
+nedmalloc.c:1941:3: warning: incompatible implicit declaration of built-in function ‘abort’
+   abort();
+   ^~~~~
+nedmalloc.c:1941:3: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+nedmalloc.c:1958:4: warning: incompatible implicit declaration of built-in function ‘memcpy’
+    memcpy(ret, mem, tocopy);
+    ^~~~~~
+nedmalloc.c:1958:4: note: include ‘<string.h>’ or provide a declaration of ‘memcpy’
+nedmalloc.c:1960:5: warning: incompatible implicit declaration of built-in function ‘memset’
+     memset((void *)((size_t)ret+memsize), 0, size-memsize);
+     ^~~~~~
+nedmalloc.c:1960:5: note: include ‘<string.h>’ or provide a declaration of ‘memset’
+nedmalloc.c: In function ‘nedpfree2’:
+nedmalloc.c:1994:3: warning: incompatible implicit declaration of built-in function ‘fprintf’
+   fprintf(stderr, "nedmalloc: WARNING nedpfree() called with zero. This is not portable behaviour!\n");
+   ^~~~~~~
+nedmalloc.c:1994:3: note: include ‘<stdio.h>’ or provide a declaration of ‘fprintf’
+nedmalloc.c:1994:11: error: ‘stderr’ undeclared (first use in this function)
+   fprintf(stderr, "nedmalloc: WARNING nedpfree() called with zero. This is not portable behaviour!\n");
+           ^~~~~~
+In file included from nedmalloc.c:168:0:
+malloc.c.h:592:16: warning: incompatible implicit declaration of built-in function ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1999:2: note: in expansion of macro ‘assert’
+  assert(memsize);
+  ^~~~~~
+malloc.c.h:592:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+ #define ABORT  abort()
+                ^
+malloc.c.h:1415:28: note: in expansion of macro ‘ABORT’
+ #define assert(x) if(!(x)) ABORT
+                            ^~~~~
+nedmalloc.c:1999:2: note: in expansion of macro ‘assert’
+  assert(memsize);
+  ^~~~~~
+nedmalloc.c:2002:3: warning: incompatible implicit declaration of built-in function ‘fprintf’
+   fprintf(stderr, "nedmalloc: nedpfree() called with a block not created by nedmalloc!\n");
+   ^~~~~~~
+nedmalloc.c:2002:3: note: include ‘<stdio.h>’ or provide a declaration of ‘fprintf’
+nedmalloc.c:2003:3: warning: incompatible implicit declaration of built-in function ‘abort’
+   abort();
+   ^~~~~
+nedmalloc.c:2003:3: note: include ‘<stdlib.h>’ or provide a declaration of ‘abort’
+nedmalloc.c: In function ‘nedpmalloc’:
+nedmalloc.c:2023:2: warning: ‘nedpmalloc2’ is deprecated [-Wdeprecated-declarations]
+  return nedpmalloc2(p, size, 0, flags);
+  ^~~~~~
+nedmalloc.c:1895:46: note: declared here
+ NEDMALLOCNOALIASATTR NEDMALLOCPTRATTR void * nedpmalloc2(nedpool *p, size_t size, size_t alignment, unsigned flags) THROWSPEC
+                                              ^~~~~~~~~~~
+nedmalloc.c: In function ‘nedpcalloc’:
+nedmalloc.c:2031:2: warning: ‘nedpmalloc2’ is deprecated [-Wdeprecated-declarations]
+  return nedpmalloc2(p, bytes, 0, M2_ZERO_MEMORY|flags);
+  ^~~~~~
+nedmalloc.c:1895:46: note: declared here
+ NEDMALLOCNOALIASATTR NEDMALLOCPTRATTR void * nedpmalloc2(nedpool *p, size_t size, size_t alignment, unsigned flags) THROWSPEC
+                                              ^~~~~~~~~~~
+nedmalloc.c: In function ‘nedprealloc’:
+nedmalloc.c:2045:2: warning: ‘nedprealloc2’ is deprecated [-Wdeprecated-declarations]
+  return nedprealloc2(p, mem, size, 0, flags);
+  ^~~~~~
+nedmalloc.c:1922:46: note: declared here
+ NEDMALLOCNOALIASATTR NEDMALLOCPTRATTR void * nedprealloc2(nedpool *p, void *mem, size_t size, size_t alignment, unsigned flags) THROWSPEC
+                                              ^~~~~~~~~~~~
+nedmalloc.c: In function ‘nedpmemalign’:
+nedmalloc.c:2050:2: warning: ‘nedpmalloc2’ is deprecated [-Wdeprecated-declarations]
+  return nedpmalloc2(p, bytes, alignment, flags);
+  ^~~~~~
+nedmalloc.c:1895:46: note: declared here
+ NEDMALLOCNOALIASATTR NEDMALLOCPTRATTR void * nedpmalloc2(nedpool *p, size_t size, size_t alignment, unsigned flags) THROWSPEC
+                                              ^~~~~~~~~~~
+nedmalloc.c: In function ‘nedpfree’:
+nedmalloc.c:2054:3: warning: ‘nedpfree2’ is deprecated [-Wdeprecated-declarations]
+   nedpfree2(p, mem, 0);
+   ^~~~~~~~~
+nedmalloc.c:1985:29: note: declared here
+ NEDMALLOCNOALIASATTR void   nedpfree2(nedpool *p, void *mem, unsigned flags) THROWSPEC
+                             ^~~~~~~~~
+nedmalloc.c: In function ‘nedpindependent_comalloc’:
+nedmalloc.c:2163:41: warning: implicit declaration of function ‘alloca’ [-Wimplicit-function-declaration]
+     size_t i, *adjustedsizes=(size_t *) alloca(elems*sizeof(size_t));
+                                         ^~~~~~
+nedmalloc.c:2163:30: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+     size_t i, *adjustedsizes=(size_t *) alloca(elems*sizeof(size_t));
+                              ^
+nedmalloc.c:2165:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+     for(i=0; i<elems; i++)
+     ^~~
+nedmalloc.c:2167:2: note: ...this statement, but the latter is misleadingly indented as if it is guarded by the ‘for’
+  GetThreadCache(&p, &tc, &mymspace, 0);
+  ^~~~~~~~~~~~~~
+At top level:
+nedmalloc.c:739:20: warning: ‘LogEntryTypeStrings’ defined but not used [-Wunused-variable]
+ static const char *LogEntryTypeStrings[]={
+                    ^~~~~~~~~~~~~~~~~~~
+nedmalloc.c:680:18: warning: ‘GetTimestamp’ defined but not used [-Wunused-function]
+ static timeCount GetTimestamp()
+                  ^~~~~~~~~~~~
+make: *** [../../Mk/l4.build.mk:62: nedmalloc.o] Error 1
