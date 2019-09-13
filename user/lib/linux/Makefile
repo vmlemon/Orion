@@ -30,9 +30,15 @@
 ##                
 ######################################################################
 
-srcdir=		@srcdir@
-top_srcdir=	@top_srcdir@
-top_builddir=	@top_builddir@
+##srcdir=		@srcdir@
+##top_srcdir=	@top_srcdir@
+##top_builddir=	@top_builddir@
+
+srcdir=         .
+top_srcdir=     ../..
+top_builddir=   ../..
+
+#include $(top_srcdir)/Mk/l4.base.mk
 
 include $(top_srcdir)/Mk/l4.base.mk
 
@@ -40,10 +46,10 @@ include $(top_srcdir)/Mk/l4.base.mk
 #powerpc_SRCS=	1275tree.cc fdt.cc 
 
 LIBRARY=	linux
-SRCS=		 $(wildcard *.c) $(wildcard *.cc) $(ARCH).cc $($(ARCH)_SRCS)
+SRCS=		 $(wildcard *.c) $(wildcard *.cc) #$(ARCH).cc $($(ARCH)_SRCS)
 
 include $(top_srcdir)/Mk/l4.lib.mk
 
 test:
 	@echo SRCS=${SRCS}
-@echo OBJS=${OBJS}
+	@echo OBJS=${OBJS}
