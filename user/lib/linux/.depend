@@ -8,18 +8,19 @@ stdio.o: stdio.c ../../include/errno.h ../../include/sys/cdefs.h \
  ../../include/unistd.h ../../include/stdio.h ../../include/sys/_null.h \
  local.h wcio.h fileext.h
 fopen.o: fopen.c ../../include/sys/cdefs.h namespace.h \
- ../../include/sys/types.h ../../include/sys/stat.h \
- ../../include/sys/_timespec.h ../../include/sys/_types.h \
+ ../../include/sys/types.h machine/endian.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
- ../../include/sys/time.h ../../include/sys/_null.h \
- ../../include/sys/timespec.h ../../include/xlocale/_time.h \
- ../../include/fcntl.h ../../include/unistd.h ../../include/stdio.h \
- ../../include/errno.h ../../include/limits.h un-namespace.h local.h \
- wcio.h fileext.h
+ sys/_pthreadtypes.h sys/_stdint.h sys/select.h ../../include/sys/stat.h \
+ ../../include/sys/_timespec.h ../../include/sys/time.h \
+ ../../include/sys/_null.h ../../include/sys/timespec.h \
+ ../../include/xlocale/_time.h ../../include/fcntl.h \
+ ../../include/unistd.h ../../include/stdio.h ../../include/errno.h \
+ ../../include/limits.h un-namespace.h local.h wcio.h fileext.h
 tmpnam.o: tmpnam.c ../../include/sys/cdefs.h ../../include/sys/types.h \
- ../../include/stdio.h ../../include/sys/_null.h \
- ../../include/sys/_types.h ../../include/machine/_types.h \
- ../../include/l4/amd64/types.h ../../include/unistd.h
+ machine/endian.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ sys/_pthreadtypes.h sys/_stdint.h sys/select.h ../../include/stdio.h \
+ ../../include/sys/_null.h ../../include/unistd.h
 fread.o: fread.c ../../include/sys/cdefs.h namespace.h \
  ../../include/errno.h ../../include/stdint.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
