@@ -29,6 +29,11 @@ typedef L4_Word64_t __uint64_t;
 typedef L4_Word16_t __uint16_t;
 typedef L4_Word8_t __uint8_t;
 
+//Should this be here?
+typedef __int64_t int64_t;
+typedef __uint64_t    uint64_t;
+
+
 //These are seemingly-specific to FreeBSD
 typedef __uint16_t      __uint_least16_t;
 typedef __uint32_t      __uint_least32_t;
