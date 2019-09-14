@@ -32,6 +32,7 @@
 #ifndef __L4__POWERPC__SPECIALS_H__
 #define __L4__POWERPC__SPECIALS_H__
 
+//Hack __L4_Lsb
 L4_INLINE int __L4_Msb( L4_Word_t w ) __attribute__ ((const));
 
 L4_INLINE int __L4_Msb( L4_Word_t w )
@@ -42,6 +43,8 @@ L4_INLINE int __L4_Msb( L4_Word_t w )
 
     return 63-zeros;
 }
+
+#define __L4_Lsb __L4_Msb 
 
 #if defined(__cplusplus)
 L4_INLINE L4_Fpage_t L4_Fpage (L4_Fpage_t f)
