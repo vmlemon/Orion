@@ -47,9 +47,25 @@ typedef	__int32_t	__ssize_t;
 #ifdef	__LP64__
 typedef	__int32_t	__clock_t;		/* clock()... */
 typedef	__int64_t	__time_t;		/* time()... */
+typedef	__int64_t	__critical_t;
+typedef	__int64_t	__register_t;
+typedef	__int64_t	__segsz_t;		/* segment size (in pages) */
+typedef	__uint64_t	__u_register_t;
+typedef	__uint64_t	__vm_paddr_t;
+typedef	__uint64_t	__vm_offset_t;
+typedef	__uint64_t	__vm_size_t;
 #else
 typedef	unsigned long	__clock_t;
 typedef	__int32_t	__time_t;
+typedef	__int32_t	__critical_t;
+typedef	__int32_t	__register_t;
+typedef	__int32_t	__segsz_t;
+typedef	__uint32_t	__u_register_t;
+typedef	__uint64_t	__vm_paddr_t;
+typedef	__uint32_t	__vm_offset_t;
+typedef	__uint32_t	__vm_size_t;
 #endif
+
+
 
 #endif
