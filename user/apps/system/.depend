@@ -19,5 +19,5 @@ mojoelf.o: mojoelf.c ../../include/stdio.h ../../include/sys/cdefs.h \
  ../../include/sys/_sigset.h ../../include/sys/_timeval.h \
  ../../include/sys/timespec.h ../../include/sys/_timespec.h \
  ../../include/sys/stat.h ../../include/sys/time.h \
- ../../include/xlocale/_time.h ../../include/sys/mman.h dlfcn.h mojoelf.h \
- ../../include/errno.h
+ ../../include/xlocale/_time.h ../../include/sys/mman.h \
+ ../../include/dlfcn.h mojoelf.h ../../include/errno.h

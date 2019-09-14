@@ -60,6 +60,7 @@ typedef	__uint64_t	__u_register_t;
 typedef	__uint64_t	__vm_paddr_t;
 typedef	__uint64_t	__vm_offset_t;
 typedef	__uint64_t	__vm_size_t;
+typedef	__int64_t	__intptr_t;
 #else
 typedef	unsigned long	__clock_t;
 typedef	__int32_t	__time_t;
@@ -70,6 +71,7 @@ typedef	__uint32_t	__u_register_t;
 typedef	__uint64_t	__vm_paddr_t;
 typedef	__uint32_t	__vm_offset_t;
 typedef	__uint32_t	__vm_size_t;
+typedef	__int32_t	__intptr_t;
 #endif
 
 //Fast/Least integer types, from x86/FreeBSD
