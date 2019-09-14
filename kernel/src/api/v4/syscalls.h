@@ -50,7 +50,7 @@ extern "C" {
  * @param to_tid destination thread id
  * @param from_tid from specifier
  */
-SYS_IPC (threadid_t to_tid, threadid_t from_tid);
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
 
 
 /**

@@ -42,9 +42,9 @@ PROGRAM_DEPS=	$(top_builddir)/lib/l4/libl4.a \
 		#$(top_builddir)/lib/libl4e/libl4e.a\
 		#$(top_builddir)/lib/libelf/libelf.a
 
-SRCS=		crt0-$(ARCH).S syslaunch.cc # $(wildcard libdex/*.cc)  
+SRCS=		crt0-$(ARCH).S syslaunch.cc CacheLineSize.c #nedmalloc.c #clefia_ref.c #$(wildcard *.c)  
 
-LIBS+=		-ll4 -lio # -ll4e -lelf
+LIBS+=		-ll4 -lio  -llinux # -ll4e -lelf
 LDFLAGS+=	-Ttext=$(ROOTTASK_LINKBASE)
 
 CFLAGS_powerpc+=	-fno-builtin -msoft-float

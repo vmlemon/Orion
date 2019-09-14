@@ -1,0 +1,8 @@
+===> nedmalloc.c
+gcc-6 -I../../include -I../.. -I/usr/lib/gcc/x86_64-linux-gnu/6/include   -nostdinc -g -O2 -m64 -mno-red-zone   -fno-stack-protector -lssp -O2 -g -Wall -Wshadow   -fno-stack-protector  -Wconversion -std=c99 -c nedmalloc.c -o nedmalloc.o
+In file included from nedmalloc.c:53:0:
+../../include/stdio.h:42:23: fatal error: sys/_null.h: No such file or directory
+ #include <sys/_null.h>
+                       ^
+compilation terminated.
+make: *** [../../Mk/l4.build.mk:62: nedmalloc.o] Error 1
