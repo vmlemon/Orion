@@ -27,11 +27,3 @@ tmpnam.o: tmpnam.c ../../include/sys/cdefs.h ../../include/sys/types.h \
  ../../include/sys/_timeval.h ../../include/sys/timespec.h \
  ../../include/sys/_timespec.h ../../include/stdio.h \
  ../../include/sys/_null.h ../../include/unistd.h
-vfscanf.o: vfscanf.c ../../include/ctype.h ../../include/inttypes.h \
- ../../include/machine/_inttypes.h ../../include/sys/stdint.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h ../../include/stdio.h \
- ../../include/sys/cdefs.h ../../include/sys/_null.h \
- ../../include/sys/_types.h ../../include/machine/_types.h \
- ../../include/l4/amd64/types.h ../../include/stdlib.h local.h wcio.h \
- fileext.h
