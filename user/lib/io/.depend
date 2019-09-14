@@ -1,9 +1,0 @@
-get_hex.o: get_hex.cc ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/l4io.h /usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h
-print.o: print.cc ../../include/l4/types.h ../../include/l4/amd64/types.h \
- ../../include/l4/amd64/specials.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h ../../include/l4io.h \
- lib.h
-amd64.o: amd64.cc ../../config.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h amd64.h

@@ -36,7 +36,7 @@ top_builddir=	..
 include $(top_srcdir)/Mk/l4.base.mk
 
 
-SUBDIRS=	l4 io linux
+SUBDIRS=	l4 io
 
 post-clean:
 	rm -f *.a
