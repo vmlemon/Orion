@@ -7,6 +7,18 @@ stdio.o: stdio.c ../../include/errno.h ../../include/sys/cdefs.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
  ../../include/unistd.h ../../include/stdio.h ../../include/sys/_null.h \
  local.h wcio.h fileext.h
+fopen.o: fopen.c ../../include/sys/cdefs.h namespace.h \
+ ../../include/sys/types.h ../../include/machine/endian.h \
+ ../../include/sys/_types.h ../../include/machine/_types.h \
+ ../../include/l4/amd64/types.h ../../include/sys/_pthreadtypes.h \
+ ../../include/sys/_stdint.h ../../include/sys/select.h \
+ ../../include/sys/_sigset.h ../../include/sys/_timeval.h \
+ ../../include/sys/timespec.h ../../include/sys/_timespec.h \
+ ../../include/sys/stat.h ../../include/sys/time.h \
+ ../../include/sys/_null.h ../../include/xlocale/_time.h \
+ ../../include/fcntl.h ../../include/unistd.h ../../include/stdio.h \
+ ../../include/errno.h ../../include/limits.h un-namespace.h local.h \
+ wcio.h fileext.h
 tmpnam.o: tmpnam.c ../../include/sys/cdefs.h ../../include/sys/types.h \
  ../../include/machine/endian.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
@@ -15,13 +27,7 @@ tmpnam.o: tmpnam.c ../../include/sys/cdefs.h ../../include/sys/types.h \
  ../../include/sys/_timeval.h ../../include/sys/timespec.h \
  ../../include/sys/_timespec.h ../../include/stdio.h \
  ../../include/sys/_null.h ../../include/unistd.h
-fread.o: fread.c ../../include/sys/cdefs.h namespace.h \
- ../../include/errno.h ../../include/stdint.h ../../include/sys/_types.h \
- ../../include/machine/_types.h ../../include/l4/amd64/types.h \
- ../../include/machine/_stdint.h ../../include/sys/_stdint.h \
- ../../include/stdio.h ../../include/sys/_null.h ../../include/string.h \
- un-namespace.h local.h wcio.h fileext.h libc_private.h
-vfscanf.o: vfscanf.c ctype.h inttypes.h \
+vfscanf.o: vfscanf.c ../../include/ctype.h ../../include/inttypes.h \
  /usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h \
  /usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h ../../include/stdio.h \
  ../../include/sys/cdefs.h ../../include/sys/_null.h \
