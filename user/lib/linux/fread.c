@@ -47,6 +47,8 @@ __FBSDID("$FreeBSD$");
 #include "local.h"
 #include "libc_private.h"
 
+#define	SSIZE_MAX	__SSIZE_MAX	/* max value for an ssize_t */
+
 /*
  * MT-safe version
  */
