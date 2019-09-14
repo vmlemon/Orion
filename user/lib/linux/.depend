@@ -4,7 +4,8 @@ flags.o: flags.c ../../include/sys/cdefs.h ../../include/sys/types.h \
  ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
  ../../include/sys/select.h ../../include/sys/_sigset.h \
  ../../include/sys/_timeval.h ../../include/sys/timespec.h \
- ../../include/sys/_timespec.h sys/file.h ../../include/stdio.h \
+ ../../include/sys/_timespec.h ../../include/sys/file.h \
+ ../../include/sys/fcntl.h sys/unistd.h ../../include/stdio.h \
  ../../include/sys/_null.h ../../include/errno.h local.h wcio.h fileext.h
 fscanf.o: fscanf.c ../../include/stdio.h ../../include/sys/cdefs.h \
  ../../include/sys/_null.h ../../include/sys/_types.h \
