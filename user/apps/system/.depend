@@ -15,16 +15,17 @@ lwdLib.o: v2lin_v02/lib/lwdLib.c ../../include/errno.h \
  ../../include/l4/amd64/types.h ../../include/string.h \
  ../../include/signal.h ../../include/sys/signal.h \
  ../../include/sys/_sigset.h ../../include/machine/_limits.h \
- machine/signal.h ../../include/sys/_pthreadtypes.h \
- ../../include/sys/_timespec.h machine/ucontext.h sys/_ucontext.h \
- semaphore.h ../../include/sys/time.h ../../include/sys/timespec.h \
- ../../include/xlocale/_time.h v2lin_v02/lib/internal.h \
- v2lin_v02/lib/v2lpthread.h ../../include/pthread.h \
- v2lin_v02/lib/vxw_defs.h v2lin_v02/lib/vxw_hdrs.h \
- ../../include/sys/types.h ../../include/machine/endian.h \
- ../../include/sys/_stdint.h ../../include/sys/select.h \
- ../../include/sys/_timeval.h v2lin_v02/lib/v2ldebug.h \
- ../../include/time.h linux/unistd.h
+ ../../include/machine/signal.h ../../include/sys/_pthreadtypes.h \
+ ../../include/sys/_timespec.h ../../include/machine/ucontext.h \
+ ../../include/sys/_ucontext.h ../../include/semaphore.h \
+ ../../include/sys/_umtx.h ../../include/sys/time.h \
+ ../../include/sys/timespec.h ../../include/xlocale/_time.h \
+ v2lin_v02/lib/internal.h v2lin_v02/lib/v2lpthread.h \
+ ../../include/pthread.h v2lin_v02/lib/vxw_defs.h \
+ v2lin_v02/lib/vxw_hdrs.h ../../include/sys/types.h \
+ ../../include/machine/endian.h ../../include/sys/_stdint.h \
+ ../../include/sys/select.h ../../include/sys/_timeval.h \
+ v2lin_v02/lib/v2ldebug.h ../../include/time.h linux/unistd.h
 loadLib.o: v2lin_v02/lib/loadLib.c
 taskVarLib.o: v2lin_v02/lib/taskVarLib.c
 v2ldebug.o: v2lin_v02/lib/v2ldebug.c ../../include/stdio.h \
@@ -33,16 +34,17 @@ v2ldebug.o: v2lin_v02/lib/v2ldebug.c ../../include/stdio.h \
  ../../include/l4/amd64/types.h ../../include/unistd.h \
  ../../include/signal.h ../../include/sys/signal.h \
  ../../include/sys/_sigset.h ../../include/machine/_limits.h \
- machine/signal.h ../../include/sys/_pthreadtypes.h \
- ../../include/sys/_timespec.h machine/ucontext.h sys/_ucontext.h \
- v2lin_v02/lib/v2lpthread.h ../../include/pthread.h \
- ../../include/stdlib.h v2lin_v02/lib/v2ldebug.h ../../include/time.h \
- ../../include/sys/timespec.h ../../include/xlocale/_time.h \
- ../../include/string.h ../../include/sys/time.h ../../include/errno.h \
- ../../include/sys/types.h ../../include/machine/endian.h \
- ../../include/sys/_stdint.h ../../include/sys/select.h \
- ../../include/sys/_timeval.h linux/unistd.h v2lin_v02/lib/internal.h \
- v2lin_v02/lib/vxw_defs.h v2lin_v02/lib/vxw_hdrs.h sys/wait.h
+ ../../include/machine/signal.h ../../include/sys/_pthreadtypes.h \
+ ../../include/sys/_timespec.h ../../include/machine/ucontext.h \
+ ../../include/sys/_ucontext.h v2lin_v02/lib/v2lpthread.h \
+ ../../include/pthread.h ../../include/stdlib.h v2lin_v02/lib/v2ldebug.h \
+ ../../include/time.h ../../include/sys/timespec.h \
+ ../../include/xlocale/_time.h ../../include/string.h \
+ ../../include/sys/time.h ../../include/errno.h ../../include/sys/types.h \
+ ../../include/machine/endian.h ../../include/sys/_stdint.h \
+ ../../include/sys/select.h ../../include/sys/_timeval.h linux/unistd.h \
+ v2lin_v02/lib/internal.h v2lin_v02/lib/vxw_defs.h \
+ v2lin_v02/lib/vxw_hdrs.h sys/wait.h
 lsemLib.o: v2lin_v02/lib/lsemLib.c ../../include/errno.h \
  ../../include/sys/cdefs.h ../../include/unistd.h ../../include/stdlib.h \
  ../../include/stdio.h ../../include/sys/_null.h \
@@ -50,16 +52,18 @@ lsemLib.o: v2lin_v02/lib/lsemLib.c ../../include/errno.h \
  ../../include/l4/amd64/types.h ../../include/string.h \
  ../../include/signal.h ../../include/sys/signal.h \
  ../../include/sys/_sigset.h ../../include/machine/_limits.h \
- machine/signal.h ../../include/sys/_pthreadtypes.h \
- ../../include/sys/_timespec.h machine/ucontext.h sys/_ucontext.h \
- semaphore.h ../../include/sys/time.h ../../include/sys/timespec.h \
- ../../include/xlocale/_time.h v2lin_v02/lib/v2lpthread.h \
- ../../include/pthread.h v2lin_v02/lib/vxw_defs.h \
- v2lin_v02/lib/internal.h v2lin_v02/lib/vxw_hdrs.h \
- ../../include/sys/types.h ../../include/machine/endian.h \
- ../../include/sys/_stdint.h ../../include/sys/select.h \
- ../../include/sys/_timeval.h v2lin_v02/lib/v2ldebug.h \
- ../../include/time.h linux/unistd.h ../../include/assert.h
+ ../../include/machine/signal.h ../../include/sys/_pthreadtypes.h \
+ ../../include/sys/_timespec.h ../../include/machine/ucontext.h \
+ ../../include/sys/_ucontext.h ../../include/semaphore.h \
+ ../../include/sys/_umtx.h ../../include/sys/time.h \
+ ../../include/sys/timespec.h ../../include/xlocale/_time.h \
+ v2lin_v02/lib/v2lpthread.h ../../include/pthread.h \
+ v2lin_v02/lib/vxw_defs.h v2lin_v02/lib/internal.h \
+ v2lin_v02/lib/vxw_hdrs.h ../../include/sys/types.h \
+ ../../include/machine/endian.h ../../include/sys/_stdint.h \
+ ../../include/sys/select.h ../../include/sys/_timeval.h \
+ v2lin_v02/lib/v2ldebug.h ../../include/time.h linux/unistd.h \
+ ../../include/assert.h
 lmsgQLib.o: v2lin_v02/lib/lmsgQLib.c ../../include/errno.h \
  ../../include/sys/cdefs.h ../../include/unistd.h ../../include/stdlib.h \
  ../../include/stdio.h ../../include/sys/_null.h \
@@ -67,16 +71,16 @@ lmsgQLib.o: v2lin_v02/lib/lmsgQLib.c ../../include/errno.h \
  ../../include/l4/amd64/types.h ../../include/string.h \
  ../../include/signal.h ../../include/sys/signal.h \
  ../../include/sys/_sigset.h ../../include/machine/_limits.h \
- machine/signal.h ../../include/sys/_pthreadtypes.h \
- ../../include/sys/_timespec.h machine/ucontext.h sys/_ucontext.h \
- ../../include/sys/time.h ../../include/sys/timespec.h \
- ../../include/xlocale/_time.h v2lin_v02/lib/v2lpthread.h \
- ../../include/pthread.h v2lin_v02/lib/vxw_hdrs.h \
- ../../include/sys/types.h ../../include/machine/endian.h \
- ../../include/sys/_stdint.h ../../include/sys/select.h \
- ../../include/sys/_timeval.h v2lin_v02/lib/vxw_defs.h \
- v2lin_v02/lib/internal.h v2lin_v02/lib/v2ldebug.h ../../include/time.h \
- linux/unistd.h
+ ../../include/machine/signal.h ../../include/sys/_pthreadtypes.h \
+ ../../include/sys/_timespec.h ../../include/machine/ucontext.h \
+ ../../include/sys/_ucontext.h ../../include/sys/time.h \
+ ../../include/sys/timespec.h ../../include/xlocale/_time.h \
+ v2lin_v02/lib/v2lpthread.h ../../include/pthread.h \
+ v2lin_v02/lib/vxw_hdrs.h ../../include/sys/types.h \
+ ../../include/machine/endian.h ../../include/sys/_stdint.h \
+ ../../include/sys/select.h ../../include/sys/_timeval.h \
+ v2lin_v02/lib/vxw_defs.h v2lin_v02/lib/internal.h \
+ v2lin_v02/lib/v2ldebug.h ../../include/time.h linux/unistd.h
 lkernelLib.o: v2lin_v02/lib/lkernelLib.c ../../include/errno.h \
  ../../include/sys/cdefs.h ../../include/unistd.h sched.h \
  ../../include/sys/mman.h ../../include/sys/_types.h \
@@ -84,16 +88,17 @@ lkernelLib.o: v2lin_v02/lib/lkernelLib.c ../../include/errno.h \
  ../../include/stdlib.h ../../include/stdio.h ../../include/sys/_null.h \
  ../../include/signal.h ../../include/sys/signal.h \
  ../../include/sys/_sigset.h ../../include/machine/_limits.h \
- machine/signal.h ../../include/sys/_pthreadtypes.h \
- ../../include/sys/_timespec.h machine/ucontext.h sys/_ucontext.h \
- ../../include/sys/time.h ../../include/sys/timespec.h \
- ../../include/xlocale/_time.h ../../include/string.h \
- v2lin_v02/lib/v2lpthread.h ../../include/pthread.h \
- v2lin_v02/lib/vxw_defs.h v2lin_v02/lib/vxw_hdrs.h \
- ../../include/sys/types.h ../../include/machine/endian.h \
- ../../include/sys/_stdint.h ../../include/sys/select.h \
- ../../include/sys/_timeval.h v2lin_v02/lib/internal.h \
- v2lin_v02/lib/v2ldebug.h ../../include/time.h linux/unistd.h
+ ../../include/machine/signal.h ../../include/sys/_pthreadtypes.h \
+ ../../include/sys/_timespec.h ../../include/machine/ucontext.h \
+ ../../include/sys/_ucontext.h ../../include/sys/time.h \
+ ../../include/sys/timespec.h ../../include/xlocale/_time.h \
+ ../../include/string.h v2lin_v02/lib/v2lpthread.h \
+ ../../include/pthread.h v2lin_v02/lib/vxw_defs.h \
+ v2lin_v02/lib/vxw_hdrs.h ../../include/sys/types.h \
+ ../../include/machine/endian.h ../../include/sys/_stdint.h \
+ ../../include/sys/select.h ../../include/sys/_timeval.h \
+ v2lin_v02/lib/internal.h v2lin_v02/lib/v2ldebug.h ../../include/time.h \
+ linux/unistd.h
 ltaskLib.o: v2lin_v02/lib/ltaskLib.c ../../include/errno.h \
  ../../include/sys/cdefs.h ../../include/assert.h ../../include/unistd.h \
  sched.h ../../include/sys/mman.h ../../include/sys/_types.h \
@@ -101,16 +106,17 @@ ltaskLib.o: v2lin_v02/lib/ltaskLib.c ../../include/errno.h \
  ../../include/stdlib.h ../../include/stdio.h ../../include/sys/_null.h \
  ../../include/signal.h ../../include/sys/signal.h \
  ../../include/sys/_sigset.h ../../include/machine/_limits.h \
- machine/signal.h ../../include/sys/_pthreadtypes.h \
- ../../include/sys/_timespec.h machine/ucontext.h sys/_ucontext.h \
- ../../include/sys/time.h ../../include/sys/timespec.h \
- ../../include/xlocale/_time.h ../../include/string.h \
- v2lin_v02/lib/v2lpthread.h ../../include/pthread.h \
- v2lin_v02/lib/vxw_defs.h v2lin_v02/lib/vxw_hdrs.h \
- ../../include/sys/types.h ../../include/machine/endian.h \
- ../../include/sys/_stdint.h ../../include/sys/select.h \
- ../../include/sys/_timeval.h v2lin_v02/lib/internal.h \
- v2lin_v02/lib/v2ldebug.h ../../include/time.h linux/unistd.h
+ ../../include/machine/signal.h ../../include/sys/_pthreadtypes.h \
+ ../../include/sys/_timespec.h ../../include/machine/ucontext.h \
+ ../../include/sys/_ucontext.h ../../include/sys/time.h \
+ ../../include/sys/timespec.h ../../include/xlocale/_time.h \
+ ../../include/string.h v2lin_v02/lib/v2lpthread.h \
+ ../../include/pthread.h v2lin_v02/lib/vxw_defs.h \
+ v2lin_v02/lib/vxw_hdrs.h ../../include/sys/types.h \
+ ../../include/machine/endian.h ../../include/sys/_stdint.h \
+ ../../include/sys/select.h ../../include/sys/_timeval.h \
+ v2lin_v02/lib/internal.h v2lin_v02/lib/v2ldebug.h ../../include/time.h \
+ linux/unistd.h
 main_impl.o: v2lin_v02/lib/main_impl.c ../../include/errno.h \
  ../../include/sys/cdefs.h ../../include/unistd.h sched.h \
  ../../include/sys/mman.h ../../include/sys/_types.h \
@@ -118,16 +124,17 @@ main_impl.o: v2lin_v02/lib/main_impl.c ../../include/errno.h \
  ../../include/stdlib.h ../../include/stdio.h ../../include/sys/_null.h \
  ../../include/signal.h ../../include/sys/signal.h \
  ../../include/sys/_sigset.h ../../include/machine/_limits.h \
- machine/signal.h ../../include/sys/_pthreadtypes.h \
- ../../include/sys/_timespec.h machine/ucontext.h sys/_ucontext.h \
- ../../include/sys/time.h ../../include/sys/timespec.h \
- ../../include/xlocale/_time.h ../../include/string.h \
- v2lin_v02/lib/v2lpthread.h ../../include/pthread.h \
- v2lin_v02/lib/vxw_defs.h v2lin_v02/lib/vxw_hdrs.h \
- ../../include/sys/types.h ../../include/machine/endian.h \
- ../../include/sys/_stdint.h ../../include/sys/select.h \
- ../../include/sys/_timeval.h v2lin_v02/lib/v2ldebug.h \
- ../../include/time.h linux/unistd.h v2lin_v02/lib/internal.h
+ ../../include/machine/signal.h ../../include/sys/_pthreadtypes.h \
+ ../../include/sys/_timespec.h ../../include/machine/ucontext.h \
+ ../../include/sys/_ucontext.h ../../include/sys/time.h \
+ ../../include/sys/timespec.h ../../include/xlocale/_time.h \
+ ../../include/string.h v2lin_v02/lib/v2lpthread.h \
+ ../../include/pthread.h v2lin_v02/lib/vxw_defs.h \
+ v2lin_v02/lib/vxw_hdrs.h ../../include/sys/types.h \
+ ../../include/machine/endian.h ../../include/sys/_stdint.h \
+ ../../include/sys/select.h ../../include/sys/_timeval.h \
+ v2lin_v02/lib/v2ldebug.h ../../include/time.h linux/unistd.h \
+ v2lin_v02/lib/internal.h
 v2ltime.o: v2lin_v02/lib/v2ltime.c v2lin_v02/lib/tickLib.h \
  v2lin_v02/lib/v2ldebug.h ../../include/time.h ../../include/sys/cdefs.h \
  ../../include/sys/_null.h ../../include/sys/_types.h \
