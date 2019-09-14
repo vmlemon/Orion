@@ -21,3 +21,8 @@ mojoelf.o: mojoelf.c ../../include/stdio.h ../../include/sys/cdefs.h \
  ../../include/sys/stat.h ../../include/sys/time.h \
  ../../include/xlocale/_time.h ../../include/sys/mman.h \
  ../../include/dlfcn.h mojoelf.h ../../include/errno.h
+CacheLineSize.o: CacheLineSize.c CacheLineSize.h \
+ /usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h ../../include/stdio.h \
+ ../../include/sys/cdefs.h ../../include/sys/_null.h \
+ ../../include/sys/_types.h ../../include/machine/_types.h \
+ ../../include/l4/amd64/types.h
