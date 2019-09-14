@@ -5,7 +5,8 @@
 #ifndef __SHRT_MIN
 #define	__SHRT_MIN	(-0x7fff - 1)	/* min value for a short */
 #endif
- 
+
+#define	NL_TEXTMAX		2048
 
 #ifndef SHRT_MAX
 #define SHRT_MAX __SHRT_MIN
