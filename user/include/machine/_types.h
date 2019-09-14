@@ -23,6 +23,7 @@
 typedef L4_SignedWord32_t __int32_t;
 typedef L4_SignedWord64_t __int64_t;
 typedef L4_SignedWord16_t __int16_t;
+typedef	L4_SignedWord8_t __int8_t;
 typedef L4_Word32_t __uint32_t;
 typedef L4_Word64_t __uint64_t;
 typedef L4_Word16_t __uint16_t;
@@ -66,6 +67,24 @@ typedef	__uint32_t	__vm_offset_t;
 typedef	__uint32_t	__vm_size_t;
 #endif
 
+//Fast/Least integer types, from x86/FreeBSD
+typedef	__int32_t	__int_fast8_t;
+typedef	__int32_t	__int_fast16_t;
+typedef	__int32_t	__int_fast32_t;
+typedef	__int64_t	__int_fast64_t;
+typedef	__int8_t	__int_least8_t;
+typedef	__int16_t	__int_least16_t;
+typedef	__int32_t	__int_least32_t;
+typedef	__int64_t	__int_least64_t;
 
+//Fast/Least unsigned integers
+typedef	__uint32_t	__uint_fast8_t;
+typedef	__uint32_t	__uint_fast16_t;
+typedef	__uint32_t	__uint_fast32_t;
+typedef	__uint64_t	__uint_fast64_t;
+typedef	__uint8_t	__uint_least8_t;
+typedef	__uint16_t	__uint_least16_t;
+typedef	__uint32_t	__uint_least32_t;
+typedef	__uint64_t	__uint_least64_t;
 
 #endif
