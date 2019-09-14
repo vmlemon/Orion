@@ -1,0 +1,17 @@
+2000, 2001: Gary S. Robertson 
+	* Initial implementation for MontaVista Software Inc. (http://legacy2linux.sourceforge.net/)
+
+2004-09: Andrew Skiba, skibochka@sourceforge.net
+	* Update of lkernelLib.c and ltaskLib.c
+	* Added support of users' main() function, along with user_sysinit and user_syskill
+
+2005-08: Mike Kemelmakher, mike@ubxess.com
+	* Added globalLoad.* , global.g.* with test
+
+2006: Constantine Shulyupin, conan.sh@gmail.com
+	* All source is indented with indent to Linux kernel style
+	* 'validate' renamed to test and divided to set of files and functions
+	* lists are redesigned
+	* Divided to lib, tests, samples directories
+	* Added tracing and check macros (TRACEF, CHK, CHK0, etc )
+	* Added implementations: tickGet tickSet from tickLib,  and sysClkRateGet from sysLib

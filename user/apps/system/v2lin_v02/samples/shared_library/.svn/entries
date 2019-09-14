@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="27"
+   name=""
+   committed-date="2006-04-18T10:56:17.905518Z"
+   url="https://v2lin.svn.sourceforge.net/svnroot/v2lin/branches/v2lin_v02/samples/shared_library"
+   last-author="conan_sh"
+   kind="dir"
+   uuid="8865ccd7-bd0e-0410-9ca4-8e41419f945a"
+   repos="https://v2lin.svn.sourceforge.net/svnroot/v2lin"
+   revision="29"/>
+<entry
+   committed-rev="27"
+   name="load.c"
+   text-time="2007-02-04T08:24:11.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="25148cdab6e12629a9eae04ca61a4609"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="defs.mk"
+   text-time="2007-02-04T08:24:11.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="a384c057138bd816a5f7c9bca7886ea9"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="sample_lib.c"
+   text-time="2007-02-04T08:24:11.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="efda5be1b7daaa3eaf9563933d3bbbd9"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="Makefile"
+   text-time="2007-02-04T08:24:11.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="740cf423f9d371f72763733bdd427a82"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="sample_lib.h"
+   text-time="2007-02-04T08:24:11.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="d23fd360b5fe7bfa233c7ac4e77464f0"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+</wc-entries>
