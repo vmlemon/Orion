@@ -175,6 +175,8 @@ L4_INLINE L4_Clock_t L4_SystemClock( void )
 	 __L4_PPC64_CLOBBER_REGS, "memory", __L4_PPC64_CLOBBER_CR_REGS
     );
 
+//	L4_Clock_t rclock = r3;
+//return rclock;
     return ( r3 );
 }
 
