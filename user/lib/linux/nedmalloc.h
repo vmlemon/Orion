@@ -1569,7 +1569,7 @@ public:
 USE_LOCKS can be 2 if you want to define your own MLOCK_T, INITIAL_LOCK,
 ACQUIRE_LOCK, RELEASE_LOCK, TRY_LOCK, IS_LOCKED and NULL_LOCK_INITIALIZER.
 */
-#define USE_LOCKS 1
+#define USE_LOCKS 0
 
 /*! \def DEFAULT_GRANULARITY
 \brief Defines the granularity in which to request or free system memory.
