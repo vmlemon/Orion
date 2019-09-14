@@ -49,12 +49,16 @@ __FBSDID("$FreeBSD$");
 
 #define	SSIZE_MAX	__SSIZE_MAX	/* max value for an ssize_t */
 
+//#ifdef __restrict 
+//#define __restrict 
+//#endif
+
 /*
  * MT-safe version
  */
 
 size_t
-fread(void * __restrict buf, size_t size, size_t count, FILE * __restrict fp)
+fread(void * buf, size_t size, size_t count, FILE * fp)
 {
 	size_t ret;
 
@@ -65,7 +69,7 @@ fread(void * __restrict buf, size_t size, size_t count, FILE * __restrict fp)
 }
 
 size_t
-__fread(void * __restrict buf, size_t size, size_t count, FILE * __restrict fp)
+__fread(void * buf, size_t size, size_t count, FILE * fp)
 {
 	size_t resid;
 	char *p;
