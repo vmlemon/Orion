@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: fedora28.novalocal */
-/* At: Sat, 14 Sep 2019 08:47:21 +0000 */
+/* At: Mon, 16 Sep 2019 21:29:10 +0000 */
 /* Linux version 4.16.3-301.fc28.ppc64 (mockbuild@buildvm-ppc64-06.ppc.fedoraproject.org) (gcc version 8.0.1 20180324 (Red Hat 8.0.1-0.20) (GCC)) #1 SMP Mon Apr 23 21:44:46 UTC 2018 */
 
 /* Pistachio Kernel Configuration System */
@@ -9,8 +9,8 @@
 
 /* Basic Architecture */
 #undef  CONFIG_ARCH_X86
-#define CONFIG_ARCH_POWERPC 1
-#undef  CONFIG_ARCH_POWERPC64
+#undef  CONFIG_ARCH_POWERPC
+#define CONFIG_ARCH_POWERPC64 1
 
 
 /* X86 Processor Architecture */
@@ -34,12 +34,12 @@
 
 /* Processor Type */
 #undef  CONFIG_CPU_POWERPC_PPC440
-#define CONFIG_CPU_POWERPC_IBM750 1
+#undef  CONFIG_CPU_POWERPC_IBM750
 #undef  CONFIG_CPU_POWERPC_PPC604
 
 
 /* Platform */
-#define CONFIG_PLAT_OFPPC 1
+#undef  CONFIG_PLAT_OFPPC
 #undef  CONFIG_PLAT_PPC44X
 
 
@@ -51,13 +51,13 @@
 /* Platform */
 #undef  CONFIG_PLAT_OFG5
 #undef  CONFIG_PLAT_OFPOWER3
-#undef  CONFIG_PLAT_OFPOWER4
+#define CONFIG_PLAT_OFPOWER4 1
 
 
 /* Processor Type */
 #undef  CONFIG_CPU_POWERPC64_POWER3
 #undef  CONFIG_CPU_POWERPC64_POWER3p
-#undef  CONFIG_CPU_POWERPC64_POWER4
+#define CONFIG_CPU_POWERPC64_POWER4 1
 #undef  CONFIG_CPU_POWERPC64_POWER4p
 #undef  CONFIG_CPU_POWERPC64_PPC970
 
@@ -126,18 +126,18 @@
 
 
 /* Derived symbols */
-#undef  CONFIG_HAVE_MEMORY_CONTROL
+#define CONFIG_HAVE_MEMORY_CONTROL 1
 #undef  CONFIG_X86_PSE
 #define CONFIG_BIGENDIAN 1
 #undef  CONFIG_PPC_MMU_TLB
 #undef  CONFIG_X86_SYSENTER
 #undef  CONFIG_X86_PGE
 #undef  CONFIG_X86_FXSR
-#define CONFIG_IS_32BIT 1
+#undef  CONFIG_IS_32BIT
 #undef  CONFIG_X86_HTT
 #undef  CONFIG_X86_PAT
 #undef  CONFIG_PPC_BOOKE
-#undef  CONFIG_IS_64BIT
+#define CONFIG_IS_64BIT 1
 #undef  CONFIG_MULTI_ARCHITECTURE
 #undef  CONFIG_X86_EM64T
 #undef  CONFIG_PPC_CACHE_L1_WRITETHROUGH
@@ -145,7 +145,7 @@
 #undef  CONFIG_PPC_CACHE_ICBI_LOCAL
 #undef  CONFIG_X86_SMALL_SPACES_GLOBAL
 #undef  CONFIG_X86_HVM
-#define CONFIG_PPC_MMU_SEGMENTS 1
+#undef  CONFIG_PPC_MMU_SEGMENTS
 #undef  CONFIG_X86_TSC
 /* That's all, folks! */
 #define AUTOCONF_INCLUDED

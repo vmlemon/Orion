@@ -34,10 +34,10 @@
 #CPU = p4
 #PLATFORM = pc99
 #SCHED = rr
-ARCH=powerpc
+ARCH=powerpc64
 SUBARCH=
-CPU=ibm750
-PLATFORM=ofppc
+CPU=power4
+PLATFORM=ofpower4
 SCHED=rr
 
 
