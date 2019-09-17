@@ -566,7 +566,7 @@ INLINE void tcb_t::set_user_sp(addr_t sp)
     context->r1 = (word_t)sp;
 }
 
-INLINE void tcb_t::copy_saved_regs(tcb_t *src)
+inline void tcb_t::copy_saved_regs(tcb_t *src)
 {
     powerpc64_irq_context_t * to =
 	    (powerpc64_irq_context_t *) this->get_stack_top () - 1;
@@ -748,11 +748,11 @@ INLINE msg_tag_t tcb_t::do_ipc (threadid_t to_tid, threadid_t from_tid,
 inline void space_t::add_tcb(tcb_t * tcb)
 {
     x.thread_count ++;
-#ifdef CONFIG_DEBUG
-    spaces_list_lock.lock();
-    ENQUEUE_LIST_TAIL(x.thread_list, tcb, thread_list);
-    spaces_list_lock.unlock();
-#endif
+//#ifdef CONFIG_DEBUG
+    //spaces_list_lock.lock();
+   // ENQUEUE_LIST_TAIL(x.thread_list, tcb, thread_list);
+    //spaces_list_lock.unlock();
+//#endif
 }
 
 /**
@@ -764,11 +764,11 @@ inline bool space_t::remove_tcb(tcb_t * tcb)
 {
     ASSERT(DEBUG, x.thread_count != 0);
     x.thread_count --;
-#ifdef CONFIG_DEBUG
-    spaces_list_lock.lock();
-    DEQUEUE_LIST(x.thread_list, tcb, thread_list);
-    spaces_list_lock.unlock();
-#endif
+//#ifdef CONFIG_DEBUG
+   // spaces_list_lock.lock();
+   // DEQUEUE_LIST(x.thread_list, tcb, thread_list);
+ //   spaces_list_lock.unlock();
+//#endif
     return (x.thread_count == 0);
 }
 

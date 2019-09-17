@@ -176,7 +176,7 @@ private:
     // TODO: when we create a new mapping that disables the cache,
     // we must flush the cache for that page to avoid cache paradoxes.
 
-    void space_t::add_mapping( addr_t vaddr, addr_t paddr,
+    void add_mapping( addr_t vaddr, addr_t paddr,
 		    bool writable, bool executable,
 		    bool kernel, pgent_t::pgsize_e size );
 
@@ -266,7 +266,7 @@ INLINE word_t space_t::get_copy_limit (addr_t addr, word_t len)
     }
     else
     {
-	ASSERT( is_copy_area(addr) );
+//	ASSERT( is_copy_area(addr) );
 	word_t max = COPY_AREA_SIZE - ((word_t)addr - COPY_AREA_START);
 	if( len > max )
 	    return max;
@@ -320,7 +320,7 @@ INLINE void space_t::add_tcb(tcb_t * tcb, cpuid_t cpu)
  */
 INLINE bool space_t::remove_tcb(tcb_t * tcb, cpuid_t cpu)
 {
-    ASSERT(x.thread_count != 0);
+   // ASSERT(x.thread_count != 0);
     x.thread_count --;
     return (x.thread_count == 0);
 }
