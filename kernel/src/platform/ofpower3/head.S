@@ -28,7 +28,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
- * $Id: head.S,v 1.5 2005/01/21 05:22:33 cvansch Exp $
+ * $Id: head.S,v 1.4 2005/01/19 12:56:17 cvansch Exp $
  *
  ***************************************************************************/
 
@@ -65,7 +65,6 @@ _start:
 	sub	r10,	r10,	r6
 	sub	r11,	r11,	r6
 	li	r12,	0
-//1:	cmp	0,	r10,	r11
 1:	cmpd	0,	r10,	r11
 	beq	2f
 	stwu	r12,	4(r10)
