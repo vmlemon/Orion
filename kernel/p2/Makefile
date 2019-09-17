@@ -2,7 +2,7 @@
 ##                
 ## Copyright (C) 2010,  Karlsruhe University
 ##                
-## File path:     template/Makeconf.local.template
+## File path:     template/Makefile
 ## Description:   Generic linkser script for x86.
 ##                
 ## Redistribution and use in source and binary forms, with or without
@@ -29,17 +29,11 @@
 ## $Id$
 ##                
 ######################################################################
-#ARCH = ia32
-#SUBARCH = none
-#CPU = p4
-#PLATFORM = pc99
-#SCHED = rr
-ARCH=powerpc64
-SUBARCH=
-CPU=power3
-PLATFORM=ofpower3
-SCHED=rr
+.EXPORT_ALL_VARIABLES:
 
 
-BUILDDIR = $(CURDIR)
-SRCDIR=/root/Orion/kernel
+-include Makeconf.local
+
+all $(filter-out all, $(MAKECMDGOALS)):
+	@$(MAKE) -f $(SRCDIR)/Makefile $@
+

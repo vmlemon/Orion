@@ -29,17 +29,11 @@
 ## $Id$
 ##                
 ######################################################################
-#ARCH = ia32
-#SUBARCH = none
-#CPU = p4
-#PLATFORM = pc99
-#SCHED = rr
 ARCH=powerpc64
 SUBARCH=
-CPU=power3
-PLATFORM=ofpower3
-SCHED=rr
-
+CPU=power4
+PLATFORM=ofpower4
+SCHED=
 
 BUILDDIR = $(CURDIR)
 SRCDIR=/root/Orion/kernel
