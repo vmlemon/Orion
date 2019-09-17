@@ -28,7 +28,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *
- * $Id: head.S,v 1.4 2005/01/21 05:22:32 cvansch Exp $
+ * $Id: head.S,v 1.3 2005/01/19 12:55:46 cvansch Exp $
  *
  ***************************************************************************/
 
@@ -65,13 +65,7 @@ _start:
 	sub	r10,	r10,	r6
 	sub	r11,	r11,	r6
 	li	r12,	0
-
-//#if __GNUC__ == 9
-//1: 	cmpw	0,	r10,	r11
-1:	cmpd	0,	r11, r10;
-//#else
-//1:	cmp	0,	r10,	r11 /* The syntax changed, back in 2016 */
-//#endif
+1:	cmpd	0,	r10,	r11
 	beq	2f
 	stwu	r12,	4(r10)
 	b	1b
