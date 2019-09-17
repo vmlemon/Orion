@@ -308,7 +308,7 @@ INLINE word_t space_t::get_vsid( addr_t addr )
  * adds a thread to the space
  * @param tcb pointer to thread control block
  */
-INLINE void space_t::add_tcb(tcb_t * tcb, cpuid_t cpu)
+inline void add_tcb(tcb_t * tcb, cpuid_t cpu)
 {
     x.thread_count ++;
 }
@@ -318,7 +318,7 @@ INLINE void space_t::add_tcb(tcb_t * tcb, cpuid_t cpu)
  * @param tcb_t thread control block
  * @return true if it was the last thread
  */
-INLINE bool space_t::remove_tcb(tcb_t * tcb, cpuid_t cpu)
+inline bool remove_tcb(tcb_t * tcb, cpuid_t cpu)
 {
    // ASSERT(x.thread_count != 0);
     x.thread_count --;
