@@ -55,6 +55,22 @@ protected:
 	pvr_7455	= 0x8001,
     };
 
+    /*Broadway is a derivative of 750
+     processor	: 0
+cpu		: 750CL
+clock		: 729.000000MHz
+revision	: 114.0 (pvr 0008 7200)
+bogomips	: 121.50
+timebase	: 60750000
+platform	: wii
+model		: NintendoWii
+vendor		: IBM
+machine		: Nintendo Wii
+Memory		: 317 MB
+
+     */
+
+    
 public:
     static powerpc_version_t read() __attribute__ ((const));
 
