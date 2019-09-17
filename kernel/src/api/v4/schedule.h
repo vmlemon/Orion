@@ -195,7 +195,7 @@ public:
      * activate a thread, if it is highest priority ready thread then
      * do so immediately, else put it on the run queue
      */
-    void scheduler_t::switch_highest(tcb_t *current, tcb_t * tcb);
+    void switch_highest(tcb_t *current, tcb_t * tcb);
 
     /**
      * hierarchical scheduling prio queue 
