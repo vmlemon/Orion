@@ -2,7 +2,7 @@
 # Automatically generated, don't edit
 #
 # Generated on: fedora28.novalocal
-# At: Sat, 14 Sep 2019 08:47:21 +0000
+# At: Tue, 17 Sep 2019 01:20:07 +0000
 # Linux version 4.16.3-301.fc28.ppc64 (mockbuild@buildvm-ppc64-06.ppc.fedoraproject.org) (gcc version 8.0.1 20180324 (Red Hat 8.0.1-0.20) (GCC)) #1 SMP Mon Apr 23 21:44:46 UTC 2018
 
 #
@@ -17,8 +17,8 @@
 # Basic Architecture
 #
 # CONFIG_ARCH_X86 is not set
-CONFIG_ARCH_POWERPC=y
-# CONFIG_ARCH_POWERPC64 is not set
+# CONFIG_ARCH_POWERPC is not set
+CONFIG_ARCH_POWERPC64=y
 
 
 #
@@ -50,14 +50,14 @@ CONFIG_ARCH_POWERPC=y
 # Processor Type
 #
 # CONFIG_CPU_POWERPC_PPC440 is not set
-CONFIG_CPU_POWERPC_IBM750=y
+# CONFIG_CPU_POWERPC_IBM750 is not set
 # CONFIG_CPU_POWERPC_PPC604 is not set
 
 
 #
 # Platform
 #
-CONFIG_PLAT_OFPPC=y
+# CONFIG_PLAT_OFPPC is not set
 # CONFIG_PLAT_PPC44X is not set
 
 
@@ -73,7 +73,7 @@ CONFIG_PLAT_OFPPC=y
 #
 # CONFIG_PLAT_OFG5 is not set
 # CONFIG_PLAT_OFPOWER3 is not set
-# CONFIG_PLAT_OFPOWER4 is not set
+CONFIG_PLAT_OFPOWER4=y
 
 
 #
@@ -81,7 +81,7 @@ CONFIG_PLAT_OFPPC=y
 #
 # CONFIG_CPU_POWERPC64_POWER3 is not set
 # CONFIG_CPU_POWERPC64_POWER3p is not set
-# CONFIG_CPU_POWERPC64_POWER4 is not set
+CONFIG_CPU_POWERPC64_POWER4=y
 # CONFIG_CPU_POWERPC64_POWER4p is not set
 # CONFIG_CPU_POWERPC64_PPC970 is not set
 
@@ -116,7 +116,7 @@ CONFIG_SCHED_RR=y
 
 
 # CONFIG_IPC_FASTPATH is not set
-CONFIG_DEBUG=y
+# CONFIG_DEBUG is not set
 CONFIG_DEBUG_SYMBOLS=y
 # CONFIG_STATIC_TCBS is not set
 CONFIG_PPC_BAT_SYSCALLS=y
@@ -132,7 +132,7 @@ CONFIG_PPC_BAT_SYSCALLS=y
 #
 # CONFIG_KDB_CONS_BGP_JTAG is not set
 # CONFIG_KDB_CONS_BGP_TREE is not set
-CONFIG_KDB_CONS_COM=y
+# CONFIG_KDB_CONS_COM is not set
 CONFIG_KDB_COMPORT=0x0
 CONFIG_KDB_COMSPEED=115200
 # CONFIG_KDB_CONS_OF1275 is not set
@@ -144,8 +144,8 @@ CONFIG_KDB_BOOT_CONS=0
 # CONFIG_KDB_ON_STARTUP is not set
 # CONFIG_KDB_BREAKIN is not set
 # CONFIG_KDB_BREAKIN_BREAK is not set
-CONFIG_KDB_BREAKIN_ESCAPE=y
-CONFIG_KDB_NO_ASSERTS=y
+# CONFIG_KDB_BREAKIN_ESCAPE is not set
+# CONFIG_KDB_NO_ASSERTS is not set
 
 #
 # Trace Settings
@@ -168,18 +168,18 @@ CONFIG_PPC_MULTIWORD_INSTR=y
 #
 # Derived symbols
 #
-# CONFIG_HAVE_MEMORY_CONTROL is not set
+CONFIG_HAVE_MEMORY_CONTROL=y
 # CONFIG_X86_PSE is not set
 CONFIG_BIGENDIAN=y
 # CONFIG_PPC_MMU_TLB is not set
 # CONFIG_X86_SYSENTER is not set
 # CONFIG_X86_PGE is not set
 # CONFIG_X86_FXSR is not set
-CONFIG_IS_32BIT=y
+# CONFIG_IS_32BIT is not set
 # CONFIG_X86_HTT is not set
 # CONFIG_X86_PAT is not set
 # CONFIG_PPC_BOOKE is not set
-# CONFIG_IS_64BIT is not set
+CONFIG_IS_64BIT=y
 # CONFIG_MULTI_ARCHITECTURE is not set
 # CONFIG_X86_EM64T is not set
 # CONFIG_PPC_CACHE_L1_WRITETHROUGH is not set
@@ -187,7 +187,7 @@ CONFIG_IS_32BIT=y
 # CONFIG_PPC_CACHE_ICBI_LOCAL is not set
 # CONFIG_X86_SMALL_SPACES_GLOBAL is not set
 # CONFIG_X86_HVM is not set
-CONFIG_PPC_MMU_SEGMENTS=y
+# CONFIG_PPC_MMU_SEGMENTS is not set
 # CONFIG_X86_TSC is not set
 #
 # That's all, folks!
