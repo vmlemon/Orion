@@ -235,10 +235,10 @@
  /root/Orion/kernel/src/generic/intctrl.h \
  /root/Orion/kernel/src/platform/ofpower3/intctrl.h \
  /root/Orion/kernel/src/arch/powerpc64/1275tree.h \
- /root/Orion/kernel/src/arch/powerpc64/segment.h \
- /root/Orion/kernel/src/arch/powerpc64/seghash.h \
  /root/Orion/kernel/src/platform/ofpower3/opic.h \
- /root/Orion/kernel/src/arch/powerpc64/io.h
+ /root/Orion/kernel/src/arch/powerpc64/io.h \
+ /root/Orion/kernel/src/arch/powerpc64/segment.h \
+ /root/Orion/kernel/src/arch/powerpc64/seghash.h
 .depend src/arch/powerpc64/1275tree.o: /root/Orion/kernel/src/arch/powerpc64/1275tree.cc \
  /root/Orion/kernel/rpb8/config/config.h \
  /root/Orion/kernel/src/generic/macros.h \

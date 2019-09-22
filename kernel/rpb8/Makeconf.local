@@ -36,8 +36,8 @@
 #SCHED = rr
 ARCH=powerpc64
 SUBARCH=
-CPU=power3
-PLATFORM=ofpower3
+CPU=power4
+PLATFORM=ofpower4
 SCHED=rr
 
 
