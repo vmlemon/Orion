@@ -1,5 +1,5 @@
 /*
- * Playstation 3 LV1 hypercall interface
+ * PlayStation 3 LV1 hypercall interface
  *
  * $FreeBSD$
  */
