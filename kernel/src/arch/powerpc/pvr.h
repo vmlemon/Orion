@@ -47,6 +47,7 @@ protected:
 	pvr_603e	= 6,
 	pvr_750		= 8,
 	pvr_750FX	= 0x7000,
+	pvr_750GX	= 0x7002,
 	pvr_604e	= 9,
 	pvr_604ev	= 10,
 	pvr_7400	= 12,
