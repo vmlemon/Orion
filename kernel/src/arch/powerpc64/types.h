@@ -52,4 +52,12 @@ typedef signed char		s8_t;
  */
 typedef u64_t			word_t;
 
+
+
+/**
+ *	paddr_t - used to denote physical addresses
+ */
+typedef void * paddr_t;
+
+
 #endif /* !__ARCH__POWERPC64__TYPES_H__ */
