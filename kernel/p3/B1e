@@ -1,0 +1,19 @@
+/root/Orion/kernel/src/api/v4/syscalls.h:90:40: error: macro "SYS_EXCHANGE_REGISTERS" requires 8 arguments, but only 7 given
+/root/Orion/kernel/src/glue/v4-powerpc64/space.h:60:2: error: ‘paddr_t’ does not name a type; did you mean ‘addr_t’?
+/root/Orion/kernel/src/glue/v4-powerpc64/space.h:125:12: error: extra qualification ‘space_t::’ on member ‘space_control’ [-fpermissive]
+/root/Orion/kernel/src/glue/v4-powerpc64/space.h:128:12: error: ‘paddr_t’ does not name a type; did you mean ‘addr_t’?
+/root/Orion/kernel/src/glue/v4-powerpc64/space.h:313:5: error: ‘x’ was not declared in this scope
+/root/Orion/kernel/src/glue/v4-powerpc64/space.h:324:5: error: ‘x’ was not declared in this scope
+/root/Orion/kernel/src/api/v4/tcb.h:425:31: error: ‘class space_t’ has no member named ‘get_tcb’; did you mean ‘add_tcb’?
+/root/Orion/kernel/src/api/v4/tcb.h:570:14: error: ‘class utcb_t’ has no member named ‘notify_bits’; did you mean ‘notify_mask’?
+/root/Orion/kernel/src/api/v4/tcb.h:578:14: error: ‘class utcb_t’ has no member named ‘notify_bits’; did you mean ‘notify_mask’?
+/root/Orion/kernel/src/api/v4/tcb.h:586:14: error: ‘class utcb_t’ has no member named ‘notify_bits’; did you mean ‘notify_mask’?
+/root/Orion/kernel/src/api/v4/tcb.h:594:24: error: ‘class utcb_t’ has no member named ‘notify_bits’; did you mean ‘notify_mask’?
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: ‘timeout_t’ has not been declared
+/root/Orion/kernel/src/api/v4/syscalls.h:88:1: error: ‘SYS_EXCHANGE_REGISTERS’ does not name a type
+/root/Orion/kernel/src/glue/v4-powerpc64/tcb.h:112:13: error: no declaration matches ‘void tcb_t::allocate()’
+/root/Orion/kernel/src/glue/v4-powerpc64/tcb.h:569:13: error: no declaration matches ‘void tcb_t::copy_saved_regs(tcb_t*)’
+/root/Orion/kernel/src/glue/v4-powerpc64/tcb.h:601:13: error: no declaration matches ‘void tcb_t::copy_volatile_regs(tcb_t*)’
+/root/Orion/kernel/src/glue/v4-powerpc64/tcb.h:735:33: error: ‘timeout_t’ has not been declared
+/root/Orion/kernel/src/glue/v4-powerpc64/tcb.h:734:18: error: no declaration matches ‘msg_tag_t tcb_t::do_ipc(threadid_t, threadid_t, int)’
+/root/Orion/kernel/src/api/v4/tcb.h:739:13: error: ‘get_current_cpu’ was not declared in this scope
