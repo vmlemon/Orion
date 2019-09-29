@@ -42,6 +42,75 @@ typedef u16_t cpuid_t;
 //For example, https://github.com/l4ka/pistachio/blob/8be66aa9b85a774ad1b71dbd3a79c5c745a96273/kernel/src/api/v4/types.h
 //mentions timeout_t
 
+////////
+
+/* time */
+class time_t 
+{
+public:
+    u64_t get_microseconds();
+    
+    static time_t never()
+    {
+	time_t ret;
+	ret.raw = 0;
+	return ret;
+    }
+    
+    static time_t zero()
+    {
+	time_t ret;
+	ret.time.mantissa = 0;
+	ret.time.exponent = 1;
+	ret.time.type = 0;
+	return ret;
+    }
+    
+    static time_t period(u16_t mantissa, u16_t exponent)
+    {
+	time_t ret;
+	ret.time.mantissa = mantissa;
+	ret.time.exponent = exponent;
+	ret.time.type = 0;
+	return ret;
+    }
+    
+    static time_t point(u16_t mantissa, u16_t exponent)
+    {
+	time_t ret;
+	ret.time.mantissa = mantissa;
+	ret.time.exponent = exponent;
+	ret.time.type = 1;
+	return ret;
+    }
+    
+    void set_raw(u16_t raw) { this->raw = raw; }
+
+    bool is_never() { return raw == 0; }
+    bool is_zero() { return zero().raw == raw; }
+    bool is_period() { return time.type == 0; }
+    bool is_point() { return time.type == 1; }
+
+    bool operator< (time_t & r);
+    operator u16_t() { return raw ; }
+    
+    union {
+	u16_t raw;
+	struct {
+	    BITFIELD3(u16_t,
+		mantissa	: 10,
+		exponent	: 5,
+		type		: 1);
+	} __attribute__((packed)) time;
+    } __attribute__((packed)); 
+} __attribute__((packed));
+
+INLINE u64_t time_t::get_microseconds()
+{
+    return (1 << time.exponent) * time.mantissa;
+}
+////////
+
 ///////
 
 
