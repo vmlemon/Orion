@@ -8,18 +8,9 @@ syslaunch.o: syslaunch.cc syslaunch.h ../../include/l4io.h \
  ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
  ../../include/l4/ipc.h ../../include/l4/thread.h \
  ../../include/l4/kdebug.h
-time.o: dropin/time.c ../../include/errno.h ../../include/sys/cdefs.h \
- ../../include/sys/types.h ../../include/machine/endian.h \
- ../../include/sys/_types.h ../../include/machine/_types.h \
- ../../include/l4/amd64/types.h ../../include/sys/_pthreadtypes.h \
- ../../include/sys/_stdint.h ../../include/sys/select.h \
- ../../include/sys/_sigset.h ../../include/sys/_timeval.h \
- ../../include/sys/timespec.h ../../include/sys/_timespec.h \
- ../../include/stdio.h ../../include/sys/_null.h ../../include/signal.h \
- ../../include/sys/signal.h ../../include/machine/_limits.h \
- ../../include/machine/signal.h ../../include/machine/ucontext.h \
- ../../include/sys/_ucontext.h ../../include/sys/param.h \
- ../../include/sys/dir.h ../../include/sys/psl.h ../../include/sys/pte.h \
- ../../include/sys/user.h ../../include/sys/vm.h ../../include/sys/reg.h \
- ../../include/sys/plocal.h ../../include/sys/timer.h \
- ../../include/sys/procstats.h ../../include/sys/proc.h
+eucset.o: dropin/eucset.c ../../include/stdio.h ../../include/sys/cdefs.h \
+ ../../include/sys/_null.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ ../../include/termio.h ../../include/euc.h ../../include/getwidth.h \
+ ../../include/stropts.h ../../include/limits.h ../../include/ctype.h \
+ ../../include/sys/eucioctl.h
