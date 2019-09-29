@@ -38,4 +38,44 @@ extern u64_t get_current_time();
 
 typedef u16_t cpuid_t;
 
+//For some reason, a LOT of things are missing, for some reason
+//For example, https://github.com/l4ka/pistachio/blob/8be66aa9b85a774ad1b71dbd3a79c5c745a96273/kernel/src/api/v4/types.h
+//mentions timeout_t
+
+///////
+
+
+class timeout_t 
+{
+public:
+    static timeout_t never() 
+	{return (timeout_t){{raw: 0}};}
+
+    inline time_t get_rcv() { return x.rcv_timeout; }
+    inline time_t get_snd() { return x.snd_timeout; }
+    inline void set_raw(word_t raw) { this->raw = raw; }
+    inline bool is_never() { return this->raw == never().raw; }
+public:
+    union {
+	struct {
+#if TIME_BITS_WORD == 64
+	    BITFIELD4( time_t,
+		rcv_timeout,
+		snd_timeout,
+		_rv0,
+		_rv1
+	    );
+#elif TIME_BITS_WORD == 32
+	    BITFIELD2( time_t,
+		rcv_timeout,
+		snd_timeout
+	    );
+#endif
+	} __attribute__((packed)) x;
+	word_t raw;
+    };
+    
+};
+///////
+
 #endif /* __API__V4__TYPES_H__ */
