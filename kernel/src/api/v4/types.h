@@ -1,6 +1,6 @@
 /*********************************************************************
  *                
- * Copyright (C) 2002-2003,  Karlsruhe University
+ * Copyright (C) 2002-2007, 2009,  Karlsruhe University
  *                
  * File path:     api/v4/types.h
  * Description:   General type declarations for V4 API
@@ -26,17 +26,13 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id: types.h,v 1.24 2003/09/24 19:04:24 skoglund Exp $
+ * $Id: types.h,v 1.26 2006/10/18 11:57:20 reichelt Exp $
  *                
  ********************************************************************/
 #ifndef __API__V4__TYPES_H__
 #define __API__V4__TYPES_H__
 
 #include INC_API(config.h)
-
-extern u64_t get_current_time();
-
-typedef u16_t cpuid_t;
 
 #if !defined(TIME_BITS_WORD)
 #if defined(CONFIG_IS_64BIT)
@@ -45,45 +41,6 @@ typedef u16_t cpuid_t;
 #define TIME_BITS_WORD 32
 #endif
 #endif /* !defined(TIME_BITS_WORD) */
-
-//For some reason, a LOT of things are missing, for some reason
-//For example, https://github.com/l4ka/pistachio/blob/8be66aa9b85a774ad1b71dbd3a79c5c745a96273/kernel/src/api/v4/types.h
-//mentions timeout_t
-
-class timeout_t 
-{
-public:
-    static timeout_t never() 
-	{return (timeout_t){{raw: 0}};}
-
-    inline time_t get_rcv() { return x.rcv_timeout; }
-    inline time_t get_snd() { return x.snd_timeout; }
-    inline void set_raw(word_t raw) { this->raw = raw; }
-    inline bool is_never() { return this->raw == never().raw; }
-public:
-    union {
-	struct {
-#if TIME_BITS_WORD == 64
-	    BITFIELD4( time_t,
-		rcv_timeout,
-		snd_timeout,
-		_rv0,
-		_rv1
-	    );
-#elif TIME_BITS_WORD == 32
-	    BITFIELD2( time_t,
-		rcv_timeout,
-		snd_timeout
-	    );
-#endif
-	} __attribute__((packed)) x;
-	word_t raw;
-    };
-    
-};
-///////
-
-////////
 
 /* time */
 class time_t 
@@ -150,8 +107,41 @@ INLINE u64_t time_t::get_microseconds()
 {
     return (1 << time.exponent) * time.mantissa;
 }
-////////
 
-///////
+
+class timeout_t 
+{
+public:
+    static timeout_t never() 
+	{return (timeout_t){{raw: 0}};}
+
+    inline time_t get_rcv() { return x.rcv_timeout; }
+    inline time_t get_snd() { return x.snd_timeout; }
+    inline void set_raw(word_t raw) { this->raw = raw; }
+    inline bool is_never() { return this->raw == never().raw; }
+public:
+    union {
+	struct {
+#if TIME_BITS_WORD == 64
+	    BITFIELD4( time_t,
+		rcv_timeout,
+		snd_timeout,
+		_rv0,
+		_rv1
+	    );
+#elif TIME_BITS_WORD == 32
+	    BITFIELD2( time_t,
+		rcv_timeout,
+		snd_timeout
+	    );
+#endif
+	} __attribute__((packed)) x;
+	word_t raw;
+    };
+    
+};
+
+
+typedef u16_t cpuid_t;
 
 #endif /* __API__V4__TYPES_H__ */
