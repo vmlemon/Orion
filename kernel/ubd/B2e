@@ -1,0 +1,44 @@
+/home/tyson/Orion/kernel/src/arch/x86/pgent.h:87:19: error: macro "ASSERT" requires 2 arguments, but only 1 given
+/home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h:64:29: error: macro "ASSERT" requires 2 arguments, but only 1 given
+/home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h:103:34: error: macro "ASSERT" requires 2 arguments, but only 1 given
+/home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h:104:17: error: macro "ASSERT" requires 2 arguments, but only 1 given
+/home/tyson/Orion/kernel/src/api/v4/syscalls.h:76:59: error: macro "SYS_THREAD_CONTROL" passed 7 arguments, but takes just 5
+/home/tyson/Orion/kernel/src/api/v4/syscalls.h:90:40: error: macro "SYS_EXCHANGE_REGISTERS" requires 8 arguments, but only 7 given
+/home/tyson/Orion/kernel/src/api/v4/syscalls.h:125:23: error: macro "SYS_SPACE_CONTROL" requires 5 arguments, but only 4 given
+/home/tyson/Orion/kernel/src/glue/v4-x86/x32/tcb.h:58:39: error: macro "ASSERT" requires 2 arguments, but only 1 given
+/home/tyson/Orion/kernel/src/glue/v4-x86/x32/tcb.h:59:21: error: macro "ASSERT" requires 2 arguments, but only 1 given
+/home/tyson/Orion/kernel/src/arch/x86/pgent.h:87:6: error: ‘ASSERT’ was not declared in this scope
+/home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h:64:3: error: ‘ASSERT’ was not declared in this scope
+/home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h:103:6: error: ‘ASSERT’ was not declared in this scope
+/home/tyson/Orion/kernel/src/glue/v4-x86/x32/ktcb.h:57:9: error: ‘bitmask_t’ is not a template
+/home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h:49:16: error: ‘IPC_NUM_BR’ was not declared in this scope
+/home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h:64:16: error: ‘IPC_NUM_MR’ was not declared in this scope
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:53:13: error: conflicting declaration ‘typedef int prio_t’
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:425:31: error: ‘class space_t’ has no member named ‘get_tcb’; did you mean ‘add_tcb’?
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:570:14: error: ‘class utcb_t’ has no member named ‘notify_bits’
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:578:14: error: ‘class utcb_t’ has no member named ‘notify_bits’
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:586:14: error: ‘class utcb_t’ has no member named ‘notify_bits’
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:594:24: error: ‘class utcb_t’ has no member named ‘notify_bits’
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:602:24: error: ‘class utcb_t’ has no member named ‘notify_mask’; did you mean ‘word_size_mask’?
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:611:17: error: ‘class utcb_t’ has no member named ‘notify_mask’; did you mean ‘word_size_mask’?
+/home/tyson/Orion/kernel/src/api/v4/syscalls.h:73:1: error: ‘SYS_THREAD_CONTROL’ does not name a type
+/home/tyson/Orion/kernel/src/api/v4/syscalls.h:88:1: error: ‘SYS_EXCHANGE_REGISTERS’ does not name a type
+/home/tyson/Orion/kernel/src/api/v4/syscalls.h:124:1: error: ‘SYS_SPACE_CONTROL’ does not name a type
+/home/tyson/Orion/kernel/src/glue/v4-x86/x32/tcb.h:58:5: error: ‘ASSERT’ was not declared in this scope
+/home/tyson/Orion/kernel/src/glue/v4-x86/x32/tcb.h:73:31: error: ‘class utcb_t’ has no member named ‘mr’
+/home/tyson/Orion/kernel/src/glue/v4-x86/x32/tcb.h:74:25: error: ‘class utcb_t’ has no member named ‘mr’
+/home/tyson/Orion/kernel/src/glue/v4-x86/x32/tcb.h:534:13: error: no declaration matches ‘void tcb_t::arch_init_root_server(space_t*, word_t, word_t)’
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:78:5: error: ‘myself_local’ was not declared in this scope
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:78:60: error: ‘class utcb_t’ has no member named ‘mr’
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:84:12: error: ‘myself_local’ was not declared in this scope
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:84:54: error: ‘class utcb_t’ has no member named ‘mr’
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:95:24: error: ‘class utcb_t’ has no member named ‘mr’
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:106:17: error: ‘class utcb_t’ has no member named ‘mr’
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:115:15: error: no declaration matches ‘word_t tcb_t::get_br(word_t)’
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:126:13: error: no declaration matches ‘void tcb_t::set_br(word_t, word_t)’
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:209:13: error: no declaration matches ‘void tcb_t::adjust_for_copy_area(tcb_t*, void**, void**)’
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:219:13: error: no declaration matches ‘void tcb_t::release_copy_area()’
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:739:13: error: ‘get_current_cpu’ was not declared in this scope
+/home/tyson/Orion/kernel/ubd/_1569794966_123.c:55:51: error: ‘class tcb_t’ has no member named ‘sched_state’; did you mean ‘saved_state’?
+/home/tyson/Orion/kernel/ubd/_1569794966_123.c:58:34: error: ‘class utcb_t’ has no member named ‘br’
+/home/tyson/Orion/kernel/ubd/_1569794966_123.c:73:34: error: ‘class utcb_t’ has no member named ‘mr’
