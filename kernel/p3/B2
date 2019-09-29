@@ -1,0 +1,346 @@
+make[1]: Entering directory '/root/Orion/kernel/p3'
+===> src/generic/lib.cc
+cd src/generic/ &&  gcc  -nostdinc -I/root/Orion/kernel/p3/include -I/root/Orion/kernel/src -I/root/Orion/kernel/src/generic -I/usr/lib/gcc/ppc64-redhat-linux/8/include/ -Upowerpc64 -Upower4p -Uofpower4 -Uv4 -Urr -D__ARCH__=powerpc64 -D__CPU__=power4p -D__PLATFORM__=ofpower4 -D__API__=v4 -D__SCHED__=rr -imacros /root/Orion/kernel/p3/config/config.h -imacros /root/Orion/kernel/src/generic/macros.h -include /root/Orion/kernel/src/generic/config.h  -include /root/Orion/kernel/src/generic/types.h -fno-rtti -fno-builtin  -fomit-frame-pointer -fno-exceptions -Wall -Wno-non-virtual-dtor -Wno-format -O2 -mpowerpc64 -msoft-float -mno-minimal-toc  -mcpu=power4   -Wconversion  -c /root/Orion/kernel/src/generic/lib.cc
+/root/Orion/kernel/src/generic/lib.cc: In function ‘void* memset(void*, unsigned int, unsigned int)’:
+/root/Orion/kernel/src/generic/lib.cc:56:9: warning: conversion from ‘unsigned int’ to ‘u8_t’ {aka ‘unsigned char’} may change value [-Wconversion]
+  *s++ = c;
+         ^
+===> src/generic/kmemory.cc
+cd src/generic/ &&  gcc  -nostdinc -I/root/Orion/kernel/p3/include -I/root/Orion/kernel/src -I/root/Orion/kernel/src/generic -I/usr/lib/gcc/ppc64-redhat-linux/8/include/ -Upowerpc64 -Upower4p -Uofpower4 -Uv4 -Urr -D__ARCH__=powerpc64 -D__CPU__=power4p -D__PLATFORM__=ofpower4 -D__API__=v4 -D__SCHED__=rr -imacros /root/Orion/kernel/p3/config/config.h -imacros /root/Orion/kernel/src/generic/macros.h -include /root/Orion/kernel/src/generic/config.h  -include /root/Orion/kernel/src/generic/types.h -fno-rtti -fno-builtin  -fomit-frame-pointer -fno-exceptions -Wall -Wno-non-virtual-dtor -Wno-format -O2 -mpowerpc64 -msoft-float -mno-minimal-toc  -mcpu=power4   -Wconversion  -c /root/Orion/kernel/src/generic/kmemory.cc
+===> src/generic/traceids.cc
+cd src/generic/ &&  gcc  -nostdinc -I/root/Orion/kernel/p3/include -I/root/Orion/kernel/src -I/root/Orion/kernel/src/generic -I/usr/lib/gcc/ppc64-redhat-linux/8/include/ -Upowerpc64 -Upower4p -Uofpower4 -Uv4 -Urr -D__ARCH__=powerpc64 -D__CPU__=power4p -D__PLATFORM__=ofpower4 -D__API__=v4 -D__SCHED__=rr -imacros /root/Orion/kernel/p3/config/config.h -imacros /root/Orion/kernel/src/generic/macros.h -include /root/Orion/kernel/src/generic/config.h  -include /root/Orion/kernel/src/generic/types.h -fno-rtti -fno-builtin  -fomit-frame-pointer -fno-exceptions -Wall -Wno-non-virtual-dtor -Wno-format -O2 -mpowerpc64 -msoft-float -mno-minimal-toc  -mcpu=power4   -Wconversion  -c /root/Orion/kernel/src/generic/traceids.cc
+===> src/generic/tracebuffer.cc
+cd src/generic/ &&  gcc  -nostdinc -I/root/Orion/kernel/p3/include -I/root/Orion/kernel/src -I/root/Orion/kernel/src/generic -I/usr/lib/gcc/ppc64-redhat-linux/8/include/ -Upowerpc64 -Upower4p -Uofpower4 -Uv4 -Urr -D__ARCH__=powerpc64 -D__CPU__=power4p -D__PLATFORM__=ofpower4 -D__API__=v4 -D__SCHED__=rr -imacros /root/Orion/kernel/p3/config/config.h -imacros /root/Orion/kernel/src/generic/macros.h -include /root/Orion/kernel/src/generic/config.h  -include /root/Orion/kernel/src/generic/types.h -fno-rtti -fno-builtin  -fomit-frame-pointer -fno-exceptions -Wall -Wno-non-virtual-dtor -Wno-format -O2 -mpowerpc64 -msoft-float -mno-minimal-toc  -mcpu=power4   -Wconversion  -c /root/Orion/kernel/src/generic/tracebuffer.cc
+In file included from /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h:41,
+                 from /root/Orion/kernel/src/api/v4/tcb.h:707,
+                 from /root/Orion/kernel/src/api/v4/schedule.h:37,
+                 from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+/root/Orion/kernel/src/api/v4/syscalls.h:90:40: error: macro "SYS_EXCHANGE_REGISTERS" requires 8 arguments, but only 7 given
+    word_t uhandle, threadid_t pager_tid);
+                                        ^
+In file included from /root/Orion/kernel/src/api/v4/kernelinterface.h:37,
+                 from /root/Orion/kernel/src/generic/tracebuffer.cc:86:
+/root/Orion/kernel/src/api/v4/memdesc.h: In member function ‘void memdesc_t::set(memdesc_t::type_e, word_t, bool, addr_t, addr_t)’:
+/root/Orion/kernel/src/api/v4/memdesc.h:118:14: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:4’ may change value [-Wconversion]
+      _type = type;
+              ^~~~
+/root/Orion/kernel/src/api/v4/memdesc.h:119:14: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:4’ may change value [-Wconversion]
+      _t    = t;
+              ^
+/root/Orion/kernel/src/api/v4/memdesc.h:121:29: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:54’ may change value [-Wconversion]
+      _low  = ((word_t) low) >> 10;
+              ~~~~~~~~~~~~~~~^~~~~
+/root/Orion/kernel/src/api/v4/memdesc.h:122:30: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:54’ may change value [-Wconversion]
+      _high = ((word_t) high) >> 10;
+              ~~~~~~~~~~~~~~~~^~~~~
+In file included from /root/Orion/kernel/src/generic/tracebuffer.cc:86:
+/root/Orion/kernel/src/api/v4/kernelinterface.h: In member function ‘void thread_info_t::set_user_base(word_t)’:
+/root/Orion/kernel/src/api/v4/kernelinterface.h:169:52: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘short unsigned int:12’ may change value [-Wconversion]
+     void set_user_base(word_t base)  { user_base = base; }
+                                                    ^~~~
+/root/Orion/kernel/src/api/v4/kernelinterface.h: In member function ‘void thread_info_t::set_system_base(word_t)’:
+/root/Orion/kernel/src/api/v4/kernelinterface.h:170:56: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘short unsigned int:12’ may change value [-Wconversion]
+     void set_system_base(word_t base)  { system_base = base; }
+                                                        ^~~~
+In file included from /root/Orion/kernel/src/glue/v4-powerpc64/space.h:39,
+                 from /root/Orion/kernel/src/api/v4/space.h:37,
+                 from /root/Orion/kernel/src/api/v4/tcb.h:42,
+                 from /root/Orion/kernel/src/api/v4/schedule.h:37,
+                 from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+/root/Orion/kernel/src/arch/powerpc64/pghash.h: In member function ‘void ppc64_sdr1_t::create(word_t, word_t)’:
+/root/Orion/kernel/src/arch/powerpc64/pghash.h:223:28: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:46’ may change value [-Wconversion]
+     this->x.htaborg = base >> POWERPC64_HTABORG_SHIFT;
+                            ^
+/root/Orion/kernel/src/arch/powerpc64/pghash.h:224:24: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:5’ may change value [-Wconversion]
+     this->x.htabsize = size;
+                        ^~~~
+/root/Orion/kernel/src/arch/powerpc64/pghash.h: In member function ‘void ppc64_pte_t::create_4k(word_t, word_t, word_t, word_t)’:
+/root/Orion/kernel/src/arch/powerpc64/pghash.h:249:20: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:52’ may change value [-Wconversion]
+     this->x.vsid = vsid;
+                    ^~~~
+/root/Orion/kernel/src/arch/powerpc64/pghash.h:250:30: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:5’ may change value [-Wconversion]
+     this->x.api = virt_to_api( virt );
+                   ~~~~~~~~~~~^~~~~~~~
+/root/Orion/kernel/src/arch/powerpc64/pghash.h:251:17: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:1’ may change value [-Wconversion]
+     this->x.h = second;
+                 ^~~~~~
+/root/Orion/kernel/src/arch/powerpc64/pghash.h: In member function ‘void ppc64_pte_t::create(word_t, word_t, word_t, word_t, word_t)’:
+/root/Orion/kernel/src/arch/powerpc64/pghash.h:262:20: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:52’ may change value [-Wconversion]
+     this->x.vsid = vsid;
+                    ^~~~
+/root/Orion/kernel/src/arch/powerpc64/pghash.h:265:36: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:5’ may change value [-Wconversion]
+  this->x.api = virt_to_api( virt ) & (~(1ul));
+                ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~
+/root/Orion/kernel/src/arch/powerpc64/pghash.h:267:27: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:5’ may change value [-Wconversion]
+  this->x.api = virt_to_api( virt );
+                ~~~~~~~~~~~^~~~~~~~
+/root/Orion/kernel/src/arch/powerpc64/pghash.h:269:17: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:1’ may change value [-Wconversion]
+     this->x.l = large;
+                 ^~~~~
+/root/Orion/kernel/src/arch/powerpc64/pghash.h:270:17: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:1’ may change value [-Wconversion]
+     this->x.h = second;
+                 ^~~~~~
+/root/Orion/kernel/src/arch/powerpc64/pghash.h: In member function ‘void ppc64_pte_t::create(word_t, word_t, word_t, word_t, word_t, word_t)’:
+/root/Orion/kernel/src/arch/powerpc64/pghash.h:281:20: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:52’ may change value [-Wconversion]
+     this->x.vsid = vsid;
+                    ^~~~
+/root/Orion/kernel/src/arch/powerpc64/pghash.h:284:36: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:5’ may change value [-Wconversion]
+  this->x.api = virt_to_api( virt ) & (~(1ul));
+                ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~
+/root/Orion/kernel/src/arch/powerpc64/pghash.h:286:27: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:5’ may change value [-Wconversion]
+  this->x.api = virt_to_api( virt );
+                ~~~~~~~~~~~^~~~~~~~
+/root/Orion/kernel/src/arch/powerpc64/pghash.h:288:22: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:1’ may change value [-Wconversion]
+     this->x.bolted = bolted;
+                      ^~~~~~
+/root/Orion/kernel/src/arch/powerpc64/pghash.h:289:17: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:1’ may change value [-Wconversion]
+     this->x.l = large;
+                 ^~~~~
+/root/Orion/kernel/src/arch/powerpc64/pghash.h:290:17: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:1’ may change value [-Wconversion]
+     this->x.h = second;
+                 ^~~~~~
+In file included from /root/Orion/kernel/src/glue/v4-powerpc64/space.h:41,
+                 from /root/Orion/kernel/src/api/v4/space.h:37,
+                 from /root/Orion/kernel/src/api/v4/tcb.h:42,
+                 from /root/Orion/kernel/src/api/v4/schedule.h:37,
+                 from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+/root/Orion/kernel/src/api/v4/fpage.h: In member function ‘void fpage_t::set(word_t, word_t, bool, bool, bool)’:
+/root/Orion/kernel/src/api/v4/fpage.h:69:60: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:54’ may change value [-Wconversion]
+      x.base = (base & (~0 >> (L4_FPAGE_BASE_BITS - size))) >> 10;
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+/root/Orion/kernel/src/api/v4/fpage.h:70:15: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+      x.size = size;
+               ^~~~
+In file included from /root/Orion/kernel/src/glue/v4-powerpc64/space.h:42,
+                 from /root/Orion/kernel/src/api/v4/space.h:37,
+                 from /root/Orion/kernel/src/api/v4/tcb.h:42,
+                 from /root/Orion/kernel/src/api/v4/schedule.h:37,
+                 from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+/root/Orion/kernel/src/api/v4/thread.h: In static member function ‘static threadid_t threadid_t::irqthread(word_t)’:
+/root/Orion/kernel/src/api/v4/thread.h:71:28: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+      tid.global.threadno = irq;
+                            ^~~
+/root/Orion/kernel/src/api/v4/thread.h: In static member function ‘static threadid_t threadid_t::threadid(word_t, word_t)’:
+/root/Orion/kernel/src/api/v4/thread.h:78:27: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+      tid.global.version = version;
+                           ^~~~~~~
+/root/Orion/kernel/src/api/v4/thread.h:79:28: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+      tid.global.threadno = threadno;
+                            ^~~~~~~~
+/root/Orion/kernel/src/api/v4/thread.h: In member function ‘void threadid_t::set_global_id(word_t, word_t)’:
+/root/Orion/kernel/src/api/v4/thread.h:126:23: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     global.threadno = threadno;
+                       ^~~~~~~~
+/root/Orion/kernel/src/api/v4/thread.h:127:22: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned int’ may change value [-Wconversion]
+     global.version = version;
+                      ^~~~~~~
+In file included from /root/Orion/kernel/src/glue/v4-powerpc64/space.h:54,
+                 from /root/Orion/kernel/src/api/v4/space.h:37,
+                 from /root/Orion/kernel/src/api/v4/tcb.h:42,
+                 from /root/Orion/kernel/src/api/v4/schedule.h:37,
+                 from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+/root/Orion/kernel/src/generic/mdb.h: In constructor ‘mdb_t::range_t::range_t(addr_t, word_t)’:
+/root/Orion/kernel/src/generic/mdb.h:119:24: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:57’ may change value [-Wconversion]
+       idx = (word_t) b >> s;
+             ~~~~~~~~~~~^~~~
+/root/Orion/kernel/src/generic/mdb.h:120:14: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+       size = s;
+              ^
+/root/Orion/kernel/src/generic/mdb.h: In member function ‘void mdb_node_t::set_next(mdb_node_t*)’:
+/root/Orion/kernel/src/generic/mdb.h:549:22: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:63’ may change value [-Wconversion]
+  next = ((word_t) n) >> 1;
+         ~~~~~~~~~~~~~^~~~
+/root/Orion/kernel/src/generic/mdb.h: In member function ‘void mdb_node_t::set_table(mdb_table_t*)’:
+/root/Orion/kernel/src/generic/mdb.h:562:25: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:63’ may change value [-Wconversion]
+     next = ((word_t) t) >> 1;
+            ~~~~~~~~~~~~~^~~~
+/root/Orion/kernel/src/generic/mdb.h: In member function ‘void mdb_node_t::remove_table()’:
+/root/Orion/kernel/src/generic/mdb.h:571:49: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:63’ may change value [-Wconversion]
+     next = ((word_t) get_table ()->get_node ()) >> 1;
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/root/Orion/kernel/src/generic/mdb.h: In member function ‘void mdb_node_t::set_depth(word_t)’:
+/root/Orion/kernel/src/generic/mdb.h:581:13: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:50’ may change value [-Wconversion]
+     depth = d;
+             ^
+/root/Orion/kernel/src/generic/mdb.h: In member function ‘void mdb_node_t::set_objsize(word_t)’:
+/root/Orion/kernel/src/generic/mdb.h:599:16: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     obj_size = s;
+                ^
+/root/Orion/kernel/src/generic/mdb.h: In member function ‘void mdb_node_t::set_inrights(word_t)’:
+/root/Orion/kernel/src/generic/mdb.h:617:17: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:4’ may change value [-Wconversion]
+     in_rights = r;
+                 ^
+/root/Orion/kernel/src/generic/mdb.h: In member function ‘void mdb_node_t::set_outrights(word_t)’:
+/root/Orion/kernel/src/generic/mdb.h:626:18: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:4’ may change value [-Wconversion]
+     out_rights = r;
+                  ^
+/root/Orion/kernel/src/generic/mdb.h: In member function ‘void mdb_tableent_t::set_table(mdb_table_t*)’:
+/root/Orion/kernel/src/generic/mdb.h:692:24: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:63’ may change value [-Wconversion]
+     ptr = ((word_t) t) >> 1;
+           ~~~~~~~~~~~~~^~~~
+/root/Orion/kernel/src/generic/mdb.h: In member function ‘void mdb_tableent_t::set_node(mdb_node_t*)’:
+/root/Orion/kernel/src/generic/mdb.h:705:21: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:63’ may change value [-Wconversion]
+  ptr = ((word_t) n) >> 1;
+        ~~~~~~~~~~~~~^~~~
+/root/Orion/kernel/src/generic/mdb.h: In member function ‘void mdb_table_t::remove_table(word_t)’:
+/root/Orion/kernel/src/generic/mdb.h:838:27: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:63’ may change value [-Wconversion]
+     e->ptr = ((word_t) n) >> 1;
+              ~~~~~~~~~~~~~^~~~
+/root/Orion/kernel/src/generic/mdb.h: In member function ‘void mdb_table_t::set_objsize(word_t)’:
+/root/Orion/kernel/src/generic/mdb.h:901:15: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+     objsize = s;
+               ^
+In file included from /root/Orion/kernel/src/api/v4/space.h:37,
+                 from /root/Orion/kernel/src/api/v4/tcb.h:42,
+                 from /root/Orion/kernel/src/api/v4/schedule.h:37,
+                 from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+/root/Orion/kernel/src/glue/v4-powerpc64/space.h: At global scope:
+/root/Orion/kernel/src/glue/v4-powerpc64/space.h:125:12: error: extra qualification ‘space_t::’ on member ‘space_control’ [-fpermissive]
+     word_t space_t::space_control (word_t ctrl, fpage_t kip_area, fpage_t utcb_area, threadid_t redirector_tid) { return 0; }
+            ^~~~~~~
+/root/Orion/kernel/src/glue/v4-powerpc64/space.h: In function ‘void add_tcb(tcb_t*, cpuid_t)’:
+/root/Orion/kernel/src/glue/v4-powerpc64/space.h:313:5: error: ‘x’ was not declared in this scope
+     x.thread_count ++;
+     ^
+/root/Orion/kernel/src/glue/v4-powerpc64/space.h: In function ‘bool remove_tcb(tcb_t*, cpuid_t)’:
+/root/Orion/kernel/src/glue/v4-powerpc64/space.h:324:5: error: ‘x’ was not declared in this scope
+     x.thread_count --;
+     ^
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:47,
+                 from /root/Orion/kernel/src/api/v4/schedule.h:37,
+                 from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+/root/Orion/kernel/src/api/v4/ipc.h: In member function ‘void msg_tag_t::set(word_t, word_t, word_t, bool, bool)’:
+/root/Orion/kernel/src/api/v4/ipc.h:82:25: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+      this->send.typed = typed;
+                         ^~~~~
+/root/Orion/kernel/src/api/v4/ipc.h:83:27: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘unsigned char:6’ may change value [-Wconversion]
+      this->send.untyped = untyped;
+                           ^~~~~~~
+/root/Orion/kernel/src/api/v4/ipc.h:84:25: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:48’ may change value [-Wconversion]
+      this->send.label = label;
+                         ^~~~~
+/root/Orion/kernel/src/api/v4/ipc.h: In member function ‘void acceptor_t::set_rcv_window(fpage_t)’:
+/root/Orion/kernel/src/api/v4/ipc.h:232:30: warning: conversion from ‘word_t’ {aka ‘long unsigned int’} to ‘long unsigned int:60’ may change value [-Wconversion]
+  { x.rcv_window = (fpage.raw >> 4); };
+                   ~~~~~~~~~~~^~~~~
+In file included from /root/Orion/kernel/src/api/v4/schedule.h:37,
+                 from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+/root/Orion/kernel/src/api/v4/tcb.h: In member function ‘tcb_t* tcb_t::get_partner_tcb()’:
+/root/Orion/kernel/src/api/v4/tcb.h:425:31: error: ‘class space_t’ has no member named ‘get_tcb’; did you mean ‘add_tcb’?
+     return this->get_space()->get_tcb(partner);
+                               ^~~~~~~
+                               add_tcb
+/root/Orion/kernel/src/api/v4/tcb.h: In member function ‘void tcb_t::clear_notify_bits()’:
+/root/Orion/kernel/src/api/v4/tcb.h:570:14: error: ‘class utcb_t’ has no member named ‘notify_bits’; did you mean ‘notify_mask’?
+  get_utcb()->notify_bits = 0;
+              ^~~~~~~~~~~
+              notify_mask
+/root/Orion/kernel/src/api/v4/tcb.h: In member function ‘void tcb_t::add_notify_bits(word_t)’:
+/root/Orion/kernel/src/api/v4/tcb.h:578:14: error: ‘class utcb_t’ has no member named ‘notify_bits’; did you mean ‘notify_mask’?
+  get_utcb()->notify_bits |= bits;
+              ^~~~~~~~~~~
+              notify_mask
+/root/Orion/kernel/src/api/v4/tcb.h: In member function ‘void tcb_t::sub_notify_bits(word_t)’:
+/root/Orion/kernel/src/api/v4/tcb.h:586:14: error: ‘class utcb_t’ has no member named ‘notify_bits’; did you mean ‘notify_mask’?
+  get_utcb()->notify_bits &= ~(bits);
+              ^~~~~~~~~~~
+              notify_mask
+/root/Orion/kernel/src/api/v4/tcb.h: In member function ‘word_t tcb_t::get_notify_bits()’:
+/root/Orion/kernel/src/api/v4/tcb.h:594:24: error: ‘class utcb_t’ has no member named ‘notify_bits’; did you mean ‘notify_mask’?
+     return get_utcb()->notify_bits;
+                        ^~~~~~~~~~~
+                        notify_mask
+In file included from /root/Orion/kernel/src/arch/powerpc64/debug.h:36,
+                 from /root/Orion/kernel/src/debug.h:75,
+                 from /root/Orion/kernel/src/generic/tracebuffer.cc:84:
+/root/Orion/kernel/src/api/v4/syscalls.h: At global scope:
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: ‘timeout_t’ has not been declared
+ SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+                                                  ^~~~~~~~~
+/root/Orion/kernel/src/glue/v4-powerpc64/syscalls.h:75:21: note: in definition of macro ‘SYS_IPC’
+  sys_ipc (to, from, timeout)
+                     ^~~~~~~
+In file included from /root/Orion/kernel/src/glue/v4-powerpc64/tcb.h:41,
+                 from /root/Orion/kernel/src/api/v4/tcb.h:707,
+                 from /root/Orion/kernel/src/api/v4/schedule.h:37,
+                 from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+/root/Orion/kernel/src/api/v4/syscalls.h:88:1: error: ‘SYS_EXCHANGE_REGISTERS’ does not name a type
+ SYS_EXCHANGE_REGISTERS (threadid_t dest_tid, word_t control,
+ ^~~~~~~~~~~~~~~~~~~~~~
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707,
+                 from /root/Orion/kernel/src/api/v4/schedule.h:37,
+                 from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+/root/Orion/kernel/src/glue/v4-powerpc64/tcb.h:112:13: error: no declaration matches ‘void tcb_t::allocate()’
+ INLINE void tcb_t::allocate()
+             ^~~~~
+In file included from /root/Orion/kernel/src/api/v4/schedule.h:37,
+                 from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+/root/Orion/kernel/src/api/v4/tcb.h:216:10: note: candidate is: ‘bool tcb_t::allocate()’
+     bool allocate();
+          ^~~~~~~~
+/root/Orion/kernel/src/api/v4/tcb.h:60:7: note: ‘class tcb_t’ defined here
+ class tcb_t
+       ^~~~~
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707,
+                 from /root/Orion/kernel/src/api/v4/schedule.h:37,
+                 from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+/root/Orion/kernel/src/glue/v4-powerpc64/tcb.h:569:13: error: no declaration matches ‘void tcb_t::copy_saved_regs(tcb_t*)’
+ inline void tcb_t::copy_saved_regs(tcb_t *src)
+             ^~~~~
+/root/Orion/kernel/src/glue/v4-powerpc64/tcb.h:569:13: note: no functions named ‘void tcb_t::copy_saved_regs(tcb_t*)’
+In file included from /root/Orion/kernel/src/api/v4/schedule.h:37,
+                 from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+/root/Orion/kernel/src/api/v4/tcb.h:60:7: note: ‘class tcb_t’ defined here
+ class tcb_t
+       ^~~~~
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707,
+                 from /root/Orion/kernel/src/api/v4/schedule.h:37,
+                 from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+/root/Orion/kernel/src/glue/v4-powerpc64/tcb.h:601:13: error: no declaration matches ‘void tcb_t::copy_volatile_regs(tcb_t*)’
+ INLINE void tcb_t::copy_volatile_regs(tcb_t *src)
+             ^~~~~
+/root/Orion/kernel/src/glue/v4-powerpc64/tcb.h:601:13: note: no functions named ‘void tcb_t::copy_volatile_regs(tcb_t*)’
+In file included from /root/Orion/kernel/src/api/v4/schedule.h:37,
+                 from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+/root/Orion/kernel/src/api/v4/tcb.h:60:7: note: ‘class tcb_t’ defined here
+ class tcb_t
+       ^~~~~
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707,
+                 from /root/Orion/kernel/src/api/v4/schedule.h:37,
+                 from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+/root/Orion/kernel/src/glue/v4-powerpc64/tcb.h:735:33: error: ‘timeout_t’ has not been declared
+                                 timeout_t timeout)
+                                 ^~~~~~~~~
+/root/Orion/kernel/src/glue/v4-powerpc64/tcb.h:734:18: error: no declaration matches ‘msg_tag_t tcb_t::do_ipc(threadid_t, threadid_t, int)’
+ INLINE msg_tag_t tcb_t::do_ipc (threadid_t to_tid, threadid_t from_tid,
+                  ^~~~~
+In file included from /root/Orion/kernel/src/api/v4/schedule.h:37,
+                 from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+/root/Orion/kernel/src/api/v4/tcb.h:130:15: note: candidate is: ‘msg_tag_t tcb_t::do_ipc(threadid_t, threadid_t)’
+     msg_tag_t do_ipc(threadid_t to_tid, threadid_t from_tid);
+               ^~~~~~
+/root/Orion/kernel/src/api/v4/tcb.h:60:7: note: ‘class tcb_t’ defined here
+ class tcb_t
+       ^~~~~
+In file included from /root/Orion/kernel/src/api/v4/schedule.h:37,
+                 from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+/root/Orion/kernel/src/api/v4/tcb.h: In member function ‘bool tcb_t::is_local_cpu()’:
+/root/Orion/kernel/src/api/v4/tcb.h:739:13: error: ‘get_current_cpu’ was not declared in this scope
+     return (get_current_cpu() == get_cpu());
+             ^~~~~~~~~~~~~~~
+/root/Orion/kernel/src/api/v4/tcb.h:739:13: note: suggested alternative: ‘get_current_tcb’
+     return (get_current_cpu() == get_cpu());
+             ^~~~~~~~~~~~~~~
+             get_current_tcb
+In file included from /root/Orion/kernel/src/glue/v4-powerpc64/space.h:44,
+                 from /root/Orion/kernel/src/api/v4/space.h:37,
+                 from /root/Orion/kernel/src/api/v4/tcb.h:42,
+                 from /root/Orion/kernel/src/api/v4/schedule.h:37,
+                 from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+/root/Orion/kernel/src/glue/v4-powerpc64/pgent.h: At global scope:
+/root/Orion/kernel/src/glue/v4-powerpc64/pgent.h:197:22: warning: inline function ‘pgent_t* pgent_t::next(space_t*, pgent_t::pgsize_e, word_t)’ used but never defined
+     inline pgent_t * next( space_t * s, pgsize_e pgsize, word_t num );
+                      ^~~~
+make[1]: *** [/root/Orion/kernel/Mk/Makeconf:208: src/generic/tracebuffer.o] Error 1
+make[1]: Leaving directory '/root/Orion/kernel/p3'
+make: *** [Makefile:38: all] Error 2
