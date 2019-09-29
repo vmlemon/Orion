@@ -38,6 +38,14 @@ extern u64_t get_current_time();
 
 typedef u16_t cpuid_t;
 
+#if !defined(TIME_BITS_WORD)
+#if defined(CONFIG_IS_64BIT)
+#define TIME_BITS_WORD 64
+#elif defined(CONFIG_IS_32BIT)
+#define TIME_BITS_WORD 32
+#endif
+#endif /* !defined(TIME_BITS_WORD) */
+
 //For some reason, a LOT of things are missing, for some reason
 //For example, https://github.com/l4ka/pistachio/blob/8be66aa9b85a774ad1b71dbd3a79c5c745a96273/kernel/src/api/v4/types.h
 //mentions timeout_t
