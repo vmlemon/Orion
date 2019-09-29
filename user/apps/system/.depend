@@ -8,18 +8,15 @@ syslaunch.o: syslaunch.cc syslaunch.h ../../include/l4io.h \
  ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
  ../../include/l4/ipc.h ../../include/l4/thread.h \
  ../../include/l4/kdebug.h
-300s.o: dropin/300s.c ../../include/stdio.h ../../include/sys/cdefs.h \
- ../../include/sys/_null.h ../../include/sys/_types.h \
- ../../include/machine/_types.h ../../include/l4/amd64/types.h \
- ../../include/signal.h ../../include/sys/signal.h \
- ../../include/sys/_sigset.h ../../include/machine/_limits.h \
- ../../include/machine/signal.h ../../include/sys/_pthreadtypes.h \
- ../../include/sys/_timespec.h ../../include/machine/ucontext.h \
- ../../include/sys/_ucontext.h ../../include/sys/types.h \
- ../../include/machine/endian.h ../../include/sys/_stdint.h \
- ../../include/sys/select.h ../../include/sys/_timeval.h \
- ../../include/sys/timespec.h ../../include/sys/stat.h \
- ../../include/sys/time.h ../../include/xlocale/_time.h \
+bootflags.o: dropin/bootflags.c ../../include/stdio.h \
+ ../../include/sys/cdefs.h ../../include/sys/_null.h \
+ ../../include/sys/_types.h ../../include/machine/_types.h \
+ ../../include/l4/amd64/types.h ../../include/fcntl.h \
  ../../include/sys/ioctl.h ../../include/sys/ioccom.h \
  ../../include/sys/filio.h ../../include/sys/sockio.h \
- ../../include/sys/ttycom.h termio.h
+ ../../include/sys/ttycom.h sys/consmemioctl.h sys/errno.h \
+ ../../include/sys/types.h ../../include/machine/endian.h \
+ ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
+ ../../include/sys/select.h ../../include/sys/_sigset.h \
+ ../../include/sys/_timeval.h ../../include/sys/timespec.h \
+ ../../include/sys/_timespec.h sys/cfg.h
