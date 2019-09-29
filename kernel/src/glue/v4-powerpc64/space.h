@@ -122,7 +122,7 @@ public:
     bool remove_tcb(tcb_t * tcb);
 
     /* space control */
-    word_t space_t::space_control (word_t ctrl, fpage_t kip_area, fpage_t utcb_area, threadid_t redirector_tid) { return 0; }
+    word_t space_control (word_t ctrl, fpage_t kip_area, fpage_t utcb_area, threadid_t redirector_tid) { return 0; }
 
     /* sigma0 translation hooks */
     static paddr_t sigma0_translate(addr_t addr, pgent_t::pgsize_e size) { return (paddr_t)addr; }
