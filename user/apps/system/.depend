@@ -8,6 +8,50 @@ syslaunch.o: syslaunch.cc syslaunch.h ../../include/l4io.h \
  ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
  ../../include/l4/ipc.h ../../include/l4/thread.h \
  ../../include/l4/kdebug.h
-grep.o: dropin/grep.c ../../include/stdio.h ../../include/sys/cdefs.h \
+gfxLight.o: dropin/gfxLight.cpp ../../include/stdlib.h \
+ ../../include/stdio.h ../../include/sys/cdefs.h \
  ../../include/sys/_null.h ../../include/sys/_types.h \
- ../../include/machine/_types.h ../../include/l4/amd64/types.h
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ ../../include/assert.h PSGL/psgl.h PSGL/psglu.h GLES/glext.h \
+ vectormath/cpp/vectormath_aos.h dropin/gfxLight.h
+gfxDdsLoader.o: dropin/gfxDdsLoader.cpp PSGL/psgl.h PSGL/psglu.h \
+ ../../include/stdlib.h ../../include/stdio.h ../../include/sys/cdefs.h \
+ ../../include/sys/_null.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ ../../include/string.h ../../include/assert.h ../../include/math.h \
+ ../../include/machine/_limits.h dropin/gfxDdsLoader.h
+Bibliotheque.o: dropin/Bibliotheque.cpp ../../include/stdlib.h \
+ ../../include/stdio.h ../../include/sys/cdefs.h \
+ ../../include/sys/_null.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ ../../include/string.h ../../include/math.h \
+ ../../include/machine/_limits.h PSGL/psgl.h PSGL/psglu.h Cg/cg.h \
+ dropin/./Bibliotheque.h
+gfxObject.o: dropin/gfxObject.cpp ../../include/stdlib.h \
+ ../../include/stdio.h ../../include/sys/cdefs.h \
+ ../../include/sys/_null.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ ../../include/assert.h PSGL/psgl.h PSGL/psglu.h GLES/glext.h \
+ vectormath/cpp/vectormath_aos.h dropin/gfxObject.h dropin/gfxCommon.h
+gfxCommon.o: dropin/gfxCommon.cpp ../../include/stdio.h \
+ ../../include/sys/cdefs.h ../../include/sys/_null.h \
+ ../../include/sys/_types.h ../../include/machine/_types.h \
+ ../../include/l4/amd64/types.h ../../include/stdlib.h sys/process.h \
+ sys/spu_initialize.h sys/paths.h sysutil/sysutil_sysparam.h PSGL/psgl.h \
+ PSGL/psglu.h cell/dbgfont.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h cell/sysmodule.h \
+ dropin/gfxCommon.h
+gfxPad.o: dropin/gfxPad.cpp ../../include/stdio.h \
+ ../../include/sys/cdefs.h ../../include/sys/_null.h \
+ ../../include/sys/_types.h ../../include/machine/_types.h \
+ ../../include/l4/amd64/types.h ../../include/stdlib.h \
+ ../../include/string.h sys/process.h sys/spu_initialize.h sys/paths.h \
+ cell/pad/libpad.h cell/pad/error.h
+LoadModule.o: dropin/LoadModule.cpp ../../include/stdlib.h \
+ ../../include/stdio.h ../../include/sys/cdefs.h \
+ ../../include/sys/_null.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ ../../include/math.h ../../include/machine/_limits.h \
+ ../../include/string.h sys/process.h sys/spu_initialize.h sys/paths.h \
+ sys/sys_time.h sys/prx.h cell/cell_fs.h PSGL/psgl.h PSGL/psglu.h Cg/cg.h \
+ cell/dbgfont.h Common/gfxCommon.h Common/gfxPad.h Common/Bibliotheque.h
