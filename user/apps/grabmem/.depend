@@ -1,15 +1,9 @@
 crt0-amd64.o: crt0-amd64.S
-syslaunch.o: syslaunch.cc syslaunch.h ../../include/l4io.h \
- ../../include/l4/types.h ../../include/l4/amd64/types.h \
- ../../include/l4/amd64/specials.h \
+grabmem.o: grabmem.cc ../../include/l4io.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
  ../../include/l4/sigma0.h ../../include/l4/kip.h \
  ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
  ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
  ../../include/l4/ipc.h ../../include/l4/thread.h \
  ../../include/l4/kdebug.h
-sno3.o: dropin/sno3.c dropin/sno.h
-sno4.o: dropin/sno4.c dropin/sno.h
-sno0.o: dropin/sno0.c
-sno1.o: dropin/sno1.c dropin/sno.h
-sno2.o: dropin/sno2.c dropin/sno.h
