@@ -42,7 +42,7 @@ PROGRAM_DEPS=	$(top_builddir)/lib/l4/libl4.a \
 		#$(top_builddir)/lib/libl4e/libl4e.a\
 		#$(top_builddir)/lib/libelf/libelf.a
 
-SRCS=		crt0-$(ARCH).S syslaunch.cc $(wildcard dropin/*.c) #$(wildcard ALAC/codec/*.c) #$(wildcard ValidateMP4/src/*.c) # $(wildcard ALAC/codec/*.cc) # $(wildcard v2lin_v02/lib/*.c)  
+SRCS=		crt0-$(ARCH).S syslaunch.cc $(wildcard dropin/*.c) megahal.c #$(wildcard ALAC/codec/*.c) #$(wildcard ValidateMP4/src/*.c) # $(wildcard ALAC/codec/*.cc) # $(wildcard v2lin_v02/lib/*.c)  
 
 #$(wildcard sqlite-snapshot-201909031623/*.c) # $(wildcard v2lin_v02/lib/*.c) #mojoelf.c CacheLineSize.c #nedmalloc.c #clefia_ref.c #$(wildcard *.c)  
 
