@@ -21,6 +21,6 @@ megahal.o: megahal.c ../../include/stdio.h ../../include/sys/cdefs.h \
  ../../include/sys/timespec.h ../../include/sys/_timespec.h \
  ../../include/signal.h ../../include/sys/signal.h \
  ../../include/machine/_limits.h ../../include/machine/signal.h \
- ../../include/machine/ucontext.h ../../include/sys/_ucontext.h \
- ../../include/math.h ../../include/time.h ../../include/xlocale/_time.h \
- ../../include/ctype.h megahal.h
+ ../../include/machine/ucontext.h ../../include/machine/x86/ucontext.h \
+ ../../include/sys/_ucontext.h ../../include/math.h ../../include/time.h \
+ ../../include/xlocale/_time.h ../../include/ctype.h megahal.h
