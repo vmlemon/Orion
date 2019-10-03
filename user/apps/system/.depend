@@ -14,6 +14,7 @@ ValidateAtomList.o: ValidateMP4/src/ValidateAtomList.c \
  ../../include/sys/_types.h ../../include/machine/_types.h \
  ../../include/l4/amd64/types.h ../../include/stdlib.h \
  ../../include/ctype.h ../../include/string.h ../../include/cstring \
+ ../../include/strings.h ../../include/xlocale/_strings.h \
  ../../include/sys/types.h ../../include/machine/endian.h \
  ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
  ../../include/sys/select.h ../../include/sys/_sigset.h \
@@ -26,6 +27,7 @@ ValidateMP4.o: ValidateMP4/src/ValidateMP4.c \
  ../../include/sys/_types.h ../../include/machine/_types.h \
  ../../include/l4/amd64/types.h ../../include/stdlib.h \
  ../../include/ctype.h ../../include/string.h ../../include/cstring \
+ ../../include/strings.h ../../include/xlocale/_strings.h \
  ../../include/sys/types.h ../../include/machine/endian.h \
  ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
  ../../include/sys/select.h ../../include/sys/_sigset.h \
@@ -39,6 +41,7 @@ ValidateHints.o: ValidateMP4/src/ValidateHints.c \
  ../../include/sys/_types.h ../../include/machine/_types.h \
  ../../include/l4/amd64/types.h ../../include/stdlib.h \
  ../../include/ctype.h ../../include/string.h ../../include/cstring \
+ ../../include/strings.h ../../include/xlocale/_strings.h \
  ../../include/sys/types.h ../../include/machine/endian.h \
  ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
  ../../include/sys/select.h ../../include/sys/_sigset.h \
@@ -51,6 +54,7 @@ ValidateBits.o: ValidateMP4/src/ValidateBits.c \
  ../../include/sys/_types.h ../../include/machine/_types.h \
  ../../include/l4/amd64/types.h ../../include/stdlib.h \
  ../../include/ctype.h ../../include/string.h ../../include/cstring \
+ ../../include/strings.h ../../include/xlocale/_strings.h \
  ../../include/sys/types.h ../../include/machine/endian.h \
  ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
  ../../include/sys/select.h ../../include/sys/_sigset.h \
@@ -63,6 +67,7 @@ ValidateAtoms.o: ValidateMP4/src/ValidateAtoms.c \
  ../../include/sys/_types.h ../../include/machine/_types.h \
  ../../include/l4/amd64/types.h ../../include/stdlib.h \
  ../../include/ctype.h ../../include/string.h ../../include/cstring \
+ ../../include/strings.h ../../include/xlocale/_strings.h \
  ../../include/sys/types.h ../../include/machine/endian.h \
  ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
  ../../include/sys/select.h ../../include/sys/_sigset.h \
@@ -75,6 +80,7 @@ ValidateFileIO.o: ValidateMP4/src/ValidateFileIO.c \
  ../../include/sys/_types.h ../../include/machine/_types.h \
  ../../include/l4/amd64/types.h ../../include/stdlib.h \
  ../../include/ctype.h ../../include/string.h ../../include/cstring \
+ ../../include/strings.h ../../include/xlocale/_strings.h \
  ../../include/sys/types.h ../../include/machine/endian.h \
  ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
  ../../include/sys/select.h ../../include/sys/_sigset.h \
@@ -87,6 +93,7 @@ ValidateBitStreams.o: ValidateMP4/src/ValidateBitStreams.c \
  ../../include/sys/_types.h ../../include/machine/_types.h \
  ../../include/l4/amd64/types.h ../../include/stdlib.h \
  ../../include/ctype.h ../../include/string.h ../../include/cstring \
+ ../../include/strings.h ../../include/xlocale/_strings.h \
  ../../include/sys/types.h ../../include/machine/endian.h \
  ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
  ../../include/sys/select.h ../../include/sys/_sigset.h \
