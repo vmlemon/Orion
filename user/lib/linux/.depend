@@ -78,4 +78,4 @@ memset.o: memset.c ../../include/sys/cdefs.h ../../include/sys/types.h \
  ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
  ../../include/sys/select.h ../../include/sys/_sigset.h \
  ../../include/sys/_timeval.h ../../include/sys/timespec.h \
- ../../include/sys/_timespec.h sys/libkern.h
+ ../../include/sys/_timespec.h ../../include/sys/libkern.h
