@@ -8,8 +8,68 @@ syslaunch.o: syslaunch.cc syslaunch.h ../../include/l4io.h \
  ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
  ../../include/l4/ipc.h ../../include/l4/thread.h \
  ../../include/l4/kdebug.h
-sno3.o: dropin/sno3.c dropin/sno.h
-sno4.o: dropin/sno4.c dropin/sno.h
-sno0.o: dropin/sno0.c
-sno1.o: dropin/sno1.c dropin/sno.h
-sno2.o: dropin/sno2.c dropin/sno.h
+ag_dec.o: ALAC/codec/ag_dec.c ALAC/codec/aglib.h ../../include/stdint.h \
+ ../../include/sys/cdefs.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ ../../include/machine/_stdint.h ../../include/sys/_stdint.h \
+ ALAC/codec/ALACBitUtilities.h ALAC/codec/ALACAudioTypes.h \
+ ../../include/math.h ../../include/machine/_limits.h \
+ ../../include/stdio.h ../../include/sys/_null.h ../../include/stdlib.h \
+ ../../include/string.h
+dp_dec.o: ALAC/codec/dp_dec.c ALAC/codec/dplib.h ../../include/stdint.h \
+ ../../include/sys/cdefs.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ ../../include/machine/_stdint.h ../../include/sys/_stdint.h \
+ ../../include/string.h
+EndianPortable.o: ALAC/codec/EndianPortable.c ../../include/stdio.h \
+ ../../include/sys/cdefs.h ../../include/sys/_null.h \
+ ../../include/sys/_types.h ../../include/machine/_types.h \
+ ../../include/l4/amd64/types.h ALAC/codec/EndianPortable.h \
+ ../../include/stdint.h ../../include/machine/_stdint.h \
+ ../../include/sys/_stdint.h
+ALACBitUtilities.o: ALAC/codec/ALACBitUtilities.c ../../include/stdio.h \
+ ../../include/sys/cdefs.h ../../include/sys/_null.h \
+ ../../include/sys/_types.h ../../include/machine/_types.h \
+ ../../include/l4/amd64/types.h ALAC/codec/ALACBitUtilities.h \
+ ../../include/stdint.h ../../include/machine/_stdint.h \
+ ../../include/sys/_stdint.h
+matrix_dec.o: ALAC/codec/matrix_dec.c ALAC/codec/matrixlib.h \
+ ../../include/stdint.h ../../include/sys/cdefs.h \
+ ../../include/sys/_types.h ../../include/machine/_types.h \
+ ../../include/l4/amd64/types.h ../../include/machine/_stdint.h \
+ ../../include/sys/_stdint.h ALAC/codec/ALACAudioTypes.h
+ag_enc.o: ALAC/codec/ag_enc.c ALAC/codec/aglib.h ../../include/stdint.h \
+ ../../include/sys/cdefs.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ ../../include/machine/_stdint.h ../../include/sys/_stdint.h \
+ ALAC/codec/ALACBitUtilities.h ALAC/codec/EndianPortable.h \
+ ALAC/codec/ALACAudioTypes.h ../../include/math.h \
+ ../../include/machine/_limits.h ../../include/stdio.h \
+ ../../include/sys/_null.h ../../include/stdlib.h ../../include/string.h
+matrix_enc.o: ALAC/codec/matrix_enc.c ALAC/codec/matrixlib.h \
+ ../../include/stdint.h ../../include/sys/cdefs.h \
+ ../../include/sys/_types.h ../../include/machine/_types.h \
+ ../../include/l4/amd64/types.h ../../include/machine/_stdint.h \
+ ../../include/sys/_stdint.h ALAC/codec/ALACAudioTypes.h
+dp_enc.o: ALAC/codec/dp_enc.c ALAC/codec/dplib.h ../../include/stdint.h \
+ ../../include/sys/cdefs.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ ../../include/machine/_stdint.h ../../include/sys/_stdint.h \
+ ../../include/string.h
+ALACDecoder.o: ALAC/codec/ALACDecoder.cc ../../include/stdlib.h \
+ ../../include/string.h ALAC/codec/ALACDecoder.h ../../include/stdint.h \
+ ../../include/sys/cdefs.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ ../../include/machine/_stdint.h ../../include/sys/_stdint.h \
+ ALAC/codec/ALACAudioTypes.h ALAC/codec/dplib.h ALAC/codec/aglib.h \
+ ALAC/codec/matrixlib.h ALAC/codec/ALACBitUtilities.h \
+ ALAC/codec/EndianPortable.h
+ALACEncoder.o: ALAC/codec/ALACEncoder.cc ../../include/stdio.h \
+ ../../include/sys/cdefs.h ../../include/sys/_null.h \
+ ../../include/sys/_types.h ../../include/machine/_types.h \
+ ../../include/l4/amd64/types.h ../../include/stdlib.h \
+ ../../include/string.h ALAC/codec/ALACEncoder.h ../../include/stdint.h \
+ ../../include/machine/_stdint.h ../../include/sys/_stdint.h \
+ ALAC/codec/ALACAudioTypes.h ALAC/codec/aglib.h ALAC/codec/dplib.h \
+ ALAC/codec/matrixlib.h ALAC/codec/ALACBitUtilities.h \
+ ALAC/codec/EndianPortable.h
