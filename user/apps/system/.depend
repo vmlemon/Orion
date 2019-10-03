@@ -15,12 +15,20 @@ ag_dec.o: ALAC/codec/ag_dec.c ALAC/codec/aglib.h ../../include/stdint.h \
  ALAC/codec/ALACBitUtilities.h ALAC/codec/ALACAudioTypes.h \
  ../../include/math.h ../../include/machine/_limits.h \
  ../../include/stdio.h ../../include/sys/_null.h ../../include/stdlib.h \
- ../../include/string.h
+ ../../include/string.h ../../include/cstring ../../include/sys/types.h \
+ ../../include/machine/endian.h ../../include/sys/_pthreadtypes.h \
+ ../../include/sys/select.h ../../include/sys/_sigset.h \
+ ../../include/sys/_timeval.h ../../include/sys/timespec.h \
+ ../../include/sys/_timespec.h
 dp_dec.o: ALAC/codec/dp_dec.c ALAC/codec/dplib.h ../../include/stdint.h \
  ../../include/sys/cdefs.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
  ../../include/machine/_stdint.h ../../include/sys/_stdint.h \
- ../../include/string.h
+ ../../include/string.h ../../include/cstring ../../include/sys/types.h \
+ ../../include/machine/endian.h ../../include/sys/_pthreadtypes.h \
+ ../../include/sys/select.h ../../include/sys/_sigset.h \
+ ../../include/sys/_timeval.h ../../include/sys/timespec.h \
+ ../../include/sys/_timespec.h
 EndianPortable.o: ALAC/codec/EndianPortable.c ../../include/stdio.h \
  ../../include/sys/cdefs.h ../../include/sys/_null.h \
  ../../include/sys/_types.h ../../include/machine/_types.h \
@@ -45,7 +53,12 @@ ag_enc.o: ALAC/codec/ag_enc.c ALAC/codec/aglib.h ../../include/stdint.h \
  ALAC/codec/ALACBitUtilities.h ALAC/codec/EndianPortable.h \
  ALAC/codec/ALACAudioTypes.h ../../include/math.h \
  ../../include/machine/_limits.h ../../include/stdio.h \
- ../../include/sys/_null.h ../../include/stdlib.h ../../include/string.h
+ ../../include/sys/_null.h ../../include/stdlib.h ../../include/string.h \
+ ../../include/cstring ../../include/sys/types.h \
+ ../../include/machine/endian.h ../../include/sys/_pthreadtypes.h \
+ ../../include/sys/select.h ../../include/sys/_sigset.h \
+ ../../include/sys/_timeval.h ../../include/sys/timespec.h \
+ ../../include/sys/_timespec.h
 matrix_enc.o: ALAC/codec/matrix_enc.c ALAC/codec/matrixlib.h \
  ../../include/stdint.h ../../include/sys/cdefs.h \
  ../../include/sys/_types.h ../../include/machine/_types.h \
@@ -55,21 +68,33 @@ dp_enc.o: ALAC/codec/dp_enc.c ALAC/codec/dplib.h ../../include/stdint.h \
  ../../include/sys/cdefs.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
  ../../include/machine/_stdint.h ../../include/sys/_stdint.h \
- ../../include/string.h
+ ../../include/string.h ../../include/cstring ../../include/sys/types.h \
+ ../../include/machine/endian.h ../../include/sys/_pthreadtypes.h \
+ ../../include/sys/select.h ../../include/sys/_sigset.h \
+ ../../include/sys/_timeval.h ../../include/sys/timespec.h \
+ ../../include/sys/_timespec.h
 ALACDecoder.o: ALAC/codec/ALACDecoder.cc ../../include/stdlib.h \
- ../../include/string.h ALAC/codec/ALACDecoder.h ../../include/stdint.h \
- ../../include/sys/cdefs.h ../../include/sys/_types.h \
- ../../include/machine/_types.h ../../include/l4/amd64/types.h \
- ../../include/machine/_stdint.h ../../include/sys/_stdint.h \
- ALAC/codec/ALACAudioTypes.h ALAC/codec/dplib.h ALAC/codec/aglib.h \
- ALAC/codec/matrixlib.h ALAC/codec/ALACBitUtilities.h \
- ALAC/codec/EndianPortable.h
+ ../../include/string.h ../../include/cstring ../../include/sys/types.h \
+ ../../include/sys/cdefs.h ../../include/machine/endian.h \
+ ../../include/sys/_types.h ../../include/machine/_types.h \
+ ../../include/l4/amd64/types.h ../../include/sys/_pthreadtypes.h \
+ ../../include/sys/_stdint.h ../../include/sys/select.h \
+ ../../include/sys/_sigset.h ../../include/sys/_timeval.h \
+ ../../include/sys/timespec.h ../../include/sys/_timespec.h \
+ ALAC/codec/ALACDecoder.h ../../include/stdint.h \
+ ../../include/machine/_stdint.h ALAC/codec/ALACAudioTypes.h \
+ ALAC/codec/dplib.h ALAC/codec/aglib.h ALAC/codec/matrixlib.h \
+ ALAC/codec/ALACBitUtilities.h ALAC/codec/EndianPortable.h
 ALACEncoder.o: ALAC/codec/ALACEncoder.cc ../../include/stdio.h \
  ../../include/sys/cdefs.h ../../include/sys/_null.h \
  ../../include/sys/_types.h ../../include/machine/_types.h \
  ../../include/l4/amd64/types.h ../../include/stdlib.h \
- ../../include/string.h ALAC/codec/ALACEncoder.h ../../include/stdint.h \
- ../../include/machine/_stdint.h ../../include/sys/_stdint.h \
- ALAC/codec/ALACAudioTypes.h ALAC/codec/aglib.h ALAC/codec/dplib.h \
- ALAC/codec/matrixlib.h ALAC/codec/ALACBitUtilities.h \
- ALAC/codec/EndianPortable.h
+ ../../include/string.h ../../include/cstring ../../include/sys/types.h \
+ ../../include/machine/endian.h ../../include/sys/_pthreadtypes.h \
+ ../../include/sys/_stdint.h ../../include/sys/select.h \
+ ../../include/sys/_sigset.h ../../include/sys/_timeval.h \
+ ../../include/sys/timespec.h ../../include/sys/_timespec.h \
+ ALAC/codec/ALACEncoder.h ../../include/stdint.h \
+ ../../include/machine/_stdint.h ALAC/codec/ALACAudioTypes.h \
+ ALAC/codec/aglib.h ALAC/codec/dplib.h ALAC/codec/matrixlib.h \
+ ALAC/codec/ALACBitUtilities.h ALAC/codec/EndianPortable.h

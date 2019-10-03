@@ -1,0 +1,10 @@
+#ifndef CSTRING_HDR
+#define CSTRING_HDR
+
+extern "C" {
+
+void * (memset)(void *b, int c, size_t len);
+
+}
+
+#endif
