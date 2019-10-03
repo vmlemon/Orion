@@ -12,8 +12,8 @@ megahal.o: megahal.c ../../include/stdio.h ../../include/sys/cdefs.h \
  ../../include/sys/_null.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
  ../../include/stdlib.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
- ../../include/unistd.h getopt.h malloc.h ../../include/string.h \
- ../../include/cstring ../../include/strings.h \
+ ../../include/unistd.h ../../include/getopt.h malloc.h \
+ ../../include/string.h ../../include/cstring ../../include/strings.h \
  ../../include/xlocale/_strings.h ../../include/sys/types.h \
  ../../include/machine/endian.h ../../include/sys/_pthreadtypes.h \
  ../../include/sys/_stdint.h ../../include/sys/select.h \
