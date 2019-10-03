@@ -1,5 +1,6 @@
 atoi.o: atoi.c ../../include/sys/cdefs.h ../../include/stdlib.h \
- ../../include/xlocale.h locale.h xlocale/_locale.h
+ ../../include/xlocale.h ../../include/locale.h ../../include/sys/_null.h \
+ xlocale/_locale.h
 flags.o: flags.c ../../include/sys/cdefs.h ../../include/sys/types.h \
  ../../include/machine/endian.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
