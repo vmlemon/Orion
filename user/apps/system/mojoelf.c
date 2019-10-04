@@ -75,6 +75,33 @@ typedef uintptr_t uintptr;
 #define EM_PPC64 	21
 #define EM_X86_64 	62
 
+//Sony PlayStation 3 CellOS definitions (e_type)
+#define ET_SCE_IOPRELEXEC 0xFF80
+#define ET_SCE_IOPRELEXEC2 0xFF81
+#define ET_SCE_EERELEXEC 0xFF90
+#define ET_SCE_EERELEXEC2 0xFF91
+#define ET_SCE_PSPRELEXEC 0xFFA0
+#define ET_SCE_PPURELEXEC 0xFFA4
+#define ET_SCE_PSPOVERLAY 0xFFA8
+
+//OSABI Definition - PS3
+#define ELFOSABI_CELL_LV2 0x66 //102
+
+//CellOS p_type definitions
+#define PT_SCE_IOPMOD 0x70000080
+#define PT_SCE_EEMOD 0x70000090
+#define PT_SCE_PSPREL 0x700000A0
+#define PT_SCE_PPURELA 0x700000A4
+#define PT_SCE_SEGSYM 0x700000A8
+
+//CellOS p_flags definitions
+#define PF_SPU_X 0x00100000
+#define PF_SPU_W 0x00200000
+#define PF_SPU_R 0x00400000
+#define PF_RSX_X 0x01000000
+#define PF_RSX_W 0x02000000
+#define PF_RSX_R 0x04000000
+
 #if defined(__i386__)
     #define MOJOELF_MACHINE_TYPE 3   // EM_386
     #define MOJOELF_32BIT 1
