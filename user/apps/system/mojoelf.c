@@ -94,6 +94,12 @@ typedef uintptr_t uintptr;
 #define PT_SCE_PPURELA 0x700000A4
 #define PT_SCE_SEGSYM 0x700000A8
 
+//CellOS section types definitions (sh_type)
+#define SHT_SCE_IOPMOD 0x70000080
+#define SHT_SCE_EEMOD 0x70000090
+#define SHT_SCE_PSPREL 0x700000a0
+#define SHT_SCE_PPURELA 0x700000a4
+
 //CellOS p_flags definitions
 #define PF_SPU_X 0x00100000
 #define PF_SPU_W 0x00200000
