@@ -69,6 +69,12 @@ typedef uint32_t uint32;
 typedef uint64_t uint64;
 typedef uintptr_t uintptr;
 
+//Machine Types (e_machine)
+#define EM_386 	3
+#define EM_PPC 	20
+#define EM_PPC64 	21
+#define EM_X86_64 	62
+
 #if defined(__i386__)
     #define MOJOELF_MACHINE_TYPE 3   // EM_386
     #define MOJOELF_32BIT 1
