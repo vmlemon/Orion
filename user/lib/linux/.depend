@@ -30,11 +30,12 @@ vfprintf.o: vfprintf.c ../../include/sys/cdefs.h namespace.h \
  ../../include/machine/_stdint.h ../../include/stdio.h \
  ../../include/stdlib.h ../../include/string.h ../../include/cstring \
  ../../include/strings.h ../../include/xlocale/_strings.h \
- ../../include/wchar.h ../../include/machine/_limits.h _ctype.h \
- ../../include/xlocale/_wchar.h printf.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h xlocale_private.h \
- un-namespace.h libc_private.h local.h wcio.h fileext.h fvwrite.h \
- printflocal.h printfcommon.h
+ ../../include/wchar.h ../../include/machine/_limits.h \
+ ../../include/_ctype.h ../../include/xlocale/_wchar.h \
+ ../../include/printf.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+ xlocale_private.h ../../include/xlocale.h ../../include/xlocale/_stdio.h \
+ ../../include/machine/atomic.h setlocale.h un-namespace.h libc_private.h \
+ local.h wcio.h fileext.h fvwrite.h printflocal.h printfcommon.h
 strlen.o: strlen.c ../../include/sys/cdefs.h ../../include/sys/libkern.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h ../../include/stdint.h \
  ../../include/sys/_types.h ../../include/machine/_types.h \
