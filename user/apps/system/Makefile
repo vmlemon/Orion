@@ -42,11 +42,11 @@ PROGRAM_DEPS=	$(top_builddir)/lib/l4/libl4.a \
 		#$(top_builddir)/lib/libl4e/libl4e.a\
 		#$(top_builddir)/lib/libelf/libelf.a
 
-SRCS=		crt0-$(ARCH).S syslaunch.cc megahal.c #$(wildcard v2lin_v02/lib/*.c) #mojoelf.c #$(wildcard ValidateMP4/src/*.c) # $(wildcard ALAC/codec/*.cc)
+SRCS=		crt0-$(ARCH).S syslaunch.cc $(wildcard sqlite-snapshot-201909031623/*.c) #$(wildcard v2lin_v02/lib/*.c) #mojoelf.c #$(wildcard ValidateMP4/src/*.c) # $(wildcard ALAC/codec/*.cc)
 
-# $(wildcard dropin/*.c) ###$(wildcard ALAC/codec/*.c) CacheLineSize.c  #$(wildcard ValidateMP4/src/*.c) # $(wildcard ALAC/codec/*.cc) #   
+# $(wildcard dropin/*.c) ###$(wildcard ALAC/codec/*.c) megahal.c CacheLineSize.c  #$(wildcard ValidateMP4/src/*.c) # $(wildcard ALAC/codec/*.cc) #   
 
-#$(wildcard sqlite-snapshot-201909031623/*.c) # $(wildcard v2lin_v02/lib/*.c) # #nedmalloc.c #clefia_ref.c #$(wildcard *.c)  
+# # $(wildcard v2lin_v02/lib/*.c) # #nedmalloc.c #clefia_ref.c #$(wildcard *.c)  
 
 LIBS+=		-ll4 -lio  -llinux # -ll4e -lelf
 LDFLAGS+=	-Ttext=$(ROOTTASK_LINKBASE)
