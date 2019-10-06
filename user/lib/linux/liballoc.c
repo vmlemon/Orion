@@ -544,4 +544,8 @@ int munmap(void *addr, size_t len) {
 }
 
 
+void  *mmap(void	 *addr,	 size_t	 len, int prot,	int flags, int fildes,
+       off_t off) {
 
+	printf("mmap called with addr : %x, len : %d, prot : %x, flags : %x, fildes : %x, off : %x\n\r", addr, len, prot, flags,fildes ,off);
+}
