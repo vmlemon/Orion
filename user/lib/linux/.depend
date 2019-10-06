@@ -135,6 +135,19 @@ strchr.o: strchr.c ../../include/string.h ../../include/cstring \
  ../../include/sys/select.h ../../include/sys/_sigset.h \
  ../../include/sys/_timeval.h ../../include/sys/timespec.h \
  ../../include/sys/_timespec.h
+vfscanf.o: vfscanf.c ../../include/ctype.h ../../include/inttypes.h \
+ ../../include/machine/_inttypes.h ../../include/sys/stdint.h \
+ ../../include/sys/_types.h ../../include/sys/cdefs.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ ../../include/sys/types.h ../../include/machine/endian.h \
+ ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
+ ../../include/sys/select.h ../../include/sys/_sigset.h \
+ ../../include/sys/_timeval.h ../../include/sys/timespec.h \
+ ../../include/sys/_timespec.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h ../../include/stdio.h \
+ ../../include/sys/_null.h ../../include/stdlib.h local.h wcio.h \
+ fileext.h
 liballoc_hooks.o: liballoc_hooks.cc ../../include/nwmalloc.h \
  ../../include/liballoc.h ../../include/l4/space.h \
  ../../include/l4/types.h ../../include/l4/amd64/types.h \
