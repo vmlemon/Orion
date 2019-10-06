@@ -1,3 +1,4 @@
+apicore.o: apicore.c ../../include/nwmalloc.h ../../include/liballoc.h
 strdup.o: strdup.c ../../config.h ../../include/stdlib.h \
  ../../include/string.h ../../include/cstring ../../include/strings.h \
  ../../include/sys/cdefs.h ../../include/sys/_types.h \
@@ -10,6 +11,16 @@ strdup.o: strdup.c ../../config.h ../../include/stdlib.h \
 atoi.o: atoi.c ../../include/sys/cdefs.h ../../include/stdlib.h \
  ../../include/xlocale.h ../../include/locale.h ../../include/sys/_null.h \
  ../../include/xlocale/_locale.h
+flags.o: flags.c ../../include/sys/cdefs.h ../../include/sys/types.h \
+ ../../include/machine/endian.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
+ ../../include/sys/select.h ../../include/sys/_sigset.h \
+ ../../include/sys/_timeval.h ../../include/sys/timespec.h \
+ ../../include/sys/_timespec.h ../../include/sys/file.h \
+ ../../include/sys/fcntl.h ../../include/sys/unistd.h \
+ ../../include/stdio.h ../../include/sys/_null.h ../../include/errno.h \
+ local.h wcio.h fileext.h
 fscanf.o: fscanf.c ../../include/stdio.h ../../include/sys/cdefs.h \
  ../../include/sys/_null.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
@@ -18,6 +29,20 @@ fclose.o: fclose.c ../../include/stdio.h ../../include/sys/cdefs.h \
  ../../include/sys/_null.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
  ../../include/stdlib.h ../../include/unistd.h
+strlen.o: strlen.c ../../include/sys/cdefs.h ../../include/sys/libkern.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h ../../include/stdint.h \
+ ../../include/sys/_types.h ../../include/machine/_types.h \
+ ../../include/l4/amd64/types.h ../../include/machine/_stdint.h \
+ ../../include/sys/_stdint.h ../../include/sys/limits.h \
+ ../../include/machine/_limits.h
+bcopy.o: bcopy.c ../../include/sys/cdefs.h ../../include/sys/types.h \
+ ../../include/machine/endian.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
+ ../../include/sys/select.h ../../include/sys/_sigset.h \
+ ../../include/sys/_timeval.h ../../include/sys/timespec.h \
+ ../../include/sys/_timespec.h ../../include/strings.h \
+ ../../include/xlocale/_strings.h
 strcmp.o: strcmp.c ../../include/sys/cdefs.h ../../include/string.h \
  ../../include/cstring ../../include/strings.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
@@ -40,15 +65,43 @@ strtoimax.o: strtoimax.c ../../include/sys/cdefs.h ../../include/ctype.h \
  ../../include/xlocale/_inttypes.h ../../include/stdint.h \
  ../../include/machine/_stdint.h ../../include/machine/atomic.h \
  setlocale.h
+__error.o: __error.c ../../include/sys/cdefs.h libc_private.h \
+ ../../include/errno.h
 strcpy.o: strcpy.c ../../include/sys/cdefs.h ../../include/sys/libkern.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h ../../include/stdint.h \
  ../../include/sys/_types.h ../../include/machine/_types.h \
  ../../include/l4/amd64/types.h ../../include/machine/_stdint.h \
  ../../include/sys/_stdint.h
+stdio.o: stdio.c ../../include/errno.h ../../include/sys/cdefs.h \
+ ../../include/fcntl.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ ../../include/unistd.h ../../include/stdio.h ../../include/sys/_null.h \
+ local.h wcio.h fileext.h
+fopen.o: fopen.c ../../include/sys/cdefs.h namespace.h \
+ ../../include/sys/types.h ../../include/machine/endian.h \
+ ../../include/sys/_types.h ../../include/machine/_types.h \
+ ../../include/l4/amd64/types.h ../../include/sys/_pthreadtypes.h \
+ ../../include/sys/_stdint.h ../../include/sys/select.h \
+ ../../include/sys/_sigset.h ../../include/sys/_timeval.h \
+ ../../include/sys/timespec.h ../../include/sys/_timespec.h \
+ ../../include/sys/stat.h ../../include/sys/time.h \
+ ../../include/sys/_null.h ../../include/xlocale/_time.h \
+ ../../include/fcntl.h ../../include/unistd.h ../../include/stdio.h \
+ ../../include/errno.h ../../include/limits.h un-namespace.h local.h \
+ wcio.h fileext.h
 errlst.o: errlst.c ../../include/sys/cdefs.h ../../include/errno.h \
  ../../include/stdio.h ../../include/sys/_null.h \
  ../../include/sys/_types.h ../../include/machine/_types.h \
  ../../include/l4/amd64/types.h errlst.h
+memcpy.o: memcpy.c ../../include/sys/cdefs.h bcopy.c \
+ ../../include/sys/types.h ../../include/machine/endian.h \
+ ../../include/sys/_types.h ../../include/machine/_types.h \
+ ../../include/l4/amd64/types.h ../../include/sys/_pthreadtypes.h \
+ ../../include/sys/_stdint.h ../../include/sys/select.h \
+ ../../include/sys/_sigset.h ../../include/sys/_timeval.h \
+ ../../include/sys/timespec.h ../../include/sys/_timespec.h \
+ ../../include/string.h ../../include/cstring ../../include/strings.h \
+ ../../include/xlocale/_strings.h
 liballoc.o: liballoc.c ../../include/liballoc.h
 strncmp.o: strncmp.c ../../include/string.h ../../include/cstring \
  ../../include/strings.h ../../include/sys/cdefs.h \
@@ -59,8 +112,33 @@ strncmp.o: strncmp.c ../../include/string.h ../../include/cstring \
  ../../include/sys/select.h ../../include/sys/_sigset.h \
  ../../include/sys/_timeval.h ../../include/sys/timespec.h \
  ../../include/sys/_timespec.h
+fstat.o: fstat.c ../../include/sys/cdefs.h stand.h ../../include/errno.h \
+ ../../include/sys/types.h ../../include/machine/endian.h \
+ ../../include/sys/_types.h ../../include/machine/_types.h \
+ ../../include/l4/amd64/types.h ../../include/sys/_pthreadtypes.h \
+ ../../include/sys/_stdint.h ../../include/sys/select.h \
+ ../../include/sys/_sigset.h ../../include/sys/_timeval.h \
+ ../../include/sys/timespec.h ../../include/sys/_timespec.h
+strerror.o: strerror.c ../../include/sys/cdefs.h ../../include/limits.h \
+ ../../include/errno.h ../../include/string.h ../../include/cstring \
+ ../../include/strings.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ ../../include/xlocale/_strings.h ../../include/sys/types.h \
+ ../../include/machine/endian.h ../../include/sys/_pthreadtypes.h \
+ ../../include/sys/_stdint.h ../../include/sys/select.h \
+ ../../include/sys/_sigset.h ../../include/sys/_timeval.h \
+ ../../include/sys/timespec.h ../../include/sys/_timespec.h \
+ ../../include/stdio.h ../../include/sys/_null.h errlst.h
 doscan.o: doscan.c /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
  ../../include/ctype.h
+tmpnam.o: tmpnam.c ../../include/sys/cdefs.h ../../include/sys/types.h \
+ ../../include/machine/endian.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
+ ../../include/sys/select.h ../../include/sys/_sigset.h \
+ ../../include/sys/_timeval.h ../../include/sys/timespec.h \
+ ../../include/sys/_timespec.h ../../include/stdio.h \
+ ../../include/sys/_null.h ../../include/unistd.h
 strlcpy.o: strlcpy.c ../../include/sys/cdefs.h ../../include/sys/types.h \
  ../../include/machine/endian.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
@@ -79,95 +157,6 @@ memset.o: memset.c ../../include/sys/cdefs.h ../../include/sys/types.h \
  ../../include/sys/_timespec.h ../../include/sys/libkern.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h ../../include/stdint.h \
  ../../include/machine/_stdint.h
-apicore.o: apicore.c ../../include/nwmalloc.h ../../include/liballoc.h
-flags.o: flags.c ../../include/sys/cdefs.h ../../include/sys/types.h \
- ../../include/machine/endian.h ../../include/sys/_types.h \
- ../../include/machine/_types.h ../../include/l4/amd64/types.h \
- ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
- ../../include/sys/select.h ../../include/sys/_sigset.h \
- ../../include/sys/_timeval.h ../../include/sys/timespec.h \
- ../../include/sys/_timespec.h ../../include/sys/file.h \
- ../../include/sys/fcntl.h ../../include/sys/unistd.h \
- ../../include/stdio.h ../../include/sys/_null.h ../../include/errno.h \
- local.h wcio.h fileext.h
-vfscanf.o: vfscanf.c ../../include/ctype.h ../../include/inttypes.h \
- ../../include/machine/_inttypes.h ../../include/sys/stdint.h \
- ../../include/sys/_types.h ../../include/sys/cdefs.h \
- ../../include/machine/_types.h ../../include/l4/amd64/types.h \
- ../../include/sys/types.h ../../include/machine/endian.h \
- ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
- ../../include/sys/select.h ../../include/sys/_sigset.h \
- ../../include/sys/_timeval.h ../../include/sys/timespec.h \
- ../../include/sys/_timespec.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h ../../include/stdio.h \
- ../../include/sys/_null.h ../../include/stdlib.h local.h wcio.h \
- fileext.h
-fstat.o: fstat.c ../../include/sys/cdefs.h stand.h ../../include/errno.h \
- ../../include/sys/types.h ../../include/machine/endian.h \
- ../../include/sys/_types.h ../../include/machine/_types.h \
- ../../include/l4/amd64/types.h ../../include/sys/_pthreadtypes.h \
- ../../include/sys/_stdint.h ../../include/sys/select.h \
- ../../include/sys/_sigset.h ../../include/sys/_timeval.h \
- ../../include/sys/timespec.h ../../include/sys/_timespec.h
-strlen.o: strlen.c ../../include/sys/cdefs.h ../../include/sys/libkern.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h ../../include/stdint.h \
- ../../include/sys/_types.h ../../include/machine/_types.h \
- ../../include/l4/amd64/types.h ../../include/machine/_stdint.h \
- ../../include/sys/_stdint.h ../../include/sys/limits.h \
- ../../include/machine/_limits.h
-stdio.o: stdio.c ../../include/errno.h ../../include/sys/cdefs.h \
- ../../include/fcntl.h ../../include/sys/_types.h \
- ../../include/machine/_types.h ../../include/l4/amd64/types.h \
- ../../include/unistd.h ../../include/stdio.h ../../include/sys/_null.h \
- local.h wcio.h fileext.h
-fopen.o: fopen.c ../../include/sys/cdefs.h namespace.h \
- ../../include/sys/types.h ../../include/machine/endian.h \
- ../../include/sys/_types.h ../../include/machine/_types.h \
- ../../include/l4/amd64/types.h ../../include/sys/_pthreadtypes.h \
- ../../include/sys/_stdint.h ../../include/sys/select.h \
- ../../include/sys/_sigset.h ../../include/sys/_timeval.h \
- ../../include/sys/timespec.h ../../include/sys/_timespec.h \
- ../../include/sys/stat.h ../../include/sys/time.h \
- ../../include/sys/_null.h ../../include/xlocale/_time.h \
- ../../include/fcntl.h ../../include/unistd.h ../../include/stdio.h \
- ../../include/errno.h ../../include/limits.h un-namespace.h local.h \
- wcio.h fileext.h
-memcpy.o: memcpy.c ../../include/sys/cdefs.h bcopy.c \
- ../../include/sys/types.h ../../include/machine/endian.h \
- ../../include/sys/_types.h ../../include/machine/_types.h \
- ../../include/l4/amd64/types.h ../../include/sys/_pthreadtypes.h \
- ../../include/sys/_stdint.h ../../include/sys/select.h \
- ../../include/sys/_sigset.h ../../include/sys/_timeval.h \
- ../../include/sys/timespec.h ../../include/sys/_timespec.h \
- ../../include/string.h ../../include/cstring ../../include/strings.h \
- ../../include/xlocale/_strings.h
-strerror.o: strerror.c ../../include/sys/cdefs.h ../../include/limits.h \
- ../../include/errno.h ../../include/string.h ../../include/cstring \
- ../../include/strings.h ../../include/sys/_types.h \
- ../../include/machine/_types.h ../../include/l4/amd64/types.h \
- ../../include/xlocale/_strings.h ../../include/sys/types.h \
- ../../include/machine/endian.h ../../include/sys/_pthreadtypes.h \
- ../../include/sys/_stdint.h ../../include/sys/select.h \
- ../../include/sys/_sigset.h ../../include/sys/_timeval.h \
- ../../include/sys/timespec.h ../../include/sys/_timespec.h \
- ../../include/stdio.h ../../include/sys/_null.h errlst.h
-bcopy.o: bcopy.c ../../include/sys/cdefs.h ../../include/sys/types.h \
- ../../include/machine/endian.h ../../include/sys/_types.h \
- ../../include/machine/_types.h ../../include/l4/amd64/types.h \
- ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
- ../../include/sys/select.h ../../include/sys/_sigset.h \
- ../../include/sys/_timeval.h ../../include/sys/timespec.h \
- ../../include/sys/_timespec.h ../../include/strings.h \
- ../../include/xlocale/_strings.h
-tmpnam.o: tmpnam.c ../../include/sys/cdefs.h ../../include/sys/types.h \
- ../../include/machine/endian.h ../../include/sys/_types.h \
- ../../include/machine/_types.h ../../include/l4/amd64/types.h \
- ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
- ../../include/sys/select.h ../../include/sys/_sigset.h \
- ../../include/sys/_timeval.h ../../include/sys/timespec.h \
- ../../include/sys/_timespec.h ../../include/stdio.h \
- ../../include/sys/_null.h ../../include/unistd.h
 strlcat.o: strlcat.c ../../include/sys/cdefs.h ../../include/sys/types.h \
  ../../include/machine/endian.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
@@ -186,6 +175,19 @@ strchr.o: strchr.c ../../include/string.h ../../include/cstring \
  ../../include/sys/select.h ../../include/sys/_sigset.h \
  ../../include/sys/_timeval.h ../../include/sys/timespec.h \
  ../../include/sys/_timespec.h
+vfscanf.o: vfscanf.c ../../include/ctype.h ../../include/inttypes.h \
+ ../../include/machine/_inttypes.h ../../include/sys/stdint.h \
+ ../../include/sys/_types.h ../../include/sys/cdefs.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ ../../include/sys/types.h ../../include/machine/endian.h \
+ ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
+ ../../include/sys/select.h ../../include/sys/_sigset.h \
+ ../../include/sys/_timeval.h ../../include/sys/timespec.h \
+ ../../include/sys/_timespec.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h ../../include/stdio.h \
+ ../../include/sys/_null.h ../../include/stdlib.h local.h wcio.h \
+ fileext.h
 liballoc_hooks.o: liballoc_hooks.cc ../../include/nwmalloc.h \
  ../../include/liballoc.h ../../include/l4/space.h \
  ../../include/l4/types.h ../../include/l4/amd64/types.h \

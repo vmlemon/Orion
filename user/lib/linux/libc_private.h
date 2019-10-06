@@ -13,6 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+#include <errno.h>
+
 #ifndef _BIONIC_FREEBSD_LIBC_PRIVATE_H_included
 #define _BIONIC_FREEBSD_LIBC_PRIVATE_H_included
 #define FLOCKFILE(fp)   do { if (__isthreaded) flockfile(fp); } while (0)
