@@ -25,6 +25,10 @@ fscanf.o: fscanf.c ../../include/stdio.h ../../include/sys/cdefs.h \
  ../../include/sys/_null.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
+fclose.o: fclose.c ../../include/stdio.h ../../include/sys/cdefs.h \
+ ../../include/sys/_null.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ ../../include/stdlib.h ../../include/unistd.h
 strlen.o: strlen.c ../../include/sys/cdefs.h ../../include/sys/libkern.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h ../../include/stdint.h \
  ../../include/sys/_types.h ../../include/machine/_types.h \

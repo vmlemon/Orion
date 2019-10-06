@@ -27,7 +27,7 @@
 
 int fclose(FILE *stream)
 {
-	close(stream->fd);
+	close(stream->_file);
 	free(stream);
 	return 0;
 }
