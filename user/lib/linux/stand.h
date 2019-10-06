@@ -1,6 +1,28 @@
 //https://raw.githubusercontent.com/lattera/freebsd/master/lib/libstand/stand.h
 #include <errno.h>
 #include <sys/types.h>
+
+/*
+ * This structure is used to define file system operations in a file system
+ * independent way.
+ *
+ * XXX note that filesystem providers should export a pointer to their fs_ops
+ *     struct, so that consumers can reference this and thus include the
+ *     filesystems that they require.
+ */
+struct fs_ops {
+    const char	*fs_name;
+    int		(*fo_open)(const char *path, struct open_file *f);
+    int		(*fo_close)(struct open_file *f);
+    int		(*fo_read)(struct open_file *f, void *buf,
+			   size_t size, size_t *resid);
+    int		(*fo_write)(struct open_file *f, void *buf,
+			    size_t size, size_t *resid);
+    off_t	(*fo_seek)(struct open_file *f, off_t offset, int where);
+    int		(*fo_stat)(struct open_file *f, struct stat *sb);
+    int		(*fo_readdir)(struct open_file *f, struct dirent *d);
+};
+
 struct open_file {
     int			f_flags;	/* see F_* below */
     struct devsw	*f_dev;		/* pointer to device operations */
