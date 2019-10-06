@@ -69,6 +69,15 @@ typedef uint32_t uint32;
 typedef uint64_t uint64;
 typedef uintptr_t uintptr;
 
+
+//Workaround...
+/* int mprotect(const void *addr, size_t len, int prot) {
+
+        printf("mprotect called with addr : %x, len : %d, prot : %x\n\r", &addr, len, prot);
+        return 0;
+}*/
+
+
 //Machine Types (e_machine)
 #define EM_386 	3
 #define EM_PPC 	20

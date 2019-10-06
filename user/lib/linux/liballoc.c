@@ -531,5 +531,11 @@ void*   realloc(void *p, size_t size)
 	return ptr;
 }
 
+int mprotect(void * addr, size_t len, int prot) {
+        printf("mprotect called with addr : %x, len : %d, prot : %x\n\r", addr, len, prot);
+        return 0;
+
+}
+
 
 
