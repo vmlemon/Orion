@@ -102,7 +102,9 @@ memcpy.o: memcpy.c ../../include/sys/cdefs.h bcopy.c \
  ../../include/sys/timespec.h ../../include/sys/_timespec.h \
  ../../include/string.h ../../include/cstring ../../include/strings.h \
  ../../include/xlocale/_strings.h
-liballoc.o: liballoc.c ../../include/liballoc.h
+liballoc.o: liballoc.c ../../include/liballoc.h ../../include/sys/mman.h \
+ ../../include/sys/cdefs.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h
 strncmp.o: strncmp.c ../../include/string.h ../../include/cstring \
  ../../include/strings.h ../../include/sys/cdefs.h \
  ../../include/sys/_types.h ../../include/machine/_types.h \

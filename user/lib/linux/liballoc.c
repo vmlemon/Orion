@@ -19,6 +19,7 @@
 #include <stdio.h>
 #endif
 
+#include <sys/mman.h>
 
 struct boundary_tag* l_freePages[MAXEXP];		//< Allowing for 2^MAXEXP blocks
 int 				 l_completePages[MAXEXP];	//< Allowing for 2^MAXEXP blocks
