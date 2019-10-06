@@ -203,7 +203,8 @@ vfscanf.o: vfscanf.c ../../include/ctype.h ../../include/inttypes.h \
  ../../include/sys/_null.h ../../include/stdlib.h local.h wcio.h \
  fileext.h
 panic.o: panic.c ../../include/sys/cdefs.h ../../include/stand.h \
- ../../include/machine/stdarg.h
+ ../../include/machine/stdarg.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
 liballoc_hooks.o: liballoc_hooks.cc ../../include/nwmalloc.h \
  ../../include/liballoc.h ../../include/l4/space.h \
  ../../include/l4/types.h ../../include/l4/amd64/types.h \
