@@ -112,7 +112,7 @@ return 0;
 }
 
 //Dummy implementation
-int mprotect(const void *addr, size_t len, int prot) {
+extern int mprotect(const void *addr, size_t len, int prot) {
 
 	printf("mprotect called with addr : %x, len : %d, prot : %x\n\r", &addr, len, prot);
 	return 0;
