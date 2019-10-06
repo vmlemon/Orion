@@ -35,7 +35,9 @@ vfprintf.o: vfprintf.c ../../include/sys/cdefs.h namespace.h \
  ../../include/printf.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
  xlocale_private.h ../../include/xlocale.h ../../include/xlocale/_stdio.h \
  ../../include/machine/atomic.h setlocale.h un-namespace.h libc_private.h \
- local.h wcio.h fileext.h fvwrite.h printflocal.h printfcommon.h
+ local.h wcio.h fileext.h fvwrite.h printflocal.h printfcommon.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/float.h ../../include/math.h \
+ floatio.h gdtoa.h
 strlen.o: strlen.c ../../include/sys/cdefs.h ../../include/sys/libkern.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h ../../include/stdint.h \
  ../../include/sys/_types.h ../../include/machine/_types.h \
