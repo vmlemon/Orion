@@ -100,6 +100,14 @@
 #define	MAP_ANONYMOUS	 MAP_ANON /* For compatibility. */
 #endif /* !_KERNEL */
 
+/* Linux has a conflicting definition of MAP_ANONYMOUS, for some reason... */
+//#ifdef LX_SOURCE
+//< #define MAP_ANONYMOUS	0x20		/* don't use a file */
+//> #define	MAP_ANONYMOUS	 MAP_ANON /* For compatibility. */
+//#endif
+
+#define MAP_ANONYMOUS_LINUX_500	 0x20
+
 /*
  * Extended flags
  */
