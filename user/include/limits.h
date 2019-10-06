@@ -11,3 +11,8 @@
 #ifndef SHRT_MAX
 #define SHRT_MAX __SHRT_MIN
 #endif SHRT_MAX
+
+//#if __XSI_VISIBLE || __POSIX_VISIBLE >= 200809
+#define	LONG_BIT	__LONG_BIT
+#define	WORD_BIT	__WORD_BIT
+//#endif
