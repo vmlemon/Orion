@@ -1,7 +1,7 @@
 //https://raw.githubusercontent.com/lattera/freebsd/master/lib/libstand/stand.h
 #include <errno.h>
 #include <sys/types.h>
-
+#include <stddef.h>
 /*
  * This structure is used to define file system operations in a file system
  * independent way.
