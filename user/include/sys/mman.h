@@ -100,6 +100,9 @@
 #define	MAP_ANONYMOUS	 MAP_ANON /* For compatibility. */
 #endif /* !_KERNEL */
 
+/* Linux has a conflicting definition of MAP_STACK */
+#define MAP_STACK_LINUX_500	0x20000		/* give out an address that is best suited for process/thread stacks */
+
 /* Linux has a conflicting definition of MAP_ANONYMOUS, for some reason... */
 //#ifdef LX_SOURCE
 //< #define MAP_ANONYMOUS	0x20		/* don't use a file */
