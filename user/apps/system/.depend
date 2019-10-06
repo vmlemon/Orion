@@ -8,19 +8,39 @@ syslaunch.o: syslaunch.cc syslaunch.h ../../include/l4io.h \
  ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
  ../../include/l4/ipc.h ../../include/l4/thread.h \
  ../../include/l4/kdebug.h
-megahal.o: megahal.c ../../include/stdio.h ../../include/sys/cdefs.h \
- ../../include/sys/_null.h ../../include/sys/_types.h \
- ../../include/machine/_types.h ../../include/l4/amd64/types.h \
- ../../include/stdlib.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
- ../../include/unistd.h ../../include/getopt.h ../../include/malloc.h \
+sqlite3.o: sqlite-snapshot-201909031623/sqlite3.c \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/stdio.h \
+ ../../include/sys/cdefs.h ../../include/sys/_null.h \
+ ../../include/sys/_types.h ../../include/machine/_types.h \
+ ../../include/l4/amd64/types.h ../../include/stdlib.h \
  ../../include/string.h ../../include/cstring ../../include/strings.h \
+ ../../include/sys/types.h ../../include/machine/endian.h \
+ ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
+ ../../include/assert.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h \
+ ../../include/time.h ../../include/sys/timespec.h \
+ ../../include/sys/_timespec.h ../../include/pthread.h \
+ ../../include/math.h ../../include/machine/_limits.h \
+ ../../include/sys/stat.h ../../include/fcntl.h ../../include/sys/ioctl.h \
+ ../../include/sys/ioccom.h ../../include/sys/filio.h \
+ ../../include/sys/sockio.h ../../include/sys/ttycom.h \
+ ../../include/unistd.h ../../include/sys/time.h ../../include/errno.h \
+ ../../include/sys/mman.h ../../include/dlfcn.h
+shell.o: sqlite-snapshot-201909031623/shell.c ../../include/stdlib.h \
+ ../../include/string.h ../../include/cstring ../../include/strings.h \
+ ../../include/sys/cdefs.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
  ../../include/xlocale/_strings.h ../../include/sys/types.h \
  ../../include/machine/endian.h ../../include/sys/_pthreadtypes.h \
  ../../include/sys/_stdint.h ../../include/sys/select.h \
  ../../include/sys/_sigset.h ../../include/sys/_timeval.h \
  ../../include/sys/timespec.h ../../include/sys/_timespec.h \
+ ../../include/stdio.h ../../include/sys/_null.h ../../include/assert.h \
+ sqlite-snapshot-201909031623/sqlite3.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/ctype.h \
  ../../include/signal.h ../../include/sys/signal.h \
  ../../include/machine/_limits.h ../../include/machine/signal.h \
  ../../include/machine/ucontext.h ../../include/machine/x86/ucontext.h \
- ../../include/sys/_ucontext.h ../../include/math.h ../../include/time.h \
- ../../include/xlocale/_time.h ../../include/ctype.h megahal.h
+ ../../include/sys/_ucontext.h ../../include/pwd.h ../../include/unistd.h \
+ dirent.h ../../include/sys/stat.h ../../include/sys/time.h \
+ ../../include/xlocale/_time.h sys/resource.h ../../include/fcntl.h \
+ utime.h ../../include/time.h ../../include/errno.h
