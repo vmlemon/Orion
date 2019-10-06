@@ -79,6 +79,9 @@
  */
 #define	MAP_FIXED	 0x0010	/* map addr must be exactly as requested */
 
+/* /usr/include/asm-generic/mman.h on Linux defines this */
+#define MAP_DENYWRITE	0x0800		/* ETXTBSY */
+
 #if __BSD_VISIBLE
 #define	MAP_RESERVED0020 0x0020	/* previously unimplemented MAP_RENAME */
 #define	MAP_RESERVED0040 0x0040	/* previously unimplemented MAP_NORESERVE */
