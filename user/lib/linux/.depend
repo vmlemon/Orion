@@ -1,3 +1,4 @@
+apicore.o: apicore.c ../../include/nwmalloc.h ../../include/liballoc.h
 atoi.o: atoi.c ../../include/sys/cdefs.h ../../include/stdlib.h \
  ../../include/xlocale.h ../../include/locale.h ../../include/sys/_null.h \
  ../../include/xlocale/_locale.h
@@ -57,6 +58,7 @@ memcpy.o: memcpy.c ../../include/sys/cdefs.h bcopy.c \
  ../../include/sys/timespec.h ../../include/sys/_timespec.h \
  ../../include/string.h ../../include/cstring ../../include/strings.h \
  ../../include/xlocale/_strings.h
+liballoc.o: liballoc.c ../../include/liballoc.h
 strncmp.o: strncmp.c ../../include/string.h ../../include/cstring \
  ../../include/strings.h ../../include/sys/cdefs.h \
  ../../include/sys/_types.h ../../include/machine/_types.h \
@@ -102,3 +104,11 @@ strchr.o: strchr.c ../../include/string.h ../../include/cstring \
  ../../include/sys/select.h ../../include/sys/_sigset.h \
  ../../include/sys/_timeval.h ../../include/sys/timespec.h \
  ../../include/sys/_timespec.h
+liballoc_hooks.o: liballoc_hooks.cc ../../include/nwmalloc.h \
+ ../../include/liballoc.h ../../include/l4/space.h \
+ ../../include/l4/types.h ../../include/l4/amd64/types.h \
+ ../../include/l4/amd64/specials.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/l4/kip.h \
+ ../../include/l4/thread.h ../../include/l4io.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../config.h
