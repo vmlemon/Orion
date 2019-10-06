@@ -121,7 +121,8 @@ fstat.o: fstat.c ../../include/sys/cdefs.h stand.h ../../include/errno.h \
  ../../include/sys/_stdint.h ../../include/sys/select.h \
  ../../include/sys/_sigset.h ../../include/sys/_timeval.h \
  ../../include/sys/timespec.h ../../include/sys/_timespec.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
 strerror.o: strerror.c ../../include/sys/cdefs.h ../../include/limits.h \
  ../../include/errno.h ../../include/string.h ../../include/cstring \
  ../../include/strings.h ../../include/sys/_types.h \
@@ -177,7 +178,8 @@ assert.o: assert.c ../../include/sys/cdefs.h ../../include/assert.h \
  ../../include/sys/select.h ../../include/sys/_sigset.h \
  ../../include/sys/_timeval.h ../../include/sys/timespec.h \
  ../../include/sys/_timespec.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
 strchr.o: strchr.c ../../include/string.h ../../include/cstring \
  ../../include/strings.h ../../include/sys/cdefs.h \
  ../../include/sys/_types.h ../../include/machine/_types.h \
@@ -200,6 +202,8 @@ vfscanf.o: vfscanf.c ../../include/ctype.h ../../include/inttypes.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h ../../include/stdio.h \
  ../../include/sys/_null.h ../../include/stdlib.h local.h wcio.h \
  fileext.h
+panic.o: panic.c ../../include/sys/cdefs.h ../../include/stand.h \
+ ../../include/machine/stdarg.h
 liballoc_hooks.o: liballoc_hooks.cc ../../include/nwmalloc.h \
  ../../include/liballoc.h ../../include/l4/space.h \
  ../../include/l4/types.h ../../include/l4/amd64/types.h \

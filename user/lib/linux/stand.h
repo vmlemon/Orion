@@ -2,6 +2,8 @@
 #include <errno.h>
 #include <sys/types.h>
 #include <stddef.h>
+#include <stdarg.h>
+
 /*
  * This structure is used to define file system operations in a file system
  * independent way.
