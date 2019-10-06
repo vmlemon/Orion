@@ -6,6 +6,8 @@
 #include <l4io.h>
 #include <config.h>
 
+#include <sys/mman.h>
+
 //#include <arch.h>
 
 //http://www.cse.unsw.edu.au/~cs9242/05/project/l4uman-x2.pdf
