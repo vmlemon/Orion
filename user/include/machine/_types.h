@@ -45,7 +45,9 @@ typedef	L4_Size_t	__size_t;
 /* This is the way that FreeBSD does it... */
 #ifdef	__LP64__
 typedef	__int64_t	__ssize_t;	
+typedef	__uint64_t	__uintptr_t;
 #else
+typedef	__uint32_t	__uintptr_t;
 typedef	__int32_t	__ssize_t;
 #endif
 

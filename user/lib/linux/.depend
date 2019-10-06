@@ -17,6 +17,7 @@ fscanf.o: fscanf.c ../../include/stdio.h ../../include/sys/cdefs.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
 strlen.o: strlen.c ../../include/sys/cdefs.h ../../include/sys/libkern.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h \
  ../../include/sys/limits.h ../../include/machine/_limits.h
 bcopy.o: bcopy.c ../../include/sys/cdefs.h ../../include/sys/types.h \
  ../../include/machine/endian.h ../../include/sys/_types.h \
@@ -34,7 +35,8 @@ strcmp.o: strcmp.c ../../include/sys/cdefs.h ../../include/string.h \
  ../../include/sys/_stdint.h ../../include/sys/select.h \
  ../../include/sys/_sigset.h ../../include/sys/_timeval.h \
  ../../include/sys/timespec.h ../../include/sys/_timespec.h
-strcpy.o: strcpy.c ../../include/sys/cdefs.h ../../include/sys/libkern.h
+strcpy.o: strcpy.c ../../include/sys/cdefs.h ../../include/sys/libkern.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h
 stdio.o: stdio.c ../../include/errno.h ../../include/sys/cdefs.h \
  ../../include/fcntl.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
@@ -97,21 +99,24 @@ strlcpy.o: strlcpy.c ../../include/sys/cdefs.h ../../include/sys/types.h \
  ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
  ../../include/sys/select.h ../../include/sys/_sigset.h \
  ../../include/sys/_timeval.h ../../include/sys/timespec.h \
- ../../include/sys/_timespec.h ../../include/sys/libkern.h
+ ../../include/sys/_timespec.h ../../include/sys/libkern.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h
 memset.o: memset.c ../../include/sys/cdefs.h ../../include/sys/types.h \
  ../../include/machine/endian.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
  ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
  ../../include/sys/select.h ../../include/sys/_sigset.h \
  ../../include/sys/_timeval.h ../../include/sys/timespec.h \
- ../../include/sys/_timespec.h ../../include/sys/libkern.h
+ ../../include/sys/_timespec.h ../../include/sys/libkern.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h
 strlcat.o: strlcat.c ../../include/sys/cdefs.h ../../include/sys/types.h \
  ../../include/machine/endian.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
  ../../include/sys/_pthreadtypes.h ../../include/sys/_stdint.h \
  ../../include/sys/select.h ../../include/sys/_sigset.h \
  ../../include/sys/_timeval.h ../../include/sys/timespec.h \
- ../../include/sys/_timespec.h ../../include/sys/libkern.h
+ ../../include/sys/_timespec.h ../../include/sys/libkern.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h
 strchr.o: strchr.c ../../include/string.h ../../include/cstring \
  ../../include/strings.h ../../include/sys/cdefs.h \
  ../../include/sys/_types.h ../../include/machine/_types.h \
