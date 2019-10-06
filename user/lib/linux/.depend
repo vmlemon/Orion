@@ -39,6 +39,7 @@ strcmp.o: strcmp.c ../../include/sys/cdefs.h ../../include/string.h \
  ../../include/sys/_stdint.h ../../include/sys/select.h \
  ../../include/sys/_sigset.h ../../include/sys/_timeval.h \
  ../../include/sys/timespec.h ../../include/sys/_timespec.h
+strcpy.o: strcpy.c ../../include/sys/cdefs.h ../../include/sys/libkern.h
 stdio.o: stdio.c ../../include/errno.h ../../include/sys/cdefs.h \
  ../../include/fcntl.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
