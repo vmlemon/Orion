@@ -537,5 +537,11 @@ int mprotect(void * addr, size_t len, int prot) {
 
 }
 
+int munmap(void *addr, size_t len) {
+        printf("munmap called with addr : %x, len : %d\n\r", addr, len);
+        return 0;
+//L4_Unmap(aPagesToFree);
+}
+
 
 
