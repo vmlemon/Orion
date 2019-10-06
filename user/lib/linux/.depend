@@ -1,4 +1,13 @@
 apicore.o: apicore.c ../../include/nwmalloc.h ../../include/liballoc.h
+strdup.o: strdup.c ../../config.h ../../include/stdlib.h \
+ ../../include/string.h ../../include/cstring ../../include/strings.h \
+ ../../include/sys/cdefs.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ ../../include/xlocale/_strings.h ../../include/sys/types.h \
+ ../../include/machine/endian.h ../../include/sys/_pthreadtypes.h \
+ ../../include/sys/_stdint.h ../../include/sys/select.h \
+ ../../include/sys/_sigset.h ../../include/sys/_timeval.h \
+ ../../include/sys/timespec.h ../../include/sys/_timespec.h
 atoi.o: atoi.c ../../include/sys/cdefs.h ../../include/stdlib.h \
  ../../include/xlocale.h ../../include/locale.h ../../include/sys/_null.h \
  ../../include/xlocale/_locale.h
