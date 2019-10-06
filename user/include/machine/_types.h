@@ -33,6 +33,8 @@ typedef L4_Word8_t __uint8_t;
 typedef __int64_t int64_t;
 typedef __uint64_t    uint64_t;
 
+//True for 32-bit x86/PowerPC, at least...
+typedef	int		___wchar_t;
 
 //These are seemingly-specific to FreeBSD
 typedef __uint16_t      __uint_least16_t;
