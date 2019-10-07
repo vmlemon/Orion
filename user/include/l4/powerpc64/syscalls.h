@@ -162,7 +162,7 @@ extern __L4_SystemClock_t __L4_SystemClock;
 
 L4_INLINE L4_Clock_t L4_SystemClock( void )
 {
-    register L4_Word_t r3 asm("r3") = dest.raw;
+    register L4_Word_t r3 asm("r3");// = dest.raw;
     //register L4_Clock_t r3 asm("r3");
 
     __asm__ __volatile__ (
