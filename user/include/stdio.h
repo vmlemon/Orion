@@ -137,6 +137,9 @@ struct __sFILE {
 	fpos_t	(* _Nullable _seek)(void *, fpos_t, int);
 	int	(* _Nullable _write)(void *, const char *, int);
 
+	/* extension data, to avoid further ABI breakage - Bionic/OpenBSD extension */
+	struct	__sbuf _ext;
+
 	/* separate buffer for long sequences of ungetc() */
 	struct	__sbuf _ub;	/* ungetc buffer */
 	unsigned char	*_up;	/* saved _p when _p is doing ungetc data */
