@@ -61,7 +61,7 @@ public:
 	    else
 	    {
 		// quantum can only be specified as a time period
-		ASSERT(quantum.is_period()); 
+		ASSERT(DEBUG, quantum.is_period()); 
 		total_quantum = quantum.get_microseconds();
 	    }
 	    // give a fresh timeslice according to the spec
@@ -100,8 +100,8 @@ public:
 
     void init_timeslice(time_t timeslice)
 	{
-	    ASSERT(timeslice.is_period()); 
-	    ASSERT(this);
+	    ASSERT(DEBUG, timeslice.is_period()); 
+	    ASSERT(DEBUG, this);
 	    current_timeslice = timeslice_length = timeslice.get_microseconds();
 	}
 
