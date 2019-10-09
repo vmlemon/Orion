@@ -55,8 +55,8 @@
  */
 INLINE void tcb_t::copy_mrs(tcb_t * dest, word_t start, word_t count)
 {
-    ASSERT(start + count <= IPC_NUM_MR);
-    ASSERT(count > 0);
+    ASSERT(DEBUG, start + count <= IPC_NUM_MR);
+    ASSERT(DEBUG, count > 0);
     word_t dummy;
 
 #if defined(CONFIG_X86_SMALL_SPACES)
