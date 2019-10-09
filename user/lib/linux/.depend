@@ -199,6 +199,10 @@ assert.o: assert.c ../../include/sys/cdefs.h ../../include/assert.h \
  ../../include/sys/_timespec.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
+fread.o: fread.c ../../include/stdio.h ../../include/sys/cdefs.h \
+ ../../include/sys/_null.h ../../include/sys/_types.h \
+ ../../include/machine/_types.h ../../include/l4/amd64/types.h \
+ ../../include/unistd.h
 strchr.o: strchr.c ../../include/string.h ../../include/cstring \
  ../../include/strings.h ../../include/sys/cdefs.h \
  ../../include/sys/_types.h ../../include/machine/_types.h \
