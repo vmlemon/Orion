@@ -1,7 +1,7 @@
 /* Automatically generated, don't edit */
 /* Generated on: tyson-Lenovo-ideapad-120S-14IAP */
-/* At: Tue, 10 Sep 2019 01:43:14 +0000 */
-/* Linux version 5.0.0-27-generic (buildd@lgw01-amd64-016) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #28-Ubuntu SMP Tue Aug 20 19:53:07 UTC 2019 */
+/* At: Wed, 09 Oct 2019 09:04:16 +0000 */
+/* Linux version 5.0.0-31-generic (buildd@lcy01-amd64-010) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #33-Ubuntu SMP Mon Sep 30 18:51:59 UTC 2019 */
 
 /* Pistachio Kernel Configuration System */
 
@@ -37,7 +37,9 @@
 #define CONFIG_MAX_IOAPICS 2
 #define CONFIG_APIC_TIMER_TICK 1000
 
-#undef  CONFIG_SMP
+#define CONFIG_SMP 1
+#define CONFIG_SMP_MAX_PROCS 4
+#undef  CONFIG_SMP_IDLE_POLL
 
 
 /* Kernel */
