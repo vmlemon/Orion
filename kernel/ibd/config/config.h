@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: tyson-Lenovo-ideapad-120S-14IAP */
-/* At: Wed, 09 Oct 2019 09:04:16 +0000 */
+/* At: Wed, 09 Oct 2019 09:06:13 +0000 */
 /* Linux version 5.0.0-31-generic (buildd@lcy01-amd64-010) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #33-Ubuntu SMP Mon Sep 30 18:51:59 UTC 2019 */
 
 /* Pistachio Kernel Configuration System */
@@ -37,7 +37,7 @@
 #define CONFIG_MAX_IOAPICS 2
 #define CONFIG_APIC_TIMER_TICK 1000
 
-#define CONFIG_SMP 1
+#undef  CONFIG_SMP
 #define CONFIG_SMP_MAX_PROCS 4
 #undef  CONFIG_SMP_IDLE_POLL
 
@@ -45,20 +45,20 @@
 /* Kernel */
 #undef  CONFIG_EXPERIMENTAL
 #undef  CONFIG_IPC_FASTPATH
-#define CONFIG_DEBUG 1
+#undef  CONFIG_DEBUG
 #undef  CONFIG_DEBUG_SYMBOLS
 #undef  CONFIG_PERFMON
 #undef  CONFIG_SPIN_WHEELS
 #undef  CONFIG_NEW_MDB
 #undef  CONFIG_STATIC_TCBS
 #undef  CONFIG_X86_SMALL_SPACES
-#undef  CONFIG_X86_COMPATIBILITY_MODE
+#define CONFIG_X86_COMPATIBILITY_MODE 1
 
 
 /* Debugger */
 
 /* Kernel Debugger Console */
-#define CONFIG_KDB_CONS_COM 1
+#undef  CONFIG_KDB_CONS_COM
 #define CONFIG_KDB_COMPORT 0x0
 #define CONFIG_KDB_COMSPEED 115200
 #undef  CONFIG_KDB_CONS_KBD
@@ -67,6 +67,8 @@
 #undef  CONFIG_KDB_DISAS
 #undef  CONFIG_KDB_ON_STARTUP
 #undef  CONFIG_KDB_BREAKIN
+#undef  CONFIG_KDB_BREAKIN_BREAK
+#undef  CONFIG_KDB_BREAKIN_ESCAPE
 #undef  CONFIG_KDB_INPUT_HLT
 #undef  CONFIG_KDB_NO_ASSERTS
 
@@ -94,7 +96,7 @@
 #define CONFIG_X86_PAT 1
 #undef  CONFIG_PPC_BOOKE
 #define CONFIG_IS_64BIT 1
-#undef  CONFIG_MULTI_ARCHITECTURE
+#define CONFIG_MULTI_ARCHITECTURE 1
 #define CONFIG_X86_EM64T 1
 #undef  CONFIG_PPC_CACHE_L1_WRITETHROUGH
 #undef  CONFIG_PPC_TLB_INV_LOCAL

@@ -2,8 +2,8 @@
 # Automatically generated, don't edit
 #
 # Generated on: tyson-Lenovo-ideapad-120S-14IAP
-# At: Tue, 10 Sep 2019 01:43:14 +0000
-# Linux version 5.0.0-27-generic (buildd@lgw01-amd64-016) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #28-Ubuntu SMP Tue Aug 20 19:53:07 UTC 2019
+# At: Wed, 09 Oct 2019 09:05:37 +0000
+# Linux version 5.0.0-31-generic (buildd@lcy01-amd64-010) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #33-Ubuntu SMP Mon Sep 30 18:51:59 UTC 2019
 
 #
 # Pistachio Kernel Configuration System
@@ -53,7 +53,9 @@ CONFIG_IOAPIC=y
 CONFIG_MAX_IOAPICS=2
 CONFIG_APIC_TIMER_TICK=1000
 
-# CONFIG_SMP is not set
+CONFIG_SMP=y
+CONFIG_SMP_MAX_PROCS=4
+# CONFIG_SMP_IDLE_POLL is not set
 
 
 #
@@ -61,14 +63,14 @@ CONFIG_APIC_TIMER_TICK=1000
 #
 # CONFIG_EXPERIMENTAL is not set
 # CONFIG_IPC_FASTPATH is not set
-CONFIG_DEBUG=y
+# CONFIG_DEBUG is not set
 # CONFIG_DEBUG_SYMBOLS is not set
 # CONFIG_PERFMON is not set
 # CONFIG_SPIN_WHEELS is not set
 # CONFIG_NEW_MDB is not set
 # CONFIG_STATIC_TCBS is not set
 # CONFIG_X86_SMALL_SPACES is not set
-# CONFIG_X86_COMPATIBILITY_MODE is not set
+CONFIG_X86_COMPATIBILITY_MODE=y
 
 
 #
@@ -78,7 +80,7 @@ CONFIG_DEBUG=y
 #
 # Kernel Debugger Console
 #
-CONFIG_KDB_CONS_COM=y
+# CONFIG_KDB_CONS_COM is not set
 CONFIG_KDB_COMPORT=0x0
 CONFIG_KDB_COMSPEED=115200
 # CONFIG_KDB_CONS_KBD is not set
@@ -87,6 +89,8 @@ CONFIG_KDB_BOOT_CONS=0
 # CONFIG_KDB_DISAS is not set
 # CONFIG_KDB_ON_STARTUP is not set
 # CONFIG_KDB_BREAKIN is not set
+# CONFIG_KDB_BREAKIN_BREAK is not set
+# CONFIG_KDB_BREAKIN_ESCAPE is not set
 # CONFIG_KDB_INPUT_HLT is not set
 # CONFIG_KDB_NO_ASSERTS is not set
 
@@ -120,7 +124,7 @@ CONFIG_X86_HTT=y
 CONFIG_X86_PAT=y
 # CONFIG_PPC_BOOKE is not set
 CONFIG_IS_64BIT=y
-# CONFIG_MULTI_ARCHITECTURE is not set
+CONFIG_MULTI_ARCHITECTURE=y
 CONFIG_X86_EM64T=y
 # CONFIG_PPC_CACHE_L1_WRITETHROUGH is not set
 # CONFIG_PPC_TLB_INV_LOCAL is not set
