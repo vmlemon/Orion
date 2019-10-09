@@ -26,29 +26,6 @@ spuisofs.o: ps3linux-libspufs/spuisofs.c ../../include/stdio.h \
  ../../include/machine/signal.h ../../include/machine/ucontext.h \
  ../../include/machine/x86/ucontext.h ../../include/sys/_ucontext.h \
  ../../include/unistd.h ps3linux-libspufs/spuisofs.h
-spu.o: ps3linux-libspufs/spu.c ../../include/stdint.h \
- ../../include/sys/cdefs.h ../../include/sys/_types.h \
- ../../include/machine/_types.h ../../include/l4/amd64/types.h \
- ../../include/machine/_stdint.h ../../include/sys/_stdint.h \
- ../../include/unistd.h ps3linux-libspufs/spu.h
-spufs.o: ps3linux-libspufs/spufs.c ../../include/stdio.h \
- ../../include/sys/cdefs.h ../../include/sys/_null.h \
- ../../include/sys/_types.h ../../include/machine/_types.h \
- ../../include/l4/amd64/types.h ../../include/stdlib.h \
- ../../include/stdint.h ../../include/machine/_stdint.h \
- ../../include/sys/_stdint.h ../../include/string.h ../../include/cstring \
- ../../include/strings.h ../../include/xlocale/_strings.h \
- ../../include/sys/types.h ../../include/machine/endian.h \
- ../../include/sys/_pthreadtypes.h ../../include/sys/select.h \
- ../../include/sys/_sigset.h ../../include/sys/_timeval.h \
- ../../include/sys/timespec.h ../../include/sys/_timespec.h \
- ../../include/sys/stat.h ../../include/sys/time.h \
- ../../include/xlocale/_time.h ../../include/fcntl.h \
- ../../include/sys/mman.h ../../include/signal.h \
- ../../include/sys/signal.h ../../include/machine/_limits.h \
- ../../include/machine/signal.h ../../include/machine/ucontext.h \
- ../../include/machine/x86/ucontext.h ../../include/sys/_ucontext.h \
- ../../include/unistd.h ../../include/errno.h ps3linux-libspufs/spufs.h
 spuldrfs.o: ps3linux-libspufs/spuldrfs.c ../../include/stdio.h \
  ../../include/sys/cdefs.h ../../include/sys/_null.h \
  ../../include/sys/_types.h ../../include/machine/_types.h \
@@ -67,3 +44,21 @@ spuldrfs.o: ps3linux-libspufs/spuldrfs.c ../../include/stdio.h \
  ../../include/machine/signal.h ../../include/machine/ucontext.h \
  ../../include/machine/x86/ucontext.h ../../include/sys/_ucontext.h \
  ../../include/unistd.h ps3linux-libspufs/spuldrfs.h
+spufs.o: ps3linux-libspufs/spufs.c ../../include/stdio.h \
+ ../../include/sys/cdefs.h ../../include/sys/_null.h \
+ ../../include/sys/_types.h ../../include/machine/_types.h \
+ ../../include/l4/amd64/types.h ../../include/stdlib.h \
+ ../../include/stdint.h ../../include/machine/_stdint.h \
+ ../../include/sys/_stdint.h ../../include/string.h ../../include/cstring \
+ ../../include/strings.h ../../include/xlocale/_strings.h \
+ ../../include/sys/types.h ../../include/machine/endian.h \
+ ../../include/sys/_pthreadtypes.h ../../include/sys/select.h \
+ ../../include/sys/_sigset.h ../../include/sys/_timeval.h \
+ ../../include/sys/timespec.h ../../include/sys/_timespec.h \
+ ../../include/sys/stat.h ../../include/sys/time.h \
+ ../../include/xlocale/_time.h ../../include/fcntl.h \
+ ../../include/sys/mman.h ../../include/signal.h \
+ ../../include/sys/signal.h ../../include/machine/_limits.h \
+ ../../include/machine/signal.h ../../include/machine/ucontext.h \
+ ../../include/machine/x86/ucontext.h ../../include/sys/_ucontext.h \
+ ../../include/unistd.h ../../include/errno.h ps3linux-libspufs/spufs.h

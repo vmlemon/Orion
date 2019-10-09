@@ -42,7 +42,7 @@ PROGRAM_DEPS=	$(top_builddir)/lib/l4/libl4.a \
 		#$(top_builddir)/lib/libl4e/libl4e.a\
 		#$(top_builddir)/lib/libelf/libelf.a
 
-SRCS=		crt0-$(ARCH).S syslaunch.cc $(wildcard ps3linux-libspufs/*.c) #mojoelf.c #$(wildcard v2lin_v02/lib/*.c) # #$(wildcard ValidateMP4/src/*.c) # $(wildcard ALAC/codec/*.cc)$(wildcard sqlite-snapshot-201909031623/*.c) CacheLineSize.c  
+SRCS=		crt0-$(ARCH).S syslaunch.cc #$(wildcard ps3linux-libspufs/*.c) #mojoelf.c #$(wildcard v2lin_v02/lib/*.c) # #$(wildcard ValidateMP4/src/*.c) # $(wildcard ALAC/codec/*.cc)$(wildcard sqlite-snapshot-201909031623/*.c) CacheLineSize.c  
 
 # $(wildcard dropin/*.c) ###$(wildcard ALAC/codec/*.c) megahal.c #$(wildcard ValidateMP4/src/*.c) # $(wildcard ALAC/codec/*.cc) #   
 
