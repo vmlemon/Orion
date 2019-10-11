@@ -1,6 +1,8 @@
 #include <sys/types.h>
 #include <sys/_types.h>
 
+#include <sys/ucred.h>
+
 #define	MNT_RDONLY	0x00000001	/* read only filesystem */
 #define MNT_EXRDONLY 0x00000080
 
