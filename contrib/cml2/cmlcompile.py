@@ -80,7 +80,7 @@ class Token:
 	def __init__(self, type, attr=None):
 		self.type = type
 		self.attr = attr
-		if compstate.debug > 1: print "CML token: ", `self`
+		if compstate.debug > 1: print("CML token: ", `self`)
     def __repr__(self):
         if self.type == "EOF":
             return "EOF"
