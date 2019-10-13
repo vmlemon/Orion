@@ -117,61 +117,61 @@ class lexwrapper(shlex.shlex):
 		stream.close()
 	shlex.shlex.__init__(self, contents, name)
 
-    def lex_token(self):
-	# Get a (type, attr) token tuple, handling inclusion  
-	raw = self.get_token()
-	if type(raw) is not type(""):	# Pushed-back token
-	    return raw
-	elif not raw or raw == self.endtok:
-	    return Token("EOF")
-	elif raw[0] in self.quotes:
-	    return Token('string', raw[1:-1])
-	elif raw in _tritvals:
-	    return Token('trit', raw)
-	elif len(raw) > 2 and \
-		raw[0] == '0' and raw[1] == 'x' and raw[2] in string.hexdigits:
-            return Token('hexadecimal', long(raw[2:], 16))
-	elif raw[0] in string.digits:
-	    return Token('decimal', int(raw))
-	elif raw in ('!', '=', '<', '>'):	# Relational tests
-	    next = self.get_token()
-	    if next == '=':
-		return Token(raw+next)
-	    else:
-		self.push_token(next)
-		return Token(raw)
-        elif raw == 'text':
-            data = ""
-            while 1:
-                line = self.instream.readline()
-                if line == "" or line == ".\n":	# Terminated by dot.
-                    break
-                if line[0] == '.':
-                    line = line[1:]
-                data = data + line
-            return Token("text", data)
-        elif raw == 'icon':
-            data = ""
-            while 1:
-                line = self.instream.readline()
-                if line == "" or line == "\n":	# Terminated by blank line
-                    break
-                data = data + line
-            self.push_token(data)
-            return Token(raw)
-	elif raw in _keywords or raw in _operators:
-	    return Token(raw)
-        elif compstate.propnames.has_key(raw):
-            return Token('property', raw)
-	else:
-            # Nasty hack alert.  If there is a declared prefix for the
-            # rulebase, ignore it as a prefix of names.  This will
-            # enable us to be backward-compatible with names like like
-            # CONFIG_3C515 that have leading numerics when stripped.
-            if rulebase.prefix and raw[:len(rulebase.prefix)] == rulebase.prefix:
-                raw = raw[len(rulebase.prefix):]
-	    return Token('word', raw)
-
+	def lex_token(self):
+		# Get a (type, attr) token tuple, handling inclusion  
+		raw = self.get_token()
+		if type(raw) is not type(""):	# Pushed-back token
+			return raw
+		elif not raw or raw == self.endtok:
+			return Token("EOF")
+		elif raw[0] in self.quotes:
+			return Token('string', raw[1:-1])
+		elif raw in _tritvals:
+			return Token('trit', raw)
+		elif len(raw) > 2 and \
+				raw[0] == '0' and raw[1] == 'x' and raw[2] in string.hexdigits:
+			return Token('hexadecimal', long(raw[2:], 16))
+		elif raw[0] in string.digits:
+			return Token('decimal', int(raw))
+		elif raw in ('!', '=', '<', '>'):	# Relational tests
+			next = self.get_token()
+			if next == '=':
+				return Token(raw+next)
+			else:
+				self.push_token(next)
+				return Token(raw)
+		elif raw == 'text':
+			data = ""
+			while 1:
+				line = self.instream.readline()
+				if line == "" or line == ".\n":	# Terminated by dot.
+					break
+				if line[0] == '.':
+					line = line[1:]
+				data = data + line
+			return Token("text", data)
+		elif raw == 'icon':
+			data = ""
+			while 1:
+				line = self.instream.readline()
+				if line == "" or line == "\n":	# Terminated by blank line
+					break
+				data = data + line
+			self.push_token(data)
+			return Token(raw)
+		elif raw in _keywords or raw in _operators:
+			return Token(raw)
+		elif compstate.propnames.has_key(raw):
+			return Token('property', raw)
+		else:
+			# Nasty hack alert.  If there is a declared prefix for the
+			# rulebase, ignore it as a prefix of names.  This will
+			# enable us to be backward-compatible with names like like
+			# CONFIG_3C515 that have leading numerics when stripped.
+			if rulebase.prefix and raw[:len(rulebase.prefix)] == rulebase.prefix:
+				raw = raw[len(rulebase.prefix):]
+		return Token('word', raw)
+	
     def complain(self, str):
 	# Report non-fatal parse error; format like C compiler message.
         if not compstate.debug and not compstate.errors:
