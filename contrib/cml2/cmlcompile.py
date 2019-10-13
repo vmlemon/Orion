@@ -343,7 +343,7 @@ def parse_ternary(input):
         return expr
 
 def parse_expr_inner(input):
-    if compstate.debug >= 2: print "entering parse_inner_expr..."
+    if compstate.debug >= 2: print("entering parse_inner_expr...")
     left = parse_ternary(input)
     op = input.lex_token()
     if op.type not in ('+', '-'):
@@ -352,7 +352,7 @@ def parse_expr_inner(input):
         return left
     else:
         expr = (op.type, left, parse_expr_inner(input))
-        if compstate.debug >= 2: print "parse_expr_inner returns", expr
+        if compstate.debug >= 2: print("parse_expr_inner returns", expr)
         return expr
 
 def parse_expr(input):
@@ -367,7 +367,7 @@ def parse_expr(input):
 def make_dependent(guard, symbol):
     "Create a dependency lnk, indirecting properly through menus."
     if compstate.debug > 0:
-        print "Making %s dependent on %s" % (symbol.name, guard.name)
+        print("Making %s dependent on %s" % (symbol.name, guard.name))
     # If symbol is a menu, we'd really like to create a dependency link
     # for each of its children.  But they won't be defined at this point
     # if the reference is forward.
