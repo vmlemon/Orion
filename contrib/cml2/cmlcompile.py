@@ -11,7 +11,7 @@ if (sys.version_info > (3, 0)):
 	
 else:
 	if sys.version[0] < '2':
-		print "Python 2.0 or later is required for this program."
+		print("Python 2.0 or later is required for this program.")
 		sys.exit(0)
 
 import string, os, getopt, shlex, cPickle, cml, cStringIO
