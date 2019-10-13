@@ -6,15 +6,11 @@ by Eric S. Raymond, <esr@thyrsus.com>
 """
 import sys
 
-if (sys.version_info > (3, 0)):
-	print("Python 3 support is experimental, and is not guaranteed to work.")
-	
-else:
-	if sys.version[0] < '2':
-		print("Python 2.0 or later is required for this program.")
-		sys.exit(0)
+if sys.version[0] < '2':
+    print("Python 2.0 or later is required for this program.")
+    sys.exit(0)
 
-import string, os, getopt, shlex, cPickle, cml, cStringIO
+import string, os, getopt, shlex, pickle, cml, io
 
 # Globals
 rulebase = None
@@ -76,139 +72,135 @@ _atoms = ("trit", "string", "decimal", "hexadecimal")
 #_suffixes = ("&", "?", "%", "@", "$")
 
 class Token:
-	"CML2's internal token type."
-	def __init__(self, type, attr=None):
-		self.type = type
-		self.attr = attr
-		if compstate.debug > 1:
-			print("CML token: ", self)
-			
-	def __repr__(self):
-		if self.type == "EOF":
-			return "EOF"
-		elif self.attr is not None:
-			return(self.type + "=" + self.attr)
-		else:
-			return(self.type)
-		
-	def __cmp__(self, other):
-		if isinstance(other, Token):
-			typecmp = cmp(self.type, other.type)
-			if typecmp or not self.attr:
-				return typecmp
-			else:
-				return cmp(self.attr, other.attr)
-		else:
-			return cmp(self.type, other)
-		
-	def __getitem__(self, i):
-		raise IndexError
+    "CML2's internal token type."
+    def __init__(self, type, attr=None):
+	self.type = type
+	self.attr = attr
+	if compstate.debug > 1: print("CML token: ", repr(self))
+    def __repr__(self):
+        if self.type == "EOF":
+            return "EOF"
+        elif self.attr is not None:
+            return self.type + "=" + repr(self.attr)
+        else:
+            return self.type
+    def __cmp__(self, other):
+        if isinstance(other, Token):
+            typecmp = cmp(self.type, other.type)
+            if typecmp or not self.attr:
+                return typecmp
+            else:
+                return cmp(self.attr, other.attr)
+        else:
+            return cmp(self.type, other)
+    def __getitem__(self, i):
+        raise IndexError
 
 class lexwrapper(shlex.shlex):
-	"Lexer subclass that returns Tokens with type-annotation information."
-	def __init__(self, stream, endtok=None):
-		self.endtok = endtok
-		# Strictly a speed hack.
-		name = stream.name
-	if endtok:
-		contents = stream
-	else:
-		contents = cStringIO.StringIO(stream.read())
-		stream.close()
+    "Lexer subclass that returns Tokens with type-annotation information."
+    def __init__(self, stream, endtok=None):
+        self.endtok = endtok
+        # Strictly a speed hack.
+        name = stream.name
+        if endtok:
+            contents = stream
+        else:
+            contents = io.StringIO(stream.read())
+            stream.close()
 	shlex.shlex.__init__(self, contents, name)
 
-	def lex_token(self):
-		# Get a (type, attr) token tuple, handling inclusion  
-		raw = self.get_token()
-		if type(raw) is not type(""):	# Pushed-back token
-			return raw
-		elif not raw or raw == self.endtok:
-			return Token("EOF")
-		elif raw[0] in self.quotes:
-			return Token('string', raw[1:-1])
-		elif raw in _tritvals:
-			return Token('trit', raw)
-		elif len(raw) > 2 and \
-				raw[0] == '0' and raw[1] == 'x' and raw[2] in string.hexdigits:
-			return Token('hexadecimal', long(raw[2:], 16))
-		elif raw[0] in string.digits:
-			return Token('decimal', int(raw))
-		elif raw in ('!', '=', '<', '>'):	# Relational tests
-			next = self.get_token()
-			if next == '=':
-				return Token(raw+next)
-			else:
-				self.push_token(next)
-				return Token(raw)
-		elif raw == 'text':
-			data = ""
-			while 1:
-				line = self.instream.readline()
-				if line == "" or line == ".\n":	# Terminated by dot.
-					break
-				if line[0] == '.':
-					line = line[1:]
-				data = data + line
-			return Token("text", data)
-		elif raw == 'icon':
-			data = ""
-			while 1:
-				line = self.instream.readline()
-				if line == "" or line == "\n":	# Terminated by blank line
-					break
-				data = data + line
-			self.push_token(data)
-			return Token(raw)
-		elif raw in _keywords or raw in _operators:
-			return Token(raw)
-		elif compstate.propnames.has_key(raw):
-			return Token('property', raw)
-		else:
-			# Nasty hack alert.  If there is a declared prefix for the
-			# rulebase, ignore it as a prefix of names.  This will
-			# enable us to be backward-compatible with names like like
-			# CONFIG_3C515 that have leading numerics when stripped.
-			if rulebase.prefix and raw[:len(rulebase.prefix)] == rulebase.prefix:
-				raw = raw[len(rulebase.prefix):]
-		return Token('word', raw)
-	
-	def complain(self, str):
-		# Report non-fatal parse error; format like C compiler message.
-		if not compstate.debug and not compstate.errors:
-			sys.stderr.write('\n')
-		sys.stderr.write(self.error_leader() + " " + str + "\n")
-		compstate.errors = compstate.errors + 1
+    def lex_token(self):
+	# Get a (type, attr) token tuple, handling inclusion  
+	raw = self.get_token()
+	if type(raw) is not type(""):	# Pushed-back token
+	    return raw
+	elif not raw or raw == self.endtok:
+	    return Token("EOF")
+	elif raw[0] in self.quotes:
+	    return Token('string', raw[1:-1])
+	elif raw in _tritvals:
+	    return Token('trit', raw)
+	elif len(raw) > 2 and \
+		raw[0] == '0' and raw[1] == 'x' and raw[2] in string.hexdigits:
+            return Token('hexadecimal', int(raw[2:], 16))
+	elif raw[0] in string.digits:
+	    return Token('decimal', int(raw))
+	elif raw in ('!', '=', '<', '>'):	# Relational tests
+	    next = self.get_token()
+	    if next == '=':
+		return Token(raw+next)
+	    else:
+		self.push_token(next)
+		return Token(raw)
+        elif raw == 'text':
+            data = ""
+            while 1:
+                line = self.instream.readline()
+                if line == "" or line == ".\n":	# Terminated by dot.
+                    break
+                if line[0] == '.':
+                    line = line[1:]
+                data = data + line
+            return Token("text", data)
+        elif raw == 'icon':
+            data = ""
+            while 1:
+                line = self.instream.readline()
+                if line == "" or line == "\n":	# Terminated by blank line
+                    break
+                data = data + line
+            self.push_token(data)
+            return Token(raw)
+	elif raw in _keywords or raw in _operators:
+	    return Token(raw)
+        elif raw in compstate.propnames:
+            return Token('property', raw)
+	else:
+            # Nasty hack alert.  If there is a declared prefix for the
+            # rulebase, ignore it as a prefix of names.  This will
+            # enable us to be backward-compatible with names like like
+            # CONFIG_3C515 that have leading numerics when stripped.
+            if rulebase.prefix and raw[:len(rulebase.prefix)] == rulebase.prefix:
+                raw = raw[len(rulebase.prefix):]
+	    return Token('word', raw)
 
-	def croak(self, str):
-		# Report a fatal parse error and die
-		self.complain(str)
-		sys.exit(1)
+    def complain(self, str):
+	# Report non-fatal parse error; format like C compiler message.
+        if not compstate.debug and not compstate.errors:
+            sys.stderr.write('\n')
+	sys.stderr.write(self.error_leader() + " " + str + "\n")
+	compstate.errors = compstate.errors + 1
 
-	def demand(self, type, attr=None):
-		# Require a given token or token type, croak if we don't get it 
-		tok = self.lex_token()
-		if tok.type == "EOF":
-			self.croak("premature EOF")
-		elif attr is not None and tok.attr != attr:
-			self.croak("syntax error, saw `%s' while expecting `%s'" % (tok, attr))
-		elif tok.type != type:
-			self.croak("syntax error, expecting token of type `%s' (actually saw %s=%s)" % (type, tok.type, tok.attr))
-		else:
-			return tok.attr
+    def croak(self, str):
+	# Report a fatal parse error and die
+	self.complain(str)
+	sys.exit(1)
 
-	def sourcehook(self, newfile):
-		# Override the hook in the shlex class
-		try:
-			if newfile[0] == '"':
-				newfile = newfile[1:-1]
-				# This implements cpp-like semantics for relative-path inclusion.
-				if type(self.infile) is type("") and not os.path.isabs(newfile):
-					newfile = os.path.join(os.path.dirname(self.infile), newfile)
-			return (newfile, open(newfile, "r"))
-		except IOError:
-			self.complain("I/O error while opening '%s'" % (newfile,))
-			sys.exit(1)
-	return None	# Appease pychecker
+    def demand(self, type, attr=None):
+	# Require a given token or token type, croak if we don't get it 
+	tok = self.lex_token()
+	if tok.type == "EOF":
+	    self.croak("premature EOF")
+	elif attr is not None and tok.attr != attr:
+	    self.croak("syntax error, saw `%s' while expecting `%s'" % (tok, attr))
+	elif tok.type != type:
+	    self.croak("syntax error, expecting token of type `%s' (actually saw %s=%s)" % (type, tok.type, tok.attr))
+	else:
+	    return tok.attr
+
+    def sourcehook(self, newfile):
+	# Override the hook in the shlex class
+	try:
+	    if newfile[0] == '"':
+		newfile = newfile[1:-1]
+                # This implements cpp-like semantics for relative-path inclusion.
+                if type(self.infile) is type("") and not os.path.isabs(newfile):
+                    newfile = os.path.join(os.path.dirname(self.infile), newfile)
+	    return (newfile, open(newfile, "r"))
+	except IOError:
+	    self.complain("I/O error while opening '%s'" % (newfile,))
+	    sys.exit(1)
+        return None	# Appease pychecker
 
 # Parsing
 
@@ -227,12 +219,12 @@ def parse_atom(input):
         sub = parse_expr_inner(input)
         close = input.lex_token()
         if close != ')':
-            raise(ExpressionError, "while expecting a close paren")
+            raise ExpressionError("while expecting a close paren")
         else:
             if compstate.debug >= 2: print("parse_atom returns singleton", sub)
             return sub
     elif op.type in _keywords:
-        raise(ExpressionError, "keyword %s while expecting atom" % op.type)
+        raise ExpressionError("keyword %s while expecting atom" % op.type)
     elif op.type == 'word':
         if compstate.debug >= 2: print("parse_atom returns", op.attr)
         return op
@@ -360,7 +352,7 @@ def parse_expr(input):
     try:
         exp = parse_expr_inner(input)
         return exp
-    except (ExpressionError, exp):
+    except ExpressionError as exp:
         input.croak(exp.args[0])
         return None
 
@@ -393,7 +385,7 @@ def intern_symbol(input, name=None, oktypes=None, record=0):
     elif name == "n":
         return cml.n
     # If we have not seen the symbol before, create an entry for it.
-    if not rulebase.dictionary.has_key(name):
+    if name not in rulebase.dictionary:
         ref = rulebase.dictionary[name] = cml.ConfigSymbol(name,
                                             None, None, None,
                                             input.infile,
@@ -413,37 +405,37 @@ def intern_symbol(input, name=None, oktypes=None, record=0):
     return ref
 
 def intern_symbol_list(input, record=0):
-	"Get a list of symbols (terminate on keyword)."
-	list = []
-	while 1:
-		symbol = intern_symbol(input, None, None, record)
-		if symbol == None:
-			break
-		else:
-			list.append(symbol)
-		if not list:
-			input.complain("syntax error, expected a nonempty word list")
-	return list
+    "Get a list of symbols (terminate on keyword)."
+    list = []
+    while 1:
+        symbol = intern_symbol(input, None, None, record)
+        if symbol == None:
+            break
+        else:
+            list.append(symbol)
+    if not list:
+	input.complain("syntax error, expected a nonempty word list")
+    return list
 
 def parse(input, baton):
-	# Parse an entire CML program
-	input.source = "source"
-	if compstate.debug > 2:
-		print("Calling parse()")
-		input.debug = 1
-	while 1:
-		if not compstate.debug and not compstate.errors:
-			baton.twirl()
+    # Parse an entire CML program
+    input.source = "source"
+    if compstate.debug > 2:
+    	print("Calling parse()")
+    	input.debug = 1
+    while 1:
+        if not compstate.debug and not compstate.errors:
+            baton.twirl()
 	leader = input.lex_token()
 	if compstate.debug > 1: print("Parsing declaration beginning with %s..." % (leader,))
-	# Language constructs begin here 
+        # Language constructs begin here 
 	if leader.type == "EOF":
-		break
+	    break
 	elif leader.type == "start":
-		rulebase.start = input.lex_token().attr
+	    rulebase.start = input.lex_token().attr
 	elif leader.type in ("menus", "explanations"):
-		input.complain("menus and explanations declarations are "
-			"obsolete, replace these keywords with `symbols'")
+            input.complain("menus and explanations declarations are "
+                           "obsolete, replace these keywords with `symbols'")
 	elif leader.type == "symbols":
 	    while 1:
                 ref = intern_symbol(input, None, None, record=1)
@@ -457,7 +449,7 @@ def parse(input, baton):
                     rulebase.dictionary[ref.name].helptext = tok.attr
                 elif tok.type == "like":
                     target = input.lex_token()
-                    if not rulebase.dictionary.has_key(target.attr):
+                    if target.attr not in rulebase.dictionary:
                         input.complain("unknown 'like' symbol %s" % target.attr)
                     elif not rulebase.dictionary[target.attr].help():
                         input.complain("'like' symbol %s has no help" % target.attr)
@@ -466,73 +458,67 @@ def parse(input, baton):
                 else:
                     input.push_token(tok)
 	    if compstate.debug:
-                print ("%d symbols read" % (len(rulebase.dictionary),))
+                print("%d symbols read" % (len(rulebase.dictionary),))
 	elif leader.type in ("unless", "when"):
-		guard = parse_expr(input)
-		maybe = input.lex_token()
-
-		if maybe == "suppress":
-			if leader.type == "when":
-				guard = ("==", guard, cml.n)
-			dependent = input.lex_token()
-			make_dep = 0
-			if dependent.type == "dependent":
-				make_dep = 1
-			else:
-				input.push_token(dependent)
-			list = intern_symbol_list(input)
-			list.reverse()
-
-			for symbol in list:
-				if make_dep:
-					traverse_make_dep(symbol, guard, input)
-				# Add it to ordinary visibility constraints
-				if symbol.visibility:
-					symbol.visibility = ('and', guard, symbol.visibility)
-				else:
-					symbol.visibility = guard
-
-		elif maybe == "save":
-			if leader.type == "unless":
-				guard = ("==", guard, cml.n)
-		list = intern_symbol_list(input)
-		list.reverse()
-		for symbol in list:
-			if symbol.saveability:
-				symbol.saveability = ('and', guard, symbol.saveability)
-			else:
-				symbol.saveability = guard
-			# This is a kluge.  It relies on the fact that symbols
-			# explicitly set are always saved.
-			while symbol.menu:
-				symbol.menu.setcount = 1
-				symbol = symbol.menu
-	else:
-	    input.complain("expected `suppress' or `save'")
-
-	compstate.bool_tests.append((guard, input.infile, input.lineno))
-"""
+	    guard = parse_expr(input)
+            maybe = input.lex_token()
+            if maybe == "suppress":
+                if leader.type == "when":
+                    guard = ("==", guard, cml.n)
+                dependent = input.lex_token()
+                make_dep = 0
+                if dependent.type == "dependent":
+                    make_dep = 1
+                else:
+                    input.push_token(dependent)
+                list = intern_symbol_list(input)
+                list.reverse()
+                for symbol in list:
+                    if make_dep:
+                        traverse_make_dep(symbol, guard, input)
+                    # Add it to ordinary visibility constraints
+                    if symbol.visibility:
+                        symbol.visibility = ('and', guard, symbol.visibility)
+                    else:
+                        symbol.visibility = guard
+            elif maybe == "save":
+                if leader.type == "unless":
+                    guard = ("==", guard, cml.n)
+                list = intern_symbol_list(input)
+                list.reverse()
+                for symbol in list:
+                    if symbol.saveability:
+                        symbol.saveability = ('and', guard, symbol.saveability)
+                    else:
+                        symbol.saveability = guard
+                    # This is a kluge.  It relies on the fact that symbols
+                    # explicitly set are always saved.
+                    while symbol.menu:
+                        symbol.menu.setcount = 1
+                        symbol = symbol.menu
+            else:
+                input.complain("expected `suppress' or `save'")
+            compstate.bool_tests.append((guard, input.infile, input.lineno))
 	elif leader.type == "menu":
-		menusym = intern_symbol(input, None, ('bool', 'menu', 'choices'), record=1)
-		menusym.type = "menu"
-		list = parse_symbol_tree(input)
-		#print "Adding %s to %s" % (list, menusym.name)
-		# Add and validate items
-		menusym.items += list
-		for symbol in list:
-			if symbol.menu:
-				input.complain("symbol %s in %s occurs in another menu (%s)" 
-					% (symbol.name, menusym.name, symbol.menu.name))
-		else:
-			symbol.menu = menusym
-"""
+	    menusym = intern_symbol(input, None, ('bool', 'menu', 'choices'), record=1)
+            menusym.type = "menu"
+	    list = parse_symbol_tree(input)
+            #print "Adding %s to %s" % (list, menusym.name)
+            # Add and validate items
+            menusym.items += list
+            for symbol in list:
+                if symbol.menu:
+                    input.complain("symbol %s in %s occurs in another menu (%s)"
+				       % (symbol.name, menusym.name, symbol.menu.name))
+                else:
+                    symbol.menu = menusym
 	elif leader.type == "choices":
 	    menusym = intern_symbol(input, None, ('bool', 'menu', 'choices'), record=1)
             menusym.type = "choices"
             list = parse_symbol_tree(input)
             for symbol in list:
                 symbol.type = "bool"
-                symbol.choicegroup = filter(lambda x, s=symbol: x != s, list)
+                symbol.choicegroup = list(filter(lambda x, s=symbol: x != s, list))
             dflt = input.lex_token()
             if dflt.type != 'default':
                 default = list[0].name
@@ -540,7 +526,7 @@ def parse(input, baton):
             else:
                 default = intern_symbol(input, None, None, record=1)
 	    if default not in list:
-		input.complain("default %s must be in the menu" % (`default`,))
+		input.complain("default %s must be in the menu" % (repr(default),))
 	    else:
 		menusym.default = default
                 menusym.items = list
@@ -553,7 +539,7 @@ def parse(input, baton):
 	elif leader.type == "choicegroup":
 	    group = intern_symbol_list(input)
             for symbol in group:
-                symbol.choicegroup = filter(lambda x, s=symbol: x != s, group)
+                symbol.choicegroup = list(filter(lambda x, s=symbol: x != s, group))
 	elif leader.type == "derive":
             symbol = intern_symbol(input)
 	    input.demand("word", "from")
@@ -570,7 +556,7 @@ def parse(input, baton):
             else:
                 expl = input.lex_token()
                 if expl.type != 'word':
-                    input.complain("while expecting a word of explanation, I see %s" % (`expl`,))
+                    input.complain("while expecting a word of explanation, I see %s" % (repr(expl),))
                     continue
                 entry = intern_symbol(input, expl.attr)
                 if entry.type:
@@ -716,7 +702,7 @@ def parse(input, baton):
 def get_symbol_declaration(input):
     # First grab a properties prefix
     global compstate
-    if compstate.debug >= 2: print "entering get_symbol_declaration..."
+    if compstate.debug >= 2: print("entering get_symbol_declaration...")
     props = []
     propflag = 1
     while 1:
@@ -752,7 +738,7 @@ def get_symbol_declaration(input):
         compstate.property_stack.pop()
         return 0
     elif symbol.type == 'word':		# Declaration
-        if compstate.debug >= 2: print "interning %s" % symbol.attr
+        if compstate.debug >= 2: print("interning %s" % symbol.attr)
         entry = intern_symbol(input, symbol.attr, record=1)
         compstate.symbol_list.append(entry)
         entry.depth = len(compstate.condition_stack)
@@ -765,11 +751,11 @@ def get_symbol_declaration(input):
                 if flag:
                     propdict[property] = 1
                 else:
-                    if not propdict.has_key(property):
+                    if property not in propdict:
                         input.complain("property %s can't be removed when it's not present" % property)
                     else:
                         propdict[property] = 0
-        for (prop, val) in propdict.items():
+        for (prop, val) in list(propdict.items()):
             if val == 1 and not entry.hasprop(prop):
                 entry.setprop(prop)
             elif val == 0 and entry.hasprop(prop):
@@ -806,7 +792,7 @@ def inner_symbol_tree(input):
 
 def parse_symbol_tree(input):
     global compstate
-    if compstate.debug >= 2: print "entering parse_symbol_tree..."
+    if compstate.debug >= 2: print("entering parse_symbol_tree...")
     # Get a nonempty list of config symbols and menu ids. 
     # Interpret the {} shorthand if second argument is nonempty
     compstate.condition_stack = []	# Stack of active conditions for {} shorthand
@@ -823,7 +809,7 @@ def parse_symbol_tree(input):
 def traverse_make_dep(symbol, guard, input):
     "Create the dependency relations implied by a 'suppress depend' guard."
     #print "traverse_make_dep(%s, %s)" % (symbol.name, guard)
-    if compstate.derivations.has_key(symbol):
+    if symbol in compstate.derivations:
         return  
     elif isinstance(guard, cml.trit) or (isinstance(guard, Token) and guard.attr in ("n", "m", "y")):
         return
@@ -876,7 +862,7 @@ def validate_expr(expr, file, line):
             return expr.type
     elif isinstance(expr, cml.trit):
         return "trit"
-    elif type(expr) in (type(0), type(0L)):
+    elif type(expr) in (type(0), type(0)):
         return "integer"
     elif type(expr) == type(""):
         return "string"
@@ -918,7 +904,7 @@ def validate_expr(expr, file, line):
 def symbols_by_preorder(node):
     # Get a list of config symbols in natural traverse order
     if node.items:
-       sublists = map(symbols_by_preorder, node.items)
+       sublists = list(map(symbols_by_preorder, node.items))
        flattened = []
        for m in sublists:
 	   flattened = flattened + m
@@ -954,7 +940,7 @@ def resolve(exp):
             return cml.n
     elif exp.type in _atoms:
 	return exp.attr
-    elif rulebase.dictionary.has_key(exp.attr):
+    elif exp.attr in rulebase.dictionary:
 	return rulebase.dictionary[exp.attr]
     else:
 	compstate.bad_symbols[exp.attr] = 1
@@ -965,10 +951,10 @@ def ancestry_check(symbol, counts):
     # print "Checking ancestry of %s: %s" % (symbol, symbol.ancestors)
     counts[symbol] = 1
     for ancestor in symbol.ancestors:
-        if counts.has_key(ancestor.name):
-            raise NameError, symbol.name + " through " + ancestor.name
+        if ancestor.name in counts:
+            raise NameError(symbol.name + " through " + ancestor.name)
         else:
-            map(lambda symbol, counts=counts: ancestry_check(symbol, counts), symbol.ancestors)
+            list(map(lambda symbol, counts=counts: ancestry_check(symbol, counts), symbol.ancestors))
 
 def circularity_check(name, exp, counts):
     # Recursive circularity check...
@@ -982,14 +968,14 @@ def circularity_check(name, exp, counts):
 	    circularity_check(name, exp[1], counts)
 	    circularity_check(name, exp[2], counts)
     elif isinstance(exp, cml.ConfigSymbol) and name == exp.name:
-        raise NameError, name
+        raise NameError(name)
     elif hasattr(exp, "default"):
 	vars = cml.flatten_expr(exp.default)
 	# print "Components of %s default: %s" % (exp.name vars) 
 	for v in vars:
 	    if v.name == name:
-		raise NameError, name
-	    elif counts.has_key(v.name):
+		raise NameError(name)
+	    elif v.name in counts:
 		pass		# Already checked this branch
 	    else:
 		counts[v.name] = 1
@@ -1030,13 +1016,13 @@ def compile(debug, arguments, profile, endtok=None):
 	else:
 	    for file in arguments:
 		parse(lexwrapper(open(file), endtok), baton)
-    except IOError, details:
+    except IOError as details:
 	sys.stderr.write("cmlcompile: I/O error, %s\n" % (details,))
 	return None
 
     if profile:
         now = time.time();
-        print "Rule parsing:", now - basetime
+        print("Rule parsing:", now - basetime)
         basetime = now
     if not debug and not compstate.errors:
         baton.twirl()
@@ -1047,30 +1033,30 @@ def compile(debug, arguments, profile, endtok=None):
     if not rulebase.start:
 	postcomplain("missing a start declaration.\n")
 	return None
-    elif not rulebase.dictionary.has_key(rulebase.start):
+    elif rulebase.start not in rulebase.dictionary:
 	postcomplain("declared start menu '%s' does not exist.\n"%(rulebase.start,))
 	return None
     if not debug and not compstate.errors:
         baton.twirl()
 
     # Check for symbols that have been forward-referenced but not declared
-    for ref in rulebase.dictionary.values():
-        if not ref.prompt and not compstate.derivations.has_key(ref):
-            postcomplain('"%s", line %d: %s in menu %s has no prompt\n' % (ref.file, ref.lineno, ref.name, `ref.menu`))
+    for ref in list(rulebase.dictionary.values()):
+        if not ref.prompt and ref not in compstate.derivations:
+            postcomplain('"%s", line %d: %s in menu %s has no prompt\n' % (ref.file, ref.lineno, ref.name, repr(ref.menu)))
 
     # Check that all symbols other than those on the right side of
     # derives are either known or themselves derived.
-    for entry in rulebase.dictionary.values():
+    for entry in list(rulebase.dictionary.values()):
         if entry.visibility:
             entry.visibility = resolve(entry.visibility)
         if entry.saveability:
             entry.saveability = resolve(entry.saveability)
 	if entry.default:
 	    entry.default = resolve(entry.default)
-    rulebase.constraints = map(lambda x: cml.Requirement(resolve(x.predicate), x.message, x.file, x.line), rulebase.constraints)
+    rulebase.constraints = [cml.Requirement(resolve(x.predicate), x.message, x.file, x.line) for x in rulebase.constraints]
     if compstate.bad_symbols:
 	postcomplain("%d symbols could not be resolved:\n"%(len(compstate.bad_symbols),))
-	sys.stderr.write(`compstate.bad_symbols.keys()` + "\n")
+	sys.stderr.write(repr(list(compstate.bad_symbols.keys())) + "\n")
     if not debug and not compstate.errors:
         baton.twirl()
 
@@ -1082,8 +1068,8 @@ def compile(debug, arguments, profile, endtok=None):
     # possible deductions, even in the presence of forward declarations.)
     while 1:
         deducecount = 0
-        for entry in rulebase.dictionary.values():
-            if compstate.derivations.has_key(entry) and not entry.type:
+        for entry in list(rulebase.dictionary.values()):
+            if entry in compstate.derivations and not entry.type:
                 derived_type = None
                 if entry.default == cml.m:
                     derived_type = "trit"
@@ -1101,7 +1087,7 @@ def compile(debug, arguments, profile, endtok=None):
                             derived_type = entry.default[2].type
                         elif isinstance(entry.default[2], cml.trit):
                             derived_type = "trit"
-                        elif type(entry.default[2]) in (type(0), type(0L)):
+                        elif type(entry.default[2]) in (type(0), type(0)):
                             derived_type = "decimal"
                         elif type(entry.default[2]) is type(""):
                             derived_type = "string"
@@ -1117,8 +1103,8 @@ def compile(debug, arguments, profile, endtok=None):
         if not deducecount:
             break
 
-    for entry in rulebase.dictionary.values():
-        if compstate.derivations.has_key(entry) and not entry.type:
+    for entry in list(rulebase.dictionary.values()):
+        if entry in compstate.derivations and not entry.type:
             postcomplain(error_leader(entry.file, entry.lineno) + \
                              'can\'t deduce type for derived symbol %s from %s\n' % (entry.name, entry.default))
     if not debug and not compstate.errors:
@@ -1131,7 +1117,7 @@ def compile(debug, arguments, profile, endtok=None):
         baton.twirl()
 
     # Handle explicit dependencies
-    for symbol in compstate.explicit_ancestors.keys():
+    for symbol in list(compstate.explicit_ancestors.keys()):
         for guard in compstate.explicit_ancestors[symbol]:
             for guardsymbol in cml.flatten_expr(resolve(guard)):
                 make_dependent(guardsymbol, symbol)
@@ -1143,12 +1129,12 @@ def compile(debug, arguments, profile, endtok=None):
     # exactly once (except explanations).  We checked for multiple
     # inclusions at parse-tree generation time.  Now...
     compstate.bad_symbols = {}
-    for entry in rulebase.dictionary.values():
+    for entry in list(rulebase.dictionary.values()):
 	if entry.prompt and not entry.type:
 	    compstate.bad_symbols[entry.name] = 1 
     if compstate.bad_symbols:
 	postcomplain("%d symbols have no references"%(len(compstate.bad_symbols),))
-        sys.stderr.write("\n" +`compstate.bad_symbols.keys()` + "\n")
+        sys.stderr.write("\n" +repr(list(compstate.bad_symbols.keys())) + "\n")
     if not debug and not compstate.errors:
         baton.twirl()
 
@@ -1170,7 +1156,7 @@ def compile(debug, arguments, profile, endtok=None):
 
     # Check for circularities in derives and defaults.
     try:
-        for entry in rulebase.dictionary.values():
+        for entry in list(rulebase.dictionary.values()):
             if entry.default:
                 expr_counts = {}
                 circularity_check(entry.name, entry.default, expr_counts)
@@ -1181,22 +1167,22 @@ def compile(debug, arguments, profile, endtok=None):
                 ancestor_counts = {}
                 ancestry_check(entry, ancestor_counts)
     except NameError:
-	postcomplain("%s depends on itself\n"%(sys.exc_value,))
+	postcomplain("%s depends on itself\n"%(sys.exc_info()[1],))
     if not debug and not compstate.errors:
         baton.twirl()
 
     # Various small hacks combined here to save traversal overhead.
     bitch_once = {}
-    for entry in rulebase.dictionary.values():
+    for entry in list(rulebase.dictionary.values()):
         # Validate choice groups
         for symbol in entry.choicegroup:
-            if not symbol.is_logical() and not bitch_once.has_key(symbol):
+            if not symbol.is_logical() and symbol not in bitch_once:
                 postcomplain("Symbol %s in a choicegroup is not logical" % symbol.name)
                 bitch_once[symbol] = 1
         # Validate the formulas for boolean derived symbols.
-        if compstate.derivations.has_key(entry):
+        if entry in compstate.derivations:
             if entry.menu:
-		postcomplain("menu %s contains derived symbol %s\n"%(entry.menu.name, `entry`))
+		postcomplain("menu %s contains derived symbol %s\n"%(entry.menu.name, repr(entry)))
             if entry.type == "bool":
                 validate_boolean(entry.default, entry.file, entry.lineno)
             else:
@@ -1212,18 +1198,18 @@ def compile(debug, arguments, profile, endtok=None):
             continue
         # Check for type mismatches between symbols and their defaults.
         if entry.is_symbol() and not entry.default is None:
-            if type(entry.default) in (type(0L),type(0)) and not entry.is_numeric():
+            if type(entry.default) in (type(0),type(0)) and not entry.is_numeric():
                 postcomplain("%s is not of numeric type but has numeric constant default\n" % entry.name)
             elif type(entry.default) == type("") and not entry.type == "string":
                 postcomplain("%s is not of string type but has string constant default\n" % entry.name)
         # Symbols with decimal/hexadecimal/string type must have a default.
 	if entry.type in ("decimal", "hexadecimal", "string"):
 	    if entry.default is None:
-		postcomplain("%s needs a default\n"%(`entry`,))
+		postcomplain("%s needs a default\n"%(repr(entry),))
         elif entry.range:
             # This member can be used by front ends to determine whether the
             # entry's value should be queried with a pulldown of its values.
-            entry.discrete = not filter(lambda x: type(x) is type(()), entry.range)
+            entry.discrete = not [x for x in entry.range if type(x) is type(())]
 	    # This member can be used by front ends to determine whether the
 	    # entry's value should be queried with a pulldown of enums.
             entry.enum = type(entry.range[0]) is type(()) \
@@ -1243,24 +1229,24 @@ def compile(debug, arguments, profile, endtok=None):
     if not compstate.errors:
         for wff in rulebase.constraints:
             if not cml.evaluate(wff.predicate, debug):
-                postcomplain(error_leader(wff.file, wff.line) + " constraint violation: %s\n" % `wff`)
+                postcomplain(error_leader(wff.file, wff.line) + " constraint violation: %s\n" % repr(wff))
         if not debug and not compstate.errors:
             baton.twirl()
 
     # Now integrate the help references
     help_dict = {}
-    for key in rulebase.dictionary.keys():
-	if help_dict.has_key(key):
+    for key in list(rulebase.dictionary.keys()):
+	if key in help_dict:
 	    rulebase.dictionary[key].helptext = help_dict[key]
 	    del help_dict[key]
     if debug:
 	missing = []
-	for entry in rulebase.dictionary.values():
+	for entry in list(rulebase.dictionary.values()):
 	    if not entry.type in ("message", "menu", "choices", "explanation") and entry.prompt and not entry.help():
 		missing.append(entry.name)
 	if missing:
 	    postcomplain("The following symbols lack help entries: %s\n" % missing)
-	orphans = help_dict.keys()
+	orphans = list(help_dict.keys())
         if orphans:
             postcomplain("The following help entries do not correspond to symbols: %s\n" % orphans)
     if not debug and not compstate.errors:
@@ -1268,7 +1254,7 @@ def compile(debug, arguments, profile, endtok=None):
 
     if profile:
         now = time.time();
-        print "Sanity checks:", now - basetime
+        print("Sanity checks:", now - basetime)
         basetime = now
 
     # We only need the banner string, not the banner symbol
@@ -1282,22 +1268,22 @@ def compile(debug, arguments, profile, endtok=None):
     else:
         rulebase.start = rulebase.dictionary[rulebase.start]
         # Precomputation to speed up the configurator's load time
-        rulebase.reduced = map(lambda x: x.predicate, rulebase.constraints)
+        rulebase.reduced = [x.predicate for x in rulebase.constraints]
         rulebase.optimize_constraint_access()
         if debug:
             cc = dc = tc = 0
-            for symbol in rulebase.dictionary.values():
-                if not compstate.derivations.has_key(entry):
+            for symbol in list(rulebase.dictionary.values()):
+                if entry not in compstate.derivations:
                     tc = tc + 1
                 if symbol.dependents:
                     dc = dc + 1
                 if symbol.constraints:
                     cc = cc + 1
-            print "%d total symbols; %d symbols are involved in constraints; %d in dependencies." % (tc, cc, dc)
+            print("%d total symbols; %d symbols are involved in constraints; %d in dependencies." % (tc, cc, dc))
 
         if profile:
             now = time.time();
-            print "Total compilation time:", now - zerotime
+            print("Total compilation time:", now - zerotime)
 
         # We have a rulebase object.
         return rulebase
@@ -1307,16 +1293,16 @@ if __name__ == '__main__':
         "Compile and write out a ruebase."
         rulebase = compile(debug, arguments, profile)
         if not rulebase:
-            raise SystemExit, 1
+            raise SystemExit(1)
         else:
             try:
-                if debug: print "cmlcompile: output directed to %s" % (outfile)
+                if debug: print("cmlcompile: output directed to %s" % (outfile))
                 out = open(outfile, "wb")
-                cPickle.dump(rulebase, out, 1)
+                pickle.dump(rulebase, out, 1)
                 out.close()
             except:
                 postcomplain('couldn\'t open output file "%s"\n' % (outfile,))
-                raise SystemExit, 1
+                raise SystemExit(1)
 
     outfile = "rules.out"
     profile = debug = 0
