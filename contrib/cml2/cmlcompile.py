@@ -172,12 +172,12 @@ class lexwrapper(shlex.shlex):
 				raw = raw[len(rulebase.prefix):]
 		return Token('word', raw)
 	
-    def complain(self, str):
-	# Report non-fatal parse error; format like C compiler message.
-        if not compstate.debug and not compstate.errors:
-            sys.stderr.write('\n')
-	sys.stderr.write(self.error_leader() + " " + str + "\n")
-	compstate.errors = compstate.errors + 1
+	def complain(self, str):
+		# Report non-fatal parse error; format like C compiler message.
+		if not compstate.debug and not compstate.errors:
+			sys.stderr.write('\n')
+		sys.stderr.write(self.error_leader() + " " + str + "\n")
+		compstate.errors = compstate.errors + 1
 
     def croak(self, str):
 	# Report a fatal parse error and die
