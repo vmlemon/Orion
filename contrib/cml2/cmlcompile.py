@@ -468,8 +468,8 @@ def parse(input, baton):
 	    if compstate.debug:
                 print ("%d symbols read" % (len(rulebase.dictionary),))
 	elif leader.type in ("unless", "when"):
-	    guard = parse_expr(input)
-            maybe = input.lex_token()
+		guard = parse_expr(input)
+		maybe = input.lex_token()
             if maybe == "suppress":
                 if leader.type == "when":
                     guard = ("==", guard, cml.n)
