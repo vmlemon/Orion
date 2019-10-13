@@ -412,18 +412,19 @@ def intern_symbol(input, name=None, oktypes=None, record=0):
                                % (name, ref.file, ref.lineno))
     return ref
 
-def intern_symbol_list(input, record=0):
-    "Get a list of symbols (terminate on keyword)."
-    list = []
-    while 1:
-        symbol = intern_symbol(input, None, None, record)
-        if symbol == None:
-            break
-        else:
-            list.append(symbol)
-    if not list:
-	input.complain("syntax error, expected a nonempty word list")
-    return list
+	def intern_symbol_list(input, record=0):
+    		"Get a list of symbols (terminate on keyword)."
+    		list = []
+    		while 1:
+        		symbol = intern_symbol(input, None, None, record)
+        		if symbol == None:
+				break
+			else:
+				list.append(symbol)
+		if not list:
+			input.complain("syntax error, expected a nonempty word list")
+    		return list
+
 
 def parse(input, baton):
     # Parse an entire CML program
