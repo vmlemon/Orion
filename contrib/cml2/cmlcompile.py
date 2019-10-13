@@ -433,7 +433,7 @@ def parse(input, baton):
 		input.debug = 1
 	while 1:
 		if not compstate.debug and not compstate.errors:
-		baton.twirl()
+			baton.twirl()
 	leader = input.lex_token()
 	if compstate.debug > 1: print("Parsing declaration beginning with %s..." % (leader,))
 	# Language constructs begin here 
