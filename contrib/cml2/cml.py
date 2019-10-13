@@ -14,10 +14,10 @@ class trit:
         self.value = value
     def __repr__(self):
         return "nmy"[self.value]
-    def __bool__(self):
+    def __nonzero__(self):
         return self.value
     def __hash__(self):
-        return self.value       # This magic needed to make trits valid dictionary keys
+        return self.value	# This magic needed to make trits valid dictionary keys
     def __long__(self):
         return self.value != 0
     def __cmp__(self, other):
@@ -56,33 +56,33 @@ class ConfigSymbol:
     def __init__(self, name, type=None, default=None, prompt=None, file=None, lineno=None):
         # Name, location, type, default.
         self.name = name
-        self.file = file        # Definition location source file
-        self.lineno = lineno    # Definition location source line
-        self.type = type        # Type of symbol
-        self.range = None       # Range tuple
+        self.file = file	# Definition location source file
+        self.lineno = lineno	# Definition location source line
+        self.type = type	# Type of symbol
+        self.range = None	# Range tuple
         self.enum = None
         self.discrete = None
-        self.helptext = None    # Help reference
-        self.default = default  # Value to use if none has been set.
+        self.helptext = None	# Help reference
+        self.default = default	# Value to use if none has been set.
         # Hierarchy location
-        self.ancestors = []     # Ancestors of symbol (as set up by {})
-        self.dependents = []    # Dependents of symbol (as set up by {})
-        self.choicegroup = []   # Other symbols in a choicegroup.
-        self.menu = None        # Unique parent menu of this symbol
-        self.depth = 0          # Nesting depth in its subtree
+        self.ancestors = []	# Ancestors of symbol (as set up by {})
+        self.dependents = []	# Dependents of symbol (as set up by {})
+        self.choicegroup = []	# Other symbols in a choicegroup.
+        self.menu = None	# Unique parent menu of this symbol
+        self.depth = 0		# Nesting depth in its subtree
         # Auxiliary information
-        self.prompt = prompt    # Associated question string
-        self.properties = {}    # Associated properties
-        self.warnings = []      # Attached warndepend conditions
-        self.visibility = None  # Visibility predicate for symbol 
-        self.saveability = None # Saveability predicate for symbol
-        self.items = []         # Menus only -- associated symbols
+        self.prompt = prompt	# Associated question string
+        self.properties = {}	# Associated properties
+        self.warnings = []	# Attached warndepend conditions
+        self.visibility = None	# Visibility predicate for symbol 
+        self.saveability = None	# Saveability predicate for symbol
+        self.items = []		# Menus only -- associated symbols
         # Compiler never touches these
-        self.visits = 0         # Number of visits so far
+        self.visits = 0   	# Number of visits so far
         self.setcount = 0       # Should this symbol be written?
         self.included = 0       # Seen in an inclusion?
         self.inspected = 0      # Track menu inspections
-        self.iced = 0           # Is this frozen?
+        self.iced = 0		# Is this frozen?
 
     # Compute the value of a symbol 
     def eval(self, debug=0):
@@ -100,12 +100,12 @@ class ConfigSymbol:
                     result = (result != n)
             if debug > 3:
                 sys.stderr.write("...eval(%s)->%s (through default %s)\n" % \
-                                 (repr(self), result, self.default))
+                                 (`self`, result, self.default))
             return result
         else:
             if debug > 2:
                 sys.stderr.write("...eval(%s)->None (default empty)\n" % \
-                                 (repr(self)))
+                                 (`self`))
             return None
 
     # Access to help.
@@ -156,13 +156,13 @@ class ConfigSymbol:
 
     # Property functions
     def hasprop(self, prop):
-        return prop in self.properties
+        return self.properties.has_key(prop)
     def setprop(self, prop, val=1):
         self.properties[prop] = val
     def delprop(self, prop):
         del self.properties[prop]
     def showprops(self,):
-        return ", ".join(list(self.properties.keys()))
+        return ", ".join(self.properties.keys())
 
     def __repr__(self):
         # So the right thing happens when we print symbols in expressions
@@ -188,7 +188,7 @@ class ConfigSymbol:
         if self.saveability is not None:
             res = res + " saveability %s," % (display_expression(self.saveability),)
         if self.default is not None:
-            res = res + " default %s," % (repr(self.default),)
+            res = res + " default %s," % (`self.default`,)
         if self.items:
             res = res + " items %s," % (self.items,)
         if self.properties:
@@ -230,28 +230,28 @@ class CMLRulebase:
     "A dictionary of ConfigSymbols and a set of constraints."
     def __init__(self):
         self.version = version
-        self.start = None               # Start menu name               
-        self.dictionary = {}            # Configuration symbols
-        self.prefix = ""                # Prepend this to all symbols
-        self.banner = ""                # ID the configuration domain
-        self.constraints = []           # All requirements
-        self.icon = None                # Icon for this rulebase
-        self.trit_tie = None            # Are trits enabled?
-        self.help_tie = None            # Help required for visibility?
-        self.expert_tie = None          # Expert flag for UI control
+        self.start = None		# Start menu name		
+        self.dictionary = {}		# Configuration symbols
+        self.prefix = ""		# Prepend this to all symbols
+        self.banner = ""		# ID the configuration domain
+        self.constraints = []		# All requirements
+        self.icon = None		# Icon for this rulebase
+        self.trit_tie = None		# Are trits enabled?
+        self.help_tie = None		# Help required for visibility?
+        self.expert_tie = None		# Expert flag for UI control
         self.reduced = []
     def __repr__(self):
         res = "Start menu = %s\n" % (self.start,)
-        for k in list(self.dictionary.keys()):
+        for k in self.dictionary.keys():
             res = res + str(self.dictionary[k]) + "\n"
         if self.prefix:
-            res = res + "Prefix:" + repr(self.prefix)
+            res = res + "Prefix:" + `self.prefix`
         if self.banner:
-            res = res + "Banner:" + repr(self.banner)
+            res = res + "Banner:" + `self.banner`
         return res
     def optimize_constraint_access(self):
         "Assign constraints to their associated symbols."
-        for entry in list(self.dictionary.values()):
+        for entry in self.dictionary.values():
             entry.constraints = []
         for requirement in self.reduced:
             for symbol in flatten_expr(requirement):
@@ -268,7 +268,7 @@ def evaluate(exp, debug=0):
         else:
             return n
     if debug > 2:
-        sys.stderr.write("evaluate(%s) begins...\n" % (repr(exp),))
+        sys.stderr.write("evaluate(%s) begins...\n" % (`exp`,))
     if type(exp) is type(()):
         # Ternary operator
         if exp[0] == '?':
@@ -311,16 +311,16 @@ def evaluate(exp, debug=0):
             else:
                 return left
         elif exp[0] == '+':
-            return int(evaluate(exp[1],debug)) + int(evaluate(exp[2],debug))
+            return long(evaluate(exp[1],debug)) + long(evaluate(exp[2],debug))
         elif exp[0] == '-':
-            return int(evaluate(exp[1],debug)) - int(evaluate(exp[2],debug))
+            return long(evaluate(exp[1],debug)) - long(evaluate(exp[2],debug))
         elif exp[0] == '*':
-            return int(evaluate(exp[1],debug)) * int(evaluate(exp[2],debug))
+            return long(evaluate(exp[1],debug)) * long(evaluate(exp[2],debug))
         else:
-            raise SyntaxError("Unknown operation %s in expression" % (exp[0],))
-    elif isinstance(exp, trit) or type(exp) in (type(""), type(0), type(0)):
+            raise SyntaxError, "Unknown operation %s in expression" % (exp[0],)
+    elif isinstance(exp, trit) or type(exp) in (type(""), type(0), type(0L)):
         if debug > 2:
-            sys.stderr.write("...evaluate(%s) returns itself\n" % (repr(exp),))
+            sys.stderr.write("...evaluate(%s) returns itself\n" % (`exp`,))
         return exp
     elif isinstance(exp, ConfigSymbol):
         result = exp.eval(debug)
@@ -329,12 +329,12 @@ def evaluate(exp, debug=0):
         else:
             return n
     else:
-        raise ValueError("unknown object %s %s in expression" % (exp,type(exp)))
+        raise ValueError,"unknown object %s %s in expression" % (exp,type(exp))
 
 def flatten_expr(node):
     "Flatten an expression -- skips the operators"
     if type(node) is type(()) or type(node) is type([]):
-       sublists = list(map(flatten_expr, node))
+       sublists = map(flatten_expr, node)
        flattened = []
        for item in sublists:
            flattened = flattened + item
@@ -359,7 +359,7 @@ def display_expression(exp):
     elif isinstance(exp, ConfigSymbol):
         return exp.name
     else:
-        return repr(exp)
+        return `exp`
 
 class Baton:
     "Ship progress indication to stdout."
@@ -413,26 +413,26 @@ if __name__ == "__main__":
     t2 = trit(2)
 
     if not (t0 < t1 < t2 and t2 > t1 > t0) or t0 == t1 or t0 == t2 or t1 == t2:
-        print("trit compare failed")
+        print "trit compare failed"
 
     if t0 < None:
-        print("a trit is less than None?  Comparison failed")
+        print "a trit is less than None?  Comparison failed"
 
     if None > t0:
-        print("None is greater than a trit?  Comparison failed")
+        print "None is greater than a trit?  Comparison failed"
 
     if id(a) > id(b):
         if a < b > a:
-            print("a/b comparison failed")
+            print "a/b comparison failed"
     elif b < a > b:
-        print("a/b comparison failed")
+        print "a/b comparison failed"
 
 
     # Simulate standard no-cmp() behavior for non-trits
     if id(a) > id(t0):
         if a < t0:
-            print("a/t0 comparison failed (id(a) greater)")
+            print "a/t0 comparison failed (id(a) greater)"
     elif t0 < a:
-        print("a/t0 comparison failed")
+        print "a/t0 comparison failed"
 
 # cml.py ends here.
