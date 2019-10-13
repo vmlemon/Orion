@@ -496,7 +496,7 @@ def parse(input, baton):
 			if leader.type == "unless":
 				guard = ("==", guard, cml.n)
 		list = intern_symbol_list(input)
-                list.reverse()
+		list.reverse()
                 for symbol in list:
                     if symbol.saveability:
                         symbol.saveability = ('and', guard, symbol.saveability)
