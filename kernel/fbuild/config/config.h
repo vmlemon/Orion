@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: */
-/* At: Sun, 13 Oct 2019 19:05:05 +0000 */
+/* At: Sun, 13 Oct 2019 19:47:35 +0000 */
 
 /* Pistachio Kernel Configuration System */
 
@@ -48,7 +48,7 @@
 #undef  CONFIG_SPIN_WHEELS
 #undef  CONFIG_NEW_MDB
 #undef  CONFIG_STATIC_TCBS
-#undef  CONFIG_X86_COMPATIBILITY_MODE
+#define CONFIG_X86_COMPATIBILITY_MODE 1
 
 
 /* Debugger */
@@ -90,7 +90,7 @@
 #define CONFIG_X86_PAT 1
 #undef  CONFIG_PPC_BOOKE
 #define CONFIG_IS_64BIT 1
-#undef  CONFIG_MULTI_ARCHITECTURE
+#define CONFIG_MULTI_ARCHITECTURE 1
 #define CONFIG_X86_EM64T 1
 #undef  CONFIG_PPC_CACHE_L1_WRITETHROUGH
 #undef  CONFIG_PPC_TLB_INV_LOCAL

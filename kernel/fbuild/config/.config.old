@@ -2,7 +2,7 @@
 # Automatically generated, don't edit
 #
 # Generated on: 
-# At: Sun, 13 Oct 2019 19:47:35 +0000
+# At: Sun, 13 Oct 2019 19:05:05 +0000
 
 #
 # Pistachio Kernel Configuration System
@@ -66,7 +66,7 @@ CONFIG_DEBUG=y
 # CONFIG_SPIN_WHEELS is not set
 # CONFIG_NEW_MDB is not set
 # CONFIG_STATIC_TCBS is not set
-CONFIG_X86_COMPATIBILITY_MODE=y
+# CONFIG_X86_COMPATIBILITY_MODE is not set
 
 
 #
@@ -118,7 +118,7 @@ CONFIG_X86_HTT=y
 CONFIG_X86_PAT=y
 # CONFIG_PPC_BOOKE is not set
 CONFIG_IS_64BIT=y
-CONFIG_MULTI_ARCHITECTURE=y
+# CONFIG_MULTI_ARCHITECTURE is not set
 CONFIG_X86_EM64T=y
 # CONFIG_PPC_CACHE_L1_WRITETHROUGH is not set
 # CONFIG_PPC_TLB_INV_LOCAL is not set
