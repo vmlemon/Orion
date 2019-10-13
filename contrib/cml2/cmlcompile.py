@@ -512,18 +512,19 @@ def parse(input, baton):
 	compstate.bool_tests.append((guard, input.infile, input.lineno))
 
 	elif leader.type == "menu":
-	    menusym = intern_symbol(input, None, ('bool', 'menu', 'choices'), record=1)
-            menusym.type = "menu"
-	    list = parse_symbol_tree(input)
-            #print "Adding %s to %s" % (list, menusym.name)
-            # Add and validate items
-            menusym.items += list
-            for symbol in list:
-                if symbol.menu:
-                    input.complain("symbol %s in %s occurs in another menu (%s)"
-				       % (symbol.name, menusym.name, symbol.menu.name))
-                else:
-                    symbol.menu = menusym
+		menusym = intern_symbol(input, None, ('bool', 'menu', 'choices'), record=1)
+		menusym.type = "menu"
+		list = parse_symbol_tree(input)
+		#print "Adding %s to %s" % (list, menusym.name)
+		# Add and validate items
+		menusym.items += list
+		for symbol in list:
+			if symbol.menu:
+				input.complain("symbol %s in %s occurs in another menu (%s)" 
+					% (symbol.name, menusym.name, symbol.menu.name))
+		else:
+			symbol.menu = menusym
+
 	elif leader.type == "choices":
 	    menusym = intern_symbol(input, None, ('bool', 'menu', 'choices'), record=1)
             menusym.type = "choices"
