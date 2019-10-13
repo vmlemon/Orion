@@ -82,13 +82,14 @@ class Token:
 		self.attr = attr
 		if compstate.debug > 1:
 			print("CML token: ", self)
-    def __repr__(self):
-        if self.type == "EOF":
-            return "EOF"
-        elif self.attr is not None:
-            return self.type + "=" + `self.attr`
-        else:
-            return self.type
+			
+	def __repr__(self):
+		if self.type == "EOF":
+			return "EOF"
+		elif self.attr is not None:
+			return self.type + "=" + `self.attr`
+		else:
+			return self.type
     def __cmp__(self, other):
         if isinstance(other, Token):
             typecmp = cmp(self.type, other.type)
