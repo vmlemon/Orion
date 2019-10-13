@@ -10,9 +10,9 @@ import sys
 if (sys.version_info > (3, 0)):
         print("Python 3 support is experimental, and is not guaranteed to work.")
         
-else if sys.version[0] < '2':
-    print "Python 2.0 or later is required for this program."
-    raise SystemExit, 1
+if (sys.version_info < (2, 0)):
+    print ("Python 2.0 or later is required for this program.")
+    raise SystemExit(1)
 
 import os, string, getopt, cmd, re, time
 import cml, cmlsystem, webbrowser
