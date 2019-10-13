@@ -90,17 +90,18 @@ class Token:
 			return(self.type + "=" + self.attr)
 		else:
 			return(self.type)
-    def __cmp__(self, other):
-        if isinstance(other, Token):
-            typecmp = cmp(self.type, other.type)
-            if typecmp or not self.attr:
-                return typecmp
-            else:
-                return cmp(self.attr, other.attr)
-        else:
-            return cmp(self.type, other)
-    def __getitem__(self, i):
-        raise IndexError
+	def __cmp__(self, other):
+		if isinstance(other, Token):
+			typecmp = cmp(self.type, other.type)
+		if typecmp or not self.attr:
+			return typecmp
+		else:
+			return cmp(self.attr, other.attr)
+		else:
+			return cmp(self.type, other)
+		
+	def __getitem__(self, i):
+		raise IndexError
 
 class lexwrapper(shlex.shlex):
     "Lexer subclass that returns Tokens with type-annotation information."
