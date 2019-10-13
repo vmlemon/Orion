@@ -76,11 +76,11 @@ _atoms = ("trit", "string", "decimal", "hexadecimal")
 #_suffixes = ("&", "?", "%", "@", "$")
 
 class Token:
-    "CML2's internal token type."
-    def __init__(self, type, attr=None):
-	self.type = type
-	self.attr = attr
-	if compstate.debug > 1: print "CML token: ", `self`
+	"CML2's internal token type."
+	def __init__(self, type, attr=None):
+		self.type = type
+		self.attr = attr
+		if compstate.debug > 1: print "CML token: ", `self`
     def __repr__(self):
         if self.type == "EOF":
             return "EOF"
