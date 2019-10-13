@@ -86,7 +86,7 @@ void pgent_t::smp_sync(space_t * space, pgsize_e pgsize)
 	if (!is_cpulocal(space, size_1g) && 
 	    (this - idx() == space->get_top_pdir(space->data.reference_ptab)->get_kernel_pdp_pgent()))
 	{
-	    ASSERT(space->get_top_pdir(space->data.reference_ptab)->get_kernel_pdp());
+	    ASSERT(DEBUG, space->get_top_pdir(space->data.reference_ptab)->get_kernel_pdp());
 	    
 	    for (cpuid_t cpu = 0; cpu < cpu_t::count; cpu++)
 		if (cpu != space->data.reference_ptab && space->get_top_pdir(cpu) &&
