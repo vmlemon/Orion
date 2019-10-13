@@ -87,9 +87,9 @@ class Token:
 		if self.type == "EOF":
 			return "EOF"
 		elif self.attr is not None:
-			return self.type + "=" + `self.attr`
+			return(self.type + "=" + self.attr)
 		else:
-			return self.type
+			return(self.type)
     def __cmp__(self, other):
         if isinstance(other, Token):
             typecmp = cmp(self.type, other.type)
