@@ -1,0 +1,372 @@
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/space.cc:38:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/space.cc:38:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/space.cc:38:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/space.cc:38:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/space.cc:38:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/space.cc:38:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/exception.cc:39:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/exception.cc:39:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/exception.cc:39:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/exception.cc:39:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/exception.cc:39:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/exception.cc:39:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/init.cc:38:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/init.cc:38:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/init.cc:38:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/init.cc:38:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/init.cc:38:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/init.cc:38:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/init.cc:52:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/init.cc:52:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/init.cc:52:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/init.cc:52:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/init.cc:54:
+/root/Orion/kernel/src/glue/v4-x86/x64/init.cc:196:74: error: too few arguments provided to function-like macro invocation
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/user.cc:34:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/user.cc:34:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/user.cc:34:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/user.cc:34:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/user.cc:34:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/user.cc:34:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/syscalls.cc:36:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/syscalls.cc:36:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/syscalls.cc:36:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/syscalls.cc:38:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/syscalls.cc:38:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/syscalls.cc:38:
+/root/Orion/kernel/src/glue/v4-x86/x64/syscalls.cc:137:14: error: too few arguments provided to function-like macro invocation
+In file included from /root/Orion/kernel/src/generic/linear_ptab_walker.cc:38:
+In file included from /root/Orion/kernel/src/generic/linear_ptab_walker.cc:38:
+In file included from /root/Orion/kernel/src/generic/linear_ptab_walker.cc:38:
+In file included from /root/Orion/kernel/src/generic/linear_ptab_walker.cc:38:
+In file included from /root/Orion/kernel/src/generic/linear_ptab_walker.cc:38:
+In file included from /root/Orion/kernel/src/generic/linear_ptab_walker.cc:38:
+In file included from /root/Orion/kernel/src/generic/mapping.cc:38:
+In file included from /root/Orion/kernel/src/generic/mapping.cc:38:
+In file included from /root/Orion/kernel/src/generic/mapping.cc:38:
+In file included from /root/Orion/kernel/src/generic/mapping.cc:38:
+In file included from /root/Orion/kernel/src/generic/mapping.cc:38:
+In file included from /root/Orion/kernel/src/generic/mapping.cc:38:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/x32comp/syscalls.cc:36:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/x32comp/syscalls.cc:36:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/x32comp/syscalls.cc:36:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/x32comp/syscalls.cc:36:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/x32comp/syscalls.cc:36:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/x32comp/syscalls.cc:36:
+/root/Orion/kernel/src/glue/v4-x86/x64/x32comp/syscalls.cc:118:15: error: too few arguments provided to function-like macro invocation
+In file included from /root/Orion/kernel/kdb/arch/x86/x64/x86.cc:45:
+In file included from /root/Orion/kernel/kdb/generic/linear_ptab_dump.cc:39:
+In file included from /root/Orion/kernel/kdb/generic/linear_ptab_dump.cc:39:
+In file included from /root/Orion/kernel/kdb/generic/linear_ptab_dump.cc:39:
+In file included from /root/Orion/kernel/kdb/generic/linear_ptab_dump.cc:39:
+In file included from /root/Orion/kernel/kdb/generic/linear_ptab_dump.cc:39:
+In file included from /root/Orion/kernel/kdb/generic/linear_ptab_dump.cc:39:
+In file included from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+In file included from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+In file included from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+In file included from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+In file included from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+In file included from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+In file included from /root/Orion/kernel/src/generic/tracebuffer.cc:88:
+In file included from /root/Orion/kernel/src/generic/tracebuffer.cc:88:
+In file included from /root/Orion/kernel/src/generic/tracebuffer.cc:88:
+In file included from /root/Orion/kernel/src/generic/tracebuffer.cc:88:
+In file included from /root/Orion/kernel/src/platform/generic/intctrl-apic.cc:34:
+In file included from /root/Orion/kernel/src/platform/generic/intctrl-apic.cc:34:
+In file included from /root/Orion/kernel/src/platform/generic/intctrl-apic.cc:34:
+In file included from /root/Orion/kernel/src/platform/generic/intctrl-apic.cc:34:
+In file included from /root/Orion/kernel/src/platform/generic/intctrl-apic.cc:34:
+In file included from /root/Orion/kernel/src/platform/generic/intctrl-apic.cc:34:
+In file included from /root/Orion/kernel/src/platform/generic/intctrl-apic.cc:43:
+In file included from /root/Orion/kernel/src/platform/generic/intctrl-apic.cc:45:
+In file included from /root/Orion/kernel/src/platform/generic/intctrl-apic.cc:45:
+In file included from /root/Orion/kernel/src/platform/generic/intctrl-apic.cc:45:
+In file included from /root/Orion/kernel/src/platform/generic/intctrl-apic.cc:45:
+/root/Orion/kernel/src/platform/generic/intctrl-apic.cc:127:38: error: too few arguments provided to function-like macro invocation
+/root/Orion/kernel/src/platform/generic/intctrl-apic.cc:470:33: error: too few arguments provided to function-like macro invocation
+/root/Orion/kernel/src/platform/generic/intctrl-apic.cc:482:33: error: too few arguments provided to function-like macro invocation
+/root/Orion/kernel/src/platform/generic/intctrl-apic.cc:593:35: error: too few arguments provided to function-like macro invocation
+In file included from /root/Orion/kernel/src/api/v4/exregs.cc:35:
+In file included from /root/Orion/kernel/src/api/v4/exregs.cc:35:
+In file included from /root/Orion/kernel/src/api/v4/exregs.cc:35:
+In file included from /root/Orion/kernel/src/api/v4/exregs.cc:35:
+In file included from /root/Orion/kernel/src/api/v4/exregs.cc:35:
+In file included from /root/Orion/kernel/src/api/v4/exregs.cc:35:
+/root/Orion/kernel/src/api/v4/exregs.cc:308:40: error: too few arguments provided to function-like macro invocation
+In file included from /root/Orion/kernel/src/api/v4/ipc.cc:46:
+In file included from /root/Orion/kernel/src/api/v4/ipc.cc:46:
+In file included from /root/Orion/kernel/src/api/v4/ipc.cc:46:
+In file included from /root/Orion/kernel/src/api/v4/ipc.cc:46:
+In file included from /root/Orion/kernel/src/api/v4/ipc.cc:46:
+In file included from /root/Orion/kernel/src/api/v4/ipc.cc:46:
+In file included from /root/Orion/kernel/src/api/v4/ipc.cc:49:
+In file included from /root/Orion/kernel/src/api/v4/ipc.cc:49:
+In file included from /root/Orion/kernel/src/api/v4/ipc.cc:49:
+In file included from /root/Orion/kernel/src/api/v4/ipc.cc:49:
+/root/Orion/kernel/src/api/v4/ipc.cc:253:48: error: too few arguments provided to function-like macro invocation
+In file included from /root/Orion/kernel/src/api/v4/ipcx.cc:36:
+In file included from /root/Orion/kernel/src/api/v4/ipcx.cc:36:
+In file included from /root/Orion/kernel/src/api/v4/ipcx.cc:36:
+In file included from /root/Orion/kernel/src/api/v4/ipcx.cc:36:
+In file included from /root/Orion/kernel/src/api/v4/ipcx.cc:36:
+In file included from /root/Orion/kernel/src/api/v4/ipcx.cc:36:
+In file included from /root/Orion/kernel/src/api/v4/thread.cc:36:
+In file included from /root/Orion/kernel/src/api/v4/thread.cc:36:
+In file included from /root/Orion/kernel/src/api/v4/thread.cc:36:
+In file included from /root/Orion/kernel/src/api/v4/thread.cc:36:
+In file included from /root/Orion/kernel/src/api/v4/thread.cc:36:
+In file included from /root/Orion/kernel/src/api/v4/thread.cc:36:
+In file included from /root/Orion/kernel/src/api/v4/thread.cc:38:
+In file included from /root/Orion/kernel/src/api/v4/thread.cc:38:
+In file included from /root/Orion/kernel/src/api/v4/thread.cc:38:
+In file included from /root/Orion/kernel/src/api/v4/thread.cc:38:
+/root/Orion/kernel/src/api/v4/thread.cc:921:35: error: too many arguments provided to function-like macro invocation
+In file included from /root/Orion/kernel/src/api/v4/schedule.cc:35:
+In file included from /root/Orion/kernel/src/api/v4/schedule.cc:35:
+In file included from /root/Orion/kernel/src/api/v4/schedule.cc:35:
+In file included from /root/Orion/kernel/src/api/v4/schedule.cc:35:
+In file included from /root/Orion/kernel/src/api/v4/schedule.cc:35:
+In file included from /root/Orion/kernel/src/api/v4/schedule.cc:35:
+In file included from /root/Orion/kernel/src/api/v4/schedule.cc:37:
+In file included from /root/Orion/kernel/src/api/v4/schedule.cc:37:
+In file included from /root/Orion/kernel/src/api/v4/schedule.cc:37:
+In file included from /root/Orion/kernel/src/api/v4/schedule.cc:37:
+/root/Orion/kernel/src/api/v4/schedule.cc:479:24: error: too many arguments provided to function-like macro invocation
+/root/Orion/kernel/src/api/v4/schedule.cc:488:24: error: too many arguments provided to function-like macro invocation
+/root/Orion/kernel/src/api/v4/schedule.cc:528:7: error: too many arguments provided to function-like macro invocation
+In file included from /root/Orion/kernel/src/api/v4/space.cc:39:
+In file included from /root/Orion/kernel/src/api/v4/space.cc:39:
+In file included from /root/Orion/kernel/src/api/v4/space.cc:39:
+In file included from /root/Orion/kernel/src/api/v4/space.cc:39:
+In file included from /root/Orion/kernel/src/api/v4/space.cc:39:
+In file included from /root/Orion/kernel/src/api/v4/space.cc:39:
+/root/Orion/kernel/src/api/v4/space.cc:154:23: error: too few arguments provided to function-like macro invocation
+In file included from /root/Orion/kernel/src/api/v4/interrupt.cc:38:
+In file included from /root/Orion/kernel/src/api/v4/interrupt.cc:38:
+In file included from /root/Orion/kernel/src/api/v4/interrupt.cc:38:
+In file included from /root/Orion/kernel/src/api/v4/interrupt.cc:38:
+In file included from /root/Orion/kernel/src/api/v4/interrupt.cc:38:
+In file included from /root/Orion/kernel/src/api/v4/interrupt.cc:38:
+In file included from /root/Orion/kernel/src/api/v4/interrupt.cc:40:
+In file included from /root/Orion/kernel/src/api/v4/interrupt.cc:40:
+In file included from /root/Orion/kernel/src/api/v4/interrupt.cc:40:
+In file included from /root/Orion/kernel/src/api/v4/interrupt.cc:40:
+In file included from /root/Orion/kernel/src/api/v4/processor.cc:38:
+In file included from /root/Orion/kernel/src/api/v4/processor.cc:38:
+In file included from /root/Orion/kernel/src/api/v4/processor.cc:38:
+In file included from /root/Orion/kernel/src/glue/v4-x86/exception.cc:19:
+In file included from /root/Orion/kernel/src/glue/v4-x86/exception.cc:19:
+In file included from /root/Orion/kernel/src/glue/v4-x86/exception.cc:19:
+In file included from /root/Orion/kernel/src/glue/v4-x86/exception.cc:19:
+In file included from /root/Orion/kernel/src/glue/v4-x86/exception.cc:19:
+In file included from /root/Orion/kernel/src/glue/v4-x86/exception.cc:19:
+In file included from /root/Orion/kernel/src/glue/v4-x86/space.cc:20:
+In file included from /root/Orion/kernel/src/glue/v4-x86/space.cc:20:
+In file included from /root/Orion/kernel/src/glue/v4-x86/space.cc:20:
+In file included from /root/Orion/kernel/src/glue/v4-x86/space.cc:20:
+In file included from /root/Orion/kernel/src/glue/v4-x86/space.cc:20:
+In file included from /root/Orion/kernel/src/glue/v4-x86/space.cc:20:
+/root/Orion/kernel/src/glue/v4-x86/space.cc:100:16: error: too few arguments provided to function-like macro invocation
+/root/Orion/kernel/src/glue/v4-x86/space.cc:121:15: error: too few arguments provided to function-like macro invocation
+/root/Orion/kernel/src/glue/v4-x86/space.cc:131:38: error: too few arguments provided to function-like macro invocation
+/root/Orion/kernel/src/glue/v4-x86/space.cc:148:13: error: too few arguments provided to function-like macro invocation
+/root/Orion/kernel/src/glue/v4-x86/space.cc:163:17: error: too few arguments provided to function-like macro invocation
+/root/Orion/kernel/src/glue/v4-x86/space.cc:198:40: error: too few arguments provided to function-like macro invocation
+/root/Orion/kernel/src/glue/v4-x86/space.cc:245:47: error: too few arguments provided to function-like macro invocation
+/root/Orion/kernel/src/glue/v4-x86/space.cc:256:15: error: too few arguments provided to function-like macro invocation
+/root/Orion/kernel/src/glue/v4-x86/space.cc:376:15: error: too few arguments provided to function-like macro invocation
+/root/Orion/kernel/src/glue/v4-x86/space.cc:377:19: error: too few arguments provided to function-like macro invocation
+/root/Orion/kernel/src/glue/v4-x86/space.cc:378:68: error: too few arguments provided to function-like macro invocation
+/root/Orion/kernel/src/glue/v4-x86/space.cc:413:68: error: too few arguments provided to function-like macro invocation
+/root/Orion/kernel/src/glue/v4-x86/space.cc:708:21: error: too few arguments provided to function-like macro invocation
+In file included from /root/Orion/kernel/src/glue/v4-x86/init.cc:39:
+In file included from /root/Orion/kernel/src/glue/v4-x86/init.cc:40:
+In file included from /root/Orion/kernel/src/glue/v4-x86/init.cc:40:
+In file included from /root/Orion/kernel/src/glue/v4-x86/init.cc:40:
+In file included from /root/Orion/kernel/src/glue/v4-x86/init.cc:40:
+In file included from /root/Orion/kernel/src/glue/v4-x86/init.cc:49:
+In file included from /root/Orion/kernel/src/glue/v4-x86/init.cc:49:
+In file included from /root/Orion/kernel/src/glue/v4-x86/init.cc:49:
+In file included from /root/Orion/kernel/src/glue/v4-x86/init.cc:49:
+In file included from /root/Orion/kernel/src/glue/v4-x86/init.cc:49:
+In file included from /root/Orion/kernel/src/glue/v4-x86/init.cc:49:
+In file included from /root/Orion/kernel/src/glue/v4-x86/resources.cc:13:
+In file included from /root/Orion/kernel/src/glue/v4-x86/resources.cc:13:
+In file included from /root/Orion/kernel/src/glue/v4-x86/resources.cc:13:
+In file included from /root/Orion/kernel/src/glue/v4-x86/resources.cc:13:
+In file included from /root/Orion/kernel/src/glue/v4-x86/resources.cc:13:
+In file included from /root/Orion/kernel/src/glue/v4-x86/resources.cc:13:
+/root/Orion/kernel/src/glue/v4-x86/resources.cc:142:15: error: too few arguments provided to function-like macro invocation
+/root/Orion/kernel/src/glue/v4-x86/resources.cc:162:35: error: too few arguments provided to function-like macro invocation
+In file included from /root/Orion/kernel/src/glue/v4-x86/idt.cc:39:
+/root/Orion/kernel/src/glue/v4-x86/idt.cc:54:28: error: too few arguments provided to function-like macro invocation
+/root/Orion/kernel/src/glue/v4-x86/idt.cc:72:28: error: too few arguments provided to function-like macro invocation
+In file included from /root/Orion/kernel/src/glue/v4-x86/debug.cc:43:
+In file included from /root/Orion/kernel/src/glue/v4-x86/debug.cc:43:
+In file included from /root/Orion/kernel/src/glue/v4-x86/debug.cc:43:
+In file included from /root/Orion/kernel/src/glue/v4-x86/debug.cc:43:
+In file included from /root/Orion/kernel/src/glue/v4-x86/debug.cc:43:
+In file included from /root/Orion/kernel/src/glue/v4-x86/debug.cc:43:
+/root/Orion/kernel/src/glue/v4-x86/debug.cc:137:49: error: too few arguments provided to function-like macro invocation
+In file included from /root/Orion/kernel/src/glue/v4-x86/cpu.cc:33:
+In file included from /root/Orion/kernel/src/glue/v4-x86/cpu.cc:34:
+In file included from /root/Orion/kernel/src/glue/v4-x86/cpu.cc:34:
+In file included from /root/Orion/kernel/src/glue/v4-x86/cpu.cc:34:
+In file included from /root/Orion/kernel/src/glue/v4-x86/cpu.cc:34:
+In file included from /root/Orion/kernel/src/glue/v4-x86/cpu.cc:34:
+In file included from /root/Orion/kernel/src/glue/v4-x86/cpu.cc:34:
+In file included from /root/Orion/kernel/src/glue/v4-x86/thread.cc:33:
+In file included from /root/Orion/kernel/src/glue/v4-x86/thread.cc:33:
+In file included from /root/Orion/kernel/src/glue/v4-x86/thread.cc:33:
+In file included from /root/Orion/kernel/src/glue/v4-x86/thread.cc:33:
+In file included from /root/Orion/kernel/src/glue/v4-x86/thread.cc:33:
+In file included from /root/Orion/kernel/src/glue/v4-x86/thread.cc:33:
+In file included from /root/Orion/kernel/src/glue/v4-x86/timer-apic.cc:32:
+In file included from /root/Orion/kernel/src/glue/v4-x86/timer-apic.cc:33:
+In file included from /root/Orion/kernel/src/glue/v4-x86/timer-apic.cc:33:
+In file included from /root/Orion/kernel/src/glue/v4-x86/timer-apic.cc:33:
+In file included from /root/Orion/kernel/src/glue/v4-x86/timer-apic.cc:33:
+In file included from /root/Orion/kernel/src/glue/v4-x86/timer-apic.cc:38:
+In file included from /root/Orion/kernel/src/glue/v4-x86/timer-apic.cc:38:
+In file included from /root/Orion/kernel/src/glue/v4-x86/timer-apic.cc:38:
+In file included from /root/Orion/kernel/src/glue/v4-x86/timer-apic.cc:38:
+In file included from /root/Orion/kernel/src/glue/v4-x86/timer-apic.cc:38:
+In file included from /root/Orion/kernel/src/glue/v4-x86/timer-apic.cc:38:
+In file included from /root/Orion/kernel/kdb/generic/bootinfo.cc:37:
+In file included from /root/Orion/kernel/kdb/generic/bootinfo.cc:37:
+In file included from /root/Orion/kernel/kdb/generic/bootinfo.cc:37:
+In file included from /root/Orion/kernel/kdb/generic/bootinfo.cc:37:
+In file included from /root/Orion/kernel/kdb/generic/bootinfo.cc:37:
+In file included from /root/Orion/kernel/kdb/generic/bootinfo.cc:37:
+In file included from /root/Orion/kernel/kdb/generic/entry.cc:35:
+In file included from /root/Orion/kernel/kdb/generic/entry.cc:35:
+In file included from /root/Orion/kernel/kdb/generic/entry.cc:35:
+In file included from /root/Orion/kernel/kdb/generic/entry.cc:35:
+In file included from /root/Orion/kernel/kdb/generic/entry.cc:35:
+In file included from /root/Orion/kernel/kdb/generic/entry.cc:35:
+In file included from /root/Orion/kernel/kdb/generic/memdump.cc:38:
+In file included from /root/Orion/kernel/kdb/generic/memdump.cc:38:
+In file included from /root/Orion/kernel/kdb/generic/memdump.cc:38:
+In file included from /root/Orion/kernel/kdb/generic/memdump.cc:38:
+In file included from /root/Orion/kernel/kdb/generic/memdump.cc:38:
+In file included from /root/Orion/kernel/kdb/generic/memdump.cc:38:
+In file included from /root/Orion/kernel/kdb/generic/print.cc:36:
+In file included from /root/Orion/kernel/kdb/generic/print.cc:36:
+In file included from /root/Orion/kernel/kdb/generic/print.cc:36:
+In file included from /root/Orion/kernel/kdb/generic/print.cc:36:
+In file included from /root/Orion/kernel/kdb/generic/print.cc:36:
+In file included from /root/Orion/kernel/kdb/generic/print.cc:36:
+/root/Orion/kernel/kdb/generic/print.cc:157:17: error: too few arguments provided to function-like macro invocation
+In file included from /root/Orion/kernel/kdb/generic/tracepoints.cc:37:
+In file included from /root/Orion/kernel/kdb/generic/tracepoints.cc:37:
+In file included from /root/Orion/kernel/kdb/generic/tracepoints.cc:37:
+In file included from /root/Orion/kernel/kdb/generic/tracepoints.cc:37:
+In file included from /root/Orion/kernel/kdb/generic/tracepoints.cc:37:
+In file included from /root/Orion/kernel/kdb/generic/tracepoints.cc:37:
+In file included from /root/Orion/kernel/kdb/platform/pc99/io.cc:35:
+In file included from /root/Orion/kernel/kdb/platform/pc99/io.cc:35:
+In file included from /root/Orion/kernel/kdb/platform/pc99/io.cc:35:
+In file included from /root/Orion/kernel/kdb/platform/pc99/io.cc:35:
+In file included from /root/Orion/kernel/kdb/platform/pc99/io.cc:35:
+In file included from /root/Orion/kernel/kdb/platform/pc99/io.cc:35:
+In file included from /root/Orion/kernel/kdb/platform/pc99/intctrl.cc:36:
+In file included from /root/Orion/kernel/kdb/platform/pc99/intctrl.cc:36:
+In file included from /root/Orion/kernel/kdb/platform/pc99/intctrl.cc:36:
+In file included from /root/Orion/kernel/kdb/platform/pc99/intctrl.cc:36:
+In file included from /root/Orion/kernel/kdb/api/v4/input.cc:37:
+In file included from /root/Orion/kernel/kdb/api/v4/input.cc:37:
+In file included from /root/Orion/kernel/kdb/api/v4/input.cc:37:
+In file included from /root/Orion/kernel/kdb/api/v4/input.cc:37:
+In file included from /root/Orion/kernel/kdb/api/v4/input.cc:37:
+In file included from /root/Orion/kernel/kdb/api/v4/input.cc:37:
+In file included from /root/Orion/kernel/kdb/api/v4/tcb.cc:36:
+In file included from /root/Orion/kernel/kdb/api/v4/tcb.cc:36:
+In file included from /root/Orion/kernel/kdb/api/v4/tcb.cc:36:
+In file included from /root/Orion/kernel/kdb/api/v4/tcb.cc:36:
+In file included from /root/Orion/kernel/kdb/api/v4/tcb.cc:36:
+In file included from /root/Orion/kernel/kdb/api/v4/tcb.cc:36:
+In file included from /root/Orion/kernel/kdb/api/v4/thread.cc:34:
+In file included from /root/Orion/kernel/kdb/api/v4/thread.cc:34:
+In file included from /root/Orion/kernel/kdb/api/v4/thread.cc:34:
+In file included from /root/Orion/kernel/kdb/api/v4/thread.cc:34:
+In file included from /root/Orion/kernel/kdb/api/v4/thread.cc:34:
+In file included from /root/Orion/kernel/kdb/api/v4/thread.cc:34:
+In file included from /root/Orion/kernel/kdb/api/v4/schedule-rr.cc:36:
+In file included from /root/Orion/kernel/kdb/api/v4/schedule-rr.cc:36:
+In file included from /root/Orion/kernel/kdb/api/v4/schedule-rr.cc:36:
+In file included from /root/Orion/kernel/kdb/api/v4/schedule-rr.cc:36:
+In file included from /root/Orion/kernel/kdb/api/v4/schedule-rr.cc:36:
+In file included from /root/Orion/kernel/kdb/api/v4/schedule-rr.cc:36:
+In file included from /root/Orion/kernel/kdb/api/v4/sigma0.cc:39:
+In file included from /root/Orion/kernel/kdb/api/v4/sigma0.cc:39:
+In file included from /root/Orion/kernel/kdb/api/v4/sigma0.cc:39:
+In file included from /root/Orion/kernel/kdb/api/v4/sigma0.cc:39:
+In file included from /root/Orion/kernel/kdb/api/v4/sigma0.cc:39:
+In file included from /root/Orion/kernel/kdb/api/v4/sigma0.cc:39:
+In file included from /root/Orion/kernel/kdb/arch/x86/breakpoints.cc:37:
+In file included from /root/Orion/kernel/kdb/arch/x86/breakpoints.cc:37:
+In file included from /root/Orion/kernel/kdb/arch/x86/breakpoints.cc:37:
+In file included from /root/Orion/kernel/kdb/arch/x86/breakpoints.cc:37:
+In file included from /root/Orion/kernel/kdb/arch/x86/breakpoints.cc:37:
+In file included from /root/Orion/kernel/kdb/arch/x86/breakpoints.cc:37:
+/root/Orion/kernel/kdb/arch/x86/breakpoints.cc:54:19: error: too few arguments provided to function-like macro invocation
+In file included from /root/Orion/kernel/kdb/arch/x86/x86.cc:16:
+In file included from /root/Orion/kernel/kdb/arch/x86/x86.cc:16:
+In file included from /root/Orion/kernel/kdb/arch/x86/x86.cc:16:
+In file included from /root/Orion/kernel/kdb/arch/x86/x86.cc:16:
+In file included from /root/Orion/kernel/kdb/arch/x86/x86.cc:16:
+In file included from /root/Orion/kernel/kdb/arch/x86/x86.cc:16:
+In file included from /root/Orion/kernel/kdb/arch/x86/x86.cc:30:
+/root/Orion/kernel/kdb/arch/x86/x86.cc:76:17: error: too few arguments provided to function-like macro invocation
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/thread.cc:37:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/thread.cc:37:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/thread.cc:37:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/thread.cc:37:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/thread.cc:37:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/thread.cc:37:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/prepost.cc:42:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/prepost.cc:42:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/prepost.cc:42:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/prepost.cc:42:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/prepost.cc:42:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/prepost.cc:42:
+/root/Orion/kernel/kdb/glue/v4-x86/prepost.cc:148:30: error: too few arguments provided to function-like macro invocation
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/readmem.cc:35:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/readmem.cc:35:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/readmem.cc:35:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/readmem.cc:35:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/readmem.cc:35:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/readmem.cc:35:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/resources.cc:33:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/resources.cc:33:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/resources.cc:33:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/resources.cc:33:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/resources.cc:33:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/resources.cc:33:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/addrtranslation.cc:42:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/addrtranslation.cc:42:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/addrtranslation.cc:42:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/addrtranslation.cc:42:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/addrtranslation.cc:42:
+In file included from /root/Orion/kernel/kdb/glue/v4-x86/addrtranslation.cc:42:
+In file included from /root/Orion/kernel/src/glue/v4-x86/asmsyms.cc:35:
+In file included from /root/Orion/kernel/src/glue/v4-x86/asmsyms.cc:35:
+In file included from /root/Orion/kernel/src/glue/v4-x86/asmsyms.cc:35:
+In file included from /root/Orion/kernel/src/glue/v4-x86/asmsyms.cc:35:
+In file included from /root/Orion/kernel/src/glue/v4-x86/asmsyms.cc:35:
+In file included from /root/Orion/kernel/src/glue/v4-x86/asmsyms.cc:35:
+===> src/glue/v4-x86/x64/space.cc
+cd src/glue/v4-x86/x64/ &&  gcc  -nostdinc -I/root/Orion/kernel/fbuild/include -I/root/Orion/kernel/src -I/root/Orion/kernel/src/generic -I/usr/local/lib/gcc9/gcc/x86_64-portbld-freebsd12.0/9.2.0/include/ -Ux64 -Ux86 -Up4 -Upc99 -Uv4 -Urr -D__SUBARCH__=x64 -D__ARCH__=x86 -D__CPU__=p4 -D__PLATFORM__=pc99 -D__API__=v4 -D__SCHED__=rr -imacros /root/Orion/kernel/fbuild/config/config.h -imacros /root/Orion/kernel/src/generic/macros.h -include /root/Orion/kernel/src/generic/config.h  -include /root/Orion/kernel/src/generic/types.h -fno-rtti -fno-builtin  -fomit-frame-pointer -fno-exceptions -Wall -Wno-non-virtual-dtor -Wno-format -O2 -m64 -mcmodel=kernel -mno-red-zone -fno-pie  -fno-stack-protector -lssp  -mno-mmx -mno-sse -mno-sse2 -mno-sse3    -Wconversion  -c /root/Orion/kernel/src/glue/v4-x86/x64/space.cc
+                 from /root/Orion/kernel/src/glue/v4-x86/x64/space.cc:39:
+                 from /root/Orion/kernel/src/glue/v4-x86/x64/space.cc:39:
+                 from /root/Orion/kernel/src/glue/v4-x86/x64/space.cc:39:
+                 from /root/Orion/kernel/src/glue/v4-x86/x64/space.cc:39:
+                 from /root/Orion/kernel/src/glue/v4-x86/x64/space.cc:39:
+                 from /root/Orion/kernel/src/glue/v4-x86/x64/space.cc:39:
+                 from /root/Orion/kernel/src/glue/v4-x86/x64/space.cc:39:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/space.cc:33:
+                 from /root/Orion/kernel/src/glue/v4-x86/x64/space.cc:39:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/space.cc:33:
+                 from /root/Orion/kernel/src/glue/v4-x86/x64/space.cc:39:
+In file included from /root/Orion/kernel/src/glue/v4-x86/x64/space.cc:33:
+                 from /root/Orion/kernel/src/glue/v4-x86/x64/space.cc:39:

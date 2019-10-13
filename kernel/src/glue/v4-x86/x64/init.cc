@@ -193,7 +193,7 @@ void SECTION(SEC_INIT) setup_gdt(x86_tss_t &tss, cpuid_t cpuid)
 #endif /* defined(CONFIG_X86_COMPATIBILITY_MODE) */
 
     /* TODO: Assertion correct ? */
-    ASSERT(unsigned(cpuid * X86_X64_CACHE_LINE_SIZE) < X86_SUPERPAGE_SIZE);
+    ASSERT(DEBUG, unsigned(cpuid * X86_X64_CACHE_LINE_SIZE) < X86_SUPERPAGE_SIZE);
     
     /* Set TSS */
     gdt.tssdsc.set_seg((u64_t) &tss, sizeof(x86_x64_tss_t) - 1);
