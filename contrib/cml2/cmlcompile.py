@@ -218,10 +218,10 @@ class ExpressionError:
         self.args = ("expression error " + explain,)
 
 def parse_atom(input):
-    if compstate.debug >= 2: print "entering parse_atom..."
+    if compstate.debug >= 2: print("entering parse_atom...")
     op = input.lex_token()
     if op.type in _atoms:
-        if compstate.debug >= 2: print "parse_atom returns", op.attr
+        if compstate.debug >= 2: print("parse_atom returns", op.attr)
         return op
     elif op.type == '(':
         sub = parse_expr_inner(input)
@@ -229,42 +229,42 @@ def parse_atom(input):
         if close != ')':
             raise ExpressionError, "while expecting a close paren"
         else:
-            if compstate.debug >= 2: print "parse_atom returns singleton", sub
+            if compstate.debug >= 2: print("parse_atom returns singleton", sub)
             return sub
     elif op.type in _keywords:
         raise ExpressionError, "keyword %s while expecting atom" % op.type
     elif op.type == 'word':
-        if compstate.debug >= 2: print "parse_atom returns", op.attr
+        if compstate.debug >= 2: print("parse_atom returns", op.attr)
         return op
 
 def parse_term(input):
-    if compstate.debug >= 2: print "entering parse_term..."
+    if compstate.debug >= 2: print("entering parse_term...")
     left = parse_atom(input)
     op = input.lex_token()
     if op.type not in _termops:
         input.push_token(op)
-        if compstate.debug >= 2: print "parse_term returns singleton", left
+        if compstate.debug >= 2: print("parse_term returns singleton", left)
         return left
     right = parse_term(input)
     expr = (op.type, left, right)
-    if compstate.debug >= 2: print "parse_term returns", expr
+    if compstate.debug >= 2: print("parse_term returns", expr)
     return expr
 
 def parse_relational(input):
-    if compstate.debug >= 2: print "entering parse_relational..."
+    if compstate.debug >= 2: print("entering parse_relational...")
     left = parse_term(input)
     op = input.lex_token()
     if op.type not in _relops:
         input.push_token(op)
-        if compstate.debug >= 2: print "parse_relational returns singleton", left
+        if compstate.debug >= 2: print("parse_relational returns singleton", left)
         return left
     right = parse_term(input)
     expr = (op.type, left, right)
-    if compstate.debug >= 2: print "parse_relational returns", expr
+    if compstate.debug >= 2: print("parse_relational returns", expr)
     return(op.type, left, right)
 
 def parse_assertion(input):
-    if compstate.debug >= 2: print "entering parse_assertion..."
+    if compstate.debug >= 2: print("entering parse_assertion...")
     negate = input.lex_token()
     if negate.type == 'not':
         return ('not', parse_relational(input))
@@ -272,65 +272,65 @@ def parse_assertion(input):
     return parse_relational(input)
 
 def parse_conjunct(input):
-    if compstate.debug >= 2: print "entering parse_conjunct..."
+    if compstate.debug >= 2: print("entering parse_conjunct...")
     left = parse_assertion(input)
     op = input.lex_token()
     if op.type !=  'and': 
         input.push_token(op)
-        if compstate.debug >= 2: print "parse_conjunct returns singleton", left
+        if compstate.debug >= 2: print("parse_conjunct returns singleton", left)
         return left
     else:
         expr = ('and', left, parse_conjunct(input))
-        if compstate.debug >= 2: print "parse_conjunct returns", expr
+        if compstate.debug >= 2: print("parse_conjunct returns", expr)
         return expr
 
 def parse_disjunct(input):
-    if compstate.debug >= 2: print "entering parse_disjunct..."
+    if compstate.debug >= 2: print("entering parse_disjunct...")
     left = parse_conjunct(input)
     op = input.lex_token()
     if op.type != 'or':
         input.push_token(op)
-        if compstate.debug >= 2: print "parse_disjunct returns singleton", left
+        if compstate.debug >= 2: print("parse_disjunct returns singleton", left)
         return left
     else:
         expr = ('or', left, parse_disjunct(input))
-        if compstate.debug >= 2: print "parse_disjunct returns", expr
+        if compstate.debug >= 2: print("parse_disjunct returns", expr)
         return expr
 
 def parse_factor(input):
     if compstate.debug >= 2:
-        print "entering parse_factor..."
+        print("entering parse_factor...")
     left = parse_disjunct(input)
     op = input.lex_token()
     if op.type != 'implies':
         input.push_token(op)
-        if compstate.debug >= 2: print "parse_factor returns singleton", left
+        if compstate.debug >= 2: print("parse_factor returns singleton", left)
         return left
     else:
         expr = ('implies', left, parse_disjunct(input))
-        if compstate.debug >= 2: print "parse_factor returns", expr
+        if compstate.debug >= 2: print("parse_factor returns", expr)
         return expr
 
 def parse_summand(input):
-    if compstate.debug >= 2: print "entering parse_summand..."
+    if compstate.debug >= 2: print("entering parse_summand...")
     left = parse_factor(input)
     op = input.lex_token()
     if op.type != '*':
         input.push_token(op)
-        if compstate.debug >= 2: print "parse_summand returns singleton", left
+        if compstate.debug >= 2: print("parse_summand returns singleton", left)
         return left
     else:
         expr = ('*', left, parse_expr_inner(input))
-        if compstate.debug >= 2: print "parse_summand returns", expr
+        if compstate.debug >= 2: print("parse_summand returns", expr)
         return expr
 
 def parse_ternary(input):
-    if compstate.debug >= 2: print "entering parse_ternary..."
+    if compstate.debug >= 2: print("entering parse_ternary...")
     guard = parse_summand(input)
     op = input.lex_token()
     if op.type != '?':
         input.push_token(op)
-        if compstate.debug >= 2: print "parse_ternary returns singleton", guard
+        if compstate.debug >= 2: print("parse_ternary returns singleton", guard)
         return guard
     else:
         trueval = parse_summand(input)
@@ -339,7 +339,7 @@ def parse_ternary(input):
             raise ExpressionError("while expecting : in ternary")
         falseval = parse_summand(input)
         expr = ('?', guard, trueval, falseval)
-        if compstate.debug >= 2: print "parse_ternary returns", expr
+        if compstate.debug >= 2: print("parse_ternary returns", expr)
         return expr
 
 def parse_expr_inner(input):
@@ -348,7 +348,7 @@ def parse_expr_inner(input):
     op = input.lex_token()
     if op.type not in ('+', '-'):
         input.push_token(op)
-        if compstate.debug >= 2: print "parse_expr_inner returns singleton", left
+        if compstate.debug >= 2: print("parse_expr_inner returns singleton", left)
         return left
     else:
         expr = (op.type, left, parse_expr_inner(input))
