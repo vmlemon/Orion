@@ -184,17 +184,17 @@ class lexwrapper(shlex.shlex):
 		self.complain(str)
 		sys.exit(1)
 
-    def demand(self, type, attr=None):
-	# Require a given token or token type, croak if we don't get it 
-	tok = self.lex_token()
-	if tok.type == "EOF":
-	    self.croak("premature EOF")
-	elif attr is not None and tok.attr != attr:
-	    self.croak("syntax error, saw `%s' while expecting `%s'" % (tok, attr))
-	elif tok.type != type:
-	    self.croak("syntax error, expecting token of type `%s' (actually saw %s=%s)" % (type, tok.type, tok.attr))
-	else:
-	    return tok.attr
+	def demand(self, type, attr=None):
+		# Require a given token or token type, croak if we don't get it 
+		tok = self.lex_token()
+		if tok.type == "EOF":
+			self.croak("premature EOF")
+		elif attr is not None and tok.attr != attr:
+			self.croak("syntax error, saw `%s' while expecting `%s'" % (tok, attr))
+		elif tok.type != type:
+			self.croak("syntax error, expecting token of type `%s' (actually saw %s=%s)" % (type, tok.type, tok.attr))
+		else:
+			return tok.attr
 
     def sourcehook(self, newfile):
 	# Override the hook in the shlex class
