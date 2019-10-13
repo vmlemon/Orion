@@ -466,7 +466,7 @@ def parse(input, baton):
                 else:
                     input.push_token(tok)
 	    if compstate.debug:
-                print "%d symbols read" % (len(rulebase.dictionary),)
+                print ("%d symbols read" % (len(rulebase.dictionary),))
 	elif leader.type in ("unless", "when"):
 	    guard = parse_expr(input)
             maybe = input.lex_token()
