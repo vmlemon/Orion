@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: */
-/* At: Sun, 13 Oct 2019 23:40:43 +0000 */
+/* At: Sun, 13 Oct 2019 23:51:37 +0000 */
 
 /* Pistachio Kernel Configuration System */
 
@@ -8,8 +8,8 @@
 
 /* Basic Architecture */
 #undef  CONFIG_ARCH_X86
-#undef  CONFIG_ARCH_POWERPC
-#define CONFIG_ARCH_POWERPC64 1
+#define CONFIG_ARCH_POWERPC 1
+#undef  CONFIG_ARCH_POWERPC64
 
 
 /* X86 Processor Architecture */
@@ -31,23 +31,40 @@
 #undef  CONFIG_PLAT_PC99
 
 
+/* Processor Type */
+#define CONFIG_CPU_POWERPC_PPC440 1
+#undef  CONFIG_CPU_POWERPC_IBM750
+#undef  CONFIG_CPU_POWERPC_PPC604
+
+
+/* Platform */
+#undef  CONFIG_PLAT_OFPPC
+#define CONFIG_PLAT_PPC44X 1
+
+
+/* Sub-Platform */
+#define CONFIG_SUBPLAT_440_BGP 1
+#undef  CONFIG_SUBPLAT_440_EBONY
+
+
 /* Platform */
 #undef  CONFIG_PLAT_OFG5
 #undef  CONFIG_PLAT_OFPOWER3
-#define CONFIG_PLAT_OFPOWER4 1
+#undef  CONFIG_PLAT_OFPOWER4
 
 
 /* Processor Type */
 #undef  CONFIG_CPU_POWERPC64_POWER3
 #undef  CONFIG_CPU_POWERPC64_POWER3p
 #undef  CONFIG_CPU_POWERPC64_POWER4
-#define CONFIG_CPU_POWERPC64_POWER4p 1
+#undef  CONFIG_CPU_POWERPC64_POWER4p
 #undef  CONFIG_CPU_POWERPC64_PPC970
 
 
 /* Miscellaneous */
 #define CONFIG_BOOTMEM_PAGES 1024
 
+#undef  CONFIG_SMP
 
 
 /* Kernel */
@@ -55,13 +72,18 @@
 #undef  CONFIG_IPC_FASTPATH
 #define CONFIG_DEBUG 1
 #undef  CONFIG_DEBUG_SYMBOLS
-#undef  CONFIG_STATIC_TCBS
+#define CONFIG_STATIC_TCBS 1
 #undef  CONFIG_PPC64_TRASH_OF
 
 
 /* Debugger */
 
 /* Kernel Debugger Console */
+#undef  CONFIG_KDB_CONS_BGP_JTAG
+#undef  CONFIG_KDB_CONS_BGP_TREE
+#define CONFIG_KDB_CONS_COM 1
+#define CONFIG_KDB_COMPORT 0x0
+#define CONFIG_KDB_COMSPEED 115200
 #undef  CONFIG_KDB_CONS_RTAS
 #define CONFIG_KDB_BOOT_CONS 0
 
@@ -80,26 +102,28 @@
 
 
 /* Code Generator Options */
+#define CONFIG_SYSV_ABI 1
+#define CONFIG_PPC_MULTIWORD_INSTR 1
 
 
 /* Derived symbols */
-#define CONFIG_HAVE_MEMORY_CONTROL 1
+#undef  CONFIG_HAVE_MEMORY_CONTROL
 #undef  CONFIG_X86_PSE
 #define CONFIG_BIGENDIAN 1
-#undef  CONFIG_PPC_MMU_TLB
+#define CONFIG_PPC_MMU_TLB 1
 #undef  CONFIG_X86_SYSENTER
 #undef  CONFIG_X86_PGE
 #undef  CONFIG_X86_FXSR
-#undef  CONFIG_IS_32BIT
+#define CONFIG_IS_32BIT 1
 #undef  CONFIG_X86_HTT
 #undef  CONFIG_X86_PAT
-#undef  CONFIG_PPC_BOOKE
-#define CONFIG_IS_64BIT 1
+#define CONFIG_PPC_BOOKE 1
+#undef  CONFIG_IS_64BIT
 #undef  CONFIG_MULTI_ARCHITECTURE
 #undef  CONFIG_X86_EM64T
-#undef  CONFIG_PPC_CACHE_L1_WRITETHROUGH
-#undef  CONFIG_PPC_TLB_INV_LOCAL
-#undef  CONFIG_PPC_CACHE_ICBI_LOCAL
+#define CONFIG_PPC_CACHE_L1_WRITETHROUGH 1
+#define CONFIG_PPC_TLB_INV_LOCAL 1
+#define CONFIG_PPC_CACHE_ICBI_LOCAL 1
 #undef  CONFIG_X86_SMALL_SPACES_GLOBAL
 #undef  CONFIG_X86_HVM
 #undef  CONFIG_PPC_MMU_SEGMENTS
