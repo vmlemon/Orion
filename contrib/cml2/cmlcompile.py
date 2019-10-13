@@ -105,16 +105,16 @@ class Token:
 		raise IndexError
 
 class lexwrapper(shlex.shlex):
-    "Lexer subclass that returns Tokens with type-annotation information."
-    def __init__(self, stream, endtok=None):
-        self.endtok = endtok
-        # Strictly a speed hack.
-        name = stream.name
-        if endtok:
-            contents = stream
-        else:
-            contents = cStringIO.StringIO(stream.read())
-            stream.close()
+	"Lexer subclass that returns Tokens with type-annotation information."
+	def __init__(self, stream, endtok=None):
+		self.endtok = endtok
+		# Strictly a speed hack.
+		name = stream.name
+	if endtok:
+		contents = stream
+	else:
+		contents = cStringIO.StringIO(stream.read())
+		stream.close()
 	shlex.shlex.__init__(self, contents, name)
 
     def lex_token(self):
