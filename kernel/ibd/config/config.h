@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: tyson-Lenovo-ideapad-120S-14IAP */
-/* At: Wed, 09 Oct 2019 09:06:13 +0000 */
+/* At: Sun, 13 Oct 2019 21:18:46 +0000 */
 /* Linux version 5.0.0-31-generic (buildd@lcy01-amd64-010) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #33-Ubuntu SMP Mon Sep 30 18:51:59 UTC 2019 */
 
 /* Pistachio Kernel Configuration System */
@@ -37,7 +37,7 @@
 #define CONFIG_MAX_IOAPICS 2
 #define CONFIG_APIC_TIMER_TICK 1000
 
-#undef  CONFIG_SMP
+#define CONFIG_SMP 1
 #define CONFIG_SMP_MAX_PROCS 4
 #undef  CONFIG_SMP_IDLE_POLL
 
@@ -48,9 +48,9 @@
 #undef  CONFIG_DEBUG
 #undef  CONFIG_DEBUG_SYMBOLS
 #undef  CONFIG_PERFMON
-#undef  CONFIG_SPIN_WHEELS
+#define CONFIG_SPIN_WHEELS 1
 #undef  CONFIG_NEW_MDB
-#undef  CONFIG_STATIC_TCBS
+#define CONFIG_STATIC_TCBS 1
 #undef  CONFIG_X86_SMALL_SPACES
 #define CONFIG_X86_COMPATIBILITY_MODE 1
 
