@@ -205,9 +205,9 @@ class lexwrapper(shlex.shlex):
 				if type(self.infile) is type("") and not os.path.isabs(newfile):
 					newfile = os.path.join(os.path.dirname(self.infile), newfile)
 			return (newfile, open(newfile, "r"))
-	except IOError:
-		self.complain("I/O error while opening '%s'" % (newfile,))
-		sys.exit(1)
+		except IOError:
+			self.complain("I/O error while opening '%s'" % (newfile,))
+			sys.exit(1)
 	return None	# Appease pychecker
 
 # Parsing
