@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
 """
 configtrans.py -- translate between CML1 and CML2 config formats.
 
