@@ -84,16 +84,16 @@ class CMLSystem(cml.CMLRulebase):
     def clear(self):
         "Clear the runtime value state."
         for entry in self.dictionary.values():
-            entry.iced = 0		# True if it has been frozen
+            entry.iced = 0              # True if it has been frozen
             if entry.type == "choices":
                 entry.menuvalue = entry.default
             else:
                 entry.menuvalue = None
-            entry.bindingcache = []	# Symbol's value stack
+            entry.bindingcache = []     # Symbol's value stack
         self.oldbindings = {}
         self.newbindings = {}
         self.chilled = {}
-        self.touched = []		# Does it have an uncommitted binding?
+        self.touched = []               # Does it have an uncommitted binding?
         self.changes_to_frozen = []     # Frozen change violations
         self.inclusions = []
 
@@ -114,7 +114,7 @@ class CMLSystem(cml.CMLRulebase):
         # Enhance the ConfigSymbol methods to deal with the value state.
         if 'oldeval' not in dir(cml.ConfigSymbol):
             cml.ConfigSymbol.oldeval = cml.ConfigSymbol.eval
-            def _neweval(symbol, debug=0, self=self):	# Not a method!
+            def _neweval(symbol, debug=0, self=self):   # Not a method!
                 value = self.__bindeval(symbol)
                 if value != None:
                     return value
@@ -128,10 +128,10 @@ class CMLSystem(cml.CMLRulebase):
                 elif symbol.is_logical():
                     return cml.n
                 else:
-                    return None	# for menu, choices, and message-valued symbols
+                    return None # for menu, choices, and message-valued symbols
             cml.ConfigSymbol.eval = _neweval
 
-            def _newstr(symbol):		# Not a method!
+            def _newstr(symbol):                # Not a method!
                 res = "%s={" % (symbol.name)
                 res = res + symbol.dump()
                 if symbol.setcount:
@@ -169,14 +169,14 @@ class CMLSystem(cml.CMLRulebase):
             cml.ConfigSymbol.frozen = _frozen
 
         # Extra state for the configuration object
-        self.debug = 0			# Initially, no status logging
-        self.cdepth = 0			# Constraint recursion xdepth
-        self.errout = sys.stderr	# Where to do status logging
-        self.suppressions = 1		# Yes, do visibility checks
-        self.interactive = 1		# Are we doing a file inclusion?
-        self.commits = 0		# Value sets since last save 
-        self.lang = _eng		# Someday we'll support more languages.
-        self.side_effects = []		# Track side effects
+        self.debug = 0                  # Initially, no status logging
+        self.cdepth = 0                 # Constraint recursion xdepth
+        self.errout = sys.stderr        # Where to do status logging
+        self.suppressions = 1           # Yes, do visibility checks
+        self.interactive = 1            # Are we doing a file inclusion?
+        self.commits = 0                # Value sets since last save 
+        self.lang = _eng                # Someday we'll support more languages.
+        self.side_effects = []          # Track side effects
         self.trits_enabled = not self.trit_tie or self.trit_tie.eval()
 
         if rules.version != cml.version:
@@ -212,7 +212,7 @@ class CMLSystem(cml.CMLRulebase):
             # off a primary-symbol cell.
             self.symbol = symbol
             self.value = value
-            self.link = link	# Next link in the primary's side-effect chain
+            self.link = link    # Next link in the primary's side-effect chain
             self.visible = 1
         def __repr__(self):
             return "%s=%s" % (self.symbol.name, self.value)
@@ -395,7 +395,7 @@ class CMLSystem(cml.CMLRulebase):
         errors = ""
         stash = self.interactive
         self.interactive = 0
-        self.side_effects = []	# Not needed if we're using set_symbol below 
+        self.side_effects = []  # Not needed if we're using set_symbol below 
         while 1:
             dobind = 1
             symname = stream.get_token()
@@ -694,7 +694,7 @@ class CMLSystem(cml.CMLRulebase):
             elif (symbol.type =="bool" and value > (v != cml.n)):
                 break
         else:
-            return 1	# Tricky use of for-else
+            return 1    # Tricky use of for-else
         self.debug_emit(2, self.lang["EXCLUDED"] % (`symbol`, `cml.trit(value)`, `ancestor`))
         return 0
 
@@ -721,9 +721,9 @@ class CMLSystem(cml.CMLRulebase):
                     newval = dependvalue
                 elif not self.trits_enabled:
                     newval = cml.y;
-                elif anctype == "bool":	# dependent is trit
+                elif anctype == "bool": # dependent is trit
                     newval = cml.y;
-                elif anctype == "trit":	# dependent is bool
+                elif anctype == "trit": # dependent is bool
                     newval = cml.m;
                 else:
                     newval = dependvalue
@@ -747,12 +747,12 @@ class CMLSystem(cml.CMLRulebase):
                     newval = guardvalue
                 elif not self.trits_enabled:
                     newval = cml.n
-                elif deptype == "trit":		# Ancestor is bool
+                elif deptype == "trit":         # Ancestor is bool
                     newval = guardvalue
-                elif guardvalue == cml.n:	# Ancestor is trit
+                elif guardvalue == cml.n:       # Ancestor is trit
                     newval = guardvalue
                 else:
-                    newval = depvalue		# No change
+                    newval = depvalue           # No change
                 self.__set_symbol_internal(dependent, newval, source, sort=-1)
         # Recurse downwards...
         if dependent.items:
@@ -802,7 +802,7 @@ class CMLSystem(cml.CMLRulebase):
             if baton:
                 baton.twirl("#")
         # Must do this *after* checking freezes
-        self.__bindcommit()		# The magic moment
+        self.__bindcommit()             # The magic moment
         if baton:
             baton.end()
 
@@ -838,7 +838,7 @@ class CMLSystem(cml.CMLRulebase):
             for symbol in commit_set:
                 self.__bindreveal(symbol)
             effects = self.side_effects
-            self.__rollback()		# This will clear self.side_effects
+            self.__rollback()           # This will clear self.side_effects
             return (0, effects, violations)
 
     def __set_symbol_internal(self, symbol, value, source=None, sort=0):
@@ -878,7 +878,7 @@ class CMLSystem(cml.CMLRulebase):
         # because ancestry forcing will often result in the same symbol
         # being changed multiple times in succession from the same source.
         if self.chilled.has_key(symbol) and self.chilled[symbol] != source:
-            self.__bindsymbol(symbol, value, source)	# record for debugging
+            self.__bindsymbol(symbol, value, source)    # record for debugging
             raise "UNSATISFIABLE"
         # Membership in chilled means we should treat the binding as frozen for
         # simplification purposes.  It has to be turned off when the current

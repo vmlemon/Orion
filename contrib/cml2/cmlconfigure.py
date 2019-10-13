@@ -158,7 +158,7 @@ _eng = {
     "TOOLONG":"String is too long to edit.  Use cmlconfigure -t.", 
     "TRIT":"`m' can only be applied to tristates",
     "TTYQUERY":"Type '?' at any prompt for help, 'h' for command help.",
-    "TTYSUMMARY":"		     Command summary:",
+    "TTYSUMMARY":"                   Command summary:",
     "UHELP":"u -- toggle interactive flag.",
     "UNSUPPRESSBUTTON":"Unsuppress",
     "UNKNOWN":"Unknown command %s -- type `h' for a command summary",
@@ -348,7 +348,7 @@ def cgenvalue(symbol):
     elif symbol.type == "message":
         return ""
     elif symbol.type == "menu":
-        return "-->"		# Effective only in menuconfig
+        return "-->"            # Effective only in menuconfig
     elif symbol.type in ("decimal", "string"):
         return str(value)
     elif symbol.type == "hexadecimal":
@@ -383,7 +383,7 @@ class tty_style_base(cmd.Cmd):
             if not configuration.range_check(symbol, value):
                 print lang["OUTOFBOUNDS"] % (value, symbol.range,)
                 return
-	(ok, effects, violations) = configuration.set_symbol(symbol, value, freeze)
+        (ok, effects, violations) = configuration.set_symbol(symbol, value, freeze)
         if effects:
             print lang["EFFECTS"]
             sys.stdout.write(string.join(effects, "\n") + "\n\n")
@@ -391,7 +391,7 @@ class tty_style_base(cmd.Cmd):
             if not interactively_visible(symbol):
                 print lang["INVISOUT"] % symbol.name
         else:
-	    print lang["ROLLBACK"] % (symbol.name, value)
+            print lang["ROLLBACK"] % (symbol.name, value)
             sys.stdout.write(string.join(map(repr, violations), "\n") + "\n")
 
     def page(self, text):
@@ -415,26 +415,26 @@ class tty_style_base(cmd.Cmd):
 
     def __init__(self, config, mybanner):
         cmd.Cmd.__init__(self)
-	self.config = config
+        self.config = config
         if mybanner and configuration.banner.find("%s") > -1:
             self.banner = configuration.banner % mybanner
         elif mybanner:
             self.banner = mybanner
         else:
             self.banner = configuration.banner
-	self.current = configuration.start;
+        self.current = configuration.start;
 
     def do_g(self, line):
-	if configuration.dictionary.has_key(line):
-	    self.current = configuration.dictionary[line]
+        if configuration.dictionary.has_key(line):
+            self.current = configuration.dictionary[line]
             configuration.visit(self.current)
             if not interactively_visible(self.current) and not self.current.frozen():
                 print lang["SUPPRESSOFF"]
                 self.suppressions = 0
-	    if self.current.type in ("menu", "message"):
-		self.skip_to_query(configuration.next_node, 1)
-	else:
-	    print lang["NONEXIST"] % line
+            if self.current.type in ("menu", "message"):
+                self.skip_to_query(configuration.next_node, 1)
+        else:
+            print lang["NONEXIST"] % line
     def do_i(self, line):
         file = string.strip(line)
         try:
@@ -470,11 +470,11 @@ class tty_style_base(cmd.Cmd):
                 return
             else:
                 target = configuration.dictionary[line]
-	if not target.type in ("trit", "bool"):
-	    print lang["YNOTVALID"] % (target.name)
-	else:
-	    self.set_symbol(target, cml.y)
-	return None
+        if not target.type in ("trit", "bool"):
+            print lang["YNOTVALID"] % (target.name)
+        else:
+            self.set_symbol(target, cml.y)
+        return None
     def do_Y(self, line):
         self.do_y(line)
     def do_m(self, line):
@@ -488,13 +488,13 @@ class tty_style_base(cmd.Cmd):
                 return
             else:
                 target = configuration.dictionary[line]
-	if not target.type == "trit":
-	    print lang["MNOTVALID"] % (target.name)
+        if not target.type == "trit":
+            print lang["MNOTVALID"] % (target.name)
         elif not configuration.trits_enabled:
-	    print lang["MNOTVALID"] % (target.name)
-	else:
-	    self.set_symbol(target, cml.m)
-	return None
+            print lang["MNOTVALID"] % (target.name)
+        else:
+            self.set_symbol(target, cml.m)
+        return None
     def do_M(self, line):
         self.do_m(line)
     def do_n(self, line):
@@ -508,22 +508,22 @@ class tty_style_base(cmd.Cmd):
                 return
             else:
                 target = configuration.dictionary[line]
-	if not target.type in ("trit", "bool"):
-	    print lang["NNOTVALID"] % (target.name)
-	else:
-	    self.set_symbol(target, cml.n)
-	return None
+        if not target.type in ("trit", "bool"):
+            print lang["NNOTVALID"] % (target.name)
+        else:
+            self.set_symbol(target, cml.n)
+        return None
     def do_N(self, line):
         self.do_n(line)
     def do_s(self, line):
-	file = string.strip(line)
+        file = string.strip(line)
         failure = configuration.save(file, cml.Baton(lang["SAVESTART"] % file, lang["SAVEEND"]))
         if failure:
             print failure
     def do_x(self, dummy):
-	# Terminate this cmd instance, saving configuration
+        # Terminate this cmd instance, saving configuration
         self.do_s(config)
-	return 1
+        return 1
     def do_C(self, line):
         # Show constraints (all, or all including specified symbol).
         filter = None
@@ -544,23 +544,23 @@ class tty_style_base(cmd.Cmd):
                 print "%s -> %s" % (constraint,cml.display_expression(reduced)[1:-1])
         return 0
     def do_q(self, line):
-	# Terminate this cmd instance, not saving configuration
-	raise SystemExit, 1
+        # Terminate this cmd instance, not saving configuration
+        raise SystemExit, 1
 
     def do_v(self, line):
-	# Set the debug flag
+        # Set the debug flag
         if not line:
             configuration.debug += 1
         else:
             configuration.debug = int(line)
         print lang["VERBOSITY"] % configuration.debug
-	return 0
+        return 0
     def do_e(self, line):
-	# Examine the state of a given symbol
-	symbol = string.strip(line)
-	if configuration.dictionary.has_key(symbol):
-	    entry = configuration.dictionary[symbol]
-	    print entry
+        # Examine the state of a given symbol
+        symbol = string.strip(line)
+        if configuration.dictionary.has_key(symbol):
+            entry = configuration.dictionary[symbol]
+            print entry
             if entry.constraints:
                 print lang["CONSTRAINTS"]
                 for wff in entry.constraints:
@@ -581,9 +581,9 @@ class tty_style_base(cmd.Cmd):
                 print lang["UNSAVEABLE"]
             if entry.setcount:
                 print lang["SETCOUNT"] % entry.setcount
-	else:
-	    print lang["NOSUCHAS"], symbol 
-	return 0
+        else:
+            print lang["NOSUCHAS"], symbol 
+        return 0
     def do_E(self, dummy):
         # Dump the state of the bindings stack
         print configuration.binddump()
@@ -595,31 +595,31 @@ class tty_style_base(cmd.Cmd):
             print lang["SUPPRESSON"]
         else:
             print lang["SUPPRESSOFF"]
-	return 0
+        return 0
     def help_e(self):
-	print lang["EHELP"]
+        print lang["EHELP"]
     def help_E(self):
-	print lang["ECAPHELP"]
+        print lang["ECAPHELP"]
     def help_g(self):
-	print lang["GHELP"]
+        print lang["GHELP"]
     def help_i(self):
-	print lang["IHELP"]
+        print lang["IHELP"]
     def help_I(self):
-	print lang["ICAPHELP"]
+        print lang["ICAPHELP"]
     def help_y(self):
-	print lang["YHELP"]
+        print lang["YHELP"]
     def help_m(self):
-	print lang["MHELP"]
+        print lang["MHELP"]
     def help_n(self):
-	print lang["NHELP"]
+        print lang["NHELP"]
     def help_s(self):
-	print lang["SHELP"]
+        print lang["SHELP"]
     def help_q(self):
-	print lang["QHELP"]
+        print lang["QHELP"]
     def help_v(self):
-	print lang["VHELP"]
+        print lang["VHELP"]
     def help_x(self):
-	print lang["XHELP"]
+        print lang["XHELP"]
     def do_help(self, line):
         line = line.strip()
         if configuration.dictionary.has_key(line):
@@ -627,33 +627,33 @@ class tty_style_base(cmd.Cmd):
         else:
             target = self.current
         help = target.help()
-	if help:
-	    self.page(help)
-	else:
-	    print lang["NOHELP"] % (self.current.name,)
+        if help:
+            self.page(help)
+        else:
+            print lang["NOHELP"] % (self.current.name,)
 
 class tty_style_menu(tty_style_base):
     "Interface for configuring with line-oriented commands."
     def skip_to_query(self, function, showbase=0):
         configuration.debug_emit(2, lang["SKIPCALLED"] % (self.current.name,))
         if showbase:
-	    if self.current.type == "menu":
-		self.menu_banner(self.current)
+            if self.current.type == "menu":
+                self.menu_banner(self.current)
                 configuration.visit(self.current)
-	while 1:
-	    self.current = function(self.current)
+        while 1:
+            self.current = function(self.current)
             if self.current == configuration.start:
                 break;
             elif self.current.is_symbol() and self.current.frozen():
                 # sys.stdout.write(self.generate_prompt(self.current) + lang["FREEZELABEL"] + "\n")
                 continue
-	    elif not interactively_visible(self.current):
-		continue
-	    elif self.current.type in ("menu", "choices"):
-		self.menu_banner(self.current)
+            elif not interactively_visible(self.current):
+                continue
+            elif self.current.type in ("menu", "choices"):
+                self.menu_banner(self.current)
                 configuration.visit(self.current)
-	    if not self.current.type in ("message", "menu"):
-		break;
+            if not self.current.type in ("message", "menu"):
+                break;
         configuration.debug_emit(2, lang["SKIPEXIT"] % (self.current.name,))
         if self.current == configuration.start:
             self.do_s(config)
@@ -663,7 +663,7 @@ class tty_style_menu(tty_style_base):
         sys.stdout.write("*\n* %s: %s\n*\n" % (menu.name, menu.prompt))
 
     def generate_prompt(self, symbol):
-	leader = "   " * symbol.depth
+        leader = "   " * symbol.depth
         genpart = cgenvalue(symbol)
         if symbol.help and not symbol.frozen():
             havehelp = "?"
@@ -671,8 +671,8 @@ class tty_style_menu(tty_style_base):
             havehelp = ""
         if configuration.is_new(symbol):
             genpart += " " + lang["NEW"]
-	if symbol.type in ("bool", "trit"):
-	    return leader+"%s: %s %s%s: " % (symbol.name, cgenprompt(symbol), genpart, havehelp)
+        if symbol.type in ("bool", "trit"):
+            return leader+"%s: %s %s%s: " % (symbol.name, cgenprompt(symbol), genpart, havehelp)
         elif symbol.enum:
             dflt = cml.evaluate(symbol, debug)
             if symbol.frozen():
@@ -685,12 +685,12 @@ class tty_style_menu(tty_style_base):
                     selected = "(" + label + ")"
             if not symbol.frozen():
                 p = p + leader + "%2d: %s\n" % (value, label)
-	    return p + leader + "%s: %s %s%s: " % (symbol.name, cgenprompt(symbol),selected, havehelp)
+            return p + leader + "%s: %s %s%s: " % (symbol.name, cgenprompt(symbol),selected, havehelp)
 
-	elif symbol.type in ("decimal", "hexadecimal", "string"):
+        elif symbol.type in ("decimal", "hexadecimal", "string"):
             dflt = cml.evaluate(symbol, debug)
-	    return leader + "%s: %s (%s)%s: "  % (symbol.name, cgenprompt(symbol), cgenvalue(symbol), havehelp)
-	elif symbol.type == "choices":
+            return leader + "%s: %s (%s)%s: "  % (symbol.name, cgenprompt(symbol), cgenvalue(symbol), havehelp)
+        elif symbol.type == "choices":
             if symbol.frozen():
                 p = ""
             else:
@@ -703,7 +703,7 @@ class tty_style_menu(tty_style_base):
                     p = p + leader + "%2d: %s%s%s\n" % (index, v.name, " " * (32 - len(v.name)), v.prompt)
                 if v.eval():
                     selected = v.name
-	    return p + leader + "%s: %s (%s)%s: " % (symbol.name, cgenprompt(symbol),selected, havehelp)
+            return p + leader + "%s: %s (%s)%s: " % (symbol.name, cgenprompt(symbol),selected, havehelp)
 
     def __init__(self, config=None, mybanner=""):
         tty_style_base.__init__(self, config=config, mybanner=mybanner)
@@ -713,7 +713,7 @@ class tty_style_menu(tty_style_base):
 
     def do_p(self, dummy):
         self.skip_to_query(configuration.previous_node)
-	return None
+        return None
 
     def do_y(self, line):
         tty_style_base.do_y(self, line)
@@ -736,23 +736,23 @@ class tty_style_menu(tty_style_base):
                                    "QHELP", "XHELP", "TTYHELP")), "\n"))
     def default(self, line):
         v = string.strip(line)
-	if self.current.type == 'choices':
-	    try:
-		ind = string.atoi(v)
-	    except ValueError:
-		ind = -1
-	    if ind <= 0 or ind > len(self.current.items):
-		print lang["RADIOBAD"]
-	    else:
-		# print lang["TTYSETTING"] % (`self.current.items[ind - 1]`)
-		self.set_symbol(self.current.items[ind - 1], cml.y)
-		self.skip_to_query(configuration.next_node)
+        if self.current.type == 'choices':
+            try:
+                ind = string.atoi(v)
+            except ValueError:
+                ind = -1
+            if ind <= 0 or ind > len(self.current.items):
+                print lang["RADIOBAD"]
+            else:
+                # print lang["TTYSETTING"] % (`self.current.items[ind - 1]`)
+                self.set_symbol(self.current.items[ind - 1], cml.y)
+                self.skip_to_query(configuration.next_node)
         elif self.current.type in ("bool", "trit"):
-	    print lang["CANNOTSET"]
-	else:
-	    self.set_symbol(self.current, v)
-	    self.skip_to_query(configuration.next_node)
-	return None
+            print lang["CANNOTSET"]
+        else:
+            self.set_symbol(self.current, v)
+            self.skip_to_query(configuration.next_node)
+        return None
 
     def emptyline(self):
         if self.current and self.current.type == "choices":
@@ -760,16 +760,16 @@ class tty_style_menu(tty_style_base):
                 # print lang["TTYSETTING"] % (`self.current.default`)
                 self.set_symbol(self.current.default, cml.y)
         self.skip_to_query(configuration.next_node)
-	return 0
+        return 0
 
     def help_p(self):
-	print lang["PHELP"]
+        print lang["PHELP"]
 
     def postcmd(self, stop, dummy):
-	if stop:
-	    return stop
+        if stop:
+            return stop
         self.prompt = self.generate_prompt(self.current)
-	return None
+        return None
 
 class debugger_style_menu(tty_style_base):
     "Ruleset-debugger class."
@@ -845,17 +845,17 @@ class debugger_style_menu(tty_style_base):
     def do_c(self, line):
         print "c", line
         configuration.clear()
-	return None
+        return None
 
     def do_p(self, line):
         print "p", line
         configuration.save(sys.stdout, baton=None, all=1)
-	return None
+        return None
 
     def do_u(self, line):
         print "u", line
         configuration.interactive = not configuration.interactive
-	return None
+        return None
 
     def do_h(self, line):
         print string.join(map(lambda x: lang[x],
@@ -875,7 +875,7 @@ class debugger_style_menu(tty_style_base):
 
     def emptyline(self):
         print ""
-	return 0
+        return 0
 
     def do_help(self, line):
         if not line:
@@ -885,16 +885,16 @@ class debugger_style_menu(tty_style_base):
         return None
 
     def help_f(self):
-	print lang["FHELP"]
+        print lang["FHELP"]
 
     def help_c(self):
-	print lang["CHELP"]
+        print lang["CHELP"]
 
     def help_V(self):
-	print lang["VCAPHELP"]
+        print lang["VCAPHELP"]
 
     def help_p(self):
-	print lang["PDHELP"]
+        print lang["PDHELP"]
 
     def do_EOF(self, line):
         print ""
@@ -1119,7 +1119,7 @@ class WindowBaton:
 class curses_style_menu:
     "Command interpreter for line-oriented configurator."
     input_nmatch = re.compile(r">>>.*\(([0-9]+)\)$")
-    valwidth = 8	# This is a constant
+    valwidth = 8        # This is a constant
 
     def __init__(self, stdscr, config, mybanner):
         if mybanner and configuration.banner.find("%s") > -1:
@@ -1194,7 +1194,7 @@ class curses_style_menu:
             configuration.errout.write("***" + lang[instructions] + "\n")
             configuration.errout.write(string.join(msglist, "\n"))
         msgwidth = 0
-        pad = 2		# constant, must be >= 1
+        pad = 2         # constant, must be >= 1
         msgparts = []
         for line in msglist:
             unemitted = line
@@ -1471,7 +1471,7 @@ class curses_style_menu:
             elif operand.type == "trit":
                 self.set_symbol(operand, cml.m)
             elif operand.type == "bool":
-                self.set_symbol(operand, cml.y)	# Shortcut from old menuconfig
+                self.set_symbol(operand, cml.y) # Shortcut from old menuconfig
             else:
                 self.help_popup("PRESSANY", (lang["TRIT"],))
             recompute = 1
@@ -1481,7 +1481,7 @@ class curses_style_menu:
             if not self.in_menu():
                 self.help_popup("PRESSANY", (lang["NOSYMBOL"],))
             elif operand.type in ("bool", "trit") and \
-            				operand.menu.type != "choices":
+                                        operand.menu.type != "choices":
                 self.set_symbol(operand, cml.n)
             else:
                 self.help_popup("PRESSANY", (lang["BOOLEAN"],))
@@ -1526,17 +1526,17 @@ class curses_style_menu:
         elif cmd == ord('/'):
             pattern = self.query_popup(lang["SEARCHSYMBOLS"])
             if pattern:
-		try:
-		    hits = configuration.symbolsearch(pattern)
-		except re.error, detail:
-		    self.help_popup("PRESSANY",
+                try:
+                    hits = configuration.symbolsearch(pattern)
+                except re.error, detail:
+                    self.help_popup("PRESSANY",
                                     (lang["SEARCHINVAL"], str(detail)))
-		else:
-		    configuration.debug_emit(1, "hits: " + str(hits)) 
-		    if len(hits.items):
-			self.menus.push(hits.items)
-		    else:
-			self.help_popup("PRESSANY", (lang["SEARCHFAIL"],))
+                else:
+                    configuration.debug_emit(1, "hits: " + str(hits)) 
+                    if len(hits.items):
+                        self.menus.push(hits.items)
+                    else:
+                        self.help_popup("PRESSANY", (lang["SEARCHFAIL"],))
             recompute = 1
         elif cmd == ord('s'):
             failure = configuration.save(config,
@@ -1564,7 +1564,7 @@ class curses_style_menu:
                 raise SystemExit, 1
         recompute = 1
         repaint = ["main"]
-        #curses.ungetch(curses.ascii.TAB)		# Get to a help screen.
+        #curses.ungetch(curses.ascii.TAB)               # Get to a help screen.
         while 1:
             if isinstance(self.menus.selected(), cml.ConfigSymbol):
                 # In theory we could optimize this by only computing
@@ -1942,13 +1942,13 @@ try:
     def my_get_contents(node):
         menus=[]
         options=[]
-        cmlnode=node.id 	
+        cmlnode=node.id         
         for child in cmlnode.items:
             if interactively_visible(child):
                 if child.type =="menu" and cmlnode.items :
                     menus.append((child.prompt, child, shut_icon, open_icon))
                 else:
-                    options.append((child.prompt, child, file_icon, None))	
+                    options.append((child.prompt, child, file_icon, None))      
         menus.sort()
         options.sort()
         return options+menus 
@@ -2005,7 +2005,7 @@ try:
         makehelpwin.textwidget.tag_bind('url', '<Enter>', lambda event, x=makehelpwin.textwidget: x.config(cursor='hand2'))
         makehelpwin.textwidget.tag_bind('url', '<Leave>', lambda event, x=makehelpwin.textwidget: x.config(cursor='xterm'))
         tag_urls(makehelpwin.textwidget, text)
-        makehelpwin.textwidget.config(state=DISABLED)	# prevent editing
+        makehelpwin.textwidget.config(state=DISABLED)   # prevent editing
         makehelpwin.lift()
 
     def tag_urls(textwidget, text):
@@ -2097,7 +2097,7 @@ try:
             self.master.iconname(announce)
             self.master.resizable(FALSE, TRUE)
             Pack.config(self, fill=BOTH, expand=YES)
-            self.keepalive = []	# Use this to anchor the PhotoImage object
+            self.keepalive = [] # Use this to anchor the PhotoImage object
             if configuration.icon:
                 make_icon_window(self, configuration.icon)
             ## Test icon display with the following:
@@ -2681,7 +2681,7 @@ try:
             Frame.__init__(self, master=None)
             ConfigMenu.__init__(self, menu, config, mybanner)
             
-	    self.menuframe = ScrolledFrame(self)
+            self.menuframe = ScrolledFrame(self)
             self.menuframe.pack(side=BOTTOM, fill=BOTH, expand=YES)
             
             self.menustack = []
@@ -2873,7 +2873,7 @@ try:
             else:
                 newwidth = self.workframe.winfo_width()
                 newheight = widgetheight + \
-                	self.menubar.winfo_height()+self.menubar.winfo_height()
+                        self.menubar.winfo_height()+self.menubar.winfo_height()
             # Following four lines center the window.
             #topx = (self.winfo_screenwidth() - newwidth) / 2
             #topy = (self.winfo_screenheight() - newheight) / 2
@@ -3038,13 +3038,13 @@ def menu_tree_list(node, indent):
     trailer = (" " * (40 - totalindent - len(node.name))) + `node.prompt`
     print " " * totalindent, node.name, trailer
     if configuration.debug:
-	if node.visibility:
-	    print " " * 41, lang["VISIBILITY"], cml.display_expression(node.visibility)
-	if node.default:
-	    print " " * 41, lang["DEFAULT"], cml.display_expression(node.default)
+        if node.visibility:
+            print " " * 41, lang["VISIBILITY"], cml.display_expression(node.visibility)
+        if node.default:
+            print " " * 41, lang["DEFAULT"], cml.display_expression(node.default)
     if node.items:
-	for child in node.items:
-	    menu_tree_list(child, indent + 4)
+        for child in node.items:
+            menu_tree_list(child, indent + 4)
 
 # Environment probes
 
@@ -3071,7 +3071,7 @@ def load_system(cmd_options, cmd_arguments):
     else:
         rulebase = cmd_arguments[0]
     try:
-	open(rulebase, 'rb')
+        open(rulebase, 'rb')
     except IOError:
         print lang["NOFILE"] % (rulebase,)
         raise SystemExit
@@ -3152,29 +3152,29 @@ def process_options(configuration, options):
     global readlog, banner
     config = "config.out"
     for (switch, val) in options:
-	if switch == '-b':
-	    force_batch = 1
-	elif switch == '-B':
-	    banner = val
-	elif switch == '-d':
+        if switch == '-b':
+            force_batch = 1
+        elif switch == '-B':
+            banner = val
+        elif switch == '-d':
             process_define(configuration, val, freeze=0)
-	elif switch == '-D':
+        elif switch == '-D':
             process_define(configuration, val, freeze=1)
-	elif switch == '-i':
+        elif switch == '-i':
             process_include(configuration, val, freeze=0)
-	elif switch == '-I':
+        elif switch == '-I':
             process_include(configuration, val, freeze=1)
-	elif switch == '-l':
-	    list = 1
-	elif switch == '-o':
-	    config = val
-	elif switch == '-v':
-	    debug = debug + 1
+        elif switch == '-l':
+            list = 1
+        elif switch == '-o':
+            config = val
+        elif switch == '-v':
+            debug = debug + 1
             configuration.debug = configuration.debug + 1
-	elif switch == '-S':
-	    configuration.suppressions = 0
-	elif switch == '-R':
-	    readlog = open(val, "r")
+        elif switch == '-S':
+            configuration.suppressions = 0
+        elif switch == '-R':
+            readlog = open(val, "r")
 
 # Main sequence -- isolated here so we can profile it
 
@@ -3191,8 +3191,8 @@ def main(options, arguments):
         try:
             menu_tree_list(configuration.start, 0)
         except EnvironmentError:
-            pass	# Don't emit a traceback when we interrupt the listing
-	raise SystemExit
+            pass        # Don't emit a traceback when we interrupt the listing
+        raise SystemExit
     # Perhaps we're in batchmode.  If so, only process options. 
     if force_batch:
         # Have to realize all choices values first...
@@ -3234,33 +3234,33 @@ def main(options, arguments):
 if __name__ == '__main__':
     try:
         runopts = "bB:cD:d:h:i:I:lo:P:qR:SstVvWx"
-	(options,arguments) = getopt.getopt(sys.argv[1:], runopts, "help")
+        (options,arguments) = getopt.getopt(sys.argv[1:], runopts, "help")
         if os.environ.has_key("CML2OPTIONS"):
             (envopts, envargs) = getopt.getopt(
                 os.environ["CML2OPTIONS"].split(),
                 runopts)
             options = envopts + options
     except:
-	print lang["BADOPTION"]
+        print lang["BADOPTION"]
         print lang["CLIHELP"]
-	sys.exit(1)
+        sys.exit(1)
 
     for (switch, val) in options:
         if switch == "-V":
             print "cmlconfigure", cml.version
             raise SystemExit
-	elif switch == '-P':
-	    proflog = val
-	elif switch == '-x':
-	    force_x = 1
-	elif switch == '-q':
-	    force_q = 1
-	elif switch == '-t':
-	    force_tty = 1
-	elif switch == '-c':
-	    force_curses = 1
-	elif switch == '-s':
-	    force_debugger = force_tty = 1
+        elif switch == '-P':
+            proflog = val
+        elif switch == '-x':
+            force_x = 1
+        elif switch == '-q':
+            force_q = 1
+        elif switch == '-t':
+            force_tty = 1
+        elif switch == '-c':
+            force_curses = 1
+        elif switch == '-s':
+            force_debugger = force_tty = 1
         elif switch == '--help':
             sys.stdout.write(lang["CLIHELP"])
             raise SystemExit
@@ -3282,10 +3282,10 @@ if __name__ == '__main__':
 
     # Probe the environment to see if we can come up in ncurses mode
     if not force_tty and not force_x and not force_q:
-	if not os.environ.has_key('TERM'):
-	    print lang["TERMNOTSET"]
-	    force_tty = 1
-	else:
+        if not os.environ.has_key('TERM'):
+            print lang["TERMNOTSET"]
+            force_tty = 1
+        else:
             import traceback
             try:
                 import curses, curses.textpad, curses.wrapper
