@@ -426,24 +426,24 @@ def intern_symbol_list(input, record=0):
 	return list
 
 def parse(input, baton):
-    # Parse an entire CML program
-    input.source = "source"
-    if compstate.debug > 2:
-    	print("Calling parse()")
-    	input.debug = 1
-    while 1:
-        if not compstate.debug and not compstate.errors:
-            baton.twirl()
+	# Parse an entire CML program
+	input.source = "source"
+	if compstate.debug > 2:
+		print("Calling parse()")
+		input.debug = 1
+	while 1:
+		if not compstate.debug and not compstate.errors:
+		baton.twirl()
 	leader = input.lex_token()
 	if compstate.debug > 1: print("Parsing declaration beginning with %s..." % (leader,))
-        # Language constructs begin here 
+	# Language constructs begin here 
 	if leader.type == "EOF":
-	    break
+		break
 	elif leader.type == "start":
-	    rulebase.start = input.lex_token().attr
+		rulebase.start = input.lex_token().attr
 	elif leader.type in ("menus", "explanations"):
-            input.complain("menus and explanations declarations are "
-                           "obsolete, replace these keywords with `symbols'")
+		input.complain("menus and explanations declarations are "
+			"obsolete, replace these keywords with `symbols'")
 	elif leader.type == "symbols":
 	    while 1:
                 ref = intern_symbol(input, None, None, record=1)
