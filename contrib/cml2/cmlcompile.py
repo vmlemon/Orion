@@ -227,12 +227,12 @@ def parse_atom(input):
         sub = parse_expr_inner(input)
         close = input.lex_token()
         if close != ')':
-            raise ExpressionError, "while expecting a close paren"
+            raise(ExpressionError, "while expecting a close paren")
         else:
             if compstate.debug >= 2: print("parse_atom returns singleton", sub)
             return sub
     elif op.type in _keywords:
-        raise ExpressionError, "keyword %s while expecting atom" % op.type
+        raise(ExpressionError, "keyword %s while expecting atom" % op.type)
     elif op.type == 'word':
         if compstate.debug >= 2: print("parse_atom returns", op.attr)
         return op
