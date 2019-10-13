@@ -179,10 +179,10 @@ class lexwrapper(shlex.shlex):
 		sys.stderr.write(self.error_leader() + " " + str + "\n")
 		compstate.errors = compstate.errors + 1
 
-    def croak(self, str):
-	# Report a fatal parse error and die
-	self.complain(str)
-	sys.exit(1)
+	def croak(self, str):
+		# Report a fatal parse error and die
+		self.complain(str)
+		sys.exit(1)
 
     def demand(self, type, attr=None):
 	# Require a given token or token type, croak if we don't get it 
