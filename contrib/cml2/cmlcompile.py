@@ -429,13 +429,13 @@ def parse(input, baton):
     # Parse an entire CML program
     input.source = "source"
     if compstate.debug > 2:
-    	print "Calling parse()"
+    	print("Calling parse()")
     	input.debug = 1
     while 1:
         if not compstate.debug and not compstate.errors:
             baton.twirl()
 	leader = input.lex_token()
-	if compstate.debug > 1: print "Parsing declaration beginning with %s..." % (leader,)
+	if compstate.debug > 1: print("Parsing declaration beginning with %s..." % (leader,))
         # Language constructs begin here 
 	if leader.type == "EOF":
 	    break
