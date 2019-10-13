@@ -497,16 +497,16 @@ def parse(input, baton):
 				guard = ("==", guard, cml.n)
 		list = intern_symbol_list(input)
 		list.reverse()
-                for symbol in list:
-                    if symbol.saveability:
-                        symbol.saveability = ('and', guard, symbol.saveability)
-                    else:
-                        symbol.saveability = guard
-                    # This is a kluge.  It relies on the fact that symbols
-                    # explicitly set are always saved.
-                    while symbol.menu:
-                        symbol.menu.setcount = 1
-                        symbol = symbol.menu
+		for symbol in list:
+			if symbol.saveability:
+				symbol.saveability = ('and', guard, symbol.saveability)
+			else:
+				symbol.saveability = guard
+			# This is a kluge.  It relies on the fact that symbols
+			# explicitly set are always saved.
+			while symbol.menu:
+				symbol.menu.setcount = 1
+				symbol = symbol.menu
             else:
                 input.complain("expected `suppress' or `save'")
             compstate.bool_tests.append((guard, input.infile, input.lineno))
