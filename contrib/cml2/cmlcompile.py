@@ -509,8 +509,9 @@ def parse(input, baton):
 				symbol = symbol.menu
 	else:
 	    input.complain("expected `suppress' or `save'")
-	compstate.bool_tests.append((guard, input.infile, input.lineno))
 
+	compstate.bool_tests.append((guard, input.infile, input.lineno))
+"""
 	elif leader.type == "menu":
 		menusym = intern_symbol(input, None, ('bool', 'menu', 'choices'), record=1)
 		menusym.type = "menu"
@@ -524,7 +525,7 @@ def parse(input, baton):
 					% (symbol.name, menusym.name, symbol.menu.name))
 		else:
 			symbol.menu = menusym
-
+"""
 	elif leader.type == "choices":
 	    menusym = intern_symbol(input, None, ('bool', 'menu', 'choices'), record=1)
             menusym.type = "choices"
