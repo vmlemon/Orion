@@ -475,22 +475,22 @@ def parse(input, baton):
 			if leader.type == "when":
 				guard = ("==", guard, cml.n)
 			dependent = input.lex_token()
-		make_dep = 0
-				if dependent.type == "dependent":
+			make_dep = 0
+			if dependent.type == "dependent":
 				make_dep = 1
-                else:
-			input.push_token(dependent)
-                list = intern_symbol_list(input)
-                list.reverse()
-
-		for symbol in list:
-			if make_dep:
-				traverse_make_dep(symbol, guard, input)
-			# Add it to ordinary visibility constraints
-			if symbol.visibility:
-				symbol.visibility = ('and', guard, symbol.visibility)
 			else:
-				symbol.visibility = guard
+				input.push_token(dependent)
+			list = intern_symbol_list(input)
+			list.reverse()
+
+			for symbol in list:
+				if make_dep:
+					traverse_make_dep(symbol, guard, input)
+				# Add it to ordinary visibility constraints
+				if symbol.visibility:
+					symbol.visibility = ('and', guard, symbol.visibility)
+				else:
+					symbol.visibility = guard
 
             elif maybe == "save":
                 if leader.type == "unless":
