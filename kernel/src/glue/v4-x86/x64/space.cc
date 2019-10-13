@@ -57,7 +57,7 @@ struct transTable_t transTable[TRANSLATION_TABLE_ENTRIES];
 
 word_t space_t::readmem_phys(addr_t paddr)
 {
-    ASSERT( (word_t) paddr < (1ULL << 32));
+    ASSERT(DEBUG, (word_t) paddr < (1ULL << 32));
         return * (word_t *) ( (word_t) paddr + REMAP_32BIT_START); 
 }
 
@@ -66,7 +66,7 @@ word_t space_t::readmem_phys(addr_t paddr)
 #if defined(CONFIG_SMP)
 void pgent_t::smp_sync(space_t * space, pgsize_e pgsize)
 {
-    ASSERT(pgsize >= size_sync);
+    ASSERT(DEBUG, pgsize >= size_sync);
     
     switch (pgsize)
     {
@@ -82,7 +82,7 @@ void pgent_t::smp_sync(space_t * space, pgsize_e pgsize)
 	    }
 	break;
     case size_1g: 
-	ASSERT(space->get_top_pdir()->get_kernel_pdp());
+	ASSERT(DEBUG, space->get_top_pdir()->get_kernel_pdp());
 	if (!is_cpulocal(space, size_1g) && 
 	    (this - idx() == space->get_top_pdir(space->data.reference_ptab)->get_kernel_pdp_pgent()))
 	{
@@ -121,7 +121,7 @@ addr_t acpi_remap(addr_t addr)
 {
 
     //TRACE_INIT("ACPI remap: %p -> %x\n", addr, (word_t) addr + REMAP_32BIT_START); 
-    ASSERT((word_t) addr < (1ULL << 32));
+    ASSERT(DEBUG, (word_t) addr < (1ULL << 32));
     return (addr_t) ((word_t) addr + REMAP_32BIT_START); 
 }
 
