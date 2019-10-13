@@ -360,7 +360,7 @@ def parse_expr(input):
     try:
         exp = parse_expr_inner(input)
         return exp
-    except ExpressionError, exp:
+    except (ExpressionError, exp):
         input.croak(exp.args[0])
         return None
 
