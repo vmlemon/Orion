@@ -196,19 +196,19 @@ class lexwrapper(shlex.shlex):
 		else:
 			return tok.attr
 
-    def sourcehook(self, newfile):
-	# Override the hook in the shlex class
-	try:
-	    if newfile[0] == '"':
-		newfile = newfile[1:-1]
-                # This implements cpp-like semantics for relative-path inclusion.
-                if type(self.infile) is type("") and not os.path.isabs(newfile):
-                    newfile = os.path.join(os.path.dirname(self.infile), newfile)
-	    return (newfile, open(newfile, "r"))
+	def sourcehook(self, newfile):
+		# Override the hook in the shlex class
+		try:
+			if newfile[0] == '"':
+				newfile = newfile[1:-1]
+				# This implements cpp-like semantics for relative-path inclusion.
+				if type(self.infile) is type("") and not os.path.isabs(newfile):
+					newfile = os.path.join(os.path.dirname(self.infile), newfile)
+			return (newfile, open(newfile, "r"))
 	except IOError:
-	    self.complain("I/O error while opening '%s'" % (newfile,))
-	    sys.exit(1)
-        return None	# Appease pychecker
+		self.complain("I/O error while opening '%s'" % (newfile,))
+		sys.exit(1)
+	return None	# Appease pychecker
 
 # Parsing
 
