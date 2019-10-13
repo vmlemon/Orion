@@ -492,10 +492,10 @@ def parse(input, baton):
 				else:
 					symbol.visibility = guard
 
-            elif maybe == "save":
-                if leader.type == "unless":
-                    guard = ("==", guard, cml.n)
-                list = intern_symbol_list(input)
+		elif maybe == "save":
+			if leader.type == "unless":
+				guard = ("==", guard, cml.n)
+		list = intern_symbol_list(input)
                 list.reverse()
                 for symbol in list:
                     if symbol.saveability:
