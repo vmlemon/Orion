@@ -31,7 +31,7 @@
 ######################################################################
 ARCH=powerpc64
 SUBARCH=
-CPU=power4
+CPU=power4p
 PLATFORM=ofpower4
 SCHED=
 
