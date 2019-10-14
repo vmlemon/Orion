@@ -168,10 +168,10 @@ VFLAGS =
 #
 
 # use optimization level of at least 1 - otherwise inlining will fail
-CCFLAGS += -fno-rtti -fno-builtin  -fomit-frame-pointer -fno-exceptions \
-	  -Wall -Wno-non-virtual-dtor -Wno-format   \
+CCFLAGS += -fno-builtin  -fomit-frame-pointer -fno-exceptions \
+	  -Wall  -Wno-format   \
 	  $(CFLAGS_$(ARCH)) $(CFLAGS_$(CPU)) $(CFLAGS_$(PLATFORM)) 
-
+CXXFAGS += -fno-rtti -Wno-non-virtual-dtor
 ifeq ("$(CC_VERSION)", "4")
 CCFLAGS += -Wno-conversion
 ifneq ("$(CC_SUBVERSION)", "0")
@@ -205,7 +205,7 @@ LDSCRIPT = $(SRCDIR)/src/platform/$(PLATFORM)/linker.lds
 %.o:	%.cc
 	@$(ECHO_MSG) $(subst $(SRCDIR)/,,$<)
 	@if [ ! -d $(dir $@) ]; then $(MKDIRHIER) $(dir $@); fi
-	cd $(dir $@) && $(CC) $(CPPFLAGS) $(CCFLAGS) $(CFLAGS_$*) -c $<
+	cd $(dir $@) && $(CC) $(CPPFLAGS) $(CCFLAGS) $(CXXFLAGS) $(CFLAGS_$*) -c $<
 
 
 # C files

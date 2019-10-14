@@ -97,7 +97,12 @@
  * They are inlined only. Carefull: if the maximum inlining 
  * limit is reached gcc 3.x does not inline even if explicitly 
  * specified. Use -finline-limit=<large number> here. */
-#define INLINE extern inline __attribute__((__gnu_inline__)) 
+
+#ifdef __cplusplus
+# define INLINE extern inline __attribute__((__gnu_inline__)) 
+#else
+# define INLINE static inline
+#endif
 
 /* Functions for critical path optimizations */
 #if (__GNUC__ >= 3)
