@@ -558,10 +558,7 @@ L4_INLINE L4_Bool_t L4_HasFeature (const char *feature_name)
     void *kip = L4_GetKernelInterface();
     char *name;
 
-    //GCC 8.3.0 doesn't like this...
-    //for( L4_Word_t i = 0; (name = L4_Feature(kip,i)) != '\0'; i++ )
-    
-    for( L4_Word_t i = 0; (name = L4_Feature(kip,i)) != 0x00; i++ )
+    for( L4_Word_t i = 0; (name = L4_Feature(kip,i)) != 0; i++ )
     {
         const char *n = name;
         const char *fn = feature_name;
