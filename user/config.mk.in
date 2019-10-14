@@ -48,8 +48,10 @@ SHELL=		@SHELL@
 CC=		@CC@
 CXX=		$(CC) -x c++
 AS=		$(CC)
+
 CFLAGS=		@CFLAGS@   -fno-stack-protector -lssp
-CXXFLAGS=	$(CFLAGS) -fno-exceptions
+CXXFLAGS=	$(CFLAGS) -fno-exceptions -fno-stack-protector
+
 LDFLAGS=	@LDFLAGS@
 CPPFLAGS=	@CPPFLAGS@
 LGCC=		-lgcc

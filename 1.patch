@@ -1,0 +1,328 @@
+From c98536be1d8da6385e5cc8f28f55deaae56373f9 Mon Sep 17 00:00:00 2001
+From: Takaya Saeki <abc.tkys+pub@gmail.com>
+Date: Thu, 10 Jan 2019 02:16:00 +0900
+Subject: [PATCH 1/2] Build succeded in Ubuntu bionic
+
+---
+ kernel/Mk/Makeconf                                      | 2 +-
+ kernel/Mk/Makeconf.x86                                  | 4 ++--
+ kernel/src/arch/x86/x64/Makeconf                        | 3 ++-
+ kernel/src/arch/x86/x64/init32.cc                       | 6 ++++--
+ user/Mk/l4.base.mk                                      | 2 +-
+ user/apps/l4test/l4test.h                               | 2 +-
+ user/config.mk.in                                       | 4 ++--
+ user/configure.in                                       | 4 ++--
+ user/contrib/elf-loader/platform/amd64-pc99/Makefile.in | 4 ++--
+ user/include/l4/kip.h                                   | 2 +-
+ user/util/kickstart/Makefile.in                         | 2 +-
+ 11 files changed, 19 insertions(+), 16 deletions(-)
+
+diff --git a/kernel/Mk/Makeconf b/kernel/Mk/Makeconf
+index 9f899a87..fdde9816 100644
+--- a/kernel/Mk/Makeconf
++++ b/kernel/Mk/Makeconf
+@@ -250,7 +250,7 @@ OBJS	=$(patsubst %.cc, %.o, \
+ 
+ #.INTERMEDIATE: lds.tmp
+ lds.tmp:	 $(LDSCRIPT) $(SRCDIR)/Mk/Makeconf $(SRCDIR)/src/generic/macros.h $(BUILDDIR)/config/config.h
+-	@$(CPP) -DASSEMBLY $(PPFLAGS) -P -C $< -o $@
++	$(CPP) -DASSEMBLY $(PPFLAGS) -P -C $< -o $@
+ 
+ # link the final binary
+ $(ARCH)-kernel:	$(BUILDDIR)/Makeconf.local $(OBJS) lds.tmp
+diff --git a/kernel/Mk/Makeconf.x86 b/kernel/Mk/Makeconf.x86
+index 09c38ce5..9a7b49c5 100644
+--- a/kernel/Mk/Makeconf.x86
++++ b/kernel/Mk/Makeconf.x86
+@@ -37,9 +37,9 @@ endif
+ UNDEFS	 += $(SUBARCH)
+ DEFINES	 += __SUBARCH__=$(SUBARCH)
+ 
+-CFLAGS_x86_x32	+= -O2 -m32 -mpreferred-stack-boundary=2 
++CFLAGS_x86_x32	+= -O2 -m32 -mpreferred-stack-boundary=2
+ CFLAGS_x86_x64  += -O2 -m64 -mcmodel=kernel -mno-red-zone 
+-CFLAGS_x86	+= $(CFLAGS_x86_$(SUBARCH)) -mno-mmx -mno-sse -mno-sse2 -mno-sse3
++CFLAGS_x86	+= $(CFLAGS_x86_$(SUBARCH)) -mno-mmx -mno-sse -mno-sse2 -mno-sse3 -fno-pie -no-pie -Wno-narrowing -fno-stack-protector
+ LDFLAGS_x86_x32	+= -melf_i386 
+ LDFLAGS_x86_x64	+= -melf_x86_64 -n -z max-page-size=4096
+ LDFLAGS_x86	+= $(LDFLAGS_x86_$(SUBARCH))
+diff --git a/kernel/src/arch/x86/x64/Makeconf b/kernel/src/arch/x86/x64/Makeconf
+index b844b7cd..09feff13 100644
+--- a/kernel/src/arch/x86/x64/Makeconf
++++ b/kernel/src/arch/x86/x64/Makeconf
+@@ -34,7 +34,8 @@ SOURCES += $(addprefix src/arch/x86/x64/, init32.cc cpu.cc)
+ CCFLAGS_src/arch/x86/x64/init32 = -DX64_32BIT_CODE\
+ 				  $(patsubst -m64, -m32,\
+ 				  $(patsubst -mcmodel=kernel, ,\
+-				  $(CCFLAGS)))
++				  $(patsubst -fno-pie -no-pie, ,\
++				  $(CCFLAGS))))
+ 
+ src/arch/x86/x64/init32.o: src/arch/x86/x64/init32.cc
+ 	@$(ECHO_MSG) $(subst $(SRCDIR)/,,$<)
+diff --git a/kernel/src/arch/x86/x64/init32.cc b/kernel/src/arch/x86/x64/init32.cc
+index 9d7f24a6..2c99d992 100644
+--- a/kernel/src/arch/x86/x64/init32.cc
++++ b/kernel/src/arch/x86/x64/init32.cc
+@@ -179,9 +179,11 @@ extern "C" void SECTION(".init.init32") init_paging( u32_t is_ap )
+     if (!x86_mmu_t::has_long_mode())
+ 	init32_spin(1);
+ 
+-
++    u64_t *p_init_pml4 = init_pml4;
++    u64_t *p_init_pdp = init_pdp;
++    u64_t *p_init_pdir = init_pdir;
+     for (int i=0; i<512; i++){
+-	init_pml4[i] = init_pdp[i] = init_pdir[i] = 0;
++	p_init_pml4[i] = p_init_pdp[i] = p_init_pdir[i] = 0;
+     }
+ 
+     
+diff --git a/user/Mk/l4.base.mk b/user/Mk/l4.base.mk
+index 1d9c5a1a..5664a4b4 100644
+--- a/user/Mk/l4.base.mk
++++ b/user/Mk/l4.base.mk
+@@ -40,7 +40,7 @@ ECHO_MSG=	$(ECHO) ===\>
+ MKDIRHIER=	$(top_srcdir)/../tools/mkdirhier
+ 
+ CPPFLAGS+=	$(CPPFLAGS_$(ARCH))
+-CFLAGS+=	-O2 -g -Wall -Wshadow \
++CFLAGS+=	-O2 -g -Wall -Wshadow -fno-stack-protector \
+ 		$(CFLAGS_$(ARCH))
+ LDFLAGS+=	$(LDFLAGS_$(ARCH))
+ 
+diff --git a/user/apps/l4test/l4test.h b/user/apps/l4test/l4test.h
+index 120c821a..c494a02b 100644
+--- a/user/apps/l4test/l4test.h
++++ b/user/apps/l4test/l4test.h
+@@ -124,7 +124,7 @@ L4_INLINE bool l4_has_feature( const char *feature_name )
+     void *kip = L4_GetKernelInterface();
+     char *name;
+ 
+-    for( L4_Word_t i = 0; (name = L4_Feature(kip,i)) != '\0'; i++ )
++    for( L4_Word_t i = 0; (name = L4_Feature(kip,i)) != nullptr; i++ )
+ 	if( !strcmp(feature_name, name) )
+ 	    return true;
+     return false;
+diff --git a/user/config.mk.in b/user/config.mk.in
+index 5c103bd8..dbcfe62e 100644
+--- a/user/config.mk.in
++++ b/user/config.mk.in
+@@ -48,8 +48,8 @@ SHELL=		@SHELL@
+ CC=		@CC@
+ CXX=		$(CC) -x c++
+ AS=		$(CC)
+-CFLAGS=		@CFLAGS@
+-CXXFLAGS=	$(CFLAGS) -fno-exceptions
++CFLAGS=		@CFLAGS@ -fno-stack-protector
++CXXFLAGS=	$(CFLAGS) -fno-exceptions -fno-stack-protector
+ LDFLAGS=	@LDFLAGS@
+ CPPFLAGS=	@CPPFLAGS@
+ LGCC=		-lgcc
+diff --git a/user/configure.in b/user/configure.in
+index 264f82d7..cc8f71f8 100644
+--- a/user/configure.in
++++ b/user/configure.in
+@@ -255,8 +255,8 @@ case $LDFLAGS in
+ 	;;
+ esac
+ LDFLAGS="-N -L\$(top_builddir)/lib -L$LIBGCCDIR $LDFLAGS"
+-CFLAGS="-nostdinc $CFLAGS"
+-CXXFLAGS="-fno-exceptions $CXXFLAGS"
++CFLAGS="-nostdinc -fno-stack-protector $CFLAGS"
++CXXFLAGS="-fno-exceptions -fno-stack-protector $CXXFLAGS"
+ 
+ CC_VERSION=`echo __GNUC__ | $CC -E  - | grep -v "\#"`
+ CC_SUBVERSION=`echo __GNUC_MINOR__ | $CC -E  - | grep -v "\#"`
+diff --git a/user/contrib/elf-loader/platform/amd64-pc99/Makefile.in b/user/contrib/elf-loader/platform/amd64-pc99/Makefile.in
+index 7c83f248..7c9af57e 100755
+--- a/user/contrib/elf-loader/platform/amd64-pc99/Makefile.in
++++ b/user/contrib/elf-loader/platform/amd64-pc99/Makefile.in
+@@ -50,11 +50,11 @@ CC=		gcc
+ LD=		ld
+ 
+ CPPFLAGS=	-I$(top_srcdir)/include
+-CFLAGS=		 -nostdinc -g -O2 \
++CFLAGS=		 -nostdinc -fno-stack-protector -g -O2 \
+ 		-I$(top_srcdir)/contrib/elf-loader/include \
+ 		-I$(dir $(shell $(CC) -print-libgcc-file-name))include \
+ 		-DELF_LOADER_32BIT
+-CXXFLAGS=       $(CFLAGS) -fno-exceptions
++CXXFLAGS=       $(CFLAGS) -fno-exceptions -fno-stack-protector
+ LDFLAGS=       -N -L@srcdir@ -Tlinker.ld  -L$(dir $(shell $(CC) -print-libgcc-file-name)) \
+ 		-lgcc 
+ 
+diff --git a/user/include/l4/kip.h b/user/include/l4/kip.h
+index 63e5b62b..1c4a20b5 100644
+--- a/user/include/l4/kip.h
++++ b/user/include/l4/kip.h
+@@ -558,7 +558,7 @@ L4_INLINE L4_Bool_t L4_HasFeature (const char *feature_name)
+     void *kip = L4_GetKernelInterface();
+     char *name;
+ 
+-    for( L4_Word_t i = 0; (name = L4_Feature(kip,i)) != '\0'; i++ )
++    for( L4_Word_t i = 0; (name = L4_Feature(kip,i)) != nullptr; i++ )
+     {
+         const char *n = name;
+         const char *fn = feature_name;
+diff --git a/user/util/kickstart/Makefile.in b/user/util/kickstart/Makefile.in
+index 52261ba2..6fe9d9c4 100644
+--- a/user/util/kickstart/Makefile.in
++++ b/user/util/kickstart/Makefile.in
+@@ -37,7 +37,7 @@ top_builddir=	@top_builddir@
+ 
+ include $(top_srcdir)/Mk/l4.base.mk
+ 
+-CFLAGS+=	-fno-builtin
++CFLAGS+=	-fno-builtin -fno-stack-protector
+ KICKSTART_LINKBASE?=	00800000
+ 
+ PROGRAM=	kickstart
+
+From baa2d6bc55a94dafe94661740cf3ca2023cbbbfb Mon Sep 17 00:00:00 2001
+From: Takaya Saeki <abc.tkys+pub@gmail.com>
+Date: Mon, 14 Jan 2019 18:37:25 +0900
+Subject: [PATCH 2/2] Boot succeeded. Fix build with gcc 7 in Ubuntu 18.04
+
+---
+ kernel/src/arch/x86/x64/Makeconf  |  5 ++---
+ kernel/src/arch/x86/x64/init32.cc | 14 ++++++++++----
+ kernel/src/generic/macros.h       |  2 +-
+ user/Mk/l4.base.mk                |  1 +
+ user/apps/l4test/l4test.h         |  2 +-
+ user/include/l4/kip.h             |  2 +-
+ user/util/kickstart/kickstart.cc  |  1 +
+ user/util/kickstart/mbi-loader.cc |  6 ++++++
+ 8 files changed, 23 insertions(+), 10 deletions(-)
+
+diff --git a/kernel/src/arch/x86/x64/Makeconf b/kernel/src/arch/x86/x64/Makeconf
+index 09feff13..3075875a 100644
+--- a/kernel/src/arch/x86/x64/Makeconf
++++ b/kernel/src/arch/x86/x64/Makeconf
+@@ -34,11 +34,10 @@ SOURCES += $(addprefix src/arch/x86/x64/, init32.cc cpu.cc)
+ CCFLAGS_src/arch/x86/x64/init32 = -DX64_32BIT_CODE\
+ 				  $(patsubst -m64, -m32,\
+ 				  $(patsubst -mcmodel=kernel, ,\
+-				  $(patsubst -fno-pie -no-pie, ,\
+-				  $(CCFLAGS))))
++				  $(CCFLAGS)))
+ 
+ src/arch/x86/x64/init32.o: src/arch/x86/x64/init32.cc
+ 	@$(ECHO_MSG) $(subst $(SRCDIR)/,,$<)
+ 	@if [ ! -d $(dir $@) ]; then $(MKDIRHIER) $(dir $@); fi
+ 	cd $(dir $@) && $(CC) $(CPPFLAGS) $(CCFLAGS_$*) -x c++ -c $< -o $(notdir $@)
+-	cd $(dir $@) && $(OBJCOPY) -g -O elf64-x86-64  $(notdir $@) $(notdir $@)
+\ No newline at end of file
++	cd $(dir $@) && $(OBJCOPY) -g -O elf64-x86-64  $(notdir $@) $(notdir $@)
+diff --git a/kernel/src/arch/x86/x64/init32.cc b/kernel/src/arch/x86/x64/init32.cc
+index 2c99d992..287472fc 100644
+--- a/kernel/src/arch/x86/x64/init32.cc
++++ b/kernel/src/arch/x86/x64/init32.cc
+@@ -127,7 +127,7 @@ static void SECTION(".init.init32")  init32_spin (int pos = 0)
+     }
+ }
+ 
+-static void SECTION(".init.init32") init32_cons (void)
++static inline void SECTION(".init.init32") init32_cons (void)
+ {
+ #define IER	(INIT32_COMPORT+1)
+ #define EIR	(INIT32_COMPORT+2)
+@@ -179,9 +179,15 @@ extern "C" void SECTION(".init.init32") init_paging( u32_t is_ap )
+     if (!x86_mmu_t::has_long_mode())
+ 	init32_spin(1);
+ 
+-    u64_t *p_init_pml4 = init_pml4;
+-    u64_t *p_init_pdp = init_pdp;
+-    u64_t *p_init_pdir = init_pdir;
++    u64_t _64_init_pml4 = (u64_t) init_pml4;
++    u64_t _64_init_pdp = (u64_t) init_pdp;
++    u64_t _64_init_pdir = (u64_t) init_pdir;
++    u32_t _32_init_pml4 = (u32_t) _64_init_pml4;
++    u32_t _32_init_pdp = (u32_t) _64_init_pdp;
++    u32_t _32_init_pdir = (u32_t) _64_init_pdir;
++    u64_t *p_init_pml4 = (u64_t *) _32_init_pml4;
++    u64_t *p_init_pdp = (u64_t *) _32_init_pdp;
++    u64_t *p_init_pdir = (u64_t *) _32_init_pdir;
+     for (int i=0; i<512; i++){
+ 	p_init_pml4[i] = p_init_pdp[i] = p_init_pdir[i] = 0;
+     }
+diff --git a/kernel/src/generic/macros.h b/kernel/src/generic/macros.h
+index 462a0d49..deb9bf13 100644
+--- a/kernel/src/generic/macros.h
++++ b/kernel/src/generic/macros.h
+@@ -97,7 +97,7 @@
+  * They are inlined only. Carefull: if the maximum inlining 
+  * limit is reached gcc 3.x does not inline even if explicitly 
+  * specified. Use -finline-limit=<large number> here. */
+-#define INLINE extern inline
++#define INLINE extern inline __attribute__((__gnu_inline__)) 
+ 
+ /* Functions for critical path optimizations */
+ #if (__GNUC__ >= 3)
+diff --git a/user/Mk/l4.base.mk b/user/Mk/l4.base.mk
+index 5664a4b4..d6757fad 100644
+--- a/user/Mk/l4.base.mk
++++ b/user/Mk/l4.base.mk
+@@ -49,6 +49,7 @@ CFLAGS += -Wno-conversion
+ else
+ CFLAGS += -Wconversion
+ endif
++CCFLAGS += -fno-stack-protector
+ 
+ 
+ # Create early targets so that a make without args (implicit all) does
+diff --git a/user/apps/l4test/l4test.h b/user/apps/l4test/l4test.h
+index c494a02b..3d974eb0 100644
+--- a/user/apps/l4test/l4test.h
++++ b/user/apps/l4test/l4test.h
+@@ -124,7 +124,7 @@ L4_INLINE bool l4_has_feature( const char *feature_name )
+     void *kip = L4_GetKernelInterface();
+     char *name;
+ 
+-    for( L4_Word_t i = 0; (name = L4_Feature(kip,i)) != nullptr; i++ )
++    for( L4_Word_t i = 0; (name = L4_Feature(kip,i)) != 0; i++ )
+ 	if( !strcmp(feature_name, name) )
+ 	    return true;
+     return false;
+diff --git a/user/include/l4/kip.h b/user/include/l4/kip.h
+index 1c4a20b5..4a8bd6e1 100644
+--- a/user/include/l4/kip.h
++++ b/user/include/l4/kip.h
+@@ -558,7 +558,7 @@ L4_INLINE L4_Bool_t L4_HasFeature (const char *feature_name)
+     void *kip = L4_GetKernelInterface();
+     char *name;
+ 
+-    for( L4_Word_t i = 0; (name = L4_Feature(kip,i)) != nullptr; i++ )
++    for( L4_Word_t i = 0; (name = L4_Feature(kip,i)) != 0; i++ )
+     {
+         const char *n = name;
+         const char *fn = feature_name;
+diff --git a/user/util/kickstart/kickstart.cc b/user/util/kickstart/kickstart.cc
+index cc0f262c..033dd56f 100644
+--- a/user/util/kickstart/kickstart.cc
++++ b/user/util/kickstart/kickstart.cc
+@@ -73,6 +73,7 @@ extern "C" void loader (void)
+     flush_cache();
+ 
+     printf("Launching kernel ...\n");
++    printf("entry: 0x%lx \n", entry);
+ 
+     // Start the kernel at its entry point
+     launch_kernel (entry);
+diff --git a/user/util/kickstart/mbi-loader.cc b/user/util/kickstart/mbi-loader.cc
+index a06be211..325eeeb6 100644
+--- a/user/util/kickstart/mbi-loader.cc
++++ b/user/util/kickstart/mbi-loader.cc
+@@ -106,6 +106,12 @@ bool check_memory (L4_Word_t start, L4_Word_t end)
+     {
+ 	L4_Word_t mod_start = mbi->mods[i].start;
+ 	L4_Word_t mod_end = mbi->mods[i].end;
++        printf("     mbi->mods[%d].start : %p,\n"
++               "     mbi->mods[%d].end : %p,\n",
++               i,
++               (void *) mod_start,
++               i,
++               (void *) mod_end);
+ 
+ 	if (mod_start < end && start < mod_end)
+ 	{
