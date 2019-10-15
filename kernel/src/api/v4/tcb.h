@@ -385,7 +385,7 @@ typedef union _whole_tcb_t {
 INLINE void tcb_t::set_global_id(const threadid_t tid)
 {
     myself_global = tid;
-    ASSERT(get_utcb());
+    ASSERT(NORMAL, get_utcb());
     get_utcb()->set_my_global_id(tid);
 }
 
@@ -513,25 +513,25 @@ INLINE void tcb_t::init_saved_state()
 
 INLINE threadid_t tcb_t::get_saved_partner (word_t level) 
 { 
-    ASSERT(level < IPC_NESTING_LEVEL); 
+    ASSERT(NORMAL, level < IPC_NESTING_LEVEL); 
     return misc.saved_state[level].partner; 
 }
 
 INLINE void tcb_t::set_saved_partner (threadid_t t, word_t level) 
 { 
-    ASSERT(level < IPC_NESTING_LEVEL); 
+    ASSERT(NORMAL, level < IPC_NESTING_LEVEL); 
     misc.saved_state[level].partner = t; 
 }
 
 INLINE thread_state_t tcb_t::get_saved_state (word_t level)
 { 
-    ASSERT(level < IPC_NESTING_LEVEL); 
+    ASSERT(NORMAL, level < IPC_NESTING_LEVEL); 
     return (thread_state_t) misc.saved_state[level].state; 
 }
 
 INLINE void tcb_t::set_saved_state (thread_state_t s, word_t level)
 { 
-    ASSERT(level < IPC_NESTING_LEVEL); 
+    ASSERT(NORMAL, level < IPC_NESTING_LEVEL); 
     misc.saved_state[level].state = s; 
 }
 
@@ -710,7 +710,7 @@ INLINE time_t tcb_t::get_xfer_timeout_rcv (void)
 INLINE void tcb_t::enqueue_send(tcb_t * tcb, const bool head)
 {
     //TRACEPOINT_TB(DEBUG, ("%t enqueue into send queue of %t", this, tcb));
-    ASSERT( !queue_state.is_set(queue_state_t::send) );
+    ASSERT(NORMAL,  !queue_state.is_set(queue_state_t::send) );
     if (head)
 	ENQUEUE_LIST_HEAD(tcb->send_head, this, send_list);
     else
@@ -724,7 +724,7 @@ INLINE void tcb_t::enqueue_send(tcb_t * tcb, const bool head)
  */
 INLINE void tcb_t::dequeue_send(tcb_t * tcb)
 {
-    ASSERT( queue_state.is_set(queue_state_t::send) );
+    ASSERT(NORMAL,  queue_state.is_set(queue_state_t::send) );
     DEQUEUE_LIST(tcb->send_head, this, send_list);
     queue_state.clear(queue_state_t::send);
 }
