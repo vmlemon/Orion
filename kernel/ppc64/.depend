@@ -342,7 +342,8 @@
  /home/fedora/pistachio/kernel/src/generic/bitmask.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/resources.h \
  /home/fedora/pistachio/kernel/src/api/v4/preempt.h \
- /home/fedora/pistachio/kernel/src/api/v4/ipc.h glue/v4-powerpc64/ipc.h \
+ /home/fedora/pistachio/kernel/src/api/v4/ipc.h \
+ /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ipc.h \
  /home/fedora/pistachio/kernel/src/kdb/tracepoints.h \
  /home/fedora/pistachio/kernel/src/kdb/linker_set.h \
  /home/fedora/pistachio/kernel/src/kdb/tracebuffer.h \
@@ -404,7 +405,8 @@
  /home/fedora/pistachio/kernel/src/generic/bitmask.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/resources.h \
  /home/fedora/pistachio/kernel/src/api/v4/preempt.h \
- /home/fedora/pistachio/kernel/src/api/v4/ipc.h glue/v4-powerpc64/ipc.h \
+ /home/fedora/pistachio/kernel/src/api/v4/ipc.h \
+ /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ipc.h \
  /home/fedora/pistachio/kernel/src/kdb/tracepoints.h \
  /home/fedora/pistachio/kernel/src/kdb/linker_set.h \
  /home/fedora/pistachio/kernel/src/kdb/tracebuffer.h \
@@ -475,7 +477,8 @@
  /home/fedora/pistachio/kernel/src/generic/bitmask.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/resources.h \
  /home/fedora/pistachio/kernel/src/api/v4/preempt.h \
- /home/fedora/pistachio/kernel/src/api/v4/ipc.h glue/v4-powerpc64/ipc.h \
+ /home/fedora/pistachio/kernel/src/api/v4/ipc.h \
+ /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ipc.h \
  /home/fedora/pistachio/kernel/src/api/v4/sktcb.h \
  /home/fedora/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ktcb.h \
@@ -547,7 +550,8 @@
  /home/fedora/pistachio/kernel/src/generic/bitmask.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/resources.h \
  /home/fedora/pistachio/kernel/src/api/v4/preempt.h \
- /home/fedora/pistachio/kernel/src/api/v4/ipc.h glue/v4-powerpc64/ipc.h \
+ /home/fedora/pistachio/kernel/src/api/v4/ipc.h \
+ /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ipc.h \
  /home/fedora/pistachio/kernel/src/api/v4/sktcb.h \
  /home/fedora/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ktcb.h \
@@ -633,7 +637,8 @@
  /home/fedora/pistachio/kernel/src/generic/bitmask.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/resources.h \
  /home/fedora/pistachio/kernel/src/api/v4/preempt.h \
- /home/fedora/pistachio/kernel/src/api/v4/ipc.h glue/v4-powerpc64/ipc.h \
+ /home/fedora/pistachio/kernel/src/api/v4/ipc.h \
+ /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ipc.h \
  /home/fedora/pistachio/kernel/src/kdb/tracepoints.h \
  /home/fedora/pistachio/kernel/src/kdb/linker_set.h \
  /home/fedora/pistachio/kernel/src/kdb/tracebuffer.h \
@@ -706,7 +711,8 @@
  /home/fedora/pistachio/kernel/src/generic/bitmask.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/resources.h \
  /home/fedora/pistachio/kernel/src/api/v4/preempt.h \
- /home/fedora/pistachio/kernel/src/api/v4/ipc.h glue/v4-powerpc64/ipc.h \
+ /home/fedora/pistachio/kernel/src/api/v4/ipc.h \
+ /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ipc.h \
  /home/fedora/pistachio/kernel/src/kdb/tracepoints.h \
  /home/fedora/pistachio/kernel/src/kdb/linker_set.h \
  /home/fedora/pistachio/kernel/src/kdb/tracebuffer.h \
@@ -782,7 +788,8 @@
  /home/fedora/pistachio/kernel/src/generic/bitmask.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/resources.h \
  /home/fedora/pistachio/kernel/src/api/v4/preempt.h \
- /home/fedora/pistachio/kernel/src/api/v4/ipc.h glue/v4-powerpc64/ipc.h \
+ /home/fedora/pistachio/kernel/src/api/v4/ipc.h \
+ /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ipc.h \
  /home/fedora/pistachio/kernel/src/api/v4/sktcb.h \
  /home/fedora/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ktcb.h \
@@ -851,7 +858,8 @@
  /home/fedora/pistachio/kernel/src/generic/bitmask.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/resources.h \
  /home/fedora/pistachio/kernel/src/api/v4/preempt.h \
- /home/fedora/pistachio/kernel/src/api/v4/ipc.h glue/v4-powerpc64/ipc.h \
+ /home/fedora/pistachio/kernel/src/api/v4/ipc.h \
+ /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ipc.h \
  /home/fedora/pistachio/kernel/src/api/v4/sktcb.h \
  /home/fedora/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ktcb.h \
@@ -924,7 +932,8 @@
  /home/fedora/pistachio/kernel/src/generic/bitmask.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/resources.h \
  /home/fedora/pistachio/kernel/src/api/v4/preempt.h \
- /home/fedora/pistachio/kernel/src/api/v4/ipc.h glue/v4-powerpc64/ipc.h \
+ /home/fedora/pistachio/kernel/src/api/v4/ipc.h \
+ /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ipc.h \
  /home/fedora/pistachio/kernel/src/api/v4/sktcb.h \
  /home/fedora/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ktcb.h \
@@ -1021,7 +1030,8 @@
  /home/fedora/pistachio/kernel/src/generic/bitmask.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/resources.h \
  /home/fedora/pistachio/kernel/src/api/v4/preempt.h \
- /home/fedora/pistachio/kernel/src/api/v4/ipc.h glue/v4-powerpc64/ipc.h \
+ /home/fedora/pistachio/kernel/src/api/v4/ipc.h \
+ /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ipc.h \
  /home/fedora/pistachio/kernel/src/kdb/tracepoints.h \
  /home/fedora/pistachio/kernel/src/kdb/linker_set.h \
  /home/fedora/pistachio/kernel/src/kdb/tracebuffer.h \
@@ -1203,7 +1213,8 @@
  /home/fedora/pistachio/kernel/src/generic/bitmask.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/resources.h \
  /home/fedora/pistachio/kernel/src/api/v4/preempt.h \
- /home/fedora/pistachio/kernel/src/api/v4/ipc.h glue/v4-powerpc64/ipc.h \
+ /home/fedora/pistachio/kernel/src/api/v4/ipc.h \
+ /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ipc.h \
  /home/fedora/pistachio/kernel/src/kdb/tracepoints.h \
  /home/fedora/pistachio/kernel/src/kdb/linker_set.h \
  /home/fedora/pistachio/kernel/src/kdb/tracebuffer.h \
@@ -1262,7 +1273,8 @@
  /home/fedora/pistachio/kernel/src/generic/bitmask.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/resources.h \
  /home/fedora/pistachio/kernel/src/api/v4/preempt.h \
- /home/fedora/pistachio/kernel/src/api/v4/ipc.h glue/v4-powerpc64/ipc.h \
+ /home/fedora/pistachio/kernel/src/api/v4/ipc.h \
+ /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ipc.h \
  /home/fedora/pistachio/kernel/src/kdb/tracepoints.h \
  /home/fedora/pistachio/kernel/src/kdb/linker_set.h \
  /home/fedora/pistachio/kernel/src/kdb/tracebuffer.h \
@@ -1335,7 +1347,8 @@
  /home/fedora/pistachio/kernel/src/generic/bitmask.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/resources.h \
  /home/fedora/pistachio/kernel/src/api/v4/preempt.h \
- /home/fedora/pistachio/kernel/src/api/v4/ipc.h glue/v4-powerpc64/ipc.h \
+ /home/fedora/pistachio/kernel/src/api/v4/ipc.h \
+ /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ipc.h \
  /home/fedora/pistachio/kernel/src/api/v4/sktcb.h \
  /home/fedora/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ktcb.h \
@@ -1400,7 +1413,8 @@
  /home/fedora/pistachio/kernel/src/generic/bitmask.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/resources.h \
  /home/fedora/pistachio/kernel/src/api/v4/preempt.h \
- /home/fedora/pistachio/kernel/src/api/v4/ipc.h glue/v4-powerpc64/ipc.h \
+ /home/fedora/pistachio/kernel/src/api/v4/ipc.h \
+ /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ipc.h \
  /home/fedora/pistachio/kernel/src/kdb/tracepoints.h \
  /home/fedora/pistachio/kernel/src/kdb/linker_set.h \
  /home/fedora/pistachio/kernel/src/kdb/tracebuffer.h \
@@ -1470,7 +1484,8 @@
  /home/fedora/pistachio/kernel/src/generic/bitmask.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/resources.h \
  /home/fedora/pistachio/kernel/src/api/v4/preempt.h \
- /home/fedora/pistachio/kernel/src/api/v4/ipc.h glue/v4-powerpc64/ipc.h \
+ /home/fedora/pistachio/kernel/src/api/v4/ipc.h \
+ /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ipc.h \
  /home/fedora/pistachio/kernel/src/kdb/tracepoints.h \
  /home/fedora/pistachio/kernel/src/kdb/linker_set.h \
  /home/fedora/pistachio/kernel/src/kdb/tracebuffer.h \
@@ -1578,7 +1593,8 @@
  /home/fedora/pistachio/kernel/src/generic/bitmask.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/resources.h \
  /home/fedora/pistachio/kernel/src/api/v4/preempt.h \
- /home/fedora/pistachio/kernel/src/api/v4/ipc.h glue/v4-powerpc64/ipc.h \
+ /home/fedora/pistachio/kernel/src/api/v4/ipc.h \
+ /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ipc.h \
  /home/fedora/pistachio/kernel/src/api/v4/sktcb.h \
  /home/fedora/pistachio/kernel/src/api/v4/sched-rr/ktcb.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ktcb.h \
@@ -1652,7 +1668,8 @@
  /home/fedora/pistachio/kernel/src/generic/bitmask.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/resources.h \
  /home/fedora/pistachio/kernel/src/api/v4/preempt.h \
- /home/fedora/pistachio/kernel/src/api/v4/ipc.h glue/v4-powerpc64/ipc.h \
+ /home/fedora/pistachio/kernel/src/api/v4/ipc.h \
+ /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ipc.h \
  /home/fedora/pistachio/kernel/src/kdb/tracepoints.h \
  /home/fedora/pistachio/kernel/src/kdb/linker_set.h \
  /home/fedora/pistachio/kernel/src/kdb/tracebuffer.h \
@@ -1718,7 +1735,8 @@
  /home/fedora/pistachio/kernel/src/generic/bitmask.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/resources.h \
  /home/fedora/pistachio/kernel/src/api/v4/preempt.h \
- /home/fedora/pistachio/kernel/src/api/v4/ipc.h glue/v4-powerpc64/ipc.h \
+ /home/fedora/pistachio/kernel/src/api/v4/ipc.h \
+ /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ipc.h \
  /home/fedora/pistachio/kernel/src/kdb/tracepoints.h \
  /home/fedora/pistachio/kernel/src/kdb/linker_set.h \
  /home/fedora/pistachio/kernel/src/kdb/tracebuffer.h \
@@ -1784,7 +1802,8 @@
  /home/fedora/pistachio/kernel/src/generic/bitmask.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/resources.h \
  /home/fedora/pistachio/kernel/src/api/v4/preempt.h \
- /home/fedora/pistachio/kernel/src/api/v4/ipc.h glue/v4-powerpc64/ipc.h \
+ /home/fedora/pistachio/kernel/src/api/v4/ipc.h \
+ /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ipc.h \
  /home/fedora/pistachio/kernel/src/kdb/tracepoints.h \
  /home/fedora/pistachio/kernel/src/kdb/linker_set.h \
  /home/fedora/pistachio/kernel/src/kdb/tracebuffer.h \
@@ -1887,7 +1906,8 @@
  /home/fedora/pistachio/kernel/src/generic/bitmask.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/resources.h \
  /home/fedora/pistachio/kernel/src/api/v4/preempt.h \
- /home/fedora/pistachio/kernel/src/api/v4/ipc.h glue/v4-powerpc64/ipc.h \
+ /home/fedora/pistachio/kernel/src/api/v4/ipc.h \
+ /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/ipc.h \
  /home/fedora/pistachio/kernel/src/kdb/tracepoints.h \
  /home/fedora/pistachio/kernel/src/kdb/linker_set.h \
  /home/fedora/pistachio/kernel/src/kdb/tracebuffer.h \
