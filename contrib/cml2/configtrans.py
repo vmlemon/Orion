@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
 """
 configtrans.py -- translate between CML1 and CML2 config formats.
 
@@ -89,19 +89,19 @@ if __name__ == '__main__':
     include = defconfig = translate = None
     (options, arguments) = getopt.getopt(sys.argv[1:], "h:s:t")
     for (switch, val) in options:
-	if switch == '-h':
-	    includefile = val
+        if switch == '-h':
+            includefile = val
             try:
                 os.rename(val, val + ".old")
             except OSError:
                 pass
-	elif switch == '-s':
-	    defconfig = val
+        elif switch == '-s':
+            defconfig = val
             try:
                 os.rename(val, val + ".old")
             except OSError:
                 pass
-	elif switch == '-t':
+        elif switch == '-t':
             translate = 1
     if len(arguments) > 0:
         try:

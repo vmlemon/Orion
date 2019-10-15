@@ -17,7 +17,7 @@ class trit:
     def __nonzero__(self):
         return self.value
     def __hash__(self):
-        return self.value	# This magic needed to make trits valid dictionary keys
+        return self.value       # This magic needed to make trits valid dictionary keys
     def __long__(self):
         return self.value != 0
     def __cmp__(self, other):
@@ -56,33 +56,33 @@ class ConfigSymbol:
     def __init__(self, name, type=None, default=None, prompt=None, file=None, lineno=None):
         # Name, location, type, default.
         self.name = name
-        self.file = file	# Definition location source file
-        self.lineno = lineno	# Definition location source line
-        self.type = type	# Type of symbol
-        self.range = None	# Range tuple
+        self.file = file        # Definition location source file
+        self.lineno = lineno    # Definition location source line
+        self.type = type        # Type of symbol
+        self.range = None       # Range tuple
         self.enum = None
         self.discrete = None
-        self.helptext = None	# Help reference
-        self.default = default	# Value to use if none has been set.
+        self.helptext = None    # Help reference
+        self.default = default  # Value to use if none has been set.
         # Hierarchy location
-        self.ancestors = []	# Ancestors of symbol (as set up by {})
-        self.dependents = []	# Dependents of symbol (as set up by {})
-        self.choicegroup = []	# Other symbols in a choicegroup.
-        self.menu = None	# Unique parent menu of this symbol
-        self.depth = 0		# Nesting depth in its subtree
+        self.ancestors = []     # Ancestors of symbol (as set up by {})
+        self.dependents = []    # Dependents of symbol (as set up by {})
+        self.choicegroup = []   # Other symbols in a choicegroup.
+        self.menu = None        # Unique parent menu of this symbol
+        self.depth = 0          # Nesting depth in its subtree
         # Auxiliary information
-        self.prompt = prompt	# Associated question string
-        self.properties = {}	# Associated properties
-        self.warnings = []	# Attached warndepend conditions
-        self.visibility = None	# Visibility predicate for symbol 
-        self.saveability = None	# Saveability predicate for symbol
-        self.items = []		# Menus only -- associated symbols
+        self.prompt = prompt    # Associated question string
+        self.properties = {}    # Associated properties
+        self.warnings = []      # Attached warndepend conditions
+        self.visibility = None  # Visibility predicate for symbol 
+        self.saveability = None # Saveability predicate for symbol
+        self.items = []         # Menus only -- associated symbols
         # Compiler never touches these
-        self.visits = 0   	# Number of visits so far
+        self.visits = 0         # Number of visits so far
         self.setcount = 0       # Should this symbol be written?
         self.included = 0       # Seen in an inclusion?
         self.inspected = 0      # Track menu inspections
-        self.iced = 0		# Is this frozen?
+        self.iced = 0           # Is this frozen?
 
     # Compute the value of a symbol 
     def eval(self, debug=0):
@@ -230,15 +230,15 @@ class CMLRulebase:
     "A dictionary of ConfigSymbols and a set of constraints."
     def __init__(self):
         self.version = version
-        self.start = None		# Start menu name		
-        self.dictionary = {}		# Configuration symbols
-        self.prefix = ""		# Prepend this to all symbols
-        self.banner = ""		# ID the configuration domain
-        self.constraints = []		# All requirements
-        self.icon = None		# Icon for this rulebase
-        self.trit_tie = None		# Are trits enabled?
-        self.help_tie = None		# Help required for visibility?
-        self.expert_tie = None		# Expert flag for UI control
+        self.start = None               # Start menu name               
+        self.dictionary = {}            # Configuration symbols
+        self.prefix = ""                # Prepend this to all symbols
+        self.banner = ""                # ID the configuration domain
+        self.constraints = []           # All requirements
+        self.icon = None                # Icon for this rulebase
+        self.trit_tie = None            # Are trits enabled?
+        self.help_tie = None            # Help required for visibility?
+        self.expert_tie = None          # Expert flag for UI control
         self.reduced = []
     def __repr__(self):
         res = "Start menu = %s\n" % (self.start,)

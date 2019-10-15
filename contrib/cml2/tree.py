@@ -15,15 +15,15 @@ class Node:
     # initialization creates node, draws it, and binds mouseclicks
     def __init__(self, parent, name, id, myclosed_icon, myopen_icon, x, y,
                  parentwidget):
-        self.parent=parent		# immediate parent node
-        self.name=name			# name displayed on the label
-        self.id=id			# internal id used to manipulate things
-        self.open_icon=myopen_icon	# bitmaps to be displayed
+        self.parent=parent              # immediate parent node
+        self.name=name                  # name displayed on the label
+        self.id=id                      # internal id used to manipulate things
+        self.open_icon=myopen_icon      # bitmaps to be displayed
         self.closed_icon=myclosed_icon
-        self.widget=parentwidget	# tree widget we belong to
-        self.subnodes=[]		# our list of child nodes
-        self.spinlock=0			# cheap mutex spinlock
-        self.open_flag=0		# closed to start with
+        self.widget=parentwidget        # tree widget we belong to
+        self.subnodes=[]                # our list of child nodes
+        self.spinlock=0                 # cheap mutex spinlock
+        self.open_flag=0                # closed to start with
         # draw horizontal connecting lines
         if self.widget.lineflag:
             self.line=self.widget.create_line(x-self.widget.distx, y, x, y)
@@ -145,7 +145,7 @@ class Node:
         if self.widget.toggle_init_hook:
             self.widget.toggle_init_hook(self)
         if not self.open_icon:
-            return			# not an expandable folder
+            return                      # not an expandable folder
         if state == None:
             state = not self.open_flag  # toggle to other state
         else:
