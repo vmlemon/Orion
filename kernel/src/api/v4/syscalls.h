@@ -1,7 +1,6 @@
 /*********************************************************************
  *                
- * Copyright (C) 2002-2004,  Karlsruhe University
- * Copyright (C) 2005,  National ICT Australia (NICTA)
+ * Copyright (C) 2002-2004, 2007-2009, 2011-2012,  Karlsruhe University
  *                
  * File path:     api/v4/syscalls.h
  * Description:   declaration of system calls
@@ -49,6 +48,7 @@ extern "C" {
  * return_ipc_error.  These have to be provided by the glue layer
  * @param to_tid destination thread id
  * @param from_tid from specifier
+ * @param timeout ipc timeout
  */
 SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
 
@@ -66,14 +66,11 @@ SYS_THREAD_SWITCH (threadid_t dest_tid);
  * @param space_tid space specifier
  * @param scheduler_tid thread id of the scheduler thread
  * @param pager_tid thread id of the pager thread
- * @param send_redirector_tid thread id of the send redirector
- * @param recv_redirector_tid thread id of the recv redirector
  * @param utcb_location location of the UTCB
  */
 SYS_THREAD_CONTROL (threadid_t dest_tid, threadid_t space_tid, 
 		    threadid_t scheduler_tid, threadid_t pager_tid, 
-		    threadid_t send_redirector_tid,
-		    threadid_t recv_redirector_tid, word_t utcb_location);
+		    word_t utcb_location);
 
 /**
  * exchange registers system call
@@ -84,10 +81,12 @@ SYS_THREAD_CONTROL (threadid_t dest_tid, threadid_t space_tid,
  * @param uflags user flags
  * @param pager_tid thread id of the pager
  * @param uhandle user defined handle
+ * @param is_local true if the original dest_tid was local
  */
 SYS_EXCHANGE_REGISTERS (threadid_t dest_tid, word_t control, 
 			word_t usp, word_t uip, word_t uflags,
-			word_t uhandle, threadid_t pager_tid);
+			word_t uhandle, threadid_t pager_tid,
+			bool is_local);
 
 
 /**
@@ -95,13 +94,15 @@ SYS_EXCHANGE_REGISTERS (threadid_t dest_tid, word_t control,
  * (note: the glue layer has to provide a return_schedule macro to load
  * the return values into the appropriate registers)
  * @param dest_tid thread id of the destination thread
- * @param ts_len timeslice length
- * @param total_quantum length
+ * @param time_control specifies total quantum and timeslice length
  * @param processor_control processor number the thread migrates to
- * @param prio new priority of the thread
+ * @param prio_control new priority of the thread
+ * @param preemption_control delayed preemption parameters
  */
-SYS_SCHEDULE (threadid_t dest_tid, word_t ts_len, word_t total_quantum,
-	word_t processor_control, word_t prio);
+SYS_SCHEDULE (threadid_t dest_tid, word_t time_control, 
+	      word_t processor_control, word_t prio_control,
+	      word_t preemption_control);
+
 
 
 /**
@@ -120,9 +121,10 @@ SYS_UNMAP (word_t control);
  * @param control control parameter
  * @param kip_area kernel interface page area fpage
  * @param utcb_area user thread control block area fpage
+ * @param redirector_tid thread id of the redirector
  */
 SYS_SPACE_CONTROL (threadid_t space_tid, word_t control, fpage_t kip_area, 
-		   fpage_t utcb_area);
+		   fpage_t utcb_area, threadid_t redirector_tid);
 
 
 /**
@@ -157,20 +159,131 @@ SYS_MEMORY_CONTROL (word_t control,
  *                 control register constants
  *********************************************************************/
 
-#define EXREGS_CONTROL_HALT	(1 << 0)
-#define EXREGS_CONTROL_RECV	(1 << 1)
-#define EXREGS_CONTROL_SEND	(1 << 2)
-#define EXREGS_CONTROL_SP	(1 << 3)
-#define EXREGS_CONTROL_IP	(1 << 4)
-#define EXREGS_CONTROL_FLAGS	(1 << 5)
-#define EXREGS_CONTROL_UHANDLE	(1 << 6)
-#define EXREGS_CONTROL_PAGER	(1 << 7)
-#define EXREGS_CONTROL_HALTFLAG	(1 << 8)
-#define EXREGS_CONTROL_DELIVER	(1 << 9)
-#define EXREGS_CONTROL_COPY_REGS	(1 << 10)
-#define EXREGS_CONTROL_REGS_TO_MRS	(1 << 12)
-#define EXREGS_CONTROL_THREAD_SHIFT	(L4_GLOBAL_VERSION_BITS)
 
+class exregs_ctrl_t {
+    
+public:
+    enum flag_e {
+	halt_flag        	= 0,
+	recv_flag	 	= 1,
+	send_flag	 	= 2,
+	sp_flag	         	= 3,
+	ip_flag	         	= 4,
+	flags_flag	 	= 5,
+	uhandle_flag	 	= 6,
+	pager_flag	 	= 7,
+	haltflag_flag    	= 8,
+	ctrlxfer_conf_flag    	= 9,
+	ctrlxfer_read_flag    	= 10,
+	ctrlxfer_write_flag    	= 11,
+	exchandler_flag  	= 12,
+	scheduler_flag   	= 13,
+
+    };
+    
+    union {
+	struct {
+	    word_t halt			: 1;
+	    word_t recv			: 1;
+	    word_t send			: 1;
+	    word_t sp			: 1;
+	    word_t ip			: 1;
+	    word_t flags		: 1;
+	    word_t uhandle		: 1;
+	    word_t pager		: 1;
+	    word_t haltflag		: 1;
+	    word_t ctrlxfer_conf	: 1;
+	    word_t ctrlxfer_read	: 1;
+	    word_t ctrlxfer_write	: 1;
+	    word_t exchandler		: 1;
+	    word_t scheduler		: 1;
+	    word_t __pad		: 18;
+	};
+	word_t raw;
+    };
+
+    exregs_ctrl_t (void) {}
+    exregs_ctrl_t (word_t r) { raw = r; }
+    
+    bool is_set(flag_e flag) { return raw  & (1UL << flag); } 
+    void set(flag_e flag) { raw  |= (1UL << flag); } 
+
+    char *string()
+	{
+	    static char s[] =  "~~~~~~~~~~~~~~";
+	    
+	    s[0]  =  halt    		? 'h' : '~';
+	    s[1]  =  recv    		? 'r' : '~';
+	    s[2]  =  send    		? 's' : '~';
+	    s[3]  =  sp      		? 's' : '~';
+	    s[4]  =  ip      		? 'i' : '~';
+	    s[5]  =  flags   		? 'f' : '~';
+	    s[6]  =  uhandle 		? 'u' : '~';
+	    s[7]  =  pager   		? 'p' : '~';
+	    s[8]  =  haltflag		? 'h' : '~';
+	    s[9]  =  ctrlxfer_conf	? 'C' : '~';
+	    s[10] =  ctrlxfer_read	? 'R' : '~';
+	    s[11] =  ctrlxfer_write	? 'W' : '~';
+	    s[12] =  exchandler		? 'e' : '~';	
+	    s[13] =  scheduler		? 's' : '~';
+	    
+	    return s;
+	}
+};
+
+struct schedule_ctrl_t {
+    union {
+	struct {
+	    u8_t	pad0[sizeof(word_t)-4];
+	    time_t	timeslice;
+	    time_t	total_quantum;
+	};
+	struct {	
+	    BITFIELD4(long,
+		      prio		:  9,
+		      logid		:  7,
+		      stride		:  16,
+		      : BITS_WORD-32);
+	};
+	struct {
+	    BITFIELD5(word_t,
+		      max_delay		: 16,
+		      sensitive_prio	:  8,
+		      log_pm_msg	:  1,
+		      hs_extended	:  1,
+		      hs_extended_ctrl	:  6);
+	}; 	
+	struct {
+	    BITFIELD3(word_t,
+		      processor		: 16,
+		      extended_migrate	: 1, 
+		      : BITS_WORD-17);
+	};
+        threadid_t tid;
+	word_t raw;
+
+   } __attribute__((packed));
+
+    inline void operator = (word_t raw) 
+	{ this->raw = raw; }
+
+    inline bool operator == (schedule_ctrl_t ctrl) 
+	{ return (this->raw == ctrl.raw); }
+
+    inline bool operator != (schedule_ctrl_t ctrl) 
+	{ return (this->raw != ctrl.raw); }
+
+    word_t get_raw()
+	{ return this->raw; }
+
+    static schedule_ctrl_t nilctrl()
+	{
+	    schedule_ctrl_t ctrl;
+	    ctrl.raw = (~0UL);
+	    return ctrl;
+	}
+
+};
 
 /*
  * Error code values
@@ -185,7 +298,6 @@ SYS_MEMORY_CONTROL (word_t control,
 #define EUTCB_AREA		(6)
 #define EKIP_AREA		(7)
 #define ENO_MEM			(8)
-#define EINVALID_REDIRECTOR	(9)
 
 
 #endif /* !__API__V4__SYSCALLS_H__ */
