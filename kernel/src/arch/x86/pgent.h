@@ -84,7 +84,7 @@ public:
     // creates a CPU local subtree for CPU local data
     void make_cpu_subtree (space_t * s, pgsize_e pgsize, bool kernel)
 	{
-	    ASSERT(kernel); // cpu-local subtrees are _always_ kernel
+	    ASSERT(NORMAL, kernel); // cpu-local subtrees are _always_ kernel
 	    pgent.set_ptab_entry
 		(virt_to_phys(kmem.alloc (kmem_pgtab, X86_PTAB_BYTES)), X86_PAGE_USER | X86_PAGE_WRITABLE);
 
