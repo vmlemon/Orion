@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: tyson-Lenovo-ideapad-120S-14IAP */
-/* At: Sun, 13 Oct 2019 21:18:46 +0000 */
+/* At: Tue, 15 Oct 2019 07:37:18 +0000 */
 /* Linux version 5.0.0-31-generic (buildd@lcy01-amd64-010) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #33-Ubuntu SMP Mon Sep 30 18:51:59 UTC 2019 */
 
 /* Pistachio Kernel Configuration System */
@@ -45,20 +45,19 @@
 /* Kernel */
 #undef  CONFIG_EXPERIMENTAL
 #undef  CONFIG_IPC_FASTPATH
-#undef  CONFIG_DEBUG
+#define CONFIG_DEBUG 1
 #undef  CONFIG_DEBUG_SYMBOLS
 #undef  CONFIG_PERFMON
-#define CONFIG_SPIN_WHEELS 1
+#undef  CONFIG_SPIN_WHEELS
 #undef  CONFIG_NEW_MDB
-#define CONFIG_STATIC_TCBS 1
-#undef  CONFIG_X86_SMALL_SPACES
+#undef  CONFIG_STATIC_TCBS
 #define CONFIG_X86_COMPATIBILITY_MODE 1
 
 
 /* Debugger */
 
 /* Kernel Debugger Console */
-#undef  CONFIG_KDB_CONS_COM
+#define CONFIG_KDB_CONS_COM 1
 #define CONFIG_KDB_COMPORT 0x0
 #define CONFIG_KDB_COMSPEED 115200
 #undef  CONFIG_KDB_CONS_KBD
@@ -67,8 +66,6 @@
 #undef  CONFIG_KDB_DISAS
 #undef  CONFIG_KDB_ON_STARTUP
 #undef  CONFIG_KDB_BREAKIN
-#undef  CONFIG_KDB_BREAKIN_BREAK
-#undef  CONFIG_KDB_BREAKIN_ESCAPE
 #undef  CONFIG_KDB_INPUT_HLT
 #undef  CONFIG_KDB_NO_ASSERTS
 
