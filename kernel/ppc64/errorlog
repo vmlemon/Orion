@@ -1,0 +1,382 @@
+make[1]: Entering directory '/home/fedora/pistachio/kernel/ppc64'
+===> Building dependencies
+===> src/glue/v4-powerpc64/asmsyms.cc
+cd src/glue/v4-powerpc64/ && gcc34 -nostdinc -I/home/fedora/pistachio/kernel/ppc64/include -I/home/fedora/pistachio/kernel/src -I/home/fedora/pistachio/kernel/src/generic -I/usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/ -Upowerpc64 -Upower3p -Uofpower3 -Uv4 -Urr -D__ARCH__=powerpc64 -D__CPU__=power3p -D__PLATFORM__=ofpower3 -D__API__=v4 -D__SCHED__=rr -imacros /home/fedora/pistachio/kernel/ppc64/config/config.h -imacros /home/fedora/pistachio/kernel/src/generic/macros.h -include /home/fedora/pistachio/kernel/src/generic/config.h  -include /home/fedora/pistachio/kernel/src/generic/types.h -fno-builtin  -fomit-frame-pointer -fno-exceptions -Wall  -Wno-format -O2 -mpowerpc64 -msoft-float -mno-minimal-toc     -Wconversion   -c /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc
+In file included from /home/fedora/pistachio/kernel/src/arch/powerpc64/cache.h:47,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/config.h:37,
+                 from /home/fedora/pistachio/kernel/src/generic/config.h:38,
+                 from <command line>:24:
+/home/fedora/pistachio/kernel/src/generic/types.h:73: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/types.h:85: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/types.h:96: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/types.h:107: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/types.h:118: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/config.h:37,
+                 from /home/fedora/pistachio/kernel/src/generic/config.h:38,
+                 from <command line>:24:
+/home/fedora/pistachio/kernel/src/arch/powerpc64/cache.h:57: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/cache.h:62: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/cache.h:67: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/cache.h:91: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/cache.h:96: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/cache.h:101: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:36:
+/home/fedora/pistachio/kernel/src/api/v4/threadstate.h:156: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/api/v4/tcb.h:38,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/api/v4/cpu.h:70: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/api/v4/tcb.h:39,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/api/v4/types.h:107: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/api/v4/tcb.h:40,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/api/v4/queuestate.h:65: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/queuestate.h:70: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/queuestate.h:76: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/queuestate.h:82: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/generic/kmemory.h:35,
+                 from /home/fedora/pistachio/kernel/src/api/v4/space.h:35,
+                 from /home/fedora/pistachio/kernel/src/api/v4/tcb.h:43,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/generic/sync.h:38: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/api/v4/space.h:35,
+                 from /home/fedora/pistachio/kernel/src/api/v4/tcb.h:43,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/generic/kmemory.h:126: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/kmemory.h:132: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/kmemory.h:137: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:38,
+                 from /home/fedora/pistachio/kernel/src/api/v4/space.h:36,
+                 from /home/fedora/pistachio/kernel/src/api/v4/tcb.h:43,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/arch/powerpc64/vsid_asid.h:83: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/vsid_asid.h:89: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/vsid_asid.h:102: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/vsid_asid.h:107: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/arch/powerpc64/pghash.h:51,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:39,
+                 from /home/fedora/pistachio/kernel/src/api/v4/space.h:36,
+                 from /home/fedora/pistachio/kernel/src/api/v4/tcb.h:43,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/generic/memregion.h:57: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/memregion.h:63: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/memregion.h:69: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/memregion.h:76: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/memregion.h:81: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/memregion.h:86: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:39,
+                 from /home/fedora/pistachio/kernel/src/api/v4/space.h:36,
+                 from /home/fedora/pistachio/kernel/src/api/v4/tcb.h:43,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/arch/powerpc64/pghash.h:183: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/pghash.h:209: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/pghash.h:221: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/pghash.h:245: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/pghash.h:258: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/pghash.h:277: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/pghash.h:296: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/pghash.h:304: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/pghash.h:316: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/pghash.h:360: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:41,
+                 from /home/fedora/pistachio/kernel/src/api/v4/space.h:36,
+                 from /home/fedora/pistachio/kernel/src/api/v4/tcb.h:43,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/api/v4/fpage.h:290: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/fpage.h:296: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/api/v4/thread.h:36,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:42,
+                 from /home/fedora/pistachio/kernel/src/api/v4/space.h:36,
+                 from /home/fedora/pistachio/kernel/src/api/v4/tcb.h:43,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/api/v4/kernelinterface.h:357: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:42,
+                 from /home/fedora/pistachio/kernel/src/api/v4/space.h:36,
+                 from /home/fedora/pistachio/kernel/src/api/v4/tcb.h:43,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/api/v4/thread.h:143: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/thread.h:149: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:45,
+                 from /home/fedora/pistachio/kernel/src/api/v4/space.h:36,
+                 from /home/fedora/pistachio/kernel/src/api/v4/tcb.h:43,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/hwspace.h:41: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/hwspace.h:46: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:48,
+                 from /home/fedora/pistachio/kernel/src/api/v4/space.h:36,
+                 from /home/fedora/pistachio/kernel/src/api/v4/tcb.h:43,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/arch/powerpc64/stab.h:118: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/stab.h:134: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/stab.h:145: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:54,
+                 from /home/fedora/pistachio/kernel/src/api/v4/space.h:36,
+                 from /home/fedora/pistachio/kernel/src/api/v4/tcb.h:43,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/generic/mdb.h:410: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:430: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:440: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:449: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:458: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:470: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:482: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:491: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:500: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:509: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:518: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:527: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:536: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:545: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:558: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:570: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:580: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:589: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:598: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:607: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:616: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:625: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:645: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:654: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:663: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:675: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:688: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:701: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:712: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:732: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:741: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:751: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:762: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:772: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:781: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:790: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:799: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:808: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:817: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:829: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:846: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:856: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:874: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:891: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/mdb.h:900: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/api/v4/space.h:36,
+                 from /home/fedora/pistachio/kernel/src/api/v4/tcb.h:43,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:235: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:247: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:253: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:259: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:279: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:284: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:289: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:294: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h: In function `void add_tcb(tcb_t*, cpuid_t)':
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:313: error: `x' was not declared in this scope
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:313: warning: unused variable 'x'
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h: In function `bool remove_tcb(tcb_t*, cpuid_t)':
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:324: error: `x' was not declared in this scope
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h: At global scope:
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:329: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:336: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:342: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:348: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:354: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/space.h:365: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/api/v4/tcb.h:43,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/api/v4/space.h:45: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/space.h:50: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/space.h:55: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/space.h:60: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/space.h:67: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/space.h:75: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/space.h:83: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/space.h:90: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/space.h:101: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/space.h:107: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/space.h:117: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/space.h:123: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/space.h:128: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/api/v4/resources.h:51,
+                 from /home/fedora/pistachio/kernel/src/api/v4/tcb.h:44,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/resources.h:76: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/api/v4/tcb.h:48,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/api/v4/ipc.h:156: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/utcb.h:77,
+                 from /home/fedora/pistachio/kernel/src/api/v4/tcb.h:61,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/api/v4/generic-utcb.h:37: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/generic-utcb.h:42: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/generic-utcb.h:47: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/generic-utcb.h:52: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/generic-utcb.h:57: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/generic-utcb.h:62: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/generic-utcb.h:67: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/generic-utcb.h:72: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/generic-utcb.h:77: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/generic-utcb.h:82: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/generic-utcb.h:87: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/generic-utcb.h:92: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/generic-utcb.h:97: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/generic-utcb.h:102: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/generic-utcb.h:107: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/generic-utcb.h:112: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:386: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:393: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:398: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:404: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:409: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:420: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:443: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:447: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:457: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:473: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:475: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:481: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:486: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:491: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:496: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:501: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:506: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:515: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:521: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:527: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:533: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:543: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:552: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:561: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:570: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:579: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:588: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:597: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:606: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:615: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:624: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:633: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:642: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:653: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:662: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:672: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:683: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:692: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:701: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:711: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:726: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:742: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:751: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:760: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:765: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:771: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:43,
+                 from /home/fedora/pistachio/kernel/src/api/v4/tcb.h:780,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/arch/powerpc64/msr.h:120: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/msr.h:127: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/msr.h:132: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/msr.h:137: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/msr.h:142: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/msr.h:149: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/msr.h:156: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/api/v4/tcb.h:780,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:50: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:60: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:72: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:97: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:107: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:118: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:133: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:140: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:165: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:196: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:240: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:379: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:389: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:420: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:444: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:471: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:499: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:511: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:524: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:536: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:544: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:549: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:565: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:577: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:593: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:598: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:603: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:618: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:645: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/tcb.h:668: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:37:
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:790: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:796: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/api/v4/tcb.h:802: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/arch/powerpc64/rtas.h:36,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:55:
+/home/fedora/pistachio/kernel/src/arch/powerpc64/1275tree.h:39: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/1275tree.h:130: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/asmsyms.cc:55:
+/home/fedora/pistachio/kernel/src/arch/powerpc64/rtas.h:106: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/glue/v4-powerpc64/pgent.h:196: warning: inline function `pgent_t* pgent_t::next(space_t*, pgent_t::pgsize_e, word_t)' used but never defined
+===> src/generic/lib.cc
+cd src/generic/ && gcc34 -nostdinc -I/home/fedora/pistachio/kernel/ppc64/include -I/home/fedora/pistachio/kernel/src -I/home/fedora/pistachio/kernel/src/generic -I/usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/ -Upowerpc64 -Upower3p -Uofpower3 -Uv4 -Urr -D__ARCH__=powerpc64 -D__CPU__=power3p -D__PLATFORM__=ofpower3 -D__API__=v4 -D__SCHED__=rr -imacros /home/fedora/pistachio/kernel/ppc64/config/config.h -imacros /home/fedora/pistachio/kernel/src/generic/macros.h -include /home/fedora/pistachio/kernel/src/generic/config.h  -include /home/fedora/pistachio/kernel/src/generic/types.h -fno-builtin  -fomit-frame-pointer -fno-exceptions -Wall  -Wno-format -O2 -mpowerpc64 -msoft-float -mno-minimal-toc     -Wconversion   -c /home/fedora/pistachio/kernel/src/generic/lib.cc
+In file included from /home/fedora/pistachio/kernel/src/arch/powerpc64/cache.h:47,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/config.h:37,
+                 from /home/fedora/pistachio/kernel/src/generic/config.h:38,
+                 from <command line>:24:
+/home/fedora/pistachio/kernel/src/generic/types.h:73: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/types.h:85: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/types.h:96: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/types.h:107: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/types.h:118: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/config.h:37,
+                 from /home/fedora/pistachio/kernel/src/generic/config.h:38,
+                 from <command line>:24:
+/home/fedora/pistachio/kernel/src/arch/powerpc64/cache.h:57: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/cache.h:62: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/cache.h:67: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/cache.h:91: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/cache.h:96: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/cache.h:101: warning: `__gnu_inline__' attribute directive ignored
+===> src/generic/kmemory.cc
+cd src/generic/ && gcc34 -nostdinc -I/home/fedora/pistachio/kernel/ppc64/include -I/home/fedora/pistachio/kernel/src -I/home/fedora/pistachio/kernel/src/generic -I/usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/ -Upowerpc64 -Upower3p -Uofpower3 -Uv4 -Urr -D__ARCH__=powerpc64 -D__CPU__=power3p -D__PLATFORM__=ofpower3 -D__API__=v4 -D__SCHED__=rr -imacros /home/fedora/pistachio/kernel/ppc64/config/config.h -imacros /home/fedora/pistachio/kernel/src/generic/macros.h -include /home/fedora/pistachio/kernel/src/generic/config.h  -include /home/fedora/pistachio/kernel/src/generic/types.h -fno-builtin  -fomit-frame-pointer -fno-exceptions -Wall  -Wno-format -O2 -mpowerpc64 -msoft-float -mno-minimal-toc     -Wconversion   -c /home/fedora/pistachio/kernel/src/generic/kmemory.cc
+In file included from /home/fedora/pistachio/kernel/src/arch/powerpc64/cache.h:47,
+                 from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/config.h:37,
+                 from /home/fedora/pistachio/kernel/src/generic/config.h:38,
+                 from <command line>:24:
+/home/fedora/pistachio/kernel/src/generic/types.h:73: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/types.h:85: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/types.h:96: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/types.h:107: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/types.h:118: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/config.h:37,
+                 from /home/fedora/pistachio/kernel/src/generic/config.h:38,
+                 from <command line>:24:
+/home/fedora/pistachio/kernel/src/arch/powerpc64/cache.h:57: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/cache.h:62: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/cache.h:67: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/cache.h:91: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/cache.h:96: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/arch/powerpc64/cache.h:101: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/generic/kmemory.h:35,
+                 from /home/fedora/pistachio/kernel/src/generic/kmemory.cc:32:
+/home/fedora/pistachio/kernel/src/generic/sync.h:38: warning: `__gnu_inline__' attribute directive ignored
+In file included from /home/fedora/pistachio/kernel/src/generic/kmemory.cc:32:
+/home/fedora/pistachio/kernel/src/generic/kmemory.h:126: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/kmemory.h:132: warning: `__gnu_inline__' attribute directive ignored
+/home/fedora/pistachio/kernel/src/generic/kmemory.h:137: warning: `__gnu_inline__' attribute directive ignored
+===> src/generic/udivdi3.c
+cd src/generic/ && gcc34 -nostdinc -I/home/fedora/pistachio/kernel/ppc64/include -I/home/fedora/pistachio/kernel/src -I/home/fedora/pistachio/kernel/src/generic -I/usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/ -Upowerpc64 -Upower3p -Uofpower3 -Uv4 -Urr -D__ARCH__=powerpc64 -D__CPU__=power3p -D__PLATFORM__=ofpower3 -D__API__=v4 -D__SCHED__=rr -imacros /home/fedora/pistachio/kernel/ppc64/config/config.h -imacros /home/fedora/pistachio/kernel/src/generic/macros.h -include /home/fedora/pistachio/kernel/src/generic/config.h  -include /home/fedora/pistachio/kernel/src/generic/types.h -ffreestanding -fno-builtin  -fomit-frame-pointer -fno-exceptions -Wall  -Wno-format -O2 -mpowerpc64 -msoft-float -mno-minimal-toc     -Wconversion  -c /home/fedora/pistachio/kernel/src/generic/udivdi3.c
+===> src/generic/umoddi3.c
+cd src/generic/ && gcc34 -nostdinc -I/home/fedora/pistachio/kernel/ppc64/include -I/home/fedora/pistachio/kernel/src -I/home/fedora/pistachio/kernel/src/generic -I/usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/ -Upowerpc64 -Upower3p -Uofpower3 -Uv4 -Urr -D__ARCH__=powerpc64 -D__CPU__=power3p -D__PLATFORM__=ofpower3 -D__API__=v4 -D__SCHED__=rr -imacros /home/fedora/pistachio/kernel/ppc64/config/config.h -imacros /home/fedora/pistachio/kernel/src/generic/macros.h -include /home/fedora/pistachio/kernel/src/generic/config.h  -include /home/fedora/pistachio/kernel/src/generic/types.h -ffreestanding -fno-builtin  -fomit-frame-pointer -fno-exceptions -Wall  -Wno-format -O2 -mpowerpc64 -msoft-float -mno-minimal-toc     -Wconversion  -c /home/fedora/pistachio/kernel/src/generic/umoddi3.c
+===> src/generic/qdivrem.c
+cd src/generic/ && gcc34 -nostdinc -I/home/fedora/pistachio/kernel/ppc64/include -I/home/fedora/pistachio/kernel/src -I/home/fedora/pistachio/kernel/src/generic -I/usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/ -Upowerpc64 -Upower3p -Uofpower3 -Uv4 -Urr -D__ARCH__=powerpc64 -D__CPU__=power3p -D__PLATFORM__=ofpower3 -D__API__=v4 -D__SCHED__=rr -imacros /home/fedora/pistachio/kernel/ppc64/config/config.h -imacros /home/fedora/pistachio/kernel/src/generic/macros.h -include /home/fedora/pistachio/kernel/src/generic/config.h  -include /home/fedora/pistachio/kernel/src/generic/types.h -ffreestanding -fno-builtin  -fomit-frame-pointer -fno-exceptions -Wall  -Wno-format -O2 -mpowerpc64 -msoft-float -mno-minimal-toc     -Wconversion  -c /home/fedora/pistachio/kernel/src/generic/qdivrem.c
+===> src/platform/ofpower3/head.S
+cd src/platform/ofpower3/ && gcc34 -DASSEMBLY -nostdinc -I/home/fedora/pistachio/kernel/ppc64/include -I/home/fedora/pistachio/kernel/src -I/home/fedora/pistachio/kernel/src/generic -I/usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/ -Upowerpc64 -Upower3p -Uofpower3 -Uv4 -Urr -D__ARCH__=powerpc64 -D__CPU__=power3p -D__PLATFORM__=ofpower3 -D__API__=v4 -D__SCHED__=rr -imacros /home/fedora/pistachio/kernel/ppc64/config/config.h -imacros /home/fedora/pistachio/kernel/src/generic/macros.h -include /home/fedora/pistachio/kernel/src/generic/config.h     -c /home/fedora/pistachio/kernel/src/platform/ofpower3/head.S
+make[1]: *** No rule to make target 'src/glue/v4-powerpc64/asmsyms.o', needed by '/home/fedora/pistachio/kernel/ppc64/include/asmsyms.h'.  Stop.
+make[1]: Leaving directory '/home/fedora/pistachio/kernel/ppc64'
+make: *** [Makefile:38: all] Error 2
