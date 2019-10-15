@@ -1,10 +1,10 @@
 /*********************************************************************
  *                
- * Copyright (C) 2002, 2003-2004,  Karlsruhe University
- * Copyright (C) 2005,  National ICT Australia (NICTA)
+ * Copyright (C) 1999-2010,  Karlsruhe University
+ * Copyright (C) 2008-2009,  Volkmar Uhlig, Jan Stoess, IBM Corporation
  *                
  * File path:     api/v4/tcb.h
- * Description:   V4 TCB
+ * Description:   
  *                
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -27,7 +27,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id: tcb.h,v 1.70 2004/12/09 01:03:43 cvansch Exp $
+ * $Id$
  *                
  ********************************************************************/
 #ifndef __API__V4__TCB_H__
@@ -35,6 +35,7 @@
 
 #include <debug.h>
 
+#include INC_API(cpu.h)
 #include INC_API(types.h)
 #include INC_API(queuestate.h)
 #include INC_API(queueing.h)
@@ -45,14 +46,25 @@
 #include INC_API(preempt.h)
 #include INC_API(fpage.h)
 #include INC_API(ipc.h)
+#include INC_API(sktcb.h)
+
+/* implementation specific functions */
+#if defined(CONFIG_X_CTRLXFER_MSG)
+#include INC_GLUE(ipc.h)
+class arch_ktcb_t;
+typedef word_t (arch_ktcb_t::*get_ctrlxfer_regs_t)(word_t id, word_t mask, tcb_t *dst_utcb, word_t &dst_mr);
+typedef word_t (arch_ktcb_t::*set_ctrlxfer_regs_t)(word_t id, word_t mask, tcb_t *src_utcb, word_t &src_mr);
+#endif
 
 /* implementation specific functions */
 #include INC_GLUE(ktcb.h)
 #include INC_GLUE(utcb.h)
+#if defined(CONFIG_X_CTRLXFER_MSG)
+#include INC_GLUE(ipc.h)
+#endif
 
-typedef int prio_t;
+
 class space_t;
-class prio_queue_t;
 
 /**
  * tcb_t: kernel thread control block
@@ -62,17 +74,32 @@ class tcb_t
 public:
     enum unwind_reason_e {
 	abort		= 1,
+	timeout		= 2,
+    };
+
+    /*
+     * Generic flags go from bit zero and upwards.  Architecture
+     * specific flags should go from most significant bits and
+     * downwards.
+     */
+    enum flags_e {
+	has_xfer_timeout	= 0,
+	schedule_in_progress	= 1,
+#if defined(CONFIG_X_CTRLXFER_MSG)
+	kernel_ctrlxfer_msg	= 2,
+#endif
     };
 
     /* public functions */
     bool activate(void (*startup_func)(), threadid_t pager);
     
-    bool create_inactive(threadid_t dest, threadid_t scheduler);
-    void create_kernel_thread(threadid_t dest, utcb_t * utcb);
+    void create_inactive(threadid_t dest, threadid_t scheduler, sktcb_type_e type);
+    void create_kernel_thread(threadid_t dest, utcb_t * utcb, sktcb_type_e type);
     
     void delete_tcb();
     bool migrate_to_space(space_t * space);
     bool migrate_to_processor(cpuid_t processor);
+    
     bool exists() 
 	{ return space != NULL; }
     bool is_activated()
@@ -81,7 +108,7 @@ public:
     void unwind (unwind_reason_e reason);
     
     /* queue manipulations */
-    void enqueue_send(tcb_t * tcb);
+    void enqueue_send(tcb_t * tcb, const bool head=false);
     void dequeue_send(tcb_t * tcb);
     void enqueue_present();
     void dequeue_present();
@@ -90,19 +117,14 @@ public:
     void set_global_id(threadid_t tid);
     threadid_t get_global_id();
 
+    threadid_t get_local_id();
     bool check_utcb_location (void);
-    bool check_utcb_location (word_t location);
-    void set_utcb_location (word_t location);
+    bool check_utcb_location (word_t utcb_location);
+    void set_utcb_location (word_t utcb_location);
     word_t get_utcb_location();
 
     void set_error_code (word_t err);
     word_t get_error_code (void);
-
-    /* redirector access functions */
-    void set_send_redirector(threadid_t redir);
-    threadid_t get_send_redirector();
-    void set_recv_redirector(threadid_t redir);
-    threadid_t get_recv_redirector();
 
     /* thread state */
     void set_state(thread_state_t state);
@@ -116,9 +138,10 @@ public:
     threadid_t get_partner();
     tcb_t * get_partner_tcb();
 
+    time_t get_xfer_timeout_snd ();
+    time_t get_xfer_timeout_rcv ();
     void set_actual_sender(threadid_t tid);
     threadid_t get_virtual_sender();
-    void set_intended_receiver(threadid_t tid);
     threadid_t get_intended_receiver();
 
     msg_tag_t get_tag();
@@ -126,13 +149,25 @@ public:
     word_t get_mr(word_t index);
     void set_mr(word_t index, word_t value);
     void copy_mrs(tcb_t * dest, word_t start, word_t count);
+    word_t get_br(word_t index);
+    void set_br(word_t index, word_t value);
 
-    msg_tag_t do_ipc(threadid_t to_tid, threadid_t from_tid);
+    msg_tag_t do_ipc(threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
     void send_pagefault_ipc(addr_t addr, addr_t ip, space_t::access_e access);
-    bool send_preemption_ipc(u64_t abstime);
+    bool send_preemption_ipc();
     void return_from_ipc (void);
     void return_from_user_interruption (void);
 
+#if defined(CONFIG_X_CTRLXFER_MSG)
+    void set_fault_ctrlxfer_items(word_t fault, ctrlxfer_mask_t mask);
+    ctrlxfer_mask_t get_fault_ctrlxfer_items(word_t fault);
+    word_t append_ctrlxfer_item(msg_tag_t tag, word_t offset);
+    word_t ctrlxfer( tcb_t *dst, msg_item_t item, word_t src_idx, word_t dst_idx, bool src_mr, bool dst_mr);
+#if defined(CONFIG_DEBUG)
+    void dump_ctrlxfer_state(bool extended);
+#endif
+#endif
+ 
     /* synchronization */
     void lock() { tcb_lock.lock(); }
     void unlock() { tcb_lock.unlock(); }
@@ -149,21 +184,18 @@ public:
     addr_t get_user_sp();
     void set_user_ip(addr_t ip);
     void set_user_sp(addr_t sp);
-    void copy_user_regs(tcb_t *src);
-    void copy_regs_to_mrs(tcb_t *src);
-
-    /* preemption callback signaling */
-    addr_t get_preempted_ip();
-    void set_preempted_ip(addr_t ip);
-    addr_t get_preempt_callback_ip();
 
     /* thread switching */
     void switch_to(tcb_t * current);
-    void switch_to_idle();
 
     /* space */
     space_t * get_space() { return space; }
     void set_space(space_t * space);
+
+    /* Copy area */
+    void adjust_for_copy_area (tcb_t * dst, addr_t * saddr, addr_t * daddr);
+    void release_copy_area (void);
+    addr_t copy_area_real_address (addr_t addr);
 
     /* processor */
     cpuid_t get_cpu() 
@@ -177,18 +209,18 @@ public:
 
     /* utcb access functions */
     utcb_t * get_utcb()
-        const { return this->utcb; }
-
+	const { return this->utcb; }
+    void set_utcb(utcb_t *utcb)
+	{ this->utcb = utcb; }
+    
 public:
-    void set_scheduler(const threadid_t tid);
     void set_pager(const threadid_t tid);
     void set_exception_handler(const threadid_t tid);
     void set_user_handle(const word_t handle);
     void set_user_flags(const word_t flags);
-    void set_acceptor(const acceptor_t acceptor);
 
     threadid_t get_pager();
-    threadid_t get_scheduler();
+
     threadid_t get_exception_handler();
     word_t get_user_handle();
     word_t get_user_flags();
@@ -196,16 +228,6 @@ public:
     void set_preempt_flags(preempt_flags_t flags);
     u8_t get_cop_flags();
     word_t * get_reg_stack_bottom (void);
-    acceptor_t get_acceptor();
-
-    /* asynchronous notification */
-    void clear_notify_bits();
-    void add_notify_bits(const word_t bits);
-    void sub_notify_bits(const word_t bits);
-    void set_notify_mask(const word_t mask);
-
-    word_t get_notify_bits();
-    word_t get_notify_mask();
 
     /* interrupt management */
     void set_irq_handler(const threadid_t tid);
@@ -213,32 +235,51 @@ public:
     bool is_interrupt_thread();
 
 public:
-    bool allocate();
+    static tcb_t *allocate(const threadid_t dest);
+    static void deallocate(const threadid_t dest);
+    static void init_tcbs();
+    static tcb_t *get_tcb(threadid_t tid);
+    static bool is_tcb(addr_t addr);
+
+
+    void arch_init_root_server(space_t * space, word_t ip, word_t sp);
 
 private:
     void create_tcb(const threadid_t dest);
-    bool init(threadid_t dest);
+    void init(threadid_t dest, sktcb_type_e type);
     
     /* stack manipulation */
 public:
     word_t * get_stack_top();
     void init_stack();
-private:
     void create_startup_stack(void (*func)());
     
 
+private:
     friend void make_offsets(); /* generates OFS_TCB_ stuff */
 
 public:
 
     typedef union {
 	struct {
-	    /* IPC copy */
-	    word_t		saved_mr[3];
-	    acceptor_t		saved_acceptor;
-	    word_t		saved_error;
-	} ipc_copy;
+	    struct 
+	    {
+		/* IPC copy */
+		word_t		mr[IPC_NUM_SAVED_MRS];
+		word_t		br0;
+		threadid_t	partner;
+		threadid_t	vsender;
+		word_t		state;
+		word_t		error;
+	    } saved_state[IPC_NESTING_LEVEL];
 
+	    struct {
+		word_t		copy_length;
+		addr_t		copy_start_src;
+		addr_t		copy_start_dst;
+		addr_t		copy_fault;
+	    } ipc_copy;
+	};
 	struct {
 	    /* Exchange registers */
 	    word_t		control;
@@ -249,99 +290,86 @@ public:
 	    word_t		user_handle;
 	} exregs;
     } misc_tcb_t;
-
-    threadid_t get_saved_partner (void) { return saved_partner; }
-    void set_saved_partner (threadid_t t) { saved_partner = t; }
-
-    thread_state_t get_saved_state (void)
-	{ return saved_state; }
-    void set_saved_state (thread_state_t s)
-	{ saved_state = s; }
-    void set_saved_state (thread_state_t::thread_state_e s)
-	{ saved_state = (thread_state_t) s; }
-
+    
+    void init_saved_state();
+    threadid_t get_saved_partner (word_t level = 0);
+    void set_saved_partner (threadid_t t, word_t level = 0);
+    thread_state_t get_saved_state (word_t level = 0);
+    void set_saved_state (thread_state_t s, word_t level = 0);
+    
     /* do not delete this TCB_START_MARKER */
 
     // have relatively static values here
     threadid_t		myself_global;
+    threadid_t		myself_local;
 
 private:
-    word_t		utcb_location;
+    cpuid_t		cpu;
     utcb_t *		utcb;
     
     thread_state_t 	thread_state;
     threadid_t		partner;
 
+public:
     resource_bits_t	resource_bits;
-private:
-    threadid_t		send_redirector;
-    threadid_t		recv_redirector;
-
-    space_t *		space;
-public:
-    queue_state_t	queue_state;
-
-    /* queues */
-    ringlist_t<tcb_t>	ready_list;
-    ringlist_t<tcb_t>	send_list;
-
-    tcb_t *		send_head;
     word_t *		stack;
-
-    ringlist_t<tcb_t>	wait_list;
-    ringlist_t<tcb_t>	present_list;
-
-    spinlock_t		tcb_lock;
-
-#ifdef CONFIG_SMP
-    cpuid_t		cpu;
-    ringlist_t<tcb_t>	xcpu_list;
-    cpuid_t		xcpu;
-    word_t		xcpu_status;
-#endif
-
-public:
-    /* scheduling */
-    word_t		total_quantum;
-    word_t		timeslice_length;
-    s64_t		current_timeslice;
-    prio_t		priority;
-
-private:
-    /* pager etc */
-    threadid_t		scheduler;
-
-public:
-    bitmask_t		flags;
-    arch_ktcb_t		arch;
-
-public:
-    misc_tcb_t		misc;
-    threadid_t		saved_partner;
-    thread_state_t	saved_state;
-    thread_resources_t	resources;
-#ifdef CONFIG_DEBUG
-    ringlist_t<tcb_t>	thread_list;
-    char                debug_name[16];
-#endif
-
 private:
     /* VU: pdir_cache should be architecture-specific!!! */
     word_t		pdir_cache;
 
+public:
+    queue_state_t	queue_state;
+
+    /* queues and scheduling state */
+    ringlist_t<tcb_t>	present_list;
+    ringlist_t<tcb_t>	send_list;
+    tcb_t *		send_head;
+    sched_ktcb_t	sched_state;
+
+    spinlock_t		tcb_lock;
+
+#if defined(CONFIG_SMP)
+    ringlist_t<tcb_t>	xcpu_list;
+    cpuid_t		xcpu;
+    word_t		xcpu_status;
+    lockstate_t		lock_state;
+#endif
+
+private:
+    /* pager etc */
+    space_t *		space;
+
+#if defined(CONFIG_X_CTRLXFER_MSG)
+    ctrlxfer_mask_t	fault_ctrlxfer[4+arch_ktcb_t::fault_max];
+#endif
+
+public:
+    bitmask_t<word_t>	flags;
+    arch_ktcb_t		arch;
+
+public:
+    misc_tcb_t		misc;
+    thread_resources_t	resources;
+
+private:
     word_t		kernel_stack[0];
     /* do not delete this TCB_END_MARKER */
 
     /* class friends */
-    friend void dump_tcb(tcb_t *);
+    friend void dump_tcb(tcb_t *, bool extended);
     friend void handle_ipc_error (void);
     friend class thread_resources_t;
+    
+#if defined(CONFIG_STATIC_TCBS)
+    static  tcb_t *tcb_array[TOTAL_KTCBS];
+#endif
+
 };
 
 /* union to allow allocation of tcb including stack */
-union whole_tcb_t {
+typedef union _whole_tcb_t {
     u8_t pad[KTCB_SIZE];
-} __attribute__((aligned(KTCB_SIZE)));
+} whole_tcb_t __attribute__((aligned(KTCB_SIZE)));
     
 
 /**********************************************************************
@@ -350,56 +378,105 @@ union whole_tcb_t {
  *
  **********************************************************************/
 
+/**
+ * Set the global thread ID in a TCB
+ * @param tid	new thread ID
+ */
+INLINE void tcb_t::set_global_id(const threadid_t tid)
+{
+    myself_global = tid;
+    ASSERT(get_utcb());
+    get_utcb()->set_my_global_id(tid);
+}
+
 INLINE threadid_t tcb_t::get_global_id()
 {
     return myself_global;
 }
 
-INLINE void tcb_t::set_scheduler(const threadid_t tid)
+INLINE threadid_t tcb_t::get_local_id()
 {
-    this->scheduler = tid;
+    return myself_local;
 }
 
-INLINE threadid_t tcb_t::get_scheduler()
-{
-    return this->scheduler;
-}
 
 INLINE void tcb_t::set_irq_handler(const threadid_t tid)
 {
-    set_scheduler(tid);
+    sched_state.set_scheduler(tid);
 }
 
 INLINE threadid_t tcb_t::get_irq_handler()
 {
-    return get_scheduler();
+    return sched_state.get_scheduler();
 }
 
-INLINE void tcb_t::set_send_redirector(const threadid_t redir)
-{
-    this->send_redirector = redir;
-}
-
-INLINE threadid_t tcb_t::get_send_redirector()
-{
-    return this->send_redirector;
-}
-
-INLINE void tcb_t::set_recv_redirector(const threadid_t redir)
-{
-    this->recv_redirector = redir;
-}
-
-INLINE threadid_t tcb_t::get_recv_redirector()
-{
-    return this->recv_redirector;
-}
 
 /**********************************************************************
  *
  *                  Access functions
  *
  **********************************************************************/
+__attribute__ ((const)) INLINE tcb_t * addr_to_tcb (addr_t addr)
+{
+    return (tcb_t *) ((word_t) addr & KTCB_MASK);
+}
+
+
+#if defined(CONFIG_STATIC_TCBS)
+INLINE bool tcb_t::is_tcb(addr_t addr)
+{
+    tcb_t * tcb = addr_to_tcb(addr);
+    for (unsigned i = 0; i < TOTAL_KTCBS; i++)
+	if (tcb_array[i] == tcb)
+	    return true;
+    return false;
+}
+
+INLINE tcb_t * tcb_t::get_tcb( threadid_t tid )
+{
+    return tcb_array[tid.get_threadno() & VALID_THREADNO_MASK];
+}
+
+#else
+
+INLINE bool tcb_t::is_tcb(addr_t addr)
+{
+    return space_t::is_tcb_area(addr);
+}
+INLINE tcb_t * tcb_t::get_tcb( threadid_t tid )
+{
+    return (tcb_t *)((KTCB_AREA_START) + 
+	    ((tid.get_threadno() & VALID_THREADNO_MASK) * KTCB_SIZE));
+}
+
+/**
+ * allocate the tcb
+ * The tcb pointed to by this will be allocated.
+ */
+INLINE tcb_t* tcb_t::allocate(threadid_t dest)
+{
+    tcb_t *tcb = get_tcb(dest);
+    /**
+     * tcb_t::allocate: allocate memory for TCB
+     *
+     * Allocate memory for the given TCB.  We do this by generating a
+     * write to the TCB area.  If TCB area is not backed by writable
+     * memory (i.e., already allocated) the pagefault handler will
+     * allocate the memory and map it.
+     */
+    tcb->kernel_stack[0] = 0;
+    
+    return tcb;
+}
+
+INLINE void tcb_t::deallocate(threadid_t dest)
+{ /* Nothing to do */ }
+INLINE void tcb_t::init_tcbs()
+{ /* Nothing to do */ }
+
+#endif
+
+
 INLINE void tcb_t::set_state(thread_state_t state)
 {
     this->thread_state = state;
@@ -422,7 +499,40 @@ INLINE threadid_t tcb_t::get_partner()
 
 INLINE tcb_t* tcb_t::get_partner_tcb()
 {
-    return this->get_space()->get_tcb(partner);
+    return get_tcb(partner);
+}
+
+INLINE void tcb_t::init_saved_state()
+{
+    for (int l = 0; l < IPC_NESTING_LEVEL; l++)
+    {	
+	set_saved_state (thread_state_t::aborted, l);
+	set_saved_partner (threadid_t::nilthread(), l);
+    }
+}
+
+INLINE threadid_t tcb_t::get_saved_partner (word_t level) 
+{ 
+    ASSERT(level < IPC_NESTING_LEVEL); 
+    return misc.saved_state[level].partner; 
+}
+
+INLINE void tcb_t::set_saved_partner (threadid_t t, word_t level) 
+{ 
+    ASSERT(level < IPC_NESTING_LEVEL); 
+    misc.saved_state[level].partner = t; 
+}
+
+INLINE thread_state_t tcb_t::get_saved_state (word_t level)
+{ 
+    ASSERT(level < IPC_NESTING_LEVEL); 
+    return (thread_state_t) misc.saved_state[level].state; 
+}
+
+INLINE void tcb_t::set_saved_state (thread_state_t s, word_t level)
+{ 
+    ASSERT(level < IPC_NESTING_LEVEL); 
+    misc.saved_state[level].state = s; 
 }
 
 /**
@@ -431,7 +541,7 @@ INLINE tcb_t* tcb_t::get_partner_tcb()
  */
 INLINE threadid_t tcb_t::get_pager()
 {
-    return get_utcb()->pager;
+    return get_utcb()->get_pager();
 }
 
 /**
@@ -440,7 +550,7 @@ INLINE threadid_t tcb_t::get_pager()
  */
 INLINE void tcb_t::set_pager(const threadid_t tid)
 {
-    get_utcb()->pager = tid;
+    get_utcb()->set_pager(tid);
 }
 
 /**
@@ -449,7 +559,7 @@ INLINE void tcb_t::set_pager(const threadid_t tid)
  */
 INLINE threadid_t tcb_t::get_exception_handler()
 {
-    return get_utcb()->exception_handler;
+    return get_utcb()->get_exception_handler();
 }
 
 /**
@@ -458,7 +568,7 @@ INLINE threadid_t tcb_t::get_exception_handler()
  */
 INLINE void tcb_t::set_exception_handler(const threadid_t tid)
 {
-    get_utcb()->exception_handler = tid;
+    get_utcb()->set_exception_handler(tid);
 }
 
 /**
@@ -467,7 +577,7 @@ INLINE void tcb_t::set_exception_handler(const threadid_t tid)
  */
 INLINE word_t tcb_t::get_user_handle()
 {
-    return get_utcb()->user_defined_handle;
+    return get_utcb()->get_user_defined_handle();
 }
 
 /**
@@ -476,7 +586,7 @@ INLINE word_t tcb_t::get_user_handle()
  */
 INLINE void tcb_t::set_user_handle(const word_t handle)
 {
-    get_utcb()->user_defined_handle = handle;
+    get_utcb()->set_user_defined_handle(handle);
 }
 
 /**
@@ -485,7 +595,7 @@ INLINE void tcb_t::set_user_handle(const word_t handle)
  */
 INLINE void tcb_t::set_actual_sender (threadid_t tid)
 {
-    get_utcb()->virtual_sender = tid;
+    get_utcb()->set_virtual_sender(tid);
 }
 
 /**
@@ -494,16 +604,7 @@ INLINE void tcb_t::set_actual_sender (threadid_t tid)
  */
 INLINE threadid_t tcb_t::get_virtual_sender (void)
 {
-    return get_utcb()->virtual_sender;
-}
-
-/**
- * Set the intended receiver of an IPC
- * @return      thread ID of intended receiver
- */
-INLINE void tcb_t::set_intended_receiver (threadid_t tid)
-{
-    get_utcb()->intended_receiver = tid;
+    return get_utcb()->get_virtual_sender();
 }
 
 /**
@@ -512,7 +613,7 @@ INLINE void tcb_t::set_intended_receiver (threadid_t tid)
  */
 INLINE threadid_t tcb_t::get_intended_receiver (void)
 {
-    return get_utcb()->intended_receiver;
+    return get_utcb()->get_intended_receiver();
 }
 
 /**
@@ -521,7 +622,7 @@ INLINE threadid_t tcb_t::get_intended_receiver (void)
  */
 INLINE void tcb_t::set_error_code(word_t err)
 {
-    get_utcb()->error_code = err;
+    get_utcb()->set_error_code(err);
 }
 
 /**
@@ -530,7 +631,7 @@ INLINE void tcb_t::set_error_code(word_t err)
  */
 INLINE word_t tcb_t::get_error_code(void)
 {
-    return get_utcb()->error_code;
+    return get_utcb()->get_error_code();
 }
 
 /**
@@ -540,7 +641,7 @@ INLINE word_t tcb_t::get_error_code(void)
 INLINE preempt_flags_t tcb_t::get_preempt_flags (void)
 {
     preempt_flags_t flags;
-    flags.raw = get_utcb()->preempt_flags;
+    flags.raw = get_utcb()->get_preempt_flags();
     return flags;
 }
 
@@ -550,7 +651,7 @@ INLINE preempt_flags_t tcb_t::get_preempt_flags (void)
  */
 INLINE void tcb_t::set_preempt_flags (preempt_flags_t flags)
 {
-    get_utcb()->preempt_flags = flags.raw;
+    get_utcb()->set_preempt_flags(flags.raw);
 }
 
 /**
@@ -559,56 +660,7 @@ INLINE void tcb_t::set_preempt_flags (preempt_flags_t flags)
  */
 INLINE u8_t tcb_t::get_cop_flags (void)
 {
-    return get_utcb()->cop_flags;
-}
-
-/**
- * clear the notify_bits
- */
-INLINE void tcb_t::clear_notify_bits()
-{
-	get_utcb()->notify_bits = 0;
-}
-
-/**
- * add bits to the notify_mask 
- */
-INLINE void tcb_t::add_notify_bits(const word_t bits)
-{
-	get_utcb()->notify_bits |= bits;
-}
-
-/**
- * clear bits in the notify_mask 
- */
-INLINE void tcb_t::sub_notify_bits(const word_t bits)
-{
-	get_utcb()->notify_bits &= ~(bits);
-}
-
-/**
- * read value of the notify_mask 
- */
-INLINE word_t tcb_t::get_notify_bits(void)
-{
-    return get_utcb()->notify_bits;
-}
-
-/**
- * read value of the notify_mask 
- */
-INLINE word_t tcb_t::get_notify_mask(void)
-{
-    return get_utcb()->notify_mask;
-}
-
-/**
- * set the value of the notify_mask register
- * @param value value to set
- */
-INLINE void tcb_t::set_notify_mask(const word_t mask)
-{
-    get_utcb()->notify_mask = mask;
+    return get_utcb()->get_cop_flags();
 }
 
 /**
@@ -618,8 +670,7 @@ INLINE void tcb_t::set_notify_mask(const word_t mask)
  */
 INLINE msg_tag_t tcb_t::get_tag (void)
 {
-    msg_tag_t tag;
-    tag.raw = get_mr(0);
+    msg_tag_t tag = get_mr(0);
     return tag;
 }
 
@@ -634,14 +685,36 @@ INLINE void tcb_t::set_tag (msg_tag_t tag)
 }
 
 /**
+ * Get a thread's send transfer timeout
+ * @return      send transfer timeout
+ */
+INLINE time_t tcb_t::get_xfer_timeout_snd (void)
+{
+    return get_utcb()->get_xfer_timeout().get_snd();
+}
+
+/**
+ * Get a thread's receive transfer timeout
+ * @return      receive transfer timeout
+ */
+INLINE time_t tcb_t::get_xfer_timeout_rcv (void)
+{
+    return get_utcb()->get_xfer_timeout().get_rcv();
+}
+
+
+/**
  * enqueues the tcb into the send queue of tcb
  * @param tcb the thread control block to enqueue
  */
-INLINE void tcb_t::enqueue_send(tcb_t * tcb)
+INLINE void tcb_t::enqueue_send(tcb_t * tcb, const bool head)
 {
-    ASSERT(NORMAL, !queue_state.is_set(queue_state_t::send) );
-
-    ENQUEUE_LIST_TAIL(tcb->send_head, this, send_list);
+    //TRACEPOINT_TB(DEBUG, ("%t enqueue into send queue of %t", this, tcb));
+    ASSERT( !queue_state.is_set(queue_state_t::send) );
+    if (head)
+	ENQUEUE_LIST_HEAD(tcb->send_head, this, send_list);
+    else
+	ENQUEUE_LIST_TAIL(tcb->send_head, this, send_list);
     queue_state.set(queue_state_t::send);
 }
 
@@ -651,8 +724,7 @@ INLINE void tcb_t::enqueue_send(tcb_t * tcb)
  */
 INLINE void tcb_t::dequeue_send(tcb_t * tcb)
 {
-    ASSERT(NORMAL, queue_state.is_set(queue_state_t::send) );
-
+    ASSERT( queue_state.is_set(queue_state_t::send) );
     DEQUEUE_LIST(tcb->send_head, this, send_list);
     queue_state.clear(queue_state_t::send);
 }
@@ -661,14 +733,14 @@ INLINE void tcb_t::dequeue_send(tcb_t * tcb)
  * enqueue a tcb into the present list
  * the present list primarily exists for debugging reasons, since task 
  * manipulations now happen on a per-thread basis */
-#ifdef CONFIG_DEBUG
+#if defined(CONFIG_DEBUG)
 extern tcb_t * global_present_list;
 extern spinlock_t present_list_lock;
 #endif
 
 INLINE void tcb_t::enqueue_present()
 {
-#ifdef CONFIG_DEBUG
+#if defined(CONFIG_DEBUG)
     present_list_lock.lock();
     ENQUEUE_LIST_TAIL(global_present_list, this, present_list);
     present_list_lock.unlock();
@@ -677,7 +749,7 @@ INLINE void tcb_t::enqueue_present()
 
 INLINE void tcb_t::dequeue_present()
 {
-#ifdef CONFIG_DEBUG
+#if defined(CONFIG_DEBUG)
     present_list_lock.lock();
     DEQUEUE_LIST(global_present_list, this, present_list);
     present_list_lock.unlock();
@@ -691,13 +763,14 @@ INLINE arch_ktcb_t *tcb_t::get_arch()
 
 INLINE tcb_t * get_idle_tcb()
 {
-    extern whole_tcb_t __idle_tcb;
-    return (tcb_t*)&__idle_tcb;
+    extern tcb_t *__idle_tcb;
+    return (tcb_t*)__idle_tcb;
 }
 
-INLINE void tcb_t::switch_to_idle()
+INLINE tcb_t * get_dummy_tcb()
 {
-    switch_to(get_idle_tcb());
+    extern tcb_t *__dummy_tcb;
+    return (tcb_t*)__dummy_tcb;
 }
 
 
@@ -718,26 +791,20 @@ INLINE space_t * get_current_space()
     return get_current_tcb()->get_space();
 }
 
-//src/api/v4/cpu.h:70 already defines this, for us...
-/*#ifndef CONFIG_SMP
-INLINE cpuid_t get_current_cpu()
-{
-    return 0;
-}
-
+#if !defined(CONFIG_SMP)
 INLINE bool tcb_t::migrate_to_processor(cpuid_t processor)
 {
     return processor == 0;
 }
 #endif
-*/
-//PREDEFINED LOGIC - CPU.H
 
 INLINE bool tcb_t::is_local_cpu()
 {
     // on non-SMP always evaluates to true
     return (get_current_cpu() == get_cpu());
 }
+
+void handle_ipc_timeout (word_t state);
 
 
 /**
