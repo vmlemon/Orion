@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="27"
+   name=""
+   committed-date="2006-04-18T10:56:17.905518Z"
+   url="https://v2lin.svn.sourceforge.net/svnroot/v2lin/branches/v2lin_v02/samples/with_main"
+   last-author="conan_sh"
+   kind="dir"
+   uuid="8865ccd7-bd0e-0410-9ca4-8e41419f945a"
+   repos="https://v2lin.svn.sourceforge.net/svnroot/v2lin"
+   revision="29"/>
+<entry
+   committed-rev="27"
+   name="with_main.c"
+   text-time="2007-02-04T08:24:11.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="271aee6160de78b5f3cbbf1ffa85be80"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="Makefile"
+   text-time="2007-02-04T08:24:11.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="3fdfe5493746745ce6eb0141ea57f636"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+</wc-entries>

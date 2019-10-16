@@ -32,6 +32,9 @@
 #ifndef __L4__TYPES_H__
 #define __L4__TYPES_H__
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+
 #undef L4_32BIT
 #undef L4_64BIT
 #undef L4_BIG_ENDIAN

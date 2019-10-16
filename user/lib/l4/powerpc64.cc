@@ -31,6 +31,9 @@
  ***************************************************************************/
 #include <l4/kip.h>
 
+//#pragma GCC diagnostic push
+//#pragma GCC diagnostic ignored "-Wconversion"
+
 #if !defined(NULL)
 #define NULL 0
 #endif

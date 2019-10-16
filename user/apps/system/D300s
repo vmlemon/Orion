@@ -1,0 +1,410 @@
+===> dropin/300s.c
+gcc -I../../include -I../.. -I/usr/lib/gcc/x86_64-linux-gnu/8/include   -nostdinc -g -O2 -m64 -mno-red-zone   -fno-stack-protector -lssp -O2 -g -Wall -Wshadow   -fno-stack-protector  -Wconversion -std=c99 -c dropin/300s.c -o dropin/300s.o
+In file included from dropin/300s.c:32:
+../../include/stdio.h: In function ‘__sputc’:
+../../include/stdio.h:460:23: warning: conversion from ‘int’ to ‘unsigned char’ may change value [-Wconversion]
+   return (*_p->_p++ = _c);
+                       ^~
+In file included from ../../include/signal.h:43,
+                 from dropin/300s.c:33:
+../../include/sys/_ucontext.h: At top level:
+../../include/sys/_ucontext.h:46:2: error: unknown type name ‘mcontext_t’
+  mcontext_t uc_mcontext;
+  ^~~~~~~~~~
+In file included from dropin/300s.c:34:
+../../include/sys/types.h: In function ‘__bitcount16’:
+../../include/sys/types.h:327:7: warning: conversion from ‘int’ to ‘__uint16_t’ {aka ‘short unsigned int’} may change value [-Wconversion]
+  _x = (_x & 0x5555) + ((_x & 0xaaaa) >> 1);
+       ^
+../../include/sys/types.h:328:7: warning: conversion from ‘int’ to ‘__uint16_t’ {aka ‘short unsigned int’} may change value [-Wconversion]
+  _x = (_x & 0x3333) + ((_x & 0xcccc) >> 2);
+       ^
+In file included from ../../include/sys/types.h:376,
+                 from dropin/300s.c:34:
+../../include/sys/select.h: At top level:
+../../include/sys/select.h:105:54: warning: ‘struct timeval’ declared inside parameter list will not be visible outside of this definition or declaration
+ int select(int, fd_set *, fd_set *, fd_set *, struct timeval *);
+                                                      ^~~~~~~
+In file included from dropin/300s.c:34:
+../../include/sys/types.h: In function ‘__major’:
+../../include/sys/types.h:393:36: warning: conversion from ‘dev_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+  return (((_d >> 32) & 0xffffff00) | ((_d >> 8) & 0xff));
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+../../include/sys/types.h: In function ‘__minor’:
+../../include/sys/types.h:399:32: warning: conversion from ‘dev_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+  return (((_d >> 24) & 0xff00) | (_d & 0xffff00ff));
+         ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+../../include/sys/types.h: In function ‘__makedev’:
+../../include/sys/types.h:405:26: warning: conversion to ‘unsigned int’ from ‘int’ may change the sign of the result [-Wsign-conversion]
+  return (((dev_t)(_Major & 0xffffff00) << 32) | ((_Major & 0xff) << 8) |
+                          ^
+../../include/sys/types.h:405:47: warning: conversion to ‘long unsigned int’ from ‘int’ may change the sign of the result [-Wsign-conversion]
+  return (((dev_t)(_Major & 0xffffff00) << 32) | ((_Major & 0xff) << 8) |
+                                               ^
+../../include/sys/types.h:406:49: warning: conversion to ‘unsigned int’ from ‘int’ may change the sign of the result [-Wsign-conversion]
+      ((dev_t)(_Minor & 0xff00) << 24) | (_Minor & 0xffff00ff));
+                                                 ^
+dropin/300s.c: At top level:
+dropin/300s.c:79:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ main(argc, argv)
+ ^~~~
+dropin/300s.c: In function ‘main’:
+dropin/300s.c:79:1: warning: type of ‘argc’ defaults to ‘int’ [-Wimplicit-int]
+dropin/300s.c:82:11: warning: type defaults to ‘int’ in declaration of ‘c’ [-Wimplicit-int]
+  register c;
+           ^
+dropin/300s.c:84:2: warning: implicit declaration of function ‘scanarg’; did you mean ‘scanf’? [-Wimplicit-function-declaration]
+  scanarg(argc, argv);
+  ^~~~~~~
+  scanf
+dropin/300s.c:85:7: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  if (((int)signal(SIGINT, SIG_IGN) & 01) == 0)
+       ^
+dropin/300s.c:86:18: warning: passing argument 2 of ‘signal’ from incompatible pointer type [-Wincompatible-pointer-types]
+   signal(SIGINT, restore);
+                  ^~~~~~~
+In file included from ../../include/signal.h:40,
+                 from dropin/300s.c:33:
+../../include/sys/signal.h:509:17: note: expected ‘void (*)(int)’ but argument is of type ‘int (*)()’
+ __sighandler_t *signal(int, __sighandler_t *);
+                 ^~~~~~
+dropin/300s.c:87:15: error: ‘TCGETA’ undeclared (first use in this function); did you mean ‘TIOCGETA’?
+  if (ioctl(1, TCGETA, &sgb) == 0)
+               ^~~~~~
+               TIOCGETA
+dropin/300s.c:87:15: note: each undeclared identifier is reported only once for each function it appears in
+dropin/300s.c:88:3: warning: implicit declaration of function ‘fixtty’ [-Wimplicit-function-declaration]
+   fixtty();
+   ^~~~~~
+dropin/300s.c:89:16: warning: implicit declaration of function ‘calloc’ [-Wimplicit-function-declaration]
+  setbuf(stdin, calloc(BUFSIZ,1));
+                ^~~~~~
+dropin/300s.c:89:16: warning: incompatible implicit declaration of built-in function ‘calloc’
+dropin/300s.c:89:16: note: include ‘<stdlib.h>’ or provide a declaration of ‘calloc’
+dropin/300s.c:38:1:
++#include <stdlib.h>
+ /* input sequences (TTY37 style) */
+dropin/300s.c:89:16:
+  setbuf(stdin, calloc(BUFSIZ,1));
+                ^~~~~~
+dropin/300s.c:94:6: warning: implicit declaration of function ‘flushrv’; did you mean ‘fflush’? [-Wimplicit-function-declaration]
+      flushrv();
+      ^~~~~~~
+      fflush
+dropin/300s.c:98:5: warning: implicit declaration of function ‘flushnl’; did you mean ‘fflush’? [-Wimplicit-function-declaration]
+     flushnl();
+     ^~~~~~~
+     fflush
+dropin/300s.c:107:4: warning: implicit declaration of function ‘special’ [-Wimplicit-function-declaration]
+    special();
+    ^~~~~~~
+dropin/300s.c:118:6: warning: implicit declaration of function ‘putx’; did you mean ‘putw’? [-Wimplicit-function-declaration]
+      putx('\0');
+      ^~~~
+      putw
+dropin/300s.c:148:4: warning: implicit declaration of function ‘nplot’ [-Wimplicit-function-declaration]
+    nplot(halfsiz,U);
+    ^~~~~
+dropin/300s.c:155:2: warning: implicit declaration of function ‘flusher’; did you mean ‘fflush’? [-Wimplicit-function-declaration]
+  flusher();
+  ^~~~~~~
+  fflush
+dropin/300s.c: At top level:
+dropin/300s.c:161:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ scanarg(argc, argv)
+ ^~~~~~~
+dropin/300s.c: In function ‘scanarg’:
+dropin/300s.c:161:1: warning: type of ‘argc’ defaults to ‘int’ [-Wimplicit-int]
+dropin/300s.c:168:7: warning: implicit declaration of function ‘strcmp’ [-Wimplicit-function-declaration]
+   if (strcmp(p, "+12") == 0)
+       ^~~~~~
+dropin/300s.c:172:5: warning: implicit declaration of function ‘getdelay’; did you mean ‘getdelim’? [-Wimplicit-function-declaration]
+     getdelay(++p);
+     ^~~~~~~~
+     getdelim
+dropin/300s.c: At top level:
+dropin/300s.c:181:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ getdelay(p)
+ ^~~~~~~~
+dropin/300s.c: In function ‘getdelay’:
+dropin/300s.c:184:11: warning: type defaults to ‘int’ in declaration of ‘i’ [-Wimplicit-int]
+  register i;
+           ^
+dropin/300s.c:193:14: warning: implicit declaration of function ‘getnum’; did you mean ‘getw’? [-Wimplicit-function-declaration]
+   delay[i] = getnum(p);
+              ^~~~~~
+              getw
+dropin/300s.c: At top level:
+dropin/300s.c:201:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ fixtty()
+ ^~~~~~
+dropin/300s.c: In function ‘fixtty’:
+dropin/300s.c:205:16: error: invalid use of undefined type ‘struct termio’
+  svsgflgs = sgb.c_oflag;
+                ^
+dropin/300s.c:206:5: error: invalid use of undefined type ‘struct termio’
+  sgb.c_oflag &= ~(ONLRET|OCRNL|ONLCR);
+     ^
+dropin/300s.c:206:19: error: ‘ONLRET’ undeclared (first use in this function)
+  sgb.c_oflag &= ~(ONLRET|OCRNL|ONLCR);
+                   ^~~~~~
+dropin/300s.c:206:26: error: ‘OCRNL’ undeclared (first use in this function)
+  sgb.c_oflag &= ~(ONLRET|OCRNL|ONLCR);
+                          ^~~~~
+dropin/300s.c:206:32: error: ‘ONLCR’ undeclared (first use in this function)
+  sgb.c_oflag &= ~(ONLRET|OCRNL|ONLCR);
+                                ^~~~~
+dropin/300s.c:207:11: error: ‘TCSETAW’ undeclared (first use in this function); did you mean ‘TIOCSETAW’?
+  ioctl(1, TCSETAW, &sgb);  /* stty nl  */
+           ^~~~~~~
+           TIOCSETAW
+dropin/300s.c:210:18: warning: implicit declaration of function ‘ttyname’; did you mean ‘tmpnam’? [-Wimplicit-function-declaration]
+  ttydev = (char*)ttyname(1);
+                  ^~~~~~~
+                  tmpnam
+dropin/300s.c:210:11: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  ttydev = (char*)ttyname(1);
+           ^
+dropin/300s.c: At top level:
+dropin/300s.c:214:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ getnum(p)
+ ^~~~~~
+dropin/300s.c: In function ‘getnum’:
+dropin/300s.c:217:11: warning: type defaults to ‘int’ in declaration of ‘i’ [-Wimplicit-int]
+  register i = 0 ;
+           ^
+dropin/300s.c: At top level:
+dropin/300s.c:226:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ flusher()
+ ^~~~~~~
+dropin/300s.c:240:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ flushrv()
+ ^~~~~~~
+dropin/300s.c: In function ‘flushrv’:
+dropin/300s.c:242:11: warning: type defaults to ‘int’ in declaration of ‘numleft’ [-Wimplicit-int]
+  register numleft;
+           ^~~~~~~
+dropin/300s.c:254:3: warning: implicit declaration of function ‘putstr’; did you mean ‘puts’? [-Wimplicit-function-declaration]
+   putstr(frv1);
+   ^~~~~~
+   puts
+dropin/300s.c: At top level:
+dropin/300s.c:264:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ flushnl()
+ ^~~~~~~
+dropin/300s.c: In function ‘flushnl’:
+dropin/300s.c:266:11: warning: type defaults to ‘int’ in declaration of ‘numleft’ [-Wimplicit-int]
+  register numleft;
+           ^~~~~~~
+dropin/300s.c: At top level:
+dropin/300s.c:285:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ putstr(p)
+ ^~~~~~
+dropin/300s.c:292:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ restore()
+ ^~~~~~~
+dropin/300s.c: In function ‘restore’:
+dropin/300s.c:296:6: warning: implicit declaration of function ‘isatty’; did you mean ‘fixtty’? [-Wimplicit-function-declaration]
+  if (isatty(1)) {
+      ^~~~~~
+      fixtty
+dropin/300s.c:297:6: error: invalid use of undefined type ‘struct termio’
+   sgb.c_oflag = svsgflgs;
+      ^
+dropin/300s.c:298:12: error: ‘TCSETAW’ undeclared (first use in this function); did you mean ‘TIOCSETAW’?
+   ioctl(1, TCSETAW, &sgb);
+            ^~~~~~~
+            TIOCSETAW
+dropin/300s.c:299:17: warning: conversion from ‘int’ to ‘mode_t’ {aka ‘short unsigned int’} may change value [-Wconversion]
+   chmod(ttydev, svstmode);
+                 ^~~~~~~~
+dropin/300s.c:301:2: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+  exit(0);
+  ^~~~
+dropin/300s.c:301:2: warning: incompatible implicit declaration of built-in function ‘exit’
+dropin/300s.c:301:2: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+dropin/300s.c: At top level:
+dropin/300s.c:307:25: warning: conversion from ‘int’ to ‘char’ changes value from ‘131’ to ‘-125’ [-Wconversion]
+ char DELTA[] = {L,L,'/',0203,D,'-',0204,R,'-',0203,U,'\\',L,L,0};
+                         ^~~~
+dropin/300s.c:307:36: warning: conversion from ‘int’ to ‘char’ changes value from ‘132’ to ‘-124’ [-Wconversion]
+ char DELTA[] = {L,L,'/',0203,D,'-',0204,R,'-',0203,U,'\\',L,L,0};
+                                    ^~~~
+dropin/300s.c:307:47: warning: conversion from ‘int’ to ‘char’ changes value from ‘131’ to ‘-125’ [-Wconversion]
+ char DELTA[] = {L,L,'/',0203,D,'-',0204,R,'-',0203,U,'\\',L,L,0};
+                                               ^~~~
+dropin/300s.c:311:29: warning: conversion from ‘int’ to ‘char’ changes value from ‘131’ to ‘-125’ [-Wconversion]
+ char GAMMA[] = {L,L,'|',R,R,0203,U,'-',0203,D,R,R,'`',L,L,0};
+                             ^~~~
+dropin/300s.c:311:40: warning: conversion from ‘int’ to ‘char’ changes value from ‘131’ to ‘-125’ [-Wconversion]
+ char GAMMA[] = {L,L,'|',R,R,0203,U,'-',0203,D,R,R,'`',L,L,0};
+                                        ^~~~
+dropin/300s.c:312:28: warning: conversion from ‘int’ to ‘char’ changes value from ‘132’ to ‘-124’ [-Wconversion]
+ char infinity[] = {L,L,'c',0204,R,'o',L,L,0};
+                            ^~~~
+dropin/300s.c:313:37: warning: conversion from ‘int’ to ‘char’ changes value from ‘131’ to ‘-125’ [-Wconversion]
+ char integral[] = {'|','\'',R,R,'`',0203,L,0206,D,'\'',L,'`',R,R,0206,U,0};
+                                     ^~~~
+dropin/300s.c:313:44: warning: conversion from ‘int’ to ‘char’ changes value from ‘134’ to ‘-122’ [-Wconversion]
+ char integral[] = {'|','\'',R,R,'`',0203,L,0206,D,'\'',L,'`',R,R,0206,U,0};
+                                            ^~~~
+dropin/300s.c:313:66: warning: conversion from ‘int’ to ‘char’ changes value from ‘134’ to ‘-122’ [-Wconversion]
+ char integral[] = {'|','\'',R,R,'`',0203,L,0206,D,'\'',L,'`',R,R,0206,U,0};
+                                                                  ^~~~
+dropin/300s.c:314:23: warning: conversion from ‘int’ to ‘char’ changes value from ‘132’ to ‘-124’ [-Wconversion]
+ char lambda[] = {'\\',0204,D,L,'\'',D,L,'\'',0205,U,R,R,0};
+                       ^~~~
+dropin/300s.c:314:46: warning: conversion from ‘int’ to ‘char’ changes value from ‘133’ to ‘-123’ [-Wconversion]
+ char lambda[] = {'\\',0204,D,L,'\'',D,L,'\'',0205,U,R,R,0};
+                                              ^~~~
+dropin/300s.c:315:26: warning: conversion from ‘int’ to ‘char’ changes value from ‘132’ to ‘-124’ [-Wconversion]
+ char LAMBDA[] = {L,L,'/',0204,R,'\\',L,L,0};
+                          ^~~~
+dropin/300s.c:317:26: warning: conversion from ‘int’ to ‘char’ changes value from ‘131’ to ‘-125’ [-Wconversion]
+ char nabla[] = {L,L,'\\',0203,U,'-',0204,R,'-',0203,D,'/',L,L,0};
+                          ^~~~
+dropin/300s.c:317:37: warning: conversion from ‘int’ to ‘char’ changes value from ‘132’ to ‘-124’ [-Wconversion]
+ char nabla[] = {L,L,'\\',0203,U,'-',0204,R,'-',0203,D,'/',L,L,0};
+                                     ^~~~
+dropin/300s.c:317:48: warning: conversion from ‘int’ to ‘char’ changes value from ‘131’ to ‘-125’ [-Wconversion]
+ char nabla[] = {L,L,'\\',0203,U,'-',0204,R,'-',0203,D,'/',L,L,0};
+                                                ^~~~
+dropin/300s.c:318:19: warning: conversion from ‘int’ to ‘char’ changes value from ‘130’ to ‘-126’ [-Wconversion]
+ char not[] = {'-',0202,R,U,',',D,0202,L,0};
+                   ^~~~
+dropin/300s.c:318:34: warning: conversion from ‘int’ to ‘char’ changes value from ‘130’ to ‘-126’ [-Wconversion]
+ char not[] = {'-',0202,R,U,',',D,0202,L,0};
+                                  ^~~~
+dropin/300s.c:319:20: warning: conversion from ‘int’ to ‘char’ changes value from ‘131’ to ‘-125’ [-Wconversion]
+ char nu[] = {L,'(',0203,R,'/',L,L,0};
+                    ^~~~
+dropin/300s.c:320:23: warning: conversion from ‘int’ to ‘char’ changes value from ‘131’ to ‘-125’ [-Wconversion]
+ char omega[] = {L,'u',0203,R,'u',L,L,0};
+                       ^~~~
+dropin/300s.c:325:36: warning: conversion from ‘int’ to ‘char’ changes value from ‘132’ to ‘-124’ [-Wconversion]
+ char psi[] = {'/','-',D,D,R,R,'\'',0204,L,'\'',R,R,U,U,0};
+                                    ^~~~
+dropin/300s.c:326:40: warning: conversion from ‘int’ to ‘char’ changes value from ‘132’ to ‘-124’ [-Wconversion]
+ char PSI[] = {'[',']','-',D,D,R,R,'\'',0204,L,'`',R,R,U,U,0};
+                                        ^~~~
+dropin/300s.c:327:20: warning: conversion from ‘int’ to ‘char’ changes value from ‘131’ to ‘-125’ [-Wconversion]
+ char pi[] = {U,'-',0203,D,'"',D,'"',0203,U,0};
+                    ^~~~
+dropin/300s.c:327:37: warning: conversion from ‘int’ to ‘char’ changes value from ‘131’ to ‘-125’ [-Wconversion]
+ char pi[] = {U,'-',0203,D,'"',D,'"',0203,U,0};
+                                     ^~~~
+dropin/300s.c:328:26: warning: conversion from ‘int’ to ‘char’ changes value from ‘132’ to ‘-124’ [-Wconversion]
+ char PI[] = {L,L,'[',']',0204,R,'[',']',L,L,0203,U,'-',0203,D,0};
+                          ^~~~
+dropin/300s.c:328:45: warning: conversion from ‘int’ to ‘char’ changes value from ‘131’ to ‘-125’ [-Wconversion]
+ char PI[] = {L,L,'[',']',0204,R,'[',']',L,L,0203,U,'-',0203,D,0};
+                                             ^~~~
+dropin/300s.c:328:56: warning: conversion from ‘int’ to ‘char’ changes value from ‘131’ to ‘-125’ [-Wconversion]
+ char PI[] = {L,L,'[',']',0204,R,'[',']',L,L,0203,U,'-',0203,D,0};
+                                                        ^~~~
+dropin/300s.c:331:21: warning: conversion from ‘int’ to ‘char’ changes value from ‘130’ to ‘-126’ [-Wconversion]
+ char SIGMA[] = {'>',0202,D,'-',0205,U,'-',D,D,0};
+                     ^~~~
+dropin/300s.c:331:32: warning: conversion from ‘int’ to ‘char’ changes value from ‘133’ to ‘-123’ [-Wconversion]
+ char SIGMA[] = {'>',0202,D,'-',0205,U,'-',D,D,0};
+                                ^~~~
+dropin/300s.c:335:28: warning: conversion from ‘int’ to ‘char’ changes value from ‘131’ to ‘-125’ [-Wconversion]
+ char xi[] = {'c',R,D,',',L,0203,U,'c',L,D,'`',R,D,0};
+                            ^~~~
+dropin/300s.c:336:30: warning: conversion from ‘int’ to ‘char’ changes value from ‘131’ to ‘-125’ [-Wconversion]
+ char zeta[] = {'c',R,D,',',L,0203,U,'<',D,D,0};
+                              ^~~~
+dropin/300s.c:411:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ special()
+ ^~~~~~~
+dropin/300s.c: In function ‘special’:
+dropin/300s.c:413:11: warning: type defaults to ‘int’ in declaration of ‘c’ [-Wimplicit-int]
+  register c, i;
+           ^
+dropin/300s.c:413:14: warning: type defaults to ‘int’ in declaration of ‘i’ [-Wimplicit-int]
+  register c, i;
+              ^
+dropin/300s.c:417:3: warning: ‘return’ with no value, in function returning non-void
+   return;
+   ^~~~~~
+dropin/300s.c:411:1: note: declared here
+ special()
+ ^~~~~~~
+dropin/300s.c:420:4: warning: implicit declaration of function ‘plot’ [-Wimplicit-function-declaration]
+    plot(trans[i]);
+    ^~~~
+dropin/300s.c: At top level:
+dropin/300s.c:427:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ plot(s)
+ ^~~~
+dropin/300s.c: In function ‘plot’:
+dropin/300s.c:430:11: warning: type defaults to ‘int’ in declaration of ‘i’ [-Wimplicit-int]
+  register i, c;
+           ^
+dropin/300s.c:430:14: warning: type defaults to ‘int’ in declaration of ‘c’ [-Wimplicit-int]
+  register i, c;
+              ^
+dropin/300s.c: At top level:
+dropin/300s.c:443:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ nplot(n, c)
+ ^~~~~
+dropin/300s.c: In function ‘nplot’:
+dropin/300s.c:444:10: warning: type defaults to ‘int’ in declaration of ‘n’ [-Wimplicit-int]
+ register n, c;
+          ^
+dropin/300s.c:444:13: warning: type defaults to ‘int’ in declaration of ‘c’ [-Wimplicit-int]
+ register n, c;
+             ^
+dropin/300s.c: At top level:
+dropin/300s.c:452:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ putx(c)
+ ^~~~
+dropin/300s.c: In function ‘putx’:
+dropin/300s.c:453:10: warning: type defaults to ‘int’ in declaration of ‘c’ [-Wimplicit-int]
+ register c;
+          ^
+dropin/300s.c: At top level:
+dropin/300s.c:72:15: error: storage size of ‘sgb’ isn’t known
+ struct termio sgb;
+               ^~~
+dropin/300s.c: In function ‘scanarg’:
+dropin/300s.c:178:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+dropin/300s.c: In function ‘getdelay’:
+dropin/300s.c:198:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+dropin/300s.c: In function ‘fixtty’:
+dropin/300s.c:212:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+dropin/300s.c: In function ‘flusher’:
+dropin/300s.c:233:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+dropin/300s.c: In function ‘flushrv’:
+dropin/300s.c:259:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+dropin/300s.c: In function ‘flushnl’:
+dropin/300s.c:283:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+dropin/300s.c: In function ‘putstr’:
+dropin/300s.c:290:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+dropin/300s.c: In function ‘plot’:
+dropin/300s.c:441:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+dropin/300s.c: In function ‘nplot’:
+dropin/300s.c:448:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+dropin/300s.c: In function ‘putx’:
+dropin/300s.c:462:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+make: *** [../../Mk/l4.build.mk:62: dropin/300s.o] Error 1

@@ -1,0 +1,48 @@
+
+				v2linux
+
+v2linux defines the wrapper functions and data structures 
+needed to implement a Wind River VxWorks API 
+
+	Contents
+
+Using main() and user_sys_init
+Unimplemented features
+Not implemented features
+Can't be implemented directly
+
+	main() and user_sys_init()
+
+Original v2linux provided its own main() function to initialize internal
+objects. The user of the library should provide user_sys_init() and
+user_sys_kill() functions to do the initialization and cleanup of his
+application. We decided to add behavior to match other linux libraries,
+so the user of the library can write his own main(). Internal objects are
+initialized by v2lin_init() function, which the user is obligated to call before
+any other library functions.
+Applications with own main should link with libv2lin library only
+See samples/with_main/with_main.c for example. Applications with own user_sys_init()
+and user_sys_kill() should also to link v2linmain.so library. See samples/with_sysinit.c and 
+Makefile for example.
+
+
+	Not implemented features:
+
+semCCreate(SEM_Q_PRIORITY, 0);
+semCCreate(SEM_DELETE_SAFE, 0)
+semCCreate(SEM_INVERSION_SAFE, 0);
+
+	Can't be implemented directly:
+
+taskVarLib: taskVarAdd taskVarDelete taskVarGet taskVarSet
+You can use use __thread in variable declaration or functions 
+pthread_key_create pthread_setspecific pthread_getspecific pthread_key_delete.
+
+
+loadLib: loadModule, loadModuleAt
+
+For sample of loading shared library see ./samples/shared_library.
+
+
+See also:
+	<http://www.mvista.com/products/legacy.html>

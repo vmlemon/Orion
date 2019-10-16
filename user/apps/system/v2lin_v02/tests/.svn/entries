@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="27"
+   name=""
+   committed-date="2006-04-18T10:56:17.905518Z"
+   url="https://v2lin.svn.sourceforge.net/svnroot/v2lin/branches/v2lin_v02/tests"
+   last-author="conan_sh"
+   kind="dir"
+   uuid="8865ccd7-bd0e-0410-9ca4-8e41419f945a"
+   repos="https://v2lin.svn.sourceforge.net/svnroot/v2lin"
+   revision="29"/>
+<entry
+   committed-rev="27"
+   name="run.gdb"
+   text-time="2007-02-04T08:24:11.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="59bc10b333591071b2874072445bc1f6"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:10.000000Z"/>
+<entry
+   committed-rev="27"
+   name="tasks_sub.c"
+   text-time="2007-02-04T08:24:11.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="f2d4530f99bdba250b508c9b31f5ade6"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:10.000000Z"/>
+<entry
+   committed-rev="27"
+   name="test.c"
+   text-time="2007-02-04T08:24:11.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="fa9cbfa1016472b3d0dbf13cec95b8b1"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:10.000000Z"/>
+<entry
+   committed-rev="27"
+   name="test_watchdog.c"
+   text-time="2007-02-04T08:24:11.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="9a4f7a12b5cb3bd8dfffa4fedf560551"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:10.000000Z"/>
+<entry
+   committed-rev="27"
+   name="test_sem.c"
+   text-time="2007-02-04T08:24:11.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="6b837951fc375f75ab1f2dd5eabf8b69"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:10.000000Z"/>
+<entry
+   committed-rev="27"
+   name="demo.c"
+   text-time="2007-02-04T08:24:11.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="a29218d55775e75a65b5978bf8a71b34"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:10.000000Z"/>
+<entry
+   committed-rev="27"
+   name="test.h"
+   text-time="2007-02-04T08:24:11.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="e777edd8c2673081a96738e1883f5ec7"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:10.000000Z"/>
+<entry
+   committed-rev="27"
+   name="test_tasks.c"
+   text-time="2007-02-04T08:24:11.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="a20885a157d0d47eda32275a471a5efa"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:10.000000Z"/>
+<entry
+   committed-rev="27"
+   name="test_semaphores.c"
+   text-time="2007-02-04T08:24:11.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="41e98e1e77f53ceb0374313a13c765ea"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:10.000000Z"/>
+<entry
+   committed-rev="27"
+   name="defs.mk"
+   text-time="2007-02-04T08:24:11.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="a384c057138bd816a5f7c9bca7886ea9"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:10.000000Z"/>
+<entry
+   committed-rev="27"
+   name="test_msgq.c"
+   text-time="2007-02-04T08:24:11.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="175f62e24cb6f8608279f7a8b72d62ed"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:10.000000Z"/>
+<entry
+   committed-rev="27"
+   name="test_mutexes.c"
+   text-time="2007-02-04T08:24:11.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="ae8868e74890c4376f9d983f9386ff63"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:10.000000Z"/>
+<entry
+   committed-rev="27"
+   name="Makefile"
+   text-time="2007-02-04T08:24:11.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="fd05d1f562892b2c0e7f657aaba5f0d0"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:10.000000Z"/>
+<entry
+   committed-rev="27"
+   name="test_time.c"
+   text-time="2007-02-04T08:24:11.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="58543b02b5910cd0acafbf0db29e1c82"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+</wc-entries>

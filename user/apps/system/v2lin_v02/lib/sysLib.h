@@ -1,0 +1,1 @@
+int sysClkRateGet (void);

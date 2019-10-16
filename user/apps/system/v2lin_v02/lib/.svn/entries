@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="28"
+   name=""
+   committed-date="2006-04-20T15:51:38.590095Z"
+   url="https://v2lin.svn.sourceforge.net/svnroot/v2lin/branches/v2lin_v02/lib"
+   last-author="conan_sh"
+   kind="dir"
+   uuid="8865ccd7-bd0e-0410-9ca4-8e41419f945a"
+   repos="https://v2lin.svn.sourceforge.net/svnroot/v2lin"
+   revision="29"/>
+<entry
+   committed-rev="27"
+   name="taskVarLib.c"
+   text-time="2007-02-04T08:24:12.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="ae96b3741cc70d1fd3d0503aa3023257"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="ltaskLib.c"
+   text-time="2007-02-04T08:24:12.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="e2e3f5c085fc2670b5559cae1c1b342e"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="main_impl.c"
+   text-time="2007-02-04T08:24:12.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="5a0149378e192763f794517ae2595f4e"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="defs.mk"
+   text-time="2007-02-04T08:24:12.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="d0b35f18b238a9dc5f6e088ad5295c48"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="loadLib.c"
+   text-time="2007-02-04T08:24:12.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="bac278ef9bb69c9dbd6fdcf0f0b2cae9"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="taskVarLib.h"
+   text-time="2007-02-04T08:24:12.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="75d747bcfaa28c230a93d4d0f08816e5"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="vxw_hdrs.h"
+   text-time="2007-02-04T08:24:12.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="5db8f6b14e57a0efa858b598e3fbefbb"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="lmsgQLib.c"
+   text-time="2007-02-04T08:24:12.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="16b49d9cd5743ab5df456f820ef8b5c2"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="sysLib.h"
+   text-time="2007-02-04T08:24:12.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="50a6c56011749260d3c2417857570c37"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="v2ldebug.c"
+   text-time="2007-02-04T08:24:12.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="a2181545b9e2a7efad5efd66384122c7"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="loadLib.h"
+   text-time="2007-02-04T08:24:12.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="4034c853830148da1df79e620ffde8be"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="lwdLib.c"
+   text-time="2007-02-04T08:24:12.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="4c3fbda6f901de703addfbce5f3f1e9d"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="28"
+   name="v2ldebug.h"
+   text-time="2007-02-04T08:24:12.000000Z"
+   committed-date="2006-04-20T15:51:38.590095Z"
+   checksum="5d2099f705d76fa8c6d9f4d8f42f9cca"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="v2lpthread.h"
+   text-time="2007-02-04T08:24:12.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="1ee13846127b75373bfab4cfb8b0d1be"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="internal.h"
+   text-time="2007-02-04T08:24:12.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="4705d2d7c9b16748f2ec26e77f5fe8e4"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="v2ltime.c"
+   text-time="2007-02-04T08:24:12.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="68eba4bbaac205dec1d82576c12d2ad3"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="lkernelLib.c"
+   text-time="2007-02-04T08:24:12.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="cb39c18b59cfac4c22d1a18fcf6e7be6"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="tickLib.h"
+   text-time="2007-02-04T08:24:12.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="9aa3b910e9e9a09030f0988706102fb3"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:11.000000Z"/>
+<entry
+   committed-rev="27"
+   name="lsemLib.c"
+   text-time="2007-02-04T08:24:12.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="c7b68fe6768fda1d40c9b8b121fdc066"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:12.000000Z"/>
+<entry
+   committed-rev="27"
+   name="vxw_defs.h"
+   text-time="2007-02-04T08:24:12.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="7f2d9a68e390dc9ac9aafdd42dde24e2"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:12.000000Z"/>
+<entry
+   committed-rev="27"
+   name="Makefile"
+   text-time="2007-02-04T08:24:12.000000Z"
+   committed-date="2006-04-18T10:56:17.905518Z"
+   checksum="564021a58a35f7c4f2b06b4188d67c42"
+   last-author="conan_sh"
+   kind="file"
+   prop-time="2007-02-04T08:24:12.000000Z"/>
+</wc-entries>
