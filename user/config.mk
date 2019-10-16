@@ -48,10 +48,15 @@ SHELL=		/bin/bash
 CC=		gcc
 CXX=		$(CC) -x c++
 AS=		$(CC)
+<<<<<<< HEAD
 
 CFLAGS=		-nostdinc -fno-stack-protector -g -O2 -m64 -mno-red-zone   -fno-stack-protector -lssp
 CXXFLAGS=	$(CFLAGS) -fno-exceptions -fno-stack-protector
 
+=======
+CFLAGS=		-nostdinc -g -O2 -m64 -mno-red-zone   -fno-stack-protector -lssp
+CXXFLAGS=	$(CFLAGS) -fno-exceptions
+>>>>>>> c04100d9c129b8c63a2cac975ac30d3e24218f1f
 LDFLAGS=	-N -L$(top_builddir)/lib -L/usr/lib/gcc/x86_64-linux-gnu/8 -nostdlib  -melf_x86_64
 CPPFLAGS=	-I$(top_srcdir)/include -I$(top_builddir) -I/usr/lib/gcc/x86_64-linux-gnu/8/include 
 LGCC=		-lgcc

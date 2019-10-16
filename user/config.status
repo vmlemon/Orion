@@ -433,7 +433,11 @@ Copyright (C) 2012 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
+<<<<<<< HEAD
 ac_pwd='/home/tyson/Orion/user'
+=======
+ac_pwd='/home/tyson/NPP/pistachio/user'
+>>>>>>> c04100d9c129b8c63a2cac975ac30d3e24218f1f
 srcdir='.'
 INSTALL='/usr/bin/install -c'
 AWK='gawk'
@@ -629,7 +633,11 @@ S["SIGMA0_LINKBASE"]="00f00000"
 S["KICKSTART_LINKBASE"]="00100000"
 S["KERNEL"]="x86-kernel"
 S["ARCH"]="amd64"
+<<<<<<< HEAD
 S["CXXFLAGS"]="-fno-exceptions -fno-stack-protector "
+=======
+S["CXXFLAGS"]="-fno-exceptions "
+>>>>>>> c04100d9c129b8c63a2cac975ac30d3e24218f1f
 S["PLAT"]="amd64-pc99"
 S["TOOLPREFIX"]=""
 S["AWK"]="gawk"
@@ -643,7 +651,11 @@ S["EXEEXT"]=""
 S["ac_ct_CC"]="gcc"
 S["CPPFLAGS"]="-I$(top_srcdir)/include -I$(top_builddir) -I/usr/lib/gcc/x86_64-linux-gnu/8/include "
 S["LDFLAGS"]="-N -L$(top_builddir)/lib -L/usr/lib/gcc/x86_64-linux-gnu/8 -nostdlib  -melf_x86_64"
+<<<<<<< HEAD
 S["CFLAGS"]="-nostdinc -fno-stack-protector -g -O2 -m64 -mno-red-zone"
+=======
+S["CFLAGS"]="-nostdinc -g -O2 -m64 -mno-red-zone"
+>>>>>>> c04100d9c129b8c63a2cac975ac30d3e24218f1f
 S["CC"]="gcc"
 S["CROSSCC"]=""
 S["target_alias"]=""
