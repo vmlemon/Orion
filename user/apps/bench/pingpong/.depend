@@ -6,11 +6,7 @@ pingpong.o: pingpong.cc ../../../config.h ../../../include/l4/kip.h \
  ../../../include/l4/message.h ../../../include/l4/amd64/kdebug.h \
  ../../../include/l4/ipc.h ../../../include/l4/thread.h \
  ../../../include/l4/schedule.h ../../../include/l4/kdebug.h \
-<<<<<<< HEAD
  ../../../include/l4io.h /usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h \
-=======
- ../../../include/l4io.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
->>>>>>> c04100d9c129b8c63a2cac975ac30d3e24218f1f
  ../../../include/l4/arch.h ../../../include/l4/amd64/arch.h amd64.h \
  ../../../include/l4/amd64/compat.h ../../../include/l4/tracebuffer.h \
  ../../../include/l4/amd64/tracebuffer.h
