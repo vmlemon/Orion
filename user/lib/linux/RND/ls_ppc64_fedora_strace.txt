@@ -1,0 +1,85 @@
+[root@fedora28 fedora]# strace ls
+execve("/usr/bin/ls", ["ls"], 0x7fffe0fc85e0 /* 20 vars */) = 0
+brk(NULL)                               = 0x10020570000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=20454, ...}) = 0
+mmap(NULL, 20454, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fff8a4d0000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib64/libselinux.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\2\1\0\0\0\0\0\0\0\0\0\0\3\0\25\0\0\0\1\0\0\0\0\0\4\325X"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=286152, ...}) = 0
+mmap(NULL, 337280, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fff8a470000
+mmap(0x7fff8a4b0000, 131072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x30000) = 0x7fff8a4b0000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib64/libcap.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\2\1\0\0\0\0\0\0\0\0\0\0\3\0\25\0\0\0\1\0\0\0\0\0\1\371\300"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=70736, ...}) = 0
+mmap(NULL, 131384, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fff8a440000
+mmap(0x7fff8a450000, 131072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0x7fff8a450000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib64/power8/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\2\1\3\0\0\0\0\0\0\0\0\0\3\0\25\0\0\0\1\0\0\0\0\0!5\270"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=2482760, ...}) = 0
+mmap(NULL, 2250632, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fff8a210000
+mprotect(0x7fff8a410000, 65536, PROT_NONE) = 0
+mmap(0x7fff8a420000, 131072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x200000) = 0x7fff8a420000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib64/libpcre2-8.so.0", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\2\1\0\0\0\0\0\0\0\0\0\0\3\0\25\0\0\0\1\0\0\0\0\0\t\355\340"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=603056, ...}) = 0
+mmap(NULL, 655792, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fff8a160000
+mmap(0x7fff8a1f0000, 131072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x80000) = 0x7fff8a1f0000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib64/libdl.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\2\1\0\0\0\0\0\0\0\0\0\0\3\0\25\0\0\0\1\0\0\0\0\0\1\375H"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=73080, ...}) = 0
+mmap(NULL, 131664, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fff8a130000
+mmap(0x7fff8a140000, 65536, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0x7fff8a140000
+mmap(0x7fff8a150000, 592, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fff8a150000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib64/power8/libpthread.so.0", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\2\1\3\0\0\0\0\0\0\0\0\0\3\0\25\0\0\0\1\0\0\0\0\0\3\355("..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=249344, ...}) = 0
+mmap(NULL, 281120, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fff8a0e0000
+mmap(0x7fff8a110000, 131072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x20000) = 0x7fff8a110000
+close(3)                                = 0
+mprotect(0x7fff8a420000, 65536, PROT_READ) = 0
+mprotect(0x7fff8a110000, 65536, PROT_READ) = 0
+mprotect(0x7fff8a140000, 65536, PROT_READ) = 0
+mprotect(0x7fff8a1f0000, 65536, PROT_READ) = 0
+mprotect(0x7fff8a450000, 65536, PROT_READ) = 0
+mprotect(0x7fff8a4b0000, 65536, PROT_READ) = 0
+mprotect(0x122610000, 65536, PROT_READ) = 0
+mprotect(0x7fff8a530000, 65536, PROT_READ) = 0
+munmap(0x7fff8a4d0000, 20454)           = 0
+set_tid_address(0x7fff8a544b50)         = 27194
+set_robust_list(0x7fff8a544b60, 24)     = 0
+rt_sigaction(SIGRTMIN, {sa_handler=0x7fff8a11ecc8, sa_mask=[], sa_flags=SA_SIGINFO}, NULL, 8) = 0
+rt_sigaction(SIGRT_1, {sa_handler=0x7fff8a11ecd8, sa_mask=[], sa_flags=SA_RESTART|SA_SIGINFO}, NULL, 8) = 0
+rt_sigprocmask(SIG_UNBLOCK, [RTMIN RT_1], NULL, 8) = 0
+prlimit64(0, RLIMIT_STACK, NULL, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+statfs("/sys/fs/selinux", {f_type=SELINUX_MAGIC, f_bsize=65536, f_blocks=0, f_bfree=0, f_bavail=0, f_files=0, f_ffree=0, f_fsid={val=[0, 0]}, f_namelen=255, f_frsize=65536, f_flags=ST_VALID|ST_RELATIME}) = 0
+statfs("/sys/fs/selinux", {f_type=SELINUX_MAGIC, f_bsize=65536, f_blocks=0, f_bfree=0, f_bavail=0, f_files=0, f_ffree=0, f_fsid={val=[0, 0]}, f_namelen=255, f_frsize=65536, f_flags=ST_VALID|ST_RELATIME}) = 0
+brk(NULL)                               = 0x10020570000
+brk(0x100205a0000)                      = 0x100205a0000
+access("/etc/selinux/config", F_OK)     = 0
+openat(AT_FDCWD, "/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=6398800, ...}) = 0
+mmap(NULL, 6398800, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fff89ac0000
+close(3)                                = 0
+ioctl(1, TCGETS, {B38400 opost isig icanon echo ...}) = 0
+ioctl(1, TIOCGWINSZ, {ws_row=31, ws_col=127, ws_xpixel=0, ws_ypixel=0}) = 0
+openat(AT_FDCWD, ".", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3
+fstat(3, {st_mode=S_IFDIR|0700, st_size=4096, ...}) = 0
+getdents(3, /* 8 entries */, 32768)     = 248
+getdents(3, /* 0 entries */, 32768)     = 0
+close(3)                                = 0
+fstat(1, {st_mode=S_IFCHR|0620, st_rdev=makedev(0x88, 0), ...}) = 0
+write(1, "Orion\n", 6Orion
+)                  = 6
+close(1)                                = 0
+close(2)                                = 0
+exit_group(0)                           = ?
++++ exited with 0 +++
+

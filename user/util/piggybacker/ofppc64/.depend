@@ -1,0 +1,47 @@
+main.o: main.cc ../../../util/piggybacker/include/piggybacker/piggyback.h \
+ ../../../include/l4/types.h ../../../include/l4/powerpc64/types.h \
+ ../../../include/l4/powerpc64/specials.h \
+ ../../../util/piggybacker/include/piggybacker/kip.h \
+ ../../../include/l4/kcp.h ../../../include/l4/kip.h \
+ ../../../include/l4/powerpc64/syscalls.h ../../../include/l4/message.h \
+ ../../../include/l4/powerpc64/vregs.h \
+ ../../../util/piggybacker/include/piggybacker/io.h \
+ ../../../util/piggybacker/include/piggybacker/elf.h \
+ ../../../util/piggybacker/include/piggybacker/string.h \
+ ../../../util/piggybacker/include/piggybacker/ieee1275.h \
+ ../../../util/piggybacker/include/piggybacker/1275tree.h \
+ ../../../util/piggybacker/include/piggybacker/macros.h \
+ ../../../util/piggybacker/include/piggybacker/powerpc64/page.h
+crt0.o: crt0.S ../../../include/l4/powerpc64/asm.h
+io.o: io.cc ../../../util/piggybacker/include/piggybacker/io.h \
+ ../../../include/l4/types.h ../../../include/l4/powerpc64/types.h \
+ ../../../include/l4/powerpc64/specials.h \
+ ../../../util/piggybacker/include/piggybacker/ieee1275.h \
+ ../../../util/piggybacker/include/piggybacker/string.h
+ieee1275.o: ../common/ieee1275.cc \
+ ../../../util/piggybacker/include/piggybacker/ieee1275.h \
+ ../../../include/l4/types.h ../../../include/l4/powerpc64/types.h \
+ ../../../include/l4/powerpc64/specials.h \
+ ../../../util/piggybacker/include/piggybacker/macros.h
+kip.o: ../common/kip.cc \
+ ../../../util/piggybacker/include/piggybacker/kip.h \
+ ../../../include/l4/types.h ../../../include/l4/powerpc64/types.h \
+ ../../../include/l4/powerpc64/specials.h ../../../include/l4/kcp.h \
+ ../../../include/l4/kip.h ../../../include/l4/powerpc64/syscalls.h \
+ ../../../include/l4/message.h ../../../include/l4/powerpc64/vregs.h \
+ ../../../util/piggybacker/include/piggybacker/elf.h \
+ ../../../util/piggybacker/include/piggybacker/io.h \
+ ../../../util/piggybacker/include/piggybacker/macros.h \
+ ../../../util/piggybacker/include/piggybacker/powerpc64/page.h
+string.o: ../common/string.cc \
+ ../../../util/piggybacker/include/piggybacker/string.h \
+ ../../../include/l4/types.h ../../../include/l4/powerpc64/types.h \
+ ../../../include/l4/powerpc64/specials.h
+1275tree.o: ../common/1275tree.cc ../../../include/l4/types.h \
+ ../../../include/l4/powerpc64/types.h \
+ ../../../include/l4/powerpc64/specials.h \
+ ../../../util/piggybacker/include/piggybacker/string.h \
+ ../../../util/piggybacker/include/piggybacker/ieee1275.h \
+ ../../../util/piggybacker/include/piggybacker/1275tree.h \
+ ../../../util/piggybacker/include/piggybacker/macros.h \
+ ../../../util/piggybacker/include/piggybacker/io.h

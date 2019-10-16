@@ -1,0 +1,39 @@
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether make sets $(MAKE)... yes
+checking whether ln -s works... yes
+checking for gawk... gawk
+checking location of libgcc.a... /usr/lib/gcc/ppc64-redhat-linux/8
+checking location of stdarg.h... /usr/lib/gcc/ppc64-redhat-linux/8/include
+checking kernel build directory... $(top_builddir)
+configure: creating ./config.status
+config.status: creating config.mk
+config.status: creating Makefile
+config.status: creating lib/Makefile
+config.status: creating lib/l4/Makefile
+config.status: creating lib/io/Makefile
+config.status: creating serv/Makefile
+config.status: creating serv/sigma0/Makefile
+config.status: creating apps/Makefile
+config.status: creating apps/bench/Makefile
+config.status: creating apps/bench/pingpong/Makefile
+config.status: creating apps/grabmem/Makefile
+config.status: creating apps/l4test/Makefile
+config.status: creating util/Makefile
+config.status: creating util/kickstart/Makefile
+config.status: creating util/grubdisk/Makefile
+config.status: creating util/piggybacker/Makefile
+config.status: creating util/piggybacker/ofppc/Makefile
+config.status: creating util/piggybacker/ofppc64/Makefile
+config.status: creating contrib/Makefile
+config.status: creating contrib/elf-loader/Makefile
+config.status: creating config.h
+config.status: config.h is unchanged
