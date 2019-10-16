@@ -153,7 +153,7 @@ L4_INLINE L4_Word_t L4_ThreadControl(
 	 __L4_PPC64_CLOBBER_REGS, "memory", __L4_PPC64_CLOBBER_CR_REGS
     );
 
-    return r3;
+    return dest.raw;
 }
 
 typedef L4_Clock_t (*__L4_SystemClock_t)( void );
@@ -175,7 +175,7 @@ L4_INLINE L4_Clock_t L4_SystemClock( void )
 	 __L4_PPC64_CLOBBER_REGS, "memory", __L4_PPC64_CLOBBER_CR_REGS
     );
 
-    return ( r3 );
+return  r3 ;
 }
 
 typedef L4_Word_t (*__L4_ThreadSwitch_t)( L4_Word_t );
