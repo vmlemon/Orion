@@ -1,0 +1,100 @@
+#!/bin/sh
+
+# Usage: tools/autobuild <configuration>
+# must be run from top level pistachio directory.
+
+TOPDIR=`pwd`
+
+# Compile a specifc configuration
+
+function do_configuration() {
+    CONFIGURATION=$1
+    CONFIGTAR=$TOPDIR/contrib/configs/$CONFIGURATION.kernel.tar
+    BUILDDIR=${BUILDDIR:-$TOPDIR/build/$CONFIGURATION}
+    # Can't find the required configuration, so die.
+    if [ ! -e $CONFIGTAR ]; then
+	echo "There is no configuration for $CONFIGURATION"
+	echo "You will need to compile manually :("
+	return $LINENO
+    fi;
+
+    # Already have this configuration, lets rebuild it.
+    if [ -e $BUILDDIR ]; then
+	echo "$BUILDDIR already exists. Updating it"
+	cd $BUILDDIR/kernel
+        mv config/config.h config/config.h.old
+	if ! make $QUIET batchconfig 2>&1 ; then
+            echo "Kernel reconfig failed"
+            return $LINENO
+        fi
+        cmp -s -i 120 config/config.h.old config/config.h \
+            && mv config/config.h.old config/config.h \
+            || rm config/config.h.old
+	if ! make $QUIET 2>&1 ; then
+            echo "Kernel compile failed"
+            return $LINENO
+        fi
+        return 0
+    fi;
+
+    # Don't have this configured yet, lets go through all
+    # the pain of compiling L4
+
+    # Compile the kernel
+    mkdir -p $BUILDDIR
+
+    # Setup kernel directories
+    cd $TOPDIR/kernel;
+    make $QUIET BUILDDIR=$BUILDDIR/kernel 2>&1
+
+    # Configure and compile kernel
+    cd $BUILDDIR/kernel
+    tar xf $CONFIGTAR
+
+    make $QUIET batchconfig 2>&1
+
+    if ! make $QUIET 2>&1 ; then
+        echo "Kernel compile failed"
+        return $LINENO
+    fi
+    return 0
+}
+
+# Perform some checks
+if [ x"$1" == x"-q" ]; then
+    QUIET=-s
+    shift
+fi
+
+if [ -z $1 ]; then
+    echo "You need to specify a configuration:"
+    for x in `ls $TOPDIR/contrib/configs/*.tar`; do 
+	echo '    ' `basename $x .kernel.tar`; 
+    done
+    exit $LINENO
+fi
+
+CONFIGS=$1
+if [ $CONFIGS = all ]; then
+    # We build all available configurations
+    CONFIGS=*
+fi
+
+NCONFIGS=`ls -1 $TOPDIR/contrib/configs/${CONFIGS}.kernel.tar 2>/dev/null | wc -l`
+if [ 0 == $NCONFIGS ]; then
+    echo "No existing config matches $1"
+    exit $LINENO
+fi
+
+# We build all specified configurations
+for i in `(cd $TOPDIR/contrib/configs/; ls ${CONFIGS}.kernel.tar | cut -d. -f1)`; do
+    TMPFILE=/tmp/abd-log.${USER}.${HOSTNAME}.${PPID}.$i
+    if do_configuration $i 2>&1 > $TMPFILE; then
+	rm $TMPFILE;
+    else
+        cat $TMPFILE;
+	rm $TMPFILE;
+	exit $LINENO
+    fi
+done
+exit 0

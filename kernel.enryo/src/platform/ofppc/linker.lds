@@ -86,7 +86,6 @@ SECTIONS
 		*(.sc_thread_switch) *(.sys_thread_switch)
 		*(.sc_xchg_registers) *(.sys_exchange_registers)
 		*(.sc_unmap) *(.sys_unmap)
-		*(.sc_system_clock)
 		*(.sc_memory_ctrl) *(.sys_memory_control)
 		*(.sc_processor_ctrl) *(.sys_processor_control)
 		*(.sc_thread_ctrl) *(.sys_thread_control)

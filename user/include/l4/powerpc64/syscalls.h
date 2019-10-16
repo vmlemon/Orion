@@ -156,12 +156,14 @@ L4_INLINE L4_Word_t L4_ThreadControl(
     return dest.raw;
 }
 
+//../../include/l4/powerpc64/syscalls.h:180:17: error: address of explicit register variable ‘r3’ requested
 typedef L4_Clock_t (*__L4_SystemClock_t)( void );
 extern __L4_SystemClock_t __L4_SystemClock;
 
 L4_INLINE L4_Clock_t L4_SystemClock( void )
 {
-    register L4_Clock_t r3 asm("r3");
+    register L4_Word_t r3 asm("r3");// = dest.raw;
+    //register L4_Clock_t r3 asm("r3");
 
     __asm__ __volatile__ (
 	"mtctr  %[sys];"
@@ -175,7 +177,13 @@ L4_INLINE L4_Clock_t L4_SystemClock( void )
 	 __L4_PPC64_CLOBBER_REGS, "memory", __L4_PPC64_CLOBBER_CR_REGS
     );
 
+<<<<<<< HEAD
 return  r3 ;
+=======
+//	L4_Clock_t rclock = r3;
+//return rclock;
+    return  r3 ;
+>>>>>>> master
 }
 
 typedef L4_Word_t (*__L4_ThreadSwitch_t)( L4_Word_t );

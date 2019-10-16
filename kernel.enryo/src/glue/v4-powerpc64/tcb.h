@@ -1,9 +1,9 @@
 /*********************************************************************
  *                
- * Copyright (C) 2003-2004, 2006-2007, 2010,  National ICT Australia (NICTA)
+ * Copyright (C) 2003-2004,  National ICT Australia (NICTA)
  *                
  * File path:     glue/v4-powerpc64/tcb.h
- * Description:   TCB related functions for Version 4, PowerPC 64
+ * Description:   
  *                
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -26,7 +26,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id: tcb.h,v 1.27 2006/10/20 21:32:27 reichelt Exp $
+ * $Id: tcb.h,v 1.24 2005/01/18 13:28:57 cvansch Exp $
  *                
  ********************************************************************/
 #ifndef __GLUE__V4_POWERPC64__TCB_H__
@@ -61,6 +61,22 @@ INLINE void tcb_t::set_mr(word_t index, word_t value)
     get_utcb()->mr[index] = value;
 }
 
+/**
+ * read value of the acceptor
+ */
+INLINE acceptor_t tcb_t::get_acceptor(void)
+{
+    return get_utcb()->acceptor;
+}
+
+/**
+ * set the value of the acceptor register
+ * @param value value to set
+ */
+INLINE void tcb_t::set_acceptor(const acceptor_t value)
+{
+    get_utcb()->acceptor = value;
+}
 
 /**
  * copies a set of message registers from one UTCB to another
@@ -70,7 +86,7 @@ INLINE void tcb_t::set_mr(word_t index, word_t value)
  */
 INLINE void tcb_t::copy_mrs(tcb_t * dest, word_t start, word_t count)
 {
-    ASSERT(start + count <= IPC_NUM_MR);
+    ASSERT(NORMAL, start + count <= IPC_NUM_MR);
 
     asm volatile (
 	"   mtctr	%0		\n"	/* Initialize the count register. */
@@ -90,24 +106,22 @@ INLINE void tcb_t::copy_mrs(tcb_t * dest, word_t start, word_t count)
 }
 
 /**
- * read value of buffer register
- * @param index number of buffer register
+ * allocate the tcb
+ * The tcb pointed to by this will be allocated.
  */
-INLINE word_t tcb_t::get_br(word_t index)
+INLINE void tcb_t::allocate()
 {
-    return get_utcb()->br[index];
-}
-
 /**
- * set the value of a buffer register
- * @param index number of buffer register
- * @param value value to set
+ * tcb_t::allocate: allocate memory for TCB
+ *
+ * Allocate memory for the given TCB.  We do this by generating a
+ * write to the TCB area.  If TCB area is not backed by writable
+ * memory (i.e., already allocated) the pagefault handler will
+ * allocate the memory and map it.
  */
-INLINE void tcb_t::set_br(word_t index, word_t value)
-{
-    get_utcb()->br[index] = value;
-}
 
+    this->kernel_stack[0] = 0;
+}
 
 
 /**
@@ -125,14 +139,26 @@ INLINE void tcb_t::set_space(space_t * space)
 
 
 /**
+ * set the global thread ID in a TCB
+ * @param tid	new thread ID
+ */
+INLINE void tcb_t::set_global_id(threadid_t tid)
+{
+    this->myself_global = tid;
+    get_utcb()->my_global_id = tid;
+}
+
+/**
  * set the cpu in a TCB
  * @param cpu	new cpu number
  */
 
 INLINE void tcb_t::set_cpu(cpuid_t cpu) 
 { 
+#ifdef CONFIG_SMP
     this->cpu = cpu;
     get_utcb()->processor_no = cpu;
+#endif
 }
 
 
@@ -540,19 +566,74 @@ INLINE void tcb_t::set_user_sp(addr_t sp)
     context->r1 = (word_t)sp;
 }
 
-INLINE word_t tcb_t::get_utcb_location()
+inline void tcb_t::copy_saved_regs(tcb_t *src)
 {
-    return myself_local.get_raw();
+    powerpc64_irq_context_t * to =
+	    (powerpc64_irq_context_t *) this->get_stack_top () - 1;
+    powerpc64_irq_context_t * from =
+	    (powerpc64_irq_context_t *) src->get_stack_top () - 1;
+
+    to->cr = from->cr;
+    to->r1 = from->r1;
+    to->r2 = from->r2;
+    to->r13 = from->r13;
+    to->r14 = from->r14;
+    to->r15 = from->r15;
+    to->r16 = from->r16;
+    to->r17 = from->r17;
+    to->r18 = from->r18;
+    to->r19 = from->r19;
+    to->r20 = from->r20;
+    to->r21 = from->r21;
+    to->r22 = from->r22;
+    to->r23 = from->r23;
+    to->r24 = from->r24;
+    to->r25 = from->r25;
+    to->r26 = from->r26;
+    to->r27 = from->r27;
+    to->r28 = from->r28;
+    to->r29 = from->r29;
+    to->r30 = from->r30;
+    to->r31 = from->r31;
+    to->srr1 = from->srr1;
 }
 
-INLINE void tcb_t::set_utcb_location(word_t utcb_location)
+INLINE void tcb_t::copy_volatile_regs(tcb_t *src)
+{
+    powerpc64_irq_context_t * to =
+	    (powerpc64_irq_context_t *) this->get_stack_top () - 1;
+    powerpc64_irq_context_t * from =
+	    (powerpc64_irq_context_t *) src->get_stack_top () - 1;
+
+    to->r0 = from->r0;
+    to->r3 = from->r3;
+    to->r4 = from->r4;
+    to->r5 = from->r5;
+    to->r6 = from->r6;
+    to->r7 = from->r7;
+    to->r8 = from->r8;
+    to->r9 = from->r9;
+    to->r10 = from->r10;
+    to->r11 = from->r11;
+    to->r12 = from->r12;
+    to->lr = from->lr;
+    to->ctr = from->ctr;
+    to->xer = from->xer;
+}
+
+INLINE word_t tcb_t::get_utcb_location()
+{
+    return utcb_location;
+}
+
+INLINE void tcb_t::set_utcb_location(word_t location)
 {
     powerpc64_irq_context_t * context =
 	(powerpc64_irq_context_t *) get_stack_top () - 1;
 
     //TRACEF( "(%p) utcb -> %p\n", this, utcb_location );
 
-    myself_local.set_raw (utcb_location);
+    utcb_location = location;
     context->r13 = utcb_location;
 }
 
@@ -585,32 +666,42 @@ INLINE void tcb_t::set_user_flags (const word_t flags)
 
 /**********************************************************************
  *
- *                  copy-area related functions
+ *                       preemption callback function
  *
  **********************************************************************/
 
-INLINE void tcb_t::adjust_for_copy_area (tcb_t * dst, addr_t * s, addr_t * d)
+/**
+ * set the address where preemption occured
+ */
+INLINE void tcb_t::set_preempted_ip(addr_t ip)
 {
-    UNIMPLEMENTED ();
+    get_utcb()->preempted_ip = (word_t)ip;
 }
 
-INLINE void tcb_t::release_copy_area (void)
+INLINE addr_t tcb_t::get_preempted_ip()
 {
-//    UNIMPLEMENTED (); XXX if should not be a problem as long as get_copy_area is UNIMPLENTED
+    return (addr_t)get_utcb()->preempted_ip;
 }
 
-INLINE addr_t tcb_t::copy_area_real_address (addr_t addr)
+/**
+ * get the preemption callback ip
+ */
+INLINE addr_t tcb_t::get_preempt_callback_ip()
 {
-    UNIMPLEMENTED ();
-    return addr;
+    return (addr_t)get_utcb()->preempt_callback_ip;
 }
-
 
 /**********************************************************************
  *
  *                        global tcb functions
  *
  **********************************************************************/
+
+__attribute__ ((const)) INLINE tcb_t * addr_to_tcb (addr_t addr)
+{
+    return (tcb_t *) ((word_t) addr & KTCB_MASK);
+}
+
 /**
  * Locate current TCB by using current stack pointer and return it.
  */
@@ -645,27 +736,40 @@ INLINE msg_tag_t tcb_t::do_ipc (threadid_t to_tid, threadid_t from_tid,
 {
     msg_tag_t tag;
     sys_ipc(to_tid, from_tid, timeout);
-    tag = get_mr (0);
+    tag.raw = get_mr (0);
 
     return tag;
 }
 
-
-/**********************************************************************
- *
- *                  architecture-specific functions
- *
- **********************************************************************/
+/**
+ * adds a thread to the space
+ * @param tcb pointer to thread control block
+ */
+inline void space_t::add_tcb(tcb_t * tcb)
+{
+    x.thread_count ++;
+//#ifdef CONFIG_DEBUG
+    //spaces_list_lock.lock();
+   // ENQUEUE_LIST_TAIL(x.thread_list, tcb, thread_list);
+    //spaces_list_lock.unlock();
+//#endif
+}
 
 /**
- * initialize architecture-dependent root server properties based on
- * values passed via KIP
- * @param space the address space this server will run in   
- * @param ip the initial instruction pointer           
- * @param sp the initial stack pointer
+ * removes a thread from a space
+ * @param tcb_t thread control block
+ * @return true if it was the last thread
  */
-INLINE void tcb_t::arch_init_root_server (space_t * space, word_t ip, word_t sp)
-{ 
+inline bool space_t::remove_tcb(tcb_t * tcb)
+{
+    ASSERT(DEBUG, x.thread_count != 0);
+    x.thread_count --;
+//#ifdef CONFIG_DEBUG
+   // spaces_list_lock.lock();
+   // DEQUEUE_LIST(x.thread_list, tcb, thread_list);
+ //   spaces_list_lock.unlock();
+//#endif
+    return (x.thread_count == 0);
 }
 
 

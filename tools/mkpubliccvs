@@ -1,0 +1,311 @@
+#!/usr/bin/perl
+
+my $cvsroot = "/home/cvs";
+my $develmodule = "pistachio";
+my $publicmodule = "pistachio-public";
+my $publictag = "public";
+my $workdir = "/tmp/mkpubcvs";
+
+my $cvscmd = "cvs";
+my $quiet = 0;
+
+#
+# Create module for public cvs tree
+#
+
+if (-d "$cvsroot/$publicmodule") {
+  print "Removing old CVS repository for $publicmodule\n" unless $quiet;
+  system "rm -rf $cvsroot/$publicmodule";
+}
+
+print "Creating CVS repository for $publicmodule\n" unless $quiet;
+system "cp -R $cvsroot/$develmodule $cvsroot/$publicmodule";
+
+
+#
+# Create a local repository to work on
+#
+
+if (! -d "$workdir") {
+  mkdir $workdir || die "mkdir ($workdir): $!";
+}
+if (-d "$workdir/$publicmodule") {
+  system "rm -rf $workdir/$publicmodule";
+}
+
+print "Creating working repository in $workdir/$publicmodule\n"  unless $quiet;
+chdir "$workdir" || die "chdir ($workdir): $!";
+system "$cvscmd -d $cvsroot -Q co $publicmodule";
+chdir "$workdir/$publicmodule" || die "chdir ($workdir/$publicmodule): $!";
+
+
+#
+# Move necessary files from out of the attic
+#
+
+raisedead ("$cvsroot/$publicmodule", "");
+
+
+#
+# Throw away all branches except public one
+#
+
+openlog ("remove-branches.sh");
+removebranches ("$cvsroot/$publicmodule", "");
+
+
+#
+# Get a fresh copy of the modified CVS repository
+#
+
+print "Re-creating working repository in $workdir/$publicmodule\n"
+  unless $quiet;
+
+chdir "$workdir" || die "chdir ($workdir): $!";
+system "rm -rf $workdir/$publicmodule";
+system "$cvscmd -d $cvsroot -Q co $publicmodule";
+chdir "$workdir/$publicmodule" || die "chdir ($workdir/$publicmodule): $!";
+
+
+openlog ("truncate-public.sh");
+
+#
+# Make public branch head and throw everything else away
+#
+
+mkpublicdir ("$cvsroot/$publicmodule", "");
+
+#docvs ("-Q admin -b$publictag");
+#docvs ("-Q admin -n$publictag");
+
+print "DONE\n" unless $quiet;
+
+close LOG;
+
+
+################################################################
+
+sub openlog {
+  my $file = shift;
+  close LOG;
+  open (LOG, "> $workdir/$file") || die "open (> $workdir/$file): $!";
+}
+
+sub docvs {
+  my $cmd = shift;
+  system "$cvscmd -Q -d $cvsroot $cmd";
+  print LOG "$cvscmd -d $cvsroot $cmd\n";
+}
+
+sub nopublic {
+  my $prefix = shift;
+  my $file = shift;
+  unlink "$prefix/$file" || die "unlink ($prefix/$file): $!";
+}
+
+sub raisedead {
+  my $prefix = shift;
+  my $curdir = shift;
+
+  opendir (DIR, "$prefix/$curdir") || die "opendir ($prefix/$curdir): $!";
+  my @dirs = grep
+    { -d "$prefix/$curdir/$_" && !/^\.\.?$/ && !/^Attic$/ } readdir (DIR);
+  closedir DIR;
+
+  foreach $D (@dirs) {
+    raisedead ($prefix, $curdir eq '' ? $D : "$curdir/$D");
+  }
+
+  if (opendir (DIR, "$prefix/$curdir/Attic")) {
+    my @afiles = grep { /,v$/ } readdir (DIR);
+    closedir DIR;
+
+    foreach $F (@afiles) {
+      my $file = $F;
+      $file =~ s/,v$//;
+
+      my $log =
+	`$cvscmd -Q -d $cvsroot log -r$publictag $curdir/$file 2>/dev/null`;
+      my $state; ($state) = ($log =~ /;\s+state: (\w+);/m);
+
+      if ($state eq 'Exp') {
+	#
+	# Need to raise file from the dead on the main branch.  The
+	# main branch will be removed at a later stage anyway.
+	#
+	docvs ("-Q up -r$publictag $curdir/$file");
+	docvs ("-Q admin -sExp $curdir/$file");
+
+	rename ("$prefix/$curdir/Attic/$F", "$prefix/$curdir/$F") ||
+	  die "rename ($prefix/$curdir/Attic/$F, $prefix/$curdir/$F): $!";
+      }
+    }
+  }
+}
+
+sub removebranches {
+  my $prefix = shift;
+  my $curdir = shift;
+
+  opendir (DIR, "$prefix/$curdir") || die "opendir ($prefix/$curdir): $!";
+  my @dirs = grep { -d "$prefix/$curdir/$_" && !/^\.\.?$/ } readdir (DIR);
+  rewinddir DIR;
+  my @vfiles = grep { /,v$/ } readdir (DIR);
+  closedir DIR;
+
+  foreach $F (@vfiles) {
+    #
+    # Figure out whether file has some branches or tags
+    #
+    my $branchpoint = 0;
+    my %filebranches;
+    my %filetags;
+
+    open (FILE, "$prefix/$curdir/$F") || die "open ($prefix/$curdir/$F): $!";
+    while (<FILE>) {
+      last if /^$/;
+      if (/^symbols/) {
+	while (<FILE>) {
+	  if (/^[ \t]+$publictag:\d+\.(\d+)/) {
+	    $branchpoint = $1;
+	  } elsif (/^[ \t]+([^:]+):(\d+)\.(\d+)\.0\.(\d+)/) {
+	    $filebranches{$1} = $3;
+	    $branchnum{$1} = "$2.$3.$4";
+	  } elsif (/^[ \t]+([^:]+):/) {
+	    ## Keep version tags
+	    $filetags{$1}++ unless $1 =~ /^V\d+_\d+/;
+	  } else {
+	    last;
+	  }
+	}
+      }
+    }
+    close FILE;
+
+    #
+    # If file has a public branch, delete all other branches.  If file
+    # does not have a public branch, delete whole file.
+    #
+    if ($branchpoint) {
+      my $dir = $curdir;
+      my $file = $F;
+      $file =~ s/,v$//;
+      $dir =~ s,/Attic,,;
+
+      foreach $T (keys %filetags) {
+	docvs ("-Q admin -n$T $dir/$file");
+      }
+      foreach $B (sort { $filebranches{$b} <=> $filebranches{$a} }
+		  keys %filebranches) {
+	docvs ("-Q admin -o$branchnum{${B}}: $dir/$file");
+	docvs ("-Q admin -n$B $dir/$file");
+      }
+    } else {
+      nopublic ("$prefix/$curdir", "$F");
+    }
+  }
+
+
+  #
+  # Do a recursive call for subdirectories.
+  #
+  foreach $D (@dirs) {
+    removebranches ($prefix, $curdir eq '' ? $D : "$curdir/$D");
+  }
+
+
+  #
+  # Check if we have an empty directory, and if so delete it.
+  #
+  opendir (DIR, "$prefix/$curdir") || die "opendir ($prefix/$curdir): $!";
+  my @files = grep { !/^\.\.?$/ } readdir (DIR);
+  if (@files == 0) {
+    rmdir "$prefix/$curdir";
+  }
+  closedir DIR;
+}
+
+sub dopublic {
+  my $prefix = shift;
+  my $file = shift;
+  my $branch = shift;
+  $file =~ s/,v$//;
+  $file =~ s,Attic/,,;
+
+  #
+  # Make sure that we have a file in local repository
+  #
+  if (! -f "$workdir/$publicmodule/$file") {
+    docvs ("-Q up -r$publictag $file");
+  }
+
+  #
+  # Collapse previous revisions into initial one
+  #
+  docvs ("-Q admin -o::$branch $file");
+  docvs ("-Q admin -o${branch}:: $file");
+  docvs ("-Q admin -m$branch:\"Initial public revision\" $file");
+
+  #
+  # If public branch contains entries, make the public branch the
+  # main branch.
+  #
+  my $log = `$cvscmd -Q -d $cvsroot log -r$publictag $file`;
+  if ($log !~ /selected revisions: 0$/m) {
+    docvs ("-Q admin -b$publictag $file");
+  }
+}
+
+sub mkpublic {
+  my $prefix = shift;
+  my $file = shift;
+  my $branch;
+
+  #
+  # Figure out whether file is in the public branch or not
+  #
+  open (FILE, "$prefix/$file") || die "open ($prefix/$file): $!";
+  while (<FILE>) {
+    last if /^$/;
+    if (/^symbols/) {
+      while (<FILE>) {
+	if (/^[ \t]+$publictag:(\d+\.\d+)/) {
+	  $branch = $1;
+	  last;
+	}
+	last if /^$/;
+      }
+    }
+  }
+  close FILE;
+
+  #
+  # If file is not in public branch, delete it.  Otherwise we remove
+  # everything except the public branch (actually, this should have
+  # happened while removing the other branches).
+  #
+  if ($branch) {
+    dopublic ($prefix, $file, $branch);
+  } else {
+    nopublic ($prefix, $file);
+  }
+}
+
+sub mkpublicdir {
+  my $prefix = shift;
+  my $curdir = shift;
+
+  opendir (DIR, "$prefix/$curdir") || die "opendir ($prefix/$curdir): $!";
+  my @dirs = grep { -d "$prefix/$curdir/$_" && !/^\.\.?$/ } readdir (DIR);
+  rewinddir DIR;
+  my @vfiles = grep { /,v$/ } readdir (DIR);
+  closedir DIR;
+
+  foreach $F (@vfiles) {
+    mkpublic ($prefix, $curdir eq '' ? $F : "$curdir/$F");
+  }
+
+  foreach $D (@dirs) {
+    mkpublicdir ($prefix, $curdir eq '' ? $D : "$curdir/$D");
+  }
+}

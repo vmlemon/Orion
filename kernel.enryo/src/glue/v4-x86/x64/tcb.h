@@ -49,8 +49,8 @@
  */
 INLINE void tcb_t::copy_mrs(tcb_t * dest, word_t start, word_t count)
 {
-    ASSERT(start + count <= IPC_NUM_MR);
-    ASSERT(count > 0);
+    //ASSERT(start + count <= IPC_NUM_MR);
+    //ASSERT(count > 0);
     word_t dummy;
 
     /* use optimized IA32 copy loop -- uses complete cacheline
@@ -115,9 +115,9 @@ INLINE void tcb_t::switch_to(tcb_t * dest)
 {
     word_t dummy;
     
-    ASSERT(dest->stack);
-    ASSERT(dest != this);
-    ASSERT(get_cpu() == dest->get_cpu());
+    //ASSERT(dest->stack);
+    //ASSERT(dest != this);
+    //ASSERT(get_cpu() == dest->get_cpu());
 
     if ( EXPECT_FALSE(this->resource_bits))
 	resources.save(this);

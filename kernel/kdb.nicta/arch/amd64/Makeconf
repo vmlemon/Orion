@@ -1,0 +1,13 @@
+SOURCES+=	kdb/arch/amd64/amd64.cc
+SOURCES+=	kdb/arch/amd64/breakpoints.cc
+SOURCES+=	kdb/arch/amd64/stepping.cc
+SOURCES+=	kdb/arch/amd64/tracebuffer.cc
+
+SOURCES+=	kdb/generic/linear_ptab_dump.cc \
+		kdb/generic/mapping.cc
+
+
+ifeq ("$(CONFIG_KDB_DISAS)","y")
+SOURCES+=	kdb/arch/amd64/disas.cc kdb/arch/amd64/amd64-dis.c kdb/generic/sprintf.cc
+endif
+

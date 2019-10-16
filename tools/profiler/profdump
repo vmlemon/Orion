@@ -1,0 +1,3 @@
+#!/bin/bash
+arm-linux-objdump -t ~/work/iguana/build_arm/ig_server/iguana/server/iguana.reloc ~/work/iguana/build_arm/base/pistachio/sa1100/kernel/arm-kernel ~/work/iguana/build_arm/sigma0/iguana/sigma0/ig_sigma0.reloc ~/work/iguana/build_arm/iguana/iguana/serial/iguana_serial.reloc ~/work/iguana/build_arm/iguana/wombat/vmlinux.reloc ~/work/iguana/build_arm/iguana/iguana/timer/iguana_timer.reloc ~/work/iguana/build_arm/iguana/iguana/timer/iguana_timer.reloc | grep ".text" | grep -v hidden | awk '{print $1 " " $(NF-1) " " $NF}' | sort
+

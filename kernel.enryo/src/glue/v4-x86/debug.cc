@@ -30,6 +30,8 @@
  *                
  ********************************************************************/
 
+#define get_kdebug_tcb get_kdb_tcb
+
 #if defined(CONFIG_DEBUG)
 
 #define X86_EXC_KDB

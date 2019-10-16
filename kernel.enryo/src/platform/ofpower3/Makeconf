@@ -29,7 +29,10 @@
 ## $Id$
 ##                
 ######################################################################
-SOURCES += $(addprefix src/platform/ofpower3/, head.S call.S prom.cc opic.cc )
+
+SOURCES += $(addprefix src/platform/ofpower64, head.S )
+
+SOURCES += $(addprefix src/platform/ofpower3/, call.S prom.cc opic.cc )
 
 SOURCES += $(addprefix src/arch/powerpc64/, 1275tree.cc of1275.cc rtas.cc stab.cc )
 

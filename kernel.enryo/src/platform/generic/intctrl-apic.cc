@@ -124,7 +124,7 @@ INLINE void intctrl_t::free_idt_entry(word_t irq, u8_t vector)
 
 INLINE void intctrl_t::sync_redir_entry(ioapic_redir_table_t * entry, sync_redir_part_e part)
 {
-    ASSERT(entry && entry->is_valid());
+    ASSERT(DEBUG, entry && entry->is_valid());
     entry->ioapic->lock.lock();
     if (part == sync_all)
 	entry->ioapic->i82093->set_redir_entry(entry->line, entry->entry);
@@ -467,7 +467,7 @@ void intctrl_t::mask(word_t irq)
     if (irq >= get_number_irqs())
 	return;
     
-    ASSERT(redir[irq].is_valid());
+    ASSERT(DEBUG, redir[irq].is_valid());
     redir[irq].entry.mask_irq();
 
     if (redir[irq].entry.is_level_triggered())
@@ -479,7 +479,7 @@ bool intctrl_t::unmask(word_t irq)
     if (irq >= get_number_irqs())
 	return false;
     
-    ASSERT(redir[irq].is_valid());
+    ASSERT(DEBUG, redir[irq].is_valid());
 
     if (redir[irq].entry.is_edge_triggered())
     {
@@ -590,7 +590,7 @@ word_t intctrl_t::get_number_irqs()
 
 bool intctrl_t::is_irq_available(word_t irq)
 {
-    ASSERT(irq < get_number_irqs());
+    ASSERT(DEBUG, irq < get_number_irqs());
     if (irq == 9) return false;
     return redir[irq].is_valid();
 }

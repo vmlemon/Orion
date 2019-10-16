@@ -1,6 +1,6 @@
 /*********************************************************************
  *                
- * Copyright (C) 2002-2003, 2008,  Karlsruhe University
+ * Copyright (C) 2002-2003,  Karlsruhe University
  *                
  * File path:     api/v4/queueing.h
  * Description:   tcb queue management
@@ -26,7 +26,7 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id: queueing.h,v 1.8 2005/06/03 16:13:45 joshua Exp $
+ * $Id: queueing.h,v 1.7 2004/12/09 01:03:42 cvansch Exp $
  *                
  ********************************************************************/
 #ifndef __API__V4__QUEUEING_H__
@@ -67,6 +67,7 @@ do {							\
     if (tcb->list.next == tcb)				\
     {							\
 	head = NULL;					\
+	tcb->list.next = tcb->list.prev = NULL;		\
     }							\
     else						\
     {							\
@@ -75,7 +76,14 @@ do {							\
 	(tcb->list.next)->list.prev = tcb->list.prev;	\
 	(tcb->list.prev)->list.next = tcb->list.next;	\
     }							\
-    tcb->list.next = tcb->list.prev = NULL;		\
 } while(0)
     
+
+/*template <class T> class ringlist_t
+{
+public:
+    T * next;
+    T * prev;
+};
+*/
 #endif /* !__API__V4__QUEUEING_H__ */

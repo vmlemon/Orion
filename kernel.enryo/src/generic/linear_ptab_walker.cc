@@ -1,6 +1,6 @@
 /*********************************************************************
  *                
- * Copyright (C) 2002-2010,  Karlsruhe University
+ * Copyright (C) 2002-2004,  Karlsruhe University
  *                
  * File path:     generic/linear_ptab_walker.cc
  * Description:   Linear page table manipulation
@@ -26,12 +26,13 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id: linear_ptab_walker.cc,v 1.66 2006/11/17 17:29:31 skoglund Exp $
+ * $Id: linear_ptab_walker.cc,v 1.53 2004/11/08 17:23:42 uhlig Exp $
  *                
  ********************************************************************/
 #ifndef __GENERIC__LINEAR_PTAB_WALKER_CC__
 #define __GENERIC__LINEAR_PTAB_WALKER_CC__
 
+#include <l4.h>
 #include INC_ARCH(pgent.h)
 #include INC_API(fpage.h)
 #include INC_API(tcb.h)
@@ -39,30 +40,18 @@
 
 #include <kdb/tracepoints.h>
 #include <linear_ptab.h>
-#include <mdb.h>
-
-#if !defined(CONFIG_NEW_MDB)
 #include <mapping.h>
-#else
-#include <mdb_mem.h>
-#endif
 
 
 DECLARE_TRACEPOINT (FPAGE_MAP);
 DECLARE_TRACEPOINT (FPAGE_OVERMAP);
-DECLARE_TRACEPOINT (FPAGE_MAPCTRL);
-#if !defined(CONFIG_NEW_MDB)
+DECLARE_TRACEPOINT (FPAGE_UNMAP);
 DECLARE_TRACEPOINT (MDB_MAP);
 DECLARE_TRACEPOINT (MDB_UNMAP);
-#endif
 
 DECLARE_KMEM_GROUP (kmem_pgtab);
 
-word_t hw_pgshifts[] = HW_PGSHIFTS;
-
-#if defined(CONFIG_NEW_MDB)
-#define mapnode_t mdb_node_t
-#endif
+const word_t hw_pgshifts[] = HW_PGSHIFTS;
 
 class mapnode_t;
 
@@ -70,6 +59,18 @@ class mapnode_t;
 /*
  * Helper functions.
  */
+
+static inline word_t base_mask (fpage_t fp, word_t size)
+{
+    return ((~0UL) >> ((sizeof (word_t) * 8) - fp.get_size_log2 ())) &
+	~((~0UL) >> ((sizeof (word_t) * 8) - size));
+}
+
+static inline addr_t address (fpage_t fp, word_t size)
+{
+    return (addr_t) (fp.raw & ~((1UL << size) - 1));
+}
+
 
 static inline word_t dbg_pgsize (word_t sz)
 {
@@ -95,17 +96,20 @@ static inline char dbg_szname (word_t sz)
  * @param t_space	destination address space
  * @param rcv_fp	receive window in destination space
  * @param grant		is mapping a grant operation
+ *
+ * @return true if mapping succeeded
  */
-void space_t::map_fpage (fpage_t snd_fp, word_t base,
+bool space_t::map_fpage (fpage_t snd_fp, word_t base,
 			 space_t * t_space, fpage_t rcv_fp,
 			 bool grant)
 {
     word_t offset, f_num, t_num, f_off;
     pgent_t *fpg, *tpg;
     pgent_t::pgsize_e f_size, t_size, pgsize;
-    mapnode_t *newmap, *map = NULL;
+    mapnode_t *newmap, *map;
     addr_t f_addr, t_addr;
-   
+    fpage_t dst_fp;
+
     pgent_t * r_fpg[pgent_t::size_max];
     pgent_t * r_tpg[pgent_t::size_max];
     word_t r_fnum[pgent_t::size_max];
@@ -243,13 +247,10 @@ void space_t::map_fpage (fpage_t snd_fp, word_t base,
      */
 
 
-    TRACEPOINT (FPAGE_MAP,"%s_fpage (f_spc=%p  f_fp=%p  t_spc=%p  t_fp=%p)\n",
-		grant ? "grant" : "map", this, snd_fp.raw, t_space, rcv_fp.raw);
-
-    /* Since get_size returns 1 for nil fpages, and get_size_log2 cannot
-       return a useful value anyway, check for nil fpages at first. */
-    if (snd_fp.is_nil_fpage () || rcv_fp.is_nil_fpage ())
-	return;
+    TRACEPOINT (FPAGE_MAP,
+		printf ("%s_fpage (f_spc=%p  f_fp=%p  t_spc=%p  t_fp=%p)\n",
+			grant ? "grant" : "map",
+			this, snd_fp.raw, t_space, rcv_fp.raw));
 
     /*
      * Calculate the actual send and receive address to use.
@@ -271,12 +272,13 @@ void space_t::map_fpage (fpage_t snd_fp, word_t base,
 					 ~base_mask (snd_fp, t_num)), base);
 	t_addr = address (rcv_fp, t_num);
     }
+    dst_fp.set ((word_t) t_addr, f_num, true, true, true);
 
     if (f_num < hw_pgshifts[0])
     {
 	if (f_num != 0)
 	    enter_kdebug ("map_fpage(): invalid fpage size");
-	return;
+	return false;
     }
 
 
@@ -384,6 +386,8 @@ void space_t::map_fpage (fpage_t snd_fp, word_t base,
 		 * Subtree does not exist.  Create one.
 		 */
 		tpg->make_subtree (t_space, t_size+1, false);
+		if (! tpg->is_valid (t_space, t_size+1))
+		    goto out_of_mem;
 	    }
 	    else if (! tpg->is_subtree (t_space, t_size+1))
 	    {
@@ -400,7 +404,6 @@ void space_t::map_fpage (fpage_t snd_fp, word_t base,
 		 */
 		printf ("map_fpage(): Larger mapping already exists.\n");
 		enter_kdebug ("warning: larger mapping exists");
-		t_size++;
 		goto Next_receiver_entry;
 	    }
 
@@ -427,37 +430,36 @@ void space_t::map_fpage (fpage_t snd_fp, word_t base,
 	else if (tpg->is_valid (t_space, t_size) &&
 		 t_size == f_size && f_size <= pgsize &&
 
+#ifndef CONFIG_ARCH_ARM
 		 /* Make sure that we do not overmap KIP and UTCB area */
 		 (! t_space->get_kip_page_area ().is_range_overlapping
 		  (t_addr, addr_offset (t_addr, page_size (t_size)))) &&
 		 (! t_space->get_utcb_page_area ().is_range_overlapping
 		  (t_addr, addr_offset (t_addr, page_size (t_size)))) &&
+#endif
 
 		 /* Check if we're simply extending access rights */
 		 (tpg->is_subtree (t_space, t_size) ||
 		  (is_sigma0_space (this) ?
-		   (tpg->address (t_space, t_size) != (paddr_t) f_addr) :
-		   (tpg->address (t_space, t_size) != fpg->address (this, f_size)))
-#if defined(CONFIG_NEW_MDB)
-		  || 
-		  (tpg->mapnode (t_space, t_size,
-				addr_mask (t_addr, ~page_mask (t_size)))->
-		   get_parent ()
-		   !=
-		   fpg->mapnode (this, f_size,
-				 addr_mask (f_addr, ~page_mask (f_size))))
-#endif
-		     ))
+		   (tpg->address (t_space, t_size) != f_addr) :
+		   (tpg->address (t_space, t_size) !=
+		    fpg->address (this, f_size)))))
 	{
 	    /*
 	     * We are doing overmapping.  Need to remove existing
 	     * mapping or subtree from destination space.
 	     */
 
-	    TRACEPOINT (FPAGE_OVERMAP,"overmapping: faddr=%p fsz=%d%cB  taddr=%p tsz=%d%cB (%s)\n",
-			f_addr, dbg_pgsize (page_size (f_size)), dbg_szname (page_size (f_size)),
-			t_addr, dbg_pgsize (page_size (t_size)), dbg_szname (page_size (t_size)),
-			tpg->is_subtree (t_space, t_size) ? "subtree" : "single map");
+	    TRACEPOINT (FPAGE_OVERMAP,
+			word_t fsz = page_size (f_size);
+			word_t tsz = page_size (t_size);
+			printf ("overmapping: "
+				"faddr=%p fsz=%d%cB  taddr=%p tsz=%d%cB "
+				"(%s)\n",
+				f_addr, dbg_pgsize (fsz), dbg_szname (fsz),
+				t_addr, dbg_pgsize (tsz), dbg_szname (tsz),
+				tpg->is_subtree (t_space, t_size) ?
+				"subtree" : "single map"));
 
 	    word_t num = 1;
 	    addr_t vaddr = t_addr;
@@ -486,18 +488,16 @@ void space_t::map_fpage (fpage_t snd_fp, word_t base,
 			(t_space, t_size,
 			 addr_mask (vaddr, ~page_mask (t_size)));
 
-#if !defined(CONFIG_NEW_MDB)
 		    TRACEPOINT
-			(MDB_UNMAP, "mdb_flush (spc=%p pg=%p map=%p vaddr=%p rwx tsz=%d%cB)  paddr=%p\n",
-			 t_space, tpg, map, vaddr, dbg_pgsize (page_size (t_size)), 
-			 dbg_szname (page_size (t_size)), tpg->address (t_space, t_size));
-#endif
+			(MDB_UNMAP,
+			 word_t tsz = page_size (t_size);
+			 printf ("mdb_flush (spc=%p pg=%p map=%p vaddr=%p rwx "
+				 "tsz=%d%cB)  paddr=%p\n",
+				 t_space, tpg, map, vaddr,
+				 dbg_pgsize (tsz), dbg_szname (tsz),
+				 tpg->address (t_space, t_size)));
 
-#if defined(CONFIG_NEW_MDB)
-		    mdb_mem.flush (map);
-#else
 		    mdb_flush (map, tpg, t_size, vaddr, pgsize, rcv_fp, true);
-#endif
 		}
 
 		if (t_size < f_size)
@@ -525,15 +525,6 @@ void space_t::map_fpage (fpage_t snd_fp, word_t base,
 	    /* We might have to flush the TLB after removing mappings. */
 	    if (space_t::does_tlbflush_pay (rcv_fp.get_size_log2 ()))
 		flush_tlb (get_current_space ());
-
-	    /*
-	     * We might have invalidated the source mapping during the unmap
-	     * operation above. If so, we have to skip it (unless whe deal with
-	     * sigma0 mappings, where source mappings are invalid by default).
-             * 
-	     */
-	    if (!fpg->is_valid (this, f_size) && !is_sigma0_space(this))
-		goto Next_receiver_entry;
 	}
 	else if (tpg->is_valid (t_space, t_size) &&
 		 tpg->is_subtree (t_space, t_size))
@@ -559,6 +550,8 @@ void space_t::map_fpage (fpage_t snd_fp, word_t base,
 	    r_tpg[t_size] = tpg->next (t_space, t_size+1, 1);
 	    r_tnum[t_size] = t_num - 1;
 	    tpg->make_subtree (t_space, t_size+1, false);
+	    if (! tpg->is_valid (t_space, t_size+1))
+		goto out_of_mem;
 
 	    tpg = tpg->subtree (t_space, t_size+1);
 	    t_num = page_table_size (t_size);
@@ -576,23 +569,29 @@ void space_t::map_fpage (fpage_t snd_fp, word_t base,
 
 	offset = (word_t) f_addr & page_mask (f_size) & ~page_mask (t_size);
 	
-	if (tpg->is_valid (t_space, t_size))
+	if (! tpg->is_subtree (t_space, t_size) && 
+	      tpg->is_valid (t_space, t_size))
 	{
 	    /*
 	     * If a mapping already exists, it might be that we are
 	     * just extending the current access rights.
 	     */
 	    if (is_sigma0_space (this) ?
-		(tpg->address (t_space, t_size) != (paddr_t) f_addr) :
 		(tpg->address (t_space, t_size) !=
-		 addr_offset (fpg->address (this, f_size), offset)))
+		 addr_offset (f_addr, f_off)) :
+		(tpg->address (t_space, t_size) !=
+		 addr_offset (fpg->address (this, f_size), offset + f_off)))
 	    {
-		paddr_t a UNUSED = is_sigma0_space (this) ? (paddr_t) f_addr :
-		    addr_offset (fpg->address (this, f_size), offset);
+		addr_t a UNUSED = is_sigma0_space (this) ?
+		    addr_offset(f_addr, f_off) :
+		    addr_offset (fpg->address (this, f_size), offset + f_off);
 		printf ("map_fpage(from=%p  to=%p  base=%p  "
-			"sndfp=%p  rcvfp=%p)  paddr %p != %p\n",
+			"sndfp=%p  rcvfp=%p)  paddr %p != %p, "
+		        "t_addr=%p, f_addr=%p, tpg=%p\n",
 			this, t_space, base, snd_fp.raw, rcv_fp.raw,
-			tpg->address (t_space, t_size), a);
+			tpg->address (t_space, t_size), a, 
+			(addr_t)t_addr, addr_offset(f_addr, f_off),
+			tpg);
 		enter_kdebug ("map_fpage(): Mapping already exists.");
 		goto Next_receiver_entry;
 	    }
@@ -622,79 +621,78 @@ void space_t::map_fpage (fpage_t snd_fp, word_t base,
 		 * page table entry.
 		 */
 
-#if !defined(CONFIG_NEW_MDB)
-		TRACEPOINT (MDB_MAP, "mdb_map (from {sigma0 pg=%p addr=%p %d%cB} to {"
-				    "spc=%p pg=%p addr=%p %d%cB})  paddr=%p\n",
-			    fpg, addr_offset (f_addr, offset),
-			    dbg_pgsize (page_size (f_size)), dbg_szname (page_size (f_size)),
-			    t_space, tpg, t_addr,
-			    dbg_pgsize (page_size(t_size)), dbg_szname (page_size(t_size)),
-			    addr_offset (f_addr, offset + f_off));
-#endif
+		TRACEPOINT (MDB_MAP,
+			    word_t fsz = page_size (f_size);
+			    word_t tsz = page_size (t_size);
+			    printf ("mdb_map (from {sigma0 "
+				    "pg=%p addr=%p %d%cB} to {"
+				    "spc=%p pg=%p addr=%p %d%cB})  "
+				    "paddr=%p\n",
+				    fpg, addr_offset (f_addr, offset),
+				    dbg_pgsize (fsz), dbg_szname (fsz),
+				    t_space, tpg, t_addr,
+				    dbg_pgsize (tsz), dbg_szname (tsz),
+				    addr_offset (f_addr, offset + f_off)));
 
-#if defined(CONFIG_NEW_MDB)
-		newmap = mdb_mem.map (sigma0_memnode, tpg, page_shift (t_size),
-				      (word_t) f_addr + offset + f_off,
-				       snd_fp.get_rwx (), ~0UL);
-		newmap->set_misc (mdb_mem_misc (t_space, t_size));
-#else
 		newmap = mdb_map (sigma0_mapnode, fpg, pgent_t::size_max+1,
 				  addr_offset (f_addr, offset + f_off),
 				  tpg, t_size, t_space, grant);
-#endif
+		if (newmap == NULL)
+		    goto out_of_mem;
 
 #ifdef CONFIG_HAVE_MEMORY_CONTROL
-		// XXX: should f_addr be offset?
 		if (lookup_mapping (f_addr, &fpg, &f_size))
 		    tpg->set_entry (t_space, t_size,
-		       		    sigma0_translate(addr_offset (f_addr, offset + f_off), f_size),
-				    snd_fp.get_rwx (),
-				    fpg->attributes(this, f_size),
-				    false);
+		       		    addr_offset (f_addr, offset + f_off),
+				    snd_fp.is_read(), snd_fp.is_write(),
+				    snd_fp.is_execute(), false,
+				    fpg->get_attributes(this, f_size) );
 		else
 #endif
-		    paddr_t paddr = sigma0_translate (addr_offset(f_addr, offset + f_off), f_size);
-			tpg->set_entry (t_space, t_size,
-				    paddr,
-				    snd_fp.get_rwx (), 
-				    sigma0_attributes(fpg, paddr, f_size),
-				    false);
-                tpg->set_linknode (t_space, t_size, newmap, t_addr);
+		    tpg->set_entry (t_space, t_size,
+				    addr_offset (f_addr, offset + f_off),
+				    snd_fp.is_read(), snd_fp.is_write (),
+				    snd_fp.is_execute(), false);
+
+		tpg->set_linknode (t_space, t_size, newmap, t_addr);
 	    }
 	    else
 	    {
 		map = fpg->mapnode (this, f_size,
 				    addr_mask (f_addr, ~page_mask (f_size)));
 
-#if !defined(CONFIG_NEW_MDB)
-		TRACEPOINT (MDB_MAP, "mdb_map (node=%p from {pg=%p addr=%p %d%cB} to {"
-			    "pg=%p addr=%p %d%cB}) paddr=%p\n", map, 
-			    fpg, f_addr, dbg_pgsize (page_size(f_size)), dbg_szname (page_size(f_size)),  
-			    tpg, t_addr, dbg_pgsize (page_size(t_size)), dbg_szname (page_size(t_size)),
-			    (addr_t) addr_offset (fpg->address (this, f_size),  offset + f_off));
-#endif
+		TRACEPOINT (MDB_MAP,
+			    word_t fsz = page_size (f_size);
+			    word_t tsz = page_size (t_size);
+			    printf ("mdb_map (node=%p from {"
+				    "spc=%p pg=%p addr=%p %d%cB} to {"
+				    "spc=%p pg=%p addr=%p %d%cB})  "
+				    "paddr=%p\n",
+				    map, this, fpg, f_addr,
+				    dbg_pgsize (fsz), dbg_szname (fsz),
+				    t_space, tpg, t_addr,
+				    dbg_pgsize (tsz), dbg_szname (tsz),
+				    addr_offset (fpg->address (this, f_size),
+						 offset + f_off)));
 
-#if defined(CONFIG_NEW_MDB)
-		mdb_node_t * smap = grant ? map->get_parent () : map;
-		newmap = mdb_mem.map (smap, tpg, page_shift (t_size),
-				      (word_t) fpg->address (this, f_size) +
-				      offset + f_off,
-				      snd_fp.get_rwx (), ~0UL);
-		newmap->set_misc (mdb_mem_misc (t_space, t_size));
-#else
-		newmap = mdb_map (map, fpg, f_size,
-				  addr_offset (f_addr, offset + f_off),
+		newmap = mdb_map (map, fpg, f_size, f_addr,
 				  tpg, t_size, t_space, grant);
-#endif
+		if (newmap == NULL)
+		    goto out_of_mem;
 
 		tpg->set_entry
 		    (t_space, t_size,
-		     addr_offset (fpg->address (this, f_size), offset+f_off),
-		     snd_fp.get_rwx (), fpg->attributes (this, f_size),
-		     false);
+		     addr_offset (fpg->address (this, f_size), offset + f_off),
+		     fpg->is_readable (this, f_size) && snd_fp.is_read (),
+		     fpg->is_writable (this, f_size) && snd_fp.is_write (),
+		     fpg->is_executable (this, f_size) && snd_fp.is_execute(),
+		     false
+#ifdef CONFIG_HAVE_MEMORY_CONTROL
+		     , fpg->get_attributes (this, f_size)
+#endif
+		     );
 		tpg->set_linknode (t_space, t_size, newmap, t_addr);
 
-#if !defined(CONFIG_NEW_MDB)
 		if (grant)
 		{
 		    /* Grant operation.  Remove mapping from current space. */
@@ -702,7 +700,6 @@ void space_t::map_fpage (fpage_t snd_fp, word_t base,
 		    flush_tlbent (get_current_space (), f_addr,
 				  page_shift (f_size));
 		}
-#endif
 	    }
 	}
 
@@ -743,13 +740,6 @@ void space_t::map_fpage (fpage_t snd_fp, word_t base,
 
     Next_sender_entry:
 
-#if defined(CONFIG_NEW_MDB)
-	if (grant && map != NULL)
-	{
-	    mdb_mem.flush (map);
-	    map = NULL;
-	}
-#endif
 	f_addr = addr_offset (f_addr, page_size (f_size));
 	f_off = 0;
 	f_num--;
@@ -789,25 +779,30 @@ void space_t::map_fpage (fpage_t snd_fp, word_t base,
     }
 
     space_t::end_update ();
+    return true;
+out_of_mem:
+    t_space->unmap_fpage (dst_fp, true, false);
+    space_t::end_update ();
+    return false;
 }
 
 
 /**
- * Unmaps, flushes, or otherwise operate on indicated fpage.  The CTRL
- * parameter specifies the exact operation to perform; unmapping,
- * reading access bits, setting page attributes, etc.  The UNMAP_ALL
- * parameter if true indicates that kernel mappings should also be
- * removed from the address space.
+ * Unmaps or flushes indicated fpage.  Unmap indicates that the unmap
+ * operation should exclude the current address space, flush indicates
+ * that the unmap operation should include mapping in the current
+ * space.  The access bits in the fpage indicates which rights to
+ * revoke for the unmap operaion.  E.g., the "rwx" revokes all access
+ * rights and removes mappings completely, whilst "w" only revoke
+ * write permissions in the fpage.
  *
- * @param fpage		fpage to operate on
- * @param ctrl		specifies operation to perform
- * @param attribute	new page attribute
+ * @param fpage		fpage to unmap
+ * @param flush		does unmap operation also flush current space
  * @param unmap_all	also unmap kernel mappings (i.e., UTCB and KIP)
  *
- * @returns the original fpage (with access bits set if specified)
+ * @returns 
  */
-fpage_t space_t::mapctrl (fpage_t fpage, mdb_t::ctrl_t ctrl,
-			  word_t attribute, bool unmap_all)
+fpage_t space_t::unmap_fpage (fpage_t fpage, bool flush, bool unmap_all)
 {
     pgent_t::pgsize_e size, pgsize;
     pgent_t * pg;
@@ -818,25 +813,19 @@ fpage_t space_t::mapctrl (fpage_t fpage, mdb_t::ctrl_t ctrl,
     pgent_t *r_pg[pgent_t::size_max];
     word_t r_num[pgent_t::size_max];
 
-    TRACEPOINT (FPAGE_MAPCTRL,
-		"<spc=%p>::mapctrl ([%d, %x %x] [%x], %s, %x %c)\n",
-		this, fpage.get_address (), 
-		fpage.get_size_log2 (), fpage.get_rwx (),
-		ctrl.raw, ctrl.string(),attribute,
-		unmap_all ? 't' : 'f');
-    
-#if !defined(CONFIG_NEW_MDB)
-    // Fpage access bits semantics are reversed for old MDB
-    fpage.set_rwx (~fpage.get_rwx ());
-#endif
+    TRACEPOINT (FPAGE_UNMAP,
+		printf ("%s_fpage (f_spc=%p  f_fp=%p)\n",
+			flush ? "flush" : "unmap", this, fpage.raw));
 
     num = fpage.get_size_log2 ();
     vaddr = address (fpage, num);
 
     if (num < hw_pgshifts[0])
     {
-	WARNING ("mapctrl_fpage(): too small fpage size (%d) - fixed\n", num);
-	num = hw_pgshifts[0];
+	printf ("fpage_unmap(): invalid fpage size (%d)\n", num);
+	enter_kdebug ("invalid fpage size");
+	fpage.set_rwx (0);
+	return fpage;
     }
 
     /*
@@ -877,11 +866,11 @@ fpage_t space_t::mapctrl (fpage_t fpage, mdb_t::ctrl_t ctrl,
 		    (this, size, page_table_index (size, vaddr));
 		continue;
 	    }
-	    else if (ctrl.mapctrl_self)
+	    else if (fpage.is_rwx () && flush)
 	    {
-		/* Fpage too small -- expand to current size */
-		num = 1;
-		pgsize = size;
+		printf ("fpage_unmap (%x, %x, %d)\n", this, fpage.raw, flush);
+		enter_kdebug ("fpage_unmap: page is to large");
+		break;
 	    }
 	}
 
@@ -906,28 +895,21 @@ fpage_t space_t::mapctrl (fpage_t fpage, mdb_t::ctrl_t ctrl,
 	    map = pg->mapnode (this, size,
 			       addr_mask (vaddr, ~page_mask (size)));
 
-#if !defined(CONFIG_NEW_MDB)
-	    TRACEPOINT (MDB_UNMAP, "mdb_%s (spc=%p pg=%p map=%p vaddr=%p %c%c%c "
-			"fsz=%d%cB tsz=%d%cB)  paddr=%p\n",
-			ctrl.mapctrl_self ? "flush" : "unmap",
-			this, pg, map, vaddr,
-			fpage.is_read () ? 'r' : '~',
-			fpage.is_write () ? 'w' : '~',
-			fpage.is_execute () ? 'x' : '~',
-			dbg_pgsize (page_size(size)), dbg_szname (page_size(size)),
-			dbg_pgsize (page_size(pgsize)), dbg_szname (page_size(pgsize)),
-			pg->address (this, size));
-#endif
+	    TRACEPOINT (MDB_UNMAP,
+			word_t fsz = page_size (size);
+			word_t tsz = page_size (pgsize);
+			printf ("mdb_%s (spc=%p pg=%p map=%p vaddr=%p %c%c%c "
+				"fsz=%d%cB tsz=%d%cB)  paddr=%p\n",
+				flush ? "flush" : "unmap",
+				this, pg, map, vaddr,
+				fpage.is_read () ? 'r' : '~',
+				fpage.is_write () ? 'w' : '~',
+				fpage.is_execute () ? 'x' : '~',
+				dbg_pgsize (fsz), dbg_szname (fsz),
+				dbg_pgsize (tsz), dbg_szname (tsz),
+				pg->address (this, size)));
 
-#if defined(CONFIG_NEW_MDB)
-	    rwx |= mdb_mem.mapctrl (map,
-				    mdb_t::range_t (fpage.get_base (),
-						    fpage.get_size_log2 ()),
-				    ctrl, fpage.get_rwx (), attribute);
-#else
-	    rwx |= mdb_flush (map, pg, size, vaddr, pgsize,
-			      fpage, ctrl.mapctrl_self);
-#endif
+	    rwx |= mdb_flush (map, pg, size, vaddr, pgsize, fpage, flush);
 	}
 	else if (unmap_all)
 	{
@@ -955,8 +937,7 @@ fpage_t space_t::mapctrl (fpage_t fpage, mdb_t::ctrl_t ctrl,
 	    fpage_t fp;
 	    fp.set ((word_t) vaddr, page_size (size), false, false, false);
 
-	    if (ctrl.mapctrl_self && ctrl.unmap	&&
-		(unmap_all || is_mappable (fp)))
+	    if (flush && fpage.is_rwx () && (unmap_all || is_mappable (fp)))
 		pg->remove_subtree (this, size, false);
 
 	    pg = pg->next (this, size, 1);	
@@ -991,9 +972,9 @@ bool space_t::readmem (addr_t vaddr, word_t * contents)
     if (! lookup_mapping (vaddr, &pg, &pgsize))
 	return false;
 
-    paddr_t paddr = pg->address (this, pgsize);
+    addr_t paddr = pg->address (this, pgsize);
     paddr = addr_offset (paddr, (word_t) vaddr & page_mask (pgsize));
-    paddr_t paddr1 = addr_mask (paddr, ~(sizeof (word_t) - 1));
+    addr_t paddr1 = addr_mask (paddr, ~(sizeof (word_t) - 1));
 
     if (paddr1 == paddr)
     {
@@ -1004,7 +985,7 @@ bool space_t::readmem (addr_t vaddr, word_t * contents)
     {
 	// Word access not properly aligned.  Need to perform two
 	// separate accesses.
-	paddr_t paddr2 = addr_offset (paddr1, sizeof (word_t));
+	addr_t paddr2 = addr_offset (paddr1, sizeof (word_t));
 	word_t mask = ~page_mask (pgsize);
 
 	if (addr_mask (paddr1, mask) != addr_mask (paddr2, mask))
@@ -1047,16 +1028,14 @@ bool space_t::readmem (addr_t vaddr, word_t * contents)
  * @return true if mapping exists, false otherwise
  */
 bool space_t::lookup_mapping (addr_t vaddr, pgent_t ** r_pg,
-			      pgent_t::pgsize_e * r_size, cpuid_t cpu)
+			      pgent_t::pgsize_e * r_size)
 {
-    pgent_t * pg = this->pgent (page_table_index (pgent_t::size_max, vaddr), cpu);
+    pgent_t * pg = this->pgent (page_table_index (pgent_t::size_max, vaddr));
     pgent_t::pgsize_e pgsize = pgent_t::size_max;
 
     for (;;)
     {
-	if (!pg) 
-	    return false;
-	else if (pg->is_valid (this, pgsize))
+	if (pg->is_valid (this, pgsize))
 	{
 	    if (pg->is_subtree (this, pgsize))
 	    {

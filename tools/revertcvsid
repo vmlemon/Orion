@@ -1,0 +1,29 @@
+#!/usr/bin/perl
+
+#
+# Small script to revert to the old CVS Id in the file header after a
+# conflict has occured there.
+#
+
+my @files = @ARGV;
+
+## Slurp whole files.
+undef $/;
+
+foreach $file (@files) {
+  open (OLD, "$file") || die "open($file): $!\n";
+  my $contents = <OLD>;
+  close OLD;
+
+  ## Try substituting.
+  my $ok = $contents =~ s/\n<<<<<<<[^\n]*\n([^\n]*\$[I][d]:[^\n]*\n)=======\n[^\n]*\$[I][d]:[^\n]*\n>>>>>>>[^\n]*\n/\n\1/;
+
+  ## Substitution ok.  Write new contents to file.
+  if ($ok) {
+    open (NEW, "> $file.new") || die "open(> $file.new): $!\n";
+    print NEW $contents;
+    close NEW;
+
+    rename "$file.new", "$file" || die "rename ($file.new, $file): $!\n";
+  }
+}

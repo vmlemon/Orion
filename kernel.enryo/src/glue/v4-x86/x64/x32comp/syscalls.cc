@@ -115,7 +115,7 @@ extern "C" x86_x64_sysret_t syscall_dispatcher_32(word_t arg1,  /* RDI */
     else if (syscall == user_system_clock_32)
     {
 	procdesc_t * pdesc = get_kip()->processor_info.get_procdesc(0);
-	ASSERT (pdesc);
+	ASSERT(DEBUG, pdesc);
 	ret.rax = x86_rdtsc() / (pdesc->internal_freq / 1000);
 	ret.rdx = ret.rax >> 32;
 	return ret;

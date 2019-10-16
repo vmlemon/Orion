@@ -1,6 +1,7 @@
 /*********************************************************************
  *                
- * Copyright (C) 2002-2008,  Karlsruhe University
+ * Copyright (C) 2002-2003,  Karlsruhe University
+ * Copyright (C) 2005,  National ICT Australia (NICTA)
  *                
  * File path:     api/v4/kernelinterface.h
  * Description:   Version 4 kernel-interface page
@@ -26,24 +27,11 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id: kernelinterface.h,v 1.28 2006/10/27 16:47:27 reichelt Exp $
+ * $Id: kernelinterface.h,v 1.25 2003/09/24 19:04:24 skoglund Exp $
  *                
  ********************************************************************/
 #ifndef __API__V4__KERNELINTERFACE_H__
 #define __API__V4__KERNELINTERFACE_H__
-
-#if !defined(KIP)
-#define KIP kip
-typedef void (*kdebug_init_t)();
-typedef void (*kdebug_entry_t)(void *);
-#else
-typedef addr_t kdebug_init_t;
-typedef addr_t kdebug_entry_t;
-#endif
-
-#if !defined(KIP_SECTION)
-#define KIP_SECTION "kip"
-#endif
 
 #include <generic/memregion.h>
 #include INC_API(memdesc.h)
@@ -55,10 +43,10 @@ class kernel_descriptor_t;
  * Insert string into kernel feature string list.
  * @param str	feature string
  */
-#define FEATURESTRING(str)							\
-__asm__ (".section .data." KIP_SECTION ".features, \"aw\", %progbits	\n"	\
-	 ".string \"" str "\"						\n"	\
-	 ".previous							\n")
+#define FEATURESTRING(str)						\
+__asm__ (".section .data.kip.features, \"aw\", %progbits	\n"	\
+	 ".string \"" str "\"					\n"	\
+	 ".previous						\n")
 
 
 /**
@@ -81,15 +69,10 @@ public:
 class memory_info_t
 {
 public:
-    union {
-	struct {
-	    BITFIELD2(word_t,
-		      n		: BITS_WORD/2,
-		      memdesc_ptr	: BITS_WORD/2
-		);
-	};
-	word_t raw;
-    };
+    BITFIELD2(word_t,
+	n		: BITS_WORD/2,
+	memdesc_ptr	: BITS_WORD/2
+	);
 
     word_t get_num_descriptors (void) { return n; }
 
@@ -98,6 +81,21 @@ public:
 		 bool virt, addr_t low, addr_t high);
     bool insert (memdesc_t::type_e type, bool virt, addr_t low, addr_t high)
 	{ return insert (type, 0, virt, low, high); }
+};
+
+/**
+ * Info for virtual register implementation
+ */
+class virtual_reg_info_t
+{
+public:
+    BITFIELD2(word_t,
+	      n			: 6,
+				: BITS_WORD - 6
+	);
+
+    word_t get_num_mrs()	
+	{ return n + 1; }
 };
 
 /**
@@ -112,7 +110,7 @@ public:
 	      size		:  6,
 				: BITS_WORD - 22
 	);
-    
+
     word_t get_minimal_size()	
 	{ return 1 << size; }
     word_t get_utcb_alignment()
@@ -144,13 +142,11 @@ public:
 class clock_info_t
 {
 public:
-    BITFIELD3(word_t,
-	read_precision		: 16,
-	schedule_precision	: 16,
+    BITFIELD2(word_t,
+	schedule_precision	: 32,
 				: BITS_WORD - 32
 	);
 
-    word_t get_read_precision (void)	 { return read_precision;	}
     word_t get_schedule_precision (void) { return schedule_precision;	}
 };
 
@@ -271,7 +267,7 @@ public:
     /* --- functions --- */
     void init();
     kernel_descriptor_t * get_kernel_descriptor()
-	{ return (kernel_descriptor_t*)((addr_word_t)this + kernel_desc_ptr); }
+	{ return (kernel_descriptor_t*)((word_t)this + kernel_desc_ptr); }
 
 public:
     /* --- member variables --- */
@@ -281,8 +277,8 @@ public:
     word_t		kernel_desc_ptr;
 
     /* kdebug */
-    kdebug_init_t	kdebug_init;
-    kdebug_entry_t	kdebug_entry;
+    void		(*kdebug_init)();
+    void		(*kdebug_entry)(void *);
     mem_region_t	kdebug_mem;
 
     /* root server */
@@ -308,12 +304,8 @@ public:
     mem_region_t	dedicated_mem4;
 
     /* info fields */
-#if defined(CONFIG_X_EVT_LOGGING)
-    addr_t		logging_log_region;
-    word_t		logging_selector_page; 
-#else
-    word_t		reserved1[2];
-#endif
+    word_t		reserved1[1];
+    virtual_reg_info_t	vreg_info;
     utcb_info_t		utcb_info;
     kip_area_info_t	kip_area_info;
     
@@ -338,7 +330,7 @@ public:
     syscall_t		unmap_syscall;
     syscall_t		exchange_registers_syscall;
     
-    syscall_t		system_clock_syscall;
+    syscall_t		unused_syscall;
     syscall_t		thread_switch_syscall;
     syscall_t		schedule_syscall;
     word_t		reserved3[5];
@@ -347,15 +339,16 @@ public:
     syscall_t		arch_syscall1;
     syscall_t		arch_syscall2;
     syscall_t		arch_syscall3;
-};
 
-extern "C" {
-    extern kernel_interface_page_t KIP;
-}
+#ifdef ARCH_SPECIAL_SYSCALLS
+    ARCH_SPECIAL_SYSCALLS_PTRS
+#endif
+};
 
 INLINE kernel_interface_page_t * get_kip()
 {
-    return &KIP;
+    extern kernel_interface_page_t kip;
+    return &kip;
 }
 
 
@@ -442,7 +435,7 @@ public:
 };
 
 
-/* From api/v4/init.cc */
+/* From api/v4/version.cc */
 void init_hello (void);
 
 

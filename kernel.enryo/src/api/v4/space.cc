@@ -1,10 +1,10 @@
 /*********************************************************************
  *                
- * Copyright (C) 1999-2010,  Karlsruhe University
- * Copyright (C) 2008-2009,  Volkmar Uhlig, Jan Stoess, IBM Corporation
+ * Copyright (C) 2002-2004,  Karlsruhe University
+ * Copyright (C) 2005,  National ICT Australia (NICTA)
  *                
  * File path:     api/v4/space.cc
- * Description:   
+ * Description:   architecture independent parts of space_t
  *                
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -27,22 +27,21 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  *                
- * $Id$
+ * $Id: space.cc,v 1.63 2004/12/09 01:19:57 cvansch Exp $
  *                
  ********************************************************************/
 
+#include <l4.h>
 #include <debug.h>
 #include <kmemory.h>
 #include <kdb/tracepoints.h>
 #include INC_API(space.h)
-#include INC_API(smp.h)
 #include INC_API(tcb.h)
 #include INC_API(kernelinterface.h)
 #include INC_API(schedule.h)
 #include INC_API(syscalls.h)
 #include INC_API(threadstate.h)
 #include INC_GLUE(syscalls.h)
-#include INC_GLUE(map.h)
 
 
 space_t * sigma0_space;
@@ -51,194 +50,49 @@ space_t * roottask_space;
 
 DECLARE_TRACEPOINT (PAGEFAULT_USER);
 DECLARE_TRACEPOINT (PAGEFAULT_KERNEL);
-DECLARE_TRACEPOINT (PAGEFAULT_TUNNEL);
 DECLARE_TRACEPOINT (SYSCALL_SPACE_CONTROL);
 DECLARE_TRACEPOINT (SYSCALL_UNMAP);
-EXTERN_TRACEPOINT(IPC_DETAILS);
-EXTERN_TRACEPOINT(DEBUG);
 
 DECLARE_KMEM_GROUP (kmem_space);
 
-
-#if defined(CONFIG_SMP)
-
-void tunnel_pagefault (word_t addr);
-
-/**
- * Handler invoked to resume the IPC copy opearation after a tunneled
- * pagefault has been completed.
- */
-static void do_xcpu_tunnel_pf_done (cpu_mb_entry_t * entry)
-{
-    tcb_t * tcb = entry->tcb;
-
-    //TRACEF ("current=%t, tcb=%t\n", get_current_tcb (), tcb);
-
-    if (! tcb->is_local_cpu ())
-    {
-	xcpu_request (tcb->get_cpu (), do_xcpu_tunnel_pf_done, tcb);
-	return;
-    }
-
-    // Restore state for current thread.
-    tcb->set_state (thread_state_t::locked_running);
-    get_current_scheduler ()->schedule (tcb);
-}
-
-/**
- * Handler invoked to tunnel a IPC copy pagefault to the destination
- * thread (running on another CPU).
- */
-static void do_xcpu_tunnel_pf (cpu_mb_entry_t * entry)
-{
-    tcb_t * tcb = entry->tcb;
-    word_t addr = entry->param[0];
-
-    //TRACEF ("current=%t, tcb=%t, addr=%p\n", get_current_tcb (), tcb, addr);
-
-    if (! tcb->is_local_cpu ())
-    {
-	xcpu_request (tcb->get_cpu (), do_xcpu_tunnel_pf, tcb, addr);
-	return;
-    }
-
-    // Set up a pagefault notify for destination thread.
-    tcb->notify (tunnel_pagefault, addr);
-    tcb->set_state (thread_state_t::locked_running_nested);
-    get_current_scheduler ()->schedule (tcb);
-}
+#ifdef CONFIG_DEBUG
+space_t * global_spaces_list UNIT("kdebug") = NULL;
+spinlock_t spaces_list_lock;
 #endif
 
-
-/**
- * Handler invoked when IPC copy page-fault has been tunnelled to
- * current space.  Invoke a page-fault IPC to pager, and resume the
- * IPC copy operation.
- *
- * @param addr			fault address
- */
-void tunnel_pagefault (word_t addr)
-{
-    tcb_t * current = get_current_tcb ();
-    tcb_t * partner = current->get_partner_tcb ();
-
-    TRACEPOINT (PAGEFAULT_TUNNEL, "tunnelled page fault @ %p (current=%t, partner=%t)\n",
-		addr, current, partner);
-
-    current->send_pagefault_ipc ((addr_t) addr, (addr_t) ~0UL, space_t::write);
-    current->set_state (thread_state_t::locked_waiting);
-
-#if defined(CONFIG_SMP)
-    if (! partner->is_local_cpu ())
-    {
-	// Partner on remote CPU.  Need to send wake-up request.
-	xcpu_request (partner->get_cpu (), do_xcpu_tunnel_pf_done, partner);
-	get_current_scheduler()->schedule(get_idle_tcb(), sched_handoff);
-    }
-    else
-#endif
-    {
-	// Partner on same CPU.  Switch back directly.
-	partner->set_state (thread_state_t::locked_running);
-	get_current_scheduler()->schedule(partner, sched_ipcblk);
-    }
-}
-
-
-/**
- * Handle transfer timeouts.  We do not set up any timeouts if both
- * xfer timeouts are infinite.  If any xfer timeout is zero, we abort
- * IPC immediately.  Otherwise, we find the earliest timeout and set
- * up a timeout for the sender thread.
- *
- * @param sender		sender thread
- */
-static void handle_xfer_timeouts (tcb_t * sender)
-{
-#warning Handle priority inversion for xfer timeouts
-    
-    // Skip timeout calculation if already in wakeup queue.
-    if (sender->flags.is_set (tcb_t::has_xfer_timeout))
-	return;
-
-    tcb_t * partner = sender->get_partner_tcb();
-
-    ASSERT (! sender->get_partner ().is_nilthread ());
-    ASSERT (sender->get_state() == thread_state_t::locked_running);
-    ASSERT (partner->get_state() == thread_state_t::locked_waiting);
- 
-    time_t snd_to = sender->get_xfer_timeout_snd ();
-    time_t rcv_to = partner->get_xfer_timeout_rcv ();
-
-    if (snd_to.is_zero () || rcv_to.is_zero ())
-    {
-	// Timeout immediately.
-	handle_ipc_timeout (thread_state_t::locked_running);
-    }
-    else if (snd_to.is_never () && rcv_to.is_never ())
-    {
-	// No timeouts.
-	return;
-    }
-
-    TRACEPOINT(IPC_DETAILS, "ipc setting xfer timeout %dus current time %ld", 
-	       (word_t) (snd_to < rcv_to ? snd_to : rcv_to).get_microseconds(), 
-	       (word_t) get_current_scheduler()->get_current_time());
-
-    // Set timeout on the sender side.
-    sender->sched_state.set_timeout (snd_to < rcv_to ? snd_to : rcv_to);
-    sender->flags += tcb_t::has_xfer_timeout;
-}
 
 void space_t::handle_pagefault(addr_t addr, addr_t ip, access_e access, bool kernel)
 {
     tcb_t * current = get_current_tcb();
     bool user_area = is_user_area(addr);
 
-    if (user_area || (!kernel))
+    if (EXPECT_TRUE( user_area || (!kernel) ))
     {
-        if (!kernel)
-            TRACEPOINT (PAGEFAULT_USER, "user %s pagefault at %x, ip=%p\n", 
-                        access == space_t::write     ? "write" :
-                        access == space_t::read	   ? "read"  :
-                        access == space_t::execute   ? "execute" :
-                        access == space_t::readwrite ? "read/write" :
-                        "unknown", 
-                        addr, ip);
-        else
-            TRACEPOINT (PAGEFAULT_KERNEL, "kernel %s pagefault in user area at %x, ip=%p\n", 
-                        access == space_t::write     ? "write" :
-                        access == space_t::read	   ? "read"  :
-                        access == space_t::execute   ? "execute" :
-                        access == space_t::readwrite ? "read/write" :
-                        "unknown", 
-                        addr, ip);
-        
-#warning sigma0-check in default pagefault handler. 
+	TRACEPOINT_TB (PAGEFAULT_USER,
+		       printf("%t: user %s pagefault at %p, ip=%p\n", 
+			      current,
+			      access == space_t::write     ? "write" :
+			      access == space_t::read	   ? "read"  :
+			      access == space_t::execute   ? "execute" :
+			      access == space_t::readwrite ? "read/write" :
+			      "unknown", 
+			      addr, ip),
+		       "user page fault at %x (current=%t, ip=%x, access=%x)",
+		       (word_t)addr, (word_t)current, (word_t)ip, access);
+
+	/* #warning sigma0-check in default pagefault handler. */
 	/* VU: with software loaded tlbs that could be handled elsewhere...*/
 	if (EXPECT_TRUE( !is_sigma0_space(current->get_space()) ))
 	{
-	    if (kernel &&
-		current->get_state() != thread_state_t::locked_running)
+	    if (kernel)
 	    {
 		printf("kernel access raised user pagefault @ %p, ip=%p, "
 		       "space=%p\n", addr, ip, this);
 		enter_kdebug("kpf");
 	    }
-            
-	    if (!user_area)
-	    {
-		printf("%t pf @ %p, ip=%p\n", current, addr, ip);
-		enter_kdebug("user touches kernel area");
-	    }
 
-	    if (current->get_state() == thread_state_t::locked_running)
-	    {
-		// Pagefault during IPC copy.  Initiate xfer timeout
-		// counters before handling pagefault.
-		current->misc.ipc_copy.copy_fault = addr;
-		handle_xfer_timeouts (current);
-	    }
+	    // if we have a user fault we may have a stale partner
+	    current->set_partner(threadid_t::nilthread());
 
 	    current->send_pagefault_ipc (addr, ip, access);
 	}
@@ -258,78 +112,51 @@ void space_t::handle_pagefault(addr_t addr, addr_t ip, access_e access, bool ker
     else
     {
 	/* fault in kernel area */
-        TRACEPOINT (PAGEFAULT_KERNEL, "kernel %s pagefault at %x, ip=%p\n", 
-                        access == space_t::write     ? "write" :
-                        access == space_t::read	   ? "read"  :
-                        access == space_t::execute   ? "execute" :
-                        access == space_t::readwrite ? "read/write" :
-                        "unknown", 
-                        addr, ip);
+	TRACEPOINT_TB (PAGEFAULT_KERNEL,
+		       printf ("%t: kernel pagefault in space "
+			       "%p @ %p, ip=%p, type=%x\n",
+			       current, this, addr, ip, access),
+		       "kernel page fault at %x "
+		       "(current=%t, ip=%x, space=%p)",
+		       (word_t)addr, (word_t)current, (word_t)ip, (word_t)this);
 
 	if (sync_kernel_space(addr))
 	    return;
 
 	if (is_tcb_area(addr))
 	{
+	    tcb_t * tcb = (tcb_t*)addr_align(addr, KTCB_SIZE);
 	    /* write access to tcb area? */
 	    if (access == space_t::write)
-		allocate_tcb(addr);
-	    else
-		map_dummy_tcb(addr);
-	    return;
-	    
-	}
-	else if (is_copy_area (addr))
-	{
-	    // Fault in copy area.  Tunnel pagefault through partner.
-	    current->misc.ipc_copy.copy_fault = addr;
-	    handle_xfer_timeouts (current);
-
-	    // On PF tunneling we temporarily set the current thread
-	    // into waiting for partner.
-	    current->set_state (thread_state_t::waiting_tunneled_pf);
-
-	    tcb_t * partner = tcb_t::get_tcb (current->get_partner ());
-	    word_t faddr = (word_t) current->copy_area_real_address (addr);
-	    scheduler_t *scheduler = get_current_scheduler();
-	    
-#if defined(CONFIG_SMP)
-	    if (! partner->is_local_cpu ())
 	    {
-		// Partner on remote CPU.  Need to send xcpu request.
-		xcpu_request (partner->get_cpu (), do_xcpu_tunnel_pf,
-			      partner, faddr);
-		scheduler->schedule(get_idle_tcb(), sched_handoff);
+		enter_kdebug("ktcb write fault");
 	    }
 	    else
-#endif
 	    {
-		// Partner on same CPU.  Just switch directly.
-		partner->set_state (thread_state_t::locked_running_nested);
-		partner->notify (tunnel_pagefault, faddr);
-		scheduler->schedule (partner, sched_handoff);
+		map_dummy_tcb(tcb);
 	    }
-	    return;
+            return;
 	}
     }
-    TRACEF("tcb %t cpu %d unhandled pagefault @ %p, %p\n", current, get_current_cpu(), addr, ip);
-    
+    TRACEF("unhandled pagefault @ %p, %p\n", addr, ip);
     enter_kdebug("unhandled pagefault");
-    
+
     current->set_state(thread_state_t::halted);
-    get_current_scheduler()->schedule(get_idle_tcb(), sched_handoff);
+    if (current != get_idle_tcb())
+	current->switch_to_idle();
     printf("wrong access - unable to recover\n");
     spin_forever(1);
-    
 }
 
+
+
 SYS_SPACE_CONTROL (threadid_t space_tid, word_t control, fpage_t kip_area,
-		   fpage_t utcb_area, threadid_t redirector_tid)
+		   fpage_t utcb_area)
 {
     TRACEPOINT (SYSCALL_SPACE_CONTROL,
-		"SYS_SPACE_CONTROL: space=%t, control=%p, kip_area=%p, "
-		"utcb_area=%p, redir=%t\n",  TID (space_tid),
-		control, kip_area.raw, utcb_area.raw, TID (redirector_tid));
+		printf("SYS_SPACE_CONTROL: space=%t, control=%p, kip_area=%p, "
+		       "utcb_area=%p\n",  TID (space_tid),
+		       control, kip_area.raw, utcb_area.raw));
 
     // Check privilege
     if (EXPECT_FALSE (! is_privileged_space(get_current_space())))
@@ -345,7 +172,7 @@ SYS_SPACE_CONTROL (threadid_t space_tid, word_t control, fpage_t kip_area,
 	return_space_control(0, 0);
     }
 
-    tcb_t * space_tcb = tcb_t::get_tcb(space_tid);
+    tcb_t * space_tcb = get_current_space()->get_tcb(space_tid);
     if (EXPECT_FALSE (space_tcb->get_global_id() != space_tid))
     {
 	get_current_tcb ()->set_error_code (EINVALID_SPACE);
@@ -367,6 +194,7 @@ SYS_SPACE_CONTROL (threadid_t space_tid, word_t control, fpage_t kip_area,
 	    get_current_tcb ()->set_error_code (EUTCB_AREA);
 	    return_space_control(0, 0);
 	}
+#ifndef CONFIG_ARCH_ARM	    /* ARM KIP is hardcoded */
 	else if ((get_kip()->kip_area_info.get_size() > kip_area.get_size()) ||
 		 (! space->is_user_area(kip_area)) ||
 		 kip_area.is_overlapping (utcb_area))
@@ -375,6 +203,7 @@ SYS_SPACE_CONTROL (threadid_t space_tid, word_t control, fpage_t kip_area,
 	    get_current_tcb ()->set_error_code (EKIP_AREA);
 	    return_space_control(0, 0);
 	}
+#endif
 	else 
 	{
 	    /* ok, everything seems fine, now setup the space */
@@ -382,7 +211,7 @@ SYS_SPACE_CONTROL (threadid_t space_tid, word_t control, fpage_t kip_area,
 	}
     }
 
-    word_t old_control = space->space_control (control, kip_area, utcb_area, redirector_tid);
+    word_t old_control = space->space_control (control);
 
     return_space_control (1, old_control);
 
@@ -395,26 +224,44 @@ SYSCALL_ATTR("unmap") void sys_unmap(word_t control)
     word_t num = control & 0x3f;
     bool flush = control & (1 << 6) ? true : false;
 
-    TRACEPOINT(SYSCALL_UNMAP, "SYS_UNMAP: control=0x%x (num=%d, flush=%d)\n", 
-	       control, num, flush);
+    TRACEPOINT(SYSCALL_UNMAP,
+	printf("SYS_UNMAP: %T control=0x%x (num=%d, flush=%d)\n", 
+	       get_current_tcb(), control, num, flush));
 
-#warning VU: adapt to new msg_tag scheme
+    /* #warning VU: adapt to new msg_tag scheme */
     for (word_t i = 0; i <= num; i++)
     {
 	fpage.raw = get_current_tcb()->get_mr(i);
-
-	if (fpage.is_mempage ())
-	{
-	    space_t *space = get_current_space();
-	    fpage = space->unmap_fpage(fpage, flush, false);
-	}
-	else if (fpage.is_archpage ())
-	    arch_unmap_fpage(get_current_tcb(), fpage, flush);
-	
+	fpage = get_current_space()->unmap_fpage(fpage, flush, false);
 	get_current_tcb()->set_mr(i, fpage.raw);
     }
     return_unmap();
 }
+
+/**
+ * allocate_space: allocates a new space_t
+ */
+#if !defined(CONFIG_ARCH_ALPHA) && !defined(CONFIG_ARCH_ARM)
+space_t * allocate_space()
+{
+    space_t * space = (space_t*)kmem.alloc(kmem_space, sizeof(space_t));
+    if (!space)
+	return NULL;
+
+    space->enqueue_spaces();
+    return space;
+}
+
+/**
+ * free_space: frees a previously allocated space
+ */
+void free_space(space_t * space)
+{
+    ASSERT(DEBUG, space);
+    space->dequeue_spaces();
+    kmem.free(kmem_space, (addr_t)space, sizeof(space_t));
+}
+#endif /* !defined(CONFIG_ARCH_ALPHA) && !defined(CONFIG_ARCH_ARM) */
 
 void space_t::free (void)
 {
@@ -423,8 +270,7 @@ void space_t::free (void)
 #endif
 
     // Unmap everything, including KIP and UTCB
-    fpage_t fp = fpage_t::complete_mem ();
+    fpage_t fp = fpage_t::complete ();
     fp.set_rwx ();
     unmap_fpage (fp, true, true);
 }
-

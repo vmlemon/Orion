@@ -1,0 +1,22 @@
+SOURCES += $(addprefix src/platform/pc99/, startup.S)
+
+ifeq ("$(CONFIG_IOAPIC)","y")
+SOURCES += src/platform/generic/intctrl-apic.cc
+else
+SOURCES += src/platform/generic/intctrl-pic.cc
+endif
+
+ifeq ("$(CONFIG_SMP)","y")
+SOURCES += src/platform/pc99/smp.S
+endif
+
+ifeq ("$(CONFIG_ARCH_AMD64)", "y")
+ASMFLAGS_src/platform/pc99/startup = -DAMD64_32BIT_CODE -m32
+
+src/platform/pc99/startup.o: src/platform/pc99/startup.S
+	@$(ECHO_MSG) $(subst $(SRCDIR)/,,$<)
+	@if [ ! -d $(dir $@) ]; then $(MKDIRHIER) $(dir $@); fi
+	cd $(dir $@) && $(CC) $(APPFLAGS) $(ASMFLAGS) $(ASMFLAGS_$*) -c $<
+	cd $(dir $@) && $(OBJCOPY) -O elf64-x86-64 -g $(notdir $@) $(notdir $@)
+
+endif 

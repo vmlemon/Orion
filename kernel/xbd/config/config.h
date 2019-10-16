@@ -1,0 +1,136 @@
+/* Automatically generated, don't edit */
+/* Generated on: tyson-Lenovo-ideapad-120S-14IAP */
+/* At: Sun, 18 Aug 2019 23:18:58 +0000 */
+/* Linux version 5.0.0-25-generic (buildd@lgw01-amd64-008) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #26-Ubuntu SMP Thu Aug 1 12:04:58 UTC 2019 */
+
+/* Pistachio Kernel Configuration System */
+
+/* Hardware */
+
+/* Basic Architecture */
+#define CONFIG_ARCH_X86 1
+#undef  CONFIG_ARCH_POWERPC
+#undef  CONFIG_ARCH_POWERPC64
+
+
+/* X86 Processor Architecture */
+#define CONFIG_SUBARCH_X32 1
+#undef  CONFIG_SUBARCH_X64
+
+
+/* Processor Type */
+#undef  CONFIG_CPU_X86_I486
+#undef  CONFIG_CPU_X86_I586
+#undef  CONFIG_CPU_X86_I686
+#define CONFIG_CPU_X86_P4 1
+#undef  CONFIG_CPU_X86_K8
+#undef  CONFIG_CPU_X86_C3
+#undef  CONFIG_CPU_X86_SIMICS
+
+
+/* Platform */
+#define CONFIG_PLAT_PC99 1
+
+
+/* Platform */
+#undef  CONFIG_PLAT_OFG5
+#undef  CONFIG_PLAT_OFPOWER3
+#undef  CONFIG_PLAT_OFPOWER4
+
+
+/* Processor Type */
+#undef  CONFIG_CPU_POWERPC64_POWER3
+#undef  CONFIG_CPU_POWERPC64_POWER3p
+#undef  CONFIG_CPU_POWERPC64_POWER4
+#undef  CONFIG_CPU_POWERPC64_POWER4p
+#undef  CONFIG_CPU_POWERPC64_PPC970
+
+
+/* Miscellaneous */
+#define CONFIG_IOAPIC 1
+#define CONFIG_MAX_IOAPICS 2
+#define CONFIG_APIC_TIMER_TICK 1000
+#define CONFIG_BOOTMEM_PAGES 1024
+
+#undef  CONFIG_SMP
+#define CONFIG_SMP_MAX_PROCS 4
+#undef  CONFIG_SMP_IDLE_POLL
+
+
+/* Kernel */
+#define CONFIG_EXPERIMENTAL 1
+
+/* Experimental Features */
+#undef  CONFIG_X_PAGER_EXREGS
+#undef  CONFIG_X_CTRLXFER_MSG
+#define CONFIG_X_EVT_LOGGING 1
+
+/* Kernel scheduling policy */
+#define CONFIG_SCHED_RR 1
+#undef  CONFIG_X_SCHED_HS
+
+
+#undef  CONFIG_IPC_FASTPATH
+#define CONFIG_DEBUG 1
+#define CONFIG_DEBUG_SYMBOLS 1
+#undef  CONFIG_PERFMON
+#define CONFIG_SPIN_WHEELS 1
+#undef  CONFIG_NEW_MDB
+#undef  CONFIG_STATIC_TCBS
+#undef  CONFIG_PPC64_TRASH_OF
+#undef  CONFIG_X86_SMALL_SPACES
+#undef  CONFIG_X86_COMPATIBILITY_MODE
+
+
+/* Debugger */
+
+/* Kernel Debugger Console */
+#define CONFIG_KDB_CONS_COM 1
+#define CONFIG_KDB_COMPORT 0x0
+#define CONFIG_KDB_COMSPEED 115200
+#undef  CONFIG_KDB_CONS_KBD
+#undef  CONFIG_KDB_CONS_RTAS
+#define CONFIG_KDB_BOOT_CONS 0
+
+#undef  CONFIG_KDB_DISAS
+#undef  CONFIG_KDB_ON_STARTUP
+#undef  CONFIG_KDB_BREAKIN
+#define CONFIG_KDB_BREAKIN_BREAK 1
+#undef  CONFIG_KDB_INPUT_HLT
+#undef  CONFIG_KDB_NO_ASSERTS
+
+/* Trace Settings */
+#define CONFIG_VERBOSE_INIT 1
+#define CONFIG_TRACEPOINTS 1
+#define CONFIG_KMEM_TRACE 1
+#undef  CONFIG_TRACEBUFFER
+
+
+
+/* Code Generator Options */
+
+
+/* Derived symbols */
+#undef  CONFIG_HAVE_MEMORY_CONTROL
+#define CONFIG_X86_PSE 1
+#undef  CONFIG_BIGENDIAN
+#undef  CONFIG_PPC_MMU_TLB
+#define CONFIG_X86_SYSENTER 1
+#define CONFIG_X86_PGE 1
+#define CONFIG_X86_FXSR 1
+#define CONFIG_IS_32BIT 1
+#define CONFIG_X86_HTT 1
+#define CONFIG_X86_PAT 1
+#undef  CONFIG_PPC_BOOKE
+#undef  CONFIG_IS_64BIT
+#undef  CONFIG_MULTI_ARCHITECTURE
+#undef  CONFIG_X86_EM64T
+#undef  CONFIG_PPC_CACHE_L1_WRITETHROUGH
+#undef  CONFIG_PPC_TLB_INV_LOCAL
+#undef  CONFIG_PPC_CACHE_ICBI_LOCAL
+#undef  CONFIG_X86_SMALL_SPACES_GLOBAL
+#define CONFIG_X86_HVM 1
+#undef  CONFIG_PPC_MMU_SEGMENTS
+#define CONFIG_X86_TSC 1
+/* That's all, folks! */
+#define AUTOCONF_INCLUDED

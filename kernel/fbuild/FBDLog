@@ -1,0 +1,388 @@
+gmake[1]: Entering directory '/root/Orion/kernel/fbuild'
+===> Building dependencies
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+1 error generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+1 error generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+1 error generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+In file included from /root/Orion/kernel/src/generic/tracebuffer.cc:87:
+In file included from /root/Orion/kernel/src/api/v4/schedule.h:37:
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707:
+In file included from /root/Orion/kernel/src/glue/v4-ia32/tcb.h:38:
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: too many arguments provided to function-like macro invocation
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+                                                 ^
+/root/Orion/kernel/src/glue/v4-ia32/syscalls.h:47:9: note: macro 'SYS_IPC' defined here
+#define SYS_IPC(to, from)                               \
+        ^
+2 errors generated.
+In file included from <built-in>:362:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+1 error generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+1 error generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+In file included from /root/Orion/kernel/src/api/v4/exregs.cc:35:
+In file included from /root/Orion/kernel/src/api/v4/smp.h:36:
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707:
+In file included from /root/Orion/kernel/src/glue/v4-ia32/tcb.h:38:
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: too many arguments provided to function-like macro invocation
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+                                                 ^
+/root/Orion/kernel/src/glue/v4-ia32/syscalls.h:47:9: note: macro 'SYS_IPC' defined here
+#define SYS_IPC(to, from)                               \
+        ^
+2 errors generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+In file included from /root/Orion/kernel/src/api/v4/ipc.cc:46:
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707:
+In file included from /root/Orion/kernel/src/glue/v4-ia32/tcb.h:38:
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: too many arguments provided to function-like macro invocation
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+                                                 ^
+/root/Orion/kernel/src/glue/v4-ia32/syscalls.h:47:9: note: macro 'SYS_IPC' defined here
+#define SYS_IPC(to, from)                               \
+        ^
+2 errors generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+In file included from /root/Orion/kernel/src/api/v4/ipcx.cc:36:
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707:
+In file included from /root/Orion/kernel/src/glue/v4-ia32/tcb.h:38:
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: too many arguments provided to function-like macro invocation
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+                                                 ^
+/root/Orion/kernel/src/glue/v4-ia32/syscalls.h:47:9: note: macro 'SYS_IPC' defined here
+#define SYS_IPC(to, from)                               \
+        ^
+2 errors generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+1 error generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+In file included from /root/Orion/kernel/src/api/v4/thread.cc:36:
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707:
+In file included from /root/Orion/kernel/src/glue/v4-ia32/tcb.h:38:
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: too many arguments provided to function-like macro invocation
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+                                                 ^
+/root/Orion/kernel/src/glue/v4-ia32/syscalls.h:47:9: note: macro 'SYS_IPC' defined here
+#define SYS_IPC(to, from)                               \
+        ^
+2 errors generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+In file included from /root/Orion/kernel/src/api/v4/schedule.cc:35:
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707:
+In file included from /root/Orion/kernel/src/glue/v4-ia32/tcb.h:38:
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: too many arguments provided to function-like macro invocation
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+                                                 ^
+/root/Orion/kernel/src/glue/v4-ia32/syscalls.h:47:9: note: macro 'SYS_IPC' defined here
+#define SYS_IPC(to, from)                               \
+        ^
+2 errors generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+In file included from /root/Orion/kernel/src/api/v4/space.cc:39:
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707:
+In file included from /root/Orion/kernel/src/glue/v4-ia32/tcb.h:38:
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: too many arguments provided to function-like macro invocation
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+                                                 ^
+/root/Orion/kernel/src/glue/v4-ia32/syscalls.h:47:9: note: macro 'SYS_IPC' defined here
+#define SYS_IPC(to, from)                               \
+        ^
+2 errors generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+In file included from /root/Orion/kernel/src/api/v4/interrupt.cc:38:
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707:
+In file included from /root/Orion/kernel/src/glue/v4-ia32/tcb.h:38:
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: too many arguments provided to function-like macro invocation
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+                                                 ^
+/root/Orion/kernel/src/glue/v4-ia32/syscalls.h:47:9: note: macro 'SYS_IPC' defined here
+#define SYS_IPC(to, from)                               \
+        ^
+2 errors generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+1 error generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+In file included from /root/Orion/kernel/src/api/v4/processor.cc:38:
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: too many arguments provided to function-like macro invocation
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+                                                 ^
+/root/Orion/kernel/src/glue/v4-ia32/syscalls.h:47:9: note: macro 'SYS_IPC' defined here
+#define SYS_IPC(to, from)                               \
+        ^
+2 errors generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+In file included from /root/Orion/kernel/src/glue/v4-ia32/init.cc:64:
+In file included from /root/Orion/kernel/src/api/v4/smp.h:36:
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707:
+In file included from /root/Orion/kernel/src/glue/v4-ia32/tcb.h:38:
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: too many arguments provided to function-like macro invocation
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+                                                 ^
+/root/Orion/kernel/src/glue/v4-ia32/syscalls.h:47:9: note: macro 'SYS_IPC' defined here
+#define SYS_IPC(to, from)                               \
+        ^
+2 errors generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+1 error generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+In file included from /root/Orion/kernel/src/glue/v4-ia32/exception.cc:38:
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707:
+In file included from /root/Orion/kernel/src/glue/v4-ia32/tcb.h:38:
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: too many arguments provided to function-like macro invocation
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+                                                 ^
+/root/Orion/kernel/src/glue/v4-ia32/syscalls.h:47:9: note: macro 'SYS_IPC' defined here
+#define SYS_IPC(to, from)                               \
+        ^
+2 errors generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+In file included from /root/Orion/kernel/src/glue/v4-ia32/space.cc:38:
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707:
+In file included from /root/Orion/kernel/src/glue/v4-ia32/tcb.h:38:
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: too many arguments provided to function-like macro invocation
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+                                                 ^
+/root/Orion/kernel/src/glue/v4-ia32/syscalls.h:47:9: note: macro 'SYS_IPC' defined here
+#define SYS_IPC(to, from)                               \
+        ^
+2 errors generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+In file included from /root/Orion/kernel/src/glue/v4-ia32/debug.cc:36:
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707:
+In file included from /root/Orion/kernel/src/glue/v4-ia32/tcb.h:38:
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: too many arguments provided to function-like macro invocation
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+                                                 ^
+/root/Orion/kernel/src/glue/v4-ia32/syscalls.h:47:9: note: macro 'SYS_IPC' defined here
+#define SYS_IPC(to, from)                               \
+        ^
+2 errors generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+In file included from /root/Orion/kernel/src/glue/v4-ia32/resources.cc:33:
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707:
+In file included from /root/Orion/kernel/src/glue/v4-ia32/tcb.h:38:
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: too many arguments provided to function-like macro invocation
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+                                                 ^
+/root/Orion/kernel/src/glue/v4-ia32/syscalls.h:47:9: note: macro 'SYS_IPC' defined here
+#define SYS_IPC(to, from)                               \
+        ^
+2 errors generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+In file included from /root/Orion/kernel/src/glue/v4-ia32/thread.cc:35:
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707:
+In file included from /root/Orion/kernel/src/glue/v4-ia32/tcb.h:38:
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: too many arguments provided to function-like macro invocation
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+                                                 ^
+/root/Orion/kernel/src/glue/v4-ia32/syscalls.h:47:9: note: macro 'SYS_IPC' defined here
+#define SYS_IPC(to, from)                               \
+        ^
+2 errors generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+In file included from /root/Orion/kernel/src/glue/v4-ia32/user.cc:38:
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707:
+In file included from /root/Orion/kernel/src/glue/v4-ia32/tcb.h:38:
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: too many arguments provided to function-like macro invocation
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+                                                 ^
+/root/Orion/kernel/src/glue/v4-ia32/syscalls.h:47:9: note: macro 'SYS_IPC' defined here
+#define SYS_IPC(to, from)                               \
+        ^
+2 errors generated.
+In file included from <built-in>:362:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+1 error generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+1 error generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+1 error generated.
+In file included from <built-in>:362:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+1 error generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+In file included from /root/Orion/kernel/src/generic/linear_ptab_walker.cc:38:
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707:
+In file included from /root/Orion/kernel/src/glue/v4-ia32/tcb.h:38:
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: too many arguments provided to function-like macro invocation
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+                                                 ^
+/root/Orion/kernel/src/glue/v4-ia32/syscalls.h:47:9: note: macro 'SYS_IPC' defined here
+#define SYS_IPC(to, from)                               \
+        ^
+2 errors generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+1 error generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+In file included from /root/Orion/kernel/src/generic/mapping.cc:38:
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707:
+In file included from /root/Orion/kernel/src/glue/v4-ia32/tcb.h:38:
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: too many arguments provided to function-like macro invocation
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+                                                 ^
+/root/Orion/kernel/src/glue/v4-ia32/syscalls.h:47:9: note: macro 'SYS_IPC' defined here
+#define SYS_IPC(to, from)                               \
+        ^
+2 errors generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+In file included from /root/Orion/kernel/src/glue/v4-ia32/timer.cc:41:
+In file included from /root/Orion/kernel/src/api/v4/schedule.h:37:
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707:
+In file included from /root/Orion/kernel/src/glue/v4-ia32/tcb.h:38:
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: too many arguments provided to function-like macro invocation
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+                                                 ^
+/root/Orion/kernel/src/glue/v4-ia32/syscalls.h:47:9: note: macro 'SYS_IPC' defined here
+#define SYS_IPC(to, from)                               \
+        ^
+2 errors generated.
+In file included from <built-in>:5:
+In file included from /root/Orion/kernel/src/generic/config.h:37:
+/root/Orion/kernel/src/api/v4/config.h:46:3: error: undefined architecture width (32/64bit?)
+# error undefined architecture width (32/64bit?)
+  ^
+In file included from /root/Orion/kernel/src/glue/v4-ia32/asmsyms.cc:37:
+In file included from /root/Orion/kernel/src/api/v4/tcb.h:707:
+In file included from /root/Orion/kernel/src/glue/v4-ia32/tcb.h:38:
+/root/Orion/kernel/src/api/v4/syscalls.h:53:50: error: too many arguments provided to function-like macro invocation
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+                                                 ^
+/root/Orion/kernel/src/glue/v4-ia32/syscalls.h:47:9: note: macro 'SYS_IPC' defined here
+#define SYS_IPC(to, from)                               \
+        ^
+2 errors generated.
+===> src/generic/lib.cc
+cd src/generic/ &&  gcc  -nostdinc -I/root/Orion/kernel/fbuild/include -I/root/Orion/kernel/src -I/root/Orion/kernel/src/generic -I/usr/local/lib/gcc9/gcc/x86_64-portbld-freebsd12.0/9.2.0/include/ -Uia32 -Up4 -Upc99 -Uv4 -Urr -D__ARCH__=ia32 -D__CPU__=p4 -D__PLATFORM__=pc99 -D__API__=v4 -D__SCHED__=rr -imacros /root/Orion/kernel/fbuild/config/config.h -imacros /root/Orion/kernel/src/generic/macros.h -include /root/Orion/kernel/src/generic/config.h  -include /root/Orion/kernel/src/generic/types.h -fno-rtti -fno-builtin  -fomit-frame-pointer -fno-exceptions -Wall -Wno-non-virtual-dtor -Wno-format -O2 -mpreferred-stack-boundary=2 -g -march=pentium4   -Wconversion  -c /root/Orion/kernel/src/generic/lib.cc
+cc1plus: error: CPU you selected does not support x86-64 instruction set
+gmake[1]: *** [/root/Orion/kernel/Mk/Makeconf:208: src/generic/lib.o] Error 1
+gmake[1]: Leaving directory '/root/Orion/kernel/fbuild'
+gmake: *** [Makefile:38: all] Error 2

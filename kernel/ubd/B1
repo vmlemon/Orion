@@ -1,0 +1,270 @@
+make[1]: Entering directory '/home/tyson/Orion/kernel/ubd'
+===> Building dependencies
+===> Generating include/tcb_layout.h
+In file included from /home/tyson/Orion/kernel/src/glue/v4-x86/x32/space.h:41,
+                 from /home/tyson/Orion/kernel/src/glue/v4-x86/space.h:16,
+                 from /home/tyson/Orion/kernel/src/api/v4/space.h:37,
+                 from /home/tyson/Orion/kernel/src/api/v4/tcb.h:42,
+                 from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/arch/x86/pgent.h:87:19: error: macro "ASSERT" requires 2 arguments, but only 1 given
+      ASSERT(kernel); // cpu-local subtrees are _always_ kernel
+                   ^
+In file included from /home/tyson/Orion/kernel/src/glue/v4-x86/x32/ktcb.h:39,
+                 from /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h:16,
+                 from /home/tyson/Orion/kernel/src/api/v4/tcb.h:50,
+                 from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h:64:29: error: macro "ASSERT" requires 2 arguments, but only 1 given
+   ASSERT(quantum.is_period());
+                             ^
+/home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h:103:34: error: macro "ASSERT" requires 2 arguments, but only 1 given
+      ASSERT(timeslice.is_period());
+                                  ^
+/home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h:104:17: error: macro "ASSERT" requires 2 arguments, but only 1 given
+      ASSERT(this);
+                 ^
+In file included from /home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:20,
+                 from /home/tyson/Orion/kernel/src/api/v4/tcb.h:707,
+                 from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/api/v4/syscalls.h:76:59: error: macro "SYS_THREAD_CONTROL" passed 7 arguments, but takes just 5
+       threadid_t recv_redirector_tid, word_t utcb_location);
+                                                           ^
+/home/tyson/Orion/kernel/src/api/v4/syscalls.h:90:40: error: macro "SYS_EXCHANGE_REGISTERS" requires 8 arguments, but only 7 given
+    word_t uhandle, threadid_t pager_tid);
+                                        ^
+/home/tyson/Orion/kernel/src/api/v4/syscalls.h:125:23: error: macro "SYS_SPACE_CONTROL" requires 5 arguments, but only 4 given
+      fpage_t utcb_area);
+                       ^
+In file included from /home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:22,
+                 from /home/tyson/Orion/kernel/src/api/v4/tcb.h:707,
+                 from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/glue/v4-x86/x32/tcb.h:58:39: error: macro "ASSERT" requires 2 arguments, but only 1 given
+     ASSERT(start + count <= IPC_NUM_MR);
+                                       ^
+/home/tyson/Orion/kernel/src/glue/v4-x86/x32/tcb.h:59:21: error: macro "ASSERT" requires 2 arguments, but only 1 given
+     ASSERT(count > 0);
+                     ^
+In file included from /home/tyson/Orion/kernel/src/glue/v4-x86/x32/space.h:41,
+                 from /home/tyson/Orion/kernel/src/glue/v4-x86/space.h:16,
+                 from /home/tyson/Orion/kernel/src/api/v4/space.h:37,
+                 from /home/tyson/Orion/kernel/src/api/v4/tcb.h:42,
+                 from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/arch/x86/pgent.h: In member function ‘void pgent_t::make_cpu_subtree(space_t*, pgent_t::pgsize_e, bool)’:
+/home/tyson/Orion/kernel/src/arch/x86/pgent.h:87:6: error: ‘ASSERT’ was not declared in this scope
+      ASSERT(kernel); // cpu-local subtrees are _always_ kernel
+      ^~~~~~
+In file included from /home/tyson/Orion/kernel/src/glue/v4-x86/x32/ktcb.h:39,
+                 from /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h:16,
+                 from /home/tyson/Orion/kernel/src/api/v4/tcb.h:50,
+                 from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h: In member function ‘void rr_sched_ktcb_t::init_total_quantum(time_t)’:
+/home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h:64:3: error: ‘ASSERT’ was not declared in this scope
+   ASSERT(quantum.is_period());
+   ^~~~~~
+/home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h: In member function ‘void rr_sched_ktcb_t::init_timeslice(time_t)’:
+/home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h:103:6: error: ‘ASSERT’ was not declared in this scope
+      ASSERT(timeslice.is_period());
+      ^~~~~~
+In file included from /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h:16,
+                 from /home/tyson/Orion/kernel/src/api/v4/tcb.h:50,
+                 from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/glue/v4-x86/x32/ktcb.h: At global scope:
+/home/tyson/Orion/kernel/src/glue/v4-x86/x32/ktcb.h:57:9: error: ‘bitmask_t’ is not a template
+ typedef bitmask_t<u32_t> ctrlxfer_mask_t;
+         ^~~~~~~~~
+In file included from /home/tyson/Orion/kernel/src/api/v4/tcb.h:51,
+                 from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h:49:16: error: ‘IPC_NUM_BR’ was not declared in this scope
+     word_t  br[IPC_NUM_BR];  /* -196 .. -64 */
+                ^~~~~~~~~~
+/home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h:64:16: error: ‘IPC_NUM_MR’ was not declared in this scope
+     word_t  mr[IPC_NUM_MR];  /* 0 .. 252 */
+                ^~~~~~~~~~
+In file included from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:53:13: error: conflicting declaration ‘typedef int prio_t’
+ typedef int prio_t;
+             ^~~~~~
+In file included from /home/tyson/Orion/kernel/src/glue/v4-x86/x32/ktcb.h:39,
+                 from /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h:16,
+                 from /home/tyson/Orion/kernel/src/api/v4/tcb.h:50,
+                 from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h:28:14: note: previous declaration as ‘typedef u8_t prio_t’
+ typedef u8_t prio_t;
+              ^~~~~~
+In file included from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/api/v4/tcb.h: In member function ‘tcb_t* tcb_t::get_partner_tcb()’:
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:425:31: error: ‘class space_t’ has no member named ‘get_tcb’; did you mean ‘add_tcb’?
+     return this->get_space()->get_tcb(partner);
+                               ^~~~~~~
+                               add_tcb
+/home/tyson/Orion/kernel/src/api/v4/tcb.h: In member function ‘void tcb_t::clear_notify_bits()’:
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:570:14: error: ‘class utcb_t’ has no member named ‘notify_bits’
+  get_utcb()->notify_bits = 0;
+              ^~~~~~~~~~~
+/home/tyson/Orion/kernel/src/api/v4/tcb.h: In member function ‘void tcb_t::add_notify_bits(word_t)’:
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:578:14: error: ‘class utcb_t’ has no member named ‘notify_bits’
+  get_utcb()->notify_bits |= bits;
+              ^~~~~~~~~~~
+/home/tyson/Orion/kernel/src/api/v4/tcb.h: In member function ‘void tcb_t::sub_notify_bits(word_t)’:
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:586:14: error: ‘class utcb_t’ has no member named ‘notify_bits’
+  get_utcb()->notify_bits &= ~(bits);
+              ^~~~~~~~~~~
+/home/tyson/Orion/kernel/src/api/v4/tcb.h: In member function ‘word_t tcb_t::get_notify_bits()’:
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:594:24: error: ‘class utcb_t’ has no member named ‘notify_bits’
+     return get_utcb()->notify_bits;
+                        ^~~~~~~~~~~
+/home/tyson/Orion/kernel/src/api/v4/tcb.h: In member function ‘word_t tcb_t::get_notify_mask()’:
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:602:24: error: ‘class utcb_t’ has no member named ‘notify_mask’; did you mean ‘word_size_mask’?
+     return get_utcb()->notify_mask;
+                        ^~~~~~~~~~~
+                        word_size_mask
+/home/tyson/Orion/kernel/src/api/v4/tcb.h: In member function ‘void tcb_t::set_notify_mask(word_t)’:
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:611:17: error: ‘class utcb_t’ has no member named ‘notify_mask’; did you mean ‘word_size_mask’?
+     get_utcb()->notify_mask = mask;
+                 ^~~~~~~~~~~
+                 word_size_mask
+In file included from /home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:20,
+                 from /home/tyson/Orion/kernel/src/api/v4/tcb.h:707,
+                 from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/api/v4/syscalls.h: At global scope:
+/home/tyson/Orion/kernel/src/api/v4/syscalls.h:73:1: error: ‘SYS_THREAD_CONTROL’ does not name a type
+ SYS_THREAD_CONTROL (threadid_t dest_tid, threadid_t space_tid,
+ ^~~~~~~~~~~~~~~~~~
+/home/tyson/Orion/kernel/src/api/v4/syscalls.h:88:1: error: ‘SYS_EXCHANGE_REGISTERS’ does not name a type
+ SYS_EXCHANGE_REGISTERS (threadid_t dest_tid, word_t control,
+ ^~~~~~~~~~~~~~~~~~~~~~
+/home/tyson/Orion/kernel/src/api/v4/syscalls.h:124:1: error: ‘SYS_SPACE_CONTROL’ does not name a type
+ SYS_SPACE_CONTROL (threadid_t space_tid, word_t control, fpage_t kip_area,
+ ^~~~~~~~~~~~~~~~~
+In file included from /home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:22,
+                 from /home/tyson/Orion/kernel/src/api/v4/tcb.h:707,
+                 from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/glue/v4-x86/x32/tcb.h: In member function ‘void tcb_t::copy_mrs(tcb_t*, word_t, word_t)’:
+/home/tyson/Orion/kernel/src/glue/v4-x86/x32/tcb.h:58:5: error: ‘ASSERT’ was not declared in this scope
+     ASSERT(start + count <= IPC_NUM_MR);
+     ^~~~~~
+/home/tyson/Orion/kernel/src/glue/v4-x86/x32/tcb.h:73:31: error: ‘class utcb_t’ has no member named ‘mr’
+  "c"(count), "S"(&get_utcb()->mr[start]),
+                               ^~
+/home/tyson/Orion/kernel/src/glue/v4-x86/x32/tcb.h:74:25: error: ‘class utcb_t’ has no member named ‘mr’
+  "D"(&dest->get_utcb()->mr[start]));
+                         ^~
+/home/tyson/Orion/kernel/src/glue/v4-x86/x32/tcb.h: At global scope:
+/home/tyson/Orion/kernel/src/glue/v4-x86/x32/tcb.h:534:13: error: no declaration matches ‘void tcb_t::arch_init_root_server(space_t*, word_t, word_t)’
+ INLINE void tcb_t::arch_init_root_server (space_t * space, word_t ip, word_t sp)
+             ^~~~~
+/home/tyson/Orion/kernel/src/glue/v4-x86/x32/tcb.h:534:13: note: no functions named ‘void tcb_t::arch_init_root_server(space_t*, word_t, word_t)’
+In file included from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:60:7: note: ‘class tcb_t’ defined here
+ class tcb_t
+       ^~~~~
+In file included from /home/tyson/Orion/kernel/src/api/v4/tcb.h:707,
+                 from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h: In member function ‘void tcb_t::set_utcb_location(word_t)’:
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:78:5: error: ‘myself_local’ was not declared in this scope
+     myself_local.set_raw (utcb_location + ((word_t)&dummy->mr[0]));
+     ^~~~~~~~~~~~
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:78:5: note: suggested alternative: ‘myself_global’
+     myself_local.set_raw (utcb_location + ((word_t)&dummy->mr[0]));
+     ^~~~~~~~~~~~
+     myself_global
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:78:60: error: ‘class utcb_t’ has no member named ‘mr’
+     myself_local.set_raw (utcb_location + ((word_t)&dummy->mr[0]));
+                                                            ^~
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h: In member function ‘word_t tcb_t::get_utcb_location()’:
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:84:12: error: ‘myself_local’ was not declared in this scope
+     return myself_local.get_raw() - ((word_t)&dummy->mr[0]);
+            ^~~~~~~~~~~~
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:84:12: note: suggested alternative: ‘myself_global’
+     return myself_local.get_raw() - ((word_t)&dummy->mr[0]);
+            ^~~~~~~~~~~~
+            myself_global
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:84:54: error: ‘class utcb_t’ has no member named ‘mr’
+     return myself_local.get_raw() - ((word_t)&dummy->mr[0]);
+                                                      ^~
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h: In member function ‘word_t tcb_t::get_mr(word_t)’:
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:95:24: error: ‘class utcb_t’ has no member named ‘mr’
+     return get_utcb()->mr[index];
+                        ^~
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h: In member function ‘void tcb_t::set_mr(word_t, word_t)’:
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:106:17: error: ‘class utcb_t’ has no member named ‘mr’
+     get_utcb()->mr[index] = value;
+                 ^~
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h: At global scope:
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:115:15: error: no declaration matches ‘word_t tcb_t::get_br(word_t)’
+ INLINE word_t tcb_t::get_br(word_t index)
+               ^~~~~
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:115:15: note: no functions named ‘word_t tcb_t::get_br(word_t)’
+In file included from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:60:7: note: ‘class tcb_t’ defined here
+ class tcb_t
+       ^~~~~
+In file included from /home/tyson/Orion/kernel/src/api/v4/tcb.h:707,
+                 from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:126:13: error: no declaration matches ‘void tcb_t::set_br(word_t, word_t)’
+ INLINE void tcb_t::set_br(word_t index, word_t value)
+             ^~~~~
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:126:13: note: no functions named ‘void tcb_t::set_br(word_t, word_t)’
+In file included from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:60:7: note: ‘class tcb_t’ defined here
+ class tcb_t
+       ^~~~~
+In file included from /home/tyson/Orion/kernel/src/api/v4/tcb.h:707,
+                 from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:209:13: error: no declaration matches ‘void tcb_t::adjust_for_copy_area(tcb_t*, void**, void**)’
+ INLINE void tcb_t::adjust_for_copy_area (tcb_t * dst,
+             ^~~~~
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:209:13: note: no functions named ‘void tcb_t::adjust_for_copy_area(tcb_t*, void**, void**)’
+In file included from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:60:7: note: ‘class tcb_t’ defined here
+ class tcb_t
+       ^~~~~
+In file included from /home/tyson/Orion/kernel/src/api/v4/tcb.h:707,
+                 from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:219:13: error: no declaration matches ‘void tcb_t::release_copy_area()’
+ INLINE void tcb_t::release_copy_area (void)
+             ^~~~~
+/home/tyson/Orion/kernel/src/glue/v4-x86/tcb.h:219:13: note: no functions named ‘void tcb_t::release_copy_area()’
+In file included from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:60:7: note: ‘class tcb_t’ defined here
+ class tcb_t
+       ^~~~~
+In file included from /home/tyson/Orion/kernel/ubd/_1569794966_123.c:2:
+/home/tyson/Orion/kernel/src/api/v4/tcb.h: In member function ‘bool tcb_t::is_local_cpu()’:
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:739:13: error: ‘get_current_cpu’ was not declared in this scope
+     return (get_current_cpu() == get_cpu());
+             ^~~~~~~~~~~~~~~
+/home/tyson/Orion/kernel/src/api/v4/tcb.h:739:13: note: suggested alternative: ‘get_current_tcb’
+     return (get_current_cpu() == get_cpu());
+             ^~~~~~~~~~~~~~~
+             get_current_tcb
+/home/tyson/Orion/kernel/ubd/_1569794966_123.c: In function ‘void make_offsets()’:
+/home/tyson/Orion/kernel/ubd/_1569794966_123.c:55:51: error: ‘class tcb_t’ has no member named ‘sched_state’; did you mean ‘saved_state’?
+    O(OFS_TCB_SCHED_STATE_SCHEDULER,offsetof(tcb_t,sched_state.scheduler));
+                                                   ^~~~~~~~~~~
+/home/tyson/Orion/kernel/ubd/_1569794966_123.c:12:84: note: in definition of macro ‘O’
+ #define O(sym,value) __asm__ __volatile__ ("\n#define " MKSTR(sym) " %0 " : : "i" (value));
+                                                                                    ^~~~~
+/home/tyson/Orion/kernel/ubd/_1569794966_123.c:55:36: note: in expansion of macro ‘offsetof’
+    O(OFS_TCB_SCHED_STATE_SCHEDULER,offsetof(tcb_t,sched_state.scheduler));
+                                    ^~~~~~~~
+/home/tyson/Orion/kernel/ubd/_1569794966_123.c:58:34: error: ‘class utcb_t’ has no member named ‘br’
+    O(OFS_UTCB_BR,offsetof(utcb_t,br));
+                                  ^~
+/home/tyson/Orion/kernel/ubd/_1569794966_123.c:12:84: note: in definition of macro ‘O’
+ #define O(sym,value) __asm__ __volatile__ ("\n#define " MKSTR(sym) " %0 " : : "i" (value));
+                                                                                    ^~~~~
+/home/tyson/Orion/kernel/ubd/_1569794966_123.c:58:18: note: in expansion of macro ‘offsetof’
+    O(OFS_UTCB_BR,offsetof(utcb_t,br));
+                  ^~~~~~~~
+/home/tyson/Orion/kernel/ubd/_1569794966_123.c:73:34: error: ‘class utcb_t’ has no member named ‘mr’
+    O(OFS_UTCB_MR,offsetof(utcb_t,mr));
+                                  ^~
+/home/tyson/Orion/kernel/ubd/_1569794966_123.c:12:84: note: in definition of macro ‘O’
+ #define O(sym,value) __asm__ __volatile__ ("\n#define " MKSTR(sym) " %0 " : : "i" (value));
+                                                                                    ^~~~~
+/home/tyson/Orion/kernel/ubd/_1569794966_123.c:73:18: note: in expansion of macro ‘offsetof’
+    O(OFS_UTCB_MR,offsetof(utcb_t,mr));
+                  ^~~~~~~~
+make[1]: *** No rule to make target '/home/tyson/Orion/kernel/ubd/include/tcb_layout.h', needed by 'tcb_layout.h'. Stop.
+make[1]: Leaving directory '/home/tyson/Orion/kernel/ubd'
+make: *** [Makefile:38: all] Error 2

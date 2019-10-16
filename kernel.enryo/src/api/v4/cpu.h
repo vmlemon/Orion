@@ -66,7 +66,7 @@ public:
     }
 };
 
-INLINE cpuid_t get_current_cpu()
+inline cpuid_t get_current_cpu()
 {
     extern cpuid_t current_cpu;
     return current_cpu;
