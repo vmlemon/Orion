@@ -56,6 +56,66 @@ protected:
 	pvr_7455	= 0x8001,
     };
 
+	/*
+	
+	Virtex-II Pro Devices 0x20010820, 0x20010860, 0x200108A0
+Virtex-4 Devices 0x20011430, 0x20011470
+
+gentoo@livecd ~ $ cat /proc/cpuinfo
+processor       : 0
+cpu             : Xenon, altivec supported
+clock           : 3192.000000MHz
+revision        : 3.0 (pvr 0071 0300)
+
+processor       : 2
+cpu             : Xenon, altivec supported
+clock           : 3192.000000MHz
+revision        : 3.0 (pvr 0071 0300)
+
+processor       : 4
+cpu             : Xenon, altivec supported
+clock           : 3192.000000MHz
+revision        : 3.0 (pvr 0071 0300)
+
+timebase        : 49875000
+platform        : Xenon
+machine         : CHRP Xenon Game Console
+
+
+$ cat /proc/cpuinfo
+processor       : 0
+cpu             : POWER8E (raw), altivec supported
+clock           : 2061.000000MHz
+revision        : 2.1 (pvr 004b 0201)
+...
+
+processor       : 159
+cpu             : POWER8E (raw), altivec supported
+clock           : 2061.000000MHz
+revision        : 2.1 (pvr 004b 0201)
+
+timebase        : 512000000
+platform        : PowerNV
+model           : 8247-22L
+machine         : PowerNV 8247-22L
+firmware        : OPAL v3
+
+dpavlin@ps3:~$ cat /proc/cpuinfo 
+processor       : 0
+cpu             : Cell Broadband Engine, altivec supported
+clock           : 3192.000000MHz
+revision        : 16.0 (pvr 0070 1000)
+
+processor       : 1
+cpu             : Cell Broadband Engine, altivec supported
+clock           : 3192.000000MHz
+revision        : 16.0 (pvr 0070 1000)
+
+timebase        : 79800000
+platform        : PS3
+model           : SonyPS3
+*/
+	
     /*Broadway is a derivative of 750
      processor	: 0
 cpu		: 750CL
