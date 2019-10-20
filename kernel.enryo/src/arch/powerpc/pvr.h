@@ -115,28 +115,33 @@ timebase        : 79800000
 platform        : PS3
 model           : SonyPS3
 */
-	
-    /*Broadway is a derivative of 750
-     processor	: 0
-cpu		: 750CL
-clock		: 729.000000MHz
-revision	: 114.0 (pvr 0008 7200)
-bogomips	: 121.50
-timebase	: 60750000
-platform	: wii
-model		: NintendoWii
-vendor		: IBM
-machine		: Nintendo Wii
-Memory		: 317 MB
-
-     */
-
-    
+	    
 public:
     static powerpc_version_t read() __attribute__ ((const));
 
     bool is_psim() { return x.version == powerpc_version_t::pvr_psim; }
     bool is_750()  { return x.version == powerpc_version_t::pvr_750; }
+	
+    /*Broadway is a derivative of 750
+     processor		: 0
+    cpu			: 750CL
+    clock		: 729.000000MHz
+    revision		: 114.0 (pvr 0008 7200)
+    bogomips		: 121.50
+    timebase		: 60750000
+    platform		: wii
+    model		: NintendoWii
+    vendor		: IBM
+    machine		: Nintendo Wii
+    Memory		: 317 MB
+
+     */
+    bool is_broadway() {
+	    if (x.version == 0x0008 && x.revision == 0x7200) {
+		    return(x.version == powerpc_version_t::pvr_750);
+	    }
+    }
+		    
 
 protected:
     union
