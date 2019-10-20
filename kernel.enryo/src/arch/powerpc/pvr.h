@@ -54,6 +54,10 @@ protected:
 	pvr_7410	= 0x800C,
 	pvr_7450	= 0x8000,
 	pvr_7455	= 0x8001,
+	    
+	/* 64-bit CPUs, for XBox 360, and PS3 */
+	pvr_cell_bbe	= 0x0070,
+	pvr_xenon	= 0x0071,
     };
 
 	/*
