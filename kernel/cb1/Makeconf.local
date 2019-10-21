@@ -1,0 +1,6 @@
+ARCH=powerpc64
+CPU=power4p
+PLATFORM=ofpower4
+
+BUILDDIR = $(CURDIR)
+SRCDIR=/root/Orion/kernel

@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: fedora28.novalocal */
-/* At: Sun, 29 Sep 2019 18:11:04 +0000 */
+/* At: Sun, 29 Sep 2019 21:40:02 +0000 */
 /* Linux version 4.16.3-301.fc28.ppc64 (mockbuild@buildvm-ppc64-06.ppc.fedoraproject.org) (gcc version 8.0.1 20180324 (Red Hat 8.0.1-0.20) (GCC)) #1 SMP Mon Apr 23 21:44:46 UTC 2018 */
 
 /* Pistachio Kernel Configuration System */
@@ -66,7 +66,7 @@
 #undef  CONFIG_KDB_CONS_RTAS
 #define CONFIG_KDB_BOOT_CONS 0
 
-#define CONFIG_KDB_DISAS 1
+#undef  CONFIG_KDB_DISAS
 #undef  CONFIG_KDB_ON_STARTUP
 #undef  CONFIG_KDB_BREAKIN
 #undef  CONFIG_KDB_BREAKIN_BREAK

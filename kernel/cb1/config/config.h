@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: fedora28.novalocal */
-/* At: Mon, 21 Oct 2019 23:04:48 +0000 */
+/* At: Mon, 21 Oct 2019 23:06:29 +0000 */
 /* Linux version 4.16.3-301.fc28.ppc64 (mockbuild@buildvm-ppc64-06.ppc.fedoraproject.org) (gcc version 8.0.1 20180324 (Red Hat 8.0.1-0.20) (GCC)) #1 SMP Mon Apr 23 21:44:46 UTC 2018 */
 
 /* Pistachio Kernel Configuration System */
@@ -19,8 +19,17 @@
 #undef  CONFIG_ARCH_SPARC64
 
 
+/* Processor Type */
+#undef  CONFIG_CPU_IA32_I486
+#undef  CONFIG_CPU_IA32_I586
+#undef  CONFIG_CPU_IA32_I686
+#undef  CONFIG_CPU_IA32_P4
+#undef  CONFIG_CPU_IA32_K8
+#undef  CONFIG_CPU_IA32_C3
+
+
 /* Platform */
-#undef  CONFIG_PLAT_PC99
+#define CONFIG_PLAT_PC99 1
 
 
 /* Platform */
@@ -44,7 +53,6 @@
 
 
 /* Kernel */
-#undef  CONFIG_IPC_FASTPATH
 #define CONFIG_DEBUG 1
 #undef  CONFIG_PPC64_TRASH_OF
 
@@ -55,16 +63,10 @@
 /* Consoles */
 #undef  CONFIG_KDB_CONS_RTAS
 
-#undef  CONFIG_KDB_DISAS
-#undef  CONFIG_KDB_ON_STARTUP
-#undef  CONFIG_KDB_BREAKIN
-#define CONFIG_KDB_NO_ASSERTS 1
-#undef  CONFIG_DEBUG_SYMBOLS
+#undef  CONFIG_KDB_NO_ASSERTS
+#define CONFIG_ASSERT_LEVEL 2
 
 /* Trace Settings */
-#undef  CONFIG_VERBOSE_INIT
-#undef  CONFIG_TRACEPOINTS
-#undef  CONFIG_KMEM_TRACE
 #undef  CONFIG_TRACEBUFFER
 
 
