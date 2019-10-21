@@ -1,6 +1,6 @@
-ARCH = ia32
-CPU = p4
-PLATFORM = pc99
+ARCH=ia32
+CPU=
+PLATFORM=pc99
 
 BUILDDIR = $(CURDIR)
 SRCDIR=/home/tyson/Orion/kernel
