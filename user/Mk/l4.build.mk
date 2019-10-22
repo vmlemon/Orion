@@ -43,7 +43,7 @@ MKFILE_DEPS=	Makefile \
 
 # Portable way of converting SRCS to OBJS
 
-_CXX_OBJS=      ${filter-out %.c %.S, ${SRCS}}
+_CXX_OBJS=	${filter-out %.c %.S, ${SRCS}}
 _CC_OBJS=	${filter-out %.c %.S, ${SRCS}}
 _C_OBJS=	${filter-out %.S %cc, ${SRCS}}
 _S_OBJS=	${filter-out %.c %cc, ${SRCS}}
@@ -54,9 +54,9 @@ OBJS+=		${filter %crt0.o crt0%, $(_OBJS)} \
 		${filter-out %crt0.o crt0%, $(_OBJS)} \
 		${_OBJS:M*crt0*} ${_OBJS:N*crt0*}
 		
-.cxx.o: $(MKFILE_DEPS)
-        @$(ECHO_MSG) `echo $< | sed s,^$(top_srcdir)/,,`
-        $(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+.cxx.o:	$(MKFILE_DEPS)
+	@$(ECHO_MSG) `echo $< | sed s,^$(top_srcdir)/,,`
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 
 
 .cc.o:	$(MKFILE_DEPS)
