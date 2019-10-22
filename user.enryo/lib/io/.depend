@@ -209,20 +209,17 @@ fread.o: stdio/fread.c ../../include/stdio.h ../../include/l4io.h \
  ../../include/sys/_types.h ../../include/lib9.h ../../include/string.h \
  ../../include/memory.h ../../include/utf.h ../../include/utfdef.h \
  ../../include/stdint.h ../../include/sys/cdefs.h
-jrand48.o: stdlib/jrand48.c stdlib/rand48.h ../../include/math.h \
- ../../include/sys/_types.h ../../include/sys/limits.h \
+strtoimax.o: stdlib/strtoimax.c ../../include/ctype.h \
+ ../../include/sys/cdefs.h ../../include/stdint.h ../../include/errno.h \
+ ../../include/inttypes.h ../../include/sys/stdint.h
+environ.o: stdlib/environ.c ../../include/unistd.h \
+ ../../include/l4/types.h ../../include/l4/amd64/types.h \
+ ../../include/l4/amd64/specials.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/stddef.h \
+ ../../include/liballoc.h
+strtoul.o: stdlib/strtoul.c ../../include/ctype.h \
+ ../../include/sys/cdefs.h ../../include/stdint.h ../../include/errno.h \
  ../../include/limits.h ../../include/stdlib.h ../../include/liballoc.h \
- ../../include/sys/cdefs.h ../../include/stdint.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/mutex/mutex.h ../../include/l4/thread.h \
- ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
- ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
- ../../include/stddef.h ../../include/unistd.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
- ../../include/arith.h
-llabs.o: stdlib/llabs.c ../../include/stdlib.h ../../include/liballoc.h \
- ../../include/sys/cdefs.h ../../include/stdint.h \
  ../../include/sys/types.h ../../include/l4/types.h \
  ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
  ../../include/sys/_types.h ../../include/mutex/mutex.h \
@@ -231,30 +228,18 @@ llabs.o: stdlib/llabs.c ../../include/stdlib.h ../../include/liballoc.h \
  ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
  ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
  ../../include/gdtoa.h ../../include/arith.h
-strtoull.o: stdlib/strtoull.c ../../include/sys/types.h \
- ../../include/l4/types.h ../../include/l4/amd64/types.h \
- ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
- ../../include/mutex/mutex.h ../../include/l4/thread.h \
- ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
- ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
- ../../include/stddef.h ../../include/liballoc.h ../../include/ctype.h \
- ../../include/sys/cdefs.h ../../include/stdint.h ../../include/errno.h \
- ../../include/limits.h ../../include/stdlib.h ../../include/unistd.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
- ../../include/arith.h
-seed48.o: stdlib/seed48.c stdlib/rand48.h ../../include/math.h \
- ../../include/sys/_types.h ../../include/sys/limits.h \
- ../../include/limits.h ../../include/stdlib.h ../../include/liballoc.h \
- ../../include/sys/cdefs.h ../../include/stdint.h \
+strtol.o: stdlib/strtol.c ../../include/ctype.h ../../include/sys/cdefs.h \
+ ../../include/stdint.h ../../include/errno.h ../../include/limits.h \
+ ../../include/stdlib.h ../../include/liballoc.h \
  ../../include/sys/types.h ../../include/l4/types.h \
  ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/mutex/mutex.h ../../include/l4/thread.h \
- ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
- ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
- ../../include/stddef.h ../../include/unistd.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
- ../../include/arith.h
-radixsort.o: stdlib/radixsort.c ../../include/sys/types.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+ ../../include/gdtoa.h ../../include/arith.h
+qsort.o: stdlib/qsort.c ../../include/sys/types.h \
  ../../include/l4/types.h ../../include/l4/amd64/types.h \
  ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
  ../../include/mutex/mutex.h ../../include/l4/thread.h \
@@ -262,44 +247,6 @@ radixsort.o: stdlib/radixsort.c ../../include/sys/types.h \
  ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
  ../../include/stddef.h ../../include/liballoc.h ../../include/stdlib.h \
  ../../include/sys/cdefs.h ../../include/stdint.h ../../include/unistd.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
- ../../include/arith.h ../../include/errno.h
-environ.o: stdlib/environ.c ../../include/unistd.h \
- ../../include/l4/types.h ../../include/l4/amd64/types.h \
- ../../include/l4/amd64/specials.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/stddef.h \
- ../../include/liballoc.h
-atoll.o: stdlib/atoll.c ../../include/stdlib.h ../../include/liballoc.h \
- ../../include/sys/cdefs.h ../../include/stdint.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
- ../../include/gdtoa.h ../../include/arith.h
-a64l.o: stdlib/a64l.c ../../include/stdlib.h ../../include/liballoc.h \
- ../../include/sys/cdefs.h ../../include/stdint.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
- ../../include/gdtoa.h ../../include/arith.h ../../include/inttypes.h \
- ../../include/sys/stdint.h
-erand48.o: stdlib/erand48.c stdlib/rand48.h ../../include/math.h \
- ../../include/sys/_types.h ../../include/sys/limits.h \
- ../../include/limits.h ../../include/stdlib.h ../../include/liballoc.h \
- ../../include/sys/cdefs.h ../../include/stdint.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/mutex/mutex.h ../../include/l4/thread.h \
- ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
- ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
- ../../include/stddef.h ../../include/unistd.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
  ../../include/arith.h
 insque.o: stdlib/insque.c ../../include/search.h \
@@ -313,16 +260,17 @@ insque.o: stdlib/insque.c ../../include/search.h \
  ../../include/stddef.h ../../include/liballoc.h ../../include/stdlib.h \
  ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
  ../../include/gdtoa.h ../../include/arith.h
-abs.o: stdlib/abs.c ../../include/stdlib.h ../../include/liballoc.h \
- ../../include/sys/cdefs.h ../../include/stdint.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+merge.o: stdlib/merge.c ../../include/sys/types.h \
+ ../../include/l4/types.h ../../include/l4/amd64/types.h \
+ ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
+ ../../include/mutex/mutex.h ../../include/l4/thread.h \
+ ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
+ ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
+ ../../include/stddef.h ../../include/liballoc.h ../../include/errno.h \
+ ../../include/stdlib.h ../../include/sys/cdefs.h ../../include/stdint.h \
  ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
- ../../include/gdtoa.h ../../include/arith.h
+ ../../include/gdtoa.h ../../include/arith.h ../../include/string.h \
+ ../../include/memory.h
 atoi.o: stdlib/atoi.c ../../include/stdlib.h ../../include/liballoc.h \
  ../../include/sys/cdefs.h ../../include/stdint.h \
  ../../include/sys/types.h ../../include/l4/types.h \
@@ -333,104 +281,7 @@ atoi.o: stdlib/atoi.c ../../include/stdlib.h ../../include/liballoc.h \
  ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
  ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
  ../../include/gdtoa.h ../../include/arith.h
-system.o: stdlib/system.c ../../include/stdlib.h ../../include/liballoc.h \
- ../../include/sys/cdefs.h ../../include/stdint.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
- ../../include/gdtoa.h ../../include/arith.h
-heapsort.o: stdlib/heapsort.c ../../include/sys/types.h \
- ../../include/l4/types.h ../../include/l4/amd64/types.h \
- ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
- ../../include/mutex/mutex.h ../../include/l4/thread.h \
- ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
- ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
- ../../include/stddef.h ../../include/liballoc.h ../../include/stdlib.h \
- ../../include/sys/cdefs.h ../../include/stdint.h ../../include/unistd.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
- ../../include/arith.h
-strtol.o: stdlib/strtol.c ../../include/ctype.h ../../include/sys/cdefs.h \
- ../../include/stdint.h ../../include/errno.h ../../include/limits.h \
- ../../include/stdlib.h ../../include/liballoc.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
- ../../include/gdtoa.h ../../include/arith.h
-ldiv.o: stdlib/ldiv.c ../../include/stdlib.h ../../include/liballoc.h \
- ../../include/sys/cdefs.h ../../include/stdint.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
- ../../include/gdtoa.h ../../include/arith.h
-l64a.o: stdlib/l64a.c ../../include/stdlib.h ../../include/liballoc.h \
- ../../include/sys/cdefs.h ../../include/stdint.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
- ../../include/gdtoa.h ../../include/arith.h
-strtoimax.o: stdlib/strtoimax.c ../../include/ctype.h \
- ../../include/sys/cdefs.h ../../include/stdint.h ../../include/errno.h \
- ../../include/inttypes.h ../../include/sys/stdint.h
-reallocarray.o: stdlib/reallocarray.c ../../include/sys/types.h \
- ../../include/l4/types.h ../../include/l4/amd64/types.h \
- ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
- ../../include/mutex/mutex.h ../../include/l4/thread.h \
- ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
- ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
- ../../include/stddef.h ../../include/liballoc.h ../../include/stdint.h \
- ../../include/sys/cdefs.h ../../include/stdlib.h ../../include/unistd.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
- ../../include/arith.h
-qabs.o: stdlib/qabs.c ../../include/stdlib.h ../../include/liballoc.h \
- ../../include/sys/cdefs.h ../../include/stdint.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
- ../../include/gdtoa.h ../../include/arith.h
-tsearch.o: stdlib/tsearch.c ../../include/search.h \
- ../../include/sys/cdefs.h ../../include/stdint.h \
- ../../include/machine/ansi.h ../../include/sys/types.h \
- ../../include/l4/types.h ../../include/l4/amd64/types.h \
- ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
- ../../include/mutex/mutex.h ../../include/l4/thread.h \
- ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
- ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
- ../../include/stddef.h ../../include/liballoc.h ../../include/stdlib.h \
- ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
- ../../include/gdtoa.h ../../include/arith.h
-drand48.o: stdlib/drand48.c stdlib/rand48.h ../../include/math.h \
- ../../include/sys/_types.h ../../include/sys/limits.h \
- ../../include/limits.h ../../include/stdlib.h ../../include/liballoc.h \
- ../../include/sys/cdefs.h ../../include/stdint.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/mutex/mutex.h ../../include/l4/thread.h \
- ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
- ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
- ../../include/stddef.h ../../include/unistd.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
- ../../include/arith.h
-labs.o: stdlib/labs.c ../../include/stdlib.h ../../include/liballoc.h \
+lldiv.o: stdlib/lldiv.c ../../include/stdlib.h ../../include/liballoc.h \
  ../../include/sys/cdefs.h ../../include/stdint.h \
  ../../include/sys/types.h ../../include/l4/types.h \
  ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
@@ -450,16 +301,6 @@ lcong48.o: stdlib/lcong48.c stdlib/rand48.h ../../include/math.h \
  ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
  ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
  ../../include/stddef.h ../../include/unistd.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
- ../../include/arith.h
-qsort.o: stdlib/qsort.c ../../include/sys/types.h \
- ../../include/l4/types.h ../../include/l4/amd64/types.h \
- ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
- ../../include/mutex/mutex.h ../../include/l4/thread.h \
- ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
- ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
- ../../include/stddef.h ../../include/liballoc.h ../../include/stdlib.h \
- ../../include/sys/cdefs.h ../../include/stdint.h ../../include/unistd.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
  ../../include/arith.h
 atol.o: stdlib/atol.c ../../include/stdlib.h ../../include/liballoc.h \
@@ -483,9 +324,17 @@ strtonum.o: stdlib/strtonum.c ../../include/errno.h \
  ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
  ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
  ../../include/gdtoa.h ../../include/arith.h
-imaxabs.o: stdlib/imaxabs.c ../../include/inttypes.h \
- ../../include/sys/stdint.h ../../include/sys/cdefs.h \
- ../../include/stdint.h
+tsearch.o: stdlib/tsearch.c ../../include/search.h \
+ ../../include/sys/cdefs.h ../../include/stdint.h \
+ ../../include/machine/ansi.h ../../include/sys/types.h \
+ ../../include/l4/types.h ../../include/l4/amd64/types.h \
+ ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
+ ../../include/mutex/mutex.h ../../include/l4/thread.h \
+ ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
+ ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
+ ../../include/stddef.h ../../include/liballoc.h ../../include/stdlib.h \
+ ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+ ../../include/gdtoa.h ../../include/arith.h
 remque.o: stdlib/remque.c ../../include/search.h \
  ../../include/sys/cdefs.h ../../include/stdint.h \
  ../../include/machine/ansi.h ../../include/sys/types.h \
@@ -507,6 +356,237 @@ atof.o: stdlib/atof.c ../../include/stdlib.h ../../include/liballoc.h \
  ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
  ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
  ../../include/gdtoa.h ../../include/arith.h
+atoll.o: stdlib/atoll.c ../../include/stdlib.h ../../include/liballoc.h \
+ ../../include/sys/cdefs.h ../../include/stdint.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+ ../../include/gdtoa.h ../../include/arith.h
+strtoull.o: stdlib/strtoull.c ../../include/sys/types.h \
+ ../../include/l4/types.h ../../include/l4/amd64/types.h \
+ ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
+ ../../include/mutex/mutex.h ../../include/l4/thread.h \
+ ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
+ ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
+ ../../include/stddef.h ../../include/liballoc.h ../../include/ctype.h \
+ ../../include/sys/cdefs.h ../../include/stdint.h ../../include/errno.h \
+ ../../include/limits.h ../../include/stdlib.h ../../include/unistd.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
+ ../../include/arith.h
+rand.o: stdlib/rand.c ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/liballoc.h ../../include/stdlib.h \
+ ../../include/sys/cdefs.h ../../include/stdint.h ../../include/unistd.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
+ ../../include/arith.h
+abs.o: stdlib/abs.c ../../include/stdlib.h ../../include/liballoc.h \
+ ../../include/sys/cdefs.h ../../include/stdint.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+ ../../include/gdtoa.h ../../include/arith.h
+setenv.o: stdlib/setenv.c ../../include/unistd.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/stddef.h \
+ ../../include/liballoc.h
+llabs.o: stdlib/llabs.c ../../include/stdlib.h ../../include/liballoc.h \
+ ../../include/sys/cdefs.h ../../include/stdint.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+ ../../include/gdtoa.h ../../include/arith.h
+l64a.o: stdlib/l64a.c ../../include/stdlib.h ../../include/liballoc.h \
+ ../../include/sys/cdefs.h ../../include/stdint.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+ ../../include/gdtoa.h ../../include/arith.h
+a64l.o: stdlib/a64l.c ../../include/stdlib.h ../../include/liballoc.h \
+ ../../include/sys/cdefs.h ../../include/stdint.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+ ../../include/gdtoa.h ../../include/arith.h ../../include/inttypes.h \
+ ../../include/sys/stdint.h
+jrand48.o: stdlib/jrand48.c stdlib/rand48.h ../../include/math.h \
+ ../../include/sys/_types.h ../../include/sys/limits.h \
+ ../../include/limits.h ../../include/stdlib.h ../../include/liballoc.h \
+ ../../include/sys/cdefs.h ../../include/stdint.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/mutex/mutex.h ../../include/l4/thread.h \
+ ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
+ ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
+ ../../include/stddef.h ../../include/unistd.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
+ ../../include/arith.h
+erand48.o: stdlib/erand48.c stdlib/rand48.h ../../include/math.h \
+ ../../include/sys/_types.h ../../include/sys/limits.h \
+ ../../include/limits.h ../../include/stdlib.h ../../include/liballoc.h \
+ ../../include/sys/cdefs.h ../../include/stdint.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/mutex/mutex.h ../../include/l4/thread.h \
+ ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
+ ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
+ ../../include/stddef.h ../../include/unistd.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
+ ../../include/arith.h
+drand48.o: stdlib/drand48.c stdlib/rand48.h ../../include/math.h \
+ ../../include/sys/_types.h ../../include/sys/limits.h \
+ ../../include/limits.h ../../include/stdlib.h ../../include/liballoc.h \
+ ../../include/sys/cdefs.h ../../include/stdint.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/mutex/mutex.h ../../include/l4/thread.h \
+ ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
+ ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
+ ../../include/stddef.h ../../include/unistd.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
+ ../../include/arith.h
+radixsort.o: stdlib/radixsort.c ../../include/sys/types.h \
+ ../../include/l4/types.h ../../include/l4/amd64/types.h \
+ ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
+ ../../include/mutex/mutex.h ../../include/l4/thread.h \
+ ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
+ ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
+ ../../include/stddef.h ../../include/liballoc.h ../../include/stdlib.h \
+ ../../include/sys/cdefs.h ../../include/stdint.h ../../include/unistd.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
+ ../../include/arith.h ../../include/errno.h
+system.o: stdlib/system.c ../../include/stdlib.h ../../include/liballoc.h \
+ ../../include/sys/cdefs.h ../../include/stdint.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+ ../../include/gdtoa.h ../../include/arith.h
+heapsort.o: stdlib/heapsort.c ../../include/sys/types.h \
+ ../../include/l4/types.h ../../include/l4/amd64/types.h \
+ ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
+ ../../include/mutex/mutex.h ../../include/l4/thread.h \
+ ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
+ ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
+ ../../include/stddef.h ../../include/liballoc.h ../../include/stdlib.h \
+ ../../include/sys/cdefs.h ../../include/stdint.h ../../include/unistd.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
+ ../../include/arith.h
+cfree.o: stdlib/cfree.c ../../include/stdlib.h ../../include/liballoc.h \
+ ../../include/sys/cdefs.h ../../include/stdint.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+ ../../include/gdtoa.h ../../include/arith.h
+qabs.o: stdlib/qabs.c ../../include/stdlib.h ../../include/liballoc.h \
+ ../../include/sys/cdefs.h ../../include/stdint.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+ ../../include/gdtoa.h ../../include/arith.h
+reallocarray.o: stdlib/reallocarray.c ../../include/sys/types.h \
+ ../../include/l4/types.h ../../include/l4/amd64/types.h \
+ ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
+ ../../include/mutex/mutex.h ../../include/l4/thread.h \
+ ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
+ ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
+ ../../include/stddef.h ../../include/liballoc.h ../../include/stdint.h \
+ ../../include/sys/cdefs.h ../../include/stdlib.h ../../include/unistd.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
+ ../../include/arith.h
+progname.o: stdlib/progname.c ../../include/stdlib.h \
+ ../../include/liballoc.h ../../include/sys/cdefs.h \
+ ../../include/stdint.h ../../include/sys/types.h \
+ ../../include/l4/types.h ../../include/l4/amd64/types.h \
+ ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
+ ../../include/mutex/mutex.h ../../include/l4/thread.h \
+ ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
+ ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
+ ../../include/stddef.h ../../include/unistd.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
+ ../../include/arith.h ../../include/string.h ../../include/memory.h
+labs.o: stdlib/labs.c ../../include/stdlib.h ../../include/liballoc.h \
+ ../../include/sys/cdefs.h ../../include/stdint.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+ ../../include/gdtoa.h ../../include/arith.h
+imaxabs.o: stdlib/imaxabs.c ../../include/inttypes.h \
+ ../../include/sys/stdint.h ../../include/sys/cdefs.h \
+ ../../include/stdint.h
+seed48.o: stdlib/seed48.c stdlib/rand48.h ../../include/math.h \
+ ../../include/sys/_types.h ../../include/sys/limits.h \
+ ../../include/limits.h ../../include/stdlib.h ../../include/liballoc.h \
+ ../../include/sys/cdefs.h ../../include/stdint.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/mutex/mutex.h ../../include/l4/thread.h \
+ ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
+ ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
+ ../../include/stddef.h ../../include/unistd.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
+ ../../include/arith.h
+ldiv.o: stdlib/ldiv.c ../../include/stdlib.h ../../include/liballoc.h \
+ ../../include/sys/cdefs.h ../../include/stdint.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+ ../../include/gdtoa.h ../../include/arith.h
+getbsize.o: stdlib/getbsize.c ../../include/err.h ../../include/stdio.h \
+ ../../include/l4io.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+ ../../include/openbsd/libkern.h ../../include/stddef.h \
+ ../../include/liballoc.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/sys/types.h \
+ ../../include/sys/_types.h ../../include/lib9.h ../../include/string.h \
+ ../../include/memory.h ../../include/utf.h ../../include/utfdef.h \
+ ../../include/stdint.h ../../include/sys/cdefs.h ../../include/stdlib.h \
+ ../../include/unistd.h ../../include/gdtoa.h ../../include/arith.h
 bsearch.o: stdlib/bsearch.c ../../include/stddef.h \
  ../../include/liballoc.h ../../include/stdlib.h \
  ../../include/sys/cdefs.h ../../include/stdint.h \
@@ -531,27 +611,6 @@ ecvt.o: stdlib/ecvt.c ../../include/stdio.h ../../include/l4io.h \
  ../../include/memory.h ../../include/utf.h ../../include/utfdef.h \
  ../../include/stdint.h ../../include/sys/cdefs.h ../../include/stdlib.h \
  ../../include/unistd.h ../../include/gdtoa.h ../../include/arith.h
-strtoul.o: stdlib/strtoul.c ../../include/ctype.h \
- ../../include/sys/cdefs.h ../../include/stdint.h ../../include/errno.h \
- ../../include/limits.h ../../include/stdlib.h ../../include/liballoc.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
- ../../include/gdtoa.h ../../include/arith.h
-rand.o: stdlib/rand.c ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/liballoc.h ../../include/stdlib.h \
- ../../include/sys/cdefs.h ../../include/stdint.h ../../include/unistd.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
- ../../include/arith.h
 div.o: stdlib/div.c ../../include/stdlib.h ../../include/liballoc.h \
  ../../include/sys/cdefs.h ../../include/stdint.h \
  ../../include/sys/types.h ../../include/l4/types.h \
@@ -573,65 +632,6 @@ calloc.o: stdlib/calloc.c ../../include/stdlib.h ../../include/liballoc.h \
  ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
  ../../include/gdtoa.h ../../include/arith.h ../../include/string.h \
  ../../include/memory.h
-getbsize.o: stdlib/getbsize.c ../../include/err.h ../../include/stdio.h \
- ../../include/l4io.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
- ../../include/openbsd/libkern.h ../../include/stddef.h \
- ../../include/liballoc.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/sys/types.h \
- ../../include/sys/_types.h ../../include/lib9.h ../../include/string.h \
- ../../include/memory.h ../../include/utf.h ../../include/utfdef.h \
- ../../include/stdint.h ../../include/sys/cdefs.h ../../include/stdlib.h \
- ../../include/unistd.h ../../include/gdtoa.h ../../include/arith.h
-progname.o: stdlib/progname.c ../../include/stdlib.h \
- ../../include/liballoc.h ../../include/sys/cdefs.h \
- ../../include/stdint.h ../../include/sys/types.h \
- ../../include/l4/types.h ../../include/l4/amd64/types.h \
- ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
- ../../include/mutex/mutex.h ../../include/l4/thread.h \
- ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
- ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
- ../../include/stddef.h ../../include/unistd.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/gdtoa.h \
- ../../include/arith.h ../../include/string.h ../../include/memory.h
-merge.o: stdlib/merge.c ../../include/sys/types.h \
- ../../include/l4/types.h ../../include/l4/amd64/types.h \
- ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
- ../../include/mutex/mutex.h ../../include/l4/thread.h \
- ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
- ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
- ../../include/stddef.h ../../include/liballoc.h ../../include/errno.h \
- ../../include/stdlib.h ../../include/sys/cdefs.h ../../include/stdint.h \
- ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
- ../../include/gdtoa.h ../../include/arith.h ../../include/string.h \
- ../../include/memory.h
-cfree.o: stdlib/cfree.c ../../include/stdlib.h ../../include/liballoc.h \
- ../../include/sys/cdefs.h ../../include/stdint.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
- ../../include/gdtoa.h ../../include/arith.h
-lldiv.o: stdlib/lldiv.c ../../include/stdlib.h ../../include/liballoc.h \
- ../../include/sys/cdefs.h ../../include/stdint.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/unistd.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
- ../../include/gdtoa.h ../../include/arith.h
-setenv.o: stdlib/setenv.c ../../include/unistd.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/stddef.h \
- ../../include/liballoc.h
 strxfrm.o: android/strxfrm.c ../../include/string.h \
  ../../include/sys/types.h ../../include/l4/types.h \
  ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
@@ -669,16 +669,7 @@ ntohl.o: net/ntohl.c ../../include/sys/types.h ../../include/l4/types.h \
  ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
  ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
  ../../include/liballoc.h ../../include/endian.h
-memchr.o: string/memchr.c ../../include/string.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/liballoc.h ../../include/memory.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
-explicit_bzero.o: string/explicit_bzero.c ../../include/string.h \
+strtok.o: string/strtok.c ../../include/string.h \
  ../../include/sys/types.h ../../include/l4/types.h \
  ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
  ../../include/sys/_types.h ../../include/mutex/mutex.h \
@@ -696,34 +687,7 @@ rindex.o: string/rindex.c ../../include/string.h \
  ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
  ../../include/liballoc.h ../../include/memory.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
-strcspn.o: string/strcspn.c ../../include/string.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/liballoc.h ../../include/memory.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
-strncpy.o: string/strncpy.c ../../include/string.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/liballoc.h ../../include/memory.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
-strxfrm.o: string/strxfrm.c ../../include/string.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/liballoc.h ../../include/memory.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
-strchr.o: string/strchr.c ../../include/string.h \
+timingsafe_bcmp.o: string/timingsafe_bcmp.c ../../include/string.h \
  ../../include/sys/types.h ../../include/l4/types.h \
  ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
  ../../include/sys/_types.h ../../include/mutex/mutex.h \
@@ -751,7 +715,155 @@ memmove.o: string/memmove.c string/bcopy.c ../../include/string.h \
  ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
  ../../include/liballoc.h ../../include/memory.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
+fls.o: string/fls.c ../../include/string.h ../../include/sys/types.h \
+ ../../include/l4/types.h ../../include/l4/amd64/types.h \
+ ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
+ ../../include/mutex/mutex.h ../../include/l4/thread.h \
+ ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
+ ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
+ ../../include/stddef.h ../../include/liballoc.h ../../include/memory.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
+strspn.o: string/strspn.c ../../include/string.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/liballoc.h ../../include/memory.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
+strcmp.o: string/strcmp.c ../../include/string.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/liballoc.h ../../include/memory.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
+strcpy.o: string/strcpy.c ../../include/string.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/liballoc.h ../../include/memory.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
+swab.o: string/swab.c ../../include/unistd.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/stddef.h \
+ ../../include/liballoc.h
+strchrnul.o: string/strchrnul.c ../../include/sys/cdefs.h \
+ ../../include/stdint.h ../../include/stddef.h ../../include/liballoc.h \
+ ../../include/string.h ../../include/sys/types.h \
+ ../../include/l4/types.h ../../include/l4/amd64/types.h \
+ ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
+ ../../include/mutex/mutex.h ../../include/l4/thread.h \
+ ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
+ ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
+ ../../include/memory.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
+strsignal.o: string/strsignal.c ../../include/string.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/liballoc.h ../../include/memory.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/limits.h
+strncmp.o: string/strncmp.c ../../include/string.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/liballoc.h ../../include/memory.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
+bzero.o: string/bzero.c ../../include/openbsd/libkern.h \
+ ../../include/l4/types.h ../../include/l4/amd64/types.h \
+ ../../include/l4/amd64/specials.h ../../include/stddef.h \
+ ../../include/liballoc.h
+strncpy.o: string/strncpy.c ../../include/string.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/liballoc.h ../../include/memory.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
+strpbrk.o: string/strpbrk.c ../../include/string.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/liballoc.h ../../include/memory.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
+memset.o: string/memset.c ../../include/sys/types.h \
+ ../../include/l4/types.h ../../include/l4/amd64/types.h \
+ ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
+ ../../include/mutex/mutex.h ../../include/l4/thread.h \
+ ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
+ ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
+ ../../include/stddef.h ../../include/liballoc.h
 strcoll.o: string/strcoll.c ../../include/string.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/liballoc.h ../../include/memory.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
+ffs.o: string/ffs.c ../../include/string.h ../../include/sys/types.h \
+ ../../include/l4/types.h ../../include/l4/amd64/types.h \
+ ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
+ ../../include/mutex/mutex.h ../../include/l4/thread.h \
+ ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
+ ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
+ ../../include/stddef.h ../../include/liballoc.h ../../include/memory.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
+memchr.o: string/memchr.c ../../include/string.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/liballoc.h ../../include/memory.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
+explicit_bzero.o: string/explicit_bzero.c ../../include/string.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/liballoc.h ../../include/memory.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
+strxfrm.o: string/strxfrm.c ../../include/string.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/liballoc.h ../../include/memory.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
+strstr.o: string/strstr.c ../../include/string.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/liballoc.h ../../include/memory.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
+strcspn.o: string/strcspn.c ../../include/string.h \
  ../../include/sys/types.h ../../include/l4/types.h \
  ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
  ../../include/sys/_types.h ../../include/mutex/mutex.h \
@@ -802,24 +914,6 @@ bcopy.o: string/bcopy.c ../../include/string.h ../../include/sys/types.h \
  ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
  ../../include/stddef.h ../../include/liballoc.h ../../include/memory.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
-strcmp.o: string/strcmp.c ../../include/string.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/liballoc.h ../../include/memory.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
-stpncpy.o: string/stpncpy.c ../../include/sys/cdefs.h \
- ../../include/stdint.h ../../include/string.h ../../include/sys/types.h \
- ../../include/l4/types.h ../../include/l4/amd64/types.h \
- ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
- ../../include/mutex/mutex.h ../../include/l4/thread.h \
- ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
- ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
- ../../include/stddef.h ../../include/liballoc.h ../../include/memory.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
 memcmp.o: string/memcmp.c ../../include/string.h \
  ../../include/sys/types.h ../../include/l4/types.h \
  ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
@@ -829,46 +923,6 @@ memcmp.o: string/memcmp.c ../../include/string.h \
  ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
  ../../include/liballoc.h ../../include/memory.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
-strcpy.o: string/strcpy.c ../../include/string.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/liballoc.h ../../include/memory.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
-swab.o: string/swab.c ../../include/unistd.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/stddef.h \
- ../../include/liballoc.h
-timingsafe_bcmp.o: string/timingsafe_bcmp.c ../../include/string.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/liballoc.h ../../include/memory.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
-strchrnul.o: string/strchrnul.c ../../include/sys/cdefs.h \
- ../../include/stdint.h ../../include/stddef.h ../../include/liballoc.h \
- ../../include/string.h ../../include/sys/types.h \
- ../../include/l4/types.h ../../include/l4/amd64/types.h \
- ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
- ../../include/mutex/mutex.h ../../include/l4/thread.h \
- ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
- ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
- ../../include/memory.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
-strsignal.o: string/strsignal.c ../../include/string.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/liballoc.h ../../include/memory.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/limits.h
 memcpy.o: string/memcpy.c ../../include/sys/types.h \
  ../../include/l4/types.h ../../include/l4/amd64/types.h \
  ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
@@ -893,31 +947,13 @@ ffsl.o: string/ffsl.c ../../include/string.h ../../include/sys/types.h \
  ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
  ../../include/stddef.h ../../include/liballoc.h ../../include/memory.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
-fls.o: string/fls.c ../../include/string.h ../../include/sys/types.h \
+index.o: string/index.c ../../include/string.h ../../include/sys/types.h \
  ../../include/l4/types.h ../../include/l4/amd64/types.h \
  ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
  ../../include/mutex/mutex.h ../../include/l4/thread.h \
  ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
  ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
  ../../include/stddef.h ../../include/liballoc.h ../../include/memory.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
-strncmp.o: string/strncmp.c ../../include/string.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/liballoc.h ../../include/memory.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
-strspn.o: string/strspn.c ../../include/string.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/liballoc.h ../../include/memory.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
 strerror.o: string/strerror.c ../../include/string.h \
  ../../include/sys/types.h ../../include/l4/types.h \
@@ -928,15 +964,6 @@ strerror.o: string/strerror.c ../../include/string.h \
  ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
  ../../include/liballoc.h ../../include/memory.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../include/limits.h
-strstr.o: string/strstr.c ../../include/string.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/liballoc.h ../../include/memory.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
 strsep.o: string/strsep.c ../../include/string.h \
  ../../include/sys/types.h ../../include/l4/types.h \
  ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
@@ -946,10 +973,6 @@ strsep.o: string/strsep.c ../../include/string.h \
  ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
  ../../include/liballoc.h ../../include/memory.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
-bzero.o: string/bzero.c ../../include/openbsd/libkern.h \
- ../../include/l4/types.h ../../include/l4/amd64/types.h \
- ../../include/l4/amd64/specials.h ../../include/stddef.h \
- ../../include/liballoc.h
 strcasecmp.o: string/strcasecmp.c ../../include/string.h \
  ../../include/sys/types.h ../../include/l4/types.h \
  ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
@@ -959,14 +982,14 @@ strcasecmp.o: string/strcasecmp.c ../../include/string.h \
  ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
  ../../include/liballoc.h ../../include/memory.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
-strtok.o: string/strtok.c ../../include/string.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/liballoc.h ../../include/memory.h \
+stpncpy.o: string/stpncpy.c ../../include/sys/cdefs.h \
+ ../../include/stdint.h ../../include/string.h ../../include/sys/types.h \
+ ../../include/l4/types.h ../../include/l4/amd64/types.h \
+ ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
+ ../../include/mutex/mutex.h ../../include/l4/thread.h \
+ ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
+ ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
+ ../../include/stddef.h ../../include/liballoc.h ../../include/memory.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
 strncat.o: string/strncat.c ../../include/string.h \
  ../../include/sys/types.h ../../include/l4/types.h \
@@ -986,30 +1009,6 @@ memmem.o: string/memmem.c ../../include/string.h \
  ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
  ../../include/liballoc.h ../../include/memory.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
-strpbrk.o: string/strpbrk.c ../../include/string.h \
- ../../include/sys/types.h ../../include/l4/types.h \
- ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
- ../../include/sys/_types.h ../../include/mutex/mutex.h \
- ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
- ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
- ../../include/liballoc.h ../../include/memory.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
-index.o: string/index.c ../../include/string.h ../../include/sys/types.h \
- ../../include/l4/types.h ../../include/l4/amd64/types.h \
- ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
- ../../include/mutex/mutex.h ../../include/l4/thread.h \
- ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
- ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
- ../../include/stddef.h ../../include/liballoc.h ../../include/memory.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
-memset.o: string/memset.c ../../include/sys/types.h \
- ../../include/l4/types.h ../../include/l4/amd64/types.h \
- ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
- ../../include/mutex/mutex.h ../../include/l4/thread.h \
- ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
- ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
- ../../include/stddef.h ../../include/liballoc.h
 strlcat.o: string/strlcat.c ../../include/sys/types.h \
  ../../include/l4/types.h ../../include/l4/amd64/types.h \
  ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
@@ -1018,13 +1017,14 @@ strlcat.o: string/strlcat.c ../../include/sys/types.h \
  ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
  ../../include/stddef.h ../../include/liballoc.h ../../include/string.h \
  ../../include/memory.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
-ffs.o: string/ffs.c ../../include/string.h ../../include/sys/types.h \
- ../../include/l4/types.h ../../include/l4/amd64/types.h \
- ../../include/l4/amd64/specials.h ../../include/sys/_types.h \
- ../../include/mutex/mutex.h ../../include/l4/thread.h \
- ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
- ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
- ../../include/stddef.h ../../include/liballoc.h ../../include/memory.h \
+strchr.o: string/strchr.c ../../include/string.h \
+ ../../include/sys/types.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/sys/_types.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/stddef.h \
+ ../../include/liballoc.h ../../include/memory.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
 sputl.o: sputl.c ../../include/values.h
 sgetl.o: sgetl.c ../../include/values.h
