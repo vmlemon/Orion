@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: tyson-Lenovo-ideapad-120S-14IAP */
-/* At: Tue, 22 Oct 2019 23:15:30 +0000 */
+/* At: Tue, 22 Oct 2019 23:16:55 +0000 */
 /* Linux version 5.0.0-31-generic (buildd@lcy01-amd64-010) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #33-Ubuntu SMP Mon Sep 30 18:51:59 UTC 2019 */
 
 /* Pistachio Kernel Configuration System */
@@ -9,10 +9,10 @@
 
 /* Basic Architecture */
 #undef  CONFIG_ARCH_IA32
-#define CONFIG_ARCH_IA64 1
+#undef  CONFIG_ARCH_IA64
 #undef  CONFIG_ARCH_POWERPC
 #undef  CONFIG_ARCH_POWERPC64
-#undef  CONFIG_ARCH_AMD64
+#define CONFIG_ARCH_AMD64 1
 #undef  CONFIG_ARCH_ALPHA
 #undef  CONFIG_ARCH_MIPS64
 #undef  CONFIG_ARCH_ARM
@@ -35,7 +35,7 @@
 
 
 /* Processor Type */
-#undef  CONFIG_CPU_AMD64_OPTERON
+#define CONFIG_CPU_AMD64_OPTERON 1
 #undef  CONFIG_CPU_AMD64_SIMICS
 
 
@@ -87,7 +87,8 @@
 #undef  CONFIG_DEBUG_SYMBOLS
 
 /* Trace Settings */
-#undef  CONFIG_TRACEBUFFER
+#define CONFIG_TRACEBUFFER 1
+#define CONFIG_TRACEBUF_PAGES 256
 
 
 
@@ -107,14 +108,14 @@
 #undef  CONFIG_ARM_BIG_ENDIAN
 #undef  CONFIG_SWIZZLE_IO_ADDR
 #undef  CONFIG_IA32_SMALL_SPACES_GLOBAL
-#define CONFIG_HAVE_MEMORY_CONTROL 1
+#undef  CONFIG_HAVE_MEMORY_CONTROL
 #undef  CONFIG_IA32_PSE
 #undef  CONFIG_ARM_V5
 #undef  CONFIG_SPARC64_ULTRASPARC2I
 #undef  CONFIG_ARM_THUMB_SUPPORT
 #undef  CONFIG_IA32_TSC
 #undef  CONFIG_SPARC64_ULTRASPARC1
-#define CONFIG_ACPI 1
+#undef  CONFIG_ACPI
 #undef  CONFIG_SPARC64_Z8530
 #undef  CONFIG_ALPHA_FASTPATH
 #undef  CONFIG_SPARC64_ULTRASPARC2
