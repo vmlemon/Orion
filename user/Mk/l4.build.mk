@@ -49,7 +49,7 @@ _C_OBJS=	${filter-out %.S %cc, ${SRCS}}
 _S_OBJS=	${filter-out %.c %cc, ${SRCS}}
 
 _OBJS=		$(_CC_OBJS:.cc=.o) $(_CXX_OBJS:.cxx=.o) $(_C_OBJS:.c=.o) $(_S_OBJS:.S=.o) \
-		${SRCS:C/.(cc|c|S)$/.o/g}
+		${SRCS:C/.(cc|c|cxx|S)$/.o/g}
 OBJS+=		${filter %crt0.o crt0%, $(_OBJS)} \
 		${filter-out %crt0.o crt0%, $(_OBJS)} \
 		${_OBJS:M*crt0*} ${_OBJS:N*crt0*}
