@@ -29,7 +29,13 @@
 ##                
 ######################################################################
 
-CFLAGS_ia32+=	-O2 -mpreferred-stack-boundary=2 -g
+#CFLAGS_x86_x32	+= -O2 -m32 -mpreferred-stack-boundary=2
+#CFLAGS_x86_x64  += -O2 -m64 -mcmodel=kernel -mno-red-zone 
+#CFLAGS_x86	+= $(CFLAGS_x86_$(SUBARCH)) -mno-mmx -mno-sse -mno-sse2 -mno-sse3 -fno-pie -no-pie -Wno-narrowing -fno-stack-protector
+
+CFLAGS_ia32+=	-O2 -m32 -mpreferred-stack-boundary=2 -mno-mmx -mno-sse -mno-sse2 -mno-sse3 -fno-pie -no-pie -Wno-narrowing -fno-stack-protector
+
+#CFLAGS_ia32+=	-O2 -mpreferred-stack-boundary=2 -g
 CFLAGS_i486+=	-march=i486
 CFLAGS_i586+=	-march=i586
 CFLAGS_i686+=	-march=i686
