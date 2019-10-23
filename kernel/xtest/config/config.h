@@ -1,7 +1,7 @@
 /* Automatically generated, don't edit */
 /* Generated on: tyson-Lenovo-ideapad-120S-14IAP */
-/* At: Tue, 22 Oct 2019 23:16:55 +0000 */
-/* Linux version 5.0.0-31-generic (buildd@lcy01-amd64-010) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #33-Ubuntu SMP Mon Sep 30 18:51:59 UTC 2019 */
+/* At: Wed, 23 Oct 2019 23:13:06 +0000 */
+/* Linux version 5.0.0-32-generic (buildd@lgw01-amd64-034) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #34-Ubuntu SMP Wed Oct 2 02:06:48 UTC 2019 */
 
 /* Pistachio Kernel Configuration System */
 
@@ -74,7 +74,7 @@
 
 /* Kernel */
 #undef  CONFIG_IPC_FASTPATH
-#define CONFIG_DEBUG 1
+#undef  CONFIG_DEBUG
 #undef  CONFIG_IA32_SMALL_SPACES
 #undef  CONFIG_PERFMON
 #undef  CONFIG_SPIN_WHEELS
@@ -82,12 +82,17 @@
 
 /* Debugger */
 #undef  CONFIG_KDB
+
+/* Consoles */
+#undef  CONFIG_KDB_CONS_OF1275
+#undef  CONFIG_KDB_CONS_PSIM_COM
+
 #undef  CONFIG_KDB_NO_ASSERTS
 #define CONFIG_ASSERT_LEVEL 2
 #undef  CONFIG_DEBUG_SYMBOLS
 
 /* Trace Settings */
-#define CONFIG_TRACEBUFFER 1
+#undef  CONFIG_TRACEBUFFER
 #define CONFIG_TRACEBUF_PAGES 256
 
 
