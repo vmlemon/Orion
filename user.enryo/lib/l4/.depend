@@ -1,0 +1,10 @@
+debug.o: debug.cc ../../include/l4/kip.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
+ ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
+ ../../include/l4/tracebuffer.h ../../include/l4/thread.h \
+ ../../include/l4/amd64/tracebuffer.h
+amd64.o: amd64.cc ../../include/l4/kip.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
+ ../../include/l4/message.h ../../include/l4/amd64/kdebug.h

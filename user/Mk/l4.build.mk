@@ -98,3 +98,4 @@ $(top_srcdir)/configure: $(top_srcdir)/configure.in
 	else \
 	  touch $@; \
 	fi
+	
