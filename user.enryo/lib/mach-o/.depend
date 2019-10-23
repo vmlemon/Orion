@@ -1,0 +1,28 @@
+macho_debug.o: src/macho_debug.c ../../include/mach-o/mach-o.h \
+ ../../include/stdint.h ../../include/sys/cdefs.h ../../include/assert.h \
+ ../../include/stdio.h ../../include/l4io.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+ ../../include/openbsd/libkern.h ../../include/stddef.h \
+ ../../include/liballoc.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/sys/types.h \
+ ../../include/sys/_types.h ../../include/lib9.h ../../include/string.h \
+ ../../include/memory.h ../../include/utf.h ../../include/utfdef.h \
+ ../../include/stdlib.h ../../include/unistd.h ../../include/gdtoa.h \
+ ../../include/arith.h
+mach_loader.o: src/mach_loader.c ../../include/assert.h \
+ ../../include/stdio.h ../../include/l4io.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+ ../../include/openbsd/libkern.h ../../include/stddef.h \
+ ../../include/liballoc.h ../../include/mutex/mutex.h \
+ ../../include/l4/thread.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/sys/types.h \
+ ../../include/sys/_types.h ../../include/lib9.h ../../include/string.h \
+ ../../include/memory.h ../../include/utf.h ../../include/utfdef.h \
+ ../../include/stdint.h ../../include/sys/cdefs.h ../../include/stdlib.h \
+ ../../include/unistd.h ../../include/gdtoa.h ../../include/arith.h \
+ ../../include/l4/kdebug.h ../../include/mach-o/mach-o.h

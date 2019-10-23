@@ -1,0 +1,20 @@
+crt0-amd64.o: crt0-amd64.S
+syslaunch.o: syslaunch.cc syslaunch.h ../../include/liballoc.h \
+ ../../include/stdio.h ../../include/l4io.h ../../include/l4/types.h \
+ ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+ ../../include/openbsd/libkern.h ../../include/stddef.h \
+ ../../include/mutex/mutex.h ../../include/l4/thread.h \
+ ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
+ ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
+ ../../include/sys/types.h ../../include/sys/_types.h \
+ ../../include/lib9.h ../../include/string.h ../../include/memory.h \
+ ../../include/utf.h ../../include/utfdef.h ../../include/stdint.h \
+ ../../include/sys/cdefs.h ../../include/stdlib.h ../../include/unistd.h \
+ ../../include/gdtoa.h ../../include/arith.h ../../include/l4/sigma0.h \
+ ../../include/l4/kip.h ../../include/l4/ipc.h ../../include/l4/kdebug.h \
+ ../../include/l4e/misc.h ../../include/sys/utsname.h \
+ ../../include/binary_tree/binary_tree.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdbool.h \
+ ../../include/drivermgr.h ../../include/ramfs.h \
+ ../../include/sys/sysinfo.h
