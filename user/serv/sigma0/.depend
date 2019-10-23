@@ -1,30 +1,83 @@
 crt0-amd64.o: crt0-amd64.S ../../config.h
 sigma0_io.o: sigma0_io.cc ../../include/l4/arch.h \
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  ../../include/l4/types.h ../../include/l4/powerpc64/types.h \
+  ../../include/l4/powerpc64/specials.h \
+  ../../include/l4/powerpc64/syscalls.h ../../include/l4/message.h \
+  ../../include/l4/powerpc64/vregs.h l4/powerpc64/arch.h \
+  ../../include/l4/kip.h ../../include/l4/kdebug.h \
+  ../../include/l4/powerpc64/kdebug.h ../../include/l4io.h stdarg.h \
+  sigma0.h region.h
+sigma0.o: sigma0.cc ../../include/l4/kip.h ../../include/l4/types.h \
+  ../../include/l4/powerpc64/types.h \
+  ../../include/l4/powerpc64/specials.h \
+  ../../include/l4/powerpc64/syscalls.h ../../include/l4/message.h \
+  ../../include/l4/powerpc64/vregs.h ../../include/l4/ipc.h \
+  ../../include/l4/thread.h ../../include/l4/misc.h \
+  ../../include/l4/kdebug.h ../../include/l4/powerpc64/kdebug.h \
+  ../../include/l4io.h stdarg.h sigma0.h region.h
+sigma0_mem.o: sigma0_mem.cc ../../include/l4/kip.h \
+  ../../include/l4/types.h ../../include/l4/powerpc64/types.h \
+  ../../include/l4/powerpc64/specials.h \
+  ../../include/l4/powerpc64/syscalls.h ../../include/l4/message.h \
+  ../../include/l4/powerpc64/vregs.h ../../include/l4/kdebug.h \
+  ../../include/l4/powerpc64/kdebug.h ../../include/l4io.h stdarg.h \
+  sigma0.h region.h
+region.o: region.cc ../../include/l4/message.h ../../include/l4/types.h \
+  ../../include/l4/powerpc64/types.h \
+  ../../include/l4/powerpc64/specials.h \
+  ../../include/l4/powerpc64/vregs.h ../../include/l4/kdebug.h \
+  ../../include/l4/powerpc64/kdebug.h ../../include/l4io.h stdarg.h \
+  sigma0.h ../../include/l4/kip.h ../../include/l4/powerpc64/syscalls.h \
+  region.h
+=======
+>>>>>>> master
  ../../include/l4/types.h ../../include/l4/amd64/types.h \
  ../../include/l4/amd64/specials.h ../../include/l4/amd64/syscalls.h \
  ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
  ../../include/l4/amd64/kdebug.h ../../include/l4/amd64/arch.h \
  ../../include/l4/kip.h ../../include/l4/kdebug.h ../../include/l4io.h \
+<<<<<<< HEAD
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h sigma0.h region.h
+=======
+ /usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h sigma0.h region.h
+>>>>>>> master
 sigma0.o: sigma0.cc ../../include/l4/kip.h ../../include/l4/types.h \
  ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
  ../../include/l4/amd64/syscalls.h ../../include/l4/amd64/vregs.h \
  ../../include/l4/message.h ../../include/l4/amd64/kdebug.h \
  ../../include/l4/ipc.h ../../include/l4/thread.h ../../include/l4/misc.h \
  ../../include/l4/kdebug.h ../../include/l4io.h \
+<<<<<<< HEAD
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h sigma0.h \
+=======
+ /usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h sigma0.h \
+>>>>>>> master
  ../../include/l4/arch.h ../../include/l4/amd64/arch.h region.h
 sigma0_mem.o: sigma0_mem.cc ../../include/l4/kip.h \
  ../../include/l4/types.h ../../include/l4/amd64/types.h \
  ../../include/l4/amd64/specials.h ../../include/l4/amd64/syscalls.h \
  ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
  ../../include/l4/amd64/kdebug.h ../../include/l4/kdebug.h \
+<<<<<<< HEAD
  ../../include/l4io.h /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h \
+=======
+ ../../include/l4io.h /usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h \
+>>>>>>> master
  sigma0.h ../../include/l4/arch.h ../../include/l4/amd64/arch.h region.h
 region.o: region.cc ../../include/l4/message.h ../../include/l4/types.h \
  ../../include/l4/amd64/types.h ../../include/l4/amd64/specials.h \
  ../../include/l4/amd64/vregs.h ../../include/l4/kdebug.h \
  ../../include/l4/amd64/kdebug.h ../../include/l4io.h \
+<<<<<<< HEAD
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h sigma0.h \
  ../../include/l4/kip.h ../../include/l4/amd64/syscalls.h \
  ../../include/l4/arch.h ../../include/l4/amd64/arch.h region.h
+=======
+ /usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h sigma0.h \
+ ../../include/l4/kip.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/arch.h ../../include/l4/amd64/arch.h region.h
+>>>>>>> 7529a66c398b9da16d5feaf0485791c65b8282e0
+>>>>>>> master

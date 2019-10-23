@@ -1,0 +1,165 @@
+READX41 symbols, from IBM boot disk:
+
+tyson@tyson-Lenovo-ideapad-120S-14IAP:~/Downloads/Sun Solaris 2.5.1 [PPC]$ objdump -x /mnt/READX41 
+
+/mnt/READX41:     file format elf32-little
+/mnt/READX41
+architecture: UNKNOWN!, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x0200072c
+
+Program Header:
+    PHDR off    0x00000034 vaddr 0x02000034 paddr 0x00000000 align 2**0
+         filesz 0x000000a0 memsz 0x000000a0 flags r-x
+  INTERP off    0x000000d4 vaddr 0x00000000 paddr 0x00000000 align 2**0
+         filesz 0x00000011 memsz 0x00000000 flags r--
+    LOAD off    0x00000000 vaddr 0x02000000 paddr 0x00000000 align 2**16
+         filesz 0x00000ab2 memsz 0x00000ab2 flags r-x
+    LOAD off    0x00000ab4 vaddr 0x02010ab4 paddr 0x00000000 align 2**16
+         filesz 0x00000123 memsz 0x00004b4c flags rw-
+ DYNAMIC off    0x00000acc vaddr 0x02010acc paddr 0x00000000 align 2**0
+         filesz 0x00000088 memsz 0x00000000 flags rw-
+
+Dynamic Section:
+  NEEDED               libc.so.1
+  INIT                 0x02000a28
+  FINI                 0x020009d8
+  HASH                 0x020000e8
+  STRTAB               0x020005a4
+  STRSZ                0x00000103
+  SYMTAB               0x02000244
+  SYMENT               0x00000010
+  DEBUG                0x00000000
+  PLTGOT               0x02010bd8
+  PLTRELSZ             0x00000060
+  PLTREL               0x00000007
+  JMPREL               0x020006cc
+  RELA                 0x020006a8
+  RELASZ               0x00000084
+  RELAENT              0x0000000c
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .interp       00000011  020000d4  020000d4  000000d4  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  1 .hash         0000015c  020000e8  020000e8  000000e8  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  2 .dynsym       00000360  02000244  02000244  00000244  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  3 .dynstr       00000103  020005a4  020005a4  000005a4  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 .rela.ex_shared 00000018  020006a8  020006a8  000006a8  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  5 .rela.bss     0000000c  020006c0  020006c0  000006c0  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  6 .rela.plt     00000060  020006cc  020006cc  000006cc  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  7 .text         000002ac  0200072c  0200072c  0000072c  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  8 .fini         00000050  020009d8  020009d8  000009d8  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  9 .init         0000004c  02000a28  02000a28  00000a28  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 10 .rodata       0000003a  02000a78  02000a78  00000a78  2**3
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 11 .got          00000018  02010ab4  02010ab4  00000ab4  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+ 12 .dynamic      00000088  02010acc  02010acc  00000acc  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+ 13 .ex_shared    00000020  02010b54  02010b54  00000b54  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+ 14 .exception_ranges 00000004  02010b74  02010b74  00000b74  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+ 15 .data         0000005f  02010b78  02010b78  00000b78  2**3
+                  CONTENTS, ALLOC, LOAD, DATA
+ 16 .plt          000000a8  02010bd8  02010bd8  00000bd8  2**2
+                  ALLOC, CODE
+ 17 .bss          00004980  02010c80  02010c80  00000c80  2**3
+                  ALLOC
+ 18 .stab.index   00000054  00000000  00000000  00001200  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 19 .comment      0000037e  00000000  00000000  00001254  2**0
+                  CONTENTS, READONLY
+ 20 .stab.indexstr 00000410  00000000  00000000  000016a8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+SYMBOL TABLE:
+00000000 l    df *ABS*	00000000 readx41
+020000d4 l    d  .interp	00000000 .interp
+020000e8 l    d  .hash	00000000 .hash
+02000244 l    d  .dynsym	00000000 .dynsym
+020005a4 l    d  .dynstr	00000000 .dynstr
+020006a8 l    d  .rela.ex_shared	00000000 .rela.ex_shared
+020006c0 l    d  .rela.bss	00000000 .rela.bss
+020006cc l    d  .rela.plt	00000000 .rela.plt
+0200072c l    d  .text	00000000 .text
+020009d8 l    d  .fini	00000000 .fini
+02000a28 l    d  .init	00000000 .init
+02000a78 l    d  .rodata	00000000 .rodata
+02010ab4 l    d  .got	00000000 .got
+02010acc l    d  .dynamic	00000000 .dynamic
+02010b54 l    d  .ex_shared	00000000 .ex_shared
+02010b74 l    d  .exception_ranges	00000000 .exception_ranges
+02010b78 l    d  .data	00000000 .data
+02010bd8 l    d  .plt	00000000 .plt
+02010c80 l    d  .bss	00000000 .bss
+00000000 l    d  *ABS*	00000000 .symtab
+00000000 l    d  *ABS*	00000000 .strtab
+00000000 l    d  .stab.index	00000000 .stab.index
+00000000 l    d  .comment	00000000 .comment
+00000000 l    d  *ABS*	00000000 .shstrtab
+00000000 l    d  .stab.indexstr	00000000 .stab.indexstr
+00000000 l    df *ABS*	00000000 crti.s
+00000010 l       *ABS*	00000000 MINFRAME
+02010b5c l       .ex_shared	00000000 _ex_shared0
+0200072c l       .text	00000000 _ex_text0
+02010b74 l       .exception_ranges	00000000 _ex_range0
+00000000 l    df *ABS*	00000000 crt1.s
+00000001 l       *ABS*	00000000 EXIT
+00000000 l    df *ABS*	00000000 ../src/values-Xa.c
+00000000 l    df *ABS*	00000000 readx41.c
+02010b88 l       .data	00000000 .L00DATA
+02000780 l       .text	00000000 bt..00
+02000a78 l       .rodata	00000000 .L00RDATA
+00000000 l    df *ABS*	00000000 crtn.s
+00000010 l       *ABS*	00000000 MINFRAME
+02010b6c l       .ex_shared	00000000 _ex_shared1
+020009d8 l       .text	00000000 _ex_text1
+02010b74 l       .exception_ranges	00000000 _ex_range1
+0200072c g     F .text	00000054 _start
+02010c38       F *UND*	00000000 read
+02010b78 g     O .data	00000004 _environ
+02015600 g     O .bss	00000000 _end
+02010cc0  w    O .bss	00000140 _iob
+00000000  w      *UND*	00000000 _ex_register
+02010ab8 g     O .got	00000000 _GLOBAL_OFFSET_TABLE_
+02010c80 g     O .bss	00000040 parts
+02010c20       F *UND*	00000000 atexit
+02010c28       F *UND*	00000000 exit
+02000a28 g     F .init	0000004c _init
+02010acc g     O .dynamic	00000000 _DYNAMIC
+02010cc0 g     O .bss	00000140 __iob
+02010c40       F *UND*	00000000 write
+00000000  w      *UND*	00000000 _ex_deregister
+02010b78  w    O .data	00000004 environ
+02010c48       F *UND*	00000000 perror
+02010bd7 g     O .data	00000000 _edata
+02010bd8 g     O .plt	00000000 _PROCEDURE_LINKAGE_TABLE_
+02010e00 g     O .bss	00004800 buf
+02000ab2 g     O .rodata	00000000 _etext
+02010b80 g     O .data	00000004 _lib_version
+02000780 g     F .text	00000164 main
+020008e4 g     F .text	0000002c fatal
+02010c50       F *UND*	00000000 memcpy
+02010c30       F *UND*	00000000 lseek
+020009d8 g     F .fini	00000050 _fini
+02000910 g     F .text	000000c8 crack_fdisk
+02010c58       F *UND*	00000000 fprintf
+
+
+tyson@tyson-Lenovo-ideapad-120S-14IAP:~/Downloads/Sun Solaris 2.5.1 [PPC]$ 
+
+WABI executable:
+
+/mnt/Wabi/PowerPC/pkgs/SUNWwabi/reloc/SUNWwabi/bin/wabiprog:          ELF 32-bit LSB executable, PowerPC or cisco 4500, version 1 (SYSV), dynamically linked, interpreter /usr/lib/ld.so.1, not stripped
+
+

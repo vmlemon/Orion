@@ -54,98 +54,29 @@ protected:
 	pvr_7410	= 0x800C,
 	pvr_7450	= 0x8000,
 	pvr_7455	= 0x8001,
-	    
-	/* 64-bit CPUs, for XBox 360, and PS3 */
-	pvr_cell_bbe	= 0x0070,
-	pvr_xenon	= 0x0071,
     };
 
-	/*
-	
-	Virtex-II Pro Devices 0x20010820, 0x20010860, 0x200108A0
-Virtex-4 Devices 0x20011430, 0x20011470
+    /*Broadway is a derivative of 750
+     processor	: 0
+cpu		: 750CL
+clock		: 729.000000MHz
+revision	: 114.0 (pvr 0008 7200)
+bogomips	: 121.50
+timebase	: 60750000
+platform	: wii
+model		: NintendoWii
+vendor		: IBM
+machine		: Nintendo Wii
+Memory		: 317 MB
 
-gentoo@livecd ~ $ cat /proc/cpuinfo
-processor       : 0
-cpu             : Xenon, altivec supported
-clock           : 3192.000000MHz
-revision        : 3.0 (pvr 0071 0300)
+     */
 
-processor       : 2
-cpu             : Xenon, altivec supported
-clock           : 3192.000000MHz
-revision        : 3.0 (pvr 0071 0300)
-
-processor       : 4
-cpu             : Xenon, altivec supported
-clock           : 3192.000000MHz
-revision        : 3.0 (pvr 0071 0300)
-
-timebase        : 49875000
-platform        : Xenon
-machine         : CHRP Xenon Game Console
-
-
-$ cat /proc/cpuinfo
-processor       : 0
-cpu             : POWER8E (raw), altivec supported
-clock           : 2061.000000MHz
-revision        : 2.1 (pvr 004b 0201)
-...
-
-processor       : 159
-cpu             : POWER8E (raw), altivec supported
-clock           : 2061.000000MHz
-revision        : 2.1 (pvr 004b 0201)
-
-timebase        : 512000000
-platform        : PowerNV
-model           : 8247-22L
-machine         : PowerNV 8247-22L
-firmware        : OPAL v3
-
-dpavlin@ps3:~$ cat /proc/cpuinfo 
-processor       : 0
-cpu             : Cell Broadband Engine, altivec supported
-clock           : 3192.000000MHz
-revision        : 16.0 (pvr 0070 1000)
-
-processor       : 1
-cpu             : Cell Broadband Engine, altivec supported
-clock           : 3192.000000MHz
-revision        : 16.0 (pvr 0070 1000)
-
-timebase        : 79800000
-platform        : PS3
-model           : SonyPS3
-*/
-	    
+    
 public:
     static powerpc_version_t read() __attribute__ ((const));
 
     bool is_psim() { return x.version == powerpc_version_t::pvr_psim; }
     bool is_750()  { return x.version == powerpc_version_t::pvr_750; }
-	
-    /*Broadway is a derivative of 750
-     processor		: 0
-    cpu			: 750CL
-    clock		: 729.000000MHz
-    revision		: 114.0 (pvr 0008 7200)
-    bogomips		: 121.50
-    timebase		: 60750000
-    platform		: wii
-    model		: NintendoWii
-    vendor		: IBM
-    machine		: Nintendo Wii
-    Memory		: 317 MB
-
-     */
-    bool is_broadway() {
-	    if (x.version == 0x0008 && x.revision == 0x7200) {
-		    return(x.version == powerpc_version_t::pvr_750);
-	    }
-    }
-		    
 
 protected:
     union

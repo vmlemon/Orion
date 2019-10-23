@@ -72,7 +72,6 @@
  /home/tyson/Orion/kernel/src/arch/x86/atomic.h \
  /home/tyson/Orion/kernel/src/generic/mdb.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
  /home/tyson/Orion/kernel/src/api/v4/threadstate.h \
@@ -82,17 +81,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
- /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
- /home/tyson/Orion/kernel/src/kdb/linker_set.h \
- /home/tyson/Orion/kernel/src/generic/traceids.h \
- /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
- /home/tyson/Orion/kernel/src/api/v4/smp.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -104,11 +92,16 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
  /home/tyson/Orion/kernel/src/arch/x86/x64/tss.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/x32comp/tcb.h tcb_layout.h \
  /home/tyson/Orion/kernel/src/kdb/tracebuffer.h \
+ /home/tyson/Orion/kernel/src/api/v4/smp.h \
+ /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h \
+ /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/memory.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/x32comp/kernelinterface.h
 .depend src/glue/v4-x86/x64/exception.o: /home/tyson/Orion/kernel/src/glue/v4-x86/x64/exception.cc \
@@ -153,7 +146,6 @@
  /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
  /home/tyson/Orion/kernel/src/api/v4/smp.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
  /home/tyson/Orion/kernel/src/api/v4/threadstate.h \
@@ -163,11 +155,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -179,6 +166,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
  /home/tyson/Orion/kernel/src/arch/x86/x64/tss.h \
@@ -217,7 +206,6 @@
  /home/tyson/Orion/kernel/src/api/v4/smp.h \
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
  /home/tyson/Orion/kernel/src/api/v4/threadstate.h \
@@ -236,15 +224,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
- /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
- /home/tyson/Orion/kernel/src/kdb/linker_set.h \
- /home/tyson/Orion/kernel/src/generic/traceids.h \
- /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -256,6 +235,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/generic/linear_ptab.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
@@ -263,8 +244,13 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/x32comp/tcb.h tcb_layout.h \
  /home/tyson/Orion/kernel/src/kdb/tracebuffer.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h \
+ /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/schedule.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/schedule.h \
+ /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
+ /home/tyson/Orion/kernel/src/kdb/linker_set.h \
+ /home/tyson/Orion/kernel/src/generic/traceids.h \
+ /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
  /home/tyson/Orion/kernel/src/arch/x86/amdhwcr.h \
  /home/tyson/Orion/kernel/src/arch/x86/fpu.h \
  /home/tyson/Orion/kernel/src/arch/x86/apic.h \
@@ -322,7 +308,6 @@
  /home/tyson/Orion/kernel/src/debug.h \
  /home/tyson/Orion/kernel/src/api/v4/user.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
@@ -353,17 +338,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
- /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
- /home/tyson/Orion/kernel/src/kdb/linker_set.h \
- /home/tyson/Orion/kernel/src/generic/traceids.h \
- /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
- /home/tyson/Orion/kernel/src/api/v4/smp.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -375,6 +349,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/generic/linear_ptab.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
@@ -402,7 +378,6 @@
  /home/tyson/Orion/kernel/src/api/v4/smp.h \
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
  /home/tyson/Orion/kernel/src/api/v4/threadstate.h \
@@ -432,11 +407,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -448,6 +418,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/generic/linear_ptab.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
@@ -501,7 +473,6 @@
  /home/tyson/Orion/kernel/src/arch/x86/x64/ptab.h \
  /home/tyson/Orion/kernel/src/api/v4/fpage.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
@@ -521,17 +492,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
- /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
- /home/tyson/Orion/kernel/src/kdb/linker_set.h \
- /home/tyson/Orion/kernel/src/generic/traceids.h \
- /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
- /home/tyson/Orion/kernel/src/api/v4/smp.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -543,12 +503,20 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/generic/linear_ptab.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
  /home/tyson/Orion/kernel/src/arch/x86/x64/tss.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/x32comp/tcb.h tcb_layout.h \
  /home/tyson/Orion/kernel/src/kdb/tracebuffer.h \
+ /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
+ /home/tyson/Orion/kernel/src/kdb/linker_set.h \
+ /home/tyson/Orion/kernel/src/generic/traceids.h \
+ /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
+ /home/tyson/Orion/kernel/src/api/v4/smp.h \
+ /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Orion/kernel/src/generic/mapping.h
 .depend src/generic/mapping_alloc.o: /home/tyson/Orion/kernel/src/generic/mapping_alloc.cc \
  /home/tyson/Orion/kernel/ibd/config/config.h \
@@ -586,7 +554,6 @@
  /home/tyson/Orion/kernel/src/api/v4/smp.h \
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
  /home/tyson/Orion/kernel/src/api/v4/threadstate.h \
@@ -605,11 +572,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -621,6 +583,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/generic/linear_ptab.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
@@ -669,7 +633,6 @@
  /home/tyson/Orion/kernel/src/arch/x86/atomic.h \
  /home/tyson/Orion/kernel/src/generic/mdb.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
  /home/tyson/Orion/kernel/src/api/v4/threadstate.h \
@@ -679,17 +642,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
- /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
- /home/tyson/Orion/kernel/src/kdb/linker_set.h \
- /home/tyson/Orion/kernel/src/generic/traceids.h \
- /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
- /home/tyson/Orion/kernel/src/api/v4/smp.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -701,6 +653,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
  /home/tyson/Orion/kernel/src/arch/x86/x64/tss.h \
@@ -776,7 +730,6 @@
  /home/tyson/Orion/kernel/src/api/v4/smp.h \
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
  /home/tyson/Orion/kernel/src/api/v4/threadstate.h \
@@ -806,11 +759,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -822,6 +770,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/generic/linear_ptab.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
@@ -903,7 +853,6 @@
  /home/tyson/Orion/kernel/src/api/v4/smp.h \
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
  /home/tyson/Orion/kernel/src/api/v4/threadstate.h \
@@ -929,11 +878,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -945,6 +889,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/generic/linear_ptab.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
@@ -994,7 +940,6 @@
  /home/tyson/Orion/kernel/src/api/v4/procdesc.h \
  /home/tyson/Orion/kernel/src/api/v4/schedule.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
@@ -1018,17 +963,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
- /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
- /home/tyson/Orion/kernel/src/kdb/linker_set.h \
- /home/tyson/Orion/kernel/src/generic/traceids.h \
- /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
- /home/tyson/Orion/kernel/src/api/v4/smp.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -1040,6 +974,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/generic/linear_ptab.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
@@ -1047,6 +983,12 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/x32comp/tcb.h tcb_layout.h \
  /home/tyson/Orion/kernel/src/kdb/tracebuffer.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/schedule.h \
+ /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
+ /home/tyson/Orion/kernel/src/kdb/linker_set.h \
+ /home/tyson/Orion/kernel/src/generic/traceids.h \
+ /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
+ /home/tyson/Orion/kernel/src/api/v4/smp.h \
+ /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Orion/kernel/src/api/v4/interrupt.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/intctrl.h \
  /home/tyson/Orion/kernel/src/generic/intctrl.h \
@@ -1101,7 +1043,6 @@
  /home/tyson/Orion/kernel/src/arch/x86/atomic.h \
  /home/tyson/Orion/kernel/src/generic/mdb.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
  /home/tyson/Orion/kernel/src/api/v4/threadstate.h \
@@ -1111,17 +1052,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
- /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
- /home/tyson/Orion/kernel/src/kdb/linker_set.h \
- /home/tyson/Orion/kernel/src/generic/traceids.h \
- /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
- /home/tyson/Orion/kernel/src/api/v4/smp.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -1133,11 +1063,14 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
  /home/tyson/Orion/kernel/src/arch/x86/x64/tss.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/x32comp/tcb.h tcb_layout.h \
  /home/tyson/Orion/kernel/src/kdb/tracebuffer.h \
+ /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/platform/pc99/acpi.h \
  /home/tyson/Orion/kernel/src/generic/acpi.h \
  /home/tyson/Orion/kernel/src/arch/x86/ioport.h \
@@ -1193,7 +1126,6 @@
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/smp.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
  /home/tyson/Orion/kernel/src/api/v4/threadstate.h \
@@ -1218,13 +1150,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
- /home/tyson/Orion/kernel/src/kdb/linker_set.h \
- /home/tyson/Orion/kernel/src/generic/traceids.h \
- /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -1240,7 +1165,11 @@
  /home/tyson/Orion/kernel/src/kdb/tracebuffer.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Orion/kernel/src/api/v4/schedule.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/schedule.h
+ /home/tyson/Orion/kernel/src/glue/v4-x86/schedule.h \
+ /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
+ /home/tyson/Orion/kernel/src/kdb/linker_set.h \
+ /home/tyson/Orion/kernel/src/generic/traceids.h \
+ /home/tyson/Orion/kernel/src/arch/x86/traceids.h
 .depend src/api/v4/ipc.o: /home/tyson/Orion/kernel/src/api/v4/ipc.cc \
  /home/tyson/Orion/kernel/ibd/config/config.h \
  /home/tyson/Orion/kernel/src/generic/macros.h \
@@ -1265,7 +1194,6 @@
  /home/tyson/Orion/kernel/src/api/v4/smp.h \
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
  /home/tyson/Orion/kernel/src/api/v4/threadstate.h \
@@ -1295,11 +1223,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -1311,6 +1234,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/generic/linear_ptab.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
@@ -1351,7 +1276,6 @@
  /home/tyson/Orion/kernel/src/api/v4/smp.h \
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
  /home/tyson/Orion/kernel/src/api/v4/threadstate.h \
@@ -1381,11 +1305,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -1397,6 +1316,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/generic/linear_ptab.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
@@ -1447,7 +1368,6 @@
  /home/tyson/Orion/kernel/src/generic/config.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
  /home/tyson/Orion/kernel/src/debug.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
@@ -1478,17 +1398,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
- /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
- /home/tyson/Orion/kernel/src/kdb/linker_set.h \
- /home/tyson/Orion/kernel/src/generic/traceids.h \
- /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
- /home/tyson/Orion/kernel/src/api/v4/smp.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -1500,6 +1409,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/generic/linear_ptab.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
@@ -1514,7 +1425,13 @@
  /home/tyson/Orion/kernel/src/arch/x86/apic.h \
  /home/tyson/Orion/kernel/src/arch/x86/ioport.h \
  /home/tyson/Orion/kernel/src/api/v4/schedule.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/schedule.h
+ /home/tyson/Orion/kernel/src/glue/v4-x86/schedule.h \
+ /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
+ /home/tyson/Orion/kernel/src/kdb/linker_set.h \
+ /home/tyson/Orion/kernel/src/generic/traceids.h \
+ /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
+ /home/tyson/Orion/kernel/src/api/v4/smp.h \
+ /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h
 .depend src/api/v4/schedule.o: /home/tyson/Orion/kernel/src/api/v4/schedule.cc \
  /home/tyson/Orion/kernel/ibd/config/config.h \
  /home/tyson/Orion/kernel/src/generic/macros.h \
@@ -1533,7 +1450,6 @@
  /home/tyson/Orion/kernel/src/generic/config.h \
  /home/tyson/Orion/kernel/src/debug.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
@@ -1564,17 +1480,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
- /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
- /home/tyson/Orion/kernel/src/kdb/linker_set.h \
- /home/tyson/Orion/kernel/src/generic/traceids.h \
- /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
- /home/tyson/Orion/kernel/src/api/v4/smp.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -1586,6 +1491,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/generic/linear_ptab.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
@@ -1594,6 +1501,12 @@
  /home/tyson/Orion/kernel/src/kdb/tracebuffer.h \
  /home/tyson/Orion/kernel/src/api/v4/schedule.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/schedule.h \
+ /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
+ /home/tyson/Orion/kernel/src/kdb/linker_set.h \
+ /home/tyson/Orion/kernel/src/generic/traceids.h \
+ /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
+ /home/tyson/Orion/kernel/src/api/v4/smp.h \
+ /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Orion/kernel/src/api/v4/interrupt.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/intctrl.h \
  /home/tyson/Orion/kernel/src/generic/intctrl.h \
@@ -1628,7 +1541,6 @@
  /home/tyson/Orion/kernel/src/api/v4/smp.h \
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
  /home/tyson/Orion/kernel/src/api/v4/threadstate.h \
@@ -1655,11 +1567,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -1671,6 +1578,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/generic/linear_ptab.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
@@ -1704,7 +1613,6 @@
  /home/tyson/Orion/kernel/src/api/v4/smp.h \
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
  /home/tyson/Orion/kernel/src/api/v4/threadstate.h \
@@ -1734,11 +1642,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -1750,6 +1653,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/generic/linear_ptab.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
@@ -1789,7 +1694,6 @@
  /home/tyson/Orion/kernel/src/api/v4/smp.h \
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
  /home/tyson/Orion/kernel/src/api/v4/threadstate.h \
@@ -1817,11 +1721,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -1833,6 +1732,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/generic/linear_ptab.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
@@ -1866,7 +1767,6 @@
  /home/tyson/Orion/kernel/src/api/v4/smp.h \
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
  /home/tyson/Orion/kernel/src/api/v4/threadstate.h \
@@ -1896,11 +1796,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -1912,6 +1807,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/generic/linear_ptab.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
@@ -1954,7 +1851,6 @@
  /home/tyson/Orion/kernel/src/api/v4/smp.h \
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
  /home/tyson/Orion/kernel/src/api/v4/threadstate.h \
@@ -1984,11 +1880,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -2000,6 +1891,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/generic/linear_ptab.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
@@ -2055,7 +1948,6 @@
  /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
  /home/tyson/Orion/kernel/src/api/v4/smp.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
  /home/tyson/Orion/kernel/src/api/v4/threadstate.h \
@@ -2065,11 +1957,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -2081,12 +1968,15 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
  /home/tyson/Orion/kernel/src/arch/x86/x64/tss.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/x32comp/tcb.h tcb_layout.h \
  /home/tyson/Orion/kernel/src/kdb/tracebuffer.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h \
+ /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/memory.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/x32comp/kernelinterface.h
 .depend src/glue/v4-x86/init.o: /home/tyson/Orion/kernel/src/glue/v4-x86/init.cc \
@@ -2133,7 +2023,6 @@
  /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
  /home/tyson/Orion/kernel/src/api/v4/smp.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
  /home/tyson/Orion/kernel/src/api/v4/threadstate.h \
@@ -2143,11 +2032,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -2159,6 +2043,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
  /home/tyson/Orion/kernel/src/arch/x86/x64/tss.h \
@@ -2176,6 +2062,7 @@
  /home/tyson/Orion/kernel/src/arch/x86/ioport.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/timer.h \
  /home/tyson/Orion/kernel/src/generic/timer.h \
+ /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/memory.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/logging.h \
  /home/tyson/Orion/kernel/src/arch/x86/amdhwcr.h \
@@ -2199,7 +2086,6 @@
  /home/tyson/Orion/kernel/src/arch/x86/x64/types.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
  /home/tyson/Orion/kernel/src/debug.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
@@ -2230,17 +2116,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
- /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
- /home/tyson/Orion/kernel/src/kdb/linker_set.h \
- /home/tyson/Orion/kernel/src/generic/traceids.h \
- /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
- /home/tyson/Orion/kernel/src/api/v4/smp.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -2252,13 +2127,21 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/generic/linear_ptab.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
  /home/tyson/Orion/kernel/src/arch/x86/x64/tss.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/x32comp/tcb.h tcb_layout.h \
  /home/tyson/Orion/kernel/src/kdb/tracebuffer.h \
- /home/tyson/Orion/kernel/src/arch/x86/fpu.h
+ /home/tyson/Orion/kernel/src/arch/x86/fpu.h \
+ /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
+ /home/tyson/Orion/kernel/src/kdb/linker_set.h \
+ /home/tyson/Orion/kernel/src/generic/traceids.h \
+ /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
+ /home/tyson/Orion/kernel/src/api/v4/smp.h \
+ /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h
 .depend src/glue/v4-x86/idt.o: /home/tyson/Orion/kernel/src/glue/v4-x86/idt.cc \
  /home/tyson/Orion/kernel/ibd/config/config.h \
  /home/tyson/Orion/kernel/src/generic/macros.h \
@@ -2330,7 +2213,6 @@
  /home/tyson/Orion/kernel/src/api/v4/smp.h \
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
  /home/tyson/Orion/kernel/src/api/v4/threadstate.h \
@@ -2357,15 +2239,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
- /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
- /home/tyson/Orion/kernel/src/kdb/linker_set.h \
- /home/tyson/Orion/kernel/src/generic/traceids.h \
- /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -2377,6 +2250,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/generic/linear_ptab.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
@@ -2384,6 +2259,7 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/x32comp/tcb.h tcb_layout.h \
  /home/tyson/Orion/kernel/src/kdb/tracebuffer.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h \
+ /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/arch/x86/apic.h
 .depend src/glue/v4-x86/thread.o: /home/tyson/Orion/kernel/src/glue/v4-x86/thread.cc \
  /home/tyson/Orion/kernel/ibd/config/config.h \
@@ -2405,7 +2281,6 @@
  /home/tyson/Orion/kernel/src/api/v4/memdesc.h \
  /home/tyson/Orion/kernel/src/api/v4/procdesc.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
@@ -2431,17 +2306,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
- /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
- /home/tyson/Orion/kernel/src/kdb/linker_set.h \
- /home/tyson/Orion/kernel/src/generic/traceids.h \
- /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
- /home/tyson/Orion/kernel/src/api/v4/smp.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -2453,6 +2317,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/generic/linear_ptab.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \
@@ -2521,15 +2387,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
- /home/tyson/Orion/kernel/src/kdb/linker_set.h \
- /home/tyson/Orion/kernel/src/generic/traceids.h \
- /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
- /home/tyson/Orion/kernel/src/api/v4/smp.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -2546,7 +2403,13 @@
  /home/tyson/Orion/kernel/src/arch/x86/x64/tss.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/x32comp/tcb.h tcb_layout.h \
  /home/tyson/Orion/kernel/src/kdb/tracebuffer.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/schedule.h
+ /home/tyson/Orion/kernel/src/glue/v4-x86/schedule.h \
+ /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
+ /home/tyson/Orion/kernel/src/kdb/linker_set.h \
+ /home/tyson/Orion/kernel/src/generic/traceids.h \
+ /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
+ /home/tyson/Orion/kernel/src/api/v4/smp.h \
+ /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h
 .depend src/glue/v4-x86/asmsyms.o: /home/tyson/Orion/kernel/src/glue/v4-x86/asmsyms.cc \
  /home/tyson/Orion/kernel/ibd/config/config.h \
  /home/tyson/Orion/kernel/src/generic/macros.h \
@@ -2564,7 +2427,6 @@
  /home/tyson/Orion/kernel/src/api/v4/threadstate.h \
  /home/tyson/Orion/kernel/src/api/v4/tcb.h \
  /home/tyson/Orion/kernel/src/debug.h \
- /home/tyson/Orion/kernel/src/api/v4/cpu.h \
  /home/tyson/Orion/kernel/src/api/v4/types.h \
  /home/tyson/Orion/kernel/src/api/v4/queuestate.h \
  /home/tyson/Orion/kernel/src/api/v4/queueing.h \
@@ -2594,17 +2456,6 @@
  /home/tyson/Orion/kernel/src/glue/v4-x86/resources.h \
  /home/tyson/Orion/kernel/src/api/v4/preempt.h \
  /home/tyson/Orion/kernel/src/api/v4/ipc.h \
- /home/tyson/Orion/kernel/src/api/v4/sktcb.h \
- /home/tyson/Orion/kernel/src/api/v4/sched-rr/ktcb.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/ipc.h \
- /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
- /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
- /home/tyson/Orion/kernel/src/kdb/tracepoints.h \
- /home/tyson/Orion/kernel/src/kdb/linker_set.h \
- /home/tyson/Orion/kernel/src/generic/traceids.h \
- /home/tyson/Orion/kernel/src/arch/x86/traceids.h \
- /home/tyson/Orion/kernel/src/api/v4/smp.h \
- /home/tyson/Orion/kernel/src/glue/v4-x86/smp.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/ktcb.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/utcb.h \
@@ -2616,6 +2467,8 @@
  /home/tyson/Orion/kernel/src/api/v4/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/syscalls.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/syscalls.h \
+ /home/tyson/Orion/kernel/src/arch/x86/trapgate.h \
+ /home/tyson/Orion/kernel/src/arch/x86/x64/trapgate.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/resource_functions.h \
  /home/tyson/Orion/kernel/src/generic/linear_ptab.h \
  /home/tyson/Orion/kernel/src/glue/v4-x86/x64/tcb.h \

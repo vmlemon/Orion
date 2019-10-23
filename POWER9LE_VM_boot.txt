@@ -1,0 +1,39 @@
+
+
+SLOF[0m[?25l **********************************************************************
+[1mQEMU Starting
+[0m Build Date = Dec 13 2017 13:46:58
+ FW Version = buildd@ release 20170724
+ Press "s" to enter Open Firmware.
+
+[0m[?25hC0000C0100C0120C0140C0200C0240C0260C02E0C0300C0320C0340C0360C0370C0380C0371C0372C0373C0374C03F0C0400C0480C04C0C04D0C0500Populating /vdevice methods
+Populating /vdevice/vty@30000000
+Populating /vdevice/nvram@71000000
+C05A0Populating /pci@800000020000000
+                     00 0800 (D) : 1af4 1000    virtio [ net ]
+                     00 1000 (D) : 1b36 000d    serial bus [ usb-xhci ]
+                     00 1800 (D) : 1af4 1001    virtio [ block ]
+                     00 2000 (D) : 1af4 1002    unknown-legacy-device*
+                     00 2800 (D) : 1234 1111    qemu vga
+C0600C06C0C0700C0800C0880No NVRAM common partition, re-initializing...
+C0890C08A0C08A8Installing QEMU fb
+
+
+
+C08B0Scanning USB 
+  XHCI: Initializing
+    USB Keyboard 
+    USB mouse 
+C08C0C08D0No console specified using screen & keyboard
+C08E0C08E8C08FF     
+  Welcome to Open Firmware
+
+  Copyright (c) 2004, 2017 IBM Corporation All rights reserved.
+  This program and the accompanying materials are made available
+  under the terms of the BSD License available at
+  http://www.opensource.org/licenses/bsd-license.php
+
+
+Trying to load:  from: /pci@800000020000000/scsi@3 ...   Successfully loaded
+Linux ppc64le
+#1 SMP Mon May 6

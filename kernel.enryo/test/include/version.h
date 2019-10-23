@@ -14,9 +14,9 @@
 #define KERNEL_SUBSUBVERSION   0			
 
 \
-#define KERNELGENDATE          SHUFFLE3(day:(121-100),month:(110-100),year:(2019-2000))			
+#define KERNELGENDATE          SHUFFLE3(day:(116-100),month:(110-100),year:(2019-2000))			
 \
 #define __USER__               "tyson@tyson-Lenovo-ideapad-120S-14IAP"				
 \
-#define __KERNELBUILDNO__      4				
+#define __KERNELBUILDNO__      2				
 

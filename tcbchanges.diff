@@ -1,0 +1,687 @@
+3,4c3,4
+<  * Copyright (C) 2002, 2003-2004,  Karlsruhe University
+<  * Copyright (C) 2005,  National ICT Australia (NICTA)
+---
+>  * Copyright (C) 1999-2010,  Karlsruhe University
+>  * Copyright (C) 2008-2009,  Volkmar Uhlig, Jan Stoess, IBM Corporation
+7c7
+<  * Description:   V4 TCB
+---
+>  * Description:   
+30c30
+<  * $Id: tcb.h,v 1.70 2004/12/09 01:03:43 cvansch Exp $
+---
+>  * $Id$
+37a38
+> #include INC_API(cpu.h)
+47a49,57
+> #include INC_API(sktcb.h)
+> 
+> /* implementation specific functions */
+> #if defined(CONFIG_X_CTRLXFER_MSG)
+> #include INC_GLUE(ipc.h)
+> class arch_ktcb_t;
+> typedef word_t (arch_ktcb_t::*get_ctrlxfer_regs_t)(word_t id, word_t mask, tcb_t *dst_utcb, word_t &dst_mr);
+> typedef word_t (arch_ktcb_t::*set_ctrlxfer_regs_t)(word_t id, word_t mask, tcb_t *src_utcb, word_t &src_mr);
+> #endif
+51a62,65
+> #if defined(CONFIG_X_CTRLXFER_MSG)
+> #include INC_GLUE(ipc.h)
+> #endif
+> 
+53d66
+< typedef int prio_t;
+55d67
+< class prio_queue_t;
+64a77,90
+> 	timeout		= 2,
+>     };
+> 
+>     /*
+>      * Generic flags go from bit zero and upwards.  Architecture
+>      * specific flags should go from most significant bits and
+>      * downwards.
+>      */
+>     enum flags_e {
+> 	has_xfer_timeout	= 0,
+> 	schedule_in_progress	= 1,
+> #if defined(CONFIG_X_CTRLXFER_MSG)
+> 	kernel_ctrlxfer_msg	= 2,
+> #endif
+70,71c96,97
+<     bool create_inactive(threadid_t dest, threadid_t scheduler);
+<     void create_kernel_thread(threadid_t dest, utcb_t * utcb);
+---
+>     void create_inactive(threadid_t dest, threadid_t scheduler, sktcb_type_e type);
+>     void create_kernel_thread(threadid_t dest, utcb_t * utcb, sktcb_type_e type);
+75a102
+>     
+84c111
+<     void enqueue_send(tcb_t * tcb);
+---
+>     void enqueue_send(tcb_t * tcb, const bool head=false);
+92a120
+>     threadid_t get_local_id();
+94,95c122,123
+<     bool check_utcb_location (word_t location);
+<     void set_utcb_location (word_t location);
+---
+>     bool check_utcb_location (word_t utcb_location);
+>     void set_utcb_location (word_t utcb_location);
+101,106d128
+<     /* redirector access functions */
+<     void set_send_redirector(threadid_t redir);
+<     threadid_t get_send_redirector();
+<     void set_recv_redirector(threadid_t redir);
+<     threadid_t get_recv_redirector();
+< 
+118a141,142
+>     time_t get_xfer_timeout_snd ();
+>     time_t get_xfer_timeout_rcv ();
+121d144
+<     void set_intended_receiver(threadid_t tid);
+128a152,153
+>     word_t get_br(word_t index);
+>     void set_br(word_t index, word_t value);
+130c155
+<     msg_tag_t do_ipc(threadid_t to_tid, threadid_t from_tid);
+---
+>     msg_tag_t do_ipc(threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
+132c157
+<     bool send_preemption_ipc(u64_t abstime);
+---
+>     bool send_preemption_ipc();
+135a161,170
+> #if defined(CONFIG_X_CTRLXFER_MSG)
+>     void set_fault_ctrlxfer_items(word_t fault, ctrlxfer_mask_t mask);
+>     ctrlxfer_mask_t get_fault_ctrlxfer_items(word_t fault);
+>     word_t append_ctrlxfer_item(msg_tag_t tag, word_t offset);
+>     word_t ctrlxfer( tcb_t *dst, msg_item_t item, word_t src_idx, word_t dst_idx, bool src_mr, bool dst_mr);
+> #if defined(CONFIG_DEBUG)
+>     void dump_ctrlxfer_state(bool extended);
+> #endif
+> #endif
+>  
+152,158d186
+<     void copy_user_regs(tcb_t *src);
+<     void copy_regs_to_mrs(tcb_t *src);
+< 
+<     /* preemption callback signaling */
+<     addr_t get_preempted_ip();
+<     void set_preempted_ip(addr_t ip);
+<     addr_t get_preempt_callback_ip();
+162d189
+<     void switch_to_idle();
+167a195,199
+>     /* Copy area */
+>     void adjust_for_copy_area (tcb_t * dst, addr_t * saddr, addr_t * daddr);
+>     void release_copy_area (void);
+>     addr_t copy_area_real_address (addr_t addr);
+> 
+180,181c212,215
+<         const { return this->utcb; }
+< 
+---
+> 	const { return this->utcb; }
+>     void set_utcb(utcb_t *utcb)
+> 	{ this->utcb = utcb; }
+>     
+183d216
+<     void set_scheduler(const threadid_t tid);
+188d220
+<     void set_acceptor(const acceptor_t acceptor);
+191c223
+<     threadid_t get_scheduler();
+---
+> 
+199,208d230
+<     acceptor_t get_acceptor();
+< 
+<     /* asynchronous notification */
+<     void clear_notify_bits();
+<     void add_notify_bits(const word_t bits);
+<     void sub_notify_bits(const word_t bits);
+<     void set_notify_mask(const word_t mask);
+< 
+<     word_t get_notify_bits();
+<     word_t get_notify_mask();
+216c238,245
+<     bool allocate();
+---
+>     static tcb_t *allocate(const threadid_t dest);
+>     static void deallocate(const threadid_t dest);
+>     static void init_tcbs();
+>     static tcb_t *get_tcb(threadid_t tid);
+>     static bool is_tcb(addr_t addr);
+> 
+> 
+>     void arch_init_root_server(space_t * space, word_t ip, word_t sp);
+220c249
+<     bool init(threadid_t dest);
+---
+>     void init(threadid_t dest, sktcb_type_e type);
+226d254
+< private:
+229a258
+> private:
+236,241c265,282
+< 	    /* IPC copy */
+< 	    word_t		saved_mr[3];
+< 	    acceptor_t		saved_acceptor;
+< 	    word_t		saved_error;
+< 	} ipc_copy;
+< 
+---
+> 	    struct 
+> 	    {
+> 		/* IPC copy */
+> 		word_t		mr[IPC_NUM_SAVED_MRS];
+> 		word_t		br0;
+> 		threadid_t	partner;
+> 		threadid_t	vsender;
+> 		word_t		state;
+> 		word_t		error;
+> 	    } saved_state[IPC_NESTING_LEVEL];
+> 
+> 	    struct {
+> 		word_t		copy_length;
+> 		addr_t		copy_start_src;
+> 		addr_t		copy_start_dst;
+> 		addr_t		copy_fault;
+> 	    } ipc_copy;
+> 	};
+252,262c293,299
+< 
+<     threadid_t get_saved_partner (void) { return saved_partner; }
+<     void set_saved_partner (threadid_t t) { saved_partner = t; }
+< 
+<     thread_state_t get_saved_state (void)
+< 	{ return saved_state; }
+<     void set_saved_state (thread_state_t s)
+< 	{ saved_state = s; }
+<     void set_saved_state (thread_state_t::thread_state_e s)
+< 	{ saved_state = (thread_state_t) s; }
+< 
+---
+>     
+>     void init_saved_state();
+>     threadid_t get_saved_partner (word_t level = 0);
+>     void set_saved_partner (threadid_t t, word_t level = 0);
+>     thread_state_t get_saved_state (word_t level = 0);
+>     void set_saved_state (thread_state_t s, word_t level = 0);
+>     
+266a304
+>     threadid_t		myself_local;
+269c307
+<     word_t		utcb_location;
+---
+>     cpuid_t		cpu;
+274a313
+> public:
+275a315
+>     word_t *		stack;
+277,278c317,318
+<     threadid_t		send_redirector;
+<     threadid_t		recv_redirector;
+---
+>     /* VU: pdir_cache should be architecture-specific!!! */
+>     word_t		pdir_cache;
+280d319
+<     space_t *		space;
+284,285c323,324
+<     /* queues */
+<     ringlist_t<tcb_t>	ready_list;
+---
+>     /* queues and scheduling state */
+>     ringlist_t<tcb_t>	present_list;
+287d325
+< 
+289,292c327
+<     word_t *		stack;
+< 
+<     ringlist_t<tcb_t>	wait_list;
+<     ringlist_t<tcb_t>	present_list;
+---
+>     sched_ktcb_t	sched_state;
+296,297c331
+< #ifdef CONFIG_SMP
+<     cpuid_t		cpu;
+---
+> #if defined(CONFIG_SMP)
+300a335
+>     lockstate_t		lock_state;
+303,309d337
+< public:
+<     /* scheduling */
+<     word_t		total_quantum;
+<     word_t		timeslice_length;
+<     s64_t		current_timeslice;
+<     prio_t		priority;
+< 
+312c340,344
+<     threadid_t		scheduler;
+---
+>     space_t *		space;
+> 
+> #if defined(CONFIG_X_CTRLXFER_MSG)
+>     ctrlxfer_mask_t	fault_ctrlxfer[4+arch_ktcb_t::fault_max];
+> #endif
+315c347
+<     bitmask_t		flags;
+---
+>     bitmask_t<word_t>	flags;
+320,321d351
+<     threadid_t		saved_partner;
+<     thread_state_t	saved_state;
+323,326d352
+< #ifdef CONFIG_DEBUG
+<     ringlist_t<tcb_t>	thread_list;
+<     char                debug_name[16];
+< #endif
+329,331d354
+<     /* VU: pdir_cache should be architecture-specific!!! */
+<     word_t		pdir_cache;
+< 
+336c359
+<     friend void dump_tcb(tcb_t *);
+---
+>     friend void dump_tcb(tcb_t *, bool extended);
+338a362,366
+>     
+> #if defined(CONFIG_STATIC_TCBS)
+>     static  tcb_t *tcb_array[TOTAL_KTCBS];
+> #endif
+> 
+342c370
+< union whole_tcb_t {
+---
+> typedef union _whole_tcb_t {
+344c372
+< } __attribute__((aligned(KTCB_SIZE)));
+---
+> } whole_tcb_t __attribute__((aligned(KTCB_SIZE)));
+353c381,385
+< INLINE threadid_t tcb_t::get_global_id()
+---
+> /**
+>  * Set the global thread ID in a TCB
+>  * @param tid	new thread ID
+>  */
+> INLINE void tcb_t::set_global_id(const threadid_t tid)
+355c387,389
+<     return myself_global;
+---
+>     myself_global = tid;
+>     ASSERT(get_utcb());
+>     get_utcb()->set_my_global_id(tid);
+358c392
+< INLINE void tcb_t::set_scheduler(const threadid_t tid)
+---
+> INLINE threadid_t tcb_t::get_global_id()
+360c394
+<     this->scheduler = tid;
+---
+>     return myself_global;
+363c397
+< INLINE threadid_t tcb_t::get_scheduler()
+---
+> INLINE threadid_t tcb_t::get_local_id()
+365c399
+<     return this->scheduler;
+---
+>     return myself_local;
+367a402
+> 
+370c405
+<     set_scheduler(tid);
+---
+>     sched_state.set_scheduler(tid);
+375c410
+<     return get_scheduler();
+---
+>     return sched_state.get_scheduler();
+378c413,419
+< INLINE void tcb_t::set_send_redirector(const threadid_t redir)
+---
+> 
+> /**********************************************************************
+>  *
+>  *                  Access functions
+>  *
+>  **********************************************************************/
+> __attribute__ ((const)) INLINE tcb_t * addr_to_tcb (addr_t addr)
+380c421
+<     this->send_redirector = redir;
+---
+>     return (tcb_t *) ((word_t) addr & KTCB_MASK);
+383c424,426
+< INLINE threadid_t tcb_t::get_send_redirector()
+---
+> 
+> #if defined(CONFIG_STATIC_TCBS)
+> INLINE bool tcb_t::is_tcb(addr_t addr)
+385c428,432
+<     return this->send_redirector;
+---
+>     tcb_t * tcb = addr_to_tcb(addr);
+>     for (unsigned i = 0; i < TOTAL_KTCBS; i++)
+> 	if (tcb_array[i] == tcb)
+> 	    return true;
+>     return false;
+388c435
+< INLINE void tcb_t::set_recv_redirector(const threadid_t redir)
+---
+> INLINE tcb_t * tcb_t::get_tcb( threadid_t tid )
+390c437
+<     this->recv_redirector = redir;
+---
+>     return tcb_array[tid.get_threadno() & VALID_THREADNO_MASK];
+393c440,442
+< INLINE threadid_t tcb_t::get_recv_redirector()
+---
+> #else
+> 
+> INLINE bool tcb_t::is_tcb(addr_t addr)
+395c444,449
+<     return this->recv_redirector;
+---
+>     return space_t::is_tcb_area(addr);
+> }
+> INLINE tcb_t * tcb_t::get_tcb( threadid_t tid )
+> {
+>     return (tcb_t *)((KTCB_AREA_START) + 
+> 	    ((tid.get_threadno() & VALID_THREADNO_MASK) * KTCB_SIZE));
+398,402c452,479
+< /**********************************************************************
+<  *
+<  *                  Access functions
+<  *
+<  **********************************************************************/
+---
+> /**
+>  * allocate the tcb
+>  * The tcb pointed to by this will be allocated.
+>  */
+> INLINE tcb_t* tcb_t::allocate(threadid_t dest)
+> {
+>     tcb_t *tcb = get_tcb(dest);
+>     /**
+>      * tcb_t::allocate: allocate memory for TCB
+>      *
+>      * Allocate memory for the given TCB.  We do this by generating a
+>      * write to the TCB area.  If TCB area is not backed by writable
+>      * memory (i.e., already allocated) the pagefault handler will
+>      * allocate the memory and map it.
+>      */
+>     tcb->kernel_stack[0] = 0;
+>     
+>     return tcb;
+> }
+> 
+> INLINE void tcb_t::deallocate(threadid_t dest)
+> { /* Nothing to do */ }
+> INLINE void tcb_t::init_tcbs()
+> { /* Nothing to do */ }
+> 
+> #endif
+> 
+> 
+425c502,535
+<     return this->get_space()->get_tcb(partner);
+---
+>     return get_tcb(partner);
+> }
+> 
+> INLINE void tcb_t::init_saved_state()
+> {
+>     for (int l = 0; l < IPC_NESTING_LEVEL; l++)
+>     {	
+> 	set_saved_state (thread_state_t::aborted, l);
+> 	set_saved_partner (threadid_t::nilthread(), l);
+>     }
+> }
+> 
+> INLINE threadid_t tcb_t::get_saved_partner (word_t level) 
+> { 
+>     ASSERT(level < IPC_NESTING_LEVEL); 
+>     return misc.saved_state[level].partner; 
+> }
+> 
+> INLINE void tcb_t::set_saved_partner (threadid_t t, word_t level) 
+> { 
+>     ASSERT(level < IPC_NESTING_LEVEL); 
+>     misc.saved_state[level].partner = t; 
+> }
+> 
+> INLINE thread_state_t tcb_t::get_saved_state (word_t level)
+> { 
+>     ASSERT(level < IPC_NESTING_LEVEL); 
+>     return (thread_state_t) misc.saved_state[level].state; 
+> }
+> 
+> INLINE void tcb_t::set_saved_state (thread_state_t s, word_t level)
+> { 
+>     ASSERT(level < IPC_NESTING_LEVEL); 
+>     misc.saved_state[level].state = s; 
+434c544
+<     return get_utcb()->pager;
+---
+>     return get_utcb()->get_pager();
+443c553
+<     get_utcb()->pager = tid;
+---
+>     get_utcb()->set_pager(tid);
+452c562
+<     return get_utcb()->exception_handler;
+---
+>     return get_utcb()->get_exception_handler();
+461c571
+<     get_utcb()->exception_handler = tid;
+---
+>     get_utcb()->set_exception_handler(tid);
+470c580
+<     return get_utcb()->user_defined_handle;
+---
+>     return get_utcb()->get_user_defined_handle();
+479c589
+<     get_utcb()->user_defined_handle = handle;
+---
+>     get_utcb()->set_user_defined_handle(handle);
+488c598
+<     get_utcb()->virtual_sender = tid;
+---
+>     get_utcb()->set_virtual_sender(tid);
+497,506c607
+<     return get_utcb()->virtual_sender;
+< }
+< 
+< /**
+<  * Set the intended receiver of an IPC
+<  * @return      thread ID of intended receiver
+<  */
+< INLINE void tcb_t::set_intended_receiver (threadid_t tid)
+< {
+<     get_utcb()->intended_receiver = tid;
+---
+>     return get_utcb()->get_virtual_sender();
+515c616
+<     return get_utcb()->intended_receiver;
+---
+>     return get_utcb()->get_intended_receiver();
+524c625
+<     get_utcb()->error_code = err;
+---
+>     get_utcb()->set_error_code(err);
+533c634
+<     return get_utcb()->error_code;
+---
+>     return get_utcb()->get_error_code();
+543c644
+<     flags.raw = get_utcb()->preempt_flags;
+---
+>     flags.raw = get_utcb()->get_preempt_flags();
+553c654
+<     get_utcb()->preempt_flags = flags.raw;
+---
+>     get_utcb()->set_preempt_flags(flags.raw);
+562,578c663
+<     return get_utcb()->cop_flags;
+< }
+< 
+< /**
+<  * clear the notify_bits
+<  */
+< INLINE void tcb_t::clear_notify_bits()
+< {
+< 	get_utcb()->notify_bits = 0;
+< }
+< 
+< /**
+<  * add bits to the notify_mask 
+<  */
+< INLINE void tcb_t::add_notify_bits(const word_t bits)
+< {
+< 	get_utcb()->notify_bits |= bits;
+---
+>     return get_utcb()->get_cop_flags();
+582c667,669
+<  * clear bits in the notify_mask 
+---
+>  * Get message tag
+>  * @returns message tag
+>  * The message tag will be read from message register 0
+584c671
+< INLINE void tcb_t::sub_notify_bits(const word_t bits)
+---
+> INLINE msg_tag_t tcb_t::get_tag (void)
+586c673,674
+< 	get_utcb()->notify_bits &= ~(bits);
+---
+>     msg_tag_t tag = get_mr(0);
+>     return tag;
+590c678,680
+<  * read value of the notify_mask 
+---
+>  * Set the message tag
+>  * @param tag   new message tag
+>  * The message tag will be stored in message register 0
+592c682
+< INLINE word_t tcb_t::get_notify_bits(void)
+---
+> INLINE void tcb_t::set_tag (msg_tag_t tag)
+594c684
+<     return get_utcb()->notify_bits;
+---
+>     set_mr(0, tag.raw);
+598c688,689
+<  * read value of the notify_mask 
+---
+>  * Get a thread's send transfer timeout
+>  * @return      send transfer timeout
+600c691
+< INLINE word_t tcb_t::get_notify_mask(void)
+---
+> INLINE time_t tcb_t::get_xfer_timeout_snd (void)
+602c693
+<     return get_utcb()->notify_mask;
+---
+>     return get_utcb()->get_xfer_timeout().get_snd();
+606,607c697,698
+<  * set the value of the notify_mask register
+<  * @param value value to set
+---
+>  * Get a thread's receive transfer timeout
+>  * @return      receive transfer timeout
+609c700
+< INLINE void tcb_t::set_notify_mask(const word_t mask)
+---
+> INLINE time_t tcb_t::get_xfer_timeout_rcv (void)
+611c702
+<     get_utcb()->notify_mask = mask;
+---
+>     return get_utcb()->get_xfer_timeout().get_rcv();
+614,634d704
+< /**
+<  * Get message tag
+<  * @returns message tag
+<  * The message tag will be read from message register 0
+<  */
+< INLINE msg_tag_t tcb_t::get_tag (void)
+< {
+<     msg_tag_t tag;
+<     tag.raw = get_mr(0);
+<     return tag;
+< }
+< 
+< /**
+<  * Set the message tag
+<  * @param tag   new message tag
+<  * The message tag will be stored in message register 0
+<  */
+< INLINE void tcb_t::set_tag (msg_tag_t tag)
+< {
+<     set_mr(0, tag.raw);
+< }
+640c710
+< INLINE void tcb_t::enqueue_send(tcb_t * tcb)
+---
+> INLINE void tcb_t::enqueue_send(tcb_t * tcb, const bool head)
+642,644c712,717
+<     ASSERT(NORMAL, !queue_state.is_set(queue_state_t::send) );
+< 
+<     ENQUEUE_LIST_TAIL(tcb->send_head, this, send_list);
+---
+>     //TRACEPOINT_TB(DEBUG, ("%t enqueue into send queue of %t", this, tcb));
+>     ASSERT( !queue_state.is_set(queue_state_t::send) );
+>     if (head)
+> 	ENQUEUE_LIST_HEAD(tcb->send_head, this, send_list);
+>     else
+> 	ENQUEUE_LIST_TAIL(tcb->send_head, this, send_list);
+654,655c727
+<     ASSERT(NORMAL, queue_state.is_set(queue_state_t::send) );
+< 
+---
+>     ASSERT( queue_state.is_set(queue_state_t::send) );
+664c736
+< #ifdef CONFIG_DEBUG
+---
+> #if defined(CONFIG_DEBUG)
+671c743
+< #ifdef CONFIG_DEBUG
+---
+> #if defined(CONFIG_DEBUG)
+680c752
+< #ifdef CONFIG_DEBUG
+---
+> #if defined(CONFIG_DEBUG)
+694,695c766,767
+<     extern whole_tcb_t __idle_tcb;
+<     return (tcb_t*)&__idle_tcb;
+---
+>     extern tcb_t *__idle_tcb;
+>     return (tcb_t*)__idle_tcb;
+698c770
+< INLINE void tcb_t::switch_to_idle()
+---
+> INLINE tcb_t * get_dummy_tcb()
+700c772,773
+<     switch_to(get_idle_tcb());
+---
+>     extern tcb_t *__dummy_tcb;
+>     return (tcb_t*)__dummy_tcb;
+721,727c794
+< //src/api/v4/cpu.h:70 already defines this, for us...
+< /*#ifndef CONFIG_SMP
+< INLINE cpuid_t get_current_cpu()
+< {
+<     return 0;
+< }
+< 
+---
+> #if !defined(CONFIG_SMP)
+733,734d799
+< */
+< //PREDEFINED LOGIC - CPU.H
+740a806,807
+> 
+> void handle_ipc_timeout (word_t state);
