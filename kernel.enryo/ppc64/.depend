@@ -219,7 +219,7 @@
  /home/fedora/pistachio/kernel/src/generic/sync.h \
  /home/fedora/pistachio/kernel/src/arch/powerpc64/string.h \
  /home/fedora/pistachio/kernel/src/arch/powerpc64/msr.h \
- /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h \
+ /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h \
  /home/fedora/pistachio/kernel/src/generic/debug.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/debug.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/syscalls.h \
@@ -253,7 +253,7 @@
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/syscalls.h \
  /home/fedora/pistachio/kernel/src/arch/powerpc64/frame.h \
  /home/fedora/pistachio/kernel/src/glue/v4-powerpc64/abi.h \
- /usr/lib/gcc/ppc64-redhat-linux/8/include/stdarg.h
+ /usr/lib/gcc/ppc64-redhat-linux/3.4.6/include/stdarg.h
 .depend src/arch/powerpc64/stab.o: /home/fedora/pistachio/kernel/src/arch/powerpc64/stab.cc \
  /root/Orion/kernel.enryo/ppc64/config/config.h \
  /home/fedora/pistachio/kernel/src/generic/macros.h \

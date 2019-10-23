@@ -1,18 +1,18 @@
 /* Automatically generated, don't edit */
 /* Generated on: tyson-Lenovo-ideapad-120S-14IAP */
-/* At: Wed, 23 Oct 2019 23:13:06 +0000 */
-/* Linux version 5.0.0-32-generic (buildd@lgw01-amd64-034) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #34-Ubuntu SMP Wed Oct 2 02:06:48 UTC 2019 */
+/* At: Mon, 21 Oct 2019 22:58:03 +0000 */
+/* Linux version 5.0.0-31-generic (buildd@lcy01-amd64-010) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #33-Ubuntu SMP Mon Sep 30 18:51:59 UTC 2019 */
 
 /* Pistachio Kernel Configuration System */
 
 /* Hardware */
 
 /* Basic Architecture */
-#undef  CONFIG_ARCH_IA32
+#define CONFIG_ARCH_IA32 1
 #undef  CONFIG_ARCH_IA64
 #undef  CONFIG_ARCH_POWERPC
 #undef  CONFIG_ARCH_POWERPC64
-#define CONFIG_ARCH_AMD64 1
+#undef  CONFIG_ARCH_AMD64
 #undef  CONFIG_ARCH_ALPHA
 #undef  CONFIG_ARCH_MIPS64
 #undef  CONFIG_ARCH_ARM
@@ -28,23 +28,13 @@
 #undef  CONFIG_CPU_IA32_C3
 
 
-/* IA-64 Processor Type */
-#define CONFIG_CPU_IA64_ITANIUM 1
-#undef  CONFIG_CPU_IA64_ITANIUM2
-#undef  CONFIG_CPU_IA64_SKI
-
-
 /* Processor Type */
-#define CONFIG_CPU_AMD64_OPTERON 1
+#undef  CONFIG_CPU_AMD64_OPTERON
 #undef  CONFIG_CPU_AMD64_SIMICS
 
 
 /* Platform */
 #define CONFIG_PLAT_PC99 1
-
-
-/* IA-64 Platform */
-#define CONFIG_PLAT_EFI 1
 
 
 /* Platform */
@@ -63,37 +53,26 @@
 #undef  CONFIG_SMP
 
 /* Miscellaneous */
-#define CONFIG_IOAPIC 1
-#define CONFIG_MAX_IOAPICS 2
-#define CONFIG_APIC_TIMER_TICK 1000
-#define CONFIG_PROFILE_INTERVAL 10000
-#define CONFIG_PROFILE_SIZE 393241
+#undef  CONFIG_IOAPIC
 #undef  CONFIG_DISABLE_ALIGNMENT_EXCEPTIONS
 
 
 
 /* Kernel */
 #undef  CONFIG_IPC_FASTPATH
-#undef  CONFIG_DEBUG
+#define CONFIG_DEBUG 1
 #undef  CONFIG_IA32_SMALL_SPACES
-#undef  CONFIG_PERFMON
 #undef  CONFIG_SPIN_WHEELS
 
 
 /* Debugger */
 #undef  CONFIG_KDB
-
-/* Consoles */
-#undef  CONFIG_KDB_CONS_OF1275
-#undef  CONFIG_KDB_CONS_PSIM_COM
-
 #undef  CONFIG_KDB_NO_ASSERTS
 #define CONFIG_ASSERT_LEVEL 2
 #undef  CONFIG_DEBUG_SYMBOLS
 
 /* Trace Settings */
 #undef  CONFIG_TRACEBUFFER
-#define CONFIG_TRACEBUF_PAGES 256
 
 
 
@@ -103,12 +82,12 @@
 /* Derived symbols */
 #undef  CONFIG_IA32_FXSR
 #undef  CONFIG_IA32_PGE
-#define CONFIG_IS_64BIT 1
+#undef  CONFIG_IS_64BIT
 #undef  CONFIG_PLAT_OFSPARC64
 #undef  CONFIG_IA32_HTT
 #undef  CONFIG_BIGENDIAN
 #undef  CONFIG_SPARC64_SAB82532
-#undef  CONFIG_IS_32BIT
+#define CONFIG_IS_32BIT 1
 #undef  CONFIG_CPU_SPARC64_ULTRASPARC
 #undef  CONFIG_ARM_BIG_ENDIAN
 #undef  CONFIG_SWIZZLE_IO_ADDR

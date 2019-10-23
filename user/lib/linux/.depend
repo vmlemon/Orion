@@ -55,11 +55,6 @@ strcpy.o: strcpy.c ../../include/sys/cdefs.h ../../include/sys/libkern.h \
  ../../include/sys/_types.h ../../include/machine/_types.h \
  ../../include/l4/amd64/types.h ../../include/machine/_stdint.h \
  ../../include/sys/_stdint.h
-refill.o: refill.c ../../include/sys/cdefs.h namespace.h \
- ../../include/errno.h ../../include/stdio.h ../../include/sys/_null.h \
- ../../include/sys/_types.h ../../include/machine/_types.h \
- ../../include/l4/amd64/types.h ../../include/stdlib.h un-namespace.h \
- libc_private.h local.h wcio.h fileext.h
 errlst.o: errlst.c ../../include/sys/cdefs.h ../../include/errno.h \
  ../../include/stdio.h ../../include/sys/_null.h \
  ../../include/sys/_types.h ../../include/machine/_types.h \
@@ -120,6 +115,12 @@ assert.o: assert.c ../../include/sys/cdefs.h ../../include/assert.h \
  ../../include/sys/_timespec.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
+strlen.o: strlen.c ../../include/sys/cdefs.h ../../include/sys/libkern.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h ../../include/stdint.h \
+ ../../include/sys/_types.h ../../include/machine/_types.h \
+ ../../include/l4/amd64/types.h ../../include/machine/_stdint.h \
+ ../../include/sys/_stdint.h ../../include/sys/limits.h \
+ ../../include/machine/_limits.h
 apicore.o: apicore.c ../../include/nwmalloc.h ../../include/liballoc.h
 getopt.o: getopt.c ../../include/sys/cdefs.h stand.h \
  ../../include/errno.h ../../include/sys/types.h \
@@ -165,12 +166,11 @@ fstat.o: fstat.c ../../include/sys/cdefs.h stand.h ../../include/errno.h \
  ../../include/sys/timespec.h ../../include/sys/_timespec.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h
-strlen.o: strlen.c ../../include/sys/cdefs.h ../../include/sys/libkern.h \
- /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h ../../include/stdint.h \
+refill.o: refill.c ../../include/sys/cdefs.h namespace.h \
+ ../../include/errno.h ../../include/stdio.h ../../include/sys/_null.h \
  ../../include/sys/_types.h ../../include/machine/_types.h \
- ../../include/l4/amd64/types.h ../../include/machine/_stdint.h \
- ../../include/sys/_stdint.h ../../include/sys/limits.h \
- ../../include/machine/_limits.h
+ ../../include/l4/amd64/types.h ../../include/stdlib.h un-namespace.h \
+ libc_private.h local.h wcio.h fileext.h
 bcopy.o: bcopy.c ../../include/sys/cdefs.h ../../include/sys/types.h \
  ../../include/machine/endian.h ../../include/sys/_types.h \
  ../../include/machine/_types.h ../../include/l4/amd64/types.h \
@@ -241,3 +241,13 @@ strchr.o: strchr.c ../../include/string.h ../../include/cstring \
  ../../include/sys/select.h ../../include/sys/_sigset.h \
  ../../include/sys/_timeval.h ../../include/sys/timespec.h \
  ../../include/sys/_timespec.h
+liballoc_hooks.o: liballoc_hooks.cc ../../include/nwmalloc.h \
+ ../../include/liballoc.h ../../include/l4/space.h \
+ ../../include/l4/types.h ../../include/l4/amd64/types.h \
+ ../../include/l4/amd64/specials.h ../../include/l4/amd64/syscalls.h \
+ ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+ ../../include/l4/amd64/kdebug.h ../../include/l4/kip.h \
+ ../../include/l4/thread.h ../../include/l4io.h \
+ /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../config.h \
+ ../../include/sys/mman.h ../../include/sys/cdefs.h \
+ ../../include/sys/_types.h ../../include/machine/_types.h

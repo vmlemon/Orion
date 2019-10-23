@@ -29,12 +29,7 @@
 ##                
 ######################################################################
 
-#CFLAGS_x86_x32	+= -O2 -m32 -mpreferred-stack-boundary=2
-#CFLAGS_x86_x64  += -O2 -m64 -mcmodel=kernel -mno-red-zone 
-#CFLAGS_x86	+= $(CFLAGS_x86_$(SUBARCH)) -mno-mmx -mno-sse -mno-sse2 -mno-sse3 -fno-pie -no-pie -Wno-narrowing -fno-stack-protector
-
-
 TOOLPREFIX=	$(patsubst %gcc,%,$(firstword $(shell type -p x86_64-pc-linux-gnu-gcc x86_64-unknown-linux-gnu-gcc amd64-gcc)))
 
-CFLAGS_amd64    +=  -O2 -m64 -mcmodel=kernel -mno-red-zone -mno-mmx -mno-sse -mno-sse2 -mno-sse3 -fno-pie -no-pie -Wno-narrowing -fno-stack-protector
+CFLAGS_amd64    +=  -m64 -mcmodel=kernel -mno-red-zone -O2
 LDFLAGS_amd64   += -m elf_x86_64 -n 

@@ -41,7 +41,7 @@
 /**
  * Verbose level for sigma0 output.
  */
-int verbose = 0;
+int verbose = 1;
 
 
 /**
