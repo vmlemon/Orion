@@ -1,0 +1,6181 @@
+diff --git a/user.enryo/Mk/l4.build.mk b/user.enryo/Mk/l4.build.mk
+index 89015b06..7aa6f952 100644
+--- a/user.enryo/Mk/l4.build.mk
++++ b/user.enryo/Mk/l4.build.mk
+@@ -43,15 +43,20 @@ MKFILE_DEPS=	Makefile \
+ 
+ # Portable way of converting SRCS to OBJS
+ 
++_CXX_OBJS=	${filter-out %.c %.S, ${SRCS}}
+ _CC_OBJS=	${filter-out %.c %.S, ${SRCS}}
+ _C_OBJS=	${filter-out %.S %cc, ${SRCS}}
+ _S_OBJS=	${filter-out %.c %cc, ${SRCS}}
+ 
+-_OBJS=		$(_CC_OBJS:.cc=.o) $(_C_OBJS:.c=.o) $(_S_OBJS:.S=.o) \
++_OBJS=		$(_CC_OBJS:.cc=.o) $(_CXX_OBJS:.cxx=.o) $(_C_OBJS:.c=.o) $(_S_OBJS:.S=.o) \
+ 		${SRCS:C/.(cc|c|S)$/.o/g}
+ OBJS+=		${filter %crt0.o crt0%, $(_OBJS)} \
+ 		${filter-out %crt0.o crt0%, $(_OBJS)} \
+ 		${_OBJS:M*crt0*} ${_OBJS:N*crt0*}
++		
++.cxx.o:	$(MKFILE_DEPS)
++	@$(ECHO_MSG) `echo $< | sed s,^$(top_srcdir)/,,`
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+ 
+ .cc.o:	$(MKFILE_DEPS)
+ 	@$(ECHO_MSG) `echo $< | sed s,^$(top_srcdir)/,,`
+diff --git a/user.enryo/apps/syslaunch/syslaunch.cc b/user.enryo/apps/syslaunch/syslaunch.cc
+deleted file mode 100644
+index 25da4465..00000000
+--- a/user.enryo/apps/syslaunch/syslaunch.cc
++++ /dev/null
+@@ -1,104 +0,0 @@
+-#include "syslaunch.h"
+-
+-#include <drivermgr.h>
+-#include <ramfs.h>
+-
+-#include <sys/sysinfo.h>
+-
+-SysLaunch::SysLaunch():
+-    iScreenNbr(0)
+-{
+-    this->VerBanner();
+-
+-    EDebugPrintf("SysLaunch", "Created new instance of SysLaunch...");
+-    printf("This system uses %d-sized pages\n", (int)l4e_min_pagesize());
+-    printf("Switching to screen %d\n", iScreenNbr);
+-
+-    /* Set the POSIX UID to root (0) */
+-    setenv("UID", "0", 1);
+-    setenv("USER", "syslaunch",1);
+-
+-    printf("Defaulting to user \"%s\" (%s)\n", 
+-	getenv("USER"), 
+-	getenv("UID"));
+-
+-    DriverMgr();
+-
+-    RamFs rfs;
+-    rfs.Start(1);
+-
+-	rfs.ReadFile("/sys/kip/raw");
+-
+-
+-}
+-
+-void SysLaunch::VerBanner() {
+-
+-    struct utsname utsName;
+-    uname(&utsName);
+-
+-    printf("\n Welcome to %s %s.%s! Running on %s.\n", utsName.sysname,
+-           utsName.release, utsName.version, utsName.nodename);
+-}
+-
+-/* This function will eventually call system(), or an equivalent */ 
+-void SysLaunch::EscalateCmd(char *aCmd) {
+-
+-	if (strcmp(getenv("ACTIVE_CMD"), "uname") == 0) {
+-		struct utsname utsName;
+-    		uname(&utsName);
+-
+-		printf("%s\n", utsName.sysname);
+-	}
+-
+-	if (strcmp(getenv("ACTIVE_CMD"), "pwd") == 0) {
+-		printf("%s\n", getenv("PWD"));
+-	}
+-
+-	if (strcmp(getenv("ACTIVE_CMD"), "whoami") == 0 ) {
+-		printf("%s\n", getenv("USER"));
+-	}
+-
+-//	if (strcmp(getenv("ACTIVE_CMD"), "cpucount") == 0 ) {
+-//		printf("%d CPUs are installed in this system.\n", get_nprocs());
+-//	}
+-
+-	if (strcmp(getenv("ACTIVE_CMD"), "yes") == 0 ) {
+-		while(1) {
+-				printf("y\n");
+-			}
+-	}
+-
+-	else {
+-		EDebugPrintf("SysLaunch", "No processor is available for this command. Sorry.");
+-	}
+-
+-}				
+-
+-void SysLaunch::WaitForCmd() {
+-
+-    struct utsname utsName;
+-    uname(&utsName);
+-
+-    while(1) {
+-
+-	char *cmd;
+-	strcpy(cmd, GetPolledKbdLine());
+-
+-	setenv("ACTIVE_CMD", cmd, 1);
+-	printf("%s@%s:/$ %s\n", getenv("USER"), utsName.nodename, getenv("ACTIVE_CMD"));
+-	this->EscalateCmd(cmd);
+-
+-    }
+-}
+-
+-int main(void) {
+-    SysLaunch launch;
+-
+-    printf("The clock says: %d\n", L4_SystemClock().raw);
+-    malloc(2);
+-    int *test = new int(1);
+-
+-    launch.WaitForCmd();
+-    return 0;
+-}
+diff --git a/user.enryo/config.log b/user.enryo/config.log
+index 8c8957f4..2dd45719 100644
+--- a/user.enryo/config.log
++++ b/user.enryo/config.log
+@@ -422,6 +422,7 @@ on tyson-Lenovo-ideapad-120S-14IAP
+ config.status:816: creating ./Makefile
+ config.status:816: creating config.h
+ config.status:991: config.h is unchanged
++<<<<<<< HEAD
+ 
+ ## ---------------------- ##
+ ## Running config.status. ##
+@@ -726,3 +727,5 @@ on tyson-Lenovo-ideapad-120S-14IAP
+ config.status:816: creating ./Makefile
+ config.status:816: creating config.h
+ config.status:991: config.h is unchanged
++=======
++>>>>>>> master
+diff --git a/user.enryo/lib/io/amd64.cc b/user.enryo/lib/io/amd64.cc
+deleted file mode 100644
+index c30f7fe7..00000000
+--- a/user.enryo/lib/io/amd64.cc
++++ /dev/null
+@@ -1,208 +0,0 @@
+-/*********************************************************************
+- *                
+- * Copyright (C) 2001-2006, 2010,  Karlsruhe University
+- *                
+- * File path:     amd64.cc
+- * Description:   putc() for x86-based PCs, serial and screen
+- *                
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in the
+- *    documentation and/or other materials provided with the distribution.
+- * 
+- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+- * SUCH DAMAGE.
+- *                
+- * $Id: ia32-putc.cc,v 1.13 2006/10/07 16:30:25 ud3 Exp $
+- *                
+- ********************************************************************/
+-#include <config.h>
+-#include <l4/types.h>
+-
+-#include "amd64.h"
+-
+-extern "C" void __l4_putc (int c);
+-extern "C" void putc (int c) __attribute__ ((weak, alias ("__l4_putc")));
+-extern "C" int __l4_getc (void);
+-extern "C" int getc (void) __attribute__ ((weak, alias ("__l4_getc")));
+-
+-
+-#if defined(CONFIG_COMPORT)
+-
+-#if CONFIG_COMPORT == 0
+-# define COMPORT 0x3f8
+-#elif CONFIG_COMPORT == 1
+-# define COMPORT 0x2f8
+-#elif CONFIG_COMPORT == 2
+-# define COMPORT 0x3e8
+-#elif CONFIG_COMPORT == 3
+-# define COMPORT 0x2e8
+-#else
+-#define COMPORT CONFIG_COMPORT
+-#endif
+-
+-static void io_init( void )
+-{
+-    static bool io_initialized = false;
+-
+-    if (io_initialized)
+-        return;
+-
+-    io_initialized = true;
+-
+-#define IER	(COMPORT+1)
+-#define EIR	(COMPORT+2)
+-#define LCR	(COMPORT+3)
+-#define MCR	(COMPORT+4)
+-#define LSR	(COMPORT+5)
+-#define MSR	(COMPORT+6)
+-#define DLLO	(COMPORT+0)
+-#define DLHI	(COMPORT+1)
+-
+-        outb(LCR, 0x80);		/* select bank 1	*/
+-        for (volatile int i = 10000000; i--; );
+-        outb(DLLO, (((115200/CONFIG_COMSPEED) >> 0) & 0x00FF));
+-        outb(DLHI, (((115200/CONFIG_COMSPEED) >> 8) & 0x00FF));
+-        outb(LCR, 0x03);		/* set 8,N,1		*/
+-        outb(IER, 0x00);		/* disable interrupts	*/
+-        outb(EIR, 0x07);		/* enable FIFOs	*/
+-        outb(MCR, 0x0b);                /* force data terminal ready */
+-        outb(IER, 0x01);		/* enable RX interrupts	*/
+-        inb(IER);
+-        inb(EIR);
+-        inb(LCR);
+-        inb(MCR);
+-        inb(LSR);
+-        inb(MSR);
+-        
+-
+-}
+-
+-void __l4_putc(int c)
+-{
+-    io_init();
+-    
+-    while (!(inb(COMPORT+5) & 0x20));
+-    outb(COMPORT,c);
+-    while (!(inb(COMPORT+5) & 0x40));
+-    if (c == '\n')
+-	__l4_putc('\r');
+-}
+-
+-int __l4_getc (void)
+-{
+-    while ((inb(COMPORT+5) & 0x01) == 0);
+-    return inb(COMPORT);
+-}
+-
+-#else /* ! CONFIG_COMPORT */
+-
+-#define DISPLAY ((char*)0xb8000)
+-#define COLOR 7
+-#define NUM_LINES 25
+-
+-#define KBD_STATUS_REG		0x64	
+-#define KBD_CNTL_REG		0x64	
+-#define KBD_DATA_REG		0x60	
+-
+-#define KBD_STAT_OBF 		0x01	/* Keyboard output buffer full */
+-
+-#define kbd_read_input() inb(KBD_DATA_REG)
+-#define kbd_read_status() inb(KBD_STATUS_REG)
+-
+-static unsigned char keyb_layout[128] =
+-	"\000\0331234567890-+\177\t"			/* 0x00 - 0x0f */
+-	"qwertyuiop[]\r\000as"				/* 0x10 - 0x1f */
+-	"dfghjkl;'`\000\\zxcv"				/* 0x20 - 0x2f */
+-	"bnm,./\000*\000 \000\201\202\203\204\205"	/* 0x30 - 0x3f */
+-	"\206\207\210\211\212\000\000789-456+1"		/* 0x40 - 0x4f */
+-	"230\177\000\000\213\214\000\000\000\000\000\000\000\000\000\000" /* 0x50 - 0x5f */
+-	"\r\000/";					/* 0x60 - 0x6f */
+-
+-void __l4_putc(int c)
+-{
+-    unsigned int i;
+-
+-    // Shared cursor pointer
+-    static unsigned __l4_putc_cursor = 160 * (NUM_LINES - 1);
+-
+-    // Create thread-local copy. Using proper locking would be better.
+-    unsigned __cursor = __l4_putc_cursor;
+-
+-    switch(c) {
+-    case '\r':
+-        break;
+-    case '\n':
+-        do
+-	{
+-	    DISPLAY[__cursor++] = ' ';
+-	    DISPLAY[__cursor++] = COLOR;
+-	}
+-        while (__cursor % 160 != 0);
+-        break;
+-    case '\t':
+-        do
+-	  {
+-	    DISPLAY[__cursor++] = ' ';
+-	    DISPLAY[__cursor++] = COLOR;
+-	}
+-        while (__cursor % 16 != 0);
+-        break;
+-    default:
+-        DISPLAY[__cursor++] = c;
+-        DISPLAY[__cursor++] = COLOR;
+-    }
+-    if (__cursor == (160 * NUM_LINES)) {
+-	for (i = (160 / sizeof (L4_Word_t));
+-	     i < (160 / sizeof (L4_Word_t)) * NUM_LINES;
+-	     i++)
+-	    ((L4_Word_t *) DISPLAY)[i - 160 / sizeof (L4_Word_t)]
+-	      = ((L4_Word_t *) DISPLAY)[i];
+-	for (i = 0; i < 160 / sizeof (L4_Word_t); i++)
+-	    ((L4_Word_t *) DISPLAY)[160 / sizeof (L4_Word_t)
+-				  * (NUM_LINES-1) + i] = 0;
+-	__cursor -= 160;
+-    }
+-
+-    // Write back thread-local cursor value
+-    __l4_putc_cursor = __cursor;
+-}
+-
+-/* No SHIFT key support!!! */
+-
+-int __l4_getc()
+-{
+-    static unsigned char last_key = 0;
+-    char c;
+-    while(1) {
+-	unsigned char status = kbd_read_status();
+-	while (status & KBD_STAT_OBF) {
+-	    unsigned char scancode;
+-	    scancode = kbd_read_input();
+-	    if (scancode & 0x80)
+-		last_key = 0;
+-	    else if (last_key != scancode)
+-	    {
+-		//printf("kbd: %d, %d, %c\n", scancode, last_key, keyb_layout[scancode]);
+-		last_key = scancode;
+-		c = keyb_layout[scancode];
+-		if (c > 0) return c;
+-	    }
+-	}
+-    }
+-}
+-
+-#endif
+diff --git a/user.enryo/lib/io/cpp_new.cc b/user.enryo/lib/io/cpp_new.cc
+deleted file mode 100644
+index 1cc35ec8..00000000
+--- a/user.enryo/lib/io/cpp_new.cc
++++ /dev/null
+@@ -1,23 +0,0 @@
+-#include <stddef.h>
+-#include <liballoc.h>
+-
+- 
+-extern "C" void *operator new(size_t size)
+-{
+-    return malloc(size);
+-}
+- 
+-extern "C" void *operator new[](size_t size)
+-{
+-    return malloc(size);
+-}
+- 
+-extern "C" void operator delete(void *p)
+-{
+-    free(p);
+-}
+- 
+-extern "C" void operator delete[](void *p)
+-{
+-    free(p);
+-}
+diff --git a/user.enryo/lib/io/debug.cc b/user.enryo/lib/io/debug.cc
+deleted file mode 100644
+index 0bac0540..00000000
+--- a/user.enryo/lib/io/debug.cc
++++ /dev/null
+@@ -1,14 +0,0 @@
+-#include <stdio.h>
+-
+-#ifdef __cplusplus
+-extern "C" {
+-#endif
+-
+-void EDebugPrintf(const char *aTag, const char *aText) {
+-	printf("\n\n[%s] : %s\n\n", aTag, aText);
+-}
+-
+-#ifdef __cplusplus
+-}
+-#endif
+-
+diff --git a/user.enryo/lib/io/drivermgr.cc b/user.enryo/lib/io/drivermgr.cc
+deleted file mode 100644
+index 6f87863f..00000000
+--- a/user.enryo/lib/io/drivermgr.cc
++++ /dev/null
+@@ -1,105 +0,0 @@
+-#include "drivermgr.h"
+-
+-#include <stdio.h>
+-
+-DriverMgr::DriverMgr():
+-    iDriverCount(0),
+-    iPageCount(0)
+-{
+-    EDebugPrintf("DriverMgr","Initialising Driver Manager...");
+-}
+-
+-int DriverMgr::GetDriverCount() {
+-    return iDriverCount;
+-}
+-
+-int DriverMgr::GetPageCount() {
+-    return iPageCount;
+-}
+-
+-
+-
+-char* DriverMgr::GetFriendlyType(int aType) {
+-
+-    char *value;
+-
+-        printf("\n\n[DriverMgr] : Called GetFriendlyType(%d)\n\n", aType);
+-
+-    switch (aType) {
+-    case EFileSys:
+-        value = "File System Driver";
+-        break;
+-    case EGenericBlock:
+-        value = "Generic Block Device Driver";
+-        break;
+-    case EHardDisk:
+-        value = "Hard Disk Driver";
+-        break;
+-    case ESmBiosZone:
+-        value = "System Management BIOS Zone Driver";
+-	break;
+-    case EGenericPci:
+-	value = "Generic PCI Driver";
+-	break;
+-    case EGenericUsb:
+-	value = "Generic USB Driver";
+-	break; 
+-    case EGeneric1394:
+-	value = "Generic IEEE 1394 Driver";
+-	break;
+-    case ESerialUart:
+-	value = "Serial Port/UART Device Driver";
+-	break;
+-    case EAirGuitar:
+-	value = "Loopback Audio Source (Line In) Driver";
+-	break;
+-    case EAnalogueMic:
+-	value = "Analogue Microphone Driver";
+-	break;
+-    case EKeyboard:
+-	value = "Keyboard Driver";
+-	break;
+-   case EMouse: 
+-	value = "Mouse Driver";
+-	break;
+-   case ESpeakers: 
+-	value = "Speaker Driver";
+- 	break;
+-    case EMarshmallowAmp:
+-        value = "Loopback Audio Sink (Line Out) Driver";
+-        break;
+-
+-   case EUnknown:
+-    default:
+-        value = "Unknown";
+-        break;
+-    }
+-
+-    return value;
+-
+-}
+-
+-bool DriverMgr::RegName(char *aName,
+-                        int aType,
+-                        char *aSynopsis,
+-                        char *aVersion) {
+-
+-    printf("\n\n[DriverMgr] : Registering device of type %s \n\n", GetFriendlyType(aType));
+-    printf("\n\n[DriverMgr] : This driver is %s, %s (%s)\n\n", aName, aSynopsis, aVersion);
+-
+-    return 0;
+-
+-}
+-
+-
+-bool DriverMgr::RegName(char *aName,
+-                        int aType,
+-                        bool (*aHook)(int),
+-                        char *aSynopsis,
+-                        char *aVersion) {
+-
+-    printf("\n\n[DrvrMgr] : Registering device of type %s \n\n", GetFriendlyType(aType));
+-
+-    return 0;
+-
+-}
+diff --git a/user.enryo/lib/io/efile/ramfs.cc b/user.enryo/lib/io/efile/ramfs.cc
+deleted file mode 100644
+index b3d74d66..00000000
+--- a/user.enryo/lib/io/efile/ramfs.cc
++++ /dev/null
+@@ -1,43 +0,0 @@
+-#include "ramfs.h"
+-
+-#include <stdio.h>
+-#include <drivermgr.h>
+-
+-RamFs::RamFs():
+-    iDrvName("RamFs"),
+-    iDrvSynopsis("A RAM disk driver"),
+-    iType(EGenericBlock),
+-    iDrvVersion("0.0.0")
+-{
+-    iDrvName = iDrvName;
+-
+-    EDebugPrintf("RamFs", "Initialised RamFs...");
+-
+-    DriverMgr::RegName(iDrvName, iType,
+-                       /*RamFs::Start(0),*/ iDrvSynopsis, iDrvVersion);
+-
+-}
+-
+-int RamFs::Start(int aStatus) {
+-
+-    RamFs *fs = new RamFs();
+-
+-    return aStatus;
+-}
+-
+-bool RamFs::ReadFile(char *aPath) {
+-
+-    EDebugPrintf("RamFs", "Reading files is unimplemented");
+-
+-    printf("RamFs::ReadFile(%d)\n", aPath);
+-
+-    return -1;
+-}
+-
+-bool RamFs::WriteFile(char *aPath) {
+-    EDebugPrintf("RamFs", "Writing files is unsupported");
+-
+-    printf("RamFs::WriteFile(%d)\n", aPath);
+-
+-    return -1;
+-}
+diff --git a/user.enryo/lib/io/get_hex.cc b/user.enryo/lib/io/get_hex.cc
+deleted file mode 100644
+index 9e052f34..00000000
+--- a/user.enryo/lib/io/get_hex.cc
++++ /dev/null
+@@ -1,68 +0,0 @@
+-/*********************************************************************
+- *                
+- * Copyright (C) 2001, 2002,  Karlsruhe University
+- *                
+- * File path:     get_hex.c
+- * Description:   generic get_hex() based on putc() and getc()
+- *                
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in the
+- *    documentation and/or other materials provided with the distribution.
+- * 
+- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+- * SUCH DAMAGE.
+- *                
+- * $Id: get_hex.cc,v 1.3 2003/09/24 19:06:28 skoglund Exp $
+- *                
+- ********************************************************************/
+-#include <l4/types.h>
+-#include <l4io.h>
+-
+-L4_Word_t
+-get_hex(void)
+-{
+-  L4_Word_t val = 0;
+-  char c, t;
+-  int i = 0;
+-
+-  while ((t = c = getc()) != '\r')
+-  {
+-      switch(c)
+-      {
+-      case '0' ... '9':
+-	  c -= '0';
+-	  break;
+-	  
+-      case 'a' ... 'f':
+-	  c -= 'a' - 'A';
+-      case 'A' ... 'F':
+-	  c = c - 'A' + 10;
+-	  break;
+-      default:
+-	  continue;
+-      };
+-      val <<= 4;
+-      val += c;
+-      
+-      /* let the user see what happened */
+-      putc(t);
+-
+-      if (++i == 8)
+-	  break;
+-  };
+-  return val;
+-}
+diff --git a/user.enryo/lib/io/memory/liballoc_hooks.cc b/user.enryo/lib/io/memory/liballoc_hooks.cc
+deleted file mode 100644
+index 07446157..00000000
+--- a/user.enryo/lib/io/memory/liballoc_hooks.cc
++++ /dev/null
+@@ -1,111 +0,0 @@
+-#include <nwmalloc.h>
+-#include <l4/space.h>
+-
+-#include <l4/kip.h>
+-#include <l4/thread.h>
+-#include <l4io.h>
+-#include <config.h>
+-
+-//#include <arch.h>
+-
+-//http://www.cse.unsw.edu.au/~cs9242/05/project/l4uman-x2.pdf
+-//https://lists.ira.uni-karlsruhe.de/pipermail/l4ka/2008-April/002072.html
+-
+-/** This function is supposed to lock the memory data structures. It
+- * could be as simple as disabling interrupts or acquiring a spinlock.
+- * It's up to you to decide. 
+- *
+- * \return 0 if the lock was acquired successfully. Anything else is
+- * failure.
+- */
+-extern int liballoc_lock() {
+-	return 0;
+-}
+-
+-/** This function unlocks what was previously locked by the liballoc_lock
+- * function.  If it disabled interrupts, it enables interrupts. If it
+- * had acquiried a spinlock, it releases the spinlock. etc.
+- *
+- * \return 0 if the lock was successfully released.
+- */
+-extern int liballoc_unlock() {
+-return 0;
+-}
+-
+-
+-/** This is the hook into the local system which allocates pages. It
+- * accepts an integer parameter which is the number of pages
+- * required.  The page size was set up in the liballoc_init function.
+- *
+- * \return NULL if the pages were not allocated.
+- * \return A pointer to the allocated memory.
+- */
+-
+-L4_Word_t
+-do_safe_mem_touch( void *addr )
+-{
+-	volatile L4_Word_t *ptr;
+-	L4_Word_t copy;
+-
+-	ptr = (L4_Word_t*) addr;
+-	copy = *ptr;
+-	*ptr = copy;
+-
+-	return copy;
+-}
+-
+-
+-extern void* liballoc_alloc(int aPagesReq) {
+-
+-#define SCRATCHMEM_START        (16*1024*1024)
+-
+-	static char *free_page = (char*) SCRATCHMEM_START;
+-
+-	int touch = aPagesReq;
+-	void *ret = free_page;
+-
+-	L4_Word_t count = aPagesReq;
+-
+-	free_page += count * NWGetPageSize();
+-
+-	
+-	/* should we fault the pages in? */
+-	if( touch != 0 )
+-	{
+-		char *addr = (char*) ret;
+-		L4_Word_t i;
+-
+-		/* touch each page */
+-		for( i = 0; i < count; i++ )
+-		{
+-			do_safe_mem_touch( (void*) addr );
+-			for (int j=0; j<NWGetPageSize(); j++)
+-			    addr[j] = 0;
+-				
+-			addr += NWGetPageSize();
+-			
+-		}
+-	}
+-
+-	return (void*) ret;
+-
+-
+-//return NULL;
+-}
+-
+-/** This frees previously allocated memory. The void* parameter passed
+- * to the function is the exact same value returned from a previous
+- * liballoc_alloc call.
+- *
+- * The integer value is the number of pages to free.
+- *
+- * \return 0 if the memory was successfully freed.
+- */
+-//L4_INLINE void L4_Unmap (L4_Word_t n, L4_Fpage_t * fpages)
+-extern int liballoc_free(void* aPrevCallVal,int aPagesToFree) {
+-//L4_Unmap(aPagesToFree,aPrevCallVal);
+-L4_Unmap(aPagesToFree);
+-
+-return 0;
+-}
+-
+diff --git a/user.enryo/lib/io/print.cc b/user.enryo/lib/io/print.cc
+deleted file mode 100644
+index 834553e6..00000000
+--- a/user.enryo/lib/io/print.cc
++++ /dev/null
+@@ -1,695 +0,0 @@
+-/*********************************************************************
+- *                
+- * Copyright (C) 2001-2004, 2007, 2010  Karlsruhe University
+- *                
+- * File path:     print.cc
+- * Description:   fully featured printf
+- *                
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in the
+- *    documentation and/or other materials provided with the distribution.
+- * 
+- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+- * SUCH DAMAGE.
+- *                
+- * $Id: print.cc,v 1.15 2004/09/06 16:20:21 ud3 Exp $
+- *                
+- ********************************************************************/
+-#include <l4/types.h>
+-#include <stdarg.h>
+-#include <l4io.h>
+-#include "lib.h"
+-#include "stdio/local.h"
+-//#include <stdlib.h>
+-
+-#ifndef NULL
+-#define NULL ((void *) 0)
+-#endif
+-
+-/*
+- * Make __l4_ prefixes for regular output functions, and create weak
+- * symbols that aliases these functions. 
+- */
+-
+-extern "C" int __l4_printf (const char *fmt, ...);
+-extern "C" int printf (const char *fmt, ...)
+-    __attribute__ ((weak, alias ("__l4_printf")));
+-extern "C" int __l4_snprintf (char *str, L4_Size_t size, const char *fmt, ...);
+-extern "C" int snprintf (char *str, L4_Size_t size, const char *fmt, ...)
+-    __attribute__ ((weak, alias ("__l4_snprintf")));
+-extern "C" int __l4_vsnprintf (char *str, L4_Size_t size, const char *fmt, va_list);
+-extern "C" int vsnprintf (char *str, L4_Size_t size, const char *fmt, va_list)
+-    __attribute__ ((weak, alias ("__l4_vsnprintf")));
+-extern "C" int __l4_puts (const char * str);
+-extern "C" int puts (const char * str)
+-    __attribute__ ((weak, alias ("__l4_puts")));
+-extern "C" int __l4_putchar (int c);
+-extern "C" int putchar (int c)
+-    __attribute__ ((weak, alias ("__l4_putchar")));
+-
+-static void print_string (const char * s);
+-
+-int __l4_puts (const char * str)
+-{
+-    print_string (str);
+-    putc ('\n');
+-    return strlen (str);
+-}
+-
+-int __l4_putchar (int c)
+-{
+-    putc (c);
+-    return c;
+-}
+-
+-int __sdidinit = 1;
+-
+-/*
+- * Function print_string (s)
+- *
+- *    Print string `s' to terminal (or some kind of output).
+- *
+- */
+-static void print_string (const char * s)
+-{
+-    while ( *s )
+-	putc(*s++);
+-}
+-
+-
+-/*
+- * Function vsnprintf (str, size, fmt, ap)
+- *
+- *    Formated output conversion according to format string `fmt' and
+- *    argument list `ap'.  The formated string is stored in `out'.  If
+- *    the formated string is longer tha `outsize' characters, the
+- *    string is truncated.
+- *
+- *    The format conversion works as in printf(3), except for the
+- *    conversions; e, E, g, and G which are not supported.
+- *
+- */
+-int __l4_vsnprintf(char *str, L4_Size_t size, const char *fmt, va_list ap)
+-{
+-    char convert[64];
+-    int f_left, f_sign, f_space, f_zero, f_alternate;
+-    int f_long, f_short, f_ldouble;
+-    int width, precision;
+-    int i, c, base, sign, signch, numdigits, numpr = 0, someflag;
+-    unsigned long uval, uval2;
+-    const char *digits;
+-    char *string, *p = str;
+-    L4_ThreadId_t tid;
+-
+-#define PUTCH(ch) do {			\
+-	if ( size-- <= 0 )		\
+-	    goto Done;			\
+-	*p++ = (ch);			\
+-    } while (0)
+-
+-#define PUTSTR(st) do {			\
+-	const char *s = (st);		\
+-	while ( *s != '\0' ) {		\
+-	    if ( size-- <= 0 )	\
+-		goto Done;		\
+-	    *p++ = *s++;		\
+-	}				\
+-    } while (0)
+-
+-#define PUTDEC(num) do {					\
+-	uval = num;						\
+-	numdigits = 0;						\
+-	do {							\
+-	    convert[ numdigits++ ] = digits[ uval % 10 ];	\
+-	    uval /= 10;						\
+-	} while ( uval > 0 );					\
+-	while ( numdigits > 0 )					\
+-	    PUTCH( convert[--numdigits] );			\
+-    } while (0)
+-
+-#define LEFTPAD(num) do {				\
+-	int cnt = (num);				\
+-	if ( ! f_left && cnt > 0 )			\
+-	    while ( cnt-- > 0 )				\
+-		PUTCH( f_zero ? '0' : ' ' );		\
+-    } while (0)
+-
+-#define RIGHTPAD(num) do {				\
+-	int cnt = (num);				\
+-	if ( f_left && cnt > 0 )			\
+-	    while ( cnt-- > 0 )				\
+-		PUTCH( ' ' );				\
+-    } while (0)
+-
+-    /*
+-     * Make room for null-termination.
+-     */
+-    size--;
+-
+-    /*
+-     * Sanity check on fmt string.
+-     */
+-    if ( fmt == NULL ) {
+-	PUTSTR( "(null fmt string)" );
+-	goto Done;
+-    }
+-
+-    while ( size > 0 ) {
+-	/*
+-	 * Copy characters until we encounter '%'.
+-	 */
+-	while ( (c = *fmt++) != '%' ) {
+-	    if ( size-- <= 0 || c == '\0' )
+-		goto Done;
+-	    *p++ = c;
+-	}
+-
+-	f_left = f_sign = f_space = f_zero = f_alternate = 0;
+-	someflag = 1;
+-
+-	/*
+-	 * Parse flags.
+-	 */
+-	while ( someflag ) {
+-	    switch ( *fmt ) {
+-	    case '-': f_left = 1;	fmt++; break;
+-	    case '+': f_sign = 1;	fmt++; break;
+-	    case ' ': f_space = 1;	fmt++; break;
+-	    case '0': f_zero = 1;	fmt++; break;
+-	    case '#': f_alternate = 1;	fmt++; break;
+-	    default:  someflag = 0;            break;
+-	    }
+-	}
+-
+-	/*
+-	 * Parse field width.
+-	 */
+-	if ( (c = *fmt) == '*' ) {
+-	    width = va_arg( ap, int );
+-	    fmt++;
+-	} else if ( c >= '0' && c <= '9' ) {
+-	    width = 0;
+-	    while ( (c = *fmt++) >= '0' && c <= '9' ) {
+-		width *= 10;
+-		width += c - '0';
+-	    }
+-	    fmt--;
+-	} else {
+-	    width = -1;
+-	}
+-
+-	/*
+-	 * Parse precision.
+-	 */
+-	if ( *fmt == '.' ) {
+-	    if ( (c = *++fmt) == '*' ) {
+-		precision = va_arg( ap, int );
+-		fmt++;
+-	    } else if ( c >= '0' && c <= '9' ) {
+-		precision = 0;
+-		while ( (c = *fmt++) >= '0' && c <= '9' ) {
+-		    precision *= 10;
+-		    precision += c - '0';
+-		}
+-		fmt--;
+-	    } else {
+-		precision = -1;
+-	    }
+-	} else {
+-	    precision = -1;
+-	}
+-
+-	f_long = f_short = f_ldouble = 0;
+-
+-	/*
+-	 * Parse length modifier.
+-	 */
+-	switch ( *fmt ) {
+-	case 'h': f_short = 1;		fmt++; break;
+-	case 'l': f_long = 1;		fmt++; break;
+-	case 'L': f_ldouble = 1;	fmt++; break;
+-	}
+-
+-	sign = 1;
+-
+-	/*
+-	 * Parse format conversion.
+-	 */
+-	switch ( c = *fmt++ ) {
+-
+-	case 'b':
+-	    uval = f_long ? va_arg( ap, long ) : va_arg( ap, int );
+-	    base = 2;
+-	    digits = "01";
+-	    goto Print_unsigned;
+-
+-	case 'o':
+-	    uval = f_long ? va_arg( ap, long ) : va_arg( ap, int );
+-	    base = 8;
+-	    digits = "012345678";
+-	    goto Print_unsigned;
+-
+-	case 'p':
+-	    precision = width = sizeof (long) * 2;
+-	    f_alternate = 1;
+-	    if (sizeof (void *) == sizeof (long))
+-		f_long = 1;
+-	case 'x':
+-	    uval = f_long ? va_arg( ap, long ) : va_arg( ap, int );
+-	    base = 16;
+-	    digits = "0123456789abcdef";
+-	    goto Print_unsigned;
+-
+-	case 'X':
+-	    uval = f_long ? va_arg( ap, long ) : va_arg( ap, int );
+-	    base = 16;
+-	    digits = "0123456789ABCDEF";
+-	    goto Print_unsigned;
+-
+-	case 'd':
+-	case 'i':
+-	    uval = f_long ? va_arg( ap, long ) : va_arg( ap, int );
+-	    base = 10;
+-	    digits = "0123456789";
+-	    goto Print_signed;
+-
+-	case 'u':
+-	    uval = f_long ? va_arg( ap, long ) : va_arg( ap, int );
+-	    base = 10;
+-	    digits = "0123456789";
+-
+-	Print_unsigned:
+-	    sign = 0;
+-
+-	Print_signed:
+-	    signch = 0;
+-	    uval2 = uval;
+-
+-	    /*
+-	     * Check for sign character.
+-	     */
+-	    if ( sign ) {
+-		if ( f_sign && (long) uval >= 0 ) {
+-		    signch = '+';
+-		} else if ( f_space && (long) uval >= 0 ) {
+-		    signch = ' ';
+-		} else if ( (long) uval < 0 ) {
+-		    signch = '-';
+-		    uval = -( (long) uval );
+-		}
+-	    }
+-
+-	    /*
+-	     * Create reversed number string.
+-	     */
+-	    if (sizeof (long) >= 8 && base == 16)
+-	    {
+-		numdigits = 0;
+-		do {
+-		    convert[numdigits++] =  digits[uval & 0xf];
+-		    uval /= 16;
+-		} while ( uval > 0 );
+-	    }
+-	    else
+-	    {
+-		numdigits = 0;
+-		do {
+-		    convert[numdigits++] =  digits[(unsigned int) uval % base];
+-		    uval /= base;
+-		} while ( uval > 0 );
+-	    }
+-
+-	    /*
+-	     * Calculate the actual size of the printed number.
+-	     */
+-	    numpr = numdigits > precision ? numdigits : precision;
+-	    if ( signch )
+-		numpr++;
+-	    if ( f_alternate /*&& uval2 != 0*/ ) {
+-		if ( base == 8 )
+-		    numpr++;
+-		else if ( base == 16 || base == 2 )
+-		    numpr += 2;
+-	    }
+-
+-	    /*
+-	     * Insert left padding.
+-	     */
+-	    if ( ! f_left && width > numpr ) {
+-		if ( f_zero ) {
+-		    numpr = width;
+-		} else {
+-		    for ( i = width - numpr; i > 0; i-- )
+-			PUTCH(' ');
+-		}
+-	    }
+-
+-	    /*
+-	     * Insert sign character.
+-	     */
+-	    if ( signch ) {
+-		PUTCH( signch );
+-		numpr--;
+-	    }
+-
+-	    /*
+-	     * Insert number prefix.
+-	     */
+-	    if ( f_alternate /*&& uval2 != 0*/ ) {
+-		if ( base == 2 ) {
+-		    numpr--;
+-		    PUTCH('%');
+-		} else if ( base == 8 ) {
+-		    numpr--;
+-		    PUTCH('0');
+-		} else if ( base == 16 ) {
+-		    numpr -= 2;
+-		    PUTSTR("0x");
+-		}
+-	    }
+-
+-	    /*
+-	     * Insert zero padding.
+-	     */
+-	    for ( i = numpr - numdigits; i > 0; i-- )
+-		PUTCH('0');
+-
+-	    /*
+-	     * Insert number.
+-	     */
+-	    while ( numdigits > 0 )
+-		PUTCH( convert[--numdigits] );
+-	    RIGHTPAD( width - numpr - (signch ? 1 : 0) );
+-	    break;
+-
+-	case 'f': 
+-	{
+-	    double fval = va_arg( ap, double );
+-	    if ( precision == -1 )
+-		precision = 6;
+-
+-	    /*
+-	     * Check for sign character.
+-	     */
+-	    if ( f_sign && fval >= 0.0 ) {
+-		signch = '+';
+-	    } else if ( f_space && fval >= 0.0 ) {
+-		signch = ' ';
+-	    } else if ( fval < 0.0 ) {
+-		signch = '-';
+-		fval = -fval;
+-	    } else {
+-		signch = 0;
+-	    }
+-
+-	    /*
+-	     * Get the integer part of the number.  If the floating
+-	     * point value is greater than the maximum value of an
+-	     * unsigned long, the result is undefined.
+-	     */
+-	    uval = (unsigned long) fval;
+-	    numdigits = 0;
+-	    do {
+-		convert[ numdigits++ ] =  '0' + uval % 10;
+-		uval /= 10;
+-	    } while ( uval > 0 );
+-
+-	    /*
+-	     * Calculate the actual size of the printed number.
+-	     */
+-	    numpr = numdigits + (signch ? 1 : 0);
+-	    if ( precision > 0 )
+-		numpr += 1 + precision;
+-
+-	    LEFTPAD( width - numpr );
+-
+-	    /*
+-	     * Insert sign character.
+-	     */
+-	    if ( signch )
+-		PUTCH( signch );
+-
+-	    /*
+-	     * Insert integer number.
+-	     */
+-	    while ( numdigits > 0 )
+-		PUTCH( convert[--numdigits] );
+-
+-	    /*
+-	     * Insert precision.
+-	     */
+-	    if ( precision > 0 ) {
+-		/*
+-		 * Truncate number to fractional part only.
+-		 */
+-		while ( fval >= 1.0 )
+-		    fval -= (double) (unsigned long) fval;
+-
+-		PUTCH('.');
+-
+-		/*
+-		 * Insert precision digits.
+-		 */
+-		while ( precision-- > 0 ) {
+-		    fval *= 10.0;
+-		    uval = (unsigned long) fval;
+-		    PUTCH( '0' + uval );
+-		    fval -= (double) (unsigned long) fval;
+-		}
+-	    }
+-
+-	    RIGHTPAD( width - numpr );
+-	    break;
+-	}
+-	case 't':
+-	    tid = va_arg( ap, L4_ThreadId_t );
+-	    if ( L4_IsNilThread(tid) ) {
+-		PUTSTR("NIL_ID");
+-		break;
+-	    }
+-	    digits = "0123456789";
+-	    if (L4_IsGlobalId(tid))
+-	    {
+-		PUTSTR("GlobThread=");
+-		PUTDEC(tid.global.X.thread_no);
+-		PUTSTR(",ver=");
+-		PUTDEC(tid.global.X.version);
+-	    } 
+-	    else if (L4_IsLocalId(tid))
+-	    {
+-		PUTSTR("LocThread=");
+-		PUTDEC(tid.local.X.local_id);
+-	    }
+-	    else {
+-		PUTSTR("? ");
+-		PUTDEC(tid.raw);
+-	    }
+-	    break;
+-
+-
+-	case 's':
+-	    string = va_arg( ap, char * );
+-
+-	    /*
+-	     * Sanity check.
+-	     */
+-	    if ( string == NULL ) {
+-		PUTSTR( "(null)" );
+-		break;
+-	    }
+-
+-	    if ( width > 0 ) {
+-		/*
+-		 * Calculate printed size.
+-		 */
+-		numpr = strlen( string );
+-		if ( precision >= 0 && precision < numpr )
+-		    numpr = precision;
+-
+-		LEFTPAD( width - numpr );
+-	    }
+-
+-	    /*
+-	     * Insert string.
+-	     */
+-	    if ( precision >= 0 ) {
+- 		while ( precision-- > 0 && (c = *string++) != '\0' )
+-		    PUTCH( c );
+-	    } else {
+- 		while ( (c = *string++) != '\0' )
+-		    PUTCH( c );
+-	    }
+-
+-	    RIGHTPAD( width - numpr );
+-	    break;
+-
+-	case 'c':
+-	    PUTCH( va_arg( ap, int ) );
+-	    break;
+-
+-	case '%':
+-	    PUTCH('%');
+-	    break;
+-
+-	case 'n':
+-	    *(va_arg( ap, int * )) = p - str;
+-	    break;
+-
+-	default:
+-	    PUTCH('%');
+-	    PUTCH(c);
+-	    break;
+-	}
+-    }
+- Done:
+-
+-    /*
+-     * Null terminate string.
+-     */
+-    *p = '\0';
+-
+-    /*
+-     * Return size of printed string.
+-     */
+-    return p - str;
+-}
+-
+-
+-/*
+- * Function snprintf (str, size, fmt, ...)
+- *
+- *    Print formated string to a string like snprintf(3).
+- *
+- */
+-int __l4_snprintf(char *str, L4_Size_t size, const char *fmt, ...)
+-{
+-    va_list ap;
+-    int r;
+-
+-    /*
+-     * Safety check
+-     */
+-    if ( fmt == NULL )
+-	return 0;
+-
+-    /*
+-     * Print into buffer.
+-     */
+-    va_start(ap, fmt);
+-    r = vsnprintf(str, size, fmt, ap);
+-    va_end(ap);
+-
+-    return r;
+-}
+-
+-/*
+- * Function printf (fmt, ...)
+- *
+- *    Print formated string to terminal like printf(3).
+- *
+- */
+-int __l4_printf(const char *fmt, ...)
+-{
+-    char outbuf[256];
+-    va_list ap;
+-    int r;
+-
+-    /*
+-     * Safety check
+-     */
+-    if ( fmt == NULL )
+-	return 0;
+-
+-    /*
+-     * Print into buffer.
+-     */
+-    va_start(ap, fmt);
+-    r = vsnprintf(outbuf, sizeof(outbuf), fmt, ap);
+-    va_end(ap);
+-
+-    /*
+-     * Output to terminal.
+-     */
+-    if ( r > 0 )
+-	print_string(outbuf);
+-
+-    return r;
+-}
+-
+-//Hack to get strings from the keyboard
+-char *GetPolledKbdLine() {
+-
+-char data;
+-
+-//http://stackoverflow.com/questions/4093847/strcat-throws-segmentation-fault-on-simple-getch-like-password-input
+-int c;
+-int i = 0;
+-char pass[60] = "";
+-
+-printf("> ");
+-while(c != 0x0d && strlen(pass) != (60 - 1)) {
+-    c = getc();
+-
+-
+-
+-    if (c == 0x0d) {
+-        //ensure cannot backspace past prompt
+-        if(i != 0) {
+-            //simulate backspace by replacing with space
+-            printf("\b \b");
+-            //get rid of last character
+-            //pass[i-1] = 0; i--;
+-        }//if (c = 0x03 /* Ctrl + C, maybe? */) {printf("[kbd] : Ctrl+C pressed");pass = 0x03; }
+-    } else {
+-        //passed a character
+-        pass[i] = (char)c;
+-//http://stackoverflow.com/questions/6660145/convert-ascii-number-to-ascii-character-in-c
+-char cx =  (int)pass[i];
+-
+-//int s = strtol(c, NULL, 16);
+-        printf("%c",cx);i++;
+-    }
+-}
+-
+-
+-pass[i] = '\0';
+-printf("\n%s\n", pass);
+-
+-
+-return pass ;//getc();
+-
+-}
+-
+-//http://ubuntuforums.org/showthread.php?t=1016188
+-void append_str(char* s, char c)
+-{
+-	int len = strlen(s);
+-	s[len] = c;
+-	s[len + 1] = '\0';
+-}
+-
+-//ftp://ftp.fr.openbsd.org/pub/OpenBSD/src/lib/libc/stdio/findfp.c
+-//__sinit()
+-void __sinit(void) {
+-//this is a hack, since this stuff isn't really set up :(
+- __sdidinit = 1;
+-}
+-
+-//NetWare thing, move this later
+-void RingTheBell() {
+-printf("YOU RANG THE BELL!");
+-}
+diff --git a/user.enryo/lib/l4/amd64.cc b/user.enryo/lib/l4/amd64.cc
+deleted file mode 100644
+index 8033c4e3..00000000
+--- a/user.enryo/lib/l4/amd64.cc
++++ /dev/null
+@@ -1,74 +0,0 @@
+-/*********************************************************************
+- *                
+- * Copyright (C) 2003, 2009-2010,  Karlsruhe University
+- *                
+- * File path:     amd64.cc
+- * Description:   AMD64 syscall pointers.
+- *                
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in the
+- *    documentation and/or other materials provided with the distribution.
+- * 
+- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+- * SUCH DAMAGE.
+- *                
+- * $Id: amd64-syscalls.c,v 1.2 2003/09/24 19:06:28 skoglund Exp $
+- *                
+- ********************************************************************/
+-
+-#include <l4/kip.h>
+-
+-#if !defined(NULL)
+-#define NULL 0
+-#endif
+-
+-__L4_Ipc_t __L4_Ipc = NULL;
+-__L4_Lipc_t __L4_Lipc = NULL;
+-__L4_Unmap_t __L4_Unmap = NULL;
+-__L4_Schedule_t __L4_Schedule = NULL;
+-__L4_ThreadSwitch_t __L4_ThreadSwitch = NULL;
+-__L4_SystemClock_t __L4_SystemClock = NULL;
+-__L4_ExchangeRegisters_t __L4_ExchangeRegisters = NULL;
+-
+-__L4_ThreadControl_t __L4_ThreadControl = NULL;
+-__L4_SpaceControl_t __L4_SpaceControl = NULL;
+-__L4_ProcessorControl_t __L4_ProcessorControl = NULL;
+-__L4_MemoryControl_t __L4_MemoryControl = NULL;
+-
+-extern "C" void __L4_Init( void )
+-{
+-    L4_KernelInterfacePage_t *kip;
+-    L4_Word_t dummy;
+-    
+-    kip = (L4_KernelInterfacePage_t *) L4_KernelInterface( &dummy, &dummy, &dummy );
+-
+-
+-    __L4_Ipc = (__L4_Ipc_t) (kip->Ipc);
+-    __L4_Lipc = (__L4_Lipc_t) (kip->Lipc);
+-    __L4_Unmap = (__L4_Unmap_t) (kip->Unmap);
+-    __L4_Schedule = (__L4_Schedule_t) (kip->Schedule);
+-    __L4_ThreadSwitch = (__L4_ThreadSwitch_t) (kip->ThreadSwitch);
+-    __L4_SystemClock = (__L4_SystemClock_t) (kip->SystemClock);
+-    __L4_ExchangeRegisters = (__L4_ExchangeRegisters_t) (kip->ExchangeRegisters);
+-
+-    __L4_ThreadControl = (__L4_ThreadControl_t) (kip->ThreadControl);
+-    __L4_SpaceControl = (__L4_SpaceControl_t) (kip->SpaceControl);
+-    __L4_ProcessorControl = (__L4_ProcessorControl_t) (kip->ProcessorControl );
+-    __L4_MemoryControl = (__L4_MemoryControl_t) (kip->MemoryControl);
+-
+-}
+-
+diff --git a/user.enryo/lib/l4/debug.cc b/user.enryo/lib/l4/debug.cc
+deleted file mode 100644
+index 77c5d76e..00000000
+--- a/user.enryo/lib/l4/debug.cc
++++ /dev/null
+@@ -1,67 +0,0 @@
+-/*********************************************************************
+- *                
+- * Copyright (C) 2010,  Karlsruhe Institute of Technology
+- *                
+- * Filename:      debug.cc
+- * Author:        Jan Stoess <stoess@kit.edu>
+- * Description:   
+- *                
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in the
+- *    documentation and/or other materials provided with the distribution.
+- * 
+- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+- * SUCH DAMAGE.
+- *                
+- ********************************************************************/
+-#include <l4/kip.h>
+-#include <l4/tracebuffer.h>
+-
+-L4_TraceBuffer_t *__L4_Tracebuffer = 0;
+-
+-L4_TraceBuffer_t *L4_GetTraceBuffer()
+-{
+-    static L4_Bool_t initialized = false;
+-    
+-    if (!initialized)
+-    {
+-        L4_Word_t dummy;
+-        L4_KernelInterfacePage_t *kip;
+-        initialized = true;
+-    
+-        kip = (L4_KernelInterfacePage_t *)  L4_KernelInterface( &dummy, &dummy, &dummy );
+-        
+-        if (L4_HasFeature("tracebuffer"))
+-        {
+-            for( L4_Word_t i = 0; i < L4_NumMemoryDescriptors(kip); i++ )
+-            {
+-
+-                L4_MemoryDesc_t *mdesc = L4_MemoryDesc( kip, i );
+-                if( L4_MemoryDescType(mdesc) == L4_ReservedMemoryType && L4_IsVirtual(mdesc))
+-                {
+-                    __L4_Tracebuffer = (L4_TraceBuffer_t*) L4_MemoryDescLow(mdesc);
+-                    
+-                    if (__L4_Tracebuffer->magic != L4_TRACEBUFFER_MAGIC)
+-                        __L4_Tracebuffer = 0;
+-                    break;
+-                }
+-           
+-            }
+-        }
+-    }    
+-    return __L4_Tracebuffer;
+-}
+diff --git a/user.enryo/serv/sigma0/region.cc b/user.enryo/serv/sigma0/region.cc
+deleted file mode 100644
+index b86f69c0..00000000
+--- a/user.enryo/serv/sigma0/region.cc
++++ /dev/null
+@@ -1,594 +0,0 @@
+-/*********************************************************************
+- *                
+- * Copyright (C) 2005,  Karlsruhe University
+- *                
+- * File path:     region.cc
+- * Description:   Generic regions
+- *                
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in the
+- *    documentation and/or other materials provided with the distribution.
+- * 
+- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+- * SUCH DAMAGE.
+- *                
+- * $Id: region.cc,v 1.3 2005/06/02 14:11:08 joshua Exp $
+- *                
+- ********************************************************************/
+-#include <l4/message.h>
+-#include <l4/kdebug.h>
+-#include <l4io.h>
+-
+-#include "sigma0.h"
+-#include "region.h"
+-
+-
+-/**
+- * List of free region_t structures.
+- */
+-region_list_t region_list;
+-
+-
+-
+-/* ================================================================
+-**
+-**			region_t
+-**
+-*/
+-
+-region_t::region_t (L4_Paddr_t l, L4_Paddr_t h, L4_ThreadId_t o)
+-{
+-    low = l;
+-    high = h;
+-    owner = o;
+-}
+-
+-void * region_t::operator new (L4_Size_t size)
+-{
+-    return (void *) region_list.alloc ();
+-}
+-
+-
+-/**
+- * Swap region_t backing store.  The whole region_t structure is
+- * copied and pointers for surrounding region structures are relocated
+- * to the new location.
+- *
+- * @param r	location of region_t to use instead of current memory
+- */
+-void region_t::swap (region_t * r)
+-{
+-    *r = *this;
+-    r->prev->next = r->next->prev = r;
+-}
+-
+-
+-/**
+- * Remove memory region.  Region is first removed from the pool which
+- * it is allocated to before its memory is freed.  Region must not be
+- * accessed after it has been removed.
+- */
+-void region_t::remove (void)
+-{
+-    prev->next = next;
+-    next->prev = prev;
+-    region_list.free (this);
+-}
+-
+-
+-/**
+- * Check if supplied memory region is adjacent to current one.
+- * @param r	memory region to check against
+- * @return true it memory regions are adjacent, false otherwise
+- */
+-bool region_t::is_adjacent (const region_t & r)
+-{
+-    return (low == r.high + 1 && low != 0) ||
+-	(high + 1 == r.low && r.low != 0);
+-}
+-
+-
+-/**
+- * Concatenate supplied memory region with current one.
+- *
+- * @param r	memory region to concatenate with
+- *
+- * @return true if concatenation was successful, false otherwise
+- */
+-bool region_t::concatenate (region_t * r)
+-{
+-    if (owner != r->owner)
+-	return false;
+-
+-    if (low == r->high + 1 && low != 0)
+-	low = r->low;
+-    else if (high + 1 == r->low && r->low != 0)
+-	high = r->high;
+-    else
+-	return false;
+-
+-    return true;
+-}
+-
+-
+-/**
+- * Try allocating part from memory region.  If allocation is
+- * successful, current region_t might be deleted or split up into
+- * multiple regions.
+- *
+- * @param log2size	size of region to allocate
+- * @param tid		thread id to use for allocation
+- * @param make_fpage	function for creating fpage
+- *
+- * @return fpage for allocated region if successful, nilpage otherwise
+- */
+-L4_Fpage_t region_t::allocate (L4_Word_t log2size, L4_ThreadId_t tid,
+-			       L4_Fpage_t (*make_fpage) (L4_Word_t, int))
+-{
+-    L4_Word_t size = 1UL << log2size;
+-    L4_Fpage_t ret;
+-
+-	L4_Fpage_t kip_area, utcb_area;
+-	L4_Word_t control, shortaddr;
+-	L4_ThreadId_t redirector;
+-
+-    // Low and high address of region within mwmregion when they are
+-    // aligned according to log2size.  Note that these values might
+-    // overflow and must as such be handled with care.
+-    L4_Paddr_t low_a = (low + size - 1) & ~(size-1);
+-    L4_Paddr_t high_a = ((high + 1) & ~(size-1)) - 1;
+-
+-    if (low_a > high_a			// Low rounded up to above high
+-	|| low > low_a			// Low wrapped around
+-	|| high < size-1		// High wrapped around
+-	|| (high_a - low_a) < size-1	// Not enough space in region
+-	|| (owner != tid && owner != L4_anythread))
+-    {
+-	// Allocation failed
+-	ret = L4_Nilpage;
+-    }
+-    else if (low_a == low)
+-    {
+-	// Allocate from start of region
+-
+-
+-	if (low != (L4_Word_t)low) { //extended mapping
+-		shortaddr = (L4_Word_t)low;
+-		kip_area.X.s = log2size;
+-		kip_area.X.b = shortaddr >> 10;
+-		redirector.raw = low >> 32;
+-		utcb_area.raw = shortaddr;
+-
+-		L4_SpaceControl(sigma0_id,1 << 29, kip_area, utcb_area, redirector,
+-				&control);
+-	}
+-
+-    ret = make_fpage ((L4_Word_t)low, log2size) + L4_FullyAccessible;
+-	if (low + size == high + 1)
+-	    remove ();
+-	else
+-	    low += size;
+-    }
+-    else if (high_a == high)
+-    {
+-	// Allocate from end of region
+-
+-	if (high_a != (L4_Word_t)high_a) { //extended mapping
+-		shortaddr = (L4_Word_t)(high_a - size + 1);
+-		kip_area.X.s = log2size;
+-		kip_area.X.b = shortaddr >> 10;
+-		redirector.raw = low >> 32;
+-		utcb_area.raw = shortaddr;
+-
+-		L4_SpaceControl(sigma0_id,1 << 29, kip_area, utcb_area, redirector,
+-				&control);
+-	}
+-
+-    ret = make_fpage ((L4_Word_t)(high_a) - size + 1, log2size) + L4_FullyAccessible;
+-	high -= size;
+-    }
+-    else
+-    {
+-	// Allocate from middle of region
+-
+-	if (low_a != (L4_Word_t)low_a) { //extended mapping
+-		shortaddr = (L4_Word_t)low_a;
+-		kip_area.X.s = log2size;
+-		kip_area.X.b = shortaddr >> 10;
+-		redirector.raw = low >> 32;
+-		utcb_area.raw = shortaddr;
+-
+-		L4_SpaceControl(sigma0_id,1 << 29, kip_area, utcb_area, redirector,
+-				&control);
+-	}
+-
+-
+-	ret = make_fpage ((L4_Word_t)low_a, log2size) + L4_FullyAccessible;
+-	region_t * r = new region_t (low_a + size, high, owner);
+-	r->next = next;
+-	r->prev = this;
+-	r->next->prev = next = r;
+-	high = low_a - 1;
+-    }
+-
+-    return ret;
+-}
+-
+-
+-/**
+- * Try allocating part from memory region.  If allocation is
+- * successful, current region_t might be deleted or split up into
+- * multiple regions.
+- *
+- * @param addr		location of region to allocate
+- * @param log2size	size of region to allocate
+- * @param tid		thread id to use for allocation
+- * @param make_fpage	function for creating fpage
+- *
+- * @return fpage for allocated region if successful, nilpage otherwise
+- */
+-L4_Fpage_t region_t::allocate (L4_Paddr_t addr, L4_Word_t log2size,
+-			       L4_ThreadId_t tid,
+-			       L4_Fpage_t (*make_fpage) (L4_Word_t, int))
+-{
+-    L4_Word_t size = 1UL << log2size;
+-    L4_Fpage_t ret;
+-
+-    // Low and high address of region within mwmregion when they are
+-    // aligned according to log2size.  Note that these values might
+-    // overflow and must as such be handled with care.
+-    L4_Paddr_t low_a = (low + size - 1) & ~(size-1);
+-    L4_Paddr_t high_a = ((high + 1) & ~(size-1)) - 1;
+-
+-    if (addr < low_a			// Address range below low
+-	|| (addr + size - 1) > high_a	// Address range above high
+-	|| (high_a - low_a) < size-1	// Not enough space in region
+-	|| low > low_a			// Low wrapped around
+-	|| high < size-1		// High wrapper around
+-	|| (owner != tid && owner != L4_anythread))
+-    {
+-	// Allocation failed
+-	ret = L4_Nilpage;
+-    }
+-    else if (low_a == low && addr == low)
+-    {
+-	// Allocate from start of region
+-	ret = make_fpage ((L4_Word_t)low, log2size) + L4_FullyAccessible;
+-	if (low + size == high + 1)
+-	    remove ();
+-	else
+-	    low += size;
+-    }
+-    else if (high_a == high && (addr + size - 1) == high)
+-    {
+-	// Allocate from end of region
+-	ret = make_fpage ((L4_Word_t)(high_a - size + 1), log2size) + L4_FullyAccessible;
+-	high -= size;
+-    }
+-    else
+-    {
+-	// Allocate from middle of region
+-	ret = make_fpage ((L4_Word_t)addr, log2size) + L4_FullyAccessible;
+-	region_t * r = new region_t (addr + size, high, owner);
+-	r->next = next;
+-	r->prev = this;
+-	r->next->prev = next = r;
+-	high = addr - 1;
+-    }
+-
+-    return ret;
+-}
+-
+-
+-/**
+- * Check if it is possible to allocate from memory region.
+- *
+- * @param addr		location of region to allocate
+- * @param log2size	size of region to allocate
+- * @param tid		thread id to use for allocation
+- *
+- * @return true if allocation is possible, false otherwise
+- */
+-bool region_t::can_allocate (L4_Paddr_t addr, L4_Word_t log2size,
+-				L4_ThreadId_t tid)
+-{
+-    L4_Word_t size = 1UL << log2size;
+-
+-    // Low and high address of region within mwmregion when they are
+-    // aligned according to log2size.  Note that these values might
+-    // overflow and must as such be handled with care.
+-    L4_Paddr_t low_a = (low + size - 1) & ~(size-1);
+-    L4_Paddr_t high_a = ((high + 1) & ~(size-1)) - 1;
+-
+-    if (addr < low_a			// Address range below low
+-	|| (addr + size - 1) > high_a	// Address range above high
+-	|| (high_a - low_a) < size-1	// Not enough space in region
+-	|| low > low_a			// Low wrapped around
+-	|| high < size-1		// High wrapper around
+-	|| (owner != tid && owner != L4_anythread))
+-	return false;
+-    else
+-	return true;
+-}
+-
+-
+-
+-/* ================================================================
+-**
+-**			region_list_t
+-**
+-*/
+-
+-
+-/**
+- * Add more memory to be used for region_t structures.
+- *
+- * @param addr	location of memory to add
+- * @param size	amount of memory to add
+- */
+-void region_list_t::add (L4_Paddr_t addr, L4_Word_t size)
+-{
+-    if (addr == 0)
+-    {
+-	// Avoid inserting a NULL pointer into the list.
+-	addr += sizeof (region_listent_t);
+-	size -= sizeof (region_listent_t);
+-    }
+-
+-    region_listent_t * m = (region_listent_t *) addr;
+-
+-    for (; (L4_Word_t) (m+1) < addr + size; m++)
+-	m->set_next (m+1);
+-
+-    m->set_next (list);
+-    list = (region_listent_t *) addr;
+-}
+-
+-
+-/**
+- * @return number of region_t structures in pool
+- */
+-L4_Word_t region_list_t::contents (void)
+-{
+-    L4_Word_t n = 0;
+-    for (region_listent_t * m = list; m != NULL; m = m->next ())
+-	n++;
+-    return n;
+-}
+-
+-
+-/**
+- * Allocate a region_t structure.
+- * @return newly allocated structure
+- */
+-region_t * region_list_t::alloc (void)
+-{
+-    if (! list)
+-    {
+-	// We might need some memory for allocating memory.
+-	region_t tmp;
+-	add ((L4_Word_t) &tmp, sizeof (tmp));
+-
+-	// Allocate some memory to sigma0.
+-	L4_MapItem_t dummy;
+-	if (! allocate_page (sigma0_id, min_pgsize, dummy))
+-	{
+-	    printf ("s0: Unable to allocate memory.\n");
+-	    for (;;)
+-		L4_KDB_Enter ("s0: out of memory");
+-	}
+-
+-	bool was_alloced = (list == NULL);
+-	if (! was_alloced)
+-	    list = (region_listent_t *) NULL;
+-
+-	// Add newly allocated memory to pool.
+-	add (L4_Address (L4_SndFpage (dummy)), (1UL << min_pgsize));
+-
+-	if (was_alloced)
+-	    // Swap temorary structure with a newly allocated one.
+-	    tmp.swap (alloc ());
+-    }
+-
+-    // Remove first item from free list.
+-    region_listent_t * r = list;
+-    list = r->next ();
+-
+-    return r->region ();
+-}
+-
+-
+-/**
+- * Free a region_t structure.
+- * @param r	region structure to free
+- */
+-void region_list_t::free (region_t * r)
+-{
+-    region_listent_t * e = (region_listent_t *) r;
+-    e->set_next (list);
+-    list = e;
+-}
+-
+-
+-/* ================================================================
+-**
+-**			region_pool_t
+-**
+-*/
+-
+-
+-/**
+- * Initialize the memory pool structure.  Must be done prior to any
+- * insertions into the pool.
+- */
+-void region_pool_t::init (void)
+-{
+-    first.next = first.prev = &last;
+-    last.next = last.prev = &first;
+-    first.low = first.high = 0;
+-    last.low = last.high = ~0UL;
+-    first.owner = last.owner = L4_nilthread;
+-    ptr = &last;
+-}
+-
+-
+-/**
+- * Insert region into region pool.  Concatenate region with existing
+- * regions if possible.
+- *
+- * @param r	region to insert into pool
+- */
+-void region_pool_t::insert (region_t * r)
+-{
+-    region_t * p = &first;
+-    region_t * n = first.next;
+-
+-    // Find correct insert location
+-    while (r->low > n->high)
+-    {
+-	p = n;
+-	n = n->next;
+-    }
+-
+-    if (p->concatenate (r))
+-    {
+-	// Region concatenated previous one
+-	region_list.free (r);
+-	if (p->concatenate (n))
+-	    remove (n);
+-    }
+-    else if (n->concatenate (r))
+-    {
+-	// Region concatenated to next one
+-	region_list.free (r);
+-    }
+-    else
+-    {
+-	// No concatenation possible.  Insert into list
+-	r->next = n;
+-	r->prev = p;
+-	p->next = n->prev = r;
+-    }
+-}
+-
+-
+-/**
+- * Remove region from region pool.  It is assumed that the region is
+- * indeed contained in the pool.  Region must not be accessed after it
+- * has been removed from pool.
+- */
+-void region_pool_t::remove (region_t * r)
+-{
+-    r->remove ();
+-}
+-
+-
+-/**
+- * Insert specified region into memory pool.  Concatenate with
+- * existing regions if possible.
+- *
+- * @param low		lower limit of memory region
+- * @param high		upper limit of memory region
+- * @param owner		owner of memory region
+- */
+-void region_pool_t::insert (L4_Paddr_t low, L4_Paddr_t high,
+-			       L4_ThreadId_t owner)
+-{
+-    insert (new region_t (low, high, owner));
+-}
+-
+-
+-/**
+- * Remove specified region from memory pool.
+- *
+- * @param low		lower limit of memory region to remove
+- * @param high		upper limit of memory region to remove
+- */
+-void region_pool_t::remove (L4_Paddr_t low, L4_Paddr_t high)
+-{
+-    region_t * n = first.next;
+-
+-    while (low > n->high)
+-	n = n->next;
+-
+-    while (n != &last)
+-    {
+-	if (low <= n->low && high >= n->high)
+-	{
+-	    // Remove whole region node.
+-	    n = n->next;
+-	    remove (n->prev);
+-	}
+-	else if (low <= n->low && high >= n->low)
+-	{
+-	    // Only need to modify lower limit.
+-	    n->low = high + 1;
+-	    break;
+-	}
+-	else if (low > n->low && low <= n->high)
+-	{
+-	    // Need to modify upper limit.
+-	    L4_Word_t old_high = n->high;
+-	    n->high = low - 1;
+-	    if (high < old_high)
+-	    {
+-		// Must split region into two separate regions.
+-		insert (high + 1, old_high, n->owner);
+-		break;
+-	    }
+-	    n = n->next;
+-	}
+-	else
+-	    n = n->next;
+-    }
+-}
+-
+-
+-/**
+- * Dump contents of memory region pool.
+- */
+-void region_pool_t::dump (void)
+-{
+-    region_t * r;
+-    reset ();
+-    while ((r = next ()) != NULL)
+-    {
+-	printf ("s0:  %p-%p   %p %s\n",
+-		(void *) r->low, (void *) r->high,
+-		(void *) r->owner.raw,
+-		r->owner == sigma0_id ? "(sigma0)" :
+-		r->owner == sigma1_id ? "(sigma1)" :
+-		r->owner == rootserver_id ? "(root server)" :
+-		is_kernel_thread (r->owner) ? "(kernel)" :
+-		r->owner == L4_anythread ? "(anythread)" :
+-		"");
+-    }
+-}
+-
+-void region_pool_t::reset (void)
+-{
+-    ptr = first.next;
+-}
+-
+-region_t * region_pool_t::next (void)
+-{
+-    if (ptr == &last)
+-	return (region_t *) NULL;
+-    region_t * ret = ptr;
+-    ptr = ptr->next;
+-    return ret;
+-}
+diff --git a/user.enryo/serv/sigma0/sigma0.cc b/user.enryo/serv/sigma0/sigma0.cc
+deleted file mode 100644
+index c80bf42c..00000000
+--- a/user.enryo/serv/sigma0/sigma0.cc
++++ /dev/null
+@@ -1,334 +0,0 @@
+-/*********************************************************************
+- *                
+- * Copyright (C) 2001-2006, 2010,  Karlsruhe University
+- *                
+- * File path:     sigma0.cc
+- * Description:   sigma0 implementation
+- *                
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in the
+- *    documentation and/or other materials provided with the distribution.
+- * 
+- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+- * SUCH DAMAGE.
+- *                
+- * $Id: sigma0.cc,v 1.47 2006/10/21 03:52:55 reichelt Exp $
+- *                
+- ********************************************************************/
+-#include <l4/kip.h>
+-#include <l4/ipc.h>
+-#include <l4/misc.h>
+-#include <l4/kdebug.h>
+-#include <l4io.h>
+-
+-#include "sigma0.h"
+-#include "region.h"
+-
+-/**
+- * Verbose level for sigma0 output.
+- */
+-int verbose = 0;
+-
+-
+-/**
+- * Pointer to sigma0's kernel interface page.
+- */
+-L4_KernelInterfacePage_t * kip;
+-
+-
+-/*
+- * Some API defined thread IDs.
+- */
+-L4_ThreadId_t kernel_id;	// Lowest possible system thread
+-L4_ThreadId_t sigma0_id;
+-L4_ThreadId_t sigma1_id;
+-L4_ThreadId_t rootserver_id;
+-
+-
+-
+-extern "C" __attribute__ ((weak)) void *
+-memcpy (void * dst, const void * src, unsigned int len)
+-{
+-    unsigned char *d = (unsigned char *) dst;
+-    unsigned char *s = (unsigned char *) src;
+-
+-    while (len-- > 0)
+-	*d++ = *s++;
+-
+-    return dst;
+-}
+-
+-
+-void dump_pools (void);
+-
+-
+-/*
+- * Encoding for label field of message tag.
+- */
+-#define L4_REQUEST_MASK		( ~((~0UL) >> ((sizeof (L4_Word_t) * 8) - 20)))
+-#define L4_PAGEFAULT		(-2UL << 20)
+-#define L4_SIGMA0_RPC		(-6UL << 20)
+-#define L4_SIGMA0_EXT		(-1001UL << 20)
+-
+-
+-/*
+- * Encoding for MR1 of extended sigma0 protocol.
+- */
+-#define L4_S0EXT_VERBOSE	(1)
+-#define L4_s0EXT_DUMPMEM	(2)
+-
+-static region_t initial_regs[32];
+-
+-
+-/**
+- * Main sigma0 loop.
+- */
+-extern "C" void sigma0_main (void)
+-{
+-    L4_Word_t api_version, api_flags, kernelid;
+-    L4_MsgTag_t tag;
+-
+-    dprintf (0, "s0: This is Sigma0\n");
+-
+-    // Get kernel interface page.
+-    kip = (L4_KernelInterfacePage_t *)
+-	L4_KernelInterface (&api_version, &api_flags, &kernelid);
+-
+-    dprintf (0, "s0: KIP @ %p (0x%lx, 0x%lx, 0x%lx)\n", 
+-	     kip, api_version, api_flags, kernelid);
+-
+-    // Calculate API defined thread IDs.
+-    kernel_id = L4_GlobalId (L4_ThreadIdSystemBase (kip), 1);
+-    sigma0_id = L4_GlobalId (L4_ThreadIdUserBase (kip), 1);
+-    sigma1_id = L4_GlobalId (L4_ThreadIdUserBase (kip) + 1, 1);
+-    rootserver_id = L4_GlobalId (L4_ThreadIdUserBase (kip) + 2, 1);
+-
+-    // Add some initial region_t structures to pool
+-    region_list.add ((L4_Word_t) initial_regs, sizeof (initial_regs));
+-
+-    init_mempool ();
+-#if defined(L4_ARCH_IA32) || defined(L4_ARCH_AMD64)
+-    init_iopool();
+-#endif
+-
+-    L4_ThreadId_t tid;
+-    L4_Accept (L4_UntypedWordsAcceptor);
+-    L4_Reset_WordSizeMask();
+-    tag = L4_Wait (&tid);
+-
+-    for (;;)
+-    {
+-	L4_Msg_t msg;
+-	L4_MapItem_t map;
+-	L4_Fpage_t fpage;
+-
+-	L4_Word_t word_size_mask = L4_WordSizeMask();
+-	L4_Reset_WordSizeMask();
+-
+-	// Make sure we've received a valid IPC request
+-	while (L4_IpcFailed (tag))
+-	    tag = L4_Wait (&tid);
+-
+-	if ((L4_UntypedWords (tag) != 2 && L4_UntypedWords (tag) != 3) || L4_TypedWords (tag) != 0)
+-	{
+-	    dprintf (0, "s0: malformed request from %p (tag=%p)\n", 
+-		     (void *) tid.raw, (void *) tag.raw);
+-	    tag = L4_Wait (&tid);
+-	    continue;
+-	}
+-	
+-	L4_Store (tag, &msg);
+-
+-	dprintf (1, "s0: got msg from %p, (0x%lx, %p, %p)\n", 
+-		 (void *) tid.raw, (long) L4_Label (tag),
+-		 (void *) L4_Get (&msg, 0), (void *) L4_Get (&msg, 1));
+-
+-	/*
+-	 * Dispatch IPC according to protocol.
+-	 */
+-
+-	switch (tag.raw & L4_REQUEST_MASK)
+-	{
+-	case L4_PAGEFAULT:
+-	{
+-	    if (! allocate_page (tid, L4_Get (&msg, 0), min_pgsize, map, true))
+-		dprintf (0, "s0: unhandled pagefault from %p @ %p, ip: %p\n",
+-			 (void *) tid.raw, (void *) L4_Get (&msg, 0),
+-			 (void *) L4_Get (&msg, 1));
+-	    break;
+-	}
+-#if defined(L4_ARCH_IA32) || defined(L4_ARCH_AMD64)
+-	case L4_IO_PAGEFAULT:
+-	{
+-	    L4_Fpage_t iofp = { raw : L4_Get(&msg, 0) };
+-	    if (! allocate_iopage (tid, iofp, map))
+-		dprintf (0, "s0: unhandled IO-pagefault from %p @ "
+-			 "%lx[%lx], ip: %p\n",
+-			 (void *) tid.raw, L4_IoFpagePort(iofp),
+-			 L4_IoFpageSize(iofp),
+-			 (void *) L4_Get (&msg, 1));
+-	    break;
+-	}
+-#endif
+-
+-	case L4_SIGMA0_RPC:
+-	{
+-	    fpage.raw = L4_Get (&msg, 0);
+-#if defined(L4_ARCH_IA32) || defined(L4_ARCH_AMD64)
+-	    if (L4_IsIoFpage (fpage))
+-	    {
+-		if ((fpage.raw >> 16) == (word_size_mask >> 16))
+-		{
+-		    dprintf (0, "s0: cannot allocate arbitrary IO fpage\n");
+-		}
+-		else
+-		{
+-		    // Allocate from specific location.
+-		    if (! allocate_iopage (tid, fpage, map))
+-			dprintf (0, "s0: unable to allocate IO fpage at port "
+-				 "%x of size %p to %p\n",
+-				 (int) L4_IoFpagePort(fpage),
+-				 (void *) L4_IoFpageSize (fpage),
+-				 (void *) tid.raw);
+-		}
+-		break;
+-	    }
+-#endif
+-	    L4_Paddr_t addr;
+-	    if (fpage.X.extended == 1) {
+-	    	addr = L4_Get(&msg,2);
+-	    	addr <<= 32;
+-	    	addr |= L4_Address (fpage);
+-	    } else
+-	    	addr = L4_Address (fpage);
+-	    L4_Word_t attributes = L4_Get (&msg, 1);
+-
+-	    if (is_kernel_thread (tid))
+-	    {
+-		if (L4_Size (fpage) == 0)
+-		    // Request recommended kernel memory.
+-		    L4_KDB_Enter ("s0: recommended kernel mem");
+-		else
+-		    // Request kernel memory.
+-		    L4_KDB_Enter ("s0: request kernel memory");
+-
+-		tag = L4_Wait (&tid);
+-		continue;
+-	    }
+-	    else
+-	    {
+-		if ((fpage.raw >> 10) == (word_size_mask >> 10))
+-		{
+-		    // Allocate from arbitrary location.
+-		    if (! allocate_page (tid, L4_SizeLog2 (fpage), map))
+-			dprintf (0, "s0: unable to allocate page of size %p"
+-				 " to %p\n", (void *) L4_Size (fpage),
+-				 (void *) tid.raw);
+-		}
+-		else
+-		{
+-		    // Allocate from specific location.
+-		    if (! allocate_page (tid, addr, L4_SizeLog2 (fpage),
+-			    	    	 map))
+-			dprintf (0, "s0: unable to allocate page %p of "
+-				 "size %p to %p\n", (void *) addr,
+-				 (void *) L4_Size (fpage),
+-				 (void *) tid.raw);
+-		}
+-
+-		if (attributes != 0)
+-		{
+-		    // XXX: Setting memory attributes in sigma0
+-		    // possibly needs to be revised.
+-
+-		    // Set memory attributes before mapping.
+-		    if (! L4_Set_PageAttribute (L4_SndFpage (map), attributes))
+-		    {
+-			dprintf (1, "s0: memory control failed (%ld) setting "
+-				 "page %p with attributes %p",
+-				 L4_ErrorCode(), 
+-				 (void *) L4_Address (L4_SndFpage (map)),
+-				 (void *) attributes);
+-
+-			// We do not deallocate the memory.
+-			map = L4_MapItem (L4_Nilpage, 0);
+-		    }
+-		}
+-	    } 
+-	    break;
+-	}
+-
+-	case L4_SIGMA0_EXT:
+-	{
+-	    // Only allow kernel threads to use extended sigma0 protocol.
+-	    if (! is_kernel_thread (tid) && tid != rootserver_id)
+-	    {
+-		tag = L4_Wait (&tid);
+-		continue;
+-	    }
+-
+-	    bool reply = false;
+-	    switch (L4_Get (&msg, 0))
+-	    {
+-	    case L4_S0EXT_VERBOSE:
+-		verbose = L4_Get (&msg, 1);
+-		break;
+-	    case L4_s0EXT_DUMPMEM:
+-		dump_pools ();
+-		if (L4_Get (&msg, 1) != 0)
+-		    reply = true;
+-		break;
+-	    }
+-
+-	    if (! reply)
+-		tag = L4_Wait (&tid);
+-	    else
+-	    {
+-		L4_Set_MsgTag (L4_Niltag);
+-		tag = L4_ReplyWait (tid, &tid);
+-	    }
+-	    continue;
+-	}
+-
+-	default:
+-	    dprintf (0, "s0: unknown sigma0 request from %p, (%p, %p, %p)\n",
+-		     (void *) tid.raw, (void *) tag.raw,
+-		     (void *) L4_Get (&msg, 0), (void *) L4_Get(&msg, 1));
+-	    map = L4_MapItem (L4_Nilpage, 0);
+-
+-	    tag = L4_Wait (&tid);
+-	    continue;
+-	}
+-
+-	L4_Put (&msg, 0, 0, (L4_Word_t *) 0, 2, &map);
+-	L4_Load (&msg);
+-	tag = L4_ReplyWait (tid, &tid);
+-
+-	// If reply phase fails, receive phase is redone at top of loop.
+-    }
+-}
+-
+-
+-/**
+- * Dump all sigma0 pools.
+- */
+-void dump_pools (void)
+-{
+-    printf ("s0: Free region structures: %d\n:s0\n",
+-	    (int) region_list.contents ());
+-    dump_mempools ();
+-}
+diff --git a/user.enryo/serv/sigma0/sigma0_io.cc b/user.enryo/serv/sigma0/sigma0_io.cc
+deleted file mode 100644
+index 7bdfbba1..00000000
+--- a/user.enryo/serv/sigma0/sigma0_io.cc
++++ /dev/null
+@@ -1,168 +0,0 @@
+-/*********************************************************************
+- *                
+- * Copyright (C) 2005-2006,  Karlsruhe University
+- *                
+- * File path:     sigma0_io.cc
+- * Description:   IO-Port (IA32/AMD64) specific stuff
+- *                
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in the
+- *    documentation and/or other materials provided with the distribution.
+- * 
+- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+- * SUCH DAMAGE.
+- *                
+- * $Id: sigma0_io.cc,v 1.4 2006/06/08 11:15:46 skoglund Exp $
+- *                
+- ********************************************************************/
+-#include <l4/arch.h>
+-#include <l4/kip.h>
+-#include <l4/message.h>
+-#include <l4/kdebug.h>
+-#include <l4io.h>
+-
+-#include "sigma0.h"
+-#include "region.h"
+-
+-/**
+- * Memory regions for IO-ports available for allocation.
+- */
+-region_pool_t io_pool;
+-
+-/**
+- * IO-Memory regions already allocated.
+- */
+-region_pool_t io_alloc_pool;
+-
+-
+-/**
+- * Initialze IO port pool.
+- */
+-void init_iopool (void)
+-{
+-    // Insert IO-port memory.
+-    io_pool.insert (L4_IO_PORT_START, L4_IO_PORT_END, L4_anythread);
+-
+-}
+-
+-/**
+- * Allocate an IO-fpage
+- * 
+- * @param tid		id of thread doing allocation
+- * @param iofp		iofpage (port, size)
+- * @param map		genrated map item corresponding to alloced page
+- *
+- * @return true upon success, false otherwise
+- */
+-bool allocate_iopage (L4_ThreadId_t tid, L4_Fpage_t iofp, L4_MapItem_t & map)
+-{
+-    region_t * r;
+-
+-    
+-    // Make sure that addr is properly aligned.
+-    L4_Word_t addr = L4_IoFpagePort(iofp) & ~(L4_IoFpageSize(iofp) - 1);
+-    L4_Word_t addr_high = L4_IoFpagePort(iofp) + L4_IoFpageSize(iofp) - 1;
+-    L4_Word_t log2size = L4_IoFpageSizeLog2(iofp);
+-
+-    // Test if valid IO-Fpage
+-    if (!L4_IsIoFpage (iofp) || log2size > 16)
+-    {
+-	dprintf (0, "s0: cannot map invalid IO page %x\n", (int) iofp.raw);
+-	return false;
+-    }
+-
+-    io_pool.reset ();
+-    
+-    while ((r = io_pool.next ()) != NULL)
+-    {
+-	if (r->low > addr_high || r->high < addr)
+-	    continue;
+- 	L4_Fpage_t result = r->allocate (addr, log2size, tid, L4_IoFpageLog2);
+-	if (! L4_IsNilFpage (result))
+-	{
+-	    dprintf(1, "s0: map IO fpage %x port %x [size %x]\n", 
+-		    (int) result.raw, (int) addr, (int) log2size);
+-	    map = L4_MapItem (result, L4_IoFpagePort(result));
+-	    io_alloc_pool.insert 
+-		(new region_t (addr, addr_high, tid));
+-	    return true;
+-	}
+-    }
+-
+-    // Check if memory has already been allocated.
+-    io_alloc_pool.reset ();
+-    while ((r = io_alloc_pool.next ()) != NULL)
+-    {
+-	if (r->can_allocate (addr, log2size, tid))
+-	{
+-	    map = L4_MapItem (iofp, L4_IoFpagePort(iofp));
+-	    return true;
+-	}
+-    }
+-
+-    
+-    // If all the above failed we have to try the slow way of
+-    // allocating parts of memory from the IO page pool.
+-
+-    region_pool_t * all_io_pools[] = { &io_pool,
+-					  &io_alloc_pool,
+-					  (region_pool_t *) NULL };
+-    
+-    // Loop once for checking followed by once for allocating
+-    for (L4_Word_t phase = 0; phase < 2; phase++)
+-    {
+-	// Use 1 byte as stepping
+-	for (L4_Word_t a = addr; a < addr_high; a += 1)
+-	{
+-	    L4_Word_t a_end = a + 1;
+-	    bool failed = true;
+-
+-	    // Try the different pools
+-	    for (L4_Word_t i = 0; failed && all_io_pools[i] != NULL; i++)
+-	    {
+-		all_io_pools[i]->reset ();
+-		while ((r = all_io_pools[i]->next ()) != NULL)
+-		{
+-		    if (r->low > a_end || r->high < a)
+-			continue;
+-
+-		    // Test if allocation is possible
+-		    if (r->can_allocate (a, 0, tid))
+-		    {
+-			failed = false;
+-			if (phase == 1 && all_io_pools[i] != &io_alloc_pool)
+-			{
+-			    // Allocation phase
+-			    r->allocate (a, 0, tid, L4_IoFpageLog2);
+-			    io_alloc_pool.insert 
+-				(new region_t (a, a_end - 1, tid));
+-			}
+-		    }
+-		}
+-	    }
+-	    if (failed){
+-		dprintf (2, "s0: tried %lx, phase = %lx, failed = %s\n", a , phase, (failed ? "true" : "false"));
+-		return false;
+-	    }
+-	}
+-    }
+-
+-    map = L4_MapItem (iofp, L4_IoFpagePort(iofp));
+-    return true;
+-
+-    
+-}
+diff --git a/user.enryo/serv/sigma0/sigma0_mem.cc b/user.enryo/serv/sigma0/sigma0_mem.cc
+deleted file mode 100644
+index 160d4b68..00000000
+--- a/user.enryo/serv/sigma0/sigma0_mem.cc
++++ /dev/null
+@@ -1,463 +0,0 @@
+-/*********************************************************************
+- *                
+- * Copyright (C) 2005, 2007,  Karlsruhe University
+- *                
+- * File path:     sigma0_mem.cc
+- * Description:   Sigma0 memory
+- *                
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in the
+- *    documentation and/or other materials provided with the distribution.
+- * 
+- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+- * SUCH DAMAGE.
+- *                
+- * $Id: sigma0_mem.cc,v 1.2 2007/06/01 11:45:27 stoess Exp $
+- *                
+- ********************************************************************/
+-#include <l4/kip.h>
+-#include <l4/message.h>
+-#include <l4/kdebug.h>
+-#include <l4io.h>
+-
+-#include "sigma0.h"
+-#include "region.h"
+-
+-/**
+- * Minimum page size (log2) supported by architecture/kernel
+- * (initialized from kernel interface page).
+- */
+-L4_Word_t min_pgsize = 10;
+-
+-
+-/**
+- * Memory regions of conventional memory available for allocation.
+- */
+-static region_pool_t conv_memory_pool;
+-
+-
+-/**
+- * Memory regions of non-conventional memory available for allocation.
+- */
+-static region_pool_t memory_pool;
+-
+-
+-/**
+- * Memory regions already allocated.
+- */
+-static region_pool_t alloc_pool;
+-
+-
+-/**
+- * Helpers for rounding pages up and down according to min_pgsize
+- */
+-L4_INLINE L4_Word_t page_start (L4_Word_t page)
+-{
+-    return page & ~((1UL << min_pgsize) - 1);
+-}
+-
+-L4_INLINE L4_Word_t page_end (L4_Word_t page)
+-{
+-    return (page + ((1UL << min_pgsize) - 1)) & ~((1UL << min_pgsize) - 1);
+-}
+-
+-
+-
+-void register_memory (L4_Word_t low, L4_Word_t high, L4_ThreadId_t t)
+-{
+-    // Align to smallest page size.
+-    low = page_start (low);
+-    high = page_end (high);
+-
+-    L4_MapItem_t map;
+-    L4_Word_t addr = low;
+-    while (addr < high)
+-    {
+-	if (! allocate_page (t, addr, min_pgsize, map))
+-	    dprintf (1, "s0: alloc <%p,%p> to %p failed.\n",
+-		     (void *) low, (void *) high, (void *) t.raw);
+-	addr += (1UL << min_pgsize);
+-    }
+-}
+-
+-#if defined(OLD_STYLE_MEMORY_REGIONS)
+-
+-/*
+- * Initialization for old style memory regions.
+- */
+-
+-static void init_mempool_from_kip (void)
+-{
+-    // Insert conventional memory.
+-    conv_memory_pool.insert (kip->MainMem.low, kip->MainMem.high - 1,
+-			     L4_anythread);
+-
+-    // Insert rest of memory into non-conventional memory pool.
+-    if (kip->MainMem.low != 0)
+-	memory_pool.insert (0, kip->MainMem.low, L4_anythread);
+-    memory_pool.insert (kip->MainMem.high, ~0UL, L4_anythread);
+-
+-    dprintf (0, "s0: KIP: %-16s = [%p - %p]\n", "MainMem",
+-	     (void *) kip->MainMem.low, (void *) kip->MainMem.high);
+-
+-#define reserve_memory(name, t)						\
+-    if (kip->name.high)							\
+-    {									\
+-	dprintf (0, "s0: KIP: %-16s = [%p - %p]\n", #name,		\
+-		 (void *) kip->name.low, (void *) kip->name.high);	\
+-	register_memory (kip->name.low, kip->name.high, t);		\
+-    }									\
+-    else 								\
+-	dprintf (0, "s0: KIP: %-16s = [uninitialized]\n", #name)
+-
+-#define alloc_memory(name, idx, t)				\
+-    if (((L4_Word_t *) kip)[idx + 1])				\
+-    {								\
+-	L4_Word_t * desc = &((L4_Word_t *) kip)[idx];		\
+-	dprintf (0, "s0: KIP: %-16s = [%p - %p]\n", #name,	\
+-		 (void *) desc[0], (void *) desc[1]);		\
+-	register_memory (desc[0], desc[1], t);			\
+-    }								\
+-    else 							\
+-	dprintf (0, "s0: KIP: %-16s = [uninitialized]\n", #name)
+-
+-    reserve_memory (DedicatedMem[0], L4_anythread);
+-    reserve_memory (DedicatedMem[1], L4_anythread);
+-    reserve_memory (DedicatedMem[2], L4_anythread);
+-    reserve_memory (DedicatedMem[3], L4_anythread);
+-    reserve_memory (DedicatedMem[4], L4_anythread);
+-
+-    reserve_memory (ReservedMem[0], kernel_id);
+-    reserve_memory (ReservedMem[1], kernel_id);
+-
+-    alloc_memory (Kdebug, 6, kernel_id);
+-    alloc_memory (Sigma0, 10, sigma0_id);
+-    alloc_memory (Sigma1, 14, sigma1_id);
+-    alloc_memory (RootServer, 18, rootserver_id);
+-}
+-#else
+-
+-/*
+- * Inialization for new style memory regions.
+- */
+-
+-static void init_mempool_from_kip (void)
+-{
+-    L4_MemoryDesc_t * md;
+-
+-    // Initialize memory pool with complete physical address space.
+-    memory_pool.insert (0, ~0UL, L4_anythread);
+-
+-    // Parse through all memory descriptors in kip.
+-    for (L4_Word_t n = 0; (md = L4_MemoryDesc (kip, n)); n++)
+-    {
+-	if (L4_IsVirtual (md))
+-	    continue;
+-
+-	L4_Word_t low = page_start (L4_MemoryDescLow (md));
+-	L4_Word_t high = page_end (L4_MemoryDescHigh (md)) - 1;
+-
+-	conv_memory_pool.remove (low, high);
+-	memory_pool.remove (low, high);
+-	alloc_pool.remove (low, high);
+-
+-	if ((L4_MemoryDescType (md) &0xf) == L4_BootLoaderSpecificMemoryType ||
+-	    (L4_MemoryDescType (md) &0xf) == L4_ArchitectureSpecificMemoryType)
+-	{
+-	    /*
+-	     * Boot loader or architecture dependent memory.  Remove
+-	     * from conventional memory pool and insert into
+-	     * non-conventional memory pool.
+-	     */
+-	    memory_pool.insert (low, high, L4_anythread);
+-	}
+-	else
+-	{
+-	    switch (L4_MemoryDescType (md))
+-	    {
+-	    case L4_UndefinedMemoryType:
+-		break;
+-	    case L4_ConventionalMemoryType:
+-	    {
+-		conv_memory_pool.insert (low, high, L4_anythread);
+-	    }
+-	    break;
+-	    case L4_ReservedMemoryType:
+-	    {
+-		alloc_pool.insert (low, high, kernel_id);
+-	    }
+-	    break;
+-	    case L4_DedicatedMemoryType:
+-	    {
+-		memory_pool.insert (low, high, L4_anythread);
+-	    }
+-	    break;
+-	    case L4_SharedMemoryType:
+-	    {
+-		alloc_pool.insert (low, high, L4_anythread);
+-	    }
+-	    break;
+-	    default:
+-	    { 
+-		dprintf (0, "s0: Unknown memory type (0x%x)\n",
+-			 (int) L4_MemoryDescType (md));
+-	    }
+-		break;
+-	    }
+-	}
+-    }
+-
+-#define alloc_memory(name, idx, t)				\
+-    if (((L4_Word_t *) kip)[idx + 1])				\
+-    {								\
+-	L4_Word_t * desc = &((L4_Word_t *) kip)[idx];		\
+-	register_memory (desc[0], desc[1], t);			\
+-    }
+-
+-    // Allocate memory to initial servers.
+-    alloc_memory (Kdebug, 6, kernel_id);
+-    alloc_memory (Sigma0, 10, sigma0_id);
+-    alloc_memory (Sigma1, 14, sigma1_id);
+-    alloc_memory (RootServer, 18, rootserver_id);
+-}
+-#endif
+-
+-
+-/**
+- * Initialze the various memory pools.
+- */
+-void init_mempool (void)
+-{
+-    L4_Word_t psmask = L4_PageSizeMask (kip);
+-
+-    if (psmask == 0)
+-    {
+-	printf ("s0: Page-size mask in KIP is empty!\n");
+-	for (;;)
+-	    L4_KDB_Enter ("s0: no page-size mask");
+-    }
+-
+-    // Determine minimum page size
+-    for (L4_Word_t m = (1UL << min_pgsize);
+-	 (m & psmask) == 0;
+-	 m <<= 1, min_pgsize++)
+-	;
+-
+-    // Initialize memory pools
+-    conv_memory_pool.init ();
+-    memory_pool.init ();
+-    alloc_pool.init ();
+-
+-    init_mempool_from_kip ();
+-}
+-
+-
+-/**
+- * Dump contents of memory pools.
+- */
+-void dump_mempools (void)
+-{
+-    printf ("s0:\ns0: Free pool (conventional memory):\n");
+-    conv_memory_pool.dump ();
+-    printf ("s0:\ns0: Free pool (non-conventional memory):\n");
+-    memory_pool.dump ();
+-    printf ("s0:\ns0: Alloc pool:\n");
+-    alloc_pool.dump ();
+-}
+-
+-
+-/**
+- * Allocate a page located at a specific address.  Address need not be
+- * within conventional memory range.
+- *
+- * @param tid		id of thread doing allocation
+- * @param addr		location of page to allocate
+- * @param log2size	size of page to allocate
+- * @param map		genrated map item corresponding to alloced page
+- * @param only_conv	only try to allocation from conventional memory pool
+- *
+- * @return true upon success, false otherwise
+- */
+-bool allocate_page (L4_ThreadId_t tid, L4_Paddr_t addr, L4_Word_t log2size,
+-		    L4_MapItem_t & map, bool only_conventional)
+-{
+-    region_t * r;
+-    L4_Fpage_t fp;
+-
+-    map = L4_MapItem (L4_Nilpage, 0);
+-
+-    dprintf (2, "s0: allocate_page (tid: 0x%lx, addr: %lx, log2size: %ld)\n",
+-	     (long) tid.raw, (long) addr, (long) log2size);
+-
+-    if (log2size < min_pgsize)
+-	return false;
+-
+-    // Make sure that addr is properly aligned.
+-    addr &= ~(((L4_Paddr_t)1UL << log2size) - 1);
+-    L4_Paddr_t addr_high = addr + (1UL << log2size) - 1;
+-
+-    L4_Fpage_t kip_area, utcb_area;
+-    L4_Word_t control;
+-    L4_ThreadId_t redirector;
+-    L4_Word_t shortaddr = (L4_Word_t)addr;
+-
+-    if (addr != (L4_Word_t)addr) { //extended mapping
+-    	kip_area.X.s = log2size;
+-        kip_area.X.b = shortaddr >> 10;
+-        redirector.raw = addr >> 32;
+-        utcb_area.raw = shortaddr;
+-
+-        L4_SpaceControl(sigma0_id,1 << 29, kip_area, utcb_area, redirector,
+-        		&control);
+-
+-    }
+-
+-    region_pool_t * pools[] = { &conv_memory_pool, &memory_pool,
+-				(region_pool_t *) NULL };
+-
+-    // Check if we only want to try the conventional memory pool
+-    if (only_conventional)
+-	pools[1] = (region_pool_t *) NULL;
+-
+-    // Try allocating from one of the memory pools.
+-    for (L4_Word_t i = 0; pools[i] != NULL; i++)
+-    {
+-	pools[i]->reset ();
+-	while ((r = pools[i]->next ()) != NULL)
+-	{
+-	    if (r->low > addr_high || r->high < addr)
+-		continue;
+-
+-	    fp = r->allocate (addr, log2size, tid, L4_FpageLog2);
+-	    if (! L4_IsNilFpage (fp))
+-	    {
+-		map = L4_MapItem (fp, addr);
+-		alloc_pool.insert (new region_t (addr, addr_high, tid));
+-		return true;
+-	    }
+-	}
+-    }
+-
+-    // Check if memory has already been allocated.
+-    alloc_pool.reset ();
+-    while ((r = alloc_pool.next ()) != NULL)
+-    {
+-	if (r->can_allocate (addr, log2size, tid))
+-	{
+-	    map = L4_MapItem
+-		(L4_FpageLog2 (addr, log2size) + L4_FullyAccessible, addr);
+-	    return true;
+-	}
+-    }
+-
+-    // If all the above failed we have to try the slow way of
+-    // allocating parts of memory from different pools.
+-    region_pool_t * allpools[] = { &conv_memory_pool,
+-				   &alloc_pool,
+-				   &memory_pool,
+-				   (region_pool_t *) NULL };
+-
+-    // Check if we only want to try the conventional memory pool
+-    if (only_conventional)
+-	allpools[2] = (region_pool_t *) NULL;
+-
+-    // Loop once for checking followed by once for allocating
+-    for (L4_Word_t phase = 0; phase < 2; phase++)
+-    {
+-
+-	// Use smallest page size as stepping
+-	for (L4_Paddr_t a = addr; a < addr_high; a += (1UL << min_pgsize))
+-	{
+-	    L4_Paddr_t a_end = a + (1UL << min_pgsize);
+-	    bool failed = true;
+-
+-	    // Try the different pools
+-	    for (L4_Word_t i = 0; failed && allpools[i] != NULL; i++)
+-	    {
+-		allpools[i]->reset ();
+-		while ((r = allpools[i]->next ()) != NULL)
+-		{
+-		    if (r->low > a_end || r->high < a)
+-			continue;
+-
+-		    // Test if allocation is possible
+-		    if (r->can_allocate (a, min_pgsize, tid))
+-		    {
+-			failed = false;
+-			if (phase == 1 && allpools[i] != &alloc_pool)
+-			{
+-			    // Allocation phase
+-			    r->allocate (a, min_pgsize, tid, L4_FpageLog2);
+-			    alloc_pool.insert 
+-				(new region_t (a, a_end - 1, tid));
+-			}
+-		    }
+-		}
+-	    }
+-
+-	    if (failed)
+-		return false;
+-	}
+-    }
+-
+-    map = L4_MapItem (L4_FpageLog2 ((L4_Word_t)addr, log2size) + L4_FullyAccessible,
+-		      (L4_Word_t)addr);
+-
+-    return true;
+-}
+-
+-
+-/**
+- * Allocate a page of conventional memory.  Page may be allocated from
+- * arbitrary address.
+- *
+- * @param tid		id of thread doing allocation
+- * @param log2size	size of page to allocate
+- * @param map		genrated map item corresponding to alloced page
+- *
+- * @return true upon success, false otherwise
+- */
+-bool allocate_page (L4_ThreadId_t tid, L4_Word_t log2size, L4_MapItem_t & map)
+-{
+-    region_t * r;
+-    L4_Fpage_t fp;
+-
+-    map = L4_MapItem (L4_Nilpage, 0);
+-
+-    dprintf (2, "s0: allocate_page (tid: 0x%lx, log2size: %ld)\n",
+-	     (long) tid.raw, (long) log2size);
+-
+-    if (log2size < min_pgsize)
+-	return false;
+-
+-    // Try allocating memory from pool of real memory.
+-    conv_memory_pool.reset ();
+-    while ((r = conv_memory_pool.next ()) != NULL)
+-    {
+-	fp = r->allocate (log2size, tid, L4_FpageLog2);
+-	if (! L4_IsNilFpage (fp))
+-	{
+-	    map = L4_MapItem (fp, L4_Address (fp));
+-	    alloc_pool.insert
+-		(new region_t (L4_Address (fp), L4_Address (fp) +
+-			       (1UL << log2size) - 1, tid));
+-	    return true;
+-	}
+-    }
+-
+-    return false;
+-}
+diff --git a/user.enryo/util/kickstart/amd64.cc b/user.enryo/util/kickstart/amd64.cc
+deleted file mode 100755
+index 79d0c521..00000000
+--- a/user.enryo/util/kickstart/amd64.cc
++++ /dev/null
+@@ -1,191 +0,0 @@
+-/*********************************************************************
+- *                
+- * Copyright (C) 2003-2004, 2006, 2010,  Karlsruhe University
+- *                
+- * File path:     amd64.cc
+- * Description:   AMD64 specific implementation fragments of kickstart
+- *                
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in the
+- *    documentation and/or other materials provided with the distribution.
+- * 
+- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+- * SUCH DAMAGE.
+- *                
+- * $Id: amd64.cc,v 1.2 2006/02/21 08:51:17 stoess Exp $
+- *                
+- ********************************************************************/
+-// For alignment
+-#define PAGESIZE		(4*1024)
+-
+-#include <config.h>
+-#include <l4io.h>
+-#include <l4/types.h>
+-#include "kickstart.h"
+-#include "mbi.h"                // MultiBoot Info structure
+-#include "kipmgr.h"             // KIP management
+-#include "lib.h"
+-
+-
+-/*
+- * Loader formats supported for AMD64.
+- */
+-loader_format_t loader_formats[] = {
+-    { "multiboot compliant loader", mbi_probe,  mbi_init },
+-    NULL_LOADER
+-};
+-
+-
+-void fail(int ec)
+-{
+-    printf("PANIC: FAIL in line %d\n", ec);
+-    while(1);
+-}
+-
+-
+-void flush_cache()
+-{
+-    __asm__ __volatile__ ("wbinvd");
+-}
+-
+-
+-
+-/*
+- * Start kernel at its entry point. No preconditions
+- */
+-void launch_kernel(L4_Word_t entry)
+-{
+-    __asm__ __volatile__ ("jmp *%0" : : "r"(entry));
+-}
+-
+-#if defined(CONFIG_COMPORT)
+-
+-#if CONFIG_COMPORT == 0
+-# define COMPORT 0x3f8
+-#elif CONFIG_COMPORT == 1
+-# define COMPORT 0x2f8
+-#elif CONFIG_COMPORT == 2
+-# define COMPORT 0x3e8
+-#elif CONFIG_COMPORT == 3
+-# define COMPORT 0x2e8
+-#else
+-#define COMPORT CONFIG_COMPORT
+-#endif
+-
+-extern inline L4_Word8_t inb(const L4_Word16_t port)
+-{
+-    L4_Word8_t val;
+-
+-    __asm__ __volatile__ ("inb  %w1, %0" : "=a"(val) : "dN"(port));
+-
+-    return val;
+-}
+-
+-extern inline void outb(const L4_Word16_t port, const L4_Word8_t val)
+-{
+-    __asm__ __volatile__ ("outb %0, %w1" : : "a"(val), "dN"(port));
+-}
+-
+-
+-static void init_serial(void)
+-{
+-#define IER     (COMPORT+1)
+-#define EIR     (COMPORT+2)
+-#define LCR     (COMPORT+3)
+-#define MCR     (COMPORT+4)
+-#define LSR     (COMPORT+5)
+-#define MSR     (COMPORT+6)
+-#define DLLO    (COMPORT+0)
+-#define DLHI    (COMPORT+1)
+-
+-    outb(LCR, 0x80);          /* select bank 1        */
+-    for (volatile int i = 10000000; i--; );
+-    outb(DLLO, (((115200/CONFIG_COMSPEED) >> 0) & 0x00FF));
+-    outb(DLHI, (((115200/CONFIG_COMSPEED) >> 8) & 0x00FF));
+-    outb(LCR, 0x03);          /* set 8,N,1            */
+-    outb(IER, 0x00);          /* disable interrupts   */
+-    outb(EIR, 0x07);          /* enable FIFOs */
+-    inb(IER);
+-    inb(EIR);
+-    inb(LCR);
+-    inb(MCR);
+-    inb(LSR);
+-    inb(MSR);
+-}
+-
+-#define DISPLAY   ((char*)0xb8000)
+-#define COLOR     15
+-#define NUM_LINES 25
+-
+-void __vga_putc(int c)
+-{
+-    unsigned int i;
+-    static unsigned __cursor = 160 * (NUM_LINES - 1);
+-
+-    switch(c) {
+-	case '\r':
+-	    break;
+-	case '\n':
+-	    do
+-	    {
+-		DISPLAY[__cursor++] = ' ';
+-		DISPLAY[__cursor++] = COLOR;
+-	    }
+-	    while (__cursor % 160 != 0);
+-	    break;
+-	case '\t':
+-	    do
+-	    {
+-		DISPLAY[__cursor++] = ' ';
+-		DISPLAY[__cursor++] = COLOR;
+-	    }
+-	    while (__cursor % 16 != 0);
+-	    break;
+-	default:
+-	    DISPLAY[__cursor++] = c;
+-	    DISPLAY[__cursor++] = COLOR;
+-    }
+-    if (__cursor == (160 * NUM_LINES)) {
+-	for (i = (160 / sizeof (L4_Word_t));
+-		i < (160 / sizeof (L4_Word_t)) * NUM_LINES;
+-		i++)
+-	    ((L4_Word_t *) DISPLAY)[i - 160 / sizeof (L4_Word_t)]
+-		= ((L4_Word_t *) DISPLAY)[i];
+-	for (i = 0; i < 160 / sizeof (L4_Word_t); i++)
+-	    ((L4_Word_t *) DISPLAY)[160 / sizeof (L4_Word_t)
+-		* (NUM_LINES-1) + i] = 0;
+-	__cursor -= 160;
+-    }
+-}
+-	
+-extern "C" void putc(int c)
+-{
+-    static bool do_init = true;
+-
+-    if( do_init )
+-    {
+-	do_init = false;
+-	init_serial();
+-    }
+-
+-    extern void __l4_putc(int c);
+-    __l4_putc(c);
+-    __vga_putc(c);
+-}
+-
+-#endif	/* CONFIG_COMPORT */
+-
+diff --git a/user.enryo/util/kickstart/bootinfo.cc b/user.enryo/util/kickstart/bootinfo.cc
+deleted file mode 100644
+index cd1468c0..00000000
+--- a/user.enryo/util/kickstart/bootinfo.cc
++++ /dev/null
+@@ -1,183 +0,0 @@
+-/*********************************************************************
+- *                
+- * Copyright (C) 2004-2006,  Karlsruhe University
+- *                
+- * File path:     bootinfo.cc
+- * Description:   generic bootinfo creation functions
+- *                
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in the
+- *    documentation and/or other materials provided with the distribution.
+- * 
+- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+- * SUCH DAMAGE.
+- *                
+- * $Id: bootinfo.cc,v 1.2 2006/10/22 19:38:53 reichelt Exp $
+- *                
+- ********************************************************************/
+-#include <config.h>
+-#include <l4io.h>
+-
+-#include "bootinfo.h"
+-
+-#include "kickstart.h"
+-#include "lib.h"
+-#include "elf.h"
+-
+-
+-#if defined(BOOTINFO_32on64)
+-#define BI_NS BI32
+-#elif defined(BOOTINFO_64on32)
+-#define BI_NS BI64
+-#elif defined(L4_32BIT)
+-#define BI_NS BI32
+-#elif defined(L4_64BIT)
+-#define BI_NS BI64
+-#endif
+-
+-namespace BI_NS
+-{
+-
+-/**
+- * Initialize bootinfo structure
+- *
+- * @param bi		Pointer to bootinfo
+- *
+- * Function initializes global part of bootinfo structure.
+- *
+- * @returns pointer to first bootinfo record
+- */
+-L4_BootRec_t * init_bootinfo (L4_BootInfo_t * bi)
+-{
+-    bi->magic		= L4_BOOTINFO_MAGIC;
+-    bi->version		= L4_BOOTINFO_VERSION;
+-    bi->size		= sizeof (*bi);
+-    bi->first_entry	= sizeof (*bi);
+-    bi->num_entries	= 0;
+-
+-    //Debug init_bootinfo()
+-
+-    printf("[bootinfo.cc] : init_bootinfo(), boot info record size & first entry: %d...\n\n", sizeof (*bi));
+-    printf("[bootinfo.cc] : init_bootinfo(), boot info record version: %d...\n\n", L4_BOOTINFO_VERSION);
+-    printf("[bootinfo.cc] : init_bootinfo(), have %d entries in the table...\n\n", bi->num_entries);
+-
+-    return L4_BootInfo_FirstEntry (bi);
+-}
+-
+-
+-/**
+- * Record all MBI modules into bootinfo
+- *
+- * @param bi		Pointer to bootinfo
+- * @param rec		Pointer to next free bootinfo record
+- * @param mbi		Pointer to loaded MBI modules
+- * @param orig_mbi_modules Array of undecoded versions of all modules
+- * @param decode_count	Number of possibly ELF-decoded modules
+- *
+- * Function parses through all multiboot info modules and inserts them
+- * into the bootinfo structure, either as a simple executable or as a
+- * simple module record.
+- *
+- * @returns pointer to next free bootinfo record
+- */
+-L4_BootRec_t * record_bootinfo_modules (L4_BootInfo_t * bi,
+-					L4_BootRec_t * rec,
+-					mbi_t * mbi,
+-					mbi_module_t orig_mbi_modules[],
+-					unsigned int decode_count)
+-{
+-    L4_Word_t sz;
+-
+-    // XXX Make sure that we do not overflow the allocated memory for
+-    // the bootinfo structure.
+-
+-    if (mbi->flags.mods)
+-    {
+-	for (unsigned int i = 1; i < mbi->modcount; i++)
+-	{
+-	    L4_Boot_SimpleExec_t * exec = (L4_Boot_SimpleExec_t *) rec;
+-
+-	    if (i < decode_count &&
+-		elf_find_sections (orig_mbi_modules[i].start, exec))
+-	    {
+-		// Found en ELF module.  Copy commandline into
+-		// bootinfo.
+-		sz = sizeof (*exec);
+-		exec->cmdline_offset = sz;
+-		InternalStrCpy ((char *) exec + sz, mbi->mods[i].cmdline);
+-		sz += strlen (mbi->mods[i].cmdline) + 1;
+-		sz = align_up (sz, sizeof (L4_Word_t));
+-		exec->offset_next = sz;
+-	    }
+-	    else
+-	    {
+-		// Record module as a simple module.
+-		L4_Boot_Module_t * mod = (L4_Boot_Module_t *) rec;
+-		sz = sizeof (*mod);
+-
+-		mod->type	 = L4_BootInfo_Module;
+-		mod->version	 = 1;
+-		mod->offset_next = sz;
+-		mod->start 	 = mbi->mods[i].start;
+-		mod->size 	 = mbi->mods[i].end - mbi->mods[i].start;
+-
+-		// Copy command line to bootinfo.
+-		mod->cmdline_offset = sz;
+-		InternalStrCpy ((char *) exec + sz, mbi->mods[i].cmdline);
+-		sz += strlen (mbi->mods[i].cmdline) + 1;
+-		sz = align_up (sz, sizeof (L4_Word_t));
+-		mod->offset_next = sz;
+-	    }
+-
+-	    rec = (L4_BootRec_t *) ((L4_Word_t) rec + sz);
+-	    bi->num_entries++;
+-	    bi->size += sz;
+-	}
+-    }
+-
+-    return rec;
+-}
+-
+-
+-/**
+- * Record MBI pointer into bootinfo
+- *
+- * @param bi		Pointer to bootinfo
+- * @param rec		Pointer to next free bootinfo record
+- * @param mbi		Pointer to installed MBI info
+- *
+- * Function records pointer to MBI in bootinfo.
+- *
+- * @returns pointer to next free bootinfo record
+- */
+-L4_BootRec_t * record_bootinfo_mbi (L4_BootInfo_t * bi,
+-				    L4_BootRec_t * rec,
+-				    mbi_t * mbi)
+-{
+-    L4_Boot_MBI_t * bimbi = (L4_Boot_MBI_t *) rec;
+-
+-    bimbi->type		= L4_BootInfo_Multiboot;
+-    bimbi->version	= 1;
+-    bimbi->offset_next	= sizeof (*bimbi);
+-    bimbi->address	= (L4_Word_t) mbi;
+-
+-    bi->num_entries++;
+-    bi->size += sizeof (*bimbi);
+-    return L4_Next (rec);
+-}
+-
+-}
+diff --git a/user.enryo/util/kickstart/elf.cc b/user.enryo/util/kickstart/elf.cc
+deleted file mode 100644
+index ca4b5c6e..00000000
+--- a/user.enryo/util/kickstart/elf.cc
++++ /dev/null
+@@ -1,487 +0,0 @@
+-  /*********************************************************************
+- *                
+- * Copyright (C) 2004, 2006,  Karlsruhe University
+- *                
+- * File path:     elf.cc
+- * Description:   Simple ELF loader
+- *                
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in the
+- *    documentation and/or other materials provided with the distribution.
+- * 
+- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+- * SUCH DAMAGE.
+- *                
+- * $Id: elf.cc,v 1.13 2006/10/22 19:41:38 reichelt Exp $
+- *                
+- ********************************************************************/
+-#include <config.h>
+-#include <l4io.h>
+-
+-#include "kickstart.h"
+-#include "elf.h"
+-#include "lib.h"
+-
+-#if defined(L4_32BIT)
+-#define BI_NS BI32
+-#elif defined(L4_64BIT)
+-#define BI_NS BI64
+-#endif
+-
+-// void * InternalMemSet(void *s1, int c, size_t n);
+-//#include <liballoc.h>
+-//#define InternalMemSet liballoc_InternalMemSet
+-
+-//#include <sys/types.h>
+-
+-//This is a hack
+-
+-extern "C" void InternalMemSet(L4_Word_t dst, L4_Word8_t val, L4_Word_t len)
+-{
+-    L4_Word8_t* d = (L4_Word8_t*) dst;
+-
+-    while (len--)
+-        *d++ = val;
+-}
+-
+-extern "C" void InternalStrCpy( char *dst, const char *src )
+-{
+-    unsigned cnt = 0;
+-
+-    if( !dst || !src )
+-        return;
+-
+-    do {
+-        dst[cnt] = src[cnt];
+-    } while( src[cnt++] );
+-
+-}
+-
+-
+-bool elf_load32 (L4_Word_t file_start,
+-		 L4_Word_t file_end,
+-		 L4_Word_t *memory_start,
+-		 L4_Word_t *memory_end,
+-		 L4_Word_t *entry,
+-		 L4_MemCheck_Func_t check);
+-
+-bool elf_find_sections32 (L4_Word_t addr,
+-			  BI_NS::L4_Boot_SimpleExec_t * exec);
+-
+-bool elf_load64 (L4_Word_t file_start,
+-		 L4_Word_t file_end,
+-		 L4_Word_t *memory_start,
+-		 L4_Word_t *memory_end,
+-		 L4_Word_t *entry,
+-		 L4_MemCheck_Func_t check);
+-
+-bool elf_find_sections64 (L4_Word_t addr,
+-			  BI_NS::L4_Boot_SimpleExec_t * exec);
+-
+-
+-
+-bool __elf_func(elf_load) (L4_Word_t file_start,
+-			   L4_Word_t file_end,
+-			   L4_Word_t *memory_start,
+-			   L4_Word_t *memory_end,
+-			   L4_Word_t *entry,
+-			   L4_MemCheck_Func_t check)
+-{
+-    // Pointer to ELF file header
+-    ehdr_t* eh = (ehdr_t*) file_start;
+-
+-//Print the start/end ranges
+-    printf("  (%p-%p)",
+-           (void *) file_start,
+-           (void *) file_end);
+-    
+-    printf("\r\nType: %x, \r\n \
+-	  Machine:  \r\n%x,\
+-	   Version: %x, \r\n \
+-	   Entry: %x, \r\n \
+-	   Program Header Offset: %x, \
+-	   \r\n", eh->type, eh->machine, eh->entry, eh->phoff);
+-
+-    // Is it an executable?
+-    if (eh->type != 2)
+-    {
+-        // No. Bail out
+-        printf("  No executable\n");
+-        return false;
+-    }
+-
+-    // Is the address of the PHDR table valid?
+-    if (eh->phoff == 0)
+-    {
+-        // No. Bail out
+-        printf("  Wrong PHDR table offset\n");
+-        return false;//true; //false;
+-    }
+-
+-    printf("   => %p\n", (void *)(L4_Word_t)eh->entry);
+-    *entry = eh->entry;
+-
+-    // Locals to find the enclosing memory range of the loaded file
+-    L4_Word_t max_addr =  0U;
+-    L4_Word_t min_addr = ~0U;
+-
+-    // Walk the program header table
+-    for (L4_Word_t i = 0; i < eh->phnum; i++)
+-    {
+-        // Locate the entry in the program header table
+-        phdr_t* ph = (phdr_t*)(L4_Word_t)
+-	    (file_start + eh->phoff + eh->phentsize * i);
+-        
+-        if (ph->msize < ph->fsize)
+-            ph->msize = ph->fsize;
+-        
+-        // Is it to be loaded?
+-        if (ph->type == PT_LOAD)
+-        {
+-            L4_Word_t src_start = file_start + ph->offset;
+-            L4_Word_t src_end = src_start + ph->msize;
+-            L4_Word_t dst_start = ph->paddr;
+-            L4_Word_t dst_end = dst_start + ph->msize;
+-
+-            printf("  (%p-%p) -> %p-%p\n",
+-                   (void *) src_start,
+-                   (void *) src_end,
+-                   (void *) dst_start,
+-                   (void *) dst_end);
+-            // Check for memory region conflicts
+-            if (check && !check(dst_start, dst_end))
+-                return false;
+-            // Copy bytes from "file" to memory - load address
+-            memcopy(dst_start, src_start, ph->fsize);
+-            // Zero "non-file" bytes
+-            InternalMemSet(dst_start + ph->fsize, 0, ph->msize - ph->fsize);
+-            // Update min and max
+-            min_addr = min(min_addr, dst_start);
+-            max_addr = max(max_addr, dst_end);
+-        }
+-    }
+-
+-    // Write back the values into the caller-provided locations
+-    *memory_start = min_addr;
+-    *memory_end = max_addr;
+-
+-    // Signal successful loading
+-    return true;
+-}
+-
+-
+-bool __elf_func(elf_find_sections) (L4_Word_t addr,
+-				    BI_NS::L4_Boot_SimpleExec_t * exec)
+-{
+-    // Pointer to ELF file header
+-    ehdr_t * eh = (ehdr_t *) addr;
+-
+-    if (eh->type != 2)
+-	// Not an executable file.
+-	return false;
+-
+-    if (eh->phoff == 0)
+-	// No program headers.
+-        return false;
+-
+-    // Initialize a local bootinfo record
+-    InternalMemSet ((L4_Word_t) exec, 0, sizeof (*exec));
+-    exec->type = L4_BootInfo_SimpleExec;
+-    exec->version = 1;
+-    exec->initial_ip = eh->entry;
+-    exec->offset_next = sizeof (*exec);
+-    exec->flags = eh->ident[4];
+-
+-    if (eh->phoff != 0 && eh->shoff == 0)
+-    {
+-	/*
+-	 * We only have a program headers.  Walk all program headers
+-	 * and try to figure out what the sections are.
+-	 */
+-
+-	for (L4_Word_t i = 0; i < eh->phnum; i++)
+-	{
+-	    phdr_t * ph = (phdr_t *) (L4_Word_t) (addr + eh->phoff + eh->phentsize * i);
+-
+-	    // Assume that a segment without write permissions is .text
+-	    if ((ph->flags & PF_W) == 0)
+-	    {
+-		exec->text_pstart = ph->paddr;
+-		exec->text_vstart = ph->paddr;
+-		exec->text_size   = ph->fsize;
+-	    }
+-	    else
+-	    {
+-		exec->data_pstart = ph->paddr;
+-		exec->data_vstart = ph->paddr;
+-		exec->data_size   = ph->fsize;
+-	    }
+-
+-	    if (ph->msize > ph->fsize)
+-	    {
+-		// Looks like a bss section
+-		exec->bss_pstart = ph->paddr + ph->fsize;
+-		exec->bss_vstart = ph->vaddr + ph->fsize;
+-		exec->bss_size   = ph->msize - ph->fsize;
+-	    }
+-	}
+-
+-	return true;
+-    }
+-
+-    /*
+-     * If we have the section headers we can try to figure out the
+-     * real .text, .data, and .bss segments by inspecting the section
+-     * type and flags.
+-     */
+-
+-    L4_Word_t tlow = ~0UL, thigh = 0;
+-    L4_Word_t dlow = ~0UL, dhigh = 0;
+-    L4_Word_t blow = ~0UL, bhigh = 0;
+-    for (L4_Word_t i = 0; i < eh->shnum; i++)
+-    {
+-	shdr_t * sh = (shdr_t *) (L4_Word_t)
+-	    (addr + eh->shoff + eh->shentsize * i);
+-
+-	if (sh->type == SHT_PROGBITS)
+-	{
+-	    /* Also include read-only sections into .text */
+-	    if ((sh->flags & SHF_ALLOC) &&
+-		((sh->flags & SHF_EXECINSTR) || (~sh->flags & SHF_WRITE)))
+-	    {
+-		if (sh->addr < tlow)
+-		    tlow = sh->addr;
+-		if (sh->addr + sh->size > thigh)
+-		    thigh = sh->addr + sh->size;
+-	    }
+-	    /* Other writable sections are counted as .data */
+-	    else if ((sh->flags & SHF_ALLOC) &&
+-		     (sh->flags & SHF_WRITE))
+-	    {
+-		if (sh->addr < dlow)
+-		    dlow = sh->addr;
+-		if (sh->addr + sh->size > dhigh)
+-		    dhigh = sh->addr + sh->size;
+-	    }
+-	}
+-	else if (sh->type == SHT_NOBITS)
+-	{
+-	    /* Assume that all nobits sections are .bss */
+-	    if (sh->addr < blow)
+-		blow = sh->addr;
+-	    if (sh->addr + sh->size > bhigh)
+-		bhigh = sh->addr + sh->size;
+-	}
+-    }
+-
+-    /*
+-     * Translate the virtual addresses of the sections to physical
+-     * addresses using the segments in the program header.
+-     */
+-
+-#define INSEGMENT(a)	(a >= ph->vaddr && a < (ph->vaddr + ph->msize))
+-#define PADDR(a)	(ph->paddr + a - ph->vaddr)
+-
+-    for (L4_Word_t i = 0; i < eh->phnum; i++)
+-    {
+-	phdr_t * ph = (phdr_t *) (L4_Word_t)
+-	    (addr + eh->phoff + eh->phentsize * i);
+-
+-	if (INSEGMENT (tlow))
+-	{
+-	    exec->text_pstart = PADDR (tlow);
+-	    exec->text_vstart = tlow;
+-	    exec->text_size = thigh - tlow;
+-	}
+-	if (INSEGMENT (dlow))
+-	{
+-	    exec->data_pstart = PADDR (dlow);
+-	    exec->data_vstart = dlow;
+-	    exec->data_size = dhigh - dlow;
+-	}
+-	if (INSEGMENT (blow))
+-	{
+-	    exec->bss_pstart = PADDR (blow);
+-	    exec->bss_vstart = blow;
+-	    exec->bss_size = bhigh - blow;
+-	}
+-    }
+-
+-    return true;
+-}
+-
+-
+-#if !defined(ELF_32on64) && !defined(ELF_64on32) 
+-
+-/**
+- * ELF-load an ELF memory image
+- *
+- * @param file_start    First byte of source ELF image in memory
+- * @param file_end      First byte behind source ELF image in memory
+- * @param memory_start  Pointer to address of first byte of loaded image
+- * @param memory_end    Pointer to address of first byte behind loaded image
+- * @param entry         Pointer to address of entry point
+- * @param type          Pointer to ELF format ID (1: 32-bit, 2: 64-bit), may be NULL
+- * @param check         Pointer to function to check for memory conflicts, may be NULL
+- *
+- * This function ELF-loads an ELF image that is located in memory.  It
+- * interprets the program header table and copies all segments marked
+- * as load. It stores the lowest and highest+1 address used by the
+- * loaded image as well as the entry point into caller-provided memory
+- * locations.
+- *
+- * @returns false if ELF loading failed, true otherwise.
+- */
+-bool elf_load (L4_Word_t file_start,
+-	       L4_Word_t file_end,
+-	       L4_Word_t *memory_start,
+-	       L4_Word_t *memory_end,
+-	       L4_Word_t *entry,
+-	       L4_Word_t *type,
+-	       L4_MemCheck_Func_t check)
+-{
+-
+-
+-    // Pointer to ELF file header
+-    ehdr_t* eh = (ehdr_t*) file_start;
+-
+-    // Is it an ELF file? Check ELF magic
+-    if (!((eh->ident[0] == 0x7F) &&
+-          (eh->ident[1] == 'E') &&
+-          (eh->ident[2] == 'L') &&
+-          (eh->ident[3] == 'F')))
+-    {
+-        return false;
+-    }
+-
+-    if (type)
+-	*type = eh->ident[4];
+-
+-//#if defined(L4_32BIT) || defined(ALSO_ELF32)
+-    if (eh->is_32bit ())
+-    //Debugging ELF loader
+-    //printf("\n\n[elf.cc] : elf_load() was traversed!\n\n"); 
+-
+-        printf("<32> | \n"); //32-bitness
+-
+-	return elf_load32 (file_start, file_end,
+-			   memory_start, memory_end, entry,
+-			   check);
+-//#endif
+-
+-//#if defined(L4_64BIT) || defined(ALSO_ELF64)
+-    if (eh->is_64bit ())
+-
+-        printf("<64> | \n"); //64-bitness
+-
+-	return elf_load64 (file_start, file_end,
+-			   memory_start, memory_end, entry,
+-			   check);
+-//#endif
+-
+-
+-
+-    return false;
+-}
+-
+-
+-/**
+- * Find section address and sizes of ELF file
+- *
+- * @param addr		Address of ELF file
+- * @param exec		Pointer to bootinfo exec structure
+- *
+- * This functions tries to figure out the location (virtual and
+- * physical) and size of the .text, .data and .bss sections.  The
+- * location is derived from the section headers or, if there are no
+- * section headers, from the program headers.
+- *
+- * @returns true if able to find sections, false otherwise
+- */
+-bool elf_find_sections (L4_Word_t addr,
+-			BI_NS::L4_Boot_SimpleExec_t * exec)
+-{
+-    // Pointer to ELF file header
+-    ehdr_t * eh = (ehdr_t *) addr;
+-
+-    // Is it an ELF file? Check ELF magic
+-    if (!((eh->ident[0] == 0x7F) &&
+-          (eh->ident[1] == 'E') &&
+-          (eh->ident[2] == 'L') &&
+-          (eh->ident[3] == 'F')))
+-    {
+-	// Not an ELF file.
+-
+-printf("This is not an ELF executable!\n");
+-        return false;
+-    }
+-
+-#if defined(L4_32BIT) || defined(ALSO_ELF32)
+-    if (eh->is_32bit ())
+-	return elf_find_sections32 (addr, exec);
+-#endif
+-
+-#if defined(L4_64BIT) || defined(ALSO_ELF64)
+-    if (eh->is_64bit ())
+-	return elf_find_sections64 (addr, exec);
+-#endif
+-
+-    return false;
+-}
+-
+-
+-#if defined(ALSO_BOOTINFO32)
+-#define BI_NS2 BI32
+-#elif defined(ALSO_BOOTINFO64)
+-#define BI_NS2 BI64
+-#endif
+-
+-#if defined(BI_NS2)
+-bool elf_find_sections (L4_Word_t addr,
+-			BI_NS2::L4_Boot_SimpleExec_t * exec)
+-{
+-    BI_NS::L4_Boot_SimpleExec_t e;
+-
+-    if (elf_find_sections (addr, &e))
+-    {
+-	exec->offset_next = sizeof (*exec);
+-
+-	exec->type		= e.type;
+-	exec->version		= e.version;
+-	exec->text_pstart	= e.text_pstart;
+-	exec->text_vstart	= e.text_vstart;
+-	exec->text_size		= e.text_size;
+-	exec->data_pstart	= e.data_pstart;
+-	exec->data_vstart	= e.data_vstart;
+-	exec->data_size		= e.data_size;
+-	exec->bss_pstart	= e.bss_pstart;
+-	exec->bss_vstart	= e.bss_vstart;
+-	exec->bss_size		= e.bss_size;
+-	exec->initial_ip	= e.initial_ip;
+-	exec->flags		= e.flags;
+-	exec->label		= e.label;
+-	exec->cmdline_offset	= e.cmdline_offset;
+-
+-	return true;
+-    }
+-
+-    return false;
+-}
+-#endif
+-
+-
+-#endif
+diff --git a/user.enryo/util/kickstart/kickstart.cc b/user.enryo/util/kickstart/kickstart.cc
+deleted file mode 100644
+index 601d0ed7..00000000
+--- a/user.enryo/util/kickstart/kickstart.cc
++++ /dev/null
+@@ -1,87 +0,0 @@
+-/*********************************************************************
+- *                
+- * Copyright (C) 2003-2004, 2010,  Karlsruhe University
+- *                
+- * File path:     kickstart.cc
+- * Description:   
+- *                
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in the
+- *    documentation and/or other materials provided with the distribution.
+- * 
+- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+- * SUCH DAMAGE.
+- *                
+- * $Id: kickstart.cc,v 1.15 2004/04/14 18:42:47 skoglund Exp $
+- *                
+- ********************************************************************/
+-/* startup stuff */
+-
+-#include <config.h>
+-#include <l4io.h>
+-
+-#include "kickstart.h"
+-
+-#define	_MKSTR(sym)	_MKSTR2(sym)
+-#define	_MKSTR2(sym)	#sym
+-
+-
+-/**
+- * Main kickstart loader function.  Parses through all loader formats
+- * to find a valid one.
+- */
+-extern "C" void loader (void)
+-{
+-    loader_format_t * fmt = NULL;
+-
+-    printf("[kickstart.cc] : KickStart 0."_MKSTR(REVISION)"\n");
+-    
+-   //Say where we are...
+-    printf("[kickstart.cc] : inside loader()\n\n");
+-
+-    // Try to find a valid loader format.
+-    for (L4_Word_t n = 0; loader_formats[n].probe; n++)
+-    {
+-	if (loader_formats[n].probe ())
+-	{
+-	    fmt = &loader_formats[n];
+-	    break;
+-	}
+-    }
+-
+-    if (fmt == NULL)
+-    {
+-	printf ("[kickstart.cc] : No valid loader format found.");
+-	return;
+-    }
+-
+-    printf ("[kickstart.cc] : Detected %s\n", fmt->name);
+-    L4_Word_t entry = fmt->init ();
+-
+-    // Flush caches (some archs don't like code in their D-cache)
+-    flush_cache();
+-
+-    printf("[kickstart.cc] : Launching kernel ...\n");
+-    printf("entry: 0x%lx \n", entry);
+-
+-
+-    // Start the kernel at its entry point
+-    launch_kernel (entry);
+-    
+-    // We're not supposed to return from the kernel. Signal if we do
+-    FAIL();
+-}
+diff --git a/user.enryo/util/kickstart/kipmgr.cc b/user.enryo/util/kickstart/kipmgr.cc
+deleted file mode 100644
+index d99644a9..00000000
+--- a/user.enryo/util/kickstart/kipmgr.cc
++++ /dev/null
+@@ -1,283 +0,0 @@
+-/*********************************************************************
+- *                
+- * Copyright (C) 2003-2004, 2006,  Karlsruhe University
+- *                
+- * File path:     kipmgr.cc
+- * Description:   Manager for Kernel Interface Page/Kernel
+- *                Configuration Page.   The KIP manager can handle both
+- *                64bit and 32bit KIPs.
+- *                
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in the
+- *    documentation and/or other materials provided with the distribution.
+- * 
+- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+- * SUCH DAMAGE.
+- *                
+- * $Id: kipmgr.cc,v 1.18 2006/10/20 21:45:31 reichelt Exp $
+- *                
+- ********************************************************************/
+-
+-#include "kipmgr.h"
+-#include "lib.h"
+-#include "elf.h"
+-
+-#define KCP_OFFSET(field) \
+-	(((L4_Word_t) (&((L4_KernelConfigurationPage_t *) 0)->field)) / \
+-	 sizeof (L4_Word_t))
+-
+-#define SET_KIP(field, value)	set_val (KCP_OFFSET (field), value)
+-#define GET_KIP(field)		get_val (KCP_OFFSET (field))
+-
+-typedef union {
+-    L4_Word64_t	raw[2];
+-    struct {
+-	L4_BITFIELD5(L4_Word64_t,
+-	    type	:4,
+-	    t		:4,
+-	    __padding1	:1,
+-	    v		:1,
+-	    low		:64 - 10
+-	);
+-	L4_BITFIELD2(L4_Word64_t,
+-	    __padding2	:10,
+-	    high	:64 - 10
+-	);
+-    } x;
+-} memdesc_t;
+-
+-
+-kip_manager_t::kip_manager_t (void)
+-{
+-    mem_desc_cnt = 0;
+-    mem_desc_offset = 0;
+-    word_size = 0;
+-}
+-
+-
+-/**
+- * Find location of KIP and initialize the KIP manager according to
+- * the wordsize.
+- *
+- * @param start		start address of kernel image
+- * @param end		end address of kernel image
+- *
+- * @returns true if KIP found and init succeeded, false otherwise
+- */
+-bool kip_manager_t::find_kip (L4_Word_t start, L4_Word_t end)
+-{
+-    /*
+-     * Search for location of KIP.
+-     */
+-
+-    for (L4_Word_t p = start & ~0xFFF; p < end;
+-	 p += sizeof(((L4_KernelConfigurationPage_t*) p)))
+-    {
+-        if (((L4_KernelConfigurationPage_t*) p)->magic == L4_MAGIC)
+-        {
+-            kip = (L4_KernelConfigurationPage_t*) p;
+-
+-	    if (((L4_Word32_t *) p)[1] != 0)
+-		word_size = 4;
+-	    else
+-		word_size = 8;
+-
+-	    L4_Word64_t meminfo = GET_KIP (MemoryInfo);
+-	    if (word_size == 4)
+-		mem_desc_offset = (meminfo >> 16) / 4;
+-	    else
+-		mem_desc_offset = (meminfo >> 32) / 8;
+-
+-            if ( mem_desc_offset == 0 )
+-                return false;
+-
+-            return true;
+-        }
+-    }
+-
+-    return false;
+-}
+-
+-void kip_manager_t::install_sigma0 (L4_Word_t mod_start, L4_Word_t mod_end,
+-                                    L4_Word_t entry, L4_Word_t type)
+-{
+-    SET_KIP (sigma0.low, mod_start);
+-    SET_KIP (sigma0.high, mod_end);
+-    SET_KIP (sigma0.ip, entry);
+-    if (word_size > 4 && type == 1)
+-	SET_KIP (sigma0.sp, 1ULL << 63);
+-
+-    this->dedicate_memory(mod_start, mod_end,
+-			  L4_BootLoaderSpecificMemoryType,
+-			  kip_manager_t::desc_init_server);
+-}
+-
+-void kip_manager_t::install_root_task (L4_Word_t mod_start, L4_Word_t mod_end,
+-				       L4_Word_t entry, L4_Word_t type)
+-{
+-    SET_KIP (root_server.low, mod_start);
+-    SET_KIP (root_server.high, mod_end);
+-    SET_KIP (root_server.ip, entry);
+-    if (word_size > 4 && type == 1)
+-	SET_KIP (root_server.sp, 1ULL << 63);
+-
+-    this->dedicate_memory(mod_start, mod_end,
+-			  L4_BootLoaderSpecificMemoryType,
+-			  kip_manager_t::desc_init_server);
+-}
+-
+-void kip_manager_t::update_kip (L4_Word_t boot_info)
+-{
+-    SET_KIP (BootInfo, boot_info);
+-
+-    L4_Word64_t meminfo = GET_KIP (MemoryInfo);
+-    if (word_size == 4)
+-	meminfo = (meminfo & ~0xffffUL) + mem_desc_cnt;
+-    else if (word_size == 8)
+-	meminfo = (meminfo & ~0xffffffffULL) + mem_desc_cnt;
+-
+-    SET_KIP (MemoryInfo, meminfo);
+-}
+-
+-bool kip_manager_t::dedicate_memory (L4_Word64_t start,
+-				     L4_Word64_t end,
+-				     L4_Word64_t type,
+-				     L4_Word64_t sub_type)
+-{
+-    memdesc_t mdesc;
+-    mdesc.raw[0] = get_val (mem_desc_offset + mem_desc_cnt*2 + 0);
+-    mdesc.raw[1] = get_val (mem_desc_offset + mem_desc_cnt*2 + 1);
+-
+-    mdesc.x.type = type;
+-    mdesc.x.t = sub_type;
+-    mdesc.x.v = 0;
+-    mdesc.x.low = start >> 10;
+-    mdesc.x.high = end >> 10;
+-
+-    set_val (mem_desc_offset + mem_desc_cnt*2 + 0, mdesc.raw[0]);
+-    set_val (mem_desc_offset + mem_desc_cnt*2 + 1, mdesc.raw[1]);
+-    mem_desc_cnt++;
+-
+-    return true;
+-}
+-
+-
+-/**
+- * Returns the size of physical memory as defined by the memory
+- * descriptors.
+- *
+- * @returns physical memory size in bytes
+- */
+-L4_Word64_t kip_manager_t::get_phys_mem_max (void)
+-{
+-    L4_Word64_t max = 0;
+-
+-    for (L4_Word_t i = 0; i < mem_desc_cnt; i++)
+-    {
+-	memdesc_t mdesc;
+-	mdesc.raw[0] = get_val (mem_desc_offset + i*2 + 0);
+-	mdesc.raw[1] = get_val (mem_desc_offset + i*2 + 1);
+-
+-	L4_Word64_t high = (mdesc.x.high << 10) | 0x3ff;
+-	if (mdesc.x.type == L4_ConventionalMemoryType
+-	    && mdesc.x.v == 0
+-	    && high > max)
+-	{
+-	    max = high;
+-	}
+-    }
+-
+-    return max;
+-}
+-
+-
+-/**
+- * Find the minimal page size supported by architecture/kernel.
+- *
+- * @returns size of smallest supported page size (in bytes)
+- */
+-L4_Word_t kip_manager_t::get_min_pagesize (void)
+-{
+-    L4_Word_t psmask = get_val (50);
+-    L4_Word_t min_pgsize = 10;
+-
+-    if (psmask == 0)
+-	return 0;
+-
+-    // Determine minimum page size
+-    for (L4_Word_t m = (1UL << min_pgsize);
+-	 (m & psmask) == 0;
+-	 m <<= 1, min_pgsize++)
+-	;
+-
+-    return 1UL << min_pgsize;
+-}
+-
+-
+-/**
+- * Determines whether a memory region intersects with the memory 
+- * allocations defined in the kip's memory descriptors.
+- *
+- * @param start		The start address of the region.
+- * @param size		The size of the region.
+- *
+- * @returns true if no conflict, otherwise false
+- */
+-bool kip_manager_t::is_mem_region_free (L4_Word_t start, L4_Word_t size)
+-{
+-    L4_Word_t i;
+-    L4_Word_t end = start - 1 + size;
+-
+-    // Look for conflicts with kdebug, sigma0, sigma1, and the root server.
+-    L4_Word_t off = KCP_OFFSET (Kdebug);
+-    for (i = 0; i < 4; i++)
+-    {
+-	if (is_intersection (start, end,
+-			     get_val (off + i*4 + 2),
+-			     get_val (off + i*4 + 3)))
+-	    return false;
+-    }
+-
+-    // Look for conflicts with memory descriptors.
+-    for (i = 0; i < mem_desc_cnt; i++)
+-    {
+-	memdesc_t mdesc;
+-	mdesc.raw[0] = get_val (mem_desc_offset + i*2 + 0);
+-	mdesc.raw[1] = get_val (mem_desc_offset + i*2 + 1);
+-
+-	if (mdesc.x.type == L4_ConventionalMemoryType
+-	    || mdesc.x.v == 1)
+-	    continue;
+-
+-	L4_Word64_t low = (mdesc.x.low << 10);
+-	L4_Word64_t high = (mdesc.x.high << 10) | 0x3ff;
+-
+-	// Look for the unfriendly "shared" memory descriptor that covers
+-	// the entire address space.
+-	if ((mdesc.x.type == L4_SharedMemoryType) &&
+-	    (low == 0) && (L4_Word32_t (high) == L4_Word32_t (-1)))
+-	{
+-	    continue;
+-	}
+-
+-	if (is_intersection (start, end, low, high))
+-	    return false;
+-    }
+-
+-    return true;
+-}
+-
+diff --git a/user.enryo/util/kickstart/lib.cc b/user.enryo/util/kickstart/lib.cc
+deleted file mode 100644
+index 54662276..00000000
+--- a/user.enryo/util/kickstart/lib.cc
++++ /dev/null
+@@ -1,239 +0,0 @@
+-/*********************************************************************
+- *                
+- * Copyright (C) 2003-2004, 2009-2010,  Karlsruhe University
+- *                
+- * File path:     lib.cc
+- * Description:   
+- *                
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in the
+- *    documentation and/or other materials provided with the distribution.
+- * 
+- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+- * SUCH DAMAGE.
+- *                
+- * $Id: lib.cc,v 1.7 2004/04/26 19:47:42 stoess Exp $
+- *                
+- ********************************************************************/
+-#include "lib.h"
+-
+-extern "C" unsigned strlen( const char *src )
+-{
+-    unsigned cnt = 0;
+-
+-    while( src && src[cnt] )
+-	cnt++;
+-    return cnt;
+-}
+-
+-extern "C" void strcpy( char *dst, const char *src )
+-{
+-    unsigned cnt = 0;
+-   
+-    if( !dst || !src )
+-	return;
+-
+-    do {
+-	dst[cnt] = src[cnt];
+-    } while( src[cnt++] );
+-    
+-}
+-
+-/**
+- * Copy a block of memory
+- *
+- * @param dst   destination address
+- * @param src   source address
+- * @param len   length of memory block in bytes
+- *
+- * This function copies a block of memory byte-by-byte from the source
+- * address to the destination address. The function does not check for
+- * overlapping of source and destination region.
+- */
+-extern "C" void memcopy(L4_Word_t dst, L4_Word_t src, L4_Word_t len)
+-{
+-    L4_Word8_t* s = (L4_Word8_t*) src;
+-    L4_Word8_t* d = (L4_Word8_t*) dst;
+-    
+-    while (len--)
+-        *d++ = *s++;
+-}
+-
+-
+-/**
+- * Fill memory with a constant byte
+- *
+- * @param dst   destination address
+- * @param val   byte to write to memory block
+- * @param len   length of memory block in bytes
+- *
+- * The memset() function fills the first len bytes of the memory
+- * block pointed to by dst with the constant byte val.
+- */
+-extern "C" void memset(L4_Word_t dst, L4_Word8_t val, L4_Word_t len)
+-{
+-    L4_Word8_t* d = (L4_Word8_t*) dst;
+-
+-    while (len--)
+-        *d++ = val;
+-}
+-
+-
+-
+-/* Some ctype like stuff to support strtoul */
+-#define isspace(c)      ((c == ' ') || (c == '\t'))
+-#define ULONG_MAX       (~0UL)
+-#define isdigit(c)      ((c) >= '0' && (c) <= '9')
+-#define islower(c)      (((c) >= 'a') && ((c) <= 'z'))
+-#define isupper(c)      (((c) >= 'A') && ((c) <= 'Z'))
+-#define isalpha(c)      (islower(c) || isupper(c))
+-/*
+- * For the remainder of this file:
+- *
+- * Copyright (c) 1990 The Regents of the University of California.
+- * All rights reserved.
+- */
+-
+-/*
+- * Compare strings.
+- */
+-extern "C" int
+-strcmp(const char *s1, const char *s2)
+-{
+-	while (*s1 == *s2++)
+-		if (*s1++ == 0)
+-			return (0);
+-	return (*(unsigned char *)s1 - *(unsigned char *)--s2);
+-}
+-
+-extern "C" int
+-strncmp(const char *s1, const char *s2, unsigned int n)
+-{
+-	if (n == 0)
+-		return (0);
+-	do {
+-		if (*s1 != *s2++)
+-			return (*(unsigned char *)s1 - *(unsigned char *)--s2);
+-		if (*s1++ == 0)
+-			break;
+-	} while (--n != 0);
+-	return (0);
+-}
+-
+-/*
+- * Find the first occurrence of find in s.
+- */
+-extern "C" char *
+-strstr(const char *s, const char *find)
+-{
+-	char c, sc;
+-	int len;
+-
+-	if ((c = *find++) != 0) {
+-		len = strlen(find);
+-		do {
+-			do {
+-				if ((sc = *s++) == 0)
+-					return (0);
+-			} while (sc != c);
+-		} while (strncmp(s, find, len) != 0);
+-		s--;
+-	}
+-	return ((char *)s);
+-}
+-
+-
+-/*
+- * Convert a string to an unsigned long integer.
+- *
+- * Ignores `locale' stuff.  Assumes that the upper and lower case
+- * alphabets and digits are each contiguous.
+- */
+-extern "C" unsigned long
+-strtoul(const char* nptr, char** endptr, int base)
+-{
+-	const char *s;
+-	unsigned long acc, cutoff;
+-	int c;
+-	int neg, any, cutlim;
+-
+-	/*
+-	 * See strtol for comments as to the logic used.
+-	 */
+-	s = nptr;
+-	do {
+-		c = (unsigned char) *s++;
+-	} while (isspace(c));
+-	if (c == '-') {
+-		neg = 1;
+-		c = *s++;
+-	} else {
+-		neg = 0;
+-		if (c == '+')
+-			c = *s++;
+-	}
+-	if ((base == 0 || base == 16) &&
+-	    c == '0' && (*s == 'x' || *s == 'X')) {
+-		c = s[1];
+-		s += 2;
+-		base = 16;
+-	}
+-	if (base == 0)
+-		base = c == '0' ? 8 : 10;
+-
+-	cutoff = ULONG_MAX / (unsigned long)base;
+-	cutlim = ULONG_MAX % (unsigned long)base;
+-	for (acc = 0, any = 0;; c = (unsigned char) *s++) {
+-		if (isdigit(c))
+-			c -= '0';
+-		else if (isalpha(c))
+-			c -= isupper(c) ? 'A' - 10 : 'a' - 10;
+-		else
+-			break;
+-		if (c >= base)
+-			break;
+-		if (any < 0)
+-			continue;
+-		if (acc > cutoff || (acc == cutoff && c > cutlim)) {
+-			any = -1;
+-			acc = ULONG_MAX;
+-		} else {
+-			any = 1;
+-			acc *= (unsigned long)base;
+-			acc += c;
+-		}
+-	}
+-	if (neg && any > 0)
+-		acc = -acc;
+-	if (endptr != 0)
+-		*endptr = (char *) (any ? s - 1 : nptr);
+-	return (acc);
+-}
+-
+-extern "C" char *
+-strchr(const char *p, int ch)
+-{
+-    for (;; ++p) {
+-	if (*p == ch) {
+-	    /* LINTED const cast-away */
+-	    return((char *)p);
+-	}
+-	if (!*p)
+-	    return((char *)0);
+-    }
+-    /* NOTREACHED */
+-}
+diff --git a/user.enryo/util/kickstart/mbi-amd64.cc b/user.enryo/util/kickstart/mbi-amd64.cc
+deleted file mode 100644
+index 474eaf27..00000000
+--- a/user.enryo/util/kickstart/mbi-amd64.cc
++++ /dev/null
+@@ -1,172 +0,0 @@
+-/*********************************************************************
+- *                
+- * Copyright (C) 2003-2004, 2006, 2008, 2010,  Karlsruhe University
+- *                
+- * File path:     mbi-amd64.cc
+- * Description:   
+- *                
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in the
+- *    documentation and/or other materials provided with the distribution.
+- * 
+- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+- * SUCH DAMAGE.
+- *                
+- * $Id: mbi-amd64.cc,v 1.4 2006/02/21 11:43:35 stoess Exp $
+- *                
+- ********************************************************************/
+-#include <config.h>
+-#include <l4io.h>
+-
+-#include "lib.h"
+-#include "kickstart.h"
+-#include "mbi.h"
+-#include "kipmgr.h"
+-
+-/* Override physical memory size from BIOS when non-zero.  Variable
+-   can be set with command line parameter maxmem=<num>[KMG] */
+-extern unsigned int max_phys_mem;
+-extern unsigned int additional_kmem_size;
+-
+-
+-// The kernel cannot use memory beyond this limit jsXXX: Not needed on AMD64
+-#define MAX_KMEM_END            (240*1024*1024)
+-
+-L4_Word_t grub_mbi_ptr;
+-L4_Word_t grub_mbi_flags;
+-
+-class mmap_t {
+-public:
+-    L4_Word32_t   desc_size;
+-    L4_Word64_t   base;
+-    L4_Word64_t   size;
+-    L4_Word32_t   type;
+-};
+-
+-mbi_t* mbi_t::prepare(void)
+-{
+-    if (grub_mbi_flags == 0x2BADB002)
+-        return (mbi_t*) grub_mbi_ptr;
+-    else
+-        return 0;
+-}
+-
+-
+-void install_memory(mbi_t* mbi, kip_manager_t * kip)
+-{
+-    // Mark all physical memory as shared by default to allow for
+-    // device access
+-    kip->dedicate_memory(0x0, ~0ULL, L4_SharedMemoryType, 0);
+-
+-    // Does the MBI contain a reference to the BIOS memory map?
+-    if (mbi->flags.mmap)
+-    {
+-        // Pointer to first entry in table
+-        mmap_t* m = (mmap_t*) mbi->mmap_addr;
+-
+-        // Iterate over all entries
+-        while ((L4_Word_t) m < (mbi->mmap_addr + mbi->mmap_length))
+-        {
+-            /* Limit physical memory if necessary (max_phys_mem != 0)
+-               We assume that there one big chunk of main memory that
+-               is larger than 1MB, so we simply adjust its size. */
+-	    if (m->type == 1 &&
+-		max_phys_mem != 0 &&
+-		m->size > 1024UL*1024UL &&
+-		(L4_Word64_t) m->base + (L4_Word64_t) m->size > max_phys_mem)
+-	    {
+-		//printf("max_phys_mem = %x, base = %x, size = %x\n", 
+-		//       max_phys_mem, (L4_Word_t) m->base, (L4_Word_t) m->size);
+-		kip->dedicate_memory(
+-		    max_phys_mem, 
+-		    m->base + m->size - 1,
+-		    L4_ReservedMemoryType,
+-		    0);
+-		
+-		m->size = max_phys_mem - m->base;
+-	    }
+-
+-            /* Mark "usable" memory (type=1) as conventional physical
+-               memory, everything else as architecture specific with
+-               the BIOS memory map type as subtype */
+-	    kip->dedicate_memory(m->base, m->base + m->size - 1,
+-				 (m->type == 1)
+-				 ? L4_ConventionalMemoryType
+-				 : L4_ArchitectureSpecificMemoryType,
+-				 m->type);
+-	
+-            /* Skip forward by the number of bytes specified in the
+-               structure. This can be more than just the 24 bytes */
+-            m = (mmap_t*) ((L4_Word_t) m + 4 + m->desc_size);
+-        }
+-        
+-        /* The standard PC's VGA memory hasn't been seen in any BIOS
+-         * memory map so far. So we fake an entry for it. */
+-        kip->dedicate_memory(0xA0000, 0xC0000 - 1, 
+-                             L4_SharedMemoryType, 0);
+-
+-	/* Standard PC's may have VGA and Extension ROMs -- fake
+-	 * another entry */
+-        kip->dedicate_memory(0xC0000, 0xF0000 - 1, 
+-                             L4_SharedMemoryType, 0);
+-
+-        if (additional_kmem_size)
+-        {
+-            // Second round: Find a suitable KMEM area
+-            m = (mmap_t*) mbi->mmap_addr;
+-            // Iterate over all entries
+-            while ((L4_Word_t) m < (mbi->mmap_addr + mbi->mmap_length))
+-            {
+-		if (m->type == 1)
+-		    {
+-
+-			/*
+-			 * We want that the chunk be 2 MByte aligned
+-			 */ 
+-
+-			
+-			L4_Word_t useable_base = ROUND_UP(m->base, MB(2));
+-			L4_Word_t useable_size = 
+-			    min((L4_Word_t) ROUND_DOWN(m->size - (useable_base - m->base), MB(2)),
+-				(L4_Word_t) ROUND_DOWN(MAX_KMEM_END, MB(2)));
+-			L4_Word_t useable_end = useable_base + useable_size;
+-
+-			if (useable_size >= ROUND_UP(additional_kmem_size, MB(2)))
+-			{
+-			    
+-			    // Make sure the end is within kernel's reach
+-			    // Mark the memory block as in use by the kernel
+-			    kip->dedicate_memory(useable_end - ROUND_UP(additional_kmem_size, MB(2)), 
+-						 useable_end -1, 
+-						 L4_ReservedMemoryType, 0);
+-			    // Stop looking
+-			    break;
+-			}
+-                }
+-                /* Skip forward by the number of bytes specified in the
+-                   structure. This can be more than just the 24 bytes */
+-                m = (mmap_t*) ((L4_Word_t) m + 4 + m->desc_size);
+-            }
+-
+-        }
+-    }
+-    else
+-    {
+-        printf("Ooops! No BIOS memory map.\n");
+-        while(1);
+-    }
+-}
+diff --git a/user.enryo/util/kickstart/mbi-loader.cc b/user.enryo/util/kickstart/mbi-loader.cc
+deleted file mode 100644
+index 63b960c2..00000000
+--- a/user.enryo/util/kickstart/mbi-loader.cc
++++ /dev/null
+@@ -1,560 +0,0 @@
+-/*********************************************************************
+- *                
+- * Copyright (C) 2004-2006, 2008,  Karlsruhe University
+- *                
+- * File path:     mbi-loader.cc
+- * Description:   MBI specific boot loader functions
+- *                
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in the
+- *    documentation and/or other materials provided with the distribution.
+- * 
+- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+- * SUCH DAMAGE.
+- *                
+- * $Id: mbi-loader.cc,v 1.10 2006/10/22 19:40:24 reichelt Exp $
+- *                
+- ********************************************************************/
+-#include <config.h>
+-#include <l4io.h>
+-
+-#include "kickstart.h"
+-#include "mbi.h"
+-#include "kipmgr.h"
+-#include "lib.h"
+-#include "elf.h"
+-#include "bootinfo.h"
+-
+-void install_memory(mbi_t * mbi, kip_manager_t* kip);
+-
+-#define MAX_MBI_MODULES		32
+-#define STRING_BUFFER_SIZE	4096
+-
+-static mbi_t mbi_copy;
+-static mbi_module_t mbi_modules[MAX_MBI_MODULES];
+-static mbi_module_t orig_mbi_modules[MAX_MBI_MODULES];
+-static char strings_copy[STRING_BUFFER_SIZE];
+-
+-static mbi_t * mbi;
+-
+-/**
+- * Maximum size for bootinfo structure.
+- */
+-static L4_Word_t max_bootinfo_size;
+-
+-
+-/* Override physical memory size from BIOS when non-zero.  Variable
+-   can be set with command line parameter maxmem=<num>[KMG] */
+-unsigned int max_phys_mem = 0;
+-
+-
+-/* Reserve this much conventional memory for the kernel
+-   Can be changed with command line parameter kmem=<num>[KMG] */
+-unsigned int additional_kmem_size = 16*1024*1024;
+-
+-
+-/* Decode all executable MBI modules. */
+-bool decode_all_executables = false;
+-
+-
+-/* ELF format types of root servers. */
+-L4_Word_t sigma0_type = 0;
+-L4_Word_t root_task_type = 0;
+-
+-extern "C" void InternalStrCpy( char *dst, const char *src )
+-{
+-    unsigned cnt = 0;
+-
+-    if( !dst || !src )
+-        return;
+-
+-    do {
+-        dst[cnt] = src[cnt];
+-    } while( src[cnt++] );
+-
+-}
+-
+-
+-/**
+- * Function used by load_modules to check for memory conflicts
+- *
+- * @param start First address belonging to the memory area.
+- * @param end   First address after the memory area.
+- *
+- * @returns false on memory conflict, true otherwise.
+- */
+-bool check_memory (L4_Word_t start, L4_Word_t end)
+-{
+-    for (L4_Word_t i = 0; i < mbi->modcount; i++)
+-    {
+-	L4_Word_t mod_start = orig_mbi_modules[i].start;
+-	L4_Word_t mod_end = orig_mbi_modules[i].end;
+-
+-	if (mod_start < end && start < mod_end)
+-	{
+-	    printf("     Conflict with multiboot module %d (%p-%p)\n"
+-	           "     Please choose a different link base\n",
+-		   i,
+-		   (void *) mod_start,
+-		   (void *) mod_end);
+-	    return false;
+-	}
+-    }
+-
+-    for (L4_Word_t i = 0; i < mbi->modcount; i++)
+-    {
+-	L4_Word_t mod_start = mbi->mods[i].start;
+-	L4_Word_t mod_end = mbi->mods[i].end;
+-        printf("     mbi->mods[%d].start : %p,\n"
+-               "     mbi->mods[%d].end : %p,\n",
+-               i,
+-               (void *) mod_start,
+-               i,
+-               (void *) mod_end);
+-
+-	if (mod_start < end && start < mod_end)
+-	{
+-	    printf("     Conflict with module %d (%p-%p)\n"
+-	           "     Please choose a different link base\n",
+-		   i,
+-		   (void *) mod_start,
+-		   (void *) mod_end);
+-	    return false;
+-	}
+-    }
+-
+-    return true;
+-}
+-
+-
+-/**
+- * Load L4 system modules as referenced by the MBI structure
+- *
+- * The first three modules in the MBI modules list are ELF-loaded.  If
+- * 'decode-all' is specified on the kickstart command line, other ELF
+- * files in the module list are also ELF loader.  The memory range of
+- * each of these modules is updated with the enclosing memory range of
+- * the loaded image and the entry point is set for each successfully
+- * loaded image.  Modules are loaded in the order they appear in the
+- * MBI's module list.  No checks for overlapping of ELF images and
+- * loaded images are performed.
+- *
+- * @returns     true on successful load, false otherwise.
+- */
+-bool load_modules (void)
+-{
+-    // Is the modules info in the MBI valid?
+-    if (mbi->flags.mods)
+-    {
+-        for (L4_Word_t i = 0; i < mbi->modcount; i++)
+-            mbi->mods[i].entry = 0;
+-
+-        /* We need at least three modules: kernel, sigma0, roottask */
+-        if (mbi->modcount >= 3)
+-        {
+-#define LOADIT(idx, name, type)                                             \
+-            do {                                                            \
+-                printf(name);                                               \
+-                if (!elf_load (mbi->mods[idx].start, mbi->mods[idx].end,    \
+-                               &mbi->mods[idx].start, &mbi->mods[idx].end,  \
+-                               &mbi->mods[idx].entry, type, check_memory))  \
+-                {                                                           \
+-                    FAIL();                                                 \
+-                }                                                           \
+-            } while(0)
+-
+-            LOADIT(0, " kernel  ", NULL);
+-            LOADIT(1, " sigma0  ", &sigma0_type);
+-            LOADIT(2, " roottask", &root_task_type);
+-        }
+-        else
+-        {
+-            FAIL();
+-        }
+-
+-	if (decode_all_executables)
+-	{
+-	    // Also decode other ELF files in module list.
+-	    for (L4_Word_t i = 3; i < mbi->modcount; i++)
+-		elf_load (mbi->mods[i].start, mbi->mods[i].end,
+-			  &mbi->mods[i].start, &mbi->mods[i].end,
+-			  &mbi->mods[i].entry, NULL, check_memory);
+-	}
+-
+-	return true;
+-    }
+-    else
+-        FAIL();
+-
+-    return false;
+-}
+-
+-
+-/**
+- * Find free memory.
+- *
+- * @param size	The size of the region to find.
+- * @param kip	A pointer to the kip manager.  All memory descriptors should
+- * 		be defined before calling this function.
+- *
+- * Find a region of memory which doesn't overlap the kickstarter, the 
+- * multiboot modules, nor the memory regions defined in the kip.
+- *
+- * @returns The start address of the available memory region, otherwise 0.
+- */
+-L4_Word_t find_free_mem_region (L4_Word_t size, kip_manager_t *kip)
+-{
+-    L4_Word64_t phys_start, phys_end;
+-
+-    phys_end = kip->get_phys_mem_max();
+-    for (phys_start = 0; phys_start < (phys_end - size); phys_start += size)
+-    {
+-	if( !mbi->is_mem_region_free(phys_start, size) )
+-	    continue;
+-	if( !kip->is_mem_region_free(phys_start, size) )
+-	    continue;
+-	return phys_start;
+-    }
+-
+-    return 0;
+-}
+-
+-
+-/**
+- * Prepare user-level copy of the mbi.
+- *
+- * @param kip	The kip manager pointer.  All memory descriptors should
+- * 		be defined before calling this function.
+- *
+- * Prepares the mbi for use by user-level applications.  It allocates
+- * contiguous memory for the mbi, and then copies the mbi to this
+- * memory region.  All modules and strings are copied to the region too.
+- * The new memory region is defined as a memory descriptor in the
+- * kip, as a bootloader specific type.
+- *
+- * @returns The pointer to the newly allocated mbi.
+- */
+-mbi_t * install_mbi (kip_manager_t* kip)
+-{
+-    // Make a copy of the mbi, and protect it.  First calculate its size.
+-    L4_Word_t mbi_size = mbi->get_size();
+-    if( mbi_size % 4096 )
+-	mbi_size = (mbi_size + 4096) & ~(4096-1);
+-
+-    L4_Word_t target_mbi = find_free_mem_region( mbi_size, kip );
+-    if( target_mbi == 0 )
+-	FAIL();
+-    mbi->copy( (mbi_t *)target_mbi );
+-
+-    // Protect the mbi.
+-    kip->dedicate_memory( target_mbi, target_mbi - 1 + mbi_size, 
+-	    L4_BootLoaderSpecificMemoryType, 
+-	    kip_manager_t::desc_init_table );
+-
+-    return (mbi_t *)target_mbi;
+-}
+-
+-
+-/**
+- * Allocate a new bootinfo structure. 
+- *
+- * @param kip		Pointer to KIP manager
+- *
+- * The function allocates memory for a bootinfo structure.
+- * The amount of space allocated is the minimum page size supported by
+- * the architecture/kernel.  The bootinfo structure is additionally
+- * recorded in a memory descriptor in the KIP.
+- *
+- * @returns pointer to newly allocated bootinfo structure, or NULL if
+- * unable to allocate memory to hold the structure.
+- */
+-void * create_bootinfo (kip_manager_t * kip)
+-{
+-    max_bootinfo_size = kip->get_min_pagesize ();
+-    L4_Word_t bi = find_free_mem_region (max_bootinfo_size, kip);
+-
+-    if (!bi)
+-	return NULL;
+-
+-    // Protect bootinfo structure
+-    kip->dedicate_memory (bi,
+-			  bi + max_bootinfo_size - 1,
+-			  L4_BootLoaderSpecificMemoryType, 
+-			  kip_manager_t::desc_init_table);
+-
+-    return (void *) bi;
+-}
+-
+-
+-/**
+- * Check if a valid multiboot info structure is present.
+- */
+-bool mbi_probe (void)
+-{
+-    mbi_t * _mbi = mbi_t::prepare();
+-
+-    if (_mbi == NULL)
+-	return false;
+-
+-    // Make a safe copy of the MBI structure itself.
+-    memcopy (&mbi_copy, _mbi, sizeof (mbi_t));
+-    mbi = &mbi_copy;
+-
+-    return true;
+-}
+-
+-
+-/**
+- * Init function that understands multiboot info structure.
+- *
+- * The procedure goes as follows:
+- * - Find/prepare an MBI structure
+- * - ELF-load the first three modules (kernel,sigma0,roottask)
+- * - Find the KIP in the kernel
+- * - Install memory descriptors from the MBI in the KIP
+- * - Install initial servers (sigma0,roottask) in the KIP
+- * - Store the bootinfo value in the KIP
+- * - Flush caches
+- * - Launch the kernel
+- *
+- * @returns entry point for kernel
+- */
+-L4_Word_t mbi_init (void)
+-{
+-    kip_manager_t kip;
+-
+-    void * bi = NULL;
+-    bool use_bootinfo = true;
+-    bool use_mbi = true;
+-
+-    // The KIP is somewhere in the kernel (module 0)
+-    if (!kip.find_kip(mbi->mods[0].start, mbi->mods[0].end))
+-    {
+-        // Bail out if we couldn't find a KIP
+-        FAIL();
+-    }
+-
+-    // Command line strings tend to occupy the same space that we want
+-    // to use.  Make a copy of all the strings.
+-    char * sptr = strings_copy;
+-    L4_Word_t nfree = STRING_BUFFER_SIZE;
+-    L4_Word_t len;
+-
+-#define COPY_STRING(str)			\
+-    do {					\
+-	len = strlen (str) + 1;			\
+-	if (len > nfree)			\
+-	{					\
+-	    printf ("String buffer overrun\n");	\
+-	    FAIL ();				\
+-	}					\
+-	InternalStrCpy (sptr, str);			\
+-	str = sptr;				\
+-	nfree -= len;				\
+-	sptr += len;				\
+-    } while (0)
+-
+-    if (mbi->flags.cmdline)
+-    {
+-	char * p;
+-	COPY_STRING (mbi->cmdline);
+-
+-#define PARSENUM(name, var, msg, massage...)			\
+-        if ((p = strstr(mbi->cmdline, name"=")) != NULL)	\
+-        {							\
+-            var = strtoul(p+strlen(name)+1, &p, 10);		\
+-            if (*p == 'K') var*=1024;				\
+-            if (*p == 'M') var*=1024*1024;			\
+-            if (*p == 'G') var*=1024*1024*1024;			\
+-            massage;						\
+-            printf(msg,						\
+-                   var >= 1<<30 ? var>>30 :			\
+-                   var >= 1<<20 ? var>>20 :			\
+-                   var >= 1<<10 ? var>>10 : var,		\
+-                   var >= 1<<30 ? "G" :				\
+-                   var >= 1<<20 ? "M" :				\
+-                   var >= 1<<10 ? "K" : "");			\
+-        }
+-
+-#define PARSEBOOL(name, var, msg)				\
+-	if ((p = strstr (mbi->cmdline, name"=")) != NULL)	\
+-	{							\
+-	    p = strchr (p, '=') + 1;				\
+-	    if (strncmp (p, "yes", 3) == 0 ||			\
+-		strncmp (p, "on", 2) == 0 ||			\
+-		strncmp (p, "enable", 6) == 0)			\
+-	    {							\
+-		if (! var) printf ("Enabling %s\n", msg);	\
+-		var = true;					\
+-	    }							\
+-	    else if (strncmp (p, "no", 2) == 0 ||		\
+-		     strncmp (p, "off", 3) == 0 ||		\
+-		     strncmp (p, "disable", 7) == 0)		\
+-	    {							\
+-		if (var) printf ("Disabling %s\n", msg);	\
+-		var = false;					\
+-	    }							\
+-	}
+-
+-        PARSENUM("maxmem",
+-                 max_phys_mem,
+-                 "Limiting physical memory to %d%sB\n");
+-        PARSENUM("kmem",
+-                 additional_kmem_size,
+-                 "Reserving %d%sB for kernel memory\n",
+-                 additional_kmem_size &= ~(kip.get_min_pagesize()-1));
+-
+-	PARSEBOOL ("bootinfo", use_bootinfo, "generic bootinfo");
+-	PARSEBOOL ("mbi", use_mbi, "multiboot info");
+-	PARSEBOOL ("decode-all", decode_all_executables,
+-		   "decoding of all executables");
+-    }
+-
+-    if (mbi->flags.mods)
+-    {
+-	if (mbi->modcount > MAX_MBI_MODULES)
+-	{
+-	    printf("WARNING: Restricting number of modules to %d (was %d)\n",
+-		   MAX_MBI_MODULES, mbi->modcount);
+-	    mbi->modcount = MAX_MBI_MODULES;
+-	}
+-
+-        // Copy all mods array members into new mods array
+-        for (L4_Word_t i = 0; i < mbi->modcount; i++)
+-	{
+-	    COPY_STRING (mbi->mods[i].cmdline);
+-	    orig_mbi_modules[i] = mbi_modules[i] = mbi->mods[i];
+-	}
+-        mbi->mods = mbi_modules;
+-
+-        /* Install the roottask's command line as the kernel command
+-           line in the MBI. By convention, the roottask is the third
+-           module. */
+-        if (mbi->modcount > 2)
+-            mbi->cmdline = mbi->mods[2].cmdline;
+-    }
+-
+-    // Load the first three modules as ELF images into memory
+-    if (!load_modules())
+-    {
+-        // Bail out if loading failed
+-        printf("Failed to load all necessary modules\n");
+-        FAIL();
+-    }
+-
+-    // Update with location of KIP in loader kernel
+-    if (!kip.find_kip(mbi->mods[0].start, mbi->mods[0].end))
+-        FAIL();
+-
+-    // Set up the memory descriptors in the KIP
+-    install_memory(mbi, &kip);
+-
+-    // Install sigma0's memory region and entry point in the KIP
+-    kip.install_sigma0(mbi->mods[1].start, mbi->mods[1].end,
+-                       mbi->mods[1].entry, sigma0_type);
+-    // Install the root_task's memory region and entry point in the KIP
+-    kip.install_root_task(mbi->mods[2].start, mbi->mods[2].end,
+-			  mbi->mods[2].entry, root_task_type);
+-
+-    // Protect all user-level modules.
+-    for (L4_Word_t i = 3; i < mbi->modcount; i++)
+-    {
+-	kip.dedicate_memory (mbi->mods[i].start, mbi->mods[i].end - 1,
+-			     L4_BootLoaderSpecificMemoryType, 
+-			     kip_manager_t::desc_boot_module);
+-    }
+-
+-#if defined(L4_32BIT) || defined(ALSO_BOOTINFO32)
+-    if (root_task_type == 1)
+-    {
+-	BI32::L4_BootRec_t * rec = NULL;
+-
+-	if (use_bootinfo)
+-	{
+-	    // Allocate a bootinfo structure
+-	    bi = create_bootinfo (&kip);
+-
+-	    if (bi)
+-	    {
+-		// Initialize it
+-		rec = BI32::init_bootinfo ((BI32::L4_BootInfo_t *) bi);
+-
+-		// Record MBI modules
+-		rec = BI32::record_bootinfo_modules
+-				((BI32::L4_BootInfo_t *) bi,
+-				 rec, mbi, orig_mbi_modules,
+-				 decode_all_executables ? mbi->modcount : 3);
+-	    }
+-	}
+-
+-	// Move the MBI into a dedicated memory region
+-	if (use_mbi)
+-	    mbi = install_mbi (&kip);
+-
+-	if (bi && use_mbi)
+-	{
+-	    // Make sure that we record MBI location after we have
+-	    // installed it
+-	    rec = BI32::record_bootinfo_mbi ((BI32::L4_BootInfo_t *) bi,
+-					     rec, mbi);
+-	}
+-    }
+-#endif
+-
+-#if defined(L4_64BIT) || defined(ALSO_BOOTINFO64)
+-    if (root_task_type == 2)
+-    {
+-	BI64::L4_BootRec_t * rec = NULL;
+-
+-	if (use_bootinfo)
+-	{
+-	    // Allocate a bootinfo structure
+-	    bi = create_bootinfo (&kip);
+-
+-	    if (bi)
+-	    {
+-		// Initialize it
+-		rec = BI64::init_bootinfo ((BI64::L4_BootInfo_t *) bi);
+-
+-		// Record MBI modules
+-		rec = BI64::record_bootinfo_modules
+-				((BI64::L4_BootInfo_t *) bi,
+-				 rec, mbi, orig_mbi_modules,
+-				 decode_all_executables ? mbi->modcount : 3);
+-	    }
+-	}
+-
+-	// Move the MBI into a dedicated memory region
+-	if (use_mbi)
+-	    mbi = install_mbi (&kip);
+-
+-	if (bi && use_mbi)
+-	{
+-	    // Make sure that we record MBI location after we have
+-	    // installed it
+-	    rec = BI64::record_bootinfo_mbi ((BI64::L4_BootInfo_t *) bi,
+-					     rec, mbi);
+-	}
+-    }
+-#endif
+-
+-    // Install the bootinfo or MBI into the KIP
+-    kip.update_kip (bi ? (L4_Word_t) bi :
+-		    use_mbi ? (L4_Word_t) mbi : 0);
+-    
+-    return mbi_modules[0].entry;
+-}
+diff --git a/user.enryo/util/kickstart/mbi.cc b/user.enryo/util/kickstart/mbi.cc
+deleted file mode 100644
+index 5dd69d65..00000000
+--- a/user.enryo/util/kickstart/mbi.cc
++++ /dev/null
+@@ -1,130 +0,0 @@
+-/*********************************************************************
+- *                
+- * Copyright (C) 2003,  Karlsruhe University
+- *                
+- * File path:     mbi.cc
+- * Description:   
+- *                
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- * 1. Redistributions of source code must retain the above copyright
+- *    notice, this list of conditions and the following disclaimer.
+- * 2. Redistributions in binary form must reproduce the above copyright
+- *    notice, this list of conditions and the following disclaimer in the
+- *    documentation and/or other materials provided with the distribution.
+- * 
+- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+- * SUCH DAMAGE.
+- *                
+- * $Id: mbi.cc,v 1.3 2003/12/03 21:22:29 joshua Exp $
+- *                
+- ********************************************************************/
+-
+-#include "mbi.h"
+-#include "lib.h"
+-
+-/**
+- * Returns the total size of the mbi.  Includes the size of module
+- * definitions, strings, and any space necessary to maintain
+- * aligment.
+- *
+- * @returns The total size of the mbi.
+- */
+-L4_Word_t mbi_t::get_size()
+-{
+-    L4_Word_t tot = sizeof(mbi_t);
+-    L4_Word_t alignment_space = sizeof(L4_Word_t);
+-
+-    tot += 1 + strlen(this->cmdline) + alignment_space;
+-
+-    for( L4_Word_t i = 0; i < this->modcount; i++ )
+-    {
+-	tot += sizeof(mbi_module_t);
+-	tot += 1 + strlen(this->mods[i].cmdline) + alignment_space;
+-    }
+-
+-    return tot;
+-}
+-
+-/**
+- * Copies the current mbi into a new location.
+- *
+- * @param target	The destination for the new copy.  Must have enough
+- * 			space to store the copy.  The space is calculated
+- * 			via the get_size() method.
+- */
+-void mbi_t::copy( mbi_t *target )
+-{
+-    // Put strings after the target mbi and after the modules.
+-    char *strings = (char *)( L4_Word_t(target) + sizeof(mbi_t) + 
+-	    sizeof(mbi_module_t)*this->modcount );
+-
+-    // Copy the structure.
+-    memcopy( target, this, sizeof(mbi_t) );
+-    // Copy the command line.
+-    if( this->cmdline )
+-    {
+-	target->cmdline = strings;
+-	InternalStrCpy( target->cmdline, this->cmdline );
+-	strings = strings + 1 + strlen(this->cmdline);
+-	// TODO: align the strings pointer.
+-    }
+-
+-    // Put modules at end of the target mbi.  Assume this will get
+-    // proper aligment.
+-    target->mods = (mbi_module_t *)( L4_Word_t(target) + sizeof(mbi_t) );
+-
+-    for( L4_Word_t i = 0; i < this->modcount; i++ )
+-    {
+-	// Copy the structure.
+-	memcopy( &target->mods[i], &this->mods[i], sizeof(mbi_module_t) );
+-	// Copy the command line.
+-	if( this->mods[i].cmdline )
+-	{
+-	    target->mods[i].cmdline = strings;
+-	    InternalStrCpy( target->mods[i].cmdline, this->mods[i].cmdline );
+-	    strings = strings + 1 + strlen(this->mods[i].cmdline);
+-	    // TODO: align the strings pointer.
+-	}
+-    }
+-}
+-
+-/**
+- * Determines whether there is a conflict for a memory region with
+- * the modules defined by the mbi.
+- *
+- * @param start		The start of the memory region.
+- * @param size		The size of the memory region.
+- *
+- * @returns true if there is no conflict, otherwise false.
+- */
+-bool mbi_t::is_mem_region_free( L4_Word_t start, L4_Word_t size )
+-{
+-    L4_Word_t end = start - 1 + size;
+-
+-    // Look for conflicts with modules.
+-    for( L4_Word_t i = 0; i < this->modcount; i++ )
+-    {
+-	L4_Word_t mod_start = this->mods[i].start;
+-	L4_Word_t mod_end = this->mods[i].end;
+-	if( is_intersection(start, end, mod_start, mod_end) )
+-	    return false;
+-    }
+-
+-    // Look for a conflict with the bootloader.
+-    extern char _kickstart_begin[], _kickstart_end[];
+-    L4_Word_t kick_begin = L4_Word_t(_kickstart_begin);
+-    L4_Word_t kick_end = L4_Word_t(_kickstart_end);
+-    return !is_intersection( start, end, kick_begin, kick_end );
+-}
+-
+diff --git a/user/autom4te.cache/output.0 b/user/autom4te.cache/output.0
+index 2b110a91..ac48480e 100644
+--- a/user/autom4te.cache/output.0
++++ b/user/autom4te.cache/output.0
+@@ -3051,8 +3051,8 @@ case $LDFLAGS in
+ 	;;
+ esac
+ LDFLAGS="-N -L\$(top_builddir)/lib -L$LIBGCCDIR $LDFLAGS"
+-CFLAGS="-nostdinc $CFLAGS"
+-CXXFLAGS="-fno-exceptions $CXXFLAGS"
++CFLAGS="-nostdinc -fno-stack-protector $CFLAGS"
++CXXFLAGS="-fno-exceptions -fno-stack-protector $CXXFLAGS"
+ 
+ CC_VERSION=`echo __GNUC__ | $CC -E  - | grep -v "\#"`
+ CC_SUBVERSION=`echo __GNUC_MINOR__ | $CC -E  - | grep -v "\#"`
+diff --git a/user/autom4te.cache/requests b/user/autom4te.cache/requests
+index ebf66961..b283a509 100644
+--- a/user/autom4te.cache/requests
++++ b/user/autom4te.cache/requests
+@@ -17,30 +17,17 @@
+                       ],
+                       {
+                         'AU_DEFUN' => 1,
+-<<<<<<< HEAD
+-                        'AC_DEFUN_ONCE' => 1,
+-                        'AC_CONFIG_MACRO_DIR_TRACE' => 1,
+                         '_AM_CONFIG_MACRO_DIRS' => 1,
+-                        '_m4_warn' => 1,
+-                        'include' => 1,
+-                        'm4_pattern_allow' => 1,
+-                        'AC_CONFIG_MACRO_DIR' => 1,
+-                        '_AM_AUTOCONF_VERSION' => 1,
+-                        'm4_pattern_forbid' => 1,
+-                        'm4_include' => 1,
+-=======
+-                        'AC_CONFIG_MACRO_DIR_TRACE' => 1,
+-                        '_m4_warn' => 1,
+-                        'AC_DEFUN_ONCE' => 1,
+-                        'AC_CONFIG_MACRO_DIR' => 1,
+                         'm4_pattern_allow' => 1,
+                         'm4_include' => 1,
+                         '_AM_AUTOCONF_VERSION' => 1,
+-                        '_AM_CONFIG_MACRO_DIRS' => 1,
+                         'include' => 1,
++                        'AC_DEFUN_ONCE' => 1,
++                        'AC_CONFIG_MACRO_DIR' => 1,
+                         'm4_pattern_forbid' => 1,
+->>>>>>> master
+-                        'AC_DEFUN' => 1
++                        'AC_CONFIG_MACRO_DIR_TRACE' => 1,
++                        'AC_DEFUN' => 1,
++                        '_m4_warn' => 1
+                       }
+                     ], 'Autom4te::Request' ),
+              bless( [
+@@ -54,125 +41,64 @@
+                         'configure.in'
+                       ],
+                       {
+-<<<<<<< HEAD
+-                        'include' => 1,
+-                        '_AM_MAKEFILE_INCLUDE' => 1,
+-                        'AC_CONFIG_HEADERS' => 1,
+-                        'AM_PROG_FC_C_O' => 1,
+-                        'AC_SUBST' => 1,
+-                        'AM_INIT_AUTOMAKE' => 1,
+-                        'AC_FC_PP_DEFINE' => 1,
+-                        'AM_POT_TOOLS' => 1,
+-                        '_AM_COND_ELSE' => 1,
+-                        'AC_PROG_LIBTOOL' => 1,
+-                        'AC_SUBST_TRACE' => 1,
+-                        'AM_CONDITIONAL' => 1,
+-                        'm4_pattern_allow' => 1,
+-                        'LT_SUPPORTED_TAG' => 1,
+-                        'AC_CONFIG_LINKS' => 1,
+-                        'AM_PROG_CC_C_O' => 1,
+-                        'AC_DEFINE_TRACE_LITERAL' => 1,
+-                        'AM_GNU_GETTEXT' => 1,
+-                        'AC_CANONICAL_HOST' => 1,
+-                        '_m4_warn' => 1,
+-                        'AC_CONFIG_SUBDIRS' => 1,
+-                        '_LT_AC_TAGCONFIG' => 1,
+-                        'm4_include' => 1,
+-                        'AC_CANONICAL_TARGET' => 1,
+-                        '_AM_COND_IF' => 1,
+-                        'AM_MAKEFILE_INCLUDE' => 1,
+-                        'AM_SILENT_RULES' => 1,
+-                        'AC_REQUIRE_AUX_FILE' => 1,
+-                        'AC_FC_FREEFORM' => 1,
+                         'AM_PROG_MOC' => 1,
+-                        'AM_PROG_AR' => 1,
+                         'AM_PATH_GUILE' => 1,
+-                        'AH_OUTPUT' => 1,
+-                        'AM_NLS' => 1,
+-                        'AC_CONFIG_LIBOBJ_DIR' => 1,
++                        'LT_CONFIG_LTDL_DIR' => 1,
+                         'AC_CONFIG_AUX_DIR' => 1,
+-                        'AM_PROG_CXX_C_O' => 1,
+-                        'AC_INIT' => 1,
+-                        '_AM_COND_ENDIF' => 1,
+-                        'sinclude' => 1,
+-                        'AM_ENABLE_MULTILIB' => 1,
+-                        'AC_LIBSOURCE' => 1,
+-                        'AM_PROG_F77_C_O' => 1,
+-                        'AM_XGETTEXT_OPTION' => 1,
++                        'AM_NLS' => 1,
+                         'AM_PROG_LIBTOOL' => 1,
+-                        'LT_CONFIG_LTDL_DIR' => 1,
+-                        'AM_AUTOMAKE_VERSION' => 1,
+-                        'AC_FC_PP_SRCEXT' => 1,
++                        'AC_CONFIG_HEADERS' => 1,
++                        'AM_PROG_F77_C_O' => 1,
++                        'AM_SILENT_RULES' => 1,
++                        'AC_LIBSOURCE' => 1,
++                        '_AM_COND_IF' => 1,
++                        'AC_FC_PP_DEFINE' => 1,
++                        'AM_POT_TOOLS' => 1,
+                         'AC_FC_SRCEXT' => 1,
+-                        'AM_GNU_GETTEXT_INTL_SUBDIR' => 1,
+-                        'm4_sinclude' => 1,
+-                        'm4_pattern_forbid' => 1,
+-                        'AC_CONFIG_FILES' => 1,
+-                        'AC_CANONICAL_SYSTEM' => 1,
+-                        'AM_MAINTAINER_MODE' => 1,
+-                        'AC_CANONICAL_BUILD' => 1,
+-                        '_AM_SUBST_NOTMAKE' => 1,
+-                        'LT_INIT' => 1
+-=======
+-                        'AC_FC_PP_SRCEXT' => 1,
+                         'AM_XGETTEXT_OPTION' => 1,
+-                        'AC_DEFINE_TRACE_LITERAL' => 1,
+-                        'AM_CONDITIONAL' => 1,
+-                        'AC_INIT' => 1,
+-                        'AM_MAINTAINER_MODE' => 1,
++                        'AM_PROG_CXX_C_O' => 1,
++                        'AM_PROG_FC_C_O' => 1,
++                        '_AM_MAKEFILE_INCLUDE' => 1,
++                        '_LT_AC_TAGCONFIG' => 1,
++                        '_AM_COND_ENDIF' => 1,
+                         'sinclude' => 1,
+-                        'AM_PROG_LIBTOOL' => 1,
+-                        'AM_MAKEFILE_INCLUDE' => 1,
+-                        'LT_CONFIG_LTDL_DIR' => 1,
+-                        'AM_PROG_AR' => 1,
+-                        'AC_LIBSOURCE' => 1,
+-                        'AC_CONFIG_SUBDIRS' => 1,
+-                        '_m4_warn' => 1,
++                        'AH_OUTPUT' => 1,
++                        'AC_CONFIG_LINKS' => 1,
+                         'm4_pattern_allow' => 1,
+-                        'm4_include' => 1,
+-                        'AC_SUBST_TRACE' => 1,
+                         'AC_FC_FREEFORM' => 1,
+-                        'AC_CONFIG_FILES' => 1,
+-                        'AC_CONFIG_LIBOBJ_DIR' => 1,
++                        'AM_AUTOMAKE_VERSION' => 1,
++                        'AC_REQUIRE_AUX_FILE' => 1,
++                        'AC_DEFINE_TRACE_LITERAL' => 1,
+                         'AC_CANONICAL_TARGET' => 1,
+-                        'AC_FC_PP_DEFINE' => 1,
+-                        'AM_PROG_CC_C_O' => 1,
+-                        'include' => 1,
+-                        'm4_pattern_forbid' => 1,
+-                        'LT_SUPPORTED_TAG' => 1,
++                        'AM_MAKEFILE_INCLUDE' => 1,
+                         'AM_GNU_GETTEXT' => 1,
+-                        '_LT_AC_TAGCONFIG' => 1,
+-                        'AM_PATH_GUILE' => 1,
+-                        'AM_AUTOMAKE_VERSION' => 1,
+-                        'AC_CANONICAL_HOST' => 1,
+-                        'AM_PROG_FC_C_O' => 1,
+-                        'AH_OUTPUT' => 1,
+-                        '_AM_COND_IF' => 1,
+                         'm4_sinclude' => 1,
+-                        'AC_CONFIG_LINKS' => 1,
+-                        'AM_PROG_MOC' => 1,
+-                        'AM_ENABLE_MULTILIB' => 1,
+-                        '_AM_COND_ENDIF' => 1,
++                        'AC_CANONICAL_BUILD' => 1,
++                        '_m4_warn' => 1,
++                        'include' => 1,
+                         'AC_SUBST' => 1,
+-                        'AM_PROG_F77_C_O' => 1,
+-                        'AM_GNU_GETTEXT_INTL_SUBDIR' => 1,
+-                        '_AM_MAKEFILE_INCLUDE' => 1,
+-                        'AM_NLS' => 1,
++                        'AC_CANONICAL_SYSTEM' => 1,
++                        'AC_CONFIG_SUBDIRS' => 1,
++                        'AC_CONFIG_FILES' => 1,
++                        'm4_pattern_forbid' => 1,
++                        'AM_ENABLE_MULTILIB' => 1,
++                        'AM_PROG_AR' => 1,
++                        'm4_include' => 1,
++                        'LT_INIT' => 1,
+                         'AC_PROG_LIBTOOL' => 1,
+                         '_AM_COND_ELSE' => 1,
+-                        'AC_FC_SRCEXT' => 1,
+-                        'AM_POT_TOOLS' => 1,
++                        'AM_MAINTAINER_MODE' => 1,
++                        'AC_CANONICAL_HOST' => 1,
++                        'AC_INIT' => 1,
++                        'AC_FC_PP_SRCEXT' => 1,
++                        'AM_INIT_AUTOMAKE' => 1,
+                         '_AM_SUBST_NOTMAKE' => 1,
+-                        'LT_INIT' => 1,
+-                        'AC_CANONICAL_BUILD' => 1,
+-                        'AM_PROG_CXX_C_O' => 1,
+-                        'AC_CONFIG_AUX_DIR' => 1,
+-                        'AC_REQUIRE_AUX_FILE' => 1,
+-                        'AC_CANONICAL_SYSTEM' => 1,
+-                        'AC_CONFIG_HEADERS' => 1,
+-                        'AM_SILENT_RULES' => 1,
+-                        'AM_INIT_AUTOMAKE' => 1
+->>>>>>> master
++                        'AM_PROG_CC_C_O' => 1,
++                        'LT_SUPPORTED_TAG' => 1,
++                        'AM_GNU_GETTEXT_INTL_SUBDIR' => 1,
++                        'AC_SUBST_TRACE' => 1,
++                        'AC_CONFIG_LIBOBJ_DIR' => 1,
++                        'AM_CONDITIONAL' => 1
+                       }
+                     ], 'Autom4te::Request' )
+            );
+diff --git a/user/config.log b/user/config.log
+index fa8f06a8..af4fbad5 100644
+--- a/user/config.log
++++ b/user/config.log
+@@ -298,25 +298,6 @@ config.status:995: config.h is unchanged
+ ## Running config.status. ##
+ ## ---------------------- ##
+ 
+-This file was extended by Pistachio config.status 0.4, which was
+-generated by GNU Autoconf 2.69.  Invocation command line was
+-
+-  CONFIG_FILES    = Makefile
+-  CONFIG_HEADERS  = 
+-  CONFIG_LINKS    = 
+-  CONFIG_COMMANDS = 
+-  $ ./config.status 
+-
+-on tyson-Lenovo-ideapad-120S-14IAP
+-
+-config.status:820: creating Makefile
+-config.status:820: creating config.h
+-config.status:995: config.h is unchanged
+-
+-## ---------------------- ##
+-## Running config.status. ##
+-## ---------------------- ##
+-
+ This file was extended by Pistachio config.status 0.4, which was
+ generated by GNU Autoconf 2.69.  Invocation command line was
+ 
+@@ -407,120 +388,7 @@ on tyson-Lenovo-ideapad-120S-14IAP
+ config.status:820: creating ./Makefile
+ config.status:820: creating config.h
+ config.status:995: config.h is unchanged
+-
+-## ---------------------- ##
+-## Running config.status. ##
+-## ---------------------- ##
+-
+-This file was extended by Pistachio config.status 0.4, which was
+-generated by GNU Autoconf 2.69.  Invocation command line was
+-
+-  CONFIG_FILES    = ./Makefile
+-  CONFIG_HEADERS  = 
+-  CONFIG_LINKS    = 
+-  CONFIG_COMMANDS = 
+-  $ ./config.status 
+-
+-on tyson-Lenovo-ideapad-120S-14IAP
+-
+-config.status:820: creating ./Makefile
+-config.status:820: creating config.h
+-config.status:995: config.h is unchanged
+-
+-## ---------------------- ##
+-## Running config.status. ##
+-## ---------------------- ##
+-
+-This file was extended by Pistachio config.status 0.4, which was
+-generated by GNU Autoconf 2.69.  Invocation command line was
+-
+-  CONFIG_FILES    = ./Makefile
+-  CONFIG_HEADERS  = 
+-  CONFIG_LINKS    = 
+-  CONFIG_COMMANDS = 
+-  $ ./config.status 
+-
+-on tyson-Lenovo-ideapad-120S-14IAP
+-
+-config.status:820: creating ./Makefile
+-config.status:820: creating config.h
+-config.status:995: config.h is unchanged
+-
+-## ---------------------- ##
+-## Running config.status. ##
+-## ---------------------- ##
+-
+-This file was extended by Pistachio config.status 0.4, which was
+-generated by GNU Autoconf 2.69.  Invocation command line was
+-
+-  CONFIG_FILES    = Makefile
+-  CONFIG_HEADERS  = 
+-  CONFIG_LINKS    = 
+-  CONFIG_COMMANDS = 
+-  $ ./config.status 
+-
+-on tyson-Lenovo-ideapad-120S-14IAP
+-
+-config.status:820: creating Makefile
+-config.status:820: creating config.h
+-config.status:995: config.h is unchanged
+-
+-## ---------------------- ##
+-## Running config.status. ##
+-## ---------------------- ##
+-
+-This file was extended by Pistachio config.status 0.4, which was
+-generated by GNU Autoconf 2.69.  Invocation command line was
+-
+-  CONFIG_FILES    = Makefile
+-  CONFIG_HEADERS  = 
+-  CONFIG_LINKS    = 
+-  CONFIG_COMMANDS = 
+-  $ ./config.status 
+-
+-on tyson-Lenovo-ideapad-120S-14IAP
+-
+-config.status:820: creating Makefile
+-config.status:820: creating config.h
+-config.status:995: config.h is unchanged
+-
+-## ---------------------- ##
+-## Running config.status. ##
+-## ---------------------- ##
+-
+-This file was extended by Pistachio config.status 0.4, which was
+-generated by GNU Autoconf 2.69.  Invocation command line was
+-
+-  CONFIG_FILES    = ./Makefile
+-  CONFIG_HEADERS  = 
+-  CONFIG_LINKS    = 
+-  CONFIG_COMMANDS = 
+-  $ ./config.status 
+-
+-on tyson-Lenovo-ideapad-120S-14IAP
+-
+-config.status:820: creating ./Makefile
+-config.status:820: creating config.h
+-config.status:995: config.h is unchanged
+-
+-## ---------------------- ##
+-## Running config.status. ##
+-## ---------------------- ##
+-
+-This file was extended by Pistachio config.status 0.4, which was
+-generated by GNU Autoconf 2.69.  Invocation command line was
+-
+-  CONFIG_FILES    = ./Makefile
+-  CONFIG_HEADERS  = 
+-  CONFIG_LINKS    = 
+-  CONFIG_COMMANDS = 
+-  $ ./config.status 
+-
+-on tyson-Lenovo-ideapad-120S-14IAP
+-
+-config.status:820: creating ./Makefile
+-config.status:820: creating config.h
+-config.status:995: config.h is unchanged
++<<<<<<< HEAD
+ 
+ ## ---------------------- ##
+ ## Running config.status. ##
+@@ -1528,3 +1396,5 @@ on tyson-Lenovo-ideapad-120S-14IAP
+ config.status:820: creating ./Makefile
+ config.status:820: creating config.h
+ config.status:995: config.h is unchanged
++=======
++>>>>>>> master
+diff --git a/user/lib/Makefile b/user/lib/Makefile
+index b1217ba7..d5934274 100644
+--- a/user/lib/Makefile
++++ b/user/lib/Makefile
+@@ -36,7 +36,7 @@ top_builddir=	..
+ include $(top_srcdir)/Mk/l4.base.mk
+ 
+ 
+-SUBDIRS=	l4 io linux
++SUBDIRS=	l4 io
+ 
+ post-clean:
+ 	rm -f *.a
+diff --git a/user/lib/linux/.depend b/user/lib/linux/.depend
+index 1d2e6d5a..8f80c7c2 100644
+--- a/user/lib/linux/.depend
++++ b/user/lib/linux/.depend
+@@ -241,13 +241,3 @@ strchr.o: strchr.c ../../include/string.h ../../include/cstring \
+  ../../include/sys/select.h ../../include/sys/_sigset.h \
+  ../../include/sys/_timeval.h ../../include/sys/timespec.h \
+  ../../include/sys/_timespec.h
+-liballoc_hooks.o: liballoc_hooks.cc ../../include/nwmalloc.h \
+- ../../include/liballoc.h ../../include/l4/space.h \
+- ../../include/l4/types.h ../../include/l4/amd64/types.h \
+- ../../include/l4/amd64/specials.h ../../include/l4/amd64/syscalls.h \
+- ../../include/l4/amd64/vregs.h ../../include/l4/message.h \
+- ../../include/l4/amd64/kdebug.h ../../include/l4/kip.h \
+- ../../include/l4/thread.h ../../include/l4io.h \
+- /usr/lib/gcc/x86_64-linux-gnu/8/include/stdarg.h ../../config.h \
+- ../../include/sys/mman.h ../../include/sys/cdefs.h \
+- ../../include/sys/_types.h ../../include/machine/_types.h
+diff --git a/user/lib/linux/liballoc_hooks.cc b/user/lib/linux/liballoc_hooks.cc
+deleted file mode 100644
+index a3cf28dd..00000000
+--- a/user/lib/linux/liballoc_hooks.cc
++++ /dev/null
+@@ -1,122 +0,0 @@
+-#include <nwmalloc.h>
+-#include <l4/space.h>
+-
+-#include <l4/kip.h>
+-#include <l4/thread.h>
+-#include <l4io.h>
+-#include <config.h>
+-
+-#include <sys/mman.h>
+-
+-//#include <arch.h>
+-
+-//http://www.cse.unsw.edu.au/~cs9242/05/project/l4uman-x2.pdf
+-//https://lists.ira.uni-karlsruhe.de/pipermail/l4ka/2008-April/002072.html
+-
+-/** This function is supposed to lock the memory data structures. It
+- * could be as simple as disabling interrupts or acquiring a spinlock.
+- * It's up to you to decide. 
+- *
+- * \return 0 if the lock was acquired successfully. Anything else is
+- * failure.
+- */
+-extern int liballoc_lock() {
+-	return 0;
+-}
+-
+-/** This function unlocks what was previously locked by the liballoc_lock
+- * function.  If it disabled interrupts, it enables interrupts. If it
+- * had acquiried a spinlock, it releases the spinlock. etc.
+- *
+- * \return 0 if the lock was successfully released.
+- */
+-extern int liballoc_unlock() {
+-return 0;
+-}
+-
+-
+-/** This is the hook into the local system which allocates pages. It
+- * accepts an integer parameter which is the number of pages
+- * required.  The page size was set up in the liballoc_init function.
+- *
+- * \return NULL if the pages were not allocated.
+- * \return A pointer to the allocated memory.
+- */
+-
+-L4_Word_t
+-do_safe_mem_touch( void *addr )
+-{
+-	volatile L4_Word_t *ptr;
+-	L4_Word_t copy;
+-
+-	ptr = (L4_Word_t*) addr;
+-	copy = *ptr;
+-	*ptr = copy;
+-
+-	return copy;
+-}
+-
+-
+-extern void* liballoc_alloc(int aPagesReq) {
+-
+-#define SCRATCHMEM_START        (16*1024*1024)
+-
+-	static char *free_page = (char*) SCRATCHMEM_START;
+-
+-	int touch = aPagesReq;
+-	void *ret = free_page;
+-
+-	L4_Word_t count = aPagesReq;
+-
+-	free_page += count * NWGetPageSize();
+-
+-	
+-	/* should we fault the pages in? */
+-	if( touch != 0 )
+-	{
+-		char *addr = (char*) ret;
+-		L4_Word_t i;
+-
+-		/* touch each page */
+-		for( i = 0; i < count; i++ )
+-		{
+-			do_safe_mem_touch( (void*) addr );
+-			for (int j=0; j<NWGetPageSize(); j++)
+-			    addr[j] = 0;
+-				
+-			addr += NWGetPageSize();
+-			
+-		}
+-	}
+-
+-	return (void*) ret;
+-
+-
+-//return NULL;
+-}
+-
+-/** This frees previously allocated memory. The void* parameter passed
+- * to the function is the exact same value returned from a previous
+- * liballoc_alloc call.
+- *
+- * The integer value is the number of pages to free.
+- *
+- * \return 0 if the memory was successfully freed.
+- */
+-//L4_INLINE void L4_Unmap (L4_Word_t n, L4_Fpage_t * fpages)
+-extern int liballoc_free(void* aPrevCallVal,int aPagesToFree) {
+-//L4_Unmap(aPagesToFree,aPrevCallVal);
+-L4_Unmap(aPagesToFree);
+-
+-return 0;
+-}
+-
+-//Dummy implementation
+-/*extern int mprotect(const void *addr, size_t len, int prot) {
+-
+-	printf("mprotect called with addr : %x, len : %d, prot : %x\n\r", &addr, len, prot);
+-	return 0;
+-}*/
+-
+-
+-
+diff --git a/user/lib/linux/liballoc_hooks.o b/user/lib/linux/liballoc_hooks.o
+deleted file mode 100644
+index a853a2cf..00000000
+Binary files a/user/lib/linux/liballoc_hooks.o and /dev/null differ
+diff --git a/user/serv/.depend b/user/serv/.depend
+old mode 100644
+new mode 100755
+diff --git a/user/serv/Makefile.in b/user/serv/Makefile.in
+old mode 100644
+new mode 100755
+diff --git a/user/serv/sigma0/Makefile.in b/user/serv/sigma0/Makefile.in
+old mode 100644
+new mode 100755
+diff --git a/user/serv/sigma0/crt0-amd64.S b/user/serv/sigma0/crt0-amd64.S
+old mode 100644
+new mode 100755
+diff --git a/user/serv/sigma0/crt0-ia32.S b/user/serv/sigma0/crt0-ia32.S
+old mode 100644
+new mode 100755
+diff --git a/user/serv/sigma0/crt0-powerpc.S b/user/serv/sigma0/crt0-powerpc.S
+old mode 100644
+new mode 100755
+diff --git a/user/serv/sigma0/crt0-powerpc64.S b/user/serv/sigma0/crt0-powerpc64.S
+old mode 100644
+new mode 100755
+diff --git a/user/serv/sigma0/region.h b/user/serv/sigma0/region.h
+old mode 100644
+new mode 100755
+diff --git a/user/serv/sigma0/sigma0 b/user/serv/sigma0/sigma0
+index 06278b73..b07c61d0 100755
+Binary files a/user/serv/sigma0/sigma0 and b/user/serv/sigma0/sigma0 differ
+diff --git a/user/serv/sigma0/sigma0.cc b/user/serv/sigma0/sigma0.cc
+index 3772aea8..c80bf42c 100644
+--- a/user/serv/sigma0/sigma0.cc
++++ b/user/serv/sigma0/sigma0.cc
+@@ -41,7 +41,7 @@
+ /**
+  * Verbose level for sigma0 output.
+  */
+-int verbose = 1;
++int verbose = 0;
+ 
+ 
+ /**
+diff --git a/user/serv/sigma0/sigma0.h b/user/serv/sigma0/sigma0.h
+old mode 100644
+new mode 100755
+diff --git a/user/serv/sigma0/sigma0.o b/user/serv/sigma0/sigma0.o
+index c1bb0dc5..ae9216e2 100644
+Binary files a/user/serv/sigma0/sigma0.o and b/user/serv/sigma0/sigma0.o differ
