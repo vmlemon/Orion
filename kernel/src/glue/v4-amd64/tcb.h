@@ -99,8 +99,8 @@ INLINE void tcb_t::set_mr(word_t index, word_t value)
   */
 INLINE void tcb_t::copy_mrs(tcb_t * dest, word_t start, word_t count)
 {
-     ASSERT(start + count <= IPC_NUM_MR);
-     ASSERT(count > 0);
+     ASSERT(DEBUG, start + count <= IPC_NUM_MR);
+     ASSERT(DEBUG, count > 0);
 
      word_t dummy;
      /* use optimized AMD64 copy loop -- uses complete cacheline
@@ -249,9 +249,9 @@ INLINE void tcb_t::switch_to(tcb_t * dest)
     extern amd64_tss_t tss;
     word_t dummy;
     
-    ASSERT(dest->stack);
-    ASSERT(dest != this);
-    ASSERT(get_cpu() == dest->get_cpu());
+    ASSERT(DEBUG, dest->stack);
+    ASSERT(DEBUG, dest != this);
+    ASSERT(DEBUG, get_cpu() == dest->get_cpu());
 
     if ( EXPECT_FALSE(this->resource_bits))
 	resources.save(this);
