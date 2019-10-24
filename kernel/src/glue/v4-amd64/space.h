@@ -117,7 +117,7 @@ public:
     bool readmem (addr_t vaddr, word_t * contents);
     static word_t readmem_phys (addr_t paddr)
 	{ 
-	    ASSERT( (word_t) paddr < (1ULL << 32));
+	    ASSERT(DEBUG, (word_t) paddr < (1ULL << 32));
 	    return * (word_t *) ( (word_t) paddr + REMAP_32BIT_START); 
 	}
     
@@ -195,9 +195,9 @@ INLINE void space_t::dequeue_spaces()
 INLINE amd64_pgent_t * space_t::get_pml4(cpuid_t cpu)
 {
 #if !defined(CONFIG_SMP)
-    ASSERT(cpu == 0);
+    ASSERT(DEBUG, cpu == 0);
 #else
-    ASSERT(cpu < CONFIG_SMP_MAX_CPUS);
+    ASSERT(DEBUG, cpu < CONFIG_SMP_MAX_CPUS);
 #endif
     return virt_to_phys(&pml4[cpu * 512]);
 }
