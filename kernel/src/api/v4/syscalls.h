@@ -50,7 +50,7 @@ extern "C" {
  * @param to_tid destination thread id
  * @param from_tid from specifier
  */
-SYS_IPC (threadid_t to_tid, threadid_t from_tid);
+SYS_IPC (threadid_t to_tid, threadid_t from_tid, timeout_t timeout);
 
 
 /**
@@ -70,10 +70,17 @@ SYS_THREAD_SWITCH (threadid_t dest_tid);
  * @param recv_redirector_tid thread id of the recv redirector
  * @param utcb_location location of the UTCB
  */
+
+/*
 SYS_THREAD_CONTROL (threadid_t dest_tid, threadid_t space_tid, 
 		    threadid_t scheduler_tid, threadid_t pager_tid, 
-		    threadid_t send_redirector_tid,
-		    threadid_t recv_redirector_tid, word_t utcb_location);
+		    word_t utcb_location);
+*/
+
+SYS_THREAD_CONTROL (threadid_t dest_tid, threadid_t space_tid, 
+		    threadid_t scheduler_tid, threadid_t pager_tid, 
+		    /* threadid_t send_redirector_tid,
+		    threadid_t recv_redirector_tid, word_t utcb_location */);
 
 /**
  * exchange registers system call
@@ -85,9 +92,18 @@ SYS_THREAD_CONTROL (threadid_t dest_tid, threadid_t space_tid,
  * @param pager_tid thread id of the pager
  * @param uhandle user defined handle
  */
+
+/*
 SYS_EXCHANGE_REGISTERS (threadid_t dest_tid, word_t control, 
 			word_t usp, word_t uip, word_t uflags,
-			word_t uhandle, threadid_t pager_tid);
+			word_t uhandle, threadid_t pager_tid,
+			bool is_local);
+
+*/
+SYS_EXCHANGE_REGISTERS (threadid_t dest_tid, word_t control, 
+			word_t usp, word_t uip, word_t uflags,
+			word_t uhandle, threadid_t pager_tid,
+			bool is_local);
 
 
 /**
@@ -121,8 +137,13 @@ SYS_UNMAP (word_t control);
  * @param kip_area kernel interface page area fpage
  * @param utcb_area user thread control block area fpage
  */
+
+/*
 SYS_SPACE_CONTROL (threadid_t space_tid, word_t control, fpage_t kip_area, 
-		   fpage_t utcb_area);
+		   fpage_t utcb_area, threadid_t redirector_tid);
+*/
+SYS_SPACE_CONTROL (threadid_t space_tid, word_t control, fpage_t kip_area, 
+		   fpage_t utcb_area, threadid_t redirector_tid);
 
 
 /**
