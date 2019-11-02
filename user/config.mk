@@ -32,9 +32,9 @@
 
 # config.mk.  Generated from config.mk.in by configure.
 
-ARCH=		amd64
-PLAT=           amd64-pc99
-KERNEL=		x86-kernel
+ARCH=		powerpc
+PLAT=           
+KERNEL=		powerpc-kernel
 
 prefix=		/usr/local
 exec_prefix=	${prefix}
@@ -49,11 +49,11 @@ CC=		gcc
 CXX=		$(CC) -x c++
 AS=		$(CC)
 
-CFLAGS=		-nostdinc -fno-stack-protector -g -O2 -m64 -mno-red-zone   -fno-stack-protector -lssp
+CFLAGS=		-fno-stack-protector -nostdinc -fno-stack-protector -g -O2 -msoft-float  -mno-regnames -meabi -msdata=none -mno-toc   -fno-stack-protector -lssp
 CXXFLAGS=	$(CFLAGS) -fno-exceptions -fno-stack-protector
 
-LDFLAGS=	-N -L$(top_builddir)/lib -L/usr/lib/gcc/x86_64-linux-gnu/8 -nostdlib  -melf_x86_64
-CPPFLAGS=	-I$(top_srcdir)/include -I$(top_builddir) -I/usr/lib/gcc/x86_64-linux-gnu/8/include 
+LDFLAGS=	-N -L$(top_builddir)/lib -L/usr/lib/gcc/powerpc-linux-gnu/4.3.3 -nostdlib 
+CPPFLAGS=	-I$(top_srcdir)/include -I$(top_builddir) -I/usr/lib/gcc/powerpc-linux-gnu/4.3.3/include 
 LGCC=		-lgcc
 
 TOOLPREFIX=	
@@ -72,6 +72,6 @@ INSTALL_PROGRAM=${INSTALL}
 INSTALL_DATA=	${INSTALL} -m 644
 INSTALL_SCRIPT=	${INSTALL}
 
-KICKSTART_LINKBASE=	00100000
-SIGMA0_LINKBASE=	00f00000
-ROOTTASK_LINKBASE=	01000000
+KICKSTART_LINKBASE=	00400000
+SIGMA0_LINKBASE=	00500000
+ROOTTASK_LINKBASE=	00600000
