@@ -1,0 +1,102 @@
+make[1]: Entering directory `/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/ppc32build'
+===> Building dependencies
+In file included from /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/config.h:37,
+                 from <command-line>:0:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/api/v4/config.h:46:3: error: #error undefined architecture width (32/64bit?)
+In file included from /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/config.h:37,
+                 from <command-line>:0:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/api/v4/config.h:46:3: error: #error undefined architecture width (32/64bit?)
+In file included from /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/config.h:37,
+                 from <command-line>:0:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/api/v4/config.h:46:3: error: #error undefined architecture width (32/64bit?)
+In file included from /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/config.h:37,
+                 from <command-line>:0:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/api/v4/config.h:46:3: error: #error undefined architecture width (32/64bit?)
+In file included from /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/config.h:37,
+                 from <command-line>:0:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/api/v4/config.h:46:3: error: #error undefined architecture width (32/64bit?)
+In file included from /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/config.h:37,
+                 from <command-line>:0:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/api/v4/config.h:46:3: error: #error undefined architecture width (32/64bit?)
+In file included from /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/config.h:37,
+                 from <command-line>:0:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/api/v4/config.h:46:3: error: #error undefined architecture width (32/64bit?)
+In file included from /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/config.h:37,
+                 from <command-line>:0:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/api/v4/config.h:46:3: error: #error undefined architecture width (32/64bit?)
+In file included from /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/config.h:37,
+                 from <command-line>:0:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/api/v4/config.h:46:3: error: #error undefined architecture width (32/64bit?)
+In file included from /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/config.h:37,
+                 from <command-line>:0:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/api/v4/config.h:46:3: error: #error undefined architecture width (32/64bit?)
+In file included from /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/config.h:37,
+                 from <command-line>:0:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/api/v4/config.h:46:3: error: #error undefined architecture width (32/64bit?)
+In file included from /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/config.h:37,
+                 from <command-line>:0:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/api/v4/config.h:46:3: error: #error undefined architecture width (32/64bit?)
+In file included from /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/config.h:37,
+                 from <command-line>:0:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/api/v4/config.h:46:3: error: #error undefined architecture width (32/64bit?)
+In file included from /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/config.h:37,
+                 from <command-line>:0:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/api/v4/config.h:46:3: error: #error undefined architecture width (32/64bit?)
+In file included from /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/config.h:37,
+                 from <command-line>:0:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/api/v4/config.h:46:3: error: #error undefined architecture width (32/64bit?)
+In file included from /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/config.h:37,
+                 from <command-line>:0:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/api/v4/config.h:46:3: error: #error undefined architecture width (32/64bit?)
+In file included from /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/config.h:37,
+                 from <command-line>:0:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/api/v4/config.h:46:3: error: #error undefined architecture width (32/64bit?)
+===> src/generic/lib.cc
+cd src/generic/ &&  gcc  -nostdinc -I/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/ppc32build/include -I/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src -I/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic -I/usr/lib/gcc/powerpc-linux-gnu/4.3.3/include/ -Uia32 -Up4 -Upc99 -Uv4 -Urr -D__ARCH__=ia32 -D__CPU__=p4 -D__PLATFORM__=pc99 -D__API__=v4 -D__SCHED__=rr -imacros /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/ppc32build/config/config.h -imacros /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/macros.h -include /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/config.h  -include /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h -fno-builtin  -fomit-frame-pointer -fno-exceptions -Wall  -Wno-format     -Wno-conversion -fno-stack-protector   -c /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/lib.cc
+In file included from /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/config.h:37,
+                 from <command-line>:0:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/api/v4/config.h:46:3: error: #error undefined architecture width (32/64bit?)
+In file included from <command-line>:0:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/config.h:38:28: error: glue/v4-ia32/config.h: No such file or directory
+In file included from <command-line>:0:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h:38:27: error: arch/ia32/types.h: No such file or directory
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/lib.cc:32:16: error: l4.h: No such file or directory
+In file included from /home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/lib.cc:33:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/debug.h:63:27: error: glue/v4-ia32/debug.h: No such file or directory
+In file included from <command-line>:0:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h:62: error: ‘word_t’ does not name a type
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h: In function ‘void* addr_offset(void*, void*)’:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h:74: error: ‘word_t’ was not declared in this scope
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h:74: error: expected primary-expression before ‘)’ token
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h:74: error: expected `)' before ‘addr’
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h: At global scope:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h:84: error: ‘word_t’ has not been declared
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h: In function ‘void* addr_offset(void*, int)’:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h:86: error: ‘word_t’ was not declared in this scope
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h:86: error: expected primary-expression before ‘)’ token
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h:86: error: expected `)' before ‘addr’
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h: At global scope:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h:95: error: ‘word_t’ has not been declared
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h: In function ‘void* addr_mask(void*, int)’:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h:97: error: ‘word_t’ was not declared in this scope
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h:97: error: expected primary-expression before ‘)’ token
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h:97: error: expected `)' before ‘addr’
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h: At global scope:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h:106: error: ‘word_t’ has not been declared
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/types.h:117: error: ‘word_t’ has not been declared
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/lib.cc: In function ‘void* memcpy(void*, const void*, unsigned int)’:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/lib.cc:42: error: ‘u8_t’ was not declared in this scope
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/lib.cc:42: error: ‘d’ was not declared in this scope
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/lib.cc:42: error: expected primary-expression before ‘)’ token
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/lib.cc:42: error: expected `;' before ‘dst’
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/lib.cc:43: error: ‘s’ was not declared in this scope
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/lib.cc:43: error: expected primary-expression before ‘)’ token
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/lib.cc:43: error: expected `;' before ‘src’
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/lib.cc: In function ‘void* memset(void*, unsigned int, unsigned int)’:
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/lib.cc:53: error: ‘u8_t’ was not declared in this scope
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/lib.cc:53: error: ‘s’ was not declared in this scope
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/lib.cc:53: error: expected primary-expression before ‘)’ token
+/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/src/generic/lib.cc:53: error: expected `;' before ‘dst’
+make[1]: *** [src/generic/lib.o] Error 1
+make[1]: Leaving directory `/home/tyson/Canvio/OrionPPC32/Orion/kernel.enryo/ppc32build'
+make: *** [all] Error 2

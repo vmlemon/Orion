@@ -2,7 +2,7 @@
 # Automatically generated, don't edit
 #
 # Generated on: G4Buntu
-# At: Sat, 02 Nov 2019 22:28:58 +0000
+# At: Tue, 05 Nov 2019 00:59:48 +0000
 # Linux version 2.6.28-6-powerpc (buildd@adare) (gcc version 4.3.3 (Ubuntu 4.3.3-5ubuntu4) ) #20-Ubuntu Fri Apr 17 08:30:40 UTC 2009
 
 #
@@ -85,7 +85,8 @@ CONFIG_ASSERT_LEVEL=2
 #
 # Trace Settings
 #
-CONFIG_TRACEBUFFER=n
+CONFIG_TRACEBUFFER=y
+CONFIG_TRACEBUF_PAGES=256
 
 
 
