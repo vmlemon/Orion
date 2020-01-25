@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: tyson-Lenovo-ideapad-120S-14IAP */
-/* At: Sat, 25 Jan 2020 19:06:22 +0000 */
+/* At: Sat, 25 Jan 2020 19:07:37 +0000 */
 /* Linux version 5.0.0-38-generic (buildd@lgw01-amd64-036) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #41-Ubuntu SMP Tue Dec 3 00:27:35 UTC 2019 */
 
 /* Pistachio Kernel Configuration System */
@@ -9,8 +9,8 @@
 
 /* Basic Architecture */
 #undef  CONFIG_ARCH_X86
-#define CONFIG_ARCH_POWERPC 1
-#undef  CONFIG_ARCH_POWERPC64
+#undef  CONFIG_ARCH_POWERPC
+#define CONFIG_ARCH_POWERPC64 1
 
 
 /* X86 Processor Architecture */
@@ -35,12 +35,12 @@
 
 /* Processor Type */
 #undef  CONFIG_CPU_POWERPC_PPC440
-#define CONFIG_CPU_POWERPC_IBM750 1
+#undef  CONFIG_CPU_POWERPC_IBM750
 #undef  CONFIG_CPU_POWERPC_PPC604
 
 
 /* Platform */
-#define CONFIG_PLAT_OFPPC 1
+#undef  CONFIG_PLAT_OFPPC
 #undef  CONFIG_PLAT_PPC44X
 
 
@@ -49,11 +49,26 @@
 #undef  CONFIG_SUBPLAT_440_EBONY
 
 
+/* Platform */
+#define CONFIG_PLAT_OFG5 1
+#undef  CONFIG_PLAT_OFPOWER3
+#undef  CONFIG_PLAT_OFPOWER4
+
+
+/* Processor Type */
+#undef  CONFIG_CPU_POWERPC64_POWER3
+#undef  CONFIG_CPU_POWERPC64_POWER3p
+#undef  CONFIG_CPU_POWERPC64_POWER4
+#undef  CONFIG_CPU_POWERPC64_POWER4p
+#define CONFIG_CPU_POWERPC64_PPC970 1
+
+
 /* Miscellaneous */
 #define CONFIG_IOAPIC 1
 #define CONFIG_MAX_IOAPICS 2
 #define CONFIG_APIC_TIMER_TICK 1000
 #define CONFIG_PPC_EXPOSE_OPIC 1
+#define CONFIG_BOOTMEM_PAGES 1024
 
 #undef  CONFIG_SMP
 
@@ -68,6 +83,7 @@
 #undef  CONFIG_NEW_MDB
 #undef  CONFIG_STATIC_TCBS
 #define CONFIG_PPC_BAT_SYSCALLS 1
+#undef  CONFIG_PPC64_TRASH_OF
 #undef  CONFIG_X86_SMALL_SPACES
 #undef  CONFIG_X86_COMPATIBILITY_MODE
 
@@ -81,6 +97,7 @@
 #undef  CONFIG_KDB_CONS_KBD
 #undef  CONFIG_KDB_CONS_OF1275
 #undef  CONFIG_KDB_CONS_PSIM_COM
+#undef  CONFIG_KDB_CONS_RTAS
 #define CONFIG_KDB_BOOT_CONS 0
 
 #undef  CONFIG_KDB_DISAS
@@ -105,18 +122,18 @@
 
 
 /* Derived symbols */
-#undef  CONFIG_HAVE_MEMORY_CONTROL
+#define CONFIG_HAVE_MEMORY_CONTROL 1
 #undef  CONFIG_X86_PSE
 #define CONFIG_BIGENDIAN 1
 #undef  CONFIG_PPC_MMU_TLB
 #undef  CONFIG_X86_SYSENTER
 #undef  CONFIG_X86_PGE
 #undef  CONFIG_X86_FXSR
-#define CONFIG_IS_32BIT 1
+#undef  CONFIG_IS_32BIT
 #undef  CONFIG_X86_HTT
 #undef  CONFIG_X86_PAT
 #undef  CONFIG_PPC_BOOKE
-#undef  CONFIG_IS_64BIT
+#define CONFIG_IS_64BIT 1
 #undef  CONFIG_MULTI_ARCHITECTURE
 #undef  CONFIG_X86_EM64T
 #undef  CONFIG_PPC_CACHE_L1_WRITETHROUGH
@@ -124,7 +141,7 @@
 #undef  CONFIG_PPC_CACHE_ICBI_LOCAL
 #undef  CONFIG_X86_SMALL_SPACES_GLOBAL
 #undef  CONFIG_X86_HVM
-#define CONFIG_PPC_MMU_SEGMENTS 1
+#undef  CONFIG_PPC_MMU_SEGMENTS
 #undef  CONFIG_X86_TSC
 /* That's all, folks! */
 #define AUTOCONF_INCLUDED
