@@ -1,5 +1,5 @@
-ARCH=amd64
-CPU=opteron
+ARCH=ia32
+CPU=itanium
 PLATFORM=efi
 
 BUILDDIR = $(CURDIR)
