@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: tyson-Lenovo-ideapad-120S-14IAP */
-/* At: Sat, 25 Jan 2020 18:32:32 +0000 */
+/* At: Sat, 25 Jan 2020 18:33:24 +0000 */
 /* Linux version 5.0.0-38-generic (buildd@lgw01-amd64-036) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #41-Ubuntu SMP Tue Dec 3 00:27:35 UTC 2019 */
 
 /* Pistachio Kernel Configuration System */
@@ -14,8 +14,8 @@
 
 
 /* X86 Processor Architecture */
-#undef  CONFIG_SUBARCH_X32
-#define CONFIG_SUBARCH_X64 1
+#define CONFIG_SUBARCH_X32 1
+#undef  CONFIG_SUBARCH_X64
 
 
 /* Processor Type */
@@ -50,6 +50,7 @@
 #undef  CONFIG_SPIN_WHEELS
 #undef  CONFIG_NEW_MDB
 #undef  CONFIG_STATIC_TCBS
+#undef  CONFIG_X86_SMALL_SPACES
 #undef  CONFIG_X86_COMPATIBILITY_MODE
 
 
@@ -87,13 +88,13 @@
 #define CONFIG_X86_SYSENTER 1
 #define CONFIG_X86_PGE 1
 #define CONFIG_X86_FXSR 1
-#undef  CONFIG_IS_32BIT
+#define CONFIG_IS_32BIT 1
 #define CONFIG_X86_HTT 1
 #define CONFIG_X86_PAT 1
 #undef  CONFIG_PPC_BOOKE
-#define CONFIG_IS_64BIT 1
+#undef  CONFIG_IS_64BIT
 #undef  CONFIG_MULTI_ARCHITECTURE
-#define CONFIG_X86_EM64T 1
+#undef  CONFIG_X86_EM64T
 #undef  CONFIG_PPC_CACHE_L1_WRITETHROUGH
 #undef  CONFIG_PPC_TLB_INV_LOCAL
 #undef  CONFIG_PPC_CACHE_ICBI_LOCAL

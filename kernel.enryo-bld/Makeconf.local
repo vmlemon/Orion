@@ -29,10 +29,10 @@
 ## $Id$
 ##                
 ######################################################################
-ARCH=x86
-SUBARCH=x32
-CPU=p4
-PLATFORM=pc99
+ARCH=powerpc
+SUBARCH=
+CPU=ibm750
+PLATFORM=ofppc
 SCHED=
 
 BUILDDIR = $(CURDIR)
