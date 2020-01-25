@@ -1,0 +1,6 @@
+ARCH = ia32
+CPU = p4
+PLATFORM = pc99
+
+BUILDDIR = $(CURDIR)
+SRCDIR=/NewRiver/CBASE4/Orion/kernel
