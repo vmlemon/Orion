@@ -31,7 +31,7 @@
 ######################################################################
 ARCH=powerpc
 SUBARCH=
-CPU=ppc604
+CPU=ibm750
 PLATFORM=ofppc
 SCHED=
 

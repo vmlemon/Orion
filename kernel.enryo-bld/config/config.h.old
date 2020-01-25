@@ -1,6 +1,6 @@
 /* Automatically generated, don't edit */
 /* Generated on: tyson-Lenovo-ideapad-120S-14IAP */
-/* At: Sat, 25 Jan 2020 18:47:57 +0000 */
+/* At: Sat, 25 Jan 2020 19:04:19 +0000 */
 /* Linux version 5.0.0-38-generic (buildd@lgw01-amd64-036) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #41-Ubuntu SMP Tue Dec 3 00:27:35 UTC 2019 */
 
 /* Pistachio Kernel Configuration System */
@@ -35,8 +35,8 @@
 
 /* Processor Type */
 #undef  CONFIG_CPU_POWERPC_PPC440
-#undef  CONFIG_CPU_POWERPC_IBM750
-#define CONFIG_CPU_POWERPC_PPC604 1
+#define CONFIG_CPU_POWERPC_IBM750 1
+#undef  CONFIG_CPU_POWERPC_PPC604
 
 
 /* Platform */
